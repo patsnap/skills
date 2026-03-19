@@ -1,0 +1,52 @@
+{
+  "skill_name": "novelty-check",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using the attached claim and prior-art fixtures, review claim 1 for US novelty. Produce the required novelty artifacts and decide whether one readable reference defeats the claim.",
+      "expected_output": "The skill uses the attached claim text, filing date, jurisdiction, and readable reference excerpts, produces the required novelty artifacts, and reaches novelty_rejected only by naming US20240123456A1 as the single defeating reference.",
+      "files": [
+        "evals/files/us-claim-1.md",
+        "evals/files/us-d1-full-disclosure.md"
+      ],
+      "expectations": [
+        "The output identifies US20240123456A1 as the only defeating reference for claim 1 if it concludes novelty_rejected.",
+        "The output includes an Executive Summary with Jurisdiction: US, Critical date: 2024-05-18, and Outcome: novelty_rejected.",
+        "The output includes structured content for claim_elements.md, prior_art_catalog.json, element_mapping.md, claim_diff_matrix.md, and novelty_report.md.",
+        "The output separates facts, inferences, and unknowns."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Using the attached EP claim and prior-art fixtures, assess claim 1 for EP novelty where no single readable reference fully discloses all limitations. Return the required novelty artifacts and a legally cautious conclusion.",
+      "expected_output": "The skill uses the attached claim, date, jurisdiction, and readable reference excerpts, avoids overclaiming inherency, identifies the missing or uncertain elements, and concludes novelty_preserved or uncertain with an explicit blocker.",
+      "files": [
+        "evals/files/ep-claim-1.md",
+        "evals/files/ep-d1-partial.md",
+        "evals/files/ep-d2-inherent-only.md"
+      ],
+      "expectations": [
+        "The output does not mosaic EP3456789A1 and WO2024555555A1 into a novelty_rejected result.",
+        "The output marks E3 as missing or uncertain in claim_diff_matrix.md.",
+        "The output includes an Executive Summary with Jurisdiction: EP and Critical date: 2024-04-02.",
+        "The output explains why the result is novelty_preserved or uncertain."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Using the attached CN claim and two readable reference excerpts, decide whether claim 1 lacks novelty. The user is explicitly asking for a D1 + D2 combination theory.",
+      "expected_output": "The skill enforces the boundary, refuses mosaic novelty reasoning even with attached readable references, and hands off combination analysis to non-obviousness-check.",
+      "files": [
+        "evals/files/cn-claim-1.md",
+        "evals/files/cn-d1-partial.md",
+        "evals/files/cn-d2-partial.md"
+      ],
+      "expectations": [
+        "The output states that novelty is a single-reference test.",
+        "The output redirects multi-reference combination analysis to non-obviousness-check.",
+        "The output does not conclude novelty_rejected based on CN111111111A plus CN222222222A.",
+        "The output names the handoff package, including claim_diff_matrix.md and novelty_report.md."
+      ]
+    }
+  ]
+}

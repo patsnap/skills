@@ -1,0 +1,20 @@
+{
+  "name": "non-obviousness-check",
+  "description": "Multi-reference inventive-step workflow with D1 baseline, path contracts, and smoke eval coverage.",
+  "mcp_dependencies": ["patsnap"],
+  "mcp": {
+    "mode": "required",
+    "server": "patsnap",
+    "tools": ["patsnap_search", "patsnap_fetch"],
+    "setup_doc": "../mcp-setup/PATSNAP_MCP_SETUP.md"
+  },
+  "tests": ["smoke"],
+  "outputs": [
+    "jurisdiction_plan.md",
+    "claim_diff_matrix.md",
+    "combination_candidates.json",
+    "motivation_matrix.md",
+    "secondary_considerations.md",
+    "inventive_step_report.md"
+  ]
+}

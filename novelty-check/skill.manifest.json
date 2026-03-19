@@ -1,0 +1,19 @@
+{
+  "name": "novelty-check",
+  "description": "Single-reference novelty workflow with artifact contracts and smoke eval coverage.",
+  "mcp_dependencies": ["patsnap"],
+  "mcp": {
+    "mode": "required",
+    "server": "patsnap",
+    "tools": ["patsnap_search", "patsnap_fetch"],
+    "setup_doc": "../mcp-setup/PATSNAP_MCP_SETUP.md"
+  },
+  "tests": ["smoke"],
+  "outputs": [
+    "claim_elements.md",
+    "prior_art_catalog.json",
+    "element_mapping.md",
+    "claim_diff_matrix.md",
+    "novelty_report.md"
+  ]
+}

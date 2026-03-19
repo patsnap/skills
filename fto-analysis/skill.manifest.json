@@ -1,0 +1,24 @@
+{
+  "name": "fto-analysis",
+  "description": "Freedom-to-operate workflow with iterative PatSnap retrieval, recall estimation, blocking-patent triage, and structured FTO reporting.",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "mcp_dependencies": ["patsnap"],
+  "mcp": {
+    "mode": "required",
+    "server": "patsnap",
+    "tools": ["patsnap_search", "patsnap_fetch"],
+    "setup_doc": "../mcp-setup/PATSNAP_MCP_SETUP.md"
+  },
+  "tests": ["cli"],
+  "outputs": [
+    "fto_search_log.md",
+    "patent_pool.json",
+    "claim_diff_matrix_[patent_no].md",
+    "motivation_matrix_[patent_no].md",
+    "fto_report.md"
+  ]
+}

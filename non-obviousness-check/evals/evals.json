@@ -1,0 +1,52 @@
+{
+  "skill_name": "non-obviousness-check",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Using the attached EP claim, D1 baseline, and D2 excerpts, analyze inventive step for claim 1. Produce the required artifacts and assess the strongest combination path under the EP framework.",
+      "expected_output": "The skill uses the attached claim, critical date, D1 baseline, and readable D2 excerpt, routes to the EP framework, preserves D1 as the baseline, records the best path in the required artifacts, and produces a structured pro-combination case.",
+      "files": [
+        "evals/files/ep-claim-1.md",
+        "evals/files/ep-d1-baseline.md",
+        "evals/files/ep-d2-control-path.md"
+      ],
+      "expectations": [
+        "The output includes an Executive Summary with Jurisdiction: EP, Selected framework: problem-solution approach, and Best combination path: D1 + D2.",
+        "The output contains structured content for jurisdiction_plan.md, claim_diff_matrix.md, combination_candidates.json, motivation_matrix.md, secondary_considerations.md, and inventive_step_report.md.",
+        "The output states that D2 supplies E3, and records motivation source, compatibility, expectation of success, and counter-evidence for D1 + D2.",
+        "The output aligns the conclusion with the selected jurisdiction."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Using the attached US claim, D1 baseline, and D2 excerpt, assess obviousness where D2 appears relevant but motivation is weak and the interfaces may be incompatible. Produce the required artifacts and give a cautious conclusion.",
+      "expected_output": "The skill uses the attached claim, jurisdiction, date, D1 baseline, and readable D2 excerpt, avoids turning field similarity into a strong case, records compatibility and expectation-of-success concerns, and concludes weak or uncertain with explicit blockers.",
+      "files": [
+        "evals/files/us-claim-1.md",
+        "evals/files/us-d1-baseline.md",
+        "evals/files/us-d2-weak-path.md"
+      ],
+      "expectations": [
+        "The output does not treat same-field similarity alone as sufficient motivation.",
+        "The output records compatibility and expectation of success separately for D1 + D2.",
+        "The output includes an Executive Summary with Jurisdiction: US and Strongest D1: US20240123456A1.",
+        "The output concludes weak or uncertain instead of strong when the path is fragile."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Using the attached JP claim and single reference excerpt, tell me whether claim 1 lacks novelty. The request is intentionally single-reference and novelty-framed.",
+      "expected_output": "The skill enforces the boundary, redirects the request to novelty-check, and avoids creating a multi-reference inventive-step conclusion even though a readable reference excerpt is attached.",
+      "files": [
+        "evals/files/jp-claim-1.md",
+        "evals/files/jp-single-reference.md"
+      ],
+      "expectations": [
+        "The output states that single-reference novelty analysis belongs to novelty-check.",
+        "The output does not fabricate D2 or D3 combination paths.",
+        "The output avoids giving a definitive inventive-step conclusion for a novelty-only prompt.",
+        "The output does not label a best combination path."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "doe-plan",
+  "description": "Evidence-to-DOE workflow with stepwise CLI stages, traceable artifacts, and runtime metadata.",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": ["numpy", "pyDOE3"],
+    "isolated_env": false
+  },
+  "mcp_dependencies": ["patsnap"],
+  "mcp": {
+    "mode": "recommended",
+    "server": "patsnap",
+    "tools": ["patsnap_search", "patsnap_fetch"],
+    "setup_doc": "../mcp-setup/PATSNAP_MCP_SETUP.md"
+  },
+  "tests": ["cli"],
+  "outputs": [
+    "evidence_catalog.json",
+    "factor_hypotheses.json",
+    "doe_design.json",
+    "run_sheet.csv",
+    "doe_plan.md"
+  ]
+}

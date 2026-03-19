@@ -1,0 +1,28 @@
+{
+  "name": "qfd-analysis",
+  "description": "Unified QFD pipeline workflow with CLI validation and artifact-based reporting.",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": ["openpyxl"],
+    "isolated_env": false
+  },
+  "mcp_dependencies": ["patsnap"],
+  "mcp": {
+    "mode": "optional",
+    "server": "patsnap",
+    "tools": ["patsnap_search", "patsnap_fetch"],
+    "setup_doc": "../mcp-setup/PATSNAP_MCP_SETUP.md"
+  },
+  "tests": ["cli"],
+  "outputs": [
+    "project_meta.json",
+    "01_voc/requirements.json",
+    "02_technical/our_product_spec.json",
+    "03_analysis/relationship_matrix.json",
+    "03_analysis/correlation_matrix.json",
+    "03_analysis/conflicts.json",
+    "05_output/priority_recommendations.json",
+    "05_output/qfd_report.md",
+    "05_output/hoq_matrix.xlsx"
+  ]
+}
