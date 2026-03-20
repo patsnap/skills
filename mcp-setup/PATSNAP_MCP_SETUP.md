@@ -17,21 +17,37 @@ If plan or quota details vary by account, trust the numbers shown in the Open Pl
 
 ## 2. Configure Your MCP Client
 
-PatSnap MCP uses a streamable HTTP server:
+PatSnap MCP uses a streamable HTTP server. Choose the endpoint based on your region:
 
-- URL: `https://open.patsnap.com/v1/stream`
-- Header: `Authorization: Bearer YOUR_API_KEY`
+- **China:** `https://connect.zhihuiya.com/data-logic-mcp-patsnap-search/logic-mcp/patsnap-search`
+- **Global:** `https://connect.patsnap.com/data-logic-mcp-patsnap-search/logic-mcp/patsnap-search`
 
 ### Claude Desktop / Claude Code
 
 Add a PatSnap server entry to your MCP config:
 
+**China region:**
 ```json
 {
   "mcpServers": {
     "patsnap": {
       "type": "streamable-http",
-      "url": "https://open.patsnap.com/v1/stream",
+      "url": "https://connect.zhihuiya.com/data-logic-mcp-patsnap-search/logic-mcp/patsnap-search",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Global region:**
+```json
+{
+  "mcpServers": {
+    "patsnap": {
+      "type": "streamable-http",
+      "url": "https://connect.patsnap.com/data-logic-mcp-patsnap-search/logic-mcp/patsnap-search",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
