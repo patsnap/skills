@@ -19,7 +19,7 @@ If plan or quota details vary by account, trust the numbers shown in the Open Pl
 
 PatSnap MCP uses a streamable HTTP server:
 
-- URL: `https://mcp.patsnap.com/v1/stream`
+- URL: `https://open.patsnap.com/v1/stream`
 - Header: `Authorization: Bearer YOUR_API_KEY`
 
 ### Claude Desktop / Claude Code
@@ -31,7 +31,7 @@ Add a PatSnap server entry to your MCP config:
   "mcpServers": {
     "patsnap": {
       "type": "streamable-http",
-      "url": "https://mcp.patsnap.com/v1/stream",
+      "url": "https://open.patsnap.com/v1/stream",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
