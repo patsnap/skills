@@ -1,0 +1,16 @@
+# Example Run Structure
+
+```text
+artifacts/competitive-landscape/20260409-embodied-ai-chip/
+├── request.md
+├── workplan.md
+├── method_decisions.md
+├── query_log.csv
+├── source_index.csv
+├── claim_ledger.csv
+├── report.md
+├── notes/
+└── deliverables/
+```
+
+Minimum completion means the top-level evidence files and `report.md` are present.
