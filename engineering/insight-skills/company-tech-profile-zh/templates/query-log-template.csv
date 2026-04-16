@@ -1,0 +1,1 @@
+query_id,timestamp（时间戳）,tool（工具）,purpose（目的）,query_text（查询文本）,scope（范围）,result_count（结果数量）,notes（备注）

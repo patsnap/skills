@@ -1,0 +1,1 @@
+claim_id,claim（主张内容）,claim_type（主张类型）,supporting_source_ids（支撑来源编号）,confidence（置信度）,counterpoint_or_limit（反驳点或局限）,decision_relevance（决策相关性）
