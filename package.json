@@ -1,0 +1,18 @@
+{
+  "name": "@patsnap/skills",
+  "version": "1.0.0",
+  "description": "Official PatSnap Agent Skills for Life Sciences investigation and R&D.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patsnap/skills.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "lifescience",
+    "patsnap",
+    "biomarker",
+    "pharma"
+  ],
+  "author": "PatSnap",
+  "license": "MIT"
+}
