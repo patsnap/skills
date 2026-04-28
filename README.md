@@ -13,6 +13,7 @@ npx skills add patsnap/skills/tree/main/life-sciences --all
 ```
 skills/
 ├── engineering/          # R&D and technology analysis
+├── ip/                   # Intellectual property and innovation methodology
 ├── life-sciences/        # Pharmaceutical and biomedical intelligence
 ├── materials/            # Materials science and alloy research
 └── README.md
@@ -43,6 +44,14 @@ Pharmaceutical and biomedical intelligence skills. All 6 skills integrate with t
 | `patsnap-lifescience-pharmaceuticals-exploration` | Drug-related Q&A covering patents, literature, clinical trials, and licensing transactions |
 | `patsnap-lifescience-precision-oncology` | Cancer treatment reports combining literature, clinical guidance, and trial data |
 | `patsnap-lifescience-target-intelligence` | Biomedical target analysis with related biological and pharmaceutical details |
+
+### IP (Intellectual Property & Innovation)
+
+TRIZ-based innovation methodology skills for systematic inventive problem solving.
+
+| Skill | Description |
+|-------|-------------|
+| `triz-innovation-pro` | TRIZ innovation solution analysis — system component analysis, contact relationship analysis, functional modeling, causal chain analysis, and innovation solution generation |
 
 ### Materials
 
