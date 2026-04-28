@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "exported_at": "2026-04-10T05:56:08.307932Z",
+  "skill": {
+    "name": "triz-innovation-pro",
+    "source": "official",
+    "owner_id": "wuwentao",
+    "review_status": "none",
+    "version": "1.0.0",
+    "published_version": "1.0.0"
+  },
+  "tags": [],
+  "metadata": {},
+  "preferences": {},
+  "extensions": {}
+}
