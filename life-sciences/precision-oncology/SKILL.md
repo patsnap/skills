@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-precision-oncology
+name: precision-oncology
 description:
 
   Combine the academic literatures,  epidemiological reports, clinical and pharmaceutical guidance & clinical trial reports, then give a report about the cancer and its treatment
@@ -18,9 +18,13 @@ description:
   - What are the unmet medical needs in glioblastoma treatment?
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  requires: "PATSNAP_API_KEY"
+---
+  
+## Setup
+- Get your API key: https://open.patsnap.com
 ---
 
 # Precision Oncology Skill Guide
