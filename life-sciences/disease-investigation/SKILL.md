@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-disease-investigation
+name: disease-investigation
 description: |
   Conduct comprehensive disease investigation combining academic literature, epidemiological data, clinical guidelines, pharmaceutical intelligence, and clinical trial reports.
   Users may inquire about disease pathogenesis, symptoms, pharmaceutical interventions, treatment options, patent landscapes, and business development opportunities.
@@ -21,9 +21,13 @@ description: |
   - Drug development pipeline for NSCLC
 license: MIT
 metadata:
-  author: patsnap
-  version: '2.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  requires: "PATSNAP_API_KEY"
+---
+  
+## Setup
+- Get your API key: https://open.patsnap.com
 ---
 
 # Disease Investigation Skill Guide
