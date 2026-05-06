@@ -19,11 +19,11 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  requires: "PATSNAP_API_KEY"
+  version: 1.0.0
 ---
   
 ## Setup
-- Get your API key: https://open.patsnap.com
+- Get your API key if needed at: https://open.patsnap.com
 ---
 
 # Target Intelligence Skill Guide
