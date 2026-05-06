@@ -1,7 +1,20 @@
 ---
 name: target-intelligence
 version: 1.0.0
-description: Provides target intelligence report covering target details, drugs, pipelines, druggability, and indications.
+description: 
+  Provides target intelligence report covering target details, drugs, pipelines, druggability, and indications.
+  When to use this skill
+    - Target structure and biological functions
+    - Competitive intelligence of pipelines with targets
+    - Development of targeting pharmaceuticals
+    - Target druggability or tractability
+    - The indication treated with targets
+
+  Typical queries
+    - EGFR
+    - Drugs targeting P53
+    - Druggability of Beta-amyloid
+    - Cancers treated by targeting BRCA1 and BRCA2 Proteins
 license: MIT
 metadata:
   author: PatSnap
@@ -9,19 +22,6 @@ metadata:
   requires: ["PATSNAP_API_KEY"]
   setup_guide: "Get your API Key at https://open.patsnap.com"
 ---
-
-## When to use this skill
-- Target structure and biological functions
-- Competitive intelligence of pipelines with targets
-- Development of targeting pharmaceuticals
-- Target druggability or tractability
-- The indication treated with targets
-
-## Typical queries
-- EGFR
-- Drugs targeting P53
-- Druggability of Beta-amyloid
-- Cancers treated by targeting BRCA1 and BRCA2 Proteins
   
 ## Setup
 - Get your API key: https://open.patsnap.com
