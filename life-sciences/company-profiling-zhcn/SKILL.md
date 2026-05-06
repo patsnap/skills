@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-company-profiling_zh
+name: company-profiling-zhcn
 description: |
   基于海量制药数据，精准高效地提取和分析情报，为用户提供专业的公司画像及投资/合作建议。
 
@@ -18,9 +18,13 @@ description: |
   - 告诉我 Moderna 的融资历史
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  version: 1.0.0
+---
+  
+## Setup
+- 获取API KEY: https://open.patsnap.com
 ---
 
 # 公司画像技能

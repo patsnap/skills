@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-pharmaceuticals-exploration_zh
+name: pharmaceuticals-exploration-zhcn
 description: |
   用于回答药物相关问题。对于早期药物，搜索并汇总相关专利、学术文献、数据库记录、临床试验、专利和授权交易文件来回答问题。
 
@@ -16,9 +16,13 @@ description: |
 
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  version: 1.0.0
+---
+  
+## Setup
+- 获取API KEY: https://open.patsnap.com
 ---
 
 # 药物调研技能指南（药物探索）

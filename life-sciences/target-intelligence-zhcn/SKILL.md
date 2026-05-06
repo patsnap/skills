@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-target-intelligence_zh
+name: target-intelligence-zhcn
 description: |
   用户通常查询特定的生物医学靶点，可能包括相关的生物学和药学详情。
   可能强调与靶点密切相关的实体、标签和信息。
@@ -19,9 +19,13 @@ description: |
   - 靶向 BRCA1 和 BRCA2 蛋白治疗的癌症
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  version: 1.0.0
+---
+  
+## Setup
+- 获取API KEY: https://open.patsnap.com
 ---
 
 # 靶点情报技能指南

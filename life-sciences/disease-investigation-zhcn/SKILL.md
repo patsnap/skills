@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-disease-investigation_zh
+name: disease-investigation-zhcn
 description: |
   综合学术文献、流行病学数据、临床指南、药物情报及临床试验报告，开展全面的疾病调研。
   用户可能询问疾病发病机制、症状、药物干预、治疗方案、专利格局及商业发展机会。
@@ -21,9 +21,13 @@ description: |
   - 非小细胞肺癌的药物研发管线
 license: MIT
 metadata:
-  author: patsnap
-  version: '2.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  version: 1.0.0
+---
+  
+## Setup
+- 获取API KEY: https://open.patsnap.com
 ---
 
 # 疾病调研技能指南
