@@ -25,7 +25,7 @@ metadata:
   
 ## Setup
 - Get your API key: https://open.patsnap.com
-
+---
 
 # Target Intelligence Skill Guide
 
