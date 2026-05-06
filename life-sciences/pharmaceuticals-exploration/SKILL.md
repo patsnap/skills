@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-pharmaceuticals-exploration
+name: pharmaceuticals-exploration
 description: Used for answering drug-related questions. For early-stage drugs, search and summarize related patents, academic literature, database records, clinical trials, patents, and licensing transaction documents to answer questions.
 
   Activate when users explicitly mention specific drugs or when calling disease_investigation_skill or target_intelligence_skill for assistance
@@ -15,9 +15,13 @@ description: Used for answering drug-related questions. For early-stage drugs, s
 
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  requires: "PATSNAP_API_KEY"
+---
+  
+## Setup
+- Get your API key: https://open.patsnap.com
 ---
 
 # Drug Investigation Skill Guide (Pharmaceuticals Exploration)
