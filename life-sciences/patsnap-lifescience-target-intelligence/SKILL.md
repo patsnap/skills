@@ -24,8 +24,7 @@ metadata:
 - Cancers treated by targeting BRCA1 and BRCA2 Proteins
   
 ## Setup
-1. Get your API key: https://open.patsnap.com
-2. Generate a token (click "Token" link on that page)
+- Get your API key: https://open.patsnap.com
 
 
 # Target Intelligence Skill Guide
