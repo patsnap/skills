@@ -1,5 +1,5 @@
 ---
-name: patsnap-lifescience-company-profiling
+name: company-profiling
 description:
   Accurately and efficiently extract and analyze intelligence based on massive pharmaceutical data to provide users with professional company profiles and investment/collaboration recommendations.
 
@@ -18,9 +18,13 @@ description:
   - Tell me about Moderna's financing history
 license: MIT
 metadata:
-  author: patsnap
-  version: '1.0.0'
-  domain: lifescience
+  author: PatSnap
+  category: "Life Science"
+  requires: "PATSNAP_API_KEY"
+---
+  
+## Setup
+- Get your API key: https://open.patsnap.com
 ---
 
 # Company Profiling Skill
