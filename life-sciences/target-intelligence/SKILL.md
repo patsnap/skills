@@ -19,8 +19,7 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  requires: ["PATSNAP_API_KEY"]
-  setup_guide: "Get your API Key at https://open.patsnap.com"
+  requires: "PATSNAP_API_KEY"
 ---
   
 ## Setup
