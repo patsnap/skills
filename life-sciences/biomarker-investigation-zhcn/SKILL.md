@@ -17,11 +17,38 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  version: 1.0.0
+  version: 1.0.3
 ---
   
 ## Setup
-- 获取API KEY: https://open.patsnap.com
+
+> **PatSnap 生命科学 MCP 服务**让 Claude Code 直接访问超 2 亿条专利、药物研发及生物数据。
+
+### 1. 获取 API Key
+登录 https://open.patsnap.com，进入 **API Keys**，创建一个新 Key。
+
+### 2. 连接 MCP 服务
+向 Claude Code 添加所需服务。以下是第一个必需服务的命令示例：
+
+```bash
+claude mcp add --transport http pharma_intelligence \
+  "https://connect.patsnap.com/096456/Logic-mcp?apiKey=sk-xxxxxxxxxxxx"
+```
+
+**全部生命科学 MCP 服务**（✅ = 本Skill必需）：
+
+- ✅ **[Pharma Intelligence](https://open.patsnap.com/marketplace/mcp-servers/096456)** – 药物、试验、专利、靶点、生物标志物、公司、疾病
+- **[Chemical Molecular](https://open.patsnap.com/marketplace/mcp-servers/713886)** – 序列、相似性、PDB、药效学
+- **[Biology Modality](https://open.patsnap.com/marketplace/mcp-servers/06e741)** – 分子、结合实验、预训练、剂量预测
+
+💡 **使用其他Agent？** 访问上述任一MCP服务页面，在右下角切换 Cursor、API 等标签页获取对应配置。
+
+### 3. 验证
+在 Claude Code 中输入 `/mcp`，确认已添加的服务均显示 **Connected**。
+
+💡 **需要帮助？** 
+访问 [PatSnap 生命科学](https://eureka.patsnap.com/ls-landing)， 或者查阅 [PatSnap 开发者文档](https://open.patsnap.com/devportal) 
+
 ---
 
 # 生物标志物调研技能指南
