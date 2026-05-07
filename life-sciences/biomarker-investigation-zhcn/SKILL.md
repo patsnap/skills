@@ -20,7 +20,7 @@ metadata:
   version: 1.0.3
 ---
   
-## Setup
+## Setup Guide
 
 > **PatSnap 生命科学 MCP 服务**让 Claude Code 直接访问超 2 亿条专利、药物研发及生物数据。
 
