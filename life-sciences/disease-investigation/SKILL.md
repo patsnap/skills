@@ -23,11 +23,39 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  version: 1.0.0
+  version: 1.0.3
 ---
   
-## Setup
-- Get your API key if needed at: https://open.patsnap.com
+## Setup Guide
+
+> **PatSnap LifeScience MCP Services** give Claude Code direct access to 200M+ patents, drug R&D records, and biological data.
+
+### 1. Get an API Key
+Log in to https://open.patsnap.com, go to **API Keys**, and create a new key.
+
+### 2. Connect MCP Servers
+Add the required servers to Claude Code. Here's an example for the first required service:
+
+```bash
+claude mcp add --transport http pharma_intelligence \
+  "https://connect.patsnap.com/096456/Logic-mcp?apiKey=sk-xxxxxxxxxxxx"
+```
+
+**All life‑science MCP servers** (✅ = required for this skill):
+
+- ✅ **[Pharma Intelligence](https://open.patsnap.com/marketplace/mcp-servers/096456)** — drugs, trials, patents, targets, biomarkers, companies, diseases
+- **[Chemical Molecular](https://open.patsnap.com/marketplace/mcp-servers/713886)** — sequences, similarity, PDB, pharmacodynamics
+- **[Biology Modality](https://open.patsnap.com/marketplace/mcp-servers/06e741)** — molecules, binding assays, pretraining, dose predictions
+
+💡 **Other agents?** Visit any service page above, then switch tabs in the bottom‑right corner for Cursor, API, and other configurations.
+
+### 3. Verify
+In Claude Code, type `/mcp` and confirm the added servers show **Connected**.
+
+💡 **Need help?**
+Visit: [Patsnap Life Science](https://eureka.patsnap.com/ls-landing) 
+or  [PatSnap Dev Portal](https://open.patsnap.com/devportal)
+
 ---
 
 # Disease Investigation Skill Guide
