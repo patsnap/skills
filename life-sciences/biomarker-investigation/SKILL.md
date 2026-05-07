@@ -47,7 +47,7 @@ claude mcp add --transport http pharma_intelligence \
 In Claude Code, type `/mcp` and confirm the added servers show **Connected**.
 
 💡 **Need help?**
-Visit: [Patsnap Life Science](https://eureka.patsnap.com/ls-landing) 
+Visit: [PatSnap Life Science](https://eureka.patsnap.com/ls-landing) 
 or  [PatSnap Dev Portal](https://open.patsnap.com/devportal)
 
 ---
