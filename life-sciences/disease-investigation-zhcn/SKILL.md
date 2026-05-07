@@ -31,7 +31,7 @@ metadata:
 > **PatSnap 生命科学 MCP 服务**让 Claude Code 直接访问超 2 亿条专利、药物研发及生物数据。
 
 ### 1. 获取 API Key
-登录 https://open.patsnap.com，进入 **API Keys**，创建一个新 Key。
+登录 https://open.patsnap.com ，进入 **API Keys**，创建一个新 Key。
 
 ### 2. 连接 MCP 服务
 向 Claude Code 添加所需服务。以下是第一个必需服务的命令示例：
