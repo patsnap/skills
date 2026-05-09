@@ -19,7 +19,7 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  version: 1.0.3
+  version: 1.0.5
 ---
   
 ## Setup Guide
@@ -50,6 +50,38 @@ claude mcp add --transport http pharma_intelligence \
 
 💡 **需要帮助？** 
 访问 [PatSnap 生命科学](https://eureka.patsnap.com/ls-landing)， 或者查阅 [PatSnap 开发者文档](https://open.patsnap.com/devportal) 
+
+---
+
+## MCP 连通性自检
+
+**每次技能加载后、处理任何用户查询之前，必须先执行以下自检。**
+
+1. 调用一个轻量级 MCP 工具探测连通性，例如查询已知靶点 `EGFR`：
+   - 使用 `ls_target_fetch` 按名称查询 EGFR
+   - 如果正常返回数据 → MCP 已连接，继续执行用户的查询
+2. 如果调用失败（工具不存在、连接超时、认证错误等）：
+   - **立即停止**，不要尝试其他 MCP 工具
+   - 不要报错后继续执行——这会反复触发失败
+   - 向用户回复以下引导信息：
+
+> ⚠️ **PatSnap MCP 服务未连接**
+>
+> 本技能依赖 PatSnap 生命科学 MCP 服务。请先完成以下步骤：
+>
+> 1. 前往 [open.patsnap.com](https://open.patsnap.com) 创建 API Key
+> 2. 运行以下命令连接必需的 MCP 服务：
+> ```bash
+> claude mcp add --transport http pharma_intelligence \
+>   "https://connect.patsnap.com/096456/Logic-mcp?apiKey=你的API_KEY"
+> ```
+> 3. 输入 `/mcp` 确认服务状态为 **Connected**
+>
+> 配置完成后重新提问即可。
+
+3. 仅在自检通过后，才进入下方的分析流程。
+
+---
 
 ---
 

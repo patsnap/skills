@@ -23,7 +23,7 @@ license: MIT
 metadata:
   author: PatSnap
   category: "Life Science"
-  version: 1.0.3
+  version: 1.0.5
 ---
   
 ## Setup Guide
@@ -55,6 +55,38 @@ In Claude Code, type `/mcp` and confirm the added servers show **Connected**.
 💡 **Need help?**
 Visit: [PatSnap Life Science](https://eureka.patsnap.com/ls-landing) 
 or  [PatSnap Dev Portal](https://open.patsnap.com/devportal)
+
+---
+
+## MCP Connectivity Check
+
+**Before processing any user query after this skill loads, the following connectivity check MUST be performed.**
+
+1. Probe MCP connectivity with a lightweight tool call, e.g. query the known target `EGFR`:
+   - Use `ls_target_fetch` to look up EGFR by name
+   - If valid data is returned → MCP is connected, proceed to the user's query
+2. If the call fails (tool not found, connection timeout, auth error, etc.):
+   - **Stop immediately** — do not attempt other MCP tools
+   - Do not continue after reporting errors — this will trigger repeated failures
+   - Reply to the user with the following guidance:
+
+> ⚠️ **PatSnap MCP Services Not Connected**
+>
+> This skill requires PatSnap LifeScience MCP services. Please complete the following steps:
+>
+> 1. Go to [open.patsnap.com](https://open.patsnap.com) and create an API Key
+> 2. Run the following command to connect the required MCP services:
+> ```bash
+> claude mcp add --transport http pharma_intelligence \
+>   "https://connect.patsnap.com/096456/Logic-mcp?apiKey=YOUR_API_KEY"
+> ```
+> 3. Type `/mcp` and confirm the services show **Connected**
+>
+> Re-ask your question once configured.
+
+3. Only proceed to the analysis workflow below after the check passes.
+
+---
 
 ---
 
