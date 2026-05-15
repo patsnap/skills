@@ -31,6 +31,7 @@ General-purpose R&D analysis skills. Available in English and Chinese (`-zh` suf
 | `competitive-landscape` | Technology-sector competitive landscape analysis with player tiering and white-space identification |
 | `tech-route-comparison` | Evidence-backed comparison of two or more technical routes, architectures, or solution paths |
 | `rd-initiation-review` | R&D project initiation pre-screen and proposal audit for go/no-go decisions |
+| `triz-innovation-pro` | TRIZ innovation solution analysis — system component analysis, contact relationship analysis, functional modeling, causal chain analysis, and innovation solution generation |
 
 ### Life Sciences
 
@@ -47,11 +48,11 @@ Pharmaceutical and biomedical intelligence skills. All 6 skills integrate with t
 
 ### IP (Intellectual Property & Innovation)
 
-TRIZ-based innovation methodology skills for systematic inventive problem solving.
+Patent search and IP analysis skills powered by Patsnap data.
 
 | Skill | Description |
 |-------|-------------|
-| `triz-innovation-pro` | TRIZ innovation solution analysis — system component analysis, contact relationship analysis, functional modeling, causal chain analysis, and innovation solution generation |
+| `free-patent-search` | Patent search powered by Patsnap's free MCP — novelty search, FTO analysis, competitive intelligence, legal status checks, and portfolio research |
 
 ### Materials
 
