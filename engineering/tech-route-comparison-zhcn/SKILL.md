@@ -1,6 +1,6 @@
 ﻿---
 name: tech-route-comparison-zhcn
-description: >
+description: |
   基于证据的两条或多条技术路线、架构或解决方案路径的对比分析。当用户要求进行技术预研、技术路线对比、路线选型、TRL（技术成熟度）评估、成熟度评估、就绪度评估、机会图谱，或任何面向管理层的技术报告交付物时使用——即使用户只是要求立项分析、委员会材料、可行性分析，或"哪条路线更好"。
 argument-hint: "[主题 + 路线集合 + 可选场景/目的]"
 provider: "Patsnap Eureka"

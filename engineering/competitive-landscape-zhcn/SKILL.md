@@ -1,6 +1,6 @@
 ﻿---
 name: competitive-landscape-zhcn
-description: >
+description: |
   技术领域竞争格局分析，包含玩家分层、技术路线差异化分析及空白机会识别。适用于玩家图谱绘制、行业竞争对手分析、技术路线玩家对比、国内外玩家对比，或在特定技术领域内的多玩家竞争评估。
 argument-hint: "[主题 + 可选的地区/目的/玩家集合]"
 provider: "Patsnap Eureka"

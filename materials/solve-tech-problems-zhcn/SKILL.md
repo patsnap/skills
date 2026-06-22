@@ -1,6 +1,6 @@
 ﻿---
 name: solve-tech-problems-zhcn
-description: >-
+description: |
   中文材料工程问题求解 Skill，用于针对失效、性能、工艺、制造和应用挑战给出结构化解决方案。
 ---
 

@@ -1,6 +1,6 @@
 ﻿---
 name: understand-technology-zhcn
-description: >-
+description: |
   中文材料技术理解 Skill，用于解释材料科学概念、结构-性能关系、加工工艺、材料类别与工程应用。
 ---
 

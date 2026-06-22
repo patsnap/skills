@@ -1,6 +1,6 @@
 ﻿---
 name: free-patent-search-zhcn
-description: >-
+description: |
   中文专利检索 Skill，由 PatSnap 免费 MCP 提供支持，覆盖新颖性检索、FTO 分析、专利挖掘、风险筛查、无效检索、竞争情报、法律状态核验与组合研究。
 triggers:
   - 专利检索
