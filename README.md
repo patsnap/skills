@@ -23,7 +23,7 @@ skills/
 
 ### Engineering
 
-General-purpose R&D analysis skills. Available in English and Chinese (`-zh` suffix).
+General-purpose R&D analysis skills. Available in English and Chinese (`-zhcn` suffix).
 
 | Skill | Description |
 |-------|-------------|
@@ -35,7 +35,7 @@ General-purpose R&D analysis skills. Available in English and Chinese (`-zh` suf
 
 ### Life Sciences
 
-Pharmaceutical and biomedical intelligence skills. All 6 skills integrate with the **lifesciences MCP** service for database retrieval.
+Pharmaceutical and biomedical intelligence skills. All 6 skills integrate with the **lifesciences MCP** service for database retrieval. Available in English and Chinese (`-zhcn` suffix).
 
 | Skill | Description |
 |-------|-------------|
@@ -48,7 +48,7 @@ Pharmaceutical and biomedical intelligence skills. All 6 skills integrate with t
 
 ### IP (Intellectual Property & Innovation)
 
-Patent search and IP analysis skills powered by Patsnap data.
+Patent search and IP analysis skills powered by Patsnap data. Available in English and Chinese (`-zhcn` suffix).
 
 | Skill | Description |
 |-------|-------------|
@@ -56,7 +56,7 @@ Patent search and IP analysis skills powered by Patsnap data.
 
 ### Materials
 
-Materials science and engineering skills for metals, polymers, ceramics, composites, and energy materials.
+Materials science and engineering skills for metals, polymers, ceramics, composites, and energy materials. Available in English and Chinese (`-zhcn` suffix).
 
 | Skill | Description | MCP |
 |-------|-------------|-----|
@@ -79,6 +79,7 @@ Skills without MCP dependencies work as pure prompt skills, generating responses
 
 ## Language Support
 
-- **Engineering**: English + Chinese (separate `-zh` skill variants)
-- **Life Sciences**: English (responds in user's language)
-- **Materials**: English (responds in user's language)
+- **Engineering**: English + Chinese (separate `-zhcn` skill variants)
+- **Life Sciences**: English + Chinese (separate `-zhcn` skill variants)
+- **IP**: English + Chinese (separate `-zhcn` skill variants)
+- **Materials**: English + Chinese (separate `-zhcn` skill variants)

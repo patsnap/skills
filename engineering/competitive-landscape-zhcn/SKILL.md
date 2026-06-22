@@ -1,5 +1,5 @@
----
-name: competitive-landscape
+﻿---
+name: competitive-landscape-zhcn
 description: >
   技术领域竞争格局分析，包含玩家分层、技术路线差异化分析及空白机会识别。适用于玩家图谱绘制、行业竞争对手分析、技术路线玩家对比、国内外玩家对比，或在特定技术领域内的多玩家竞争评估。
 argument-hint: "[主题 + 可选的地区/目的/玩家集合]"
@@ -317,3 +317,4 @@ Markdown 表格：玩家（行）× 技术路线（列）。
 - [templates/request-template.md](templates/request-template.md)
 - [templates/workplan-template.md](templates/workplan-template.md)
 - [templates/report-outline.md](templates/report-outline.md)
+
