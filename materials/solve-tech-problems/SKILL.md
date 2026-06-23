@@ -1,6 +1,6 @@
 ---
 name: solve-tech-problems
-description: >-
+description:
   Use for solving materials engineering problems only. Generate solution-oriented responses for materials engineering problems by analyzing material composition, microstructure, processing conditions, and performance behavior. Provide practical solutions such as alloy design, heat treatment adjustments, defect mitigation, and material substitution, with clear evaluation of trade-offs in properties, manufacturability, cost, and operating conditions.
 ---
 

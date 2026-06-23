@@ -1,7 +1,7 @@
 ---
 name: patent-search
 version: "1.2"
-description: >
+description:
   Patent Search Skill powered by Patsnap's free MCP. Covers novelty search, FTO analysis,
   patent mining, risk screening, invalidation search, competitive intelligence, legal status
   checks, and portfolio research. Includes API Key registration guidance, intent triage,

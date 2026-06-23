@@ -1,6 +1,6 @@
 ---
 name: competitive-landscape
-description: >
+description:
   Technology-sector competitive landscape analysis with player tiering, route
   differentiation, and white-space identification. Use when the user asks for
   player mapping, sector competitor analysis, technology-track player

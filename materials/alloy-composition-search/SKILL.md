@@ -1,6 +1,6 @@
 ---
 name: alloy-composition-search
-description: >-
+description:
   Generate professional alloy composition search responses by interpreting user queries, retrieving and analyzing relevant alloy data (optionally via MCP tools), and presenting structured composition tables with clear filtering, classification, and insights.
 ---
 

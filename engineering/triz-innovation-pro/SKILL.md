@@ -1,6 +1,6 @@
 ---
 name: triz-innovation-pro
-description: >-
+description:
    TRIZ innovation solution analysis assistant. Supports innovative solution analysis through TRIZ causal chain methodology. Core capabilities: system component analysis, contact relationship analysis, functional modeling, causal chain analysis, and innovation solution generation.
 
 version: 1.0.0

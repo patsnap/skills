@@ -1,6 +1,6 @@
 ---
 name: rd-initiation-review
-description: >
+description:
   R&D project initiation pre-screen and proposal audit for go/no-go decisions,
   public novelty boundary review, innovation-point assessment, and evidence-backed
   project rating. Use when the user asks for project initiation pre-screening,

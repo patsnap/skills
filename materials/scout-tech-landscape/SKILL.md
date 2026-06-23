@@ -1,6 +1,6 @@
 ---
 name: scout-tech-landscape
-description: >-
+description:
   Use for only materials-related queries requiring technology landscape analysis. Focus on any materials relevant topics such as metallic alloys, polymers, ceramics, composites, and related processing technologies. Generate structured insights on material classes, supply chains, key organizations, and R&D trends based on patents, literature, and industrial data.
 ---
 
