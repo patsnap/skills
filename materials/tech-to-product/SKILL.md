@@ -1,6 +1,6 @@
 ---
 name: tech-to-product
-description: >-
+description:
   Use for queries only about translating materials or material science technologies into real-world products. Generate application-focused responses that translate materials and engineering technologies into real-world products, with emphasis on material selection, processing methods, performance requirements, and integration into functional systems under practical manufacturing and operational constraints.
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: company-tech-profile
-description: >
+description:
   Single-company technology profile and R&D assessment for a defined technology
   topic. Use when the user asks for a company technology profile, company
   technical analysis, R&D direction assessment, technical due diligence

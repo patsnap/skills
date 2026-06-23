@@ -1,6 +1,6 @@
 ---
 name: understand-technology
-description: >- 
+description:
   Use for explaining materials science and engineering concepts, including material properties, structure–property relationships, processing methods, and performance mechanisms. Generate structured explanations of materials and engineering technologies by covering underlying scientific principles, structure–property relationships, processing methods, and performance characteristics, with clear connections between material composition, microstructure, and functional behavior in practical applications. Use for queries such as "What is X?", "How does X work?", or "Explain the science behind X".
 ---
 

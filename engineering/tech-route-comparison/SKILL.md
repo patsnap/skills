@@ -1,6 +1,6 @@
 ---
 name: tech-route-comparison
-description: >
+description:
   Evidence-backed comparison of two or more technical routes, architectures, or
   solution paths. Use when the user asks for technical pre-research, technical
   route comparison, route selection, TRL assessment, maturity assessment,
