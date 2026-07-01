@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TOPIC}} — 代表专利列表</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root {
+  --bg-base: #070b14;
+  --bg-surface: #0d1525;
+  --bg-card: #111c33;
+  --bg-elevated: #162040;
+  --color-primary: #3b82f6;
+  --color-accent: #06d6a0;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-purple: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border-subtle: rgba(59,130,246,0.15);
+  --glow-blue: 0 0 20px rgba(59,130,246,0.3);
+  --glow-accent: 0 0 20px rgba(6,214,160,0.3);
+  --radius-card: 16px;
+  --radius-sm: 8px;
+  --font-title: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-primary);font-family:var(--font-body);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,11,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-subtle);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:var(--font-title);font-weight:700;font-size:1rem;color:var(--color-accent);letter-spacing:0.05em;}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:color .2s;}
+.nav-links a:hover{color:var(--color-primary);}
+.page-header{padding:100px 2rem 40px;max-width:1200px;margin:0 auto;}
+.page-title{font-family:var(--font-title);font-size:2rem;font-weight:800;margin-bottom:0.5rem;}
+.page-title span{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.disclaimer-banner{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:var(--radius-sm);padding:1rem 1.5rem;margin:0 2rem 2rem;max-width:1200px;margin-left:auto;margin-right:auto;color:#fbbf24;font-size:0.85rem;line-height:1.6;}
+.controls{display:flex;gap:1rem;padding:0 2rem;max-width:1200px;margin:0 auto 2rem;flex-wrap:wrap;}
+.search-input{flex:1;min-width:200px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.6rem 1rem;color:var(--text-primary);font-family:var(--font-body);font-size:0.875rem;outline:none;transition:border-color .2s;}
+.search-input:focus{border-color:var(--color-primary);}
+.filter-btn{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.6rem 1rem;color:var(--text-secondary);font-size:0.8rem;cursor:pointer;transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--color-primary);color:var(--color-primary);}
+.patents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:1.5rem;padding:0 2rem;max-width:1200px;margin:0 auto 4rem;}
+.patent-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.5rem;transition:all .3s;position:relative;overflow:hidden;}
+.patent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));}
+.patent-card:hover{border-color:var(--color-primary);box-shadow:var(--glow-blue);transform:translateY(-2px);}
+.patent-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;gap:1rem;}
+.patent-pn{font-family:var(--font-mono);font-size:0.8rem;color:var(--color-primary);background:rgba(59,130,246,0.1);padding:0.25rem 0.6rem;border-radius:4px;white-space:nowrap;}
+.patent-pn a{color:inherit;text-decoration:none;}
+.patent-pn a:hover{text-shadow:0 0 8px rgba(59,130,246,0.8);}
+.patent-status{font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:4px;white-space:nowrap;}
+.status-active{background:rgba(6,214,160,0.15);color:var(--color-accent);}
+.status-pending{background:rgba(245,158,11,0.15);color:var(--color-warning);}
+.status-inactive{background:rgba(239,68,68,0.15);color:var(--color-danger);}
+.patent-title{font-size:0.95rem;font-weight:600;color:var(--text-primary);line-height:1.5;margin-bottom:0.75rem;}
+.patent-meta{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;}
+.meta-tag{font-size:0.75rem;color:var(--text-muted);background:var(--bg-surface);padding:0.2rem 0.5rem;border-radius:4px;}
+.patent-abstract{font-size:0.8rem;color:var(--text-secondary);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.pagination{display:flex;justify-content:center;gap:0.5rem;padding:2rem;}
+.page-btn{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.4rem 0.8rem;color:var(--text-secondary);cursor:pointer;font-size:0.85rem;transition:all .2s;}
+.page-btn:hover,.page-btn.active{border-color:var(--color-primary);color:var(--color-primary);}
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">{{TOPIC}} · 专利情报</span>
+  <div class="nav-links">
+    <a href="index.html">总览</a>
+    <a href="patents.html">专利列表</a>
+    <a href="subfields.html">技术分支</a>
+    <a href="evidence.html">证据链</a>
+    <a href="methodology.html">方法说明</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="hero-badge" style="display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:0.4rem 1.2rem;font-size:0.75rem;color:var(--color-primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">PATENT SAMPLE</div>
+  <h1 class="page-title"><span>代表专利</span> 样本列表</h1>
+  <p style="color:var(--text-secondary);font-size:0.9rem;">共展示 {{PATENT_COUNT}} 条代表性专利 · 检索日期：{{SEARCH_DATE}}</p>
+</div>
+<div class="disclaimer-banner">⚠️ 本页展示的是相关度优先的代表性专利样本，不代表趋势统计全量数据，不构成申请人排名依据。全量专利统计数据请参见 <a href="index.html" style="color:#fbbf24;">主报告页</a>。</div>
+<div class="controls">
+  <input class="search-input" type="text" id="searchInput" placeholder="搜索专利号、标题、申请人..." oninput="filterPatents()">
+  <button class="filter-btn" onclick="filterByStatus('all')">全部</button>
+  <button class="filter-btn" onclick="filterByStatus('active')">有效</button>
+  <button class="filter-btn" onclick="filterByStatus('pending')">审中</button>
+  <button class="filter-btn" onclick="filterByStatus('inactive')">失效</button>
+</div>
+<div class="patents-grid" id="patentsGrid">
+  <!-- {{PATENT_CARDS}} -->
+</div>
+<div class="pagination" id="pagination"></div>
+<script>
+const patents = {{PATENTS_JSON}};
+let filtered = [...patents];
+let currentPage = 1;
+const perPage = 20;
+function renderPatents(){
+  const start=(currentPage-1)*perPage,end=start+perPage;
+  const grid=document.getElementById('patentsGrid');
+  grid.innerHTML=filtered.slice(start,end).map(p=>`
+  <div class="patent-card">
+    <div class="patent-header">
+      <span class="patent-pn"><a href="${p.url||'#'}" target="_blank">${p.pn||'—'}</a></span>
+      <span class="patent-status status-${p.status||'pending'}">${p.status==='active'?'有效':p.status==='inactive'?'失效':'审中'}</span>
+    </div>
+    <div class="patent-title">${p.title||'—'}</div>
+    <div class="patent-meta">
+      <span class="meta-tag">📅 ${p.date||'—'}</span>
+      <span class="meta-tag">🏢 ${p.assignee||'—'}</span>
+      <span class="meta-tag">🌍 ${p.jurisdiction||'—'}</span>
+      <span class="meta-tag">🔖 ${p.ipc||'—'}</span>
+    </div>
+    <div class="patent-abstract">${p.abstract||'—'}</div>
+  </div>`).join('');
+  renderPagination();
+}
+function renderPagination(){
+  const total=Math.ceil(filtered.length/perPage);
+  const pg=document.getElementById('pagination');
+  pg.innerHTML=Array.from({length:total},(_,i)=>`<button class="page-btn${i+1===currentPage?' active':''}" onclick="goPage(${i+1})">${i+1}</button>`).join('');
+}
+function goPage(p){currentPage=p;renderPatents();window.scrollTo(0,0);}
+function filterPatents(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  filtered=patents.filter(p=>(p.title||'').toLowerCase().includes(q)||(p.pn||'').toLowerCase().includes(q)||(p.assignee||'').toLowerCase().includes(q));
+  currentPage=1;renderPatents();
+}
+function filterByStatus(s){
+  filtered=s==='all'?[...patents]:patents.filter(p=>p.status===s);
+  currentPage=1;renderPatents();
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+renderPatents();
+</script>
+</body>
+</html>

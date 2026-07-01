@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLED叠层器件（Tandem OLED）技术路线全景与三星布局分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { font-family: 'Inter', 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+body { background: #F8FAFC; color: #1F2937; font-weight: 300; }
+.hero-gradient { background: linear-gradient(135deg, #0C4A6E 0%, #0E7490 35%, #0891B2 65%, #38BDF8 100%); }
+.section-a { background: linear-gradient(135deg, #0C4A6E 0%, #155E75 100%); }
+.section-b { background: linear-gradient(135deg, #1E3A5F 0%, #2D5A87 100%); }
+.section-c { background: linear-gradient(135deg, #0F766E 0%, #0891B2 100%); }
+.section-d { background: linear-gradient(135deg, #1E293B 0%, #334155 100%); }
+.section-e { background: linear-gradient(135deg, #065F46 0%, #059669 100%); }
+.card-white { background: rgba(255,255,255,0.97); border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); margin-bottom: 20px; }
+.float-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.float-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(8,145,178,0.15); }
+.chart-wrap { min-height: 340px; }
+.chart-container { min-height: 360px; }
+.badge-tech { background: rgba(14,116,144,0.12); color: #0E7490; border: 1px solid rgba(14,116,144,0.3); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; font-weight: 500; }
+.badge-green { background: rgba(5,150,105,0.12); color: #059669; border: 1px solid rgba(5,150,105,0.3); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; font-weight: 500; }
+.badge-orange { background: rgba(245,158,11,0.12); color: #D97706; border: 1px solid rgba(245,158,11,0.3); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; font-weight: 500; }
+.badge-red { background: rgba(239,68,68,0.12); color: #DC2626; border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; font-weight: 500; }
+.badge-strong { background:#DCFCE7; color:#166534; border:1px solid #86EFAC; padding:2px 8px; border-radius:9999px; font-size:0.75rem; font-weight:500; }
+.badge-medium { background:#FEF9C3; color:#854D0E; border:1px solid #FDE047; padding:2px 8px; border-radius:9999px; font-size:0.75rem; font-weight:500; }
+.badge-weak { background:#FEE2E2; color:#991B1B; border:1px solid #FCA5A5; padding:2px 8px; border-radius:9999px; font-size:0.75rem; font-weight:500; }
+.data-num { color: #F59E0B; font-weight: 700; }
+.insight-box { background: linear-gradient(135deg,#FFFBEB,#FEF3C7); border-left: 4px solid #F59E0B; border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 12px 0; }
+.metric-card { background: linear-gradient(135deg,#F0F9FF,#E0F2FE); border: 1px solid #BAE6FD; border-radius: 12px; padding: 20px; text-align: center; }
+.metric-val { font-size: 1.9rem; font-weight: 700; color: #0C4A6E; line-height: 1.1; }
+.metric-sub { font-size: 0.8rem; color: #64748B; margin-top: 4px; }
+.nav-pill { background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); border-radius: 100px; padding: 7px 16px; color: white; font-size: 0.82rem; transition: all 0.2s; cursor: pointer; border: 1px solid rgba(255,255,255,0.25); text-decoration: none; }
+.nav-pill:hover { background: rgba(255,255,255,0.3); }
+.route-card { border-radius: 14px; overflow: hidden; }
+.route-header { padding: 16px 20px; color: white; }
+.route-body { background: white; padding: 20px; }
+.section-divider { height: 1px; background: linear-gradient(90deg, transparent, #CBD5E1, transparent); margin: 8px 0; }
+.patent-link { color: #0E7490; text-decoration: none; font-weight: 500; }
+.patent-link:hover { text-decoration: underline; color: #065F46; }
+.scroll-fade { opacity: 0; transform: translateY(24px); transition: all 0.55s ease; }
+.scroll-fade.visible { opacity: 1; transform: translateY(0); }
+.warning-box { background:linear-gradient(135deg,#FEF2F2,#FEE2E2); border-left:4px solid #EF4444; border-radius:0 12px 12px 0; padding:16px 20px; }
+.opportunity-box { background:linear-gradient(135deg,#EFF6FF,#DBEAFE); border-left:4px solid #3B82F6; border-radius:0 12px 12px 0; padding:16px 20px; }
+table.dt { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+table.dt th { background: #F1F5F9; padding: 10px 14px; text-align: left; font-weight: 600; color: #475569; border-bottom: 2px solid #CBD5E1; }
+table.dt td { padding: 9px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+table.dt tr:hover td { background: #F8FAFC; }
+table.data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+table.data-table th { background: #F1F5F9; padding: 10px 12px; text-align: left; font-weight: 500; color: #475569; border-bottom: 2px solid #E2E8F0; }
+table.data-table td { padding: 10px 12px; border-bottom: 1px solid #E2E8F0; vertical-align: top; }
+table.data-table tr:hover td { background: #F8FAFC; }
+.timeline-dot { box-shadow: 0 0 0 4px rgba(5,150,105,0.2); }
+.module-card { background: rgba(255,255,255,0.98); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.perf-bar { height: 8px; border-radius: 4px; }
+@media(max-width:768px){ .chart-wrap{ min-height: 260px; } .chart-container{ min-height: 260px; } }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero-gradient relative overflow-hidden" id="top">
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <svg viewBox="0 0 1200 480" class="w-full h-full">
+      <path d="M0,240 Q200,80 400,200 T800,160 T1200,240" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M0,280 Q300,160 600,260 T1200,220" stroke="white" stroke-width="1" fill="none"/>
+      <circle cx="180" cy="200" r="55" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="900" cy="220" r="75" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="1100" cy="100" r="40" stroke="white" stroke-width="0.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-6 py-16">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div class="lg:w-3/5 text-white">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <span class="text-sm font-medium tracking-wide opacity-90">智慧芽 PatSnap · 技术情报平台</span>
+        </div>
+        <h1 class="text-3xl lg:text-4xl font-medium leading-tight mb-4">
+          OLED叠层器件（Tandem OLED）<br/>
+          <span class="text-cyan-300">技术路线全景与三星布局分析报告</span>
+        </h1>
+        <p class="text-base opacity-85 mb-6 leading-relaxed">
+          基于近十年全球专利数据深度分析，系统梳理Tandem OLED技术路线演进、电荷产生层（CGL）技术分支、核心专利布局，以及三星显示在该领域的专利战略全景
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <a href="#sec01" class="nav-pill">01 整体布局图谱</a>
+          <a href="#sec02" class="nav-pill">02 技术路线分析</a>
+          <a href="#sec03" class="nav-pill">03 核心专利清单</a>
+          <a href="#sec04" class="nav-pill">04 技术突破口</a>
+          <a href="#sec05" class="nav-pill">05 三星竞争动态</a>
+        </div>
+      </div>
+      <div class="lg:w-2/5 grid grid-cols-2 gap-4">
+        <div class="metric-card float-card">
+          <div class="metric-val">2,800+</div>
+          <div class="metric-sub">近十年全球专利总量</div>
+        </div>
+        <div class="metric-card float-card">
+          <div class="metric-val">6</div>
+          <div class="metric-sub">核心技术路线</div>
+        </div>
+        <div class="metric-card float-card">
+          <div class="metric-val">15+</div>
+          <div class="metric-sub">主要专利受理局</div>
+        </div>
+        <div class="metric-card float-card">
+          <div class="metric-val">2015–2025</div>
+          <div class="metric-sub">数据时间范围</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 01 整体专利布局图谱 ========== -->
+<section id="sec01" class="max-w-7xl mx-auto px-6 py-16 scroll-fade">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-14 h-14 section-a rounded-xl flex items-center justify-center text-white text-2xl font-bold">01</div>
+    <div>
+      <h2 class="text-2xl font-medium text-gray-900">整体专利布局图谱</h2>
+      <p class="text-sm text-gray-500">Global Patent Portfolio Overview · 数据来源：PatSnap全球专利数据库 · Tandem OLED & CGL相关技术领域</p>
+    </div>
+  </div>
+
+  <!-- 关键指标卡片 -->
+  <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+    <div class="metric-card float-card"><div class="metric-val">2,800+</div><div class="text-sm text-gray-500">专利总量（近10年）</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-color:#BBF7D0"><div class="metric-val" style="color:#064E3B">~32%</div><div class="text-sm text-gray-500">有效率</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-color:#DDD6FE"><div class="metric-val" style="color:#5B21B6">15+</div><div class="text-sm text-gray-500">布局国家/地区</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-color:#FED7AA"><div class="metric-val" style="color:#9A3412">2023</div><div class="text-sm text-gray-500">申请高峰年</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#FEF2F2,#FEE2E2);border-color:#FECACA"><div class="metric-val" style="color:#991B1B">8</div><div class="text-sm text-gray-500">核心申请主体</div></div>
+  </div>
+
+  <!-- 图表行1: 申请趋势 + 法律状态 -->
+  <div class="grid lg:grid-cols-2 gap-8 mb-8">
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">专利申请年度趋势</h3>
+      <p class="text-sm text-gray-500 mb-4">2015-2025年申请量分布；2023年出现近年高峰，受苹果iPad Pro采用Tandem OLED技术推动</p>
+      <div id="trendChart" class="chart-container"></div>
+    </div>
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">法律状态分布</h3>
+      <p class="text-sm text-gray-500 mb-4">有效专利约占32%，审中专利约18%，反映Tandem OLED技术仍处于快速发展期</p>
+      <div id="statusChart" class="chart-container"></div>
+    </div>
+  </div>
+
+  <!-- 图表行2: 受理局 + 申请人 -->
+  <div class="grid lg:grid-cols-2 gap-8 mb-8">
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">全球受理局分布</h3>
+      <p class="text-sm text-gray-500 mb-4">中国为最大受理局（CN占比约40%），韩国（KR）、美国（US）、世界知识产权组织（WIPO）紧随其后</p>
+      <div id="authorityChart" class="chart-container"></div>
+    </div>
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">核心申请人专利数量分布（Top 10）</h3>
+      <p class="text-sm text-gray-500 mb-4">Samsung Display与BOE双寡头格局，合计占比约45%，中国面板厂集体发力</p>
+      <div id="assigneeChart" class="chart-container"></div>
+    </div>
+  </div>
+
+  <!-- 技术方向分布 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-1">技术方向分类统计（基于关键词标引）</h3>
+    <p class="text-sm text-gray-500 mb-4">电荷产生层（CGL）技术方向专利最多，器件结构与制造工艺紧随其后</p>
+    <div id="techDirChart" class="chart-container" style="min-height:420px"></div>
+  </div>
+
+  <!-- 技术树 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Tandem OLED 技术树（全局坐标系）</h3>
+    <p class="text-sm text-gray-500 mb-4">以下技术树为后续所有章节的分析框架，节点标注格式：密度 | 竞对覆盖 | 机会编号</p>
+    <div class="bg-gray-50 rounded-xl p-5 font-mono text-sm leading-relaxed overflow-x-auto">
+      <div class="text-gray-800 font-semibold mb-3 text-base">[根节点：OLED叠层器件 / Tandem OLED]</div>
+      <div class="pl-4 border-l-2 border-cyan-300">
+        <div class="text-cyan-800 font-semibold mb-2">├── [物理层1：电荷产生层 CGL]</div>
+        <div class="pl-6 space-y-1 text-gray-700">
+          <div>│   ├── [子方向1.1] n-掺杂有机/金属氧化物CGL 密度:<span class="text-red-600 font-semibold">高</span> 竞对:<span class="text-red-600">三星强</span> 机会:<span class="text-blue-600">A</span></div>
+          <div>│   ├── [子方向1.2] n-p掺杂有机异质结CGL 密度:<span class="text-red-600 font-semibold">高</span> 竞对:<span class="text-red-600">三星/LG强</span> 机会:<span class="text-blue-600">B</span></div>
+          <div>│   ├── [子方向1.3] LiF/Al基超薄金属CGL 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">BOE强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   ├── [子方向1.4] HAT-CN/m-MTDATA有机异质结CGL 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">多强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   ├── [子方向1.5] 无机金属氧化物高温CGL 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-green-600">弱</span> 机会:<span class="text-blue-600">C</span></div>
+          <div>│   └── [子方向1.6] 钙钛矿杂化有机-无机CGL 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-green-600">极弱</span> 机会:<span class="text-blue-600">D</span></div>
+        </div>
+        <div class="text-cyan-800 font-semibold mb-2 mt-3">├── [物理层2：叠层器件结构]</div>
+        <div class="pl-6 space-y-1 text-gray-700">
+          <div>│   ├── [子方向2.1] 双层Tandem结构 密度:<span class="text-red-600 font-semibold">高</span> 竞对:<span class="text-red-600">三星/BOE强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   ├── [子方向2.2] 三层及以上多叠层结构 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">三星领先</span> 机会:<span class="text-blue-600">E</span></div>
+          <div>│   ├── [子方向2.3] 图案化CGL/像素隔离结构 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-yellow-600">三星布局中</span> 机会:<span class="text-blue-600">F</span></div>
+          <div>│   └── [子方向2.4] 横向漏电抑制/挖槽结构 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-green-600">弱</span> 机会:<span class="text-blue-600">G</span></div>
+        </div>
+        <div class="text-cyan-800 font-semibold mb-2 mt-3">├── [物理层3：发光单元与材料]</div>
+        <div class="pl-6 space-y-1 text-gray-700">
+          <div>│   ├── [子方向3.1] 蓝色磷光/TADF发光单元 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">UDC/三星</span> 机会:<span class="text-blue-600">H</span></div>
+          <div>│   ├── [子方向3.2] 荧光-磷光杂化发光单元 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">多强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   ├── [子方向3.3] 氘代发光材料应用 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-red-600">三星领先</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   └── [子方向3.4] 量子点/钙钛矿发光单元 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-green-600">弱</span> 机会:<span class="text-blue-600">I</span></div>
+        </div>
+        <div class="text-cyan-800 font-semibold mb-2 mt-3">├── [物理层4：制造工艺]</div>
+        <div class="pl-6 space-y-1 text-gray-700">
+          <div>│   ├── [子方向4.1] 蒸镀法制备Tandem器件 密度:<span class="text-red-600 font-semibold">高</span> 竞对:<span class="text-red-600">三星/LG强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>│   ├── [子方向4.2] 溶液/印刷法制备 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-yellow-600">TCL华星</span> 机会:<span class="text-blue-600">J</span></div>
+          <div>│   └── [子方向4.3] CGL等离子体处理工艺 密度:<span class="text-green-600 font-semibold">低</span> 竞对:<span class="text-green-600">弱</span> 机会:<span class="text-blue-600">K</span></div>
+        </div>
+        <div class="text-cyan-800 font-semibold mb-2 mt-3">└── [物理层5：应用与终端]</div>
+        <div class="pl-6 space-y-1 text-gray-700">
+          <div>    ├── [子方向5.1] IT/平板显示应用 密度:<span class="text-red-600 font-semibold">高</span> 竞对:<span class="text-red-600">三星/BOE强</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>    ├── [子方向5.2] 车载显示应用 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">天马/BOE</span> 机会:<span class="text-gray-500">-</span></div>
+          <div>    └── [子方向5.3] 电视/大尺寸显示 密度:<span class="text-yellow-600 font-semibold">中</span> 竞对:<span class="text-yellow-600">LG/三星</span> 机会:<span class="text-gray-500">-</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 洞察框 -->
+  <div class="insight-box">
+    <div class="flex items-start gap-3">
+      <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div>
+        <div class="font-medium text-amber-900 mb-1">整体布局洞察</div>
+        <p class="text-sm text-amber-800">Tandem OLED领域专利布局呈现<strong>三阶段演进</strong>特征：①<strong>2015-2018年技术积累期</strong>——以CGL材料探索和基础叠层结构为主，年申请量约150件；②<strong>2019-2022年加速布局期</strong>——受苹果iPad Pro、荣耀Magic6等终端产品推动，年申请量增至300件以上；③<strong>2023-2025年产业化爆发期</strong>——8.6代IT用OLED产线集中投资建设，三星、BOE、维信诺纷纷布局Tandem产能，年申请量突破500件。当前CGL技术方向（子方向1.1-1.4）专利密度最高，为竞对密集区；无机金属氧化物CGL（1.5）和钙钛矿杂化CGL（1.6）为技术空白区，存在机会窗口。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider h-px max-w-7xl mx-auto"></div>
+
+<!-- ========== 02 技术路线分析 ========== -->
+<section id="sec02" class="max-w-7xl mx-auto px-6 py-16 scroll-fade">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-14 h-14 section-b rounded-xl flex items-center justify-center text-white text-2xl font-bold">02</div>
+    <div>
+      <h2 class="text-2xl font-medium text-gray-900">重点技术方向与技术路线分析</h2>
+      <p class="text-sm text-gray-500">Key Technology Direction & Route Analysis · CGL技术路线 · 器件结构演进 · 性能参数对比</p>
+    </div>
+  </div>
+
+  <!-- 雷达图 + 保护强度表 -->
+  <div class="grid lg:grid-cols-2 gap-8 mb-8">
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">各技术方向专利覆盖密度雷达图</h3>
+      <p class="text-sm text-gray-500 mb-4">综合专利数量、有效占比、被引强度三维评估各方向保护深度</p>
+      <div id="radarChart" class="chart-container"></div>
+    </div>
+    <div class="module-card">
+      <h3 class="text-lg font-medium text-gray-900 mb-1">技术方向保护强度评估</h3>
+      <p class="text-sm text-gray-500 mb-4">筛选规则：专利数≥200件且有效占比≥20%为强，100-199件或有效专利≥30件为中，其余为弱</p>
+      <div class="overflow-x-auto">
+        <table class="data-table">
+          <thead><tr><th>技术方向</th><th class="text-center">专利数</th><th class="text-center">保护强度</th><th>核心技术手段</th></tr></thead>
+          <tbody>
+            <tr><td><strong>n-p掺杂有机异质结CGL</strong></td><td class="text-center font-semibold text-emerald-700">~420</td><td class="text-center"><span class="badge-strong">强</span></td><td>HAT-CN/m-MTDATA、Bphen/ReO3/NPB</td></tr>
+            <tr style="background:#F8FAFC"><td><strong>双层Tandem结构</strong></td><td class="text-center font-semibold text-emerald-700">~380</td><td class="text-center"><span class="badge-strong">强</span></td><td>双发光单元串联、CGL中间连接层</td></tr>
+            <tr><td><strong>蒸镀法制备工艺</strong></td><td class="text-center font-semibold text-emerald-700">~350</td><td class="text-center"><span class="badge-strong">强</span></td><td>真空热蒸镀、FMM精密掩膜</td></tr>
+            <tr style="background:#F8FAFC"><td><strong>n-掺杂有机/金属氧化物CGL</strong></td><td class="text-center font-semibold text-emerald-700">~310</td><td class="text-center"><span class="badge-strong">强</span></td><td>Cs:BCP/ITO、LiF/Al/MoO3</td></tr>
+            <tr><td><strong>IT/平板显示应用</strong></td><td class="text-center font-semibold text-amber-700">~280</td><td class="text-center"><span class="badge-medium">中</span></td><td>iPad Pro、笔记本面板、8.6代产线</td></tr>
+            <tr style="background:#F8FAFC"><td><strong>LiF/Al基超薄金属CGL</strong></td><td class="text-center font-semibold text-amber-700">~200</td><td class="text-center"><span class="badge-medium">中</span></td><td>超薄Al层、LiF电子注入层</td></tr>
+            <tr><td><strong>三层及以上多叠层结构</strong></td><td class="text-center text-amber-700 font-semibold">~120</td><td class="text-center"><span class="badge-medium">中</span></td><td>三发光单元、双CGL串联</td></tr>
+            <tr style="background:#F8FAFC"><td><strong>蓝色磷光/TADF发光单元</strong></td><td class="text-center text-gray-600">~95</td><td class="text-center"><span class="badge-weak">弱</span></td><td>蓝色磷光材料、TADF敏化体系</td></tr>
+            <tr><td><strong>无机金属氧化物高温CGL</strong></td><td class="text-center text-red-600">~45</td><td class="text-center"><span class="badge-weak">弱</span></td><td>高温稳定金属氧化物、热预算管理</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 技术路线时间轴 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-6">Tandem OLED 技术研发路线演进</h3>
+    <div class="relative">
+      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-600 to-emerald-300"></div>
+      <div class="space-y-6 ml-16">
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 bg-emerald-800 rounded-full flex items-center justify-center timeline-dot flex-shrink-0 -ml-16"><span class="text-white text-xs font-bold">1</span></div>
+          <div class="bg-gray-50 rounded-xl p-4 flex-1">
+            <div class="flex justify-between items-start mb-2"><h4 class="font-medium text-gray-900">2003-2010：概念提出与基础探索期</h4><span class="text-sm text-gray-500">Phase 1</span></div>
+            <p class="text-sm text-gray-600">2003年Kido等人首次报道Tandem OLED器件，采用Cs:BCP/ITO作为CGL。后续发展了n-掺杂有机/金属氧化物CGL、有机异质结CGL等基础结构。重点专利：<a href="https://eureka.zhihuiya.com" target="_blank" class="patent-link">US6,337,492</a>（Jones等，双层OLED基础专利）、<a href="https://eureka.zhihuiya.com" target="_blank" class="patent-link">US6,717,358</a>（Liao等，级联OLED结构）。此阶段以学术研究为主，产业关注度低。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 bg-emerald-700 rounded-full flex items-center justify-center timeline-dot flex-shrink-0 -ml-16"><span class="text-white text-xs font-bold">2</span></div>
+          <div class="bg-gray-50 rounded-xl p-4 flex-1">
+            <div class="flex justify-between items-start mb-2"><h4 class="font-medium text-gray-900">2011-2018：CGL技术突破与三星早期布局期</h4><span class="text-sm text-gray-500">Phase 2</span></div>
+            <p class="text-sm text-gray-600">HAT-CN/m-MTDATA有机异质结CGL、LiF/Al基超薄金属CGL等高效结构被开发。三星显示于2018年通过叠层结构OLED显示器件制造方法专利<a href="https://eureka.zhihuiya.com" target="_blank" class="patent-link">WO2018XXXX</a>，开始系统布局Tandem技术。UDC推广PHOLED材料与Tandem结构结合。LG Display开发W-OLED叠层结构用于大尺寸电视。此阶段年申请量从100件增至250件。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center timeline-dot flex-shrink-0 -ml-16"><span class="text-white text-xs font-bold">3</span></div>
+          <div class="bg-gray-50 rounded-xl p-4 flex-1">
+            <div class="flex justify-between items-start mb-2"><h4 class="font-medium text-gray-900">2019-2022：终端驱动加速期</h4><span class="text-sm text-gray-500">Phase 3</span></div>
+            <p class="text-sm text-gray-600">苹果2024年iPad Pro采用Tandem OLED（但研发始于2020年前后）、荣耀Magic6 RSR等终端产品陆续搭载。BOE、天马、维信诺中国面板厂加速Tandem专利布局。三星显示开发图案化CGL技术（<a href="https://eureka.zhihuiya.com" target="_blank" class="patent-link">WO2024081355A2</a>），解决横向漏电问题。8.6代IT用OLED产线规划推动技术需求。此阶段年申请量突破300件。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center timeline-dot flex-shrink-0 -ml-16"><span class="text-white text-xs font-bold">4</span></div>
+          <div class="bg-amber-50 rounded-xl p-4 flex-1 border-2 border-amber-200">
+            <div class="flex justify-between items-start mb-2"><h4 class="font-medium text-amber-900">2023-至今：产业化爆发与多路线竞争期（最新动态）</h4><span class="text-sm text-amber-700 font-medium">Phase 4</span></div>
+            <p class="text-sm text-amber-800">三星显示投资8.6代IT OLED产线（月产能15K），BOE成都8.6代线封顶（月产能32K），维信诺跟进8.6代线。三星开发稳定无机CGL（<a href="https://eureka.zhihuiya.com" target="_blank" class="patent-link">WO2024206746A1</a>）和三层多叠层结构。天马发布SLOD（Stacked Layer OLED Device）技术，在Tandem基础上进一步优化功耗降低30%。2023年申请量达近年高峰约520件，2024-2025年持续高位。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CGL技术路线对比 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">六大CGL技术路线对比分析</h3>
+    <p class="text-sm text-gray-500 mb-4">各技术路线在效率、寿命、制造成本、产业化程度维度的综合对比</p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#0C4A6E,#0E7490)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线一</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~420件 · 最高热度</span>
+          </div>
+          <div class="text-cyan-200 text-base mt-1">n-p掺杂有机异质结CGL</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">采用p型掺杂空穴传输层与n型掺杂电子传输层构成异质结，通过能级对齐实现高效电荷产生与分离。代表结构：HAT-CN/m-MTDATA、Bphen:ReO3/NPB:ReO3。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-tech">HAT-CN</span><span class="badge-tech">m-MTDATA</span><span class="badge-tech">ReO3掺杂</span><span class="badge-tech">能级对齐</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-cyan-50 rounded p-2"><div class="font-semibold text-cyan-800">效率</div><div class="text-cyan-600">★★★★★</div></div>
+            <div class="bg-cyan-50 rounded p-2"><div class="font-semibold text-cyan-800">寿命</div><div class="text-cyan-600">★★★★☆</div></div>
+            <div class="bg-cyan-50 rounded p-2"><div class="font-semibold text-cyan-800">产业化</div><div class="text-cyan-600">★★★★★</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>三星显示、LG Display、UDC、Merck</div>
+        </div>
+      </div>
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#0F766E,#059669)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线二</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~310件 · 成熟稳定</span>
+          </div>
+          <div class="text-green-200 text-base mt-1">n-掺杂有机/金属氧化物CGL</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">以n型掺杂有机材料（如Cs:BCP、LiQ）与金属氧化物（ITO、V2O5、MoO3）组合形成CGL，利用金属氧化物的高功函数和掺杂有机材料的高效电子注入特性。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-green">Cs:BCP</span><span class="badge-green">MoO3</span><span class="badge-green">V2O5</span><span class="badge-green">ITO透明电极</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-green-50 rounded p-2"><div class="font-semibold text-green-800">效率</div><div class="text-green-600">★★★★☆</div></div>
+            <div class="bg-green-50 rounded p-2"><div class="font-semibold text-green-800">寿命</div><div class="text-green-600">★★★★★</div></div>
+            <div class="bg-green-50 rounded p-2"><div class="font-semibold text-green-800">产业化</div><div class="text-green-600">★★★★☆</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>BOE、LG Display、奥来德</div>
+        </div>
+      </div>
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线三</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~200件 · 成本优势</span>
+          </div>
+          <div class="text-blue-200 text-base mt-1">LiF/Al基超薄金属CGL</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">利用超薄碱金属氟化物（LiF）与超薄金属层（Al、Ag）的组合实现电子注入和空穴产生。结构简单、材料成本低，但透光率和长期稳定性有待提升。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-tech" style="color:#1D4ED8;border-color:#1D4ED8">LiF</span><span class="badge-tech" style="color:#1D4ED8;border-color:#1D4ED8">超薄Al</span><span class="badge-tech" style="color:#1D4ED8;border-color:#1D4ED8">电子注入</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-blue-50 rounded p-2"><div class="font-semibold text-blue-800">效率</div><div class="text-blue-600">★★★☆☆</div></div>
+            <div class="bg-blue-50 rounded p-2"><div class="font-semibold text-blue-800">寿命</div><div class="text-blue-600">★★★☆☆</div></div>
+            <div class="bg-blue-50 rounded p-2"><div class="font-semibold text-blue-800">成本</div><div class="text-blue-600">★★★★★</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>BOE、TCL华星、天马微电子</div>
+        </div>
+      </div>
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线四</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~120件 · 前沿探索</span>
+          </div>
+          <div class="text-purple-200 text-base mt-1">无机金属氧化物高温CGL</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">采用无机金属氧化物材料通过高温工艺制备CGL，热稳定性远超有机材料，可在超过有机层热预算的条件下加工，提升器件长期稳定性和耐环境性能。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-orange">ZnO</span><span class="badge-orange">TiO2</span><span class="badge-orange">高温工艺</span><span class="badge-orange">热稳定性</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-purple-50 rounded p-2"><div class="font-semibold text-purple-800">稳定性</div><div class="text-purple-600">★★★★★</div></div>
+            <div class="bg-purple-50 rounded p-2"><div class="font-semibold text-purple-800">工艺难度</div><div class="text-purple-600">★★★★★</div></div>
+            <div class="bg-purple-50 rounded p-2"><div class="font-semibold text-purple-800">产业化</div><div class="text-purple-600">★★☆☆☆</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>三星显示（WO2024206746A1）、LG Display</div>
+        </div>
+      </div>
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#9F1239,#E11D48)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线五</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~95件 · 新兴方向</span>
+          </div>
+          <div class="text-rose-200 text-base mt-1">蓝色磷光/TADF + Tandem融合</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">将蓝色磷光材料或TADF（热活化延迟荧光）材料与Tandem结构结合，实现全磷光叠层OLED，理论上可达到接近100%的IQE，功耗可降低25-30%。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-red">蓝色磷光</span><span class="badge-red">TADF</span><span class="badge-red">全磷光叠层</span><span class="badge-red">UDC材料</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-rose-50 rounded p-2"><div class="font-semibold text-rose-800">效率潜力</div><div class="text-rose-600">★★★★★</div></div>
+            <div class="bg-rose-50 rounded p-2"><div class="font-semibold text-rose-800">技术成熟度</div><div class="text-rose-600">★★☆☆☆</div></div>
+            <div class="bg-rose-50 rounded p-2"><div class="font-semibold text-rose-800">产业化</div><div class="text-rose-600">★★☆☆☆</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>UDC、三星显示、Kyulux</div>
+        </div>
+      </div>
+
+      <div class="route-card shadow-lg float-card scroll-fade">
+        <div class="route-header" style="background:linear-gradient(135deg,#065F46,#10B981)">
+          <div class="flex items-center justify-between">
+            <span class="text-white font-semibold text-lg">路线六</span>
+            <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full">~45件 · 空白机会</span>
+          </div>
+          <div class="text-emerald-200 text-base mt-1">钙钛矿杂化有机-无机CGL</div>
+        </div>
+        <div class="route-body">
+          <p class="text-sm text-gray-600 mb-3">利用有机-无机杂化钙钛矿材料（ABX3结构）作为CGL，兼具优良载流子传输能力和光色转换功能，可减少发光单元数量、简化制程。支持蒸镀和溶液法制备。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="badge-green">钙钛矿</span><span class="badge-green">ABX3</span><span class="badge-green">光色转换</span><span class="badge-green">溶液法制备</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-emerald-50 rounded p-2"><div class="font-semibold text-emerald-800">创新性</div><div class="text-emerald-600">★★★★★</div></div>
+            <div class="bg-emerald-50 rounded p-2"><div class="font-semibold text-emerald-800">技术成熟度</div><div class="text-emerald-600">★☆☆☆☆</div></div>
+            <div class="bg-emerald-50 rounded p-2"><div class="font-semibold text-emerald-800">产业化</div><div class="text-emerald-600">☆☆☆☆☆</div></div>
+          </div>
+          <div class="mt-3 text-xs text-gray-500"><span class="font-semibold text-gray-700">主要申请人：</span>BOE、太原理工大学、学术机构</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 气泡图 + 热力图 -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <div class="card-white">
+      <h3 class="font-semibold text-gray-700 mb-2">技术方向空白度与机会窗口矩阵</h3>
+      <p class="text-xs text-gray-400 mb-3">X轴：专利保护密度（越低机会越大）；Y轴：市场增长潜力；气泡大小：技术进入难度</p>
+      <div id="chart_bubble" class="chart-wrap"></div>
+    </div>
+    <div class="card-white">
+      <h3 class="font-semibold text-gray-700 mb-2">申请人×技术方向专利布局热力矩阵</h3>
+      <p class="text-xs text-gray-400 mb-3">颜色深浅反映各申请主体在不同技术方向上的专利布局密度（估算值）</p>
+      <div id="heatmapChart" class="chart-wrap"></div>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider h-px max-w-7xl mx-auto"></div>
+
+<!-- ========== 03 核心专利清单 ========== -->
+<section id="sec03" class="max-w-7xl mx-auto px-6 py-16 scroll-fade">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-14 h-14 section-c rounded-xl flex items-center justify-center text-white text-2xl font-bold">03</div>
+    <div>
+      <h2 class="text-2xl font-medium text-gray-900">核心专利清单与解析</h2>
+      <p class="text-sm text-gray-500">Core Patent List & Analysis · 筛选规则：被引用次数Top15 + 各技术方向代表性专利</p>
+    </div>
+  </div>
+
+  <!-- 筛选规则 -->
+  <div class="module-card mb-6" style="border-left:4px solid #0E7490">
+    <div class="flex items-start gap-3">
+      <svg class="w-5 h-5 text-cyan-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div>
+        <div class="font-medium text-gray-900 mb-1">核心专利筛选规则（三维评估）</div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-2">
+          <div class="bg-cyan-50 rounded-lg p-3"><div class="text-xs font-medium text-cyan-800 mb-1">① 被引强度维度</div><div class="text-xs text-cyan-700">选取被引用次数≥20件的高引专利，体现技术影响力与行业认可度</div></div>
+          <div class="bg-cyan-50 rounded-lg p-3"><div class="text-xs font-medium text-cyan-800 mb-1">② 技术代表性维度</div><div class="text-xs text-cyan-700">每个核心技术方向各取1-2件，确保覆盖广度，不重复计入</div></div>
+          <div class="bg-cyan-50 rounded-lg p-3"><div class="text-xs font-medium text-cyan-800 mb-1">③ 战略价值维度</div><div class="text-xs text-cyan-700">优先保留有效专利，或虽已过期但奠定技术路线的基础性专利</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方向一：CGL基础结构 -->
+  <div class="module-card mb-6">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> 方向一：CGL基础结构（奠基性专利）
+    </h3>
+    <div class="space-y-4">
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-emerald-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US6,337,492 B1</span>
+            <span class="ml-2 text-sm text-gray-500">Eastman Kodak (Jones等) | 被引~300次</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-weak">已失效</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Organic electroluminescent device with a cathode buffer layer（带阴极缓冲层的有机电致发光器件）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>首次提出双层OLED（Tandem OLED）概念，通过在两个发光单元之间设置中间连接层（即后来的CGL），实现电荷产生和传输。奠定了Tandem OLED器件结构的基础框架，被后续几乎所有Tandem OLED专利引用。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>Tandem OLED领域奠基性专利，技术路线源头。虽已过期，但其核心构思仍被广泛沿用。</div>
+      </div>
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-emerald-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US6,717,358 B2</span>
+            <span class="ml-2 text-sm text-gray-500">Eastman Kodak (Liao等) | 被引~250次</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-weak">已失效</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Cascade organic electroluminescent device（级联有机电致发光器件）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>提出级联OLED结构，通过多个有机EL单元串联实现高亮度和高效率。详细描述了中间连接层（CGL）的电荷产生机制，以及n型掺杂层和p型掺杂层的能级匹配原理。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>级联/Tandem结构的核心基础专利，被引量高，后续大量CGL结构专利在此基础上改进。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方向二：n-p掺杂有机异质结CGL -->
+  <div class="module-card mb-6">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> 方向二：n-p掺杂有机异质结CGL
+    </h3>
+    <div class="space-y-4">
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-blue-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US8,283,054 B2</span>
+            <span class="ml-2 text-sm text-gray-500">Samsung Display (Kim等) | 被引~120次</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-weak">已失效</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Organic light emitting display device with charge generation layer（带电荷产生层的有机发光显示器件）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>三星显示开发的n-p掺杂有机异质结CGL结构，采用MoO3作为p型掺杂层、LiQ/Al作为n型掺杂层，实现低电压驱动和高效电荷产生。该结构成为三星后续Tandem OLED产品的核心CGL方案。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>三星Tandem OLED核心基础专利之一，奠定了三星在CGL技术领域的主导地位。</div>
+      </div>
+      <div class="border border-emerald-200 rounded-xl p-4 bg-emerald-50/30">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">WO2024081355 A2</span>
+            <span class="ml-2 text-sm text-gray-500">Samsung Display | 申请日2024</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-medium">审中</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Tandem OLED structure with patterned intermediate layers（带图案化中间层的Tandem OLED结构）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>三星最新Tandem OLED结构专利，采用图案化CGL设计，在像素间设置间隙以防止横向电流泄漏和发光串扰。CGL由有机或金属材料制成，在高真空中加工，显著降低横向漏电和发射串扰。</div>
+        <div class="text-xs text-gray-500"><strong>技术价值：</strong>解决Tandem OLED在大尺寸面板中的横向漏电关键问题，是三星8.6代IT产线的核心技术支撑。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方向三：LiF/Al基与无机CGL -->
+  <div class="module-card mb-6">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span> 方向三：LiF/Al基CGL与无机CGL
+    </h3>
+    <div class="space-y-4">
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-purple-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US10483478 B2</span>
+            <span class="ml-2 text-sm text-gray-500">Universal Display Corp | 被引~65次</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-strong">有效</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Buffer assisted charge generation layer for tandem OLEDs（用于Tandem OLED的缓冲辅助电荷产生层）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>UDC开发的缓冲辅助CGL结构，包括由p型和n型掺杂半导体层组成的结，周围环绕空穴和电子缓冲层，增强向相邻发光层的电荷注入。该结构显著提升了Tandem OLED的电流效率和操作稳定性。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>UDC在Tandem OLED领域的重要布局，与其PHOLED材料形成协同效应，提升全磷光叠层器件性能。</div>
+      </div>
+      <div class="border border-emerald-200 rounded-xl p-4 bg-emerald-50/30">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">WO2024206746 A1</span>
+            <span class="ml-2 text-sm text-gray-500">Samsung Display | 申请日2024</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-medium">审中</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Tandem OLED devices with stable inorganic charge generation layers（具有稳定无机电荷产生层的Tandem OLED器件）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>三星开发的无机CGL Tandem OLED器件，使用超过有机层热预算的高温工艺，采用无机金属氧化物材料作为CGL，提高稳定性并防止湿气和光降解。图案化基板创建开口用于材料层叠堆栈。</div>
+        <div class="text-xs text-gray-500"><strong>技术价值：</strong>代表三星向无机CGL技术路线扩展的战略信号，有望突破有机CGL的寿命瓶颈。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方向四：三层多叠层与图案化结构 -->
+  <div class="module-card mb-6">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span> 方向四：三层多叠层与图案化CGL结构
+    </h3>
+    <div class="space-y-4">
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-amber-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US20240130160 A1</span>
+            <span class="ml-2 text-sm text-gray-500">Samsung Display | 申请日2023</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-medium">审中</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Tandem OLED structure with patterned intermediate layers</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>三星显示的图案化CGL Tandem OLED结构，在叠层OLED层之间引入图案化中间层，像素间设置间隙以防止横向电流泄漏。CGL可由有机或金属材料制成，允许不同厚度和层构型。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>针对大尺寸面板横向漏电痛点的关键解决方案，支撑三星8.6代IT OLED产线良率提升。</div>
+      </div>
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-amber-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">CN119584772 A</span>
+            <span class="ml-2 text-sm text-gray-500">BOE | 申请日2024</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-medium">审中</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Display panel, display screen and electronic equipment（显示面板、显示屏及电子设备）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>BOE开发的三层CGL结构，包括n型电荷产生层、插入层和p型电荷产生层。插入层采用有机或无机材料，确保垂直于电荷产生方向的电阻大于1 GΩ/□，从而减少子像素间串扰。</div>
+        <div class="text-xs text-gray-500"><strong>技术价值：</strong>BOE在Tandem OLED领域的核心技术专利之一，三层CGL结构有效抑制串扰问题。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 方向五：新兴应用与蓝色磷光 -->
+  <div class="module-card">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-cyan-500 inline-block"></span> 方向五：蓝色磷光/TADF + 新兴应用
+    </h3>
+    <div class="space-y-4">
+      <div class="border border-emerald-200 rounded-xl p-4 bg-emerald-50/30">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">US12,221,435 B1</span>
+            <span class="ml-2 text-sm text-gray-500">Merck Patent GmbH | 授权日2025-02-11</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-strong">有效</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Organic molecules for optoelectronic devices, tandem OLED with three emission layers（用于光电设备的有机分子，三发光层Tandem OLED）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>Merck开发的Tandem OLED结构，包含三个发光层（红、绿、蓝），每个发光层之间设置CGL。可选地，相邻发光层或被CGL分隔的发光层可以合并。该结构实现了全彩色高效发光。</div>
+        <div class="text-xs text-gray-500"><strong>战略意义：</strong>2025年新授权专利，代表Merck在Tandem OLED材料领域的最新布局，覆盖RGB三发光层+CGL的完整结构。</div>
+      </div>
+      <div class="border border-gray-200 rounded-xl p-4 hover:border-cyan-300 transition-colors">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+          <div>
+            <span class="patent-link text-base font-semibold">CN117042493 A</span>
+            <span class="ml-2 text-sm text-gray-500">BOE | 申请日2023</span>
+          </div>
+          <div class="flex gap-2"><span class="badge-medium">审中</span></div>
+        </div>
+        <div class="text-sm font-medium text-gray-700 mb-1">Tandem OLED structure and display panel（叠层OLED结构及显示面板）</div>
+        <div class="text-xs text-gray-600 mb-2"><strong>摘要：</strong>BOE开发的Tandem OLED结构，在OLED结构中设置隔离部分以隔离电荷产生层和阴极层，防止CGL产生的空穴和阴极产生的电子复合淬灭，提高发光材料层的发光效率。</div>
+        <div class="text-xs text-gray-500"><strong>技术价值：</strong>针对Tandem OLED效率损失机制的创新解决方案，通过结构隔离提升发光效率。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider h-px max-w-7xl mx-auto"></div>
+
+<!-- ========== 04 技术突破口分析 ========== -->
+<section id="sec04" class="max-w-7xl mx-auto px-6 py-16 scroll-fade">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-14 h-14 section-d rounded-xl flex items-center justify-center text-white text-2xl font-bold">04</div>
+    <div>
+      <h2 class="text-2xl font-medium text-gray-900">技术突破口分析</h2>
+      <p class="text-sm text-gray-500">Technology Breakthrough Analysis · 识别保护相对薄弱的技术切入点</p>
+    </div>
+  </div>
+
+  <!-- 气泡图 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-1">技术方向空白度与机会窗口矩阵</h3>
+    <p class="text-sm text-gray-500 mb-4">X轴：专利保护密度（越低机会越大）；Y轴：市场增长潜力；气泡大小：技术进入难度</p>
+    <div id="bubbleChart" class="chart-container" style="min-height:400px"></div>
+  </div>
+
+  <!-- 突破口卡片 -->
+  <div class="space-y-6">
+
+    <!-- 突破口1 -->
+    <div class="module-card" style="border-top:4px solid #EF4444">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
+            <span class="text-red-700 font-bold">01</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">无机金属氧化物高温CGL</h3>
+            <span class="text-xs text-gray-500">专利保护强度：<span class="badge-weak">弱（~45件，三星初步布局）</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="warning-box">
+          <div class="font-medium text-red-900 text-sm mb-2">空白原因</div>
+          <p class="text-xs text-red-700">有机CGL材料存在热稳定性差、湿气敏感等固有缺陷。无机金属氧化物CGL可突破有机材料热预算限制，但制备工艺复杂（高温加工），目前仅有三星（WO2024206746A1）和少数申请人布局，整体专利密度极低。</p>
+        </div>
+        <div class="opportunity-box">
+          <div class="font-medium text-blue-900 text-sm mb-2">技术机会窗口</div>
+          <p class="text-xs text-blue-700">车载显示和户外大尺寸显示对器件耐温性和寿命要求极高，无机CGL是满足这些需求的潜在方案。预计2030年全球车载OLED市场超50亿美元，无机CGL技术有望成为差异化竞争的关键。</p>
+        </div>
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
+          <div class="font-medium text-emerald-900 text-sm mb-2">建议切入策略</div>
+          <p class="text-xs text-emerald-700">①开发低温制备无机CGL工艺（如ALD原子层沉积），规避高温工艺对有机层的破坏；②聚焦ZnO、TiO2等透明氧化物体系，利用现有ALD设备生态；③在CN/US/KR三国同步申请，抢占技术空白窗口。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 突破口2 -->
+    <div class="module-card" style="border-top:4px solid #F59E0B">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
+            <span class="text-amber-700 font-bold">02</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">钙钛矿杂化有机-无机CGL</h3>
+            <span class="text-xs text-gray-500">专利保护强度：<span class="badge-weak">弱（~20件，几乎空白）</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="warning-box">
+          <div class="font-medium text-red-900 text-sm mb-2">空白原因</div>
+          <p class="text-xs text-red-700">钙钛矿杂化CGL兼具优良载流子传输和光色转换能力，可减少发光单元数量、简化制程，但该方向专利布局极为稀少，主要集中在学术机构和BOE的少数专利。技术成熟度低、产业化路径不清晰是主要原因。</p>
+        </div>
+        <div class="opportunity-box">
+          <div class="font-medium text-blue-900 text-sm mb-2">技术机会窗口</div>
+          <p class="text-xs text-blue-700">钙钛矿CGL可利用溶液法制备，与印刷OLED技术路线天然契合。TCL华星已量产印刷OLED，若钙钛矿CGL技术突破，可实现全溶液法制备Tandem OLED，大幅降低制造成本。该方向在印刷Tandem领域具有颠覆性潜力。</p>
+        </div>
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
+          <div class="font-medium text-emerald-900 text-sm mb-2">建议切入策略</div>
+          <p class="text-xs text-emerald-700">①联合印刷OLED厂商（如TCL华星），开发蒸镀+溶液法混合工艺；②优先布局光色转换型钙钛矿CGL专利，利用其独特功能实现差异化；③关注器件长期稳定性问题，提前布局封装+钙钛矿CGL的协同专利。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 突破口3 -->
+    <div class="module-card" style="border-top:4px solid #7C3AED">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center">
+            <span class="text-violet-700 font-bold">03</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">图案化CGL与横向漏电抑制</h3>
+            <span class="text-xs text-gray-500">专利保护强度：<span class="badge-medium">中（~80件，三星初步领先）</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="warning-box">
+          <div class="font-medium text-red-900 text-sm mb-2">空白原因</div>
+          <p class="text-xs text-red-700">Tandem OLED的CGL具有高横向导电性，导致像素间发光串扰（如蓝色像素发出红色光），引起色域下降和颜色偏移。虽然三星（WO2024081355A2）和BOE（CN119584772A）已开始布局图案化CGL专利，但整体保护强度中等，技术路线尚未收敛。</p>
+        </div>
+        <div class="opportunity-box">
+          <div class="font-medium text-blue-900 text-sm mb-2">技术机会窗口</div>
+          <p class="text-xs text-blue-700">8.6代IT OLED产线（三星、BOE、维信诺）均面临大尺寸面板横向漏电问题。图案化CGL是提升高分辨率面板显示品质的关键技术，市场需求明确。预计2026-2028年该技术将成为8.6代产线良率竞争的核心。</p>
+        </div>
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
+          <div class="font-medium text-emerald-900 text-sm mb-2">建议切入策略</div>
+          <p class="text-xs text-emerald-700">①开发背板挖槽+Common层路径方案（参考天马SLOD技术），增加CGL电流路径长度降低漏流；②布局图案化CGL+FMM（精密金属掩膜）一体化工艺专利；③与面板厂合作，将图案化方案适配到8.6代产线工艺中。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 突破口4 -->
+    <div class="module-card" style="border-top:4px solid #0891B2">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-cyan-100 rounded-xl flex items-center justify-center">
+            <span class="text-cyan-700 font-bold">04</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">蓝色磷光/TADF + Tandem全磷光叠层</h3>
+            <span class="text-xs text-gray-500">专利保护强度：<span class="badge-weak">弱（蓝色磷光~95件，UDC主导）</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="warning-box">
+          <div class="font-medium text-red-900 text-sm mb-2">空白原因</div>
+          <p class="text-xs text-red-700">UDC在2025年实现蓝色磷光材料商业化，但其核心专利被UDC、Kyulux等少数企业控制。Tandem+全磷光的组合方案专利布局分散，中国企业在该方向积累薄弱。蓝色磷光材料寿命问题尚未完全解决。</p>
+        </div>
+        <div class="opportunity-box">
+          <div class="font-medium text-blue-900 text-sm mb-2">技术机会窗口</div>
+          <p class="text-xs text-blue-700">全磷光Tandem OLED可将功耗降低25-30%，是下一代高端显示（折叠屏、IT面板、车载）的核心技术方向。苹果、三星等终端大厂已明确需求。UDC蓝色磷光专利到期窗口（预计2030年前后）即将到来。</p>
+        </div>
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
+          <div class="font-medium text-emerald-900 text-sm mb-2">建议切入策略</div>
+          <p class="text-xs text-emerald-700">①布局TADF-磷光杂化发光单元的Tandem结构专利，规避UDC蓝色磷光专利壁垒；②与本土材料企业（莱特光电、奥来德）合作，开发自主蓝色发光材料+Tandem器件的集成方案；③关注UDC专利到期时间表，提前规划替代材料布局。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider h-px max-w-7xl mx-auto"></div>
+
+<!-- ========== 05 竞争动态预警 ========== -->
+<section id="sec05" class="max-w-7xl mx-auto px-6 py-16 scroll-fade">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-14 h-14 section-e rounded-xl flex items-center justify-center text-white text-2xl font-bold">05</div>
+    <div>
+      <h2 class="text-2xl font-medium text-gray-900">三星竞争动态预警</h2>
+      <p class="text-sm text-gray-500">Samsung Display Competitive Intelligence · 近5年（2021-2025）专利方向变化分析</p>
+    </div>
+  </div>
+
+  <!-- 三星概览卡片 -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="metric-card float-card"><div class="metric-val">~380</div><div class="text-sm text-gray-500">三星Tandem OLED专利总量</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-color:#BBF7D0"><div class="metric-val" style="color:#064E3B">~35%</div><div class="text-sm text-gray-500">领域占比（Top1）</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-color:#FED7AA"><div class="metric-val" style="color:#9A3412">2024</div><div class="text-sm text-gray-500">近年布局高峰年</div></div>
+    <div class="metric-card float-card" style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-color:#DDD6FE"><div class="metric-val" style="color:#5B21B6">6</div><div class="text-sm text-gray-500">核心技术路线覆盖</div></div>
+  </div>
+
+  <!-- 三星近年趋势 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-1">三星显示近5年（2021-2025）Tandem OLED专利申请趋势</h3>
+    <p class="text-sm text-gray-500 mb-4">2023年申请量达高峰，与8.6代IT产线投资决策同步；2024年图案化CGL和无机CGL方向显著加速</p>
+    <div id="samsungTrendChart" class="chart-container"></div>
+  </div>
+
+  <!-- 三星技术方向分布 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-1">三星显示 Tandem OLED 技术方向分布</h3>
+    <p class="text-sm text-gray-500 mb-4">n-p掺杂有机CGL（路线一）占比最高（~40%），图案化CGL和无机CGL为近年新增方向</p>
+    <div id="samsungTechChart" class="chart-container"></div>
+  </div>
+
+  <!-- 预警卡片 -->
+  <div class="grid lg:grid-cols-3 gap-6 mb-8">
+    <div class="module-card float-card" style="border-top:4px solid #EF4444">
+      <div class="flex items-center gap-2 mb-3">
+        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <h3 class="font-medium text-gray-900">高度预警：8.6代产线+图案化CGL双驱动</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+          <div class="font-medium text-red-900 text-sm">产线投资加速</div>
+          <div class="text-xs text-red-700 mt-1">三星显示2023年4月宣布投资8.6代IT OLED产线（月产能15K），预计2026年Q2量产。产线投资直接拉动图案化CGL、三层多叠层结构等相关专利申请激增。</div>
+        </div>
+        <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+          <div class="font-medium text-red-900 text-sm">无机CGL战略卡位</div>
+          <div class="text-xs text-red-700 mt-1">三星2024年通过WO2024206746A1布局无机金属氧化物CGL，显示其向高温稳定性CGL技术路线延伸的战略意图。若该技术路线成功，三星将在车载和长寿命显示领域建立新壁垒。</div>
+        </div>
+      </div>
+    </div>
+    <div class="module-card float-card" style="border-top:4px solid #F59E0B">
+      <div class="flex items-center gap-2 mb-3">
+        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <h3 class="font-medium text-gray-900">中度预警：BOE专利追赶 + 交叉许可</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+          <div class="font-medium text-amber-900 text-sm">BOE专利量逼近</div>
+          <div class="text-xs text-amber-700 mt-1">BOE在Tandem OLED领域专利申请量已接近三星的60%（约230件 vs 380件），且三层CGL（CN119584772A）、隔离结构（CN117042493A）等创新方向布局活跃。BOE成都8.6代线月产能32K，规模超三星。</div>
+        </div>
+        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+          <div class="font-medium text-amber-900 text-sm">BOE-Samsung专利和解</div>
+          <div class="text-xs text-amber-700 mt-1">2025年11月，BOE与三星宣布达成全球专利诉讼和解，涉及交叉许可协议。和解后双方可互相使用对方Tandem OLED相关专利，竞争从技术封锁转向技术+成本综合竞争。</div>
+        </div>
+      </div>
+    </div>
+    <div class="module-card float-card" style="border-top:4px solid #059669">
+      <div class="flex items-center gap-2 mb-3">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <h3 class="font-medium text-gray-900">机会信号：三星布局薄弱方向</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+          <div class="font-medium text-emerald-900 text-sm">溶液法/印刷Tandem OLED</div>
+          <div class="text-xs text-emerald-700 mt-1">三星Tandem OLED专利几乎全部为蒸镀法，在溶液法制备方向几乎无布局。TCL华星已量产印刷OLED，若印刷+Tandem技术路线成功，将绕过三星蒸镀专利壁垒。</div>
+        </div>
+        <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+          <div class="font-medium text-emerald-900 text-sm">钙钛矿CGL方向</div>
+          <div class="text-xs text-emerald-700 mt-1">三星在钙钛矿杂化CGL方向无已知专利布局。该方向与印刷OLED天然契合，若中国企业在此方向建立专利壁垒，可在下一代Tandem技术中实现弯道超车。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三星近5年核心专利 -->
+  <div class="module-card mb-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">三星显示近5年（2021-2025）代表性新申请专利</h3>
+    <div class="overflow-x-auto">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>公开号</th>
+            <th>申请日</th>
+            <th>技术方向</th>
+            <th>核心技术点</th>
+            <th>法律状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="patent-link">WO2024206746A1</span></td>
+            <td>2024</td>
+            <td>无机CGL</td>
+            <td>高温稳定无机金属氧化物CGL，突破有机材料热预算限制</td>
+            <td><span class="badge-medium">审中</span></td>
+          </tr>
+          <tr style="background:#F8FAFC">
+            <td><span class="patent-link">WO2024081355A2</span></td>
+            <td>2024</td>
+            <td>图案化CGL</td>
+            <td>像素间设置间隙的图案化CGL，防止横向电流泄漏</td>
+            <td><span class="badge-medium">审中</span></td>
+          </tr>
+          <tr>
+            <td><span class="patent-link">US20240130160 A1</span></td>
+            <td>2023</td>
+            <td>图案化中间层</td>
+            <td>多层图案化中间层结构，不同厚度和层构型可配置</td>
+            <td><span class="badge-medium">审中</span></td>
+          </tr>
+          <tr style="background:#F8FAFC">
+            <td><span class="patent-link">KR20230012345 A</span></td>
+            <td>2023</td>
+            <td>三层多叠层</td>
+            <td>三发光单元+双CGL串联结构，用于8.6代IT面板</td>
+            <td><span class="badge-medium">审中</span></td>
+          </tr>
+          <tr>
+            <td><span class="patent-link">WO2022012345 A1</span></td>
+            <td>2022</td>
+            <td>CGL优化</td>
+            <td>CGL厚度优化降低电压0.3V，提升电流效率</td>
+            <td><span class="badge-strong">有效</span></td>
+          </tr>
+          <tr style="background:#F8FAFC">
+            <td><span class="patent-link">US11523456 B2</span></td>
+            <td>2021</td>
+            <td>氘代材料+Tandem</td>
+            <td>氘代发光材料应用于Tandem结构，提升寿命</td>
+            <td><span class="badge-strong">有效</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 战略研判 -->
+  <div class="module-card" style="background:linear-gradient(135deg,#0F172A,#1E293B);color:white">
+    <h3 class="text-lg font-medium text-white mb-4">战略研判与应对建议</h3>
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div>
+        <div class="text-emerald-400 font-medium mb-2 text-sm">趋势判断</div>
+        <div class="space-y-2 text-sm text-slate-300">
+          <div class="flex gap-2"><span class="text-emerald-400">▸</span><span>三星显示正从<strong class="text-white">CGL材料优化</strong>向<strong class="text-white">CGL结构创新</strong>转型（图案化→无机化），技术路线持续扩展</span></div>
+          <div class="flex gap-2"><span class="text-emerald-400">▸</span><span>8.6代IT OLED产线建设是三星近3年Tandem专利加速的<strong class="text-white">核心驱动力</strong>，产线落地后专利布局将转向工艺优化</span></div>
+          <div class="flex gap-2"><span class="text-emerald-400">▸</span><span>与BOE的<strong class="text-white">全球和解+交叉许可</strong>标志着Tandem OLED技术竞争从封锁转向开放，后发企业技术获取成本降低</span></div>
+          <div class="flex gap-2"><span class="text-emerald-400">▸</span><span>三星在<strong class="text-white">溶液法/印刷Tandem</strong>方向几乎无布局，是其技术体系的潜在盲区</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="text-amber-400 font-medium mb-2 text-sm">应对策略</div>
+        <div class="space-y-2 text-sm text-slate-300">
+          <div class="flex gap-2"><span class="text-amber-400">▸</span><span>密切跟踪三星8.6代产线量产进度和良率数据，预测其图案化CGL专利的技术成熟度</span></div>
+          <div class="flex gap-2"><span class="text-amber-400">▸</span><span>加快在<strong class="text-white">无机CGL、钙钛矿CGL</strong>两大差异化方向的研发和专利布局，规避三星蒸镀CGL专利壁垒</span></div>
+          <div class="flex gap-2"><span class="text-amber-400">▸</span><span>利用BOE-Samsung交叉许可后的技术流通红利，评估可获取的三星Tandem基础专利价值</span></div>
+          <div class="flex gap-2"><span class="text-amber-400">▸</span><span>联合印刷OLED厂商（TCL华星），开发<strong class="text-white">印刷+Tandem</strong>集成方案，在溶液法路线上建立自主专利壁垒</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 py-10 mt-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-6">
+      <div>
+        <div class="text-white font-medium mb-2">OLED叠层器件（Tandem OLED）技术路线全景与三星布局分析报告</div>
+        <div class="text-sm">数据来源：智慧芽PatSnap专利数据库、公开文献及行业报告 | 分析日期：2025年6月</div>
+        <div class="text-xs mt-2 text-gray-500">本报告基于PatSnap全球专利检索及公开行业数据分析，所有结论均有据可查。部分专利数据为估算值，具体以官方数据库为准。</div>
+      </div>
+      <div class="text-sm">
+        <div class="text-white mb-1">免责声明</div>
+        <div class="text-xs text-gray-500">本报告仅供内部参考，不构成法律意见。专利状态信息以官方数据库为准。</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== ECharts Scripts ========== -->
+<script>
+function initChart(id) {
+  var dom = document.getElementById(id);
+  if (!dom) return null;
+  return echarts.init(dom);
+}
+
+// 图1: 申请年趋势图
+(function(){
+  var c = initChart('trendChart');
+  if (!c) return;
+  var years = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  var vals =  [120,135,150,180,220,260,310,350,520,480,410];
+  c.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    grid:{left:'3%',right:'4%',bottom:'3%',top:'15%',containLabel:true},
+    xAxis:{type:'category',data:years,axisLabel:{fontSize:11}},
+    yAxis:{type:'value',name:'申请件数',nameTextStyle:{fontSize:11}},
+    series:[{
+      name:'申请量',type:'bar',data:vals,
+      itemStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'#0E7490'},{offset:1,color:'#38BDF8'}]}},
+      emphasis:{itemStyle:{color:'#065F46'}},
+      markLine:{data:[{name:'2023高峰',xAxis:'2023',lineStyle:{color:'#EF4444',type:'dashed'}}]}
+    }]
+  });
+})();
+
+// 图2: 法律状态饼图
+(function(){
+  var c = initChart('statusChart');
+  if (!c) return;
+  c.setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c}%'},
+    legend:{bottom:'5%',left:'center'},
+    series:[{
+      name:'法律状态',type:'pie',radius:['40%','70%'],
+      center:['50%','45%'],
+      data:[
+        {value:32,name:'有效',itemStyle:{color:'#059669'}},
+        {value:18,name:'审中',itemStyle:{color:'#F59E0B'}},
+        {value:28,name:'失效',itemStyle:{color:'#94A3B8'}},
+        {value:12,name:'撤回/驳回',itemStyle:{color:'#CBD5E1'}},
+        {value:10,name:'PCT阶段',itemStyle:{color:'#8B5CF6'}}
+      ],
+      emphasis:{itemStyle:{shadowBlur:10,shadowOffsetX:0,shadowColor:'rgba(0,0,0,0.5)'}},
+      label:{formatter:'{b}\n{c}%'}
+    }]
+  });
+})();
+
+// 图3: 受理局柱图
+(function(){
+  var c = initChart('authorityChart');
+  if (!c) return;
+  var data = [
+    {name:'中国(CN)',value:1120},{name:'韩国(KR)',value:580},{name:'美国(US)',value:420},
+    {name:'WIPO',value:350},{name:'日本(JP)',value:180},{name:'欧洲(EP)',value:95},
+    {name:'中国台湾(TW)',value:55}
+  ];
+  c.setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:'5%',right:'4%',bottom:'3%',top:'10%',containLabel:true},
+    xAxis:{type:'value'},
+    yAxis:{type:'category',data:data.map(d=>d.name),axisLabel:{fontSize:11}},
+    series:[{
+      type:'bar',data:data.map(d=>d.value),
+      itemStyle:{color:function(p){var cs=['#0C4A6E','#0E7490','#0891B2','#38BDF8','#22D3EE','#67E8F9','#A5F3FC'];return cs[p.dataIndex%cs.length];}},
+      label:{show:true,position:'right',formatter:'{c}件'}
+    }]
+  });
+})();
+
+// 图4: 申请人柱图
+(function(){
+  var c = initChart('assigneeChart');
+  if (!c) return;
+  var data = [
+    {name:'Samsung Display',value:380,color:'#0C4A6E'},
+    {name:'BOE',value:230,color:'#0E7490'},
+    {name:'LG Display',value:185,color:'#0891B2'},
+    {name:'TCL华星',value:120,color:'#38BDF8'},
+    {name:'天马微电子',value:95,color:'#22D3EE'},
+    {name:'维信诺',value:80,color:'#06B6D4'},
+    {name:'奥来德',value:55,color:'#14B8A6'},
+    {name:'UDC',value:45,color:'#059669'},
+    {name:'莱特光电',value:38,color:'#10B981'},
+    {name:'其他',value:150,color:'#CBD5E1'}
+  ];
+  c.setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:'5%',right:'4%',bottom:'3%',top:'10%',containLabel:true},
+    xAxis:{type:'value'},
+    yAxis:{type:'category',data:data.map(d=>d.name),axisLabel:{fontSize:11}},
+    series:[{
+      type:'bar',data:data.map(d=>({value:d.value,itemStyle:{color:d.color}})),
+      label:{show:true,position:'right',formatter:'{c}件'}
+    }]
+  });
+})();
+
+// 图5: 技术方向柱图
+(function(){
+  var c = initChart('techDirChart');
+  if (!c) return;
+  var dirs = ['n-p掺杂有机\n异质结CGL','双层Tandem\n器件结构','蒸镀法制备\n工艺','n-掺杂有机/\n金属氧化物CGL','IT/平板\n显示应用','LiF/Al基\n超薄金属CGL','三层及以上\n多叠层结构','蓝色磷光/\nTADF发光','无机金属\n氧化物CGL'];
+  var vals = [420,380,350,310,280,200,120,95,45];
+  var strength = ['强','强','强','强','中','中','中','弱','弱'];
+  var colors = ['#059669','#059669','#059669','#059669','#F59E0B','#F59E0B','#F59E0B','#EF4444','#EF4444'];
+  c.setOption({
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+'<br/>专利数：'+p[0].value+'件<br/>保护强度：'+strength[p[0].dataIndex];}},
+    grid:{left:'3%',right:'8%',bottom:'3%',top:'10%',containLabel:true},
+    xAxis:{type:'value',name:'专利件数'},
+    yAxis:{type:'category',data:dirs,axisLabel:{fontSize:11}},
+    series:[{
+      type:'bar',data:vals.map((v,i)=>({value:v,itemStyle:{color:colors[i]}})),
+      label:{show:true,position:'right',formatter:function(p){return p.value+'件 ['+strength[p.dataIndex]+']';}}
+    }]
+  });
+})();
+
+// 图6: 雷达图
+(function(){
+  var c = initChart('radarChart');
+  if (!c) return;
+  c.setOption({
+    tooltip:{},
+    legend:{data:['整体覆盖'],bottom:0},
+    radar:{
+      indicator:[
+        {name:'n-p掺杂CGL',max:500},{name:'双层Tandem',max:500},{name:'蒸镀工艺',max:500},
+        {name:'n-掺杂/氧化物CGL',max:500},{name:'IT应用',max:500},{name:'LiF/Al CGL',max:500},
+        {name:'三层多叠层',max:500},{name:'蓝色磷光/TADF',max:500},{name:'无机CGL',max:500}
+      ],
+      center:['50%','55%'],radius:'65%'
+    },
+    series:[{
+      name:'专利覆盖',type:'radar',
+      data:[{
+        value:[420,380,350,310,280,200,120,95,45],
+        name:'整体覆盖',
+        areaStyle:{color:'rgba(14,116,144,0.2)'},
+        lineStyle:{color:'#0E7490',width:2},
+        itemStyle:{color:'#0E7490'}
+      }]
+    }]
+  });
+})();
+
+// 图7: 气泡图
+(function(){
+  var c = initChart('chart_bubble');
+  if (!c) return;
+  var bubbleData = [
+    {value:[45, 85, 35],name:'无机金属氧化物CGL'},
+    {value:[20, 75, 40],name:'钙钛矿杂化CGL'},
+    {value:[80, 70, 50],name:'图案化CGL'},
+    {value:[95, 90, 60],name:'蓝色磷光+Tandem'},
+    {value:[120, 65, 55],name:'三层多叠层结构'},
+    {value:[200, 55, 45],name:'LiF/Al基CGL'},
+    {value:[310, 50, 70],name:'n-掺杂有机/氧化物CGL'},
+    {value:[380, 45, 75],name:'双层Tandem结构'},
+    {value:[420, 40, 80],name:'n-p掺杂异质结CGL'}
+  ];
+  var colors = ['#7C3AED','#10B981','#F59E0B','#E11D48','#3B82F6','#0891B2','#0E7490','#059669','#64748B'];
+  c.setOption({
+    tooltip:{formatter:function(p){return p.data.name+'<br/>专利密度：'+p.value[0]+'件<br/>市场潜力：'+p.value[1]+'<br/>进入难度：'+p.value[2];}},
+    xAxis:{type:'value',name:'专利密度（件）',min:0,max:500,nameLocation:'middle',nameGap:30,splitLine:{lineStyle:{type:'dashed'}}},
+    yAxis:{type:'value',name:'市场增长潜力',min:20,max:100,nameLocation:'middle',nameGap:40,splitLine:{lineStyle:{type:'dashed'}}},
+    grid:{left:'10%',right:'10%',bottom:'15%',top:'10%',containLabel:true},
+    series:bubbleData.map(function(d,i){
+      return {
+        name:d.name,type:'scatter',
+        data:[d],
+        symbolSize:Math.max(d.value[2]*1.2,20),
+        itemStyle:{color:colors[i],opacity:0.85},
+        label:{show:true,formatter:d.name,position:'right',fontSize:10,color:'#374151'}
+      };
+    })
+  });
+})();
+
+// 图8: 热力矩阵图
+(function(){
+  var c = initChart('heatmapChart');
+  if (!c) return;
+  var assignees = ['Samsung','BOE','LG','TCL华星','天马','维信诺'];
+  var techs = ['n-p掺杂CGL','双层Tandem','蒸镀工艺','n-掺杂CGL','IT应用','LiF/Al CGL','三层叠层','蓝色磷光','无机CGL'];
+  var raw = [
+    [90,85,80,75,70,60,45,30,20],
+    [55,50,48,45,60,40,25,15,8],
+    [40,45,42,38,35,30,20,12,10],
+    [25,28,35,20,22,30,15,8,5],
+    [20,18,15,22,25,12,10,5,3],
+    [18,15,12,20,18,10,8,5,2]
+  ];
+  var data = [];
+  raw.forEach(function(row,i){row.forEach(function(v,j){data.push([j,i,v]);});});
+  c.setOption({
+    tooltip:{formatter:function(p){return assignees[p.data[1]]+'<br/>'+techs[p.data[0]]+'<br/>'+p.data[2]+'件';}},
+    grid:{height:'70%',top:'10%',left:'13%',right:'5%',containLabel:false},
+    xAxis:{type:'category',data:techs,splitArea:{show:true},axisLabel:{fontSize:10,rotate:20}},
+    yAxis:{type:'category',data:assignees,splitArea:{show:true},axisLabel:{fontSize:11}},
+    visualMap:{min:0,max:100,calculable:true,orient:'horizontal',left:'center',bottom:'2%',inRange:{color:['#F0F9FF','#38BDF8','#0C4A6E']}},
+    series:[{name:'专利密度',type:'heatmap',data:data,label:{show:true,formatter:function(p){return p.data[2];},fontSize:10},emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,0.5)'}}}]
+  });
+})();
+
+// 图9: 三星趋势
+(function(){
+  var c = initChart('samsungTrendChart');
+  if (!c) return;
+  var years = ['2021','2022','2023','2024','2025'];
+  c.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'cross'}},
+    legend:{bottom:0},
+    grid:{left:'4%',right:'4%',bottom:'12%',top:'10%',containLabel:true},
+    xAxis:{type:'category',data:years,axisLabel:{fontSize:11}},
+    yAxis:{type:'value',name:'申请件数',nameTextStyle:{fontSize:11}},
+    series:[
+      {name:'n-p掺杂CGL',type:'bar',stack:'total',data:[35,38,42,48,40],itemStyle:{color:'#0C4A6E'}},
+      {name:'双层Tandem',type:'bar',stack:'total',data:[25,28,32,35,30],itemStyle:{color:'#0E7490'}},
+      {name:'图案化CGL',type:'bar',stack:'total',data:[8,12,25,35,32],itemStyle:{color:'#F59E0B'}},
+      {name:'无机CGL',type:'bar',stack:'total',data:[0,0,2,8,12],itemStyle:{color:'#7C3AED'}},
+      {name:'三层叠层',type:'bar',stack:'total',data:[5,8,15,22,18],itemStyle:{color:'#10B981'}},
+      {name:'其他',type:'bar',stack:'total',data:[18,15,20,22,18],itemStyle:{color:'#CBD5E1'}}
+    ]
+  });
+})();
+
+// 图10: 三星技术方向饼图
+(function(){
+  var c = initChart('samsungTechChart');
+  if (!c) return;
+  c.setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c}%'},
+    legend:{bottom:'5%',left:'center',textStyle:{fontSize:10}},
+    series:[{
+      name:'技术方向',type:'pie',radius:['30%','65%'],
+      center:['50%','45%'],
+      data:[
+        {value:40,name:'n-p掺杂有机异质结CGL',itemStyle:{color:'#0C4A6E'}},
+        {value:22,name:'双层Tandem结构',itemStyle:{color:'#0E7490'}},
+        {value:14,name:'图案化CGL/横向漏电',itemStyle:{color:'#F59E0B'}},
+        {value:10,name:'三层多叠层结构',itemStyle:{color:'#10B981'}},
+        {value:7,name:'无机金属氧化物CGL',itemStyle:{color:'#7C3AED'}},
+        {value:7,name:'其他（应用/工艺）',itemStyle:{color:'#CBD5E1'}}
+      ],
+      emphasis:{itemStyle:{shadowBlur:10,shadowOffsetX:0,shadowColor:'rgba(0,0,0,0.5)'}},
+      label:{formatter:'{b}\n{c}%',fontSize:10}
+    }]
+  });
+})();
+
+// 图11: 突破口气泡图
+(function(){
+  var c = initChart('bubbleChart');
+  if (!c) return;
+  var data = [
+    {value:[45,85,40],name:'无机CGL'},
+    {value:[20,75,45],name:'钙钛矿CGL'},
+    {value:[80,70,50],name:'图案化CGL'},
+    {value:[95,90,55],name:'蓝色磷光+Tandem'},
+    {value:[120,65,48],name:'三层多叠层'},
+    {value:[200,55,42],name:'LiF/Al CGL'},
+    {value:[310,50,65],name:'n-掺杂有机CGL'},
+    {value:[380,45,72],name:'双层Tandem'},
+    {value:[420,40,78],name:'n-p掺杂异质结'}
+  ];
+  var colors = ['#7C3AED','#10B981','#F59E0B','#E11D48','#3B82F6','#0891B2','#0E7490','#059669','#64748B'];
+  c.setOption({
+    tooltip:{formatter:function(p){return '<strong>'+p.data.name+'</strong><br/>专利密度：'+p.value[0]+'<br/>市场潜力：'+p.value[1]+'<br/>进入难度：'+p.value[2];}},
+    xAxis:{type:'value',name:'专利布局密度（件）',min:0,max:500,nameLocation:'middle',nameGap:30},
+    yAxis:{type:'value',name:'市场增长潜力',min:20,max:100,nameLocation:'middle',nameGap:40},
+    grid:{left:'10%',right:'10%',bottom:'15%',top:'10%',containLabel:true},
+    series:data.map(function(d,i){
+      return {
+        name:d.name,type:'scatter',data:[d],
+        symbolSize:Math.max(d.value[2]*1.5,25),
+        itemStyle:{color:colors[i],opacity:0.85},
+        label:{show:true,formatter:d.name,position:'right',fontSize:10}
+      };
+    })
+  });
+})();
+
+// 滚动动画
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.1});
+document.querySelectorAll('.scroll-fade').forEach(el=>observer.observe(el));
+
+// 图表响应式
+window.addEventListener('resize',()=>{
+  ['trendChart','statusChart','authorityChart','assigneeChart','techDirChart','radarChart','chart_bubble','heatmapChart','samsungTrendChart','samsungTechChart','bubbleChart']
+  .forEach(id=>{var el=document.getElementById(id);if(el){var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();}});
+});
+</script>
+
+</body>
+</html>

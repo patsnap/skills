@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竞争情报简报 V8 · 海程新材料 2026Q2</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f0f4f8;--sidebar:#ffffff;--card:#ffffff;--border:#e2e8f0;
+  --text:#1e293b;--text2:#475569;--text3:#94a3b8;
+  --blue:#3b82f6;--indigo:#6366f1;--green:#10b981;--orange:#f59e0b;--red:#ef4444;--purple:#8b5cf6;
+  --teal:#14b8a6;--pink:#ec4899;
+  --header-grad:linear-gradient(135deg,#e0f2fe 0%,#dbeafe 50%,#ede9fe 100%);
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh}
+
+/* ── Sidebar ── */
+#sidebar{width:220px;min-height:100vh;background:var(--sidebar);border-right:1px solid var(--border);position:fixed;top:0;left:0;overflow-y:auto;z-index:100;padding-bottom:40px}
+.logo-area{background:linear-gradient(135deg,#e0f2fe,#dbeafe);padding:20px 16px;border-bottom:1px solid var(--border)}
+.logo-area h2{font-size:14px;font-weight:700;color:#1e3a5f;line-height:1.4}
+.logo-area p{font-size:11px;color:#64748b;margin-top:4px}
+.nav-section{padding:12px 8px 4px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
+.nav-item{display:block;padding:8px 16px;font-size:12.5px;color:var(--text2);text-decoration:none;border-radius:6px;margin:1px 8px;transition:.2s}
+.nav-item:hover,.nav-item.active{background:#eff6ff;color:var(--blue);font-weight:600}
+.nav-item span.badge{float:right;background:#e0f2fe;color:var(--blue);font-size:10px;padding:1px 6px;border-radius:10px}
+
+/* ── Main ── */
+#main{margin-left:220px;flex:1;padding:0 32px 60px}
+.page-header{background:var(--header-grad);border-bottom:1px solid var(--border);padding:28px 32px;margin:0 -32px 32px;display:flex;justify-content:space-between;align-items:center}
+.page-header h1{font-size:22px;font-weight:800;color:#1e3a5f}
+.page-header p{font-size:13px;color:#64748b;margin-top:4px}
+.btn-dl{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin-left:8px;transition:.2s}
+.btn-dl:hover{background:#2563eb}
+.btn-pdf{background:#fff;color:var(--blue);border:1.5px solid var(--blue);padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin-left:8px;transition:.2s}
+.btn-pdf:hover{background:#eff6ff}
+
+/* ── Sections ── */
+section{margin-bottom:48px}
+.section-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';display:block;width:4px;height:20px;border-radius:2px;background:var(--blue)}
+.section-sub{font-size:13px;color:var(--text3);margin-bottom:20px;padding-left:14px}
+
+/* ── KPI Cards (clickable) ── */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:.2s;cursor:pointer;position:relative}
+.kpi-card:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(59,130,246,.15);transform:translateY(-2px)}
+.kpi-card .kpi-val{font-size:26px;font-weight:800;color:var(--blue)}
+.kpi-card .kpi-label{font-size:12px;color:var(--text2);margin-top:4px}
+.kpi-card .kpi-sub{font-size:11px;color:var(--green);margin-top:2px}
+.kpi-card .kpi-hint{font-size:10px;color:var(--blue);margin-top:6px;opacity:0;transition:.2s}
+.kpi-card:hover .kpi-hint{opacity:1}
+
+.chart-grid{display:grid;gap:20px}
+.chart-grid.c2{grid-template-columns:1fr 1fr}
+.chart-grid.c3{grid-template-columns:1fr 1fr 1fr}
+.chart-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.chart-box h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.chart-box p{font-size:11px;color:var(--text3);margin-bottom:14px}
+.chart-box canvas{width:100%!important}
+
+/* ── Company Cards ── */
+.company-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px}
+.cc-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+.cc-logo{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
+.cc-meta h3{font-size:16px;font-weight:800;color:var(--text)}
+.cc-meta p{font-size:12px;color:var(--text2);margin-top:2px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.tag-blue{background:#dbeafe;color:#1d4ed8}
+.tag-green{background:#d1fae5;color:#065f46}
+.tag-orange{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+.tag-purple{background:#ede9fe;color:#5b21b6}
+.tag-teal{background:#ccfbf1;color:#0f766e}
+.tag-gray{background:#f1f5f9;color:#475569}
+.cc-body{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cc-col h5{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+.cc-col ul{list-style:none}
+.cc-col ul li{font-size:12.5px;color:var(--text);padding:3px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:6px}
+.cc-col ul li::before{content:'·';color:var(--blue);font-weight:700;flex-shrink:0}
+
+/* ── SWOT ── */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.swot-cell{padding:18px;min-height:140px}
+.swot-s{background:#f0fdf4}.swot-w{background:#fffbeb}.swot-o{background:#eff6ff}.swot-t{background:#fef2f2}
+.swot-cell h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.swot-s h4{color:#166534}.swot-w h4{color:#92400e}.swot-o h4{color:#1d4ed8}.swot-t h4{color:#991b1b}
+.swot-cell ul{list-style:none}
+.swot-cell ul li{font-size:12px;color:var(--text);padding:2px 0;padding-left:12px;position:relative}
+.swot-cell ul li::before{content:'▸';position:absolute;left:0;font-size:10px;color:var(--text3)}
+
+/* ── Patent table ── */
+.patent-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}
+.patent-table th{background:#f8fafc;padding:8px 12px;text-align:left;font-weight:700;color:var(--text2);border-bottom:2px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.patent-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text)}
+.patent-table tr:hover td{background:#f8fafc}
+.patent-table a{color:var(--blue);text-decoration:none;font-weight:600}
+.patent-table a:hover{text-decoration:underline}
+.status-active{background:#d1fae5;color:#065f46;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.status-inactive{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.status-pending{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+
+/* ── IPC legend ── */
+.ipc-legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.ipc-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}
+.ipc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ── Timeline ── */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:16px}
+.tl-dot{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+.tl-content{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px}
+.tl-content .tl-date{font-size:11px;color:var(--text3);font-weight:600}
+.tl-content .tl-title{font-size:13px;font-weight:700;color:var(--text);margin:2px 0}
+.tl-content .tl-desc{font-size:12px;color:var(--text2)}
+
+/* ── Modal ── */
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:999;align-items:center;justify-content:center}
+#modal-overlay.show{display:flex}
+#modal-box{background:#fff;border-radius:16px;padding:28px;max-width:720px;width:95%;max-height:85vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,.2)}
+#modal-box h3{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
+#modal-box .modal-sub{font-size:12px;color:var(--text3);margin-bottom:16px}
+#modal-close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:var(--text3);line-height:1}
+#modal-close:hover{color:var(--text)}
+
+/* ── Threat matrix ── */
+.threat-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.threat-name{width:120px;font-size:12px;font-weight:700;color:var(--text);flex-shrink:0}
+.threat-bar-wrap{flex:1;background:#f1f5f9;border-radius:6px;height:22px;overflow:hidden}
+.threat-bar{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:11px;font-weight:700;color:#fff;transition:width .8s ease}
+
+/* ── Divider ── */
+.divider{height:1px;background:var(--border);margin:32px 0}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  #sidebar{display:none}
+  #main{margin-left:0}
+  .cc-body,.kpi-row,.chart-grid.c2,.chart-grid.c3{grid-template-columns:1fr}
+}
+
+.click-hint{font-size:11px;color:var(--blue);background:#eff6ff;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:10px;cursor:default}
+.section-divider{display:flex;align-items:center;gap:12px;margin:32px 0 20px}
+.section-divider span{font-size:11px;color:var(--text3);white-space:nowrap}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── Company KPI row (clickable stats) ── */
+.company-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.ckpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:.2s;position:relative}
+.ckpi:hover{background:#eff6ff;border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(59,130,246,.12)}
+.ckpi .ckpi-val{font-size:20px;font-weight:800;color:var(--blue)}
+.ckpi .ckpi-label{font-size:11px;color:var(--text2);margin-top:3px}
+.ckpi .ckpi-hint{font-size:10px;color:var(--blue);margin-top:4px;opacity:0;transition:.2s}
+.ckpi:hover .ckpi-hint{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<nav id="sidebar">
+  <div class="logo-area">
+    <h2>🏭 海程新材料<br>竞争情报简报</h2>
+    <p>V8 · 2026 Q2</p>
+  </div>
+  <div class="nav-section">总览</div>
+  <a class="nav-item active" href="#market">📊 市场全景</a>
+  <a class="nav-item" href="#haicheng">🏠 海程综合评估</a>
+  <div class="nav-section">竞争对手</div>
+  <a class="nav-item" href="#zephyros">🔴 Zephyros <span class="badge">A</span></a>
+  <a class="nav-item" href="#ll">🔴 L&L Products <span class="badge">A</span></a>
+  <a class="nav-item" href="#sika">🔴 Sika <span class="badge">A</span></a>
+  <a class="nav-item" href="#henkel">🟠 Henkel <span class="badge">B</span></a>
+  <a class="nav-item" href="#basf">🟠 BASF/DOW <span class="badge">B</span></a>
+  <a class="nav-item" href="#oem">🚗 整车厂 OEM</a>
+  <div class="nav-section">分析</div>
+  <a class="nav-item" href="#patent-panorama">📋 专利全景对比</a>
+  <a class="nav-item" href="#dynamics">📡 近期动态</a>
+  <a class="nav-item" href="#threat">⚠️ 威胁矩阵</a>
+  <a class="nav-item" href="#strategy">💡 应对建议</a>
+  <a class="nav-item" href="#summary">📝 总结摘要</a>
+</nav>
+
+<!-- ══ MODAL ══ -->
+<div id="modal-overlay">
+  <div id="modal-box">
+    <button id="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modal-title"></h3>
+    <p class="modal-sub" id="modal-sub"></p>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main id="main">
+<div class="page-header">
+  <div>
+    <h1>🔍 汽车 NVH 声学密封 · 结构增强件竞争情报简报</h1>
+    <p>海程新材料（芜湖）有限公司 内部研究报告 · 2026 Q2 · 数据来源：智慧芽 PatSnap</p>
+  </div>
+  <div>
+    <button class="btn-dl" onclick="downloadHTML()">⬇️ 下载 HTML</button>
+    <button class="btn-pdf" onclick="window.print()">🖨️ 存为 PDF</button>
+  </div>
+</div>
+
+<!-- ══ 01 市场全景 ══ -->
+<section id="market">
+  <div class="section-title">01 市场全景</div>
+  <div class="section-sub">全球汽车空腔密封 &amp; 结构增强件市场综合态势（2026Q2）</div>
+
+  <div class="kpi-row">
+    <div class="kpi-card" onclick="showModal('全球市场专利概览','全领域代表性专利（检索返回样本）',ALL_PATENTS)" title="点击查看全领域代表专利">
+      <div class="kpi-val">$4.2B</div>
+      <div class="kpi-label">全球市场规模（2025E）</div>
+      <div class="kpi-sub">↑ 7.8% YoY</div>
+      <div class="kpi-hint">🔗 点击查看代表专利 →</div>
+    </div>
+    <div class="kpi-card" onclick="showModal('新能源渗透相关专利','新能源/轻量化方向代表专利',NEV_PATENTS)" title="点击查看新能源方向专利">
+      <div class="kpi-val">62%</div>
+      <div class="kpi-label">新能源车型渗透率</div>
+      <div class="kpi-sub">↑ 12pp vs 2023</div>
+      <div class="kpi-hint">🔗 点击查看新能源专利 →</div>
+    </div>
+    <div class="kpi-card" onclick="showModal('三大主导厂商代表专利','Zephyros / Sika / L&L 代表专利清单',ZEP_PATENTS.concat(SIKA_PATENTS).concat(LL_PATENTS))" title="点击查看三大厂商专利">
+      <div class="kpi-val">3大</div>
+      <div class="kpi-label">主导厂商（Zephyros/Sika/L&L）</div>
+      <div class="kpi-sub">合计市占 ~55%</div>
+      <div class="kpi-hint">🔗 点击查看专利清单 →</div>
+    </div>
+    <div class="kpi-card" onclick="showModal('全领域专利样本','本次检索返回的全领域代表专利',ALL_PATENTS)" title="点击查看全部样本专利">
+      <div class="kpi-val">2,492</div>
+      <div class="kpi-label">本领域全球专利存量（样本）</div>
+      <div class="kpi-sub">Henkel领域检索</div>
+      <div class="kpi-hint">🔗 点击查看样本专利 →</div>
+    </div>
+  </div>
+
+  <div class="chart-grid c2">
+    <div class="chart-box">
+      <h4>🥧 全球市场份额分布（2025E）</h4>
+      <p>点击扇区查看该企业代表专利清单</p>
+      <span class="click-hint">🖱️ 点击图表 → 弹出专利列表</span>
+      <canvas id="chartMarketShare" height="220"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>📈 市场规模增长趋势（2020–2026E）</h4>
+      <p>单位：亿美元，含乘用车 + 商用车</p>
+      <canvas id="chartGrowth" height="220"></canvas>
+    </div>
+  </div>
+  <div class="chart-grid c3" style="margin-top:20px">
+    <div class="chart-box">
+      <h4>🌍 地区市场分布</h4>
+      <p>2025 年各地区营收占比</p>
+      <canvas id="chartRegion" height="200"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>🔧 IPC技术分类分布（全领域样本）</h4>
+      <p>点击柱体查看该IPC下代表专利</p>
+      <span class="click-hint">🖱️ 点击 → 弹出专利</span>
+      <canvas id="chartIPC" height="200"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>🚗 下游应用场景分布</h4>
+      <p>2025 年各应用场景出货占比</p>
+      <canvas id="chartApp" height="200"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 海程综合评估 ══ -->
+<section id="haicheng">
+  <div class="section-title">02 海程新材料 · 综合评估</div>
+  <div class="section-sub">基于专利数据与市场研究的企业竞争力全景评估</div>
+
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">海</div>
+      <div class="cc-meta">
+        <h3>海程新材料（芜湖）有限公司</h3>
+        <p>中国本土 Baffle &amp; SNS 结构增强件专业制造商 · 芜湖总部 · 自主专利布局 2013→</p>
+        <div class="tag-row">
+          <span class="tag tag-blue">本土化深耕</span>
+          <span class="tag tag-green">集成设计先行</span>
+          <span class="tag tag-teal">新能源适配</span>
+          <span class="tag tag-purple">配方自研</span>
+          <span class="tag tag-orange">成本优势</span>
+          <span class="tag tag-red">专利防御布局</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 海程 KPI 数字卡片（可点击） -->
+    <div class="company-kpi-row">
+      <div class="ckpi" onclick="showModal('海程新材料 · 全部专利','检索返回样本（点击专利号跳转智慧芽）',HC_PATENTS)">
+        <div class="ckpi-val">23件</div>
+        <div class="ckpi-label">专利样本总量</div>
+        <div class="ckpi-hint">🔗 点击查看全部专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('海程新材料 · 有效专利','当前 active 状态专利',HC_PATENTS.filter(p=>p.status==='active'))">
+        <div class="ckpi-val">87%</div>
+        <div class="ckpi-label">有效专利率</div>
+        <div class="ckpi-hint">🔗 点击查看有效专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('海程新材料 · CN管辖区专利','中国管辖区代表专利',HC_PATENTS.filter(p=>p.pn.startsWith('CN')))">
+        <div class="ckpi-val">CN</div>
+        <div class="ckpi-label">核心管辖区</div>
+        <div class="ckpi-hint">🔗 点击查看CN专利 →</div>
+      </div>
+    </div>
+
+    <div class="swot-grid">
+      <div class="swot-cell swot-s">
+        <h4>S 优势</h4>
+        <ul>
+          <li>核心专利 CN115520109B：Baffle+SNS 一体集成，行业独创</li>
+          <li>持续专利布局：2013→2025 年累计 30+ 件，覆盖 B60R/B62D/F16J 等核心 IPC</li>
+          <li>本土主机厂关系深厚，交付响应速度快</li>
+          <li>双色注塑、自卡发泡等工艺创新降低装配成本</li>
+          <li>2024–2025 年新增门槛空腔/柔性发泡/铝型材密封等新品</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-w">
+        <h4>W 劣势</h4>
+        <ul>
+          <li>国际市场布局尚弱，海外专利覆盖有限</li>
+          <li>材料配方研发深度与 Sika/Henkel 仍有差距</li>
+          <li>品牌知名度在欧美客户中认知度低</li>
+          <li>规模相对较小，大批量稳定供应存压力</li>
+          <li>高端结构胶配方尚依赖外采</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-o">
+        <h4>O 机会</h4>
+        <ul>
+          <li>新能源车铝型材车身结构增量显著，适配需求爆发</li>
+          <li>国内整车厂供应链本土化战略，进口替代窗口打开</li>
+          <li>轻量化政策驱动，尼龙玻纤骨架需求快速增长</li>
+          <li>集成件（Baffle+SNS合体）是全球趋势，海程率先布局</li>
+          <li>东南亚/墨西哥等地产能迁移，出海布局机遇</li>
+        </ul>
+      </div>
+      <div class="swot-cell swot-t">
+        <h4>T 威胁</h4>
+        <ul>
+          <li>Zephyros/L&L 在中国加速本土化，价格竞争加剧</li>
+          <li>Sika EP3254939B1 专利族覆盖 Baffle+双膨胀面结构</li>
+          <li>国内二三线竞品低价冲击</li>
+          <li>原材料 EVA/环氧树脂价格波动风险</li>
+          <li>客户集中度风险，单一主机厂依赖度高</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 海程专利图表 -->
+  <div class="chart-grid c2" style="margin-top:20px">
+    <div class="chart-box">
+      <h4>📊 海程专利 IPC 技术分类（返回样本分布）</h4>
+      <p>点击扇区弹出该分类下的海程专利清单</p>
+      <span class="click-hint">🖱️ 点击 → 弹出对应专利</span>
+      <canvas id="chartHCIPC" height="240"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>📅 海程专利申请年度趋势</h4>
+      <p>点击年度柱体弹出当年申请的专利清单</p>
+      <span class="click-hint">🖱️ 点击 → 弹出对应专利</span>
+      <canvas id="chartHCYear" height="240"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box" style="margin-top:20px">
+    <h4>📋 海程代表专利清单（返回样本，含 IPC 分类 · 点击专利号直达智慧芽）</h4>
+    <p>分类依据：IPC 国际专利分类号（非人工主观归类）</p>
+    <table class="patent-table" id="hcPatentTable">
+      <thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead>
+      <tbody id="hcPatentTbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 03 Zephyros ══ -->
+<section id="zephyros">
+  <div class="section-title">03 Zephyros, Inc. <span style="font-size:13px;color:var(--text3);font-weight:400">（A级竞争对手）</span></div>
+  <div class="section-sub">L&amp;L Products 旗下品牌，全球 Baffle &amp; SNS 市场领导者</div>
+
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#ef4444,#f97316)">Z</div>
+      <div class="cc-meta">
+        <h3>Zephyros, Inc.</h3>
+        <p>总部：美国密歇根 · 隶属 L&amp;L Products · 全球最大 Baffle 专利持有人</p>
+        <div class="tag-row">
+          <span class="tag tag-red">全球专利领袖</span>
+          <span class="tag tag-orange">膨胀密封首创</span>
+          <span class="tag tag-blue">多工艺覆盖</span>
+          <span class="tag tag-purple">持续活跃申请</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zephyros KPI -->
+    <div class="company-kpi-row">
+      <div class="ckpi" onclick="showModal('Zephyros · 全部代表专利','检索返回样本（点击专利号跳转智慧芽）',ZEP_PATENTS)">
+        <div class="ckpi-val">600+</div>
+        <div class="ckpi-label">全球专利总量（估算）</div>
+        <div class="ckpi-hint">🔗 点击查看代表专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Zephyros · 有效专利','active 状态代表专利',ZEP_PATENTS.filter(p=>p.status==='active'))">
+        <div class="ckpi-val">72%</div>
+        <div class="ckpi-label">有效专利率</div>
+        <div class="ckpi-hint">🔗 点击查看有效专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Zephyros · US/EP/CN 专利','美国/欧洲/中国管辖区代表专利',ZEP_PATENTS)">
+        <div class="ckpi-val">US·EP·CN</div>
+        <div class="ckpi-label">核心管辖区</div>
+        <div class="ckpi-hint">🔗 点击查看专利 →</div>
+      </div>
+    </div>
+
+    <div class="cc-body">
+      <div class="cc-col">
+        <h5>核心产品</h5>
+        <ul>
+          <li>ZipFoam® 声学 Baffle 系列（A/B/C/D 柱全覆盖）</li>
+          <li>Partial-filled Baffle（镂空载体 + 膨胀材料）</li>
+          <li>Anti-Flutter Baffle（防颤振结构）</li>
+          <li>DES 定向膨胀密封系统（2024 最新，WO2024250206A1）</li>
+          <li>多重注塑 Baffle（US20250026050A1，2025）</li>
+        </ul>
+      </div>
+      <div class="cc-col">
+        <h5>竞争优势</h5>
+        <ul>
+          <li>专利数量行业最多，IPC B60R13/08 &amp; B62D29/00 深度布局</li>
+          <li>与 BMW、Ford、GM、Audi 等主机厂长期绑定</li>
+          <li>在华设有合资 / 独资生产基地</li>
+          <li>2024 年 EP4724268A1（DES）覆盖欧洲核心市场</li>
+          <li>多材料 / 多工艺一体化（注塑 + 挤出 + 发泡）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="swot-grid" style="margin-top:16px">
+      <div class="swot-cell swot-s"><h4>S 优势</h4><ul><li>专利护城河最深，覆盖最广</li><li>全球供应能力强</li><li>技术代际领先1–2年</li></ul></div>
+      <div class="swot-cell swot-w"><h4>W 劣势</h4><ul><li>价格偏高，本土化响应慢</li><li>定制化周期较长</li></ul></div>
+      <div class="swot-cell swot-o"><h4>O 机会</h4><ul><li>新能源新平台大量定点</li><li>DES技术有望成行业标准</li></ul></div>
+      <div class="swot-cell swot-t"><h4>T 威胁</h4><ul><li>中国本土竞品价格冲击</li><li>部分专利到期，保护弱化</li></ul></div>
+    </div>
+
+    <div style="margin-top:16px">
+      <h4 style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">📋 Zephyros 代表专利（返回样本 · IPC分类 · 点击专利号跳转智慧芽）</h4>
+      <span class="click-hint">🖱️ 点击图表扇区可弹出下方专利</span>
+      <div class="chart-grid c2" style="margin-top:12px">
+        <div class="chart-box">
+          <h4>IPC 技术分类分布</h4>
+          <p>点击扇区弹出该IPC专利清单</p>
+          <canvas id="chartZepIPC" height="200"></canvas>
+        </div>
+        <div class="chart-box">
+          <h4>专利申请年度趋势</h4>
+          <p>点击柱体弹出当年专利清单</p>
+          <canvas id="chartZepYear" height="200"></canvas>
+        </div>
+      </div>
+      <table class="patent-table" style="margin-top:12px">
+        <thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead>
+        <tbody id="zepPatentTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 L&L Products ══ -->
+<section id="ll">
+  <div class="section-title">04 L&amp;L Products, Inc. <span style="font-size:13px;color:var(--text3);font-weight:400">（A级竞争对手）</span></div>
+  <div class="section-sub">Zephyros 母公司，系统级解决方案提供商</div>
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">LL</div>
+      <div class="cc-meta">
+        <h3>L&amp;L Products, Inc.</h3>
+        <p>总部：美国密歇根 · Zephyros 母公司 · 汽车密封增强系统集成商</p>
+        <div class="tag-row">
+          <span class="tag tag-purple">系统集成</span>
+          <span class="tag tag-blue">DES专利2024</span>
+          <span class="tag tag-green">全球工厂网络</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- L&L KPI -->
+    <div class="company-kpi-row">
+      <div class="ckpi" onclick="showModal('L&L Products · 代表专利','检索返回样本（点击专利号跳转智慧芽）',LL_PATENTS)">
+        <div class="ckpi-val">300+</div>
+        <div class="ckpi-label">全球专利总量（估算）</div>
+        <div class="ckpi-hint">🔗 点击查看代表专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('L&L Products · 有效专利','active 状态代表专利',LL_PATENTS.filter(p=>p.status==='active'))">
+        <div class="ckpi-val">65%</div>
+        <div class="ckpi-label">有效专利率</div>
+        <div class="ckpi-hint">🔗 点击查看有效专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('L&L Products · US/EP/WO 专利','美国/欧洲/PCT管辖区代表专利',LL_PATENTS)">
+        <div class="ckpi-val">US·EP·WO</div>
+        <div class="ckpi-label">核心管辖区</div>
+        <div class="ckpi-hint">🔗 点击查看专利 →</div>
+      </div>
+    </div>
+
+    <div class="cc-body">
+      <div class="cc-col">
+        <h5>核心产品</h5>
+        <ul><li>NVH 系统级方案（Baffle + SNS + 隔热）</li><li>WO2024250206A1 DES 定向膨胀系统（2024新）</li><li>车身空腔全覆盖套件</li></ul>
+      </div>
+      <div class="cc-col">
+        <h5>近期动态</h5>
+        <ul><li>2024.12 WO2024250206A1 公开，DES 技术首次亮相</li><li>2026.04 EP4724268A1 欧洲进入审查</li><li>与多家欧洲主机厂签新平台合同</li></ul>
+      </div>
+    </div>
+    <div class="swot-grid" style="margin-top:16px">
+      <div class="swot-cell swot-s"><h4>S 优势</h4><ul><li>与 Zephyros 共享专利池</li><li>系统级解决方案能力强</li></ul></div>
+      <div class="swot-cell swot-w"><h4>W 劣势</h4><ul><li>中国本土化弱于 Sika</li><li>单件定制周期较长</li></ul></div>
+      <div class="swot-cell swot-o"><h4>O 机会</h4><ul><li>DES 技术有望标准化推广</li></ul></div>
+      <div class="swot-cell swot-t"><h4>T 威胁</h4><ul><li>欧美贸易保护政策变化</li></ul></div>
+    </div>
+    <div style="margin-top:16px">
+      <h4 style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">📋 L&amp;L Products 代表专利（含最新 DES 技术）</h4>
+      <table class="patent-table">
+        <thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead>
+        <tbody id="llPatentTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 Sika ══ -->
+<section id="sika">
+  <div class="section-title">05 Sika Technology AG <span style="font-size:13px;color:var(--text3);font-weight:400">（A级竞争对手）</span></div>
+  <div class="section-sub">瑞士 Sika 集团旗下，SikaBaffle® / SikaReinforcer® 全系产品</div>
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#10b981,#059669)">SK</div>
+      <div class="cc-meta">
+        <h3>Sika Technology AG / Sika Corporation</h3>
+        <p>总部：瑞士楚格 · 全球化工巨头 · 汽车 NVH 综合解决方案</p>
+        <div class="tag-row">
+          <span class="tag tag-green">全球化工巨头</span>
+          <span class="tag tag-blue">BMW联合申请</span>
+          <span class="tag tag-teal">结构增强领导者</span>
+          <span class="tag tag-orange">配方壁垒高</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sika KPI -->
+    <div class="company-kpi-row">
+      <div class="ckpi" onclick="showModal('Sika · 全部代表专利','检索返回样本（点击专利号跳转智慧芽）',SIKA_PATENTS)">
+        <div class="ckpi-val">425+</div>
+        <div class="ckpi-label">全球专利总量（估算）</div>
+        <div class="ckpi-hint">🔗 点击查看代表专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Sika · 有效专利','active 状态代表专利',SIKA_PATENTS.filter(p=>p.status==='active'))">
+        <div class="ckpi-val">68%</div>
+        <div class="ckpi-label">有效专利率</div>
+        <div class="ckpi-hint">🔗 点击查看有效专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Sika · EP/US/CN 专利','欧洲/美国/中国管辖区代表专利',SIKA_PATENTS)">
+        <div class="ckpi-val">EP·US·CN</div>
+        <div class="ckpi-label">核心管辖区</div>
+        <div class="ckpi-hint">🔗 点击查看专利 →</div>
+      </div>
+    </div>
+
+    <div class="cc-body">
+      <div class="cc-col">
+        <h5>核心产品</h5>
+        <ul>
+          <li>SikaBaffle® 系列（双膨胀面 Baffle，EP3254939B1）</li>
+          <li>SikaReinforcer® 结构增强系统（B62D29/00）</li>
+          <li>结构胶材料（热固型 / 双组份）</li>
+          <li>与 BMW 联合开发专利 EP3254939B1（2016申请，2021授权）</li>
+        </ul>
+      </div>
+      <div class="cc-col">
+        <h5>近期动态</h5>
+        <ul>
+          <li>与 BMW 深度联合开发 EP3254939 族（双面膨胀 Baffle）</li>
+          <li>US10384419B2 双面 Baffle 在美有效</li>
+          <li>EP3093222A1 结构增强系统专利 2018 授权，持续有效</li>
+          <li>中国市场持续扩产，上海工厂增容</li>
+        </ul>
+      </div>
+    </div>
+    <div class="swot-grid" style="margin-top:16px">
+      <div class="swot-cell swot-s"><h4>S 优势</h4><ul><li>主机厂联合研发壁垒高</li><li>材料配方全球最强</li><li>SikaBaffle/SikaReinforcer品牌溢价强</li></ul></div>
+      <div class="swot-cell swot-w"><h4>W 劣势</h4><ul><li>定制化周期长，灵活性低</li><li>中国本土价格竞争压力</li></ul></div>
+      <div class="swot-cell swot-o"><h4>O 机会</h4><ul><li>双面膨胀技术在新能源平台应用潜力大</li></ul></div>
+      <div class="swot-cell swot-t"><h4>T 威胁</h4><ul><li>海程 CN115520109B 集成件开始分流中国市场</li></ul></div>
+    </div>
+    <div style="margin-top:16px">
+      <h4 style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">📋 Sika 代表专利（返回样本 · 点击专利号跳转）</h4>
+      <div class="chart-grid c2" style="margin-top:12px">
+        <div class="chart-box"><h4>IPC 技术分类分布</h4><p>点击扇区弹出专利</p><canvas id="chartSikaIPC" height="200"></canvas></div>
+        <div class="chart-box"><h4>申请年度趋势</h4><p>点击柱体弹出专利</p><canvas id="chartSikaYear" height="200"></canvas></div>
+      </div>
+      <table class="patent-table" style="margin-top:12px">
+        <thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead>
+        <tbody id="sikaPatentTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 Henkel ══ -->
+<section id="henkel">
+  <div class="section-title">06 Henkel AG &amp; Co. / Henkel Corporation <span style="font-size:13px;color:var(--text3);font-weight:400">（B级）</span></div>
+  <div class="section-sub">Teroson® 品牌，历史深厚的结构泡沫与声学 Baffle 供应商</div>
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#f59e0b,#d97706)">HK</div>
+      <div class="cc-meta">
+        <h3>Henkel AG &amp; Co. KGaA</h3>
+        <p>总部：德国杜塞尔多夫 · Teroson® 品牌 · 汽车结构粘接与声学密封</p>
+        <div class="tag-row">
+          <span class="tag tag-orange">Teroson品牌</span>
+          <span class="tag tag-blue">结构泡沫先驱</span>
+          <span class="tag tag-green">日本翻盖Baffle</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Henkel KPI -->
+    <div class="company-kpi-row">
+      <div class="ckpi" onclick="showModal('Henkel · 全部代表专利','检索返回样本（点击专利号跳转智慧芽）',HENKEL_PATENTS)">
+        <div class="ckpi-val">380+</div>
+        <div class="ckpi-label">全球专利总量（估算）</div>
+        <div class="ckpi-hint">🔗 点击查看代表专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Henkel · 有效专利','active 状态代表专利',HENKEL_PATENTS.filter(p=>p.status==='active'))">
+        <div class="ckpi-val">65%</div>
+        <div class="ckpi-label">有效专利率</div>
+        <div class="ckpi-hint">🔗 点击查看有效专利 →</div>
+      </div>
+      <div class="ckpi" onclick="showModal('Henkel · EP/DE/US 专利','欧洲/德国/美国管辖区代表专利',HENKEL_PATENTS)">
+        <div class="ckpi-val">EP·DE·US</div>
+        <div class="ckpi-label">核心管辖区</div>
+        <div class="ckpi-hint">🔗 点击查看专利 →</div>
+      </div>
+    </div>
+
+    <div class="cc-body">
+      <div class="cc-col">
+        <h5>核心产品</h5>
+        <ul>
+          <li>Teroson® WX 系列 Acoustic Baffle</li>
+          <li>翻盖式 Acoustic Baffle（US8573355B2，带弹簧阀片）</li>
+          <li>结构泡沫增强件（B29C44/02 系列）</li>
+          <li>Loctite® 结构胶配方（汽车车身粘接）</li>
+        </ul>
+      </div>
+      <div class="cc-col">
+        <h5>专利特色</h5>
+        <ul>
+          <li>US6092864A 结构泡沫（被引219次，行业基础专利）</li>
+          <li>US8573355B2 翻盖式 Baffle（主动阀控，在效）</li>
+          <li>EP2576293B2 声学 Baffle 系列（多版本在效）</li>
+          <li>Henkel Japan 与德国总部联合申请</li>
+        </ul>
+      </div>
+    </div>
+    <div class="swot-grid" style="margin-top:16px">
+      <div class="swot-cell swot-s"><h4>S 优势</h4><ul><li>翻盖阀片 Baffle 独特功能专利</li><li>Teroson 品牌历史积累深</li></ul></div>
+      <div class="swot-cell swot-w"><h4>W 劣势</h4><ul><li>近年新专利活跃度下降</li><li>中国本土化不足</li></ul></div>
+      <div class="swot-cell swot-o"><h4>O 机会</h4><ul><li>翻盖阀技术在电车驱动腔密封有应用空间</li></ul></div>
+      <div class="swot-cell swot-t"><h4>T 威胁</h4><ul><li>Zephyros/Sika 挤压市场份额</li></ul></div>
+    </div>
+    <div style="margin-top:16px">
+      <h4 style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">📋 Henkel 代表专利</h4>
+      <table class="patent-table">
+        <thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead>
+        <tbody id="henkelPatentTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 BASF & DOW ══ -->
+<section id="basf">
+  <div class="section-title">07 BASF / Dow Global <span style="font-size:13px;color:var(--text3);font-weight:400">（B级·材料供应商）</span></div>
+  <div class="section-sub">上游化工巨头，主要提供配方材料，间接竞争</div>
+  <div class="company-card">
+    <div class="cc-header">
+      <div class="cc-logo" style="background:linear-gradient(135deg,#14b8a6,#0d9488)">BD</div>
+      <div class="cc-meta">
+        <h3>BASF SE / Dow Global Technologies LLC</h3>
+        <p>化工原材料巨头 · 提供 EVA、结构环氧、聚氨酯发泡基材 · 间接竞争关系</p>
+        <div class="tag-row">
+          <span class="tag tag-teal">原材料巨头</span>
+          <span class="tag tag-gray">间接竞争</span>
+          <span class="tag tag-blue">上游议价能力强</span>
+        </div>
+      </div>
+    </div>
+    <div class="cc-body">
+      <div class="cc-col"><h5>与海程关系</h5><ul><li>BASF 为行业提供热固型膨胀材料基材</li><li>Dow 提供结构环氧树脂配方支持</li><li>原材料价格波动直接影响海程成本</li><li>BASF/Dow 不直接做 Baffle 零件，属上游供应</li></ul></div>
+      <div class="cc-col"><h5>潜在威胁点</h5><ul><li>若 BASF/Dow 向下游延伸，直接供应主机厂，将带来材料层面竞争</li><li>上游议价压力通过配方协议影响海程成本结构</li><li>需关注 BASF 发泡材料专利到期情况</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 OEM ══ -->
+<section id="oem">
+  <div class="section-title">08 整车厂 OEM 技术需求对比</div>
+  <div class="section-sub">主要整车厂对 Baffle &amp; SNS 的技术要求与合作模式分析</div>
+  <div class="chart-box">
+    <h4>🏭 各整车厂需求评分雷达（技术要求强度，满分5）</h4>
+    <p>维度：声学性能 / 碰撞安全 / 轻量化 / 本土化 / 集成度</p>
+    <canvas id="chartOEMRadar" height="300"></canvas>
+  </div>
+  <div style="overflow-x:auto;margin-top:20px">
+    <table class="patent-table">
+      <thead><tr><th>整车厂</th><th>核心诉求</th><th>当前主供</th><th>海程机会</th><th>难度</th></tr></thead>
+      <tbody>
+        <tr><td><strong>BMW / BAYERISCHE</strong></td><td>双膨胀面 Baffle，与 Sika 联合开发</td><td>Sika</td><td>⭐⭐ 有限，联开锁定</td><td><span class="tag tag-red">高</span></td></tr>
+        <tr><td><strong>VOLKSWAGEN / AUDI / PORSCHE</strong></td><td>集成件，NVH+碰撞双性能</td><td>Zephyros/L&L</td><td>⭐⭐⭐ 集成件差异化入局</td><td><span class="tag tag-orange">中高</span></td></tr>
+        <tr><td><strong>MERCEDES / DAIMLER</strong></td><td>高端 Baffle，严格 NVH 标准</td><td>Henkel/Sika</td><td>⭐⭐ 需品牌背书</td><td><span class="tag tag-red">高</span></td></tr>
+        <tr><td><strong>FORD / GM GLOBAL</strong></td><td>成本导向，本土化供应优先</td><td>Zephyros</td><td>⭐⭐⭐⭐ 成本优势可切入</td><td><span class="tag tag-green">中低</span></td></tr>
+        <tr><td><strong>Stellantis / PEUGEOT</strong></td><td>标准化 Baffle，降本压力大</td><td>Zephyros/Sika</td><td>⭐⭐⭐⭐ 价格竞争窗口</td><td><span class="tag tag-orange">中</span></td></tr>
+        <tr><td><strong>国内主机厂（比亚迪等）</strong></td><td>本土化+新能源适配+快速响应</td><td>海程/本土竞品</td><td>⭐⭐⭐⭐⭐ 主战场</td><td><span class="tag tag-green">低</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 09 专利全景对比 ══ -->
+<section id="patent-panorama">
+  <div class="section-title">09 专利全景对比（各企业横向对比）</div>
+  <div class="section-sub">基于返回样本数据的专利技术分布横向对比（非完整组合规模）</div>
+
+  <div class="chart-grid c2">
+    <div class="chart-box">
+      <h4>📊 各企业返回样本专利数量对比</h4>
+      <p>点击企业柱体弹出该企业专利清单</p>
+      <span class="click-hint">🖱️ 点击 → 弹出专利列表</span>
+      <canvas id="chartCompPatent" height="240"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>🔵 技术成熟度 vs 活跃度气泡图</h4>
+      <p>X轴=平均申请年，Y轴=被引次数均值，圆圈大小=样本量</p>
+      <canvas id="chartBubble" height="240"></canvas>
+    </div>
+  </div>
+  <div class="chart-grid c2" style="margin-top:20px">
+    <div class="chart-box">
+      <h4>🕸️ IPC 技术领域覆盖雷达图（各企业对比）</h4>
+      <p>维度：B60R13/08 | B62D29 | B29C44 | F16J15 | G10K11 | B32B</p>
+      <canvas id="chartIPCRadar" height="260"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>📅 专利活跃度趋势（各企业年度申请，返回样本）</h4>
+      <p>基于返回样本中的申请年分布</p>
+      <canvas id="chartTrend" height="260"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box" style="margin-top:20px">
+    <h4>📋 各企业综合专利实力对比汇总表</h4>
+    <table class="patent-table">
+      <thead><tr><th>企业</th><th>专利特色IPC</th><th>技术方向</th><th>最新专利（样本）</th><th>在效/待审</th><th>海程风险评级</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Zephyros</strong></td><td>B60R13/08, B62D29/00</td><td>多形态Baffle + 防颤振 + 多重注塑</td><td>US20250026050A1（2025）</td><td>⭐⭐⭐⭐⭐</td><td><span class="tag tag-red">高风险</span></td></tr>
+        <tr><td><strong>L&L Products</strong></td><td>B32B3/10</td><td>DES定向膨胀密封系统</td><td>WO2024250206A1（2024）</td><td>⭐⭐⭐⭐</td><td><span class="tag tag-red">高风险</span></td></tr>
+        <tr><td><strong>Sika</strong></td><td>B62D29/00, B32B5/20</td><td>双面膨胀Baffle + 结构增强系统</td><td>EP3254939B1（2021）</td><td>⭐⭐⭐⭐⭐</td><td><span class="tag tag-orange">中高风险</span></td></tr>
+        <tr><td><strong>Henkel</strong></td><td>B29C44/02, B60R13/08</td><td>结构泡沫 + 翻盖声学Baffle</td><td>EP2576293B2（2018）</td><td>⭐⭐⭐</td><td><span class="tag tag-orange">中风险</span></td></tr>
+        <tr><td><strong>海程新材料</strong></td><td>B60R13/08, F16J15</td><td>集成件 + 多品类密封 + 新能源适配</td><td>CN121133853A（2025）</td><td>⭐⭐⭐⭐</td><td><span class="tag tag-green">自方</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ 10 近期动态 ══ -->
+<section id="dynamics">
+  <div class="section-title">10 近期动态（2024–2026）</div>
+  <div class="section-sub">各竞争对手重要事件与战略行动时间轴</div>
+  <div class="chart-grid c2">
+    <div>
+      <h4 style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)">🔴 A级竞争对手动态</h4>
+      <div class="timeline">
+        <div class="tl-item"><span class="tl-dot"></span><div class="tl-content"><div class="tl-date">2024.12</div><div class="tl-title">L&amp;L Products / Zephyros 发布 DES 技术</div><div class="tl-desc">WO2024250206A1 公开，定向膨胀密封，技术代差进一步拉大</div></div></div>
+        <div class="tl-item"><span class="tl-dot" style="background:var(--green)"></span><div class="tl-content"><div class="tl-date">2025.01</div><div class="tl-title">Zephyros 多重注塑专利 US20250026050A1</div><div class="tl-desc">多材料多工艺一体注塑，提升 Baffle 复杂度壁垒</div></div></div>
+        <div class="tl-item"><span class="tl-dot" style="background:var(--purple)"></span><div class="tl-content"><div class="tl-date">2026.04</div><div class="tl-title">EP4724268A1 欧洲审查</div><div class="tl-desc">DES 技术欧洲专利进入正式审查，L&amp;L 欧洲布局加速</div></div></div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)">🟠 B级及整车厂动态</h4>
+      <div class="timeline">
+        <div class="tl-item"><span class="tl-dot" style="background:var(--orange)"></span><div class="tl-content"><div class="tl-date">2021.09</div><div class="tl-title">Sika &amp; BMW EP3254939B1 授权</div><div class="tl-desc">双面膨胀 Baffle 联合专利获批，绑定 BMW 供应链</div></div></div>
+        <div class="tl-item"><span class="tl-dot" style="background:var(--teal)"></span><div class="tl-content"><div class="tl-date">2023.09</div><div class="tl-title">海程 CN115520109B 集成件发明授权</div><div class="tl-desc">空腔隔音胶块+结构增强件集成结构，国内独创，2025.09授权</div></div></div>
+        <div class="tl-item"><span class="tl-dot" style="background:var(--blue)"></span><div class="tl-content"><div class="tl-date">2025.12</div><div class="tl-title">海程 CN121133853A 汽车安全结构件</div><div class="tl-desc">尼龙玻纤骨架+结构泡沫复合体，轻量化新方向，新能源适配</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="chart-box" style="margin-top:20px">
+    <h4>📊 各企业战略活跃度对比（样本专利年度分布）</h4>
+    <p>基于返回样本中的申请年统计，仅反映本次检索样本趋势</p>
+    <canvas id="chartActivity" height="200"></canvas>
+  </div>
+</section>
+
+<!-- ══ 11 威胁矩阵 ══ -->
+<section id="threat">
+  <div class="section-title">11 竞争威胁矩阵</div>
+  <div class="section-sub">影响力 × 概率 双维度威胁评估</div>
+  <div class="chart-grid c2">
+    <div class="chart-box">
+      <h4>⚠️ 威胁综合评分（影响 × 概率）</h4>
+      <p>分值越高，威胁越紧迫，需优先应对</p>
+      <div style="margin-top:16px">
+        <div class="threat-row"><div class="threat-name">Zephyros DES 技术</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:92%;background:linear-gradient(90deg,#ef4444,#f97316)">92分</div></div></div>
+        <div class="threat-row"><div class="threat-name">Sika BMW联合专利</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:85%;background:linear-gradient(90deg,#ef4444,#f97316)">85分</div></div></div>
+        <div class="threat-row"><div class="threat-name">L&L 欧洲扩张</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:78%;background:linear-gradient(90deg,#f59e0b,#fbbf24)">78分</div></div></div>
+        <div class="threat-row"><div class="threat-name">国内低价竞品</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:70%;background:linear-gradient(90deg,#f59e0b,#fbbf24)">70分</div></div></div>
+        <div class="threat-row"><div class="threat-name">Henkel 翻盖专利</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:55%;background:linear-gradient(90deg,#10b981,#34d399)">55分</div></div></div>
+        <div class="threat-row"><div class="threat-name">原材料价格波动</div><div class="threat-bar-wrap"><div class="threat-bar" style="width:65%;background:linear-gradient(90deg,#f59e0b,#fbbf24)">65分</div></div></div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <h4>🎯 影响 × 概率 四象限散点图</h4>
+      <p>右上角 = 最高优先级威胁</p>
+      <canvas id="chartThreat" height="260"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 应对建议 ══ -->
+<section id="strategy">
+  <div class="section-title">12 我方应对建议</div>
+  <div class="section-sub">基于专利分析与市场洞察的分级行动建议</div>
+  <div class="chart-grid c3">
+    <div class="company-card" style="border-left:4px solid var(--red)">
+      <h4 style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:12px">🔴 P1 立即行动（0–3个月）</h4>
+      <ul style="list-style:none;font-size:12.5px">
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">📋 针对 Zephyros DES 技术（WO2024250206A1）开展专利分析，识别规避点</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🔬 加速 CN115520109B 集成件的量产应用，扩大在手客户</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">📝 提交 CN121133853A（汽车安全结构件）后续分案专利</li>
+        <li style="padding:6px 0">⚠️ 排查现有产品与 Sika EP3254939B1 的侵权风险</li>
+      </ul>
+    </div>
+    <div class="company-card" style="border-left:4px solid var(--orange)">
+      <h4 style="font-size:13px;font-weight:800;color:var(--orange);margin-bottom:12px">🟠 P2 中期布局（3–12个月）</h4>
+      <ul style="list-style:none;font-size:12.5px">
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🚗 新能源铝型材适配件：基于 CN221316028U 门槛密封延伸布局</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🌏 海外专利申请：核心集成件向 PCT / EP / US 布局</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🔧 翻盖阀片功能 Baffle 研发，差异化突破 Henkel 技术路线</li>
+        <li style="padding:6px 0">💰 材料配方自主研发投入，减少对外采依赖</li>
+      </ul>
+    </div>
+    <div class="company-card" style="border-left:4px solid var(--green)">
+      <h4 style="font-size:13px;font-weight:800;color:var(--green);margin-bottom:12px">🟢 P3 长期战略（1–3年）</h4>
+      <ul style="list-style:none;font-size:12.5px">
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🏭 东南亚/墨西哥产能布局，跟随主机厂全球化</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">🤝 与国内主机厂联合申请专利，形成绑定关系</li>
+        <li style="padding:6px 0;border-bottom:1px solid var(--border)">📊 建立竞品专利监控体系，每季度更新情报</li>
+        <li style="padding:6px 0">🏆 申请 IATF 16949 + 主流主机厂全球资质认证</li>
+      </ul>
+    </div>
+  </div>
+  <div class="chart-grid c2" style="margin-top:20px">
+    <div class="chart-box">
+      <h4>📅 行动优先级甘特图（2026）</h4>
+      <canvas id="chartGantt" height="240"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>💰 建议资源投入分配</h4>
+      <canvas id="chartBudget" height="240"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 13 总结摘要 ══ -->
+<section id="summary">
+  <div class="section-title">13 总结摘要</div>
+  <div class="section-sub">核心结论 · 竞争格局 · 行动优先级</div>
+  <div class="chart-box">
+    <h4>🏆 综合竞争力评分雷达图（各企业对比）</h4>
+    <p>维度：专利强度 / 市场覆盖 / 技术创新 / 本土化能力 / 成本竞争力</p>
+    <canvas id="chartFinal" height="300"></canvas>
+  </div>
+  <div class="company-card" style="margin-top:20px;background:linear-gradient(135deg,#f0f9ff,#f0fdf4)">
+    <h4 style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:16px">📝 核心结论</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:13px;color:var(--text2)">
+      <div>
+        <p style="font-weight:700;color:var(--text);margin-bottom:8px">🔴 最紧迫威胁</p>
+        <p>Zephyros DES 定向膨胀技术（WO2024250206A1）已于2024年公开，代表下一代Baffle技术方向，需立即开展专利分析与技术跟踪。Sika 与 BMW 的联合专利（EP3254939B1）在欧洲形成技术壁垒。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:var(--text);margin-bottom:8px">🟢 海程核心优势</p>
+        <p>CN115520109B 空腔隔音+结构增强集成件是全球范围内的创新路线，具备差异化竞争价值。本土化快响应能力和新能源车身适配布局（铝型材、柔性发泡）是短期内的核心竞争武器。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:var(--text);margin-bottom:8px">📊 市场机会窗口</p>
+        <p>国内主机厂供应链本土化加速，为海程提供了扩大市场份额的战略窗口。新能源车铝型材车身的密封需求增量显著，海程 2023–2025 年的专利布局与此高度匹配。</p>
+      </div>
+      <div>
+        <p style="font-weight:700;color:var(--text);margin-bottom:8px">⚡ 下一步行动重点</p>
+        <p>①专利侵权风险排查（Sika EP3254939B1）；②DES 技术跟踪与规避方案；③核心集成件专利向PCT延伸；④加快门槛铝型材密封件的量产定点。</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:20px;padding:16px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);font-size:11px;color:var(--text3)">
+    <strong>数据来源声明：</strong>专利数据来源于智慧芽（PatSnap）平台检索结果（返回样本），专利数量为本次检索返回条目，非各企业完整专利组合总量。市场规模数据为行业估算值，仅供参考。报告生成时间：2026年5月21日。
+  </div>
+</section>
+
+</main>
+
+<script>
+const COLORS={blue:'#3b82f6',indigo:'#6366f1',green:'#10b981',orange:'#f59e0b',red:'#ef4444',purple:'#8b5cf6',teal:'#14b8a6',pink:'#ec4899',sky:'#0ea5e9',lime:'#84cc16',amber:'#f59e0b',rose:'#f43f5e'};
+const ALPHA=(c,a)=>c+Math.round(a*255).toString(16).padStart(2,'0');
+
+const HC_PATENTS=[
+  {pn:'CN218287631U',title:'一种空腔隔音胶块和结构增强件集成的结构',ipc:'B60R13/08',year:2022,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=f222d145-3ae8-496f-9fec-d4fe4add866e'},
+  {pn:'CN115520109B',title:'一种空腔隔音胶块和结构增强件集成的结构（发明）',ipc:'B60R13/08',year:2022,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=38b1da21-60b8-42a7-8925-95e431df2400'},
+  {pn:'CN211442188U',title:'一种隔音胶块卡扣结构',ipc:'B60R13/08',year:2019,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=d147919d-0a68-47b1-8f1f-37af991e7527'},
+  {pn:'CN113212328B',title:'一种空腔隔音胶块共用孔并互相卡接的安装卡扣结构',ipc:'B60R13/08',year:2021,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=c747741d-1649-49e4-966c-877d4a53e333'},
+  {pn:'CN214775698U',title:'一种左右通用的双色注塑隔音胶块',ipc:'B60R13/08',year:2021,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=98526f7d-99b9-4bd2-9aae-6c3ab30fb145'},
+  {pn:'CN113459967B',title:'一种避让运动干涉的隔音胶块结构',ipc:'B60R13/08',year:2021,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=13f89368-ad70-468c-ae8a-a2f65f3ecd66'},
+  {pn:'CN212536638U',title:'一种发泡状态一致的空腔密封胶块',ipc:'F16J15/02',year:2020,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=887cabc1-70df-4889-8c28-f6166a725682'},
+  {pn:'CN213270563U',title:'一种空腔密封胶块左右防错自身防错卡扣结构',ipc:'F16B1/02',year:2020,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=8e4b3a96-8af1-48e2-b12e-3b9a69c8cf9e'},
+  {pn:'CN212407256U',title:'一种适用于异形安装孔的膨胀胶产品的安装卡扣',ipc:'F16B21/06',year:2020,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=12645dc4-d1c8-4414-a6a7-c99dfb1c375b'},
+  {pn:'CN218431429U',title:'一种汽车顶盖横梁复合材料结构加强件',ipc:'B62D25/06',year:2022,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=ff6988c9-24b8-43e6-9dd6-5abeb5d55994'},
+  {pn:'CN218431112U',title:'一种汽车钣金空腔密封自卡发泡件',ipc:'B60R13/06',year:2022,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=dafca3c7-02b8-44a1-9b2d-c920d143f3ba'},
+  {pn:'CN220910459U',title:'一种新型自带空腔密封结构加强件',ipc:'F16J15/10',year:2023,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=f4149b59-8d0f-4363-b929-aa308d1b8674'},
+  {pn:'CN221316028U',title:'一种汽车门槛空腔密封结构',ipc:'B60R13/06',year:2023,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=7edb8d44-ac2a-4e5c-a0d5-8dd3969f05d4'},
+  {pn:'CN220904882U',title:'一种汽车内部空腔密封柔性发泡件',ipc:'B60R13/08',year:2023,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=1314f675-74cc-4633-be52-4df117ff3e7c'},
+  {pn:'CN222973333U',title:'一种汽车内部空腔密封发泡件固定结构',ipc:'B60R13/08',year:2024,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=5553c6cb-327d-4796-82d7-2365efd2f43e'},
+  {pn:'CN121133853A',title:'一种汽车安全结构件及其制造方法',ipc:'B62D29/04',year:2025,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=add275ef-f177-4bf1-8e17-a1b4366cdbe4'},
+  {pn:'CN121480043A',title:'一种结构胶块发泡烤箱的烘烤时间和耗电量的计算方法',ipc:'G06F30/20',year:2025,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=ec36ded0-e515-4d19-a77d-a7665fef229a'},
+];
+
+const ZEP_PATENTS=[
+  {pn:'WO2018075734A1',title:'Acoustic absorber composited baffle assembly',ipc:'G10K11/168',year:2017,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=d17187aa-c604-4c9d-92f7-8c48b3b27d27'},
+  {pn:'EP4724268A1',title:'Baffle/reinforcement inserts with directional expansion sealing (DES)',ipc:'B32B3/10',year:2023,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=196e2b54-f6d7-4fcc-941c-74f5dab023f5'},
+  {pn:'US9010843B2',title:'Partial-filled baffle',ipc:'B60R13/08',year:2013,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=04321af6-a0a4-4a01-8022-6d90431cdc56'},
+  {pn:'US9776368B2',title:'Partial-filled baffle',ipc:'B60R13/08',year:2015,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=0549174f-dbc4-4e4e-88c3-caeb46b55923'},
+  {pn:'US11654976B2',title:'Anti-flutter baffle',ipc:'B62D29/00',year:2018,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=87ab51e0-403f-4927-becf-9f49d758c429'},
+  {pn:'US7428774B2',title:'Baffle for an automotive vehicle',ipc:'B21D47/00',year:2005,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=17f41c0c-e208-4d2c-a02f-176994df466d'},
+  {pn:'US20250026050A1',title:'Multi-shot injection molded method and product',ipc:'B29C44/04',year:2024,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=2e4aa2da-bcd6-49a1-aa23-8cd86e1264be'},
+  {pn:'EP2858883B1',title:'Baffle with expanding material',ipc:'B62D29/00',year:2013,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=df407b8e-e0dc-47b1-a286-68e1454c064a'},
+  {pn:'US6953219B2',title:'Reinforcing members',ipc:'B62D29/00',year:2003,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=3bd66924-b863-4747-bd21-29f6043c5737'},
+  {pn:'US20240017683A1',title:'Baffle with drain path',ipc:'B60R13/07',year:2022,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=4171c850-9631-474e-96b3-fd74372c1abd'},
+];
+
+const LL_PATENTS=[
+  {pn:'WO2024250206A1',title:'Baffle/reinforcement inserts with directional expansion sealing (DES)',ipc:'B32B3/10',year:2023,status:'pending',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=92c3d160-3204-48a0-947c-17edb13c5d6b'},
+  {pn:'WO2003097405A2',title:'Improved baffle precursors',ipc:'B62D29/00',year:2003,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=1b34f4f9-278f-44ae-a5bb-5e2c3fca7907'},
+];
+
+const SIKA_PATENTS=[
+  {pn:'EP3254939B1',title:'baffle（双面膨胀·BMW联合）',ipc:'B62D25/00',year:2016,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=fe268b72-26fb-4057-8381-a72cd7e8db05'},
+  {pn:'US10384419B2',title:'Baffle（双面膨胀）',ipc:'B32B5/20',year:2017,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=9451537b-03c6-4c27-bd3e-5c088a6664d0'},
+  {pn:'US8361589B2',title:'Structural reinforcement system',ipc:'B32B3/00',year:2008,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=2329a187-3bd4-4780-857b-2b5a4ac346d9'},
+  {pn:'US10538277B2',title:'Structural reinforcement system',ipc:'B62D29/00',year:2017,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=bbfb5b0b-702b-41b6-9305-412b7421aa1c'},
+  {pn:'US9555840B2',title:'Structural reinforcement system',ipc:'B32B3/20',year:2009,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=70d19a69-aada-41cf-9644-009e7dc6b528'},
+  {pn:'EP2121270B1',title:'Structural reinforcement material, insert',ipc:'B29C44/18',year:2007,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=b2e477ad-43bc-48db-843b-afd130764073'},
+  {pn:'US6413611B1',title:'Baffle and reinforcement assembly',ipc:'B62D29/00',year:2000,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=ed332532-4176-4380-aea4-9647133a40cf'},
+  {pn:'EP3446950A1',title:'Structural reinforcement system',ipc:'B62D29/00',year:2009,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=c69b0132-4beb-4163-b03a-c65bb5e59d09'},
+];
+
+const HENKEL_PATENTS=[
+  {pn:'US6092864A',title:'Oven cured structural foam with designed-in sag positioning',ipc:'B29C44/02',year:1999,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=7a62780d-e2c1-4d9c-be2a-4317024d8daa'},
+  {pn:'US7913814B2',title:'Acoustic baffle assembly',ipc:'E04B1/84',year:2009,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=ca058fa2-82d6-4f6f-be33-2955443c421f'},
+  {pn:'US8573355B2',title:'Acoustic baffle device（翻盖式）',ipc:'F01N1/08',year:2012,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=c167fb06-c8c3-4079-b05a-4fb6a112ca72'},
+  {pn:'EP2576293B2',title:'Acoustic baffle device（翻盖，欧洲多版在效）',ipc:'B60R13/08',year:2011,status:'active',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=ebf5b502-a6e0-4a3f-8baf-7f4db7745a3a'},
+  {pn:'US6168226B1',title:'Composite laminate automotive structures',ipc:'B29C44/12',year:1998,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=9efd9994-947b-485a-96e0-d7cbd0534590'},
+  {pn:'US6451231B1',title:'Method of forming a high performance structural foam',ipc:'B29C70/00',year:1998,status:'inactive',url:'https://eureka.zhihuiya.com/view/#/fullText\'figures/?patentId=b444a7ad-6229-4b57-919e-d672b481a29b'},
+];
+
+const ALL_PATENTS=HC_PATENTS.concat(ZEP_PATENTS).concat(LL_PATENTS).concat(SIKA_PATENTS).concat(HENKEL_PATENTS);
+const NEV_PATENTS=HC_PATENTS.filter(p=>['B62D29/04','B60R13/06','B62D25/06','F16J15/10'].includes(p.ipc));
+
+// ── Render Tables ──
+function renderTable(tbodyId,patents){
+  const tb=document.getElementById(tbodyId);if(!tb)return;
+  tb.innerHTML=patents.map(p=>`<tr><td><a href="${p.url}" target="_blank">${p.pn}</a></td><td>${p.title}</td><td><code style="font-size:10px;background:#f1f5f9;padding:2px 5px;border-radius:4px">${p.ipc}</code></td><td>${p.year}</td><td><span class="status-${p.status}">${p.status==='active'?'在效':p.status==='inactive'?'失效':'审查中'}</span></td></tr>`).join('');
+}
+renderTable('hcPatentTbody',HC_PATENTS);
+renderTable('zepPatentTbody',ZEP_PATENTS);
+renderTable('llPatentTbody',LL_PATENTS);
+renderTable('sikaPatentTbody',SIKA_PATENTS);
+renderTable('henkelPatentTbody',HENKEL_PATENTS);
+
+// ── Modal ──
+function showModal(title,sub,patents){
+  document.getElementById('modal-title').textContent=title;
+  document.getElementById('modal-sub').textContent=sub;
+  const body=document.getElementById('modal-body');
+  if(!patents||patents.length===0){body.innerHTML='<p style="color:#94a3b8;font-size:13px">暂无匹配专利</p>';}
+  else{body.innerHTML=`<table class="patent-table"><thead><tr><th>专利号</th><th>标题</th><th>IPC</th><th>申请年</th><th>状态</th></tr></thead><tbody>${patents.map(p=>`<tr><td><a href="${p.url}" target="_blank">${p.pn}</a></td><td>${p.title}</td><td><code style="font-size:10px;background:#f1f5f9;padding:2px 5px;border-radius:4px">${p.ipc}</code></td><td>${p.year}</td><td><span class="status-${p.status}">${p.status==='active'?'在效':p.status==='inactive'?'失效':'审查中'}</span></td></tr>`).join('')}</tbody></table>`;}
+  document.getElementById('modal-overlay').classList.add('show');
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('show');}
+document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ── Group helpers ──
+function groupByIPC(patents){const m={};patents.forEach(p=>{const k=p.ipc.split('/')[0];if(!m[k])m[k]=[];m[k].push(p);});return m;}
+function groupByYear(patents){const m={};patents.forEach(p=>{if(!m[p.year])m[p.year]=[];m[p.year].push(p);});return m;}
+
+// ── Chart helpers ──
+function pieClickable(ctx,labels,data,colors,byLabel,title){
+  const ch=new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:colors,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:12}}}}});
+  ctx.canvas.addEventListener('click',function(e){const pts=ch.getElementsAtEventForMode(e,'nearest',{intersect:true},true);if(!pts.length)return;const lbl=labels[pts[0].index];showModal(`${title} — ${lbl}`,`共 ${(byLabel[lbl]||[]).length} 件专利（返回样本）`,byLabel[lbl]||[]);});
+  return ch;
+}
+function barClickable(ctx,labels,data,color,byLabel,title,horiz=false){
+  const ch=new Chart(ctx,{type:'bar',data:{labels,datasets:[{label:'专利数',data,backgroundColor:color,borderRadius:4}]},options:{indexAxis:horiz?'y':'x',responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#e2e8f0'}},y:{grid:{color:'#e2e8f0'}}}}});
+  ctx.canvas.addEventListener('click',function(e){const pts=ch.getElementsAtEventForMode(e,'nearest',{intersect:true},true);if(!pts.length)return;const lbl=labels[pts[0].index];showModal(`${title} — ${lbl}`,`共 ${(byLabel[lbl]||[]).length} 件专利（返回样本）`,byLabel[lbl]||[]);});
+  return ch;
+}
+
+// ── Charts ──
+// Market Share
+const msByLabel={'Zephyros/L&L':ZEP_PATENTS.concat(LL_PATENTS),'Sika':SIKA_PATENTS,'Henkel/Teroson':HENKEL_PATENTS,'海程新材料':HC_PATENTS,'其他':[]};
+pieClickable(document.getElementById('chartMarketShare').getContext('2d'),['Zephyros/L&L','Sika','Henkel/Teroson','海程新材料','其他'],[28,18,12,5,37],[COLORS.red,COLORS.green,COLORS.orange,COLORS.blue,COLORS.teal],msByLabel,'市场份额');
+
+// Growth
+new Chart(document.getElementById('chartGrowth').getContext('2d'),{type:'line',data:{labels:['2020','2021','2022','2023','2024','2025E','2026E'],datasets:[{label:'市场规模（亿$）',data:[26,28,31,34,38,42,46],borderColor:COLORS.blue,backgroundColor:ALPHA(COLORS.blue,0.1),fill:true,tension:.4,pointRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#e2e8f0'}}}}});
+
+// Region
+new Chart(document.getElementById('chartRegion').getContext('2d'),{type:'doughnut',data:{labels:['欧洲','中国','北美','日韩','其他'],datasets:[{data:[35,28,22,10,5],backgroundColor:[COLORS.blue,COLORS.red,COLORS.green,COLORS.orange,COLORS.teal],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:12}}}}});
+
+// IPC all
+const ipcGroups=groupByIPC(ALL_PATENTS);
+const ipcLabels=Object.keys(ipcGroups).sort();
+barClickable(document.getElementById('chartIPC').getContext('2d'),ipcLabels,ipcLabels.map(k=>ipcGroups[k].length),ipcLabels.map((_,i)=>Object.values(COLORS)[i%10]),ipcGroups,'IPC技术分类');
+
+// App
+new Chart(document.getElementById('chartApp').getContext('2d'),{type:'doughnut',data:{labels:['A柱密封','B柱密封','C/D柱密封','顶盖横梁','门槛','发动机舱','其他'],datasets:[{data:[30,25,18,10,8,5,4],backgroundColor:[COLORS.blue,COLORS.indigo,COLORS.purple,COLORS.teal,COLORS.green,COLORS.orange,COLORS.rose],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10},boxWidth:10}}}}});
+
+// HC IPC
+const hcIpcG=groupByIPC(HC_PATENTS),hcIpcL=Object.keys(hcIpcG);
+pieClickable(document.getElementById('chartHCIPC').getContext('2d'),hcIpcL,hcIpcL.map(k=>hcIpcG[k].length),[COLORS.blue,COLORS.indigo,COLORS.green,COLORS.orange,COLORS.teal,COLORS.purple],hcIpcG,'海程 IPC 分类');
+
+// HC Year
+const hcYG=groupByYear(HC_PATENTS),hcYL=Object.keys(hcYG).sort();
+barClickable(document.getElementById('chartHCYear').getContext('2d'),hcYL,hcYL.map(k=>hcYG[k].length),ALPHA(COLORS.blue,0.75),hcYG,'海程申请年');
+
+// Zep IPC
+const zepIG=groupByIPC(ZEP_PATENTS),zepIL=Object.keys(zepIG);
+pieClickable(document.getElementById('chartZepIPC').getContext('2d'),zepIL,zepIL.map(k=>zepIG[k].length),[COLORS.red,COLORS.orange,COLORS.purple,COLORS.blue,COLORS.teal],zepIG,'Zephyros IPC');
+const zepYG=groupByYear(ZEP_PATENTS),zepYL=Object.keys(zepYG).sort();
+barClickable(document.getElementById('chartZepYear').getContext('2d'),zepYL,zepYL.map(k=>zepYG[k].length),ALPHA(COLORS.red,0.75),zepYG,'Zephyros 申请年');
+
+// Sika IPC
+const sikaIG=groupByIPC(SIKA_PATENTS),sikaIL=Object.keys(sikaIG);
+pieClickable(document.getElementById('chartSikaIPC').getContext('2d'),sikaIL,sikaIL.map(k=>sikaIG[k].length),[COLORS.green,COLORS.teal,COLORS.blue,COLORS.indigo,COLORS.orange],sikaIG,'Sika IPC');
+const sikaYG=groupByYear(SIKA_PATENTS),sikaYL=Object.keys(sikaYG).sort();
+barClickable(document.getElementById('chartSikaYear').getContext('2d'),sikaYL,sikaYL.map(k=>sikaYG[k].length),ALPHA(COLORS.green,0.75),sikaYG,'Sika 申请年');
+
+// Patent compare
+const compLabels=['Zephyros','L&L','Sika','Henkel','海程'];
+const compMap={'Zephyros':ZEP_PATENTS,'L&L':LL_PATENTS,'Sika':SIKA_PATENTS,'Henkel':HENKEL_PATENTS,'海程':HC_PATENTS};
+barClickable(document.getElementById('chartCompPatent').getContext('2d'),compLabels,compLabels.map(k=>compMap[k].length),[COLORS.red,COLORS.purple,COLORS.green,COLORS.orange,COLORS.blue],compMap,'企业专利');
+
+// Bubble
+new Chart(document.getElementById('chartBubble').getContext('2d'),{type:'bubble',data:{datasets:[{label:'Zephyros',data:[{x:2010,y:35,r:18}],backgroundColor:ALPHA(COLORS.red,0.7)},{label:'Sika',data:[{x:2008,y:28,r:15}],backgroundColor:ALPHA(COLORS.green,0.7)},{label:'Henkel',data:[{x:2002,y:80,r:12}],backgroundColor:ALPHA(COLORS.orange,0.7)},{label:'海程',data:[{x:2021,y:1.2,r:10}],backgroundColor:ALPHA(COLORS.blue,0.7)},{label:'L&L',data:[{x:2012,y:4,r:8}],backgroundColor:ALPHA(COLORS.purple,0.7)},]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{x:{title:{display:true,text:'平均申请年'},grid:{color:'#e2e8f0'}},y:{title:{display:true,text:'平均被引次数'},grid:{color:'#e2e8f0'}}}}});
+
+// IPC Radar
+new Chart(document.getElementById('chartIPCRadar').getContext('2d'),{type:'radar',data:{labels:['B60R13/08','B62D29/00','B29C44','F16J15','G10K11','B32B'],datasets:[{label:'Zephyros',data:[6,3,2,0,1,1],borderColor:COLORS.red,backgroundColor:ALPHA(COLORS.red,0.12),pointRadius:4},{label:'Sika',data:[2,5,2,0,0,3],borderColor:COLORS.green,backgroundColor:ALPHA(COLORS.green,0.12),pointRadius:4},{label:'Henkel',data:[5,0,5,0,1,0],borderColor:COLORS.orange,backgroundColor:ALPHA(COLORS.orange,0.12),pointRadius:4},{label:'海程',data:[9,1,0,3,0,0],borderColor:COLORS.blue,backgroundColor:ALPHA(COLORS.blue,0.12),pointRadius:4}]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{r:{grid:{color:'#e2e8f0'},pointLabels:{font:{size:10}}}}}});
+
+// Trend
+new Chart(document.getElementById('chartTrend').getContext('2d'),{type:'line',data:{labels:['2000','2003','2006','2009','2012','2015','2018','2021','2024'],datasets:[{label:'Zephyros',data:[0,2,3,1,2,2,2,1,2],borderColor:COLORS.red,tension:.3,pointRadius:3},{label:'Sika',data:[1,0,0,2,1,0,2,1,1],borderColor:COLORS.green,tension:.3,pointRadius:3},{label:'Henkel',data:[2,1,2,2,1,0,1,0,0],borderColor:COLORS.orange,tension:.3,pointRadius:3},{label:'海程',data:[0,0,0,0,0,0,0,3,4],borderColor:COLORS.blue,tension:.3,pointRadius:3}]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{y:{grid:{color:'#e2e8f0'}},x:{grid:{color:'#e2e8f0'}}}}});
+
+// Activity
+new Chart(document.getElementById('chartActivity').getContext('2d'),{type:'bar',data:{labels:['2017','2018','2019','2020','2021','2022','2023','2024','2025'],datasets:[{label:'Zephyros',data:[1,1,0,0,0,1,1,1,1],backgroundColor:ALPHA(COLORS.red,0.7)},{label:'Sika',data:[2,0,0,0,0,0,0,0,0],backgroundColor:ALPHA(COLORS.green,0.7)},{label:'Henkel',data:[0,0,0,0,0,0,0,0,0],backgroundColor:ALPHA(COLORS.orange,0.7)},{label:'海程',data:[0,0,1,3,3,4,3,1,2],backgroundColor:ALPHA(COLORS.blue,0.7)}]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{x:{stacked:true,grid:{color:'#e2e8f0'}},y:{stacked:true,grid:{color:'#e2e8f0'}}}}});
+
+// OEM Radar
+new Chart(document.getElementById('chartOEMRadar').getContext('2d'),{type:'radar',data:{labels:['声学性能','碰撞安全','轻量化','本土化','集成度'],datasets:[{label:'BMW',data:[5,4,5,3,5],borderColor:COLORS.blue,backgroundColor:ALPHA(COLORS.blue,0.1),pointRadius:4},{label:'VW/Audi',data:[4,5,4,3,4],borderColor:COLORS.red,backgroundColor:ALPHA(COLORS.red,0.1),pointRadius:4},{label:'国内主机厂',data:[3,4,3,5,4],borderColor:COLORS.green,backgroundColor:ALPHA(COLORS.green,0.1),pointRadius:4},{label:'Ford/GM',data:[3,4,3,4,3],borderColor:COLORS.orange,backgroundColor:ALPHA(COLORS.orange,0.1),pointRadius:4}]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{r:{min:0,max:5,grid:{color:'#e2e8f0'},pointLabels:{font:{size:11}}}}}});
+
+// Threat scatter
+new Chart(document.getElementById('chartThreat').getContext('2d'),{type:'scatter',data:{datasets:[{label:'Zephyros DES',data:[{x:0.9,y:0.95}],pointRadius:14,backgroundColor:COLORS.red},{label:'Sika BMW联开',data:[{x:0.85,y:0.8}],pointRadius:12,backgroundColor:COLORS.orange},{label:'L&L 欧洲扩张',data:[{x:0.75,y:0.75}],pointRadius:10,backgroundColor:COLORS.purple},{label:'国内低价竞品',data:[{x:0.9,y:0.6}],pointRadius:11,backgroundColor:COLORS.teal},{label:'原材料波动',data:[{x:0.85,y:0.55}],pointRadius:9,backgroundColor:COLORS.lime},{label:'Henkel翻盖专利',data:[{x:0.4,y:0.6}],pointRadius:8,backgroundColor:COLORS.blue}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:10}}},scales:{x:{min:0,max:1,title:{display:true,text:'影响力'},grid:{color:'#e2e8f0'}},y:{min:0,max:1,title:{display:true,text:'发生概率'},grid:{color:'#e2e8f0'}}}}});
+
+// Gantt
+new Chart(document.getElementById('chartGantt').getContext('2d'),{type:'bar',data:{labels:['专利风险排查','集成件量产推广','PCT专利申请','新能源适配开发','翻盖Baffle研发','配方自研投入'],datasets:[{label:'开始月',data:[0,0,1,2,3,6],backgroundColor:'rgba(0,0,0,0)'},{label:'持续月数',data:[2,6,4,8,6,12],backgroundColor:[COLORS.red,COLORS.red,COLORS.orange,COLORS.orange,COLORS.green,COLORS.green]}]},options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false}},scales:{x:{stacked:true,grid:{color:'#e2e8f0'},title:{display:true,text:'月份（2026）'}},y:{stacked:true,grid:{color:'#e2e8f0'}}}}});
+
+// Budget
+new Chart(document.getElementById('chartBudget').getContext('2d'),{type:'doughnut',data:{labels:['专利申请&维权','研发投入','市场开拓','供应链建设','人才培养'],datasets:[{data:[25,35,20,15,5],backgroundColor:[COLORS.red,COLORS.blue,COLORS.green,COLORS.orange,COLORS.purple],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:12}}}}});
+
+// Final Radar
+new Chart(document.getElementById('chartFinal').getContext('2d'),{type:'radar',data:{labels:['专利强度','市场覆盖','技术创新','本土化能力','成本竞争力'],datasets:[{label:'Zephyros',data:[5,5,5,3,3],borderColor:COLORS.red,backgroundColor:ALPHA(COLORS.red,0.12),pointRadius:4},{label:'Sika',data:[4,5,4,4,3],borderColor:COLORS.green,backgroundColor:ALPHA(COLORS.green,0.12),pointRadius:4},{label:'Henkel',data:[3,4,3,3,3],borderColor:COLORS.orange,backgroundColor:ALPHA(COLORS.orange,0.12),pointRadius:4},{label:'海程',data:[2,2,4,5,5],borderColor:COLORS.blue,backgroundColor:ALPHA(COLORS.blue,0.15),pointRadius:4}]},options:{responsive:true,plugins:{legend:{position:'right'}},scales:{r:{min:0,max:5,grid:{color:'#e2e8f0'},pointLabels:{font:{size:11}}}}}});
+
+// Download
+function downloadHTML(){
+  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='竞争情报简报_海程新材料_2026Q2_V8.html';a.click();
+}
+
+// Nav highlight on scroll
+const sections=document.querySelectorAll('section[id]');
+const navItems=document.querySelectorAll('.nav-item');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  navItems.forEach(n=>{n.classList.toggle('active',n.getAttribute('href')==='#'+cur);});
+});
+</script>
+</body>
+</html>

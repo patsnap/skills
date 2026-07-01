@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Smart cockpit supply-chain visual</title>
+  <desc id="desc">Generated local SVG visual for smart cockpit and supplier relationship scenes.</desc>
+  <rect width="1200" height="820" fill="#071014"/>
+  <g transform="translate(130 150)">
+    <path d="M120 308c70-118 154-174 288-188h274c134 14 218 70 288 188v184H120V308Z" fill="#10242b" stroke="#18d4d2" stroke-width="5"/>
+    <rect x="260" y="180" width="572" height="192" rx="20" fill="#111b22" stroke="#6fb0ff" stroke-width="4"/>
+    <rect x="300" y="220" width="230" height="112" rx="12" fill="#13252c" stroke="#18d4d2" stroke-width="3"/>
+    <rect x="562" y="220" width="230" height="112" rx="12" fill="#13252c" stroke="#ffd166" stroke-width="3"/>
+    <circle cx="256" cy="524" r="58" fill="#061014" stroke="#edf8f6" stroke-width="9"/>
+    <circle cx="834" cy="524" r="58" fill="#061014" stroke="#edf8f6" stroke-width="9"/>
+    <g stroke="#86efac" stroke-width="4" fill="none" opacity=".72">
+      <path d="M420 180V80h-150"/>
+      <path d="M676 180V80h150"/>
+      <path d="M546 372v92"/>
+    </g>
+    <g fill="#13252c" stroke="#86efac" stroke-width="3">
+      <rect x="104" y="30" width="236" height="76" rx="8"/>
+      <rect x="752" y="30" width="236" height="76" rx="8"/>
+      <rect x="428" y="444" width="236" height="76" rx="8"/>
+    </g>
+  </g>
+  <g font-family="Arial, 'PingFang SC', sans-serif" font-weight="800" text-anchor="middle">
+    <text x="600" y="92" fill="#edf8f6" font-size="54">Smart Cockpit Supply Chain</text>
+    <text x="600" y="142" fill="#9db0ad" font-size="24">Display / Sensors / Controller / Tier0-Tier1-Tier2 relationship</text>
+    <text x="352" y="232" fill="#86efac" font-size="23">Display Tier2</text>
+    <text x="1000" y="232" fill="#86efac" font-size="23">Sensor Tier2</text>
+    <text x="676" y="646" fill="#86efac" font-size="23">Controller Tier1</text>
+    <text x="543" y="430" fill="#18d4d2" font-size="28">Cockpit</text>
+    <text x="806" y="430" fill="#ffd166" font-size="28">ADAS</text>
+  </g>
+</svg>

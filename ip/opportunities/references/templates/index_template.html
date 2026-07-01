@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TOPIC}} — 专利机会评估报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root {
+  --bg-base: #070b14;
+  --bg-surface: #0d1525;
+  --bg-card: #111c33;
+  --bg-elevated: #162040;
+  --color-primary: #3b82f6;
+  --color-accent: #06d6a0;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-purple: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border-subtle: rgba(59,130,246,0.15);
+  --glow-blue: 0 0 20px rgba(59,130,246,0.3);
+  --glow-accent: 0 0 20px rgba(6,214,160,0.3);
+  --radius-card: 16px;
+  --radius-sm: 8px;
+  --font-title: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-base);color:var(--text-primary);font-family:var(--font-body);min-height:100vh;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,11,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-subtle);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font-title);font-weight:700;font-size:1rem;color:var(--color-accent);letter-spacing:0.05em}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:color .2s}
+.nav-links a:hover{color:var(--color-primary)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:60px}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(59,130,246,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 70%,rgba(6,214,160,0.08) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 20%,rgba(139,92,246,0.07) 0%,transparent 60%)}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;animation:blob 8s ease-in-out infinite}
+.blob-1{width:500px;height:500px;background:#3b82f6;top:10%;left:20%;animation-delay:0s}
+.blob-2{width:400px;height:400px;background:#06d6a0;top:50%;right:15%;animation-delay:3s}
+.blob-3{width:300px;height:300px;background:#8b5cf6;bottom:10%;left:40%;animation-delay:6s}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.05)}66%{transform:translate(-20px,20px) scale(0.95)}}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:960px;padding:2rem}
+.hero-badge{display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:0.4rem 1.2rem;font-size:0.75rem;color:var(--color-primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-title{font-family:var(--font-title);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1rem}
+.hero-title span{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--text-secondary);max-width:640px;margin:0 auto 2rem;line-height:1.7}
+.score-ring-wrap{display:flex;justify-content:center;margin-bottom:2rem}
+.score-ring-svg{filter:drop-shadow(0 0 20px rgba(6,214,160,0.4))}
+.score-ring-text{font-family:var(--font-title);font-size:2.2rem;font-weight:800;fill:var(--color-accent)}
+.score-ring-sub{font-family:var(--font-body);font-size:0.8rem;fill:var(--text-secondary)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-bottom:2rem}
+.tag{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:0.4rem 1rem;font-size:0.8rem;color:var(--text-secondary)}
+.tag.good{border-color:rgba(6,214,160,0.4);color:var(--color-accent);background:rgba(6,214,160,0.08)}
+.tag.warn{border-color:rgba(245,158,11,0.4);color:var(--color-warning);background:rgba(245,158,11,0.08)}
+.tag.info{border-color:rgba(59,130,246,0.4);color:var(--color-primary);background:rgba(59,130,246,0.08)}
+.hero-nav-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.btn-outline{padding:0.6rem 1.4rem;border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:all .2s}
+.btn-outline:hover{border-color:var(--color-primary);color:var(--color-primary);box-shadow:var(--glow-blue)}
+section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+.section-header{margin-bottom:2.5rem}
+.section-label{font-size:0.7rem;color:var(--color-primary);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title{font-family:var(--font-title);font-size:2rem;font-weight:700}
+.section-desc{color:var(--text-secondary);margin-top:0.5rem;font-size:0.95rem;line-height:1.6}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.25rem}
+.kpi-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.5rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.kpi-card:hover{transform:translateY(-3px);box-shadow:var(--glow-blue)}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent))}
+.kpi-icon{font-size:1.5rem;margin-bottom:0.75rem}
+.kpi-value{font-family:var(--font-title);font-size:1.8rem;font-weight:700}
+.kpi-label{font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem}
+.kpi-sub{font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem}
+.chart-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:900px){.chart-grid-2{grid-template-columns:1fr}}
+.chart-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.5rem}
+.chart-title{font-family:var(--font-title);font-size:1rem;font-weight:600;margin-bottom:0.25rem}
+.chart-source{font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem}
+.chart-container{width:100%;height:300px}
+.chart-container-lg{width:100%;height:380px}
+.prose{color:var(--text-secondary);line-height:1.8;font-size:0.95rem}
+.prose h3{font-family:var(--font-title);color:var(--text-primary);font-size:1.1rem;font-weight:600;margin:1.5rem 0 0.75rem}
+.prose p{margin-bottom:1rem}
+.prose ul{padding-left:1.5rem;margin-bottom:1rem}
+.prose li{margin-bottom:0.5rem}
+.claim-tag{display:inline-block;font-family:var(--font-mono);font-size:0.65rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:var(--color-primary);border-radius:4px;padding:0.1rem 0.4rem;margin-left:0.4rem;vertical-align:middle}
+.data-source-note{font-size:0.75rem;color:var(--text-muted);background:rgba(255,255,255,0.03);border-left:2px solid var(--color-primary);padding:0.5rem 0.75rem;margin:0.5rem 0 1rem;border-radius:0 4px 4px 0}
+.conclusion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
+.conclusion-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.5rem;position:relative;overflow:hidden}
+.conclusion-card.positive{border-color:rgba(6,214,160,0.3)}
+.conclusion-card.positive::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-accent),#3b82f6)}
+.conclusion-card.negative{border-color:rgba(239,68,68,0.3)}
+.conclusion-card.negative::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-danger),var(--color-warning))}
+.conclusion-card.neutral{border-color:rgba(245,158,11,0.3)}
+.conclusion-card.neutral::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-warning),var(--color-purple))}
+.conc-icon{font-size:1.4rem;margin-bottom:0.75rem}
+.conc-title{font-family:var(--font-title);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem}
+.conc-body{font-size:0.82rem;color:var(--text-secondary);line-height:1.6}
+.score-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:1rem}
+.score-table th{padding:0.75rem 1rem;text-align:left;font-size:0.7rem;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--bg-elevated)}
+.score-table td{padding:0.85rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04)}
+.score-bar-wrap{width:100px;background:rgba(255,255,255,0.08);border-radius:4px;height:6px;display:inline-block;vertical-align:middle;margin-right:8px}
+.score-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent))}
+.gap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
+.gap-card{background:var(--bg-card);border:1px solid rgba(139,92,246,0.2);border-radius:var(--radius-card);padding:1.5rem;position:relative;overflow:hidden}
+.gap-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-purple),var(--color-primary))}
+.gap-title{font-family:var(--font-title);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;color:var(--color-accent)}
+.gap-body{font-size:0.82rem;color:var(--text-secondary);line-height:1.6}
+.patent-table-wrap{overflow-x:auto;border-radius:var(--radius-card);border:1px solid var(--border-subtle)}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+thead tr{background:var(--bg-elevated)}
+thead th{padding:1rem 1.2rem;text-align:left;font-size:0.7rem;color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle)}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background .15s}
+tbody tr:hover{background:rgba(59,130,246,0.05)}
+tbody td{padding:0.85rem 1.2rem;color:var(--text-primary);vertical-align:top}
+.patent-link{font-family:var(--font-mono);font-size:0.78rem;color:var(--color-primary);text-decoration:none;transition:color .2s,text-shadow .2s}
+.patent-link:hover{color:var(--color-accent);text-shadow:0 0 8px rgba(6,214,160,0.6)}
+.badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.7rem;font-weight:500}
+.badge-active{background:rgba(6,214,160,0.15);color:var(--color-accent);border:1px solid rgba(6,214,160,0.3)}
+.badge-inactive{background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.2)}
+.badge-pending{background:rgba(245,158,11,0.1);color:var(--color-warning);border:1px solid rgba(245,158,11,0.2)}
+footer{background:var(--bg-surface);border-top:1px solid var(--border-subtle);padding:3rem 2rem;text-align:center}
+.footer-note{font-size:0.78rem;color:var(--text-muted);line-height:1.8;max-width:700px;margin:0 auto}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">⚡ PatSnap · 专利机会评估</div>
+  <div class="nav-links">
+    <a href="#overview">概览</a><a href="#trends">趋势</a><a href="#subfields">子方向</a>
+    <a href="#conclusion">结论</a><a href="patents.html">专利库</a>
+    <a href="evidence.html">证据链</a><a href="subfields.html">分支分析</a><a href="methodology.html">方法论</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">专利情报 · 技术机会评估报告</div>
+    <h1 class="hero-title"><span>{{TOPIC}}</span></h1>
+    <p class="hero-sub">基于智慧芽全球专利数据库，通过全量逐年检索、子技术方向独立统计、代表专利证据链分析，评估该技术方向的研发投资价值。</p>
+    <div class="score-ring-wrap">
+      <svg class="score-ring-svg" width="180" height="180" viewBox="0 0 180 180">
+        <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(59,130,246,0.15)" stroke-width="12"/>
+        <circle cx="90" cy="90" r="70" fill="none" stroke="url(#sg)" stroke-width="12"
+          stroke-dasharray="{{SCORE_DASH}} 440" stroke-linecap="round" transform="rotate(-90 90 90)"/>
+        <defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#06d6a0"/>
+        </linearGradient></defs>
+        <text x="90" y="85" text-anchor="middle" class="score-ring-text">{{SCORE}}</text>
+        <text x="90" y="105" text-anchor="middle" class="score-ring-sub">综合推荐指数</text>
+        <text x="90" y="120" text-anchor="middle" class="score-ring-sub">/100</text>
+      </svg>
+    </div>
+    <div class="hero-tags">
+      <span class="tag {{RECOMMEND_CLASS}}">{{RECOMMEND_TEXT}}</span>
+      <span class="tag info">全球专利：{{TOTAL_PATENTS}}件</span>
+      <span class="tag info">数据区间：2015–{{CURRENT_YEAR}}</span>
+      <span class="tag {{RISK_CLASS}}">竞争风险：{{RISK_LEVEL}}</span>
+    </div>
+    <div class="hero-nav-btns">
+      <a href="patents.html" class="btn-outline">📋 专利详情</a>
+      <a href="evidence.html" class="btn-outline">🔗 证据链</a>
+      <a href="subfields.html" class="btn-outline">🔬 子技术分析</a>
+      <a href="methodology.html" class="btn-outline">📐 方法论</a>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="section-header">
+    <div class="section-label">数据概览</div>
+    <h2 class="section-title">核心指标</h2>
+    <p class="section-desc">基于全量逐年分桶检索统计，所有数值来自 matched_total，非样本估算。</p>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-icon">🌍</div><div class="kpi-value">{{TOTAL_PATENTS}}</div><div class="kpi-label">全球专利总量</div><div class="kpi-sub">{{SEARCH_SCOPE}}</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🇨🇳</div><div class="kpi-value">{{CN_TOTAL}}</div><div class="kpi-label">中国专利总量</div><div class="kpi-sub">占全球 {{CN_RATIO}}%</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📈</div><div class="kpi-value">{{CAGR}}%</div><div class="kpi-label">近五年CAGR</div><div class="kpi-sub">{{CAGR_PERIOD}}</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🔬</div><div class="kpi-value">{{SUBFIELD_COUNT}}</div><div class="kpi-label">子技术方向</div><div class="kpi-sub">独立检索统计</div></div>
+    <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-value">{{SCORE}}/100</div><div class="kpi-label">综合推荐指数</div><div class="kpi-sub">{{RECOMMEND_TEXT}}</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📄</div><div class="kpi-value">{{SAMPLE_COUNT}}</div><div class="kpi-label">代表专利样本</div><div class="kpi-sub">相关性Top样本</div></div>
+  </div>
+</section>
+
+<section id="foreword">
+  <div class="section-header">
+    <div class="section-label">研究背景</div>
+    <h2 class="section-title">前言与背景</h2>
+  </div>
+  <div class="prose">{{FOREWORD_HTML}}</div>
+</section>
+
+<section id="trends">
+  <div class="section-header">
+    <div class="section-label">专利趋势</div>
+    <h2 class="section-title">全球与中国专利申请趋势</h2>
+    <p class="section-desc">数据来源：逐年分桶检索（2015–{{CURRENT_YEAR}}），每年独立获取 matched_total，全量统计，非样本估算。</p>
+  </div>
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="chart-title">全球年度申请趋势 <span class="claim-tag">T001</span></div>
+      <div class="chart-source">数据来源：全量分桶检索 matched_total | 检索式：{{SEARCH_FORMULA_SHORT}}</div>
+      <div class="chart-container" id="chartGlobal"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">全球 vs 中国趋势对比 <span class="claim-tag">T002</span></div>
+      <div class="chart-source">数据来源：全量分桶检索（全球 + jurisdiction=CN 过滤）</div>
+      <div class="chart-container" id="chartCompare"></div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem" class="prose">{{TREND_ANALYSIS_HTML}}</div>
+</section>
+
+<section id="subfields">
+  <div class="section-header">
+    <div class="section-label">技术分布</div>
+    <h2 class="section-title">子技术方向热度分析</h2>
+    <p class="section-desc">每个子技术方向单独检索，数值为该方向的 matched_total，全量统计。</p>
+  </div>
+  <div class="chart-card" style="margin-bottom:1.5rem">
+    <div class="chart-title">子技术方向专利规模对比 <span class="claim-tag">S001</span></div>
+    <div class="chart-source">数据来源：各子方向独立关键词检索 matched_total</div>
+    <div class="chart-container-lg" id="chartSubfields"></div>
+  </div>
+  <div class="prose">{{SUBFIELD_ANALYSIS_HTML}}</div>
+</section>
+
+<section id="scoring">
+  <div class="section-header">
+    <div class="section-label">综合评估</div>
+    <h2 class="section-title">六维评分体系</h2>
+  </div>
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="chart-title">六维评分雷达图 <span class="claim-tag">R001</span></div>
+      <div class="chart-source">趋势/子技术维度来自全量数据；申请人/质量维度来自TopK样本估算</div>
+      <div class="chart-container" id="chartRadar"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">各维度得分明细</div>
+      <div class="chart-source">满分100分，各维度权重详见方法论</div>
+      <table class="score-table">
+        <thead><tr><th>维度</th><th>得分</th><th>满分</th><th>进度</th><th>说明</th></tr></thead>
+        <tbody>{{SCORE_TABLE_ROWS}}</tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="gaps">
+  <div class="section-header">
+    <div class="section-label">机会发现</div>
+    <h2 class="section-title">技术空白点与机会方向</h2>
+    <p class="section-desc">基于子技术方向专利密度对比和增长信号识别出的低竞争、高潜力方向。</p>
+  </div>
+  <div class="gap-grid">{{GAP_CARDS_HTML}}</div>
+</section>
+
+<section id="conclusion">
+  <div class="section-header">
+    <div class="section-label">核心判断</div>
+    <h2 class="section-title">综合研发与投资结论</h2>
+    <p class="section-desc">基于全量统计数据和代表专利样本分析，给出明确的研发投入建议。</p>
+  </div>
+  <div class="prose">{{CONCLUSION_HTML}}</div>
+  <div class="conclusion-grid" style="margin-top:2rem">{{CONCLUSION_CARDS_HTML}}</div>
+</section>
+
+<section id="layout">
+  <div class="section-header">
+    <div class="section-label">战略建议</div>
+    <h2 class="section-title">专利布局建议</h2>
+  </div>
+  <div class="prose">{{LAYOUT_HTML}}</div>
+</section>
+
+<section id="top-patents">
+  <div class="section-header">
+    <div class="section-label">代表专利</div>
+    <h2 class="section-title">Top 10 代表专利</h2>
+    <p class="section-desc">⚠️ 以下专利为相关性排序样本，不代表申请量排名，不用于统计图表。</p>
+  </div>
+  <div class="patent-table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>专利号</th><th>标题</th><th>申请人</th><th>申请日</th><th>状态</th></tr></thead>
+      <tbody>{{TOP10_PATENT_ROWS}}</tbody>
+    </table>
+  </div>
+</section>
+
+<section id="data-notes">
+  <div class="section-header">
+    <div class="section-label">透明度声明</div>
+    <h2 class="section-title">数据说明与免责</h2>
+  </div>
+  <div class="prose">
+    <h3>检索式</h3>
+    <p style="font-family:var(--font-mono);font-size:0.82rem;color:var(--color-primary);background:var(--bg-elevated);padding:1rem;border-radius:8px;word-break:break-all;">{{SEARCH_FORMULA_FULL}}</p>
+    <h3>统计口径</h3>
+    <p>趋势图数据：逐年分桶检索（2015–{{CURRENT_YEAR}}），每年独立 API 调用获取 matched_total，为全量统计数据。</p>
+    <p>子技术方向数据：每个子方向独立关键词检索，matched_total 为该子方向的全量专利数。</p>
+    <p>代表专利样本：相关性排序 TopK 返回，仅用于专利展示和证据链，不用于任何统计图表。</p>
+    <h3>不可用数据说明</h3>
+    <p>申请人排名、地域分布、法律状态分布因当前工具不具备全量聚合接口，本报告不生成相关图表，以避免基于样本的误导性统计。详见 <a href="methodology.html" style="color:var(--color-primary)">methodology.html</a>。</p>
+    <h3>免责声明</h3>
+    <p>本报告基于专利公开信息，不构成法律意见、投资建议，不替代 FTO 分析、市场调研、法规评估和技术专家判断。</p>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-note">本报告由智慧芽 PatSnap 专利数据库支持 · 检索日期：{{GENERATED_DATE}} · 数据来源：全球专利公开信息 · 趋势数据基于全量分桶检索，非样本估算</p>
+</footer>
+
+<script>
+const DATA = {
+  years: {{YEARS_JSON}},
+  globalTrend: {{GLOBAL_TREND_JSON}},
+  cnTrend: {{CN_TREND_JSON}},
+  subfields: {{SUBFIELDS_JSON}},
+  subfieldCounts: {{SUBFIELD_COUNTS_JSON}},
+  radarIndicators: {{RADAR_INDICATORS_JSON}},
+  radarValues: {{RADAR_VALUES_JSON}}
+};
+const ECHARTS_COMMON = {
+  tooltip_bg: 'rgba(13,21,37,0.95)',
+  tooltip_border: 'rgba(59,130,246,0.3)',
+  axis_color: 'rgba(255,255,255,0.15)',
+  split_color: 'rgba(255,255,255,0.06)',
+  label_color: '#94a3b8'
+};
+const cG = echarts.init(document.getElementById('chartGlobal'));
+cG.setOption({backgroundColor:'transparent',tooltip:{trigger:'axis',backgroundColor:ECHARTS_COMMON.tooltip_bg,borderColor:ECHARTS_COMMON.tooltip_border,textStyle:{color:'#f1f5f9'},formatter:p=>`${p[0].axisValue}年<br/>全球申请量：<b>${p[0].value}</b> 件`},grid:{left:'5%',right:'5%',bottom:'10%',top:'10%',containLabel:true},xAxis:{type:'category',data:DATA.years,axisLine:{lineStyle:{color:ECHARTS_COMMON.axis_color}},axisLabel:{color:ECHARTS_COMMON.label_color,fontSize:11}},yAxis:{type:'value',splitLine:{lineStyle:{color:ECHARTS_COMMON.split_color}},axisLabel:{color:ECHARTS_COMMON.label_color,fontSize:11}},series:[{name:'全球专利申请量',type:'line',data:DATA.globalTrend,smooth:true,symbol:'circle',symbolSize:6,lineStyle:{width:3,color:'#3b82f6'},areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(59,130,246,0.3)'},{offset:1,color:'rgba(59,130,246,0.02)'}]}},itemStyle:{color:'#3b82f6'}}]});
+const cC = echarts.init(document.getElementById('chartCompare'));
+cC.setOption({backgroundColor:'transparent',tooltip:{trigger:'axis',backgroundColor:ECHARTS_COMMON.tooltip_bg,borderColor:ECHARTS_COMMON.tooltip_border,textStyle:{color:'#f1f5f9'}},legend:{data:['全球','中国'],textStyle:{color:'#94a3b8'},top:0},grid:{left:'5%',right:'5%',bottom:'10%',top:'15%',containLabel:true},xAxis:{type:'category',data:DATA.years,axisLine:{lineStyle:{color:ECHARTS_COMMON.axis_color}},axisLabel:{color:ECHARTS_COMMON.label_color,fontSize:11}},yAxis:{type:'value',splitLine:{lineStyle:{color:ECHARTS_COMMON.split_color}},axisLabel:{color:ECHARTS_COMMON.label_color,fontSize:11}},series:[{name:'全球',type:'line',data:DATA.globalTrend,smooth:true,lineStyle:{width:2,color:'#3b82f6'},itemStyle:{color:'#3b82f6'}},{name:'中国',type:'line',data:DATA.cnTrend,smooth:true,lineStyle:{width:2,color:'#06d6a0'},itemStyle:{color:'#06d6a0'}}]});
+const cS = echarts.init(document.getElementById('chartSubfields'));
+cS.setOption({backgroundColor:'transparent',tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:ECHARTS_COMMON.tooltip_bg,borderColor:ECHARTS_COMMON.tooltip_border,textStyle:{color:'#f1f5f9'},formatter:p=>`${p[0].name}<br/>专利数量：<b>${p[0].value}</b> 件`},grid:{left:'2%',right:'10%',bottom:'5%',top:'5%',containLabel:true},xAxis:{type:'value',splitLine:{lineStyle:{color:ECHARTS_COMMON.split_color}},axisLabel:{color:ECHARTS_COMMON.label_color}},yAxis:{type:'category',data:DATA.subfields,axisLabel:{color:'#f1f5f9',fontSize:12},axisLine:{lineStyle:{color:ECHARTS_COMMON.axis_color}}},series:[{type:'bar',data:DATA.subfieldCounts,barMaxWidth:36,itemStyle:{borderRadius:[0,6,6,0],color:{type:'linear',x:0,y:0,x2:1,y2:0,colorStops:[{offset:0,color:'rgba(59,130,246,0.6)'},{offset:1,color:'#06d6a0'}]}},label:{show:true,position:'right',color:'#94a3b8',fontSize:11,formatter:'{c} 件'}}]});
+const cR = echarts.init(document.getElementById('chartRadar'));
+cR.setOption({backgroundColor:'transparent',tooltip:{backgroundColor:ECHARTS_COMMON.tooltip_bg,borderColor:ECHARTS_COMMON.tooltip_border,textStyle:{color:'#f1f5f9'}},radar:{indicator:DATA.radarIndicators,shape:'polygon',splitNumber:4,axisName:{color:'#94a3b8',fontSize:11},splitLine:{lineStyle:{color:'rgba(255,255,255,0.08)'}},splitArea:{areaStyle:{color:['rgba(59,130,246,0.02)','rgba(59,130,246,0.05)']}},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},series:[{type:'radar',data:[{value:DATA.radarValues,name:'评分',areaStyle:{color:'rgba(59,130,246,0.2)'},lineStyle:{color:'#3b82f6',width:2},itemStyle:{color:'#06d6a0'}}]}]});
+window.addEventListener('resize',()=>{cG.resize();cC.resize();cS.resize();cR.resize()});
+</script>
+</body>
+</html>

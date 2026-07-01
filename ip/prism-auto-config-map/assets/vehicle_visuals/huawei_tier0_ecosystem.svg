@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Huawei Tier0 ecosystem visual</title>
+  <desc id="desc">Generated local SVG visual for Tier0 ecosystem, smart cockpit, and ADAS scenes.</desc>
+  <rect width="1200" height="820" fill="#071014"/>
+  <g transform="translate(600 408)" stroke="#18d4d2" stroke-width="4" fill="none" opacity=".84">
+    <circle r="92"/>
+    <circle r="198" opacity=".55"/>
+    <circle r="318" opacity=".32"/>
+    <path d="M0-92V-300M80-46 274-158M80 46 274 158M0 92V300M-80 46-274 158M-80-46-274-158"/>
+  </g>
+  <g font-family="Arial, 'PingFang SC', sans-serif" font-weight="800" text-anchor="middle">
+    <circle cx="600" cy="408" r="76" fill="#13252c" stroke="#18d4d2" stroke-width="4"/>
+    <text x="600" y="398" fill="#edf8f6" font-size="24">Tier0</text>
+    <text x="600" y="430" fill="#18d4d2" font-size="22">Ecosystem</text>
+    <g fill="#13252c" stroke="#6fb0ff" stroke-width="3">
+      <rect x="502" y="70" width="196" height="74" rx="8"/>
+      <rect x="840" y="202" width="196" height="74" rx="8"/>
+      <rect x="840" y="544" width="196" height="74" rx="8"/>
+      <rect x="502" y="674" width="196" height="74" rx="8"/>
+      <rect x="164" y="544" width="196" height="74" rx="8"/>
+      <rect x="164" y="202" width="196" height="74" rx="8"/>
+    </g>
+    <g fill="#edf8f6" font-size="23">
+      <text x="600" y="118">Smart Cockpit</text>
+      <text x="938" y="250">ADAS</text>
+      <text x="938" y="592">Channel</text>
+      <text x="600" y="722">Cross-OEM</text>
+      <text x="262" y="592">Cloud / Data</text>
+      <text x="262" y="250">Supplier Link</text>
+    </g>
+    <text x="600" y="790" fill="#9db0ad" font-size="22">Local visual for Huawei/Harmony Intelligent Mobility style ecosystem analysis</text>
+  </g>
+</svg>

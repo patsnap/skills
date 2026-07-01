@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalyst Audit Issue Item",
+  "type": "object",
+  "required": ["issue_id", "dimension", "level", "title", "basis", "recommendation"],
+  "properties": {
+    "issue_id": {"type": "string"},
+    "dimension": {"type": "string"},
+    "level": {"type": "string", "enum": ["HIGH", "MEDIUM", "LOW"]},
+    "title": {"type": "string"},
+    "basis": {"type": "string"},
+    "recommendation": {"type": "string"}
+  }
+}

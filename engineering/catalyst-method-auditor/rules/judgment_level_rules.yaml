@@ -1,0 +1,16 @@
+version: 0.4.0
+issue_levels:
+  HIGH:
+    zh: 关键问题
+    definition: 不补充将导致方案无法执行、无法复现、无法公平比较，或无法支撑核心结论。
+  MEDIUM:
+    zh: 重要问题
+    definition: 会明显削弱方案可信度或复现性，但不一定使方案整体失效。
+  LOW:
+    zh: 一般问题
+    definition: 主要影响表述完整性、操作细节或后续记录规范。
+judgments:
+  SUFFICIENT: 设计较充分
+  PARTIAL: 设计基本具备，但需补充完善
+  INSUFFICIENT: 当前设计不足以支撑要求
+  NOT_APPLICABLE: 不属于本次审核范围

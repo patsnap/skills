@@ -1,0 +1,62 @@
+{
+  "title": "PLC 产品系统拆解思维导图",
+  "sub": "形态 E 全口径 · 4 大系统 + 1 横向系统 · 15 组件 · 15 关键件 · 20 路并发分析锚点",
+  "product": {"name": "PLC", "desc": "可编程逻辑控制器<br>(形态 E 全口径)"},
+  "systems": [
+    {"id": "S1", "name": "控制系统", "tag": "控制 · 逻辑大脑"},
+    {"id": "S2", "name": "执行系统", "tag": "执行 · 物理 IO"},
+    {"id": "S3", "name": "动力系统", "tag": "动力 · 供电"},
+    {"id": "S4", "name": "传输系统", "tag": "传输 · 通信"},
+    {"id": "S5", "name": "横向系统", "tag": "韧性 · 安全/AI/虚拟化", "accent": "gold"}
+  ],
+  "subsystems": [
+    "运算核", "存储", "开发链", "运行时", "数字 IO", "模拟 IO", "特殊功能 IO",
+    "供电", "现场总线", "工业以太网", "工业无线", "语义层", "信息安全", "功能安全",
+    "AI/边缘", "虚拟化"
+  ],
+  "components": [
+    {"id": "C1.1", "name": "处理器单元"},
+    {"id": "C1.2", "name": "程序与数据存储", "merge": true, "tag": "即关键件"},
+    {"id": "C1.3", "name": "编程开发环境 IDE"},
+    {"id": "C1.4", "name": "Runtime 引擎"},
+    {"id": "C2.1", "name": "数字 IO 模块"},
+    {"id": "C2.2", "name": "模拟 IO 模块"},
+    {"id": "C2.3", "name": "特殊功能 IO"},
+    {"id": "C3.1", "name": "电源模块"},
+    {"id": "C4.1", "name": "现场总线", "merge": true, "tag": "即关键件 · 5 年降权"},
+    {"id": "C4.2", "name": "工业以太网"},
+    {"id": "C4.3", "name": "工业无线", "merge": true, "tag": "即关键件"},
+    {"id": "C4.4", "name": "OPC UA / 信息建模 ◐", "merge": true, "tag": "即关键件"},
+    {"id": "C5.1", "name": "信息安全"},
+    {"id": "C5.2", "name": "功能安全"},
+    {"id": "C5.3", "name": "AI 推理与边缘"},
+    {"id": "C5.4", "name": "虚拟化"}
+  ],
+  "parts": [
+    {"id": "P1.1", "name": "主控 SoC", "tag": "MCU/MPU/多核 · 物理+生态+矛盾", "star": true},
+    {"id": "P1.2", "name": "FPGA/可重构加速核", "tag": "物理(可重构)+生态", "star": true},
+    {"id": "— C1.2 即关键件", "name": "非易失存储介质", "muted": true},
+    {"id": "P3.1 ◐", "name": "IEC 61131-3 编译器", "tag": "接口(IEC)+生态", "star": true},
+    {"id": "P4.1 ◐", "name": "实时调度内核", "tag": "RTOS/扫描引擎 · 矛盾(实时vs灵活)", "star": true},
+    {"id": "P5.1", "name": "DI/DO 隔离与驱动", "tag": "物理(光/磁/容隔离+电力电子)", "star": true},
+    {"id": "P6.1", "name": "模拟前端 ADC+调理+DAC", "tag": "物理(模数转换)+矛盾", "star": true},
+    {"id": "P7.1", "name": "运动控制专用 IC", "tag": "物理(伺服环路)+矛盾(实时位置环)", "star": true},
+    {"id": "P8.1", "name": "AC-DC/DC-DC 电源", "tag": "物理(电力电子)+矛盾(效率vsEMC)", "star": true},
+    {"id": "— C4.1 即关键件", "name": "总线收发器/协议栈", "muted": true},
+    {"id": "P10.1", "name": "TSN 交换芯片", "tag": "物理(交换硬件)+接口(IEEE 802.1)", "star": true},
+    {"id": "P10.2 ◐", "name": "实时以太网协议栈 IP", "tag": "接口(EtherCAT/Profinet)+生态", "star": true},
+    {"id": "— C4.3 即关键件", "name": "5G/Wi-Fi 模组", "muted": true},
+    {"id": "— C4.4 即关键件", "name": "信息模型/PubSub", "muted": true},
+    {"id": "P13.2", "name": "硬件根信任 TPM/加密", "tag": "物理(硬件安全)+接口(TCG/IEC 62443)", "star": true},
+    {"id": "P14.1", "name": "SIL 双核冗余", "tag": "矛盾(安全vs性能)+接口(IEC 61508)", "star": true},
+    {"id": "P15.1", "name": "NPU/AI 加速器硬件", "tag": "物理(神经网络硬件)+生态", "star": true},
+    {"id": "P15.2 ◐", "name": "AI 模型部署框架", "tag": "接口(ONNX/TFLite)+生态", "star": true},
+    {"id": "P16.1 ◐", "name": "实时 Hypervisor/容器", "tag": "矛盾(隔离vs实时)+接口", "star": true}
+  ],
+  "footnotes": [
+    "<b>四独立性原则</b>: 物理学独立 / 矛盾独立 / 接口独立 / 生态独立 — 满足任一即可纳入关键件层",
+    "<b>20 路并发</b>: 15 关键件 + 5 核心组件 (C1.1 / C1.2 / C4.1 / C4.3 / C4.4) — 详见 step1-2-components-svop.md §6",
+    "<b>形态 E 覆盖</b>: A 大中型机架 + B 小型一体化 + C 软 PLC/虚拟 PLC + D 边缘控制器 PAC",
+    "<div style=\"margin-top:8px;font-style:italic\">v1 · 2026-06-01 · 基于耳机案例 v4 范式生成 · 下一步 → Step 3 patsnap 双轨检索</div>"
+  ]
+}

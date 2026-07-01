@@ -1,0 +1,87 @@
+{
+  "params": {
+    "country": "CN",
+    "drug_type": "Small molecule drug",
+    "drug_type_label": "小分子化药",
+    "date_from": "2026-05-26",
+    "date_to": "2028-05-26",
+    "retrieval_cap": 100
+  },
+  "summary": {
+    "total_crystal_hits": 31,
+    "processed_patents": 31,
+    "promoted": 4,
+    "not_promoted": 3
+  },
+  "rows": [
+    {
+      "drug_name": "达格列净 (Dapagliflozin)",
+      "drug_type": "小分子化药",
+      "phase": "Approved",
+      "assignee": "AstraZeneca / Bristol-Myers Squibb",
+      "compound_expiry": "2020-10-02",
+      "crystal_expiry": "2027-06-12",
+      "delta": "+80 月",
+      "match_level": "CN exact parent/product-compound",
+      "compound_patent": "CN1284793C",
+      "crystal_patent": "CN101479287B",
+      "notes": "SGLT-2 抑制剂；化合物专利已到期，晶型专利仍是窗口期内需重点复核的保护壁垒。"
+    },
+    {
+      "drug_name": "奥拉帕利 (Olaparib)",
+      "drug_type": "小分子化药",
+      "phase": "Approved",
+      "assignee": "AstraZeneca",
+      "compound_expiry": "2024-03-12",
+      "crystal_expiry": "2027-10-15",
+      "delta": "+43 月",
+      "match_level": "CN exact parent/product-compound",
+      "compound_patent": "CN1788000B",
+      "crystal_patent": "CN101528714B",
+      "notes": "PARP 抑制剂；化合物专利已到期，晶型专利临近窗口，适合优先做法律状态和稳定性复核。"
+    },
+    {
+      "drug_name": "克唑替尼 (Crizotinib)",
+      "drug_type": "小分子化药",
+      "phase": "Approved",
+      "assignee": "Pfizer",
+      "compound_expiry": "2025-08-15",
+      "crystal_expiry": "2026-11-23",
+      "delta": "+15 月",
+      "match_level": "CN exact parent/product-compound",
+      "compound_patent": "CN101018780B",
+      "crystal_patent": "CN101326175B",
+      "notes": "ALK/c-MET/ROS1 抑制剂；晶型专利进入近端窗口，化合物专利已到期。"
+    },
+    {
+      "drug_name": "沙库巴曲缬沙坦钠 (Sacubitril/Valsartan)",
+      "drug_type": "小分子化药",
+      "phase": "Approved",
+      "assignee": "Novartis",
+      "compound_expiry": "2026-11-08",
+      "crystal_expiry": "2026-11-08",
+      "delta": "+0 月",
+      "match_level": "CN formulation/crystal evidence",
+      "compound_patent": "CN102702119B",
+      "crystal_patent": "CN102702119B",
+      "notes": "复合制剂；化合物/晶型相关专利同窗到期，需结合专利族和权利要求复核。"
+    }
+  ],
+  "not_promoted": [
+    {
+      "candidate": "候选专利 A",
+      "reason": "药物阶段未验证到 Phase 3+",
+      "missing": "缺少阶段证据"
+    },
+    {
+      "candidate": "候选专利 B",
+      "reason": "未回连到明确药物实体",
+      "missing": "缺少 drug_id / 药物映射"
+    },
+    {
+      "candidate": "候选专利 C",
+      "reason": "代表化合物专利未检索到",
+      "missing": "缺少化合物专利到期参考"
+    }
+  ]
+}

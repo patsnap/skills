@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InventorMonitorData",
+  "description": "发明人离职监控数据格式",
+  "type": "object",
+  "required": ["company", "report_date", "inventors"],
+  "properties": {
+    "company": { "type": "string", "description": "目标公司名称" },
+    "report_date": { "type": "string", "description": "报告生成日期 YYYY-MM-DD" },
+    "monitor_start": { "type": "string", "description": "监控开始日期 YYYY-MM-DD" },
+    "monitor_end": { "type": "string", "description": "监控结束日期 YYYY-MM-DD" },
+    "tech_domain": { "type": "string", "description": "技术领域描述" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "high": { "type": "integer" },
+        "medium": { "type": "integer" },
+        "watch": { "type": "integer" },
+        "low": { "type": "integer" }
+      }
+    },
+    "inventors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "risk"],
+        "properties": {
+          "name": { "type": "string" },
+          "risk": { "type": "string", "enum": ["high", "medium", "watch", "low"] },
+          "new_org": { "type": "string", "description": "新就职单位" },
+          "notes": { "type": "string", "description": "风险说明" },
+          "org_patents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pn": { "type": "string" },
+                "title": { "type": "string" },
+                "year": { "type": "string" }
+              }
+            }
+          },
+          "new_patents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pn": { "type": "string" },
+                "title": { "type": "string" },
+                "org": { "type": "string" },
+                "date": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

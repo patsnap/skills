@@ -1,0 +1,8 @@
+interface:
+  display_name: "沉睡专利资产盘活官"
+  short_description: "盘活沉睡专利资产并生成可交易资产包方案"
+  brand_color: "#2563EB"
+  default_prompt: "使用 $sleeping-patent-asset-activation 盘点我司沉睡专利资产，并生成客户可打开的 HTML 报告，包含资产分层、买方线索和 90 天行动计划。"
+
+policy:
+  allow_implicit_invocation: true

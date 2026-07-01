@@ -1,0 +1,71 @@
+/* fto-review-harness fixed report style */
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #172033;
+  font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.hero {
+  background: #0f2f4a;
+  color: white;
+  padding: 28px 36px;
+}
+.hero h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.tile, .card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+.tile strong {
+  display: block;
+  font-size: 24px;
+}
+.status-pass { color: #15803d; }
+.status-warn { color: #b45309; }
+.status-fail { color: #b91c1c; }
+.card h2 {
+  margin: 0 0 12px;
+  color: #0f2f4a;
+  font-size: 17px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #0f2f4a;
+  color: white;
+}
+tr.fail td { background: #fff1f2; }
+tr.warn td { background: #fffbeb; }
+tr.pass td { background: #f0fdf4; }
+code {
+  background: #eef2f7;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+@media (max-width: 760px) {
+  .summary { grid-template-columns: 1fr 1fr; }
+}

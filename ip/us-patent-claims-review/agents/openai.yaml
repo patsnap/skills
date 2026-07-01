@@ -1,0 +1,4 @@
+interface:
+  display_name: "美国专利权利要求审核"
+  short_description: "按美国专利代理实务审核申请文件权利要求并给出修改建议"
+  default_prompt: "请审核我上传的美国专利申请文件权利要求书，按35 USC 101/102/103/112、BRI、112(f)、claim架构、restriction风险和侵权可证明性给出问题清单与修改建议。"

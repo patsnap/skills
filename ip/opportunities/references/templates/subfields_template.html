@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TOPIC}} — 技术分支分析</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root {
+  --bg-base: #070b14;
+  --bg-surface: #0d1525;
+  --bg-card: #111c33;
+  --bg-elevated: #162040;
+  --color-primary: #3b82f6;
+  --color-accent: #06d6a0;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-purple: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border-subtle: rgba(59,130,246,0.15);
+  --glow-blue: 0 0 20px rgba(59,130,246,0.3);
+  --glow-accent: 0 0 20px rgba(6,214,160,0.3);
+  --radius-card: 16px;
+  --radius-sm: 8px;
+  --font-title: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-primary);font-family:var(--font-body);min-height:100vh;}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,11,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-subtle);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:var(--font-title);font-weight:700;font-size:1rem;color:var(--color-accent);}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:color .2s;}
+.nav-links a:hover{color:var(--color-primary);}
+.page-header{padding:100px 2rem 40px;max-width:1200px;margin:0 auto;}
+.page-title{font-family:var(--font-title);font-size:2rem;font-weight:800;margin-bottom:0.5rem;}
+.page-title span{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:0 2rem;max-width:1200px;margin:0 auto 2rem;}
+.chart-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.5rem;}
+.chart-card h3{font-family:var(--font-title);font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--text-secondary);}
+.chart-box{height:320px;}
+.subfields-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));gap:1.5rem;padding:0 2rem;max-width:1200px;margin:0 auto 4rem;}
+.subfield-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:1.75rem;position:relative;overflow:hidden;transition:all .3s;}
+.subfield-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));}
+.subfield-card:hover{border-color:var(--color-primary);box-shadow:var(--glow-blue);transform:translateY(-2px);}
+.subfield-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+.subfield-name{font-family:var(--font-title);font-size:1.05rem;font-weight:700;color:var(--text-primary);}
+.recommend-badge{font-size:0.75rem;padding:0.3rem 0.75rem;border-radius:20px;white-space:nowrap;}
+.recommend-enter{background:rgba(6,214,160,0.15);color:var(--color-accent);border:1px solid rgba(6,214,160,0.3);}
+.recommend-caution{background:rgba(245,158,11,0.15);color:var(--color-warning);border:1px solid rgba(245,158,11,0.3);}
+.recommend-avoid{background:rgba(239,68,68,0.15);color:var(--color-danger);border:1px solid rgba(239,68,68,0.3);}
+.subfield-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+.stat-item{background:var(--bg-surface);border-radius:var(--radius-sm);padding:0.6rem;text-align:center;}
+.stat-value{font-family:var(--font-title);font-size:1.1rem;font-weight:700;color:var(--color-primary);}
+.stat-label{font-size:0.7rem;color:var(--text-muted);margin-top:0.2rem;}
+.score-bar{background:var(--bg-surface);border-radius:4px;height:6px;margin-bottom:1rem;overflow:hidden;}
+.score-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--color-primary),var(--color-accent));transition:width 1s ease;}
+.subfield-desc{font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;}
+.subfield-patents{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.patent-chip{font-family:var(--font-mono);font-size:0.72rem;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:4px;padding:0.15rem 0.4rem;color:var(--color-primary);}
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">{{TOPIC}} · 专利情报</span>
+  <div class="nav-links">
+    <a href="index.html">总览</a>
+    <a href="patents.html">专利列表</a>
+    <a href="subfields.html">技术分支</a>
+    <a href="evidence.html">证据链</a>
+    <a href="methodology.html">方法说明</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div style="display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:0.4rem 1.2rem;font-size:0.75rem;color:var(--color-primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">SUBFIELD ANALYSIS</div>
+  <h1 class="page-title"><span>技术分支</span> 机会评估</h1>
+  <p style="color:var(--text-secondary);font-size:0.9rem;">{{SUBFIELD_COUNT}} 个子技术方向 · 全量matched_total数据驱动 · 检索日期：{{SEARCH_DATE}}</p>
+</div>
+<div class="charts-row">
+  <div class="chart-card">
+    <h3>各子方向专利数量对比（全量数据）</h3>
+    <div class="chart-box" id="barChart"></div>
+  </div>
+  <div class="chart-card">
+    <h3>机会评分雷达图</h3>
+    <div class="chart-box" id="radarChart"></div>
+  </div>
+</div>
+<div class="subfields-grid" id="subfieldsGrid">
+  <!-- {{SUBFIELD_CARDS}} -->
+</div>
+<script>
+const subfields = {{SUBFIELDS_JSON}};
+const barChart = echarts.init(document.getElementById('barChart'));
+barChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{trigger:'axis',backgroundColor:'rgba(13,21,37,0.95)',borderColor:'rgba(59,130,246,0.3)',textStyle:{color:'#f1f5f9'}},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'value',axisLabel:{color:'#94a3b8'},splitLine:{lineStyle:{color:'rgba(59,130,246,0.1)'}}},
+  yAxis:{type:'category',data:subfields.map(s=>s.name),axisLabel:{color:'#94a3b8',fontSize:11}},
+  series:[{type:'bar',data:subfields.map(s=>s.count),itemStyle:{color:new echarts.graphic.LinearGradient(1,0,0,0,[{offset:0,color:'#3b82f6'},{offset:1,color:'#06d6a0'}])},barMaxWidth:32,label:{show:true,position:'right',color:'#94a3b8',fontSize:11}}]
+});
+const radarChart = echarts.init(document.getElementById('radarChart'));
+radarChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{backgroundColor:'rgba(13,21,37,0.95)',borderColor:'rgba(59,130,246,0.3)',textStyle:{color:'#f1f5f9'}},
+  radar:{indicator:subfields.map(s=>({name:s.name,max:100})),splitArea:{areaStyle:{color:['rgba(59,130,246,0.03)','rgba(59,130,246,0.06)']}},axisLine:{lineStyle:{color:'rgba(59,130,246,0.2)'}},splitLine:{lineStyle:{color:'rgba(59,130,246,0.2)'}},name:{color:'#94a3b8',fontSize:11}},
+  series:[{type:'radar',data:[{value:subfields.map(s=>s.score),name:'机会评分',areaStyle:{color:'rgba(6,214,160,0.1)'},lineStyle:{color:'#06d6a0'},itemStyle:{color:'#06d6a0'}}]}]
+});
+const grid=document.getElementById('subfieldsGrid');
+grid.innerHTML=subfields.map(s=>{
+  const rc=s.recommend==='enter'?'recommend-enter':s.recommend==='caution'?'recommend-caution':'recommend-avoid';
+  const rl=s.recommend==='enter'?'✅ 建议进入':s.recommend==='caution'?'⚠️ 谨慎进入':'❌ 暂不建议';
+  return `<div class="subfield-card">
+    <div class="subfield-header">
+      <div class="subfield-name">${s.name}</div>
+      <span class="recommend-badge ${rc}">${rl}</span>
+    </div>
+    <div class="subfield-stats">
+      <div class="stat-item"><div class="stat-value">${s.count.toLocaleString()}</div><div class="stat-label">全量专利数</div></div>
+      <div class="stat-item"><div class="stat-value">${s.growth||'—'}</div><div class="stat-label">近5年增长</div></div>
+      <div class="stat-item"><div class="stat-value">${s.score}</div><div class="stat-label">机会评分</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:${s.score}%"></div></div>
+    <div class="subfield-desc">${s.description}</div>
+    <div class="subfield-patents">${(s.patents||[]).map(p=>`<span class="patent-chip">${p}</span>`).join('')}</div>
+  </div>`;
+}).join('');
+window.addEventListener('resize',()=>{barChart.resize();radarChart.resize();});
+</script>
+</body>
+</html>

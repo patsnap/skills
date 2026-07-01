@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--
+  Step 7 最终报告骨架模板 · 麦肯锡风格（灰犀牛 vs 黑天鹅版）
+  基准范本：02_案例库/02_PLC/PLC技术趋势分析/PLC技术进化趋势报告_灰犀牛与黑天鹅版.html
+
+  用法（锁 CSS + 章节骨架）：
+    1. <style> 段逐字保留，不要改配色/字体/间距——这是版式锁。
+    2. 14 个章节（00 目录 → 13 方法论披露）顺序与 class 用法保留。
+    3. 把每章 <!-- FILL: ... --> 占位替换成该案例的真实内容，沿用示范的标签结构。
+    4. 章节内的条目数量可增减（如风险 callout 不一定 3 条），但 class、层级、表头结构照搬。
+    5. 标题里的「PLC / 工业控制 / 2026-2031」等案例字样全部替换为新产品。
+
+  可用 class 速查：
+    .lead 导语 | .kpi-grid>.kpi(.num/.label) KPI 网格(4列)
+    .callout[.warning|.info]>.callout-title 提示框(红/蓝/默认金)
+    table th/td td.num 表格(num列等宽红字居中)
+    .bs-card>h4/.meta-line/.priority[.h|.m|.l] 黑天鹅卡片(优先级红/金/蓝)
+    .spec-section>h4/.spec-row(.key/.val) 概念规格分组
+    .branches>.branch[.conservative|.aggressive|.blackswan] 三分支(蓝/金/红)
+    .toc>.toc-item 目录 | .cover 封面 | .footer 页脚
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title><!-- FILL: 产品名 技术进化趋势研究报告 · 起止年 --></title>
+<style>
+:root{
+  --bg:#F5F1E8; --paper:#FAF7EE; --ink:#1A1A1A; --muted:#6B6B6B;
+  --accent:#8B1A1A; --line:#C8B89A; --gold:#B8860B; --soft:#5B7A8C;
+  --gray-light:#EFE9DA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);font-family:"Noto Serif SC","SimSun",serif;color:var(--ink);
+  font-size:14px;line-height:1.7;
+}
+.page{max-width:1100px;margin:0 auto;padding:48px 60px;background:var(--paper);min-height:100vh}
+header{border-bottom:3px solid var(--accent);padding-bottom:20px;margin-bottom:32px}
+header .brand{font-family:"Noto Sans SC",sans-serif;font-size:11px;color:var(--accent);letter-spacing:.3em;font-weight:600}
+header h1{font-size:32px;font-weight:600;margin-top:12px;letter-spacing:.02em}
+header .sub{font-size:13px;color:var(--muted);margin-top:8px;font-family:"Noto Sans SC",sans-serif}
+header .meta-row{display:flex;gap:32px;margin-top:16px;font-size:12px;color:var(--muted);font-family:"Noto Sans SC",sans-serif}
+
+h2{font-size:22px;font-weight:600;margin:48px 0 16px 0;padding-bottom:10px;border-bottom:2px solid var(--accent);color:var(--accent);letter-spacing:.02em}
+h2 .num{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--gold);margin-right:12px;letter-spacing:.1em}
+h3{font-size:17px;font-weight:600;margin:24px 0 10px 0;color:var(--ink)}
+h4{font-size:14px;font-weight:600;margin:16px 0 8px 0;color:var(--accent);font-family:"Noto Sans SC",sans-serif}
+p{margin-bottom:12px;text-align:justify}
+.lead{font-size:15px;line-height:1.9;color:#333;border-left:4px solid var(--accent);padding-left:16px;font-style:italic}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-family:"Noto Sans SC",sans-serif;font-size:12px}
+th{background:var(--gray-light);color:var(--accent);padding:10px;text-align:left;font-weight:600;border:1px solid var(--line);letter-spacing:.05em}
+td{padding:10px;border:1px solid var(--line);vertical-align:top;line-height:1.6}
+td.num{font-family:"JetBrains Mono",monospace;text-align:center;color:var(--accent);font-weight:600}
+tr:nth-child(even){background:rgba(200,184,154,.1)}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+.kpi{background:#fff;border-left:4px solid var(--accent);padding:16px;box-shadow:0 1px 4px rgba(60,40,20,.08)}
+.kpi .num{font-family:"JetBrains Mono",monospace;font-size:32px;font-weight:700;color:var(--accent);line-height:1}
+.kpi .label{font-size:11px;color:var(--muted);margin-top:4px;font-family:"Noto Sans SC",sans-serif;letter-spacing:.05em}
+
+.callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);padding:14px 18px;margin:16px 0;font-family:"Noto Sans SC",sans-serif;font-size:13px}
+.callout.warning{border-left-color:var(--accent)}
+.callout.info{border-left-color:var(--soft)}
+.callout-title{color:var(--accent);font-weight:600;margin-bottom:6px;font-size:13px;letter-spacing:.05em}
+
+.bs-card{background:#fff;border:1px solid var(--line);padding:16px 20px;margin:12px 0;page-break-inside:avoid}
+.bs-card h4{margin-top:0;color:var(--accent)}
+.bs-card .meta-line{display:flex;gap:20px;font-size:11px;color:var(--muted);margin:8px 0;font-family:"Noto Sans SC",sans-serif}
+.bs-card .priority{display:inline-block;padding:2px 8px;background:var(--gold);color:#fff;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em}
+.bs-card .priority.h{background:var(--accent)}
+.bs-card .priority.m{background:var(--gold)}
+.bs-card .priority.l{background:var(--soft)}
+
+.spec-section{background:#fff;border:1px solid var(--line);padding:18px 22px;margin:12px 0}
+.spec-section h4{color:var(--accent);margin-top:0;border-bottom:1px solid var(--line);padding-bottom:6px}
+.spec-row{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:6px 0;border-bottom:1px dashed rgba(200,184,154,.5);font-size:12px}
+.spec-row:last-child{border:none}
+.spec-row .key{color:var(--gold);font-weight:600;font-family:"Noto Sans SC",sans-serif}
+.spec-row .val{font-family:"Noto Sans SC",sans-serif;line-height:1.6}
+
+.branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.branch{background:#fff;border:1px solid var(--line);padding:16px;font-family:"Noto Sans SC",sans-serif;font-size:12px}
+.branch h4{margin-top:0;color:var(--accent);font-size:13px}
+.branch.conservative{border-top:4px solid var(--soft)}
+.branch.aggressive{border-top:4px solid var(--gold)}
+.branch.blackswan{border-top:4px solid var(--accent)}
+.branch ul{margin:8px 0 8px 18px;line-height:1.7}
+.branch ul li{margin-bottom:4px}
+
+.toc{background:#fff;border:1px solid var(--line);padding:20px 28px;margin-bottom:32px;column-count:2;column-gap:32px;font-family:"Noto Sans SC",sans-serif;font-size:12px}
+.toc-item{padding:4px 0;border-bottom:1px dotted rgba(200,184,154,.5);display:flex;justify-content:space-between}
+.toc-item .num{color:var(--gold);font-family:"JetBrains Mono",monospace;font-size:11px}
+
+.footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--accent);font-size:11px;color:var(--muted);font-family:"Noto Sans SC",sans-serif;text-align:center;letter-spacing:.1em}
+
+.cover{min-height:80vh;display:flex;flex-direction:column;justify-content:center;page-break-after:always}
+.cover .label{font-size:11px;color:var(--accent);letter-spacing:.4em;font-weight:700;margin-bottom:24px;font-family:"Noto Sans SC",sans-serif}
+.cover h1{font-size:48px;font-weight:700;line-height:1.3;letter-spacing:.02em}
+.cover .subtitle{font-size:18px;color:var(--muted);margin-top:16px;font-style:italic}
+.cover .horizon{margin-top:48px;font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--gold);letter-spacing:.2em}
+.cover .author{margin-top:120px;border-top:1px solid var(--line);padding-top:16px;font-family:"Noto Sans SC",sans-serif;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="label">TECHNOLOGY EVOLUTION RESEARCH · <!-- FILL: 行业系列名 --></div>
+  <h1><!-- FILL: 产品名 技术进化趋势<br>与下一代形态预测 --></h1>
+  <div class="subtitle">基于 TRIZ 11 进化路线 + SVOP 功能化 + patsnap 四轨检索（专利+论文）的 N 年战略研判</div>
+  <div class="horizon">— HORIZON: <!-- FILL: 起 — 止年 --> —</div>
+  <div class="author">
+    <!-- FILL: 团队署名块（可选，保留结构或删除）。下面是元信息行 -->
+    报告制作人 · 智慧芽咨询部<br>
+    Eureka 技术进化分析流水线 · 7 步标准化方法论<br>
+    <!-- FILL: 形态口径说明 --><br>
+    地域：<!-- FILL --> · 跨域：<!-- FILL --> · 时间窗：<!-- FILL --> 年 · 分析重心：<!-- FILL --><br>
+    Generated: <!-- FILL: 日期 -->
+  </div>
+</div>
+
+<!-- TOC -->
+<h2><span class="num">00</span>目录</h2>
+<div class="toc">
+  <div class="toc-item"><span>1. 执行摘要</span><span class="num">P.03</span></div>
+  <div class="toc-item"><span>2. 研究方法论</span><span class="num">P.04</span></div>
+  <div class="toc-item"><span>3. 数据漏斗</span><span class="num">P.05</span></div>
+  <div class="toc-item"><span>4. 系统拆解概览</span><span class="num">P.06</span></div>
+  <div class="toc-item"><span>5. TRIZ 主干路线分布</span><span class="num">P.07</span></div>
+  <div class="toc-item"><span>6. 进化树关键发现</span><span class="num">P.08</span></div>
+  <div class="toc-item"><span>7. Top 突破点</span><span class="num">P.09</span></div>
+  <div class="toc-item"><span>8. 空白点 + 类比点</span><span class="num">P.10</span></div>
+  <div class="toc-item"><span>9. N 年预测分路展开</span><span class="num">P.11</span></div>
+  <div class="toc-item"><span>10. 灰犀牛 vs 黑天鹅技术</span><span class="num">P.12</span></div>
+  <div class="toc-item"><span>11. 概念形态规格</span><span class="num">P.13</span></div>
+  <div class="toc-item"><span>12. 三种替代分支</span><span class="num">P.14</span></div>
+  <div class="toc-item"><span>13. 方法论披露</span><span class="num">P.15</span></div>
+</div>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<h2><span class="num">01</span>执行摘要</h2>
+<p class="lead"><!-- FILL: 一段范式转变总论 --></p>
+<div class="kpi-grid">
+  <!-- FILL: 8 个 KPI，结构如下，数量可调 -->
+  <div class="kpi"><div class="num">N</div><div class="label">分析路数</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">原始专利池规模</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">高价值池</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">特征突破点</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">空白点</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">跨域类比候选</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">灰犀牛技术</div></div>
+  <div class="kpi"><div class="num">N</div><div class="label">黑天鹅信号</div></div>
+</div>
+<h3>1.1 核心结论</h3>
+<table>
+<tr><th width="60">结论</th><th>内容</th><th width="100">置信度</th></tr>
+<!-- FILL: 每条 <tr><td class="num">A</td><td>...</td><td class="num">HIGH</td></tr> -->
+</table>
+<h3>1.2 关键风险</h3>
+<!-- FILL: 风险用 callout，warning=高/info=低；数量可调 -->
+<div class="callout warning"><div class="callout-title">★★★ 风险 R-01：标题</div>正文</div>
+
+<!-- 2. METHODOLOGY -->
+<h2><span class="num">02</span>研究方法论</h2>
+<p><!-- FILL: 7 步流水线一句话总述 --></p>
+<table>
+<tr><th width="80">步骤</th><th>动作</th><th>核心方法</th><th>产物</th></tr>
+<!-- FILL: Step 1-7 各一行 -->
+</table>
+
+<!-- 3. DATA FUNNEL -->
+<h2><span class="num">03</span>数据漏斗</h2>
+<table>
+<tr><th>层级</th><th>规模</th><th>收敛比</th><th>说明</th></tr>
+<!-- FILL: 从全球池到三类节点的逐级收敛行 -->
+</table>
+
+<!-- 4. SYSTEM DECOMPOSITION -->
+<h2><span class="num">04</span>系统拆解概览</h2>
+<p><!-- FILL: 大系统划分逻辑一句话 --></p>
+<table>
+<tr><th>大系统</th><th>角色</th><th>组件数</th><th>关键件数</th><th>当前 tier</th><th>Ny 目标 tier</th></tr>
+<!-- FILL: 每个大系统一行 -->
+</table>
+
+<!-- 5. TRIZ ROUTE DISTRIBUTION -->
+<h2><span class="num">05</span>TRIZ 主干路线分布</h2>
+<p><!-- FILL: 主干路线定义 --></p>
+<table>
+<tr><th>主干路线</th><th>覆盖路数</th><th>典型路</th><th>N 年驱动力</th></tr>
+<!-- FILL: 每条主干 TRIZ 路线一行 -->
+</table>
+
+<!-- 6. EVOLUTION TREE FINDINGS -->
+<h2><span class="num">06</span>进化树关键发现</h2>
+<p><!-- FILL: 本域 vs 跨域 max tier 对照总述 --></p>
+<table>
+<tr><th>组件/关键件</th><th>本域 max tier</th><th>跨域 max tier</th><th>tier gap</th><th>解读</th></tr>
+<!-- FILL: 每行一个组件，td.num 放 tier 与 gap -->
+</table>
+
+<!-- 7. TOP BREAKTHROUGHS -->
+<h2><span class="num">07</span>Top 突破点</h2>
+<table>
+<tr><th>排名</th><th>专利/论文</th><th>组件</th><th>路线·节点</th><th>引用</th><th>综合分</th></tr>
+<!-- FILL: 按综合分/引用排序的 Top N 行 -->
+</table>
+
+<!-- 8. BLANK + ANALOGY -->
+<h2><span class="num">08</span>空白点 + 类比点</h2>
+<h3>8.1 空白点（填空机会）</h3>
+<table>
+<tr><th>编号</th><th>位置</th><th>预测靶点</th><th>跨域证据数</th><th>说明</th></tr>
+<!-- FILL: 空白点行 -->
+</table>
+<h3>8.2 类比点（跨域可移植）</h3>
+<table>
+<tr><th>编号</th><th>领先方</th><th>滞后方</th><th>tier 差</th><th>可移植方案</th></tr>
+<!-- FILL: 类比点行 -->
+</table>
+
+<!-- 9. N-YEAR PREDICTION -->
+<h2><span class="num">09</span>N 年预测分路展开</h2>
+<h3>9.1 高置信度（必将发生）</h3>
+<div class="callout"><ol style="margin-left:20px;line-height:2"><!-- FILL: 高置信度条目 li --></ol></div>
+<h3>9.2 中等置信度（部分发生）</h3>
+<div class="callout info"><ol style="margin-left:20px;line-height:2"><!-- FILL: 中置信度条目 li --></ol></div>
+<h3>9.3 低置信度（蓝天议题）</h3>
+<div class="callout"><ol style="margin-left:20px;line-height:2;color:#777"><!-- FILL: 低置信度条目 li --></ol></div>
+
+<!-- 10. GRAY RHINO VS BLACK SWAN -->
+<h2><span class="num">10</span>灰犀牛 vs 黑天鹅技术</h2>
+<p class="lead"><!-- FILL: 两类变量区别总述 --></p>
+<h3>10.1 分类框架</h3>
+<table>
+<tr><th width="120">维度</th><th>灰犀牛 Gray Rhino</th><th>黑天鹅 Black Swan</th></tr>
+<tr><td><b>发生概率</b></td><td class="num">HIGH</td><td class="num">LOW</td></tr>
+<tr><td><b>可预测性</b></td><td>趋势已定 / 时间窗清晰</td><td>触发点 / 时点不可预测</td></tr>
+<tr><td><b>专利信号特征</b></td><td>跨域已 v9+ 等待植入 / 标准化在路上</td><td>本域 ≤v6 + 监管/事件触发</td></tr>
+<tr><td><b>监控频率</b></td><td>半年 — 年度（路径监控）</td><td>季度 — 事件触发（信号监控）</td></tr>
+<tr><td><b>战略动作</b></td><td>纳入路线图 + 提前布局</td><td>设置触发器 + 准备应急方案</td></tr>
+</table>
+<h3>10.2 灰犀牛技术（高概率必将发生）</h3>
+<p><!-- FILL: 灰犀牛共同特征 --></p>
+<table>
+<tr><th width="60">编号</th><th>灰犀牛技术</th><th>支撑证据</th><th>窗口</th><th>监控</th></tr>
+<!-- FILL: GR-01.. 每行；★★★ 标在编号后 -->
+</table>
+<div class="callout warning"><div class="callout-title">★★★ 灰犀牛战略动作</div><!-- FILL --></div>
+<h3>10.3 黑天鹅信号（低概率非线性拐点）</h3>
+<p><!-- FILL: 黑天鹅定义 --></p>
+<!-- FILL: 每个黑天鹅一张 bs-card，结构如下 -->
+<div class="bs-card">
+  <h4>★★★ BS-01 标题</h4>
+  <div class="meta-line">
+    <span><b>窗口</b>：...</span>
+    <span><b>置信度</b>：LOW（事件）/ HIGH（影响）</span>
+    <span class="priority h">QUARTERLY</span>
+  </div>
+  <p><b>黑天鹅本质</b>：...</p>
+  <p><b>监控信号</b>：...</p>
+  <p><b>赢家</b>：...</p>
+</div>
+<div class="callout warning"><div class="callout-title">★★★ 黑天鹅战略动作</div><!-- FILL --></div>
+
+<!-- 11. CONCEPT FORM -->
+<h2><span class="num">11</span>下一代旗舰概念形态规格</h2>
+<p class="lead"><!-- FILL: 概念形态命名 + 一句话定义 --></p>
+<!-- FILL: 每个大系统一个 spec-section，组件用 spec-row（key/val） -->
+<div class="spec-section">
+<h4>S1 ...</h4>
+<div class="spec-row"><span class="key">组件</span><span class="val">规格描述</span></div>
+</div>
+
+<!-- 12. ALTERNATIVE BRANCHES -->
+<h2><span class="num">12</span>三种替代分支</h2>
+<div class="branches">
+  <div class="branch conservative"><h4>保守路径</h4><ul><!-- FILL: li --></ul></div>
+  <div class="branch aggressive"><h4>激进路径</h4><ul><!-- FILL: li --></ul></div>
+  <div class="branch blackswan"><h4>黑天鹅路径</h4><ul><!-- FILL: li --></ul></div>
+</div>
+
+<!-- 13. METHODOLOGY DISCLOSURE -->
+<h2><span class="num">13</span>方法论披露与局限</h2>
+<p><!-- FILL: LR-01..08 一致性校验结论 + 5-8 项局限 --></p>
+<table>
+<tr><th width="80">规则</th><th>校验内容</th><th>结果</th></tr>
+<!-- FILL: LR-01..08 行 -->
+</table>
+
+<div class="footer">
+  <!-- FILL: 版本 · 日期 · 流水线说明 · 下一步 -->
+</div>
+
+</div>
+</body>
+</html>
