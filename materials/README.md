@@ -1,6 +1,25 @@
-﻿# PatSnap Materials Skills
+# PatSnap Materials Skills
 
 Materials skills support materials science research, engineering analysis, technology scouting, product translation, technical problem solving, and alloy composition retrieval.
+
+Install all materials skills:
+
+```bash
+npx skills add patsnap/skills/tree/main/materials --all
+```
+
+Install one materials skill:
+
+```bash
+npx skills add patsnap/skills/tree/main/materials/understand-technology
+```
+
+## Directory Snapshot
+
+| Type | Count | Notes |
+|---|---:|---|
+| Total skill directories | 10 | Five English skills plus five `-zhcn` variants. |
+| Skill Hub imported directories | 0 | No materials skills were added in the 2026-06-30 Skill Hub import batch. |
 
 ## Available Skills
 
@@ -18,11 +37,11 @@ Chinese versions use the `-zhcn` suffix and are separate skill directories. Use 
 
 ## Design Principles
 
-- Materials-first focus across metals, polymers, ceramics, composites, semiconductors, coatings, energy materials, and related processing technologies.
-- Structured outputs using tables, sections, comparison matrices, and explicit assumptions.
-- Engineering relevance, including manufacturability, cost, reliability, performance trade-offs, and scale-up constraints.
-- Evidence-oriented reasoning from user-provided context, patents, documents, MCP tools, or other reliable sources.
-- Agent-friendly routing through clear skill scopes and input patterns.
+- Keep a materials-first focus across metals, polymers, ceramics, composites, semiconductors, coatings, energy materials, and related processing technologies.
+- Use structured outputs such as tables, sections, comparison matrices, and explicit assumptions.
+- Emphasize engineering relevance: manufacturability, cost, reliability, performance trade-offs, and scale-up constraints.
+- Ground reasoning in user-provided context, patents, documents, MCP tools, or other reliable sources.
+- Never fabricate material properties, alloy compositions, patent numbers, literature sources, market-size data, or company rankings.
 
 ## Skill Routing
 
@@ -54,4 +73,4 @@ Use MCP tools only when they materially improve retrieval or evidence quality. D
 - Keep each skill directory intact when installing or publishing.
 - Use English base skills for English workflows and `-zhcn` variants for Simplified Chinese workflows.
 - Skills without MCP dependencies can operate as prompt-only skills using user-provided context and general reasoning.
-- Never fabricate material properties, alloy compositions, patent numbers, literature sources, market-size data, or company rankings.
+- Each skill directory should contain a `SKILL.md` whose front matter `name` matches the directory name.
