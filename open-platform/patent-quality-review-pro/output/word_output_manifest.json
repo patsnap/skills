@@ -1,0 +1,20 @@
+{
+  "kind": "word_output",
+  "word_path": "/Users/zhenghuimiao/Documents/Eureka/skills/patent-quality-review-pro/output/专利申请文件质量评价表+未命名.docx",
+  "word_filename": "专利申请文件质量评价表+未命名.docx",
+  "word_session_path": "",
+  "output_dir_path": "/Users/zhenghuimiao/Documents/Eureka/skills/patent-quality-review-pro/output",
+  "output_dir_session_path": "",
+  "open_output_dir": {
+    "attempted": true,
+    "command": "open",
+    "target": "/Users/zhenghuimiao/Documents/Eureka/skills/patent-quality-review-pro/output",
+    "status": "completed",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "final_response_path": "/Users/zhenghuimiao/Documents/Eureka/skills/patent-quality-review-pro/output/final_response.md",
+  "final_response_text": "Word文件已生成，已自动打开输出目录。\n\n输出目录：/Users/zhenghuimiao/Documents/Eureka/skills/patent-quality-review-pro/output\n文件名：专利申请文件质量评价表+未命名.docx\n",
+  "data_path": "",
+  "status": "generated"
+}

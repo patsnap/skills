@@ -1,0 +1,4 @@
+interface:
+  display_name: "欧洲专利权利要求书审核"
+  short_description: "按 EPC/EPO 实务审核欧洲专利申请权利要求并给出修改建议"
+  default_prompt: "Use $european-patent-claims-review to审核我上传的欧洲专利申请文件权利要求书，并给出审核结果及修改建议。"

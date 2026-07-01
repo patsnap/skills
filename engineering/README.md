@@ -1,6 +1,19 @@
-﻿# PatSnap Engineering Skills
+# PatSnap Engineering Skills
 
-Engineering skills support R&D, technology analysis, competitive assessment, project review, and structured innovation workflows. Each skill is packaged as a self-contained directory with a `SKILL.md` file and, where needed, supporting `references/`, `templates/`, and `examples/` folders.
+Engineering skills support the core R&D, technology analysis, competitive assessment, project review, and structured innovation workflows. Imported Skill Hub / Open Platform engineering workflows now live in `../open-platform/`. Each skill is packaged as a self-contained directory with a `SKILL.md` file and, where needed, supporting `references/`, `templates/`, and `examples/` folders.
+
+Install all engineering skills:
+
+```bash
+npx skills add patsnap/skills/tree/main/engineering --all
+```
+
+## Directory Snapshot
+
+| Type | Count | Notes |
+|---|---:|---|
+| Total skill directories | 9 | English/Chinese R&D analysis skills plus TRIZ innovation workflow. |
+| Open Platform imported directories | 0 | Imported Skill Hub / Open Platform workflows live under `../open-platform/`. |
 
 ## Available Skills
 
@@ -10,7 +23,7 @@ Engineering skills support R&D, technology analysis, competitive assessment, pro
 | `competitive-landscape` | `competitive-landscape-zhcn` | Analyze a technology-sector competitive landscape with player tiering, differentiation, and white-space identification. |
 | `tech-route-comparison` | `tech-route-comparison-zhcn` | Compare two or more technical routes, architectures, or solution paths using evidence-backed criteria. |
 | `rd-initiation-review` | `rd-initiation-review-zhcn` | Review an R&D project proposal or initiation package for go/no-go decisions and risk mitigation. |
-| `triz-innovation-pro` | - | Run TRIZ innovation solution analysis, including system component analysis, contact relationship analysis, functional modeling, causal chain analysis, and solution generation. |
+| `triz-innovation-pro` | - | Run TRIZ innovation solution analysis, including system component analysis, contact relationship analysis, functional modeling, causal-chain analysis, and solution generation. |
 
 ## Language Variants
 
@@ -48,6 +61,10 @@ Choose the skill by decision object:
 | Generate TRIZ-based innovation solutions | `triz-innovation-pro` |
 
 Keep each skill directory intact when installing or publishing, because `SKILL.md` may reference local files in `references/`, `templates/`, or `examples/`.
+
+## Open Platform Skills
+
+Additional engineering and R&D workflows imported from Skill Hub are available in `../open-platform/`, including technical reports, industry intelligence, due diligence, market assessment, TRIZ functional search, and technology forecasting workflows.
 
 ## MCP Dependencies
 

@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>棱镜车智-专利论文数据穿透</title>
+  <style>
+    :root {
+      --bg: #070b0e;
+      --panel: #0e171c;
+      --panel-2: #13252c;
+      --ink: #edf8f6;
+      --muted: #9db0ad;
+      --cyan: #18d4d2;
+      --blue: #6fb0ff;
+      --green: #86efac;
+      --amber: #ffd166;
+      --red: #ff7777;
+      --line: rgba(237, 248, 246, .14);
+      --line-strong: rgba(24, 212, 210, .44);
+      --shadow: 0 20px 70px rgba(0, 0, 0, .34);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(24, 212, 210, .19), transparent 31rem),
+        radial-gradient(circle at 84% 8%, rgba(111, 176, 255, .15), transparent 30rem),
+        linear-gradient(180deg, #060a0d 0%, #071014 52%, #09161b 100%);
+      color: var(--ink);
+      font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+    a { color: var(--cyan); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 30px 28px 64px; }
+    .hero {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(400px, .95fr);
+      gap: 30px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 30px;
+    }
+    .hero-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .12em;
+    }
+    h1 {
+      margin: 10px 0 16px;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .subtitle { max-width: 800px; color: #c8d8d6; font-size: 18px; }
+    .headline {
+      margin: 24px 0 18px;
+      padding: 20px 0 0;
+      border-top: 1px solid var(--line-strong);
+      font-size: clamp(28px, 3.8vw, 48px);
+      line-height: 1.13;
+      font-weight: 900;
+      color: #f7fffd;
+    }
+    .hero-media {
+      position: relative;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(14, 23, 28, .7);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 390px;
+      min-height: 390px;
+      object-fit: cover;
+      display: block;
+    }
+    .media-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-side {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      background:
+        linear-gradient(180deg, rgba(6, 16, 20, .15), rgba(6, 16, 20, .74));
+      flex: 1;
+    }
+    .hero-side h3 { margin: 0; font-size: 18px; }
+    .hero-side p { margin: 0; color: #c8d8d6; }
+    .hero-side-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .hero-mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(7, 16, 20, .46);
+      min-height: 74px;
+    }
+    .hero-mini b { display: block; color: var(--cyan); font-size: 18px; line-height: 1.1; }
+    .hero-mini span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .freshness {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .fresh {
+      border: 1px solid var(--line);
+      background: rgba(14, 23, 28, .68);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 82px;
+    }
+    .fresh b { display: block; color: var(--cyan); font-size: 18px; line-height: 1.15; }
+    .fresh span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .decision {
+      margin-top: 10px;
+      background: linear-gradient(135deg, rgba(24, 212, 210, .16), rgba(111, 176, 255, .08));
+      border: 1px solid rgba(24, 212, 210, .36);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
+    .kpi {
+      border: 1px solid var(--line);
+      background: rgba(7, 16, 20, .55);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 86px;
+    }
+    .kpi b { display: block; font-size: 28px; color: var(--cyan); line-height: 1; }
+    .kpi span { color: var(--muted); font-size: 12px; }
+    section { padding: 34px 0; border-bottom: 1px solid var(--line); }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+    h2 { margin: 0; font-size: 26px; letter-spacing: 0; }
+    .section-note { color: var(--muted); max-width: 720px; }
+    .grid { display: grid; gap: 14px; }
+    .grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .focus-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
+    .card {
+      background: linear-gradient(180deg, rgba(19, 37, 44, .78), rgba(14, 23, 28, .86));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0 0 8px; color: #c3d2d0; }
+    .card p:last-child { margin-bottom: 0; }
+    .card, .node, .domain-step, td, th { overflow-wrap: anywhere; word-break: break-word; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(24, 212, 210, .32);
+      color: var(--cyan);
+      background: rgba(24, 212, 210, .08);
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      margin: 2px 4px 2px 0;
+      white-space: nowrap;
+    }
+    .tag.amber { border-color: rgba(255, 209, 102, .38); color: var(--amber); background: rgba(255, 209, 102, .08); }
+    .tag.green { border-color: rgba(134, 239, 172, .38); color: var(--green); background: rgba(134, 239, 172, .08); }
+    .tag.red { border-color: rgba(255, 119, 119, .38); color: var(--red); background: rgba(255, 119, 119, .08); }
+    .mini-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: rgba(7, 16, 20, .6);
+    }
+    .mini-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .visual-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .visual-card .mini-media { margin-bottom: 0; }
+    .visual-card.compact { grid-template-columns: 150px 1fr; }
+    .chapter-visuals {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .chapter-visuals .mini-media { margin-bottom: 8px; }
+    .domain-map {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .domain-step {
+      border: 1px solid rgba(24, 212, 210, .28);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(7, 16, 20, .48);
+      min-height: 112px;
+    }
+    .domain-step b { color: var(--cyan); display: block; margin-bottom: 6px; }
+    .pain { font-weight: 900; color: var(--amber); }
+    .matrix-score {
+      display: inline-flex;
+      min-width: 42px;
+      justify-content: center;
+      border-radius: 6px;
+      padding: 2px 8px;
+      background: rgba(24, 212, 210, .14);
+      color: var(--cyan);
+      font-weight: 900;
+    }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 8px; }
+    th, td { border: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+    th { background: rgba(24, 212, 210, .13); color: #dff; font-size: 12px; text-transform: uppercase; }
+    td { background: rgba(14, 23, 28, .62); }
+    .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+    .heat { text-align: center; font-weight: 800; }
+    .heat.high { background: rgba(134, 239, 172, .28); color: #ddffe7; }
+    .heat.mid { background: rgba(255, 209, 102, .22); color: #fff0c2; }
+    .heat.low { background: rgba(111, 176, 255, .18); color: #d9eaff; }
+    .heat.none { background: rgba(255, 119, 119, .12); color: #ffc7c7; }
+    .patsnap-wall {
+      border: 1px solid rgba(24, 212, 210, .55);
+      background:
+        linear-gradient(135deg, rgba(24, 212, 210, .18), rgba(111, 176, 255, .08)),
+        rgba(6, 16, 20, .84);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 18px 60px rgba(24, 212, 210, .1);
+    }
+    .tech-pool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .pool-card {
+      border: 1px solid rgba(24, 212, 210, .34);
+      border-radius: 8px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(13, 32, 38, .88), rgba(8, 18, 22, .92));
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pool-card h3 { margin: 0; font-size: 18px; }
+    .pool-meta { color: var(--muted); font-size: 12px; }
+    .pool-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .pool-metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(7, 16, 20, .48);
+      min-height: 72px;
+    }
+    .pool-metric b { display: block; color: var(--cyan); font-size: 22px; line-height: 1.05; }
+    .pool-metric span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .bar-list { display: grid; gap: 7px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(86px, .7fr) minmax(0, 1.4fr) 42px;
+      gap: 8px;
+      align-items: center;
+      color: #d9e9e7;
+      font-size: 12px;
+    }
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .bar-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+    .patent-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .patent-mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(7, 16, 20, .5);
+      min-height: 120px;
+    }
+    .patent-mini b { display: block; color: var(--cyan); margin-bottom: 4px; }
+    .btn-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(24, 212, 210, .55);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: rgba(24, 212, 210, .12);
+      color: #dff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .data-gap {
+      border: 1px solid rgba(255, 209, 102, .42);
+      background: rgba(255, 209, 102, .08);
+      border-radius: 8px;
+      padding: 12px;
+      color: #fff0c2;
+    }
+    .pool-hero {
+      border: 1px solid rgba(24, 212, 210, .42);
+      border-radius: 8px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(24, 212, 210, .17), rgba(111, 176, 255, .08));
+      margin-bottom: 14px;
+    }
+    .pool-hero h2 { margin-bottom: 8px; }
+    .detail-note { color: var(--muted); font-size: 12px; }
+    .chain {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .chain span {
+      min-height: 74px;
+      border: 1px solid rgba(24, 212, 210, .25);
+      border-radius: 8px;
+      padding: 10px;
+      color: #dff;
+      background: rgba(7, 16, 20, .38);
+      font-size: 12px;
+    }
+    .spark {
+      height: 74px;
+      width: 100%;
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(24, 212, 210, .08), transparent),
+        repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,.05) 39px 40px);
+      position: relative;
+      overflow: hidden;
+    }
+    .spark svg { width: 100%; height: 100%; }
+    .relationship-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .node {
+      min-height: 120px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(14, 23, 28, .74);
+    }
+    .node b { display: block; color: var(--cyan); margin-bottom: 6px; }
+    .link-row {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .9fr 1.1fr;
+      gap: 10px;
+    }
+    .quad {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .quad .card { min-height: 186px; }
+    .must { border-color: rgba(134, 239, 172, .46); }
+    .bet { border-color: rgba(24, 212, 210, .56); }
+    .watch { border-color: rgba(255, 209, 102, .48); }
+    .avoid { border-color: rgba(255, 119, 119, .48); }
+    .rec {
+      display: grid;
+      grid-template-columns: 190px 1fr 190px;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+    .rec .score { text-align: center; color: var(--cyan); font-size: 28px; font-weight: 900; }
+    .sources td:first-child { color: var(--cyan); font-weight: 800; }
+    .status-strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .status {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      padding: 4px 8px;
+      color: #e8f7f5;
+      font-size: 12px;
+      background: rgba(255,255,255,.06);
+    }
+    .status.green { border-color: rgba(134, 239, 172, .5); color: var(--green); }
+    .status.amber { border-color: rgba(255, 209, 102, .5); color: var(--amber); }
+    .status.red { border-color: rgba(255, 119, 119, .5); color: var(--red); }
+    footer { color: var(--muted); padding-top: 22px; font-size: 12px; }
+    @media (max-width: 980px) {
+      .wrap { padding: 22px 16px 48px; }
+      .hero, .freshness, .kpis, .grid.cols-5, .grid.cols-4, .grid.cols-3, .grid.cols-2, .focus-grid, .domain-map, .visual-card, .chapter-visuals, .quad, .rec, .chain, .relationship-map, .link-row, .tech-pool-grid, .patent-card-grid, .pool-metrics { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      body { overflow-x: hidden; }
+      section { overflow-x: hidden; }
+      .hero {
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-copy { display: contents; }
+      .hero-copy > div:first-child { order: 1; }
+      .hero-media { order: 2; }
+      .decision { order: 3; }
+      table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      th, td { min-width: 128px; }
+      .bar-row { grid-template-columns: minmax(72px, .8fr) minmax(0, 1.2fr) 38px; }
+      .hero-media { min-height: 280px; }
+      .hero-media img { height: auto; min-height: 280px; }
+      .hero-side { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-copy">
+        <div>
+          <div class="eyebrow">Prism Auto / Patsnap Patent-Paper Data Penetration</div>
+          <h1>棱镜车智<br>专利论文数据穿透</h1>
+          <p class="subtitle">面向下一代车型规划,用智慧芽专利、论文/文献、申请人、企业与供应链数据解释配置机会:为什么现在做、谁在做、壁垒在哪里、未来 1-2 年会怎样扩散。</p>
+          <div class="headline" id="headline_conclusion">未来 18 个月,25 万级 B-SUV 的差异化窗口不在堆配置,而在二排舒适、热管理与智能座舱供应链协同。</div>
+          <p>
+            <span class="tag">[QFD / House of Quality]</span>
+            <span class="tag">[Matrix Analysis]</span>
+            <span class="tag">[Patsnap Penetration]</span>
+            <span class="tag">[Supply Linkage]</span>
+          </p>
+          <div class="freshness">
+            <div class="fresh"><b>2026-05-27</b><span>数据统计截止日期</span></div>
+            <div class="fresh"><b>最新可得</b><span>Patsnap 数据截止日期,需按执行环境替换</span></div>
+            <div class="fresh"><b>报告生成日</b><span>外部网页获取日期,滞后需披露影响</span></div>
+          </div>
+        </div>
+        <div class="decision">
+          <p><strong>前瞻性影响说明:</strong> 若配置库、专利或供应链数据不是最新快照,必须降低 6-18 个月预测置信度,并在证据链中标注数据缺口。</p>
+          <div class="kpis">
+            <div class="kpi"><b>7</b><span>样本车型/头部标尺</span></div>
+            <div class="kpi"><b>12</b><span>机会配置</span></div>
+            <div class="kpi"><b>5</b><span>智慧芽强证据</span></div>
+            <div class="kpi"><b>P1</b><span>优先级建议</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="hero-media">
+        <img
+          src="assets/vehicle_visuals/photo_real/china_nev_b_suv_market.png"
+          data-fallback="assets/vehicle_visuals/china_nev_brand_wall.svg"
+          onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;"
+          alt="中国新能源 B-SUV 市场照片级 AI 示意图"
+        />
+        <div class="media-caption">
+          <span class="tag green">照片级 AI 示意图</span>
+          <span class="tag">可离线渲染</span>
+          <span class="tag amber">非官方车型图</span>
+        </div>
+        <div class="hero-side">
+          <div>
+            <h3>质量屋 + 矩阵主线</h3>
+            <p>先把用户痛点转成工程特性,再用市场、专利、供应链和生命周期矩阵判断配置动作。</p>
+          </div>
+          <div class="hero-side-grid">
+            <div class="hero-mini"><b>QFD</b><span>痛点分级 / 权重 / 工程特性</span></div>
+            <div class="hero-mini"><b>Matrix</b><span>必须跟 / 押注 / 观望 / 绕开</span></div>
+            <div class="hero-mini"><b>Patent</b><span>看板化,不堆专利清单</span></div>
+            <div class="hero-mini"><b>Lifecycle</b><span>高/中/低端配置策略</span></div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="audience">
+      <div class="section-head">
+        <h2>数据聚焦与服务对象</h2>
+        <p class="section-note">本报告聚焦下一代车型配置、技术成熟度、专利壁垒和供应链落地性,不是泛公司战略报告。</p>
+      </div>
+      <div class="grid cols-5">
+        <div class="card"><h3>产品规划</h3><p>确定下一代配置包、价格带与版本策略。</p><span class="tag">配置组合</span></div>
+        <div class="card"><h3>战略/竞品</h3><p>识别头部企业标尺、红海配置和蓝海机会。</p><span class="tag">头部对标</span></div>
+        <div class="card"><h3>研发预研</h3><p>追踪专利、论文和技术路线的成熟度。</p><span class="tag">S-Curve</span></div>
+        <div class="card"><h3>采购/供应链</h3><p>判断 OEM/Tier0/Tier1/Tier2 关系和供应风险。</p><span class="tag">关系图谱</span></div>
+        <div class="card"><h3>管理层 Demo</h3><p>用一句话结论和证据链快速解释决策。</p><span class="tag">决策摘要</span></div>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <div class="section-head">
+        <h2>理论依据 / Methodology</h2>
+        <p class="section-note">展示层聚焦 QFD/质量屋与 Matrix Analysis。其他方法论作为辅助标签进入证据和判断,避免方法论平铺导致读者看不清主线。</p>
+      </div>
+      <div class="focus-grid">
+        <div class="card">
+          <h3>QFD / House of Quality</h3>
+          <p>把 P0-P3 痛点、用户需求权重、工程特性、竞品满足度和智慧芽证据强度放进同一张质量屋,形成可解释的配置目标。</p>
+          <span class="tag">痛点分级</span><span class="tag">工程特性</span><span class="tag">目标值</span>
+        </div>
+        <div class="card">
+          <h3>Matrix Analysis</h3>
+          <p>把渗透率、QFD 权重、生命周期、专利壁垒、供应链成熟度和头部标尺合成配置动作。</p>
+          <span class="tag green">必须跟</span><span class="tag">差异化押注</span><span class="tag amber">观望</span><span class="tag red">规避/绕开</span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>辅助标签</h3>
+        <p>Benchmarking、Kano、S-Curve、Patent Barrier、Patsnap Penetration、Supply Linkage 作为判断因子和结论标签保留,不再在方法论区等权展开。</p>
+        <span class="tag">[Benchmarking]</span><span class="tag">[Kano]</span><span class="tag">[S-Curve]</span><span class="tag">[Patent Barrier]</span><span class="tag">[Patsnap Penetration]</span><span class="tag">[Supply Linkage]</span>
+      </div>
+    </section>
+
+    <section id="domain-map">
+      <div class="section-head">
+        <h2>产品域技术地图</h2>
+        <p class="section-note">当用户锁定智能底盘、智能座舱、热管理、电池电驱、座椅舒适或 ADAS 时,先给出总分结构,再进入配置和专利穿透。</p>
+      </div>
+      <div class="focus-grid">
+        <div class="patsnap-wall">
+          <div class="domain-map">
+            <div class="domain-step"><b>产品域</b><p>智能座舱 / 智能底盘 / 热管理 / 座椅舒适 / ADAS / 电池电驱</p></div>
+            <div class="domain-step"><b>一级技术</b><p>显示交互、域控、空气悬架、热泵、座椅执行机构、感知决策等</p></div>
+            <div class="domain-step"><b>二级对象</b><p>HUD、AI 助手、CDC、线控制动、地暖、二排腿托、传感器和控制器</p></div>
+            <div class="domain-step"><b>分析抓手</b><p>竞品配置、专利增长、申请人、供应链成熟度、生命周期和价格带策略</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mini-media">
+            <img src="assets/vehicle_visuals/photo_real/smart_cockpit_supply_chain.png" data-fallback="assets/vehicle_visuals/smart_cockpit_supply_chain.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="智能座舱供应链照片级 AI 示意图" />
+          </div>
+          <h3>小图原则</h3>
+          <p>章节图片只做辅助识别,不作为证据。首屏使用平衡视觉面板,章节按阅读节奏选择小图,优先本地素材以保证离线速度。</p>
+        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>产品域</th><th>一级技术</th><th>二级配置/零部件</th><th>关联车型/标尺</th><th>专利/论文池</th><th>供应链角色</th><th>规划动作</th></tr></thead>
+          <tbody>
+            <tr><td>座椅舒适</td><td>座椅执行与储物</td><td>二排腿托、腿托通风、座椅抽屉、滑轨/电机/骨架</td><td>理想 L6/L7、问界 M7/M8、零跑 C16</td><td>seat-actuation-storage</td><td>OEM + Tier1 座椅系统 + Tier2 电机/滑轨</td><td><span class="tag green">必须跟</span></td></tr>
+            <tr><td>热管理</td><td>座舱局部热舒适</td><td>地板加热、红外辐射、热泵协同、座椅加热联动</td><td>北方家庭用车、EV/EREV 冬季能耗标尺</td><td>cabin-radiant-heating</td><td>OEM 热管理 + 加热材料/控制器供应商</td><td><span class="tag">差异化押注</span></td></tr>
+            <tr><td>外饰车身电子</td><td>镜像视觉</td><td>电子外后视镜、摄像头、车内显示屏、冗余控制器、标定</td><td>法规试点、高端智能化标尺</td><td>electronic-mirror-vision</td><td>OEM + CMS 供应商 + 显示/摄像头链路</td><td><span class="tag amber">高端试点</span></td></tr>
+            <tr><td>智能座舱</td><td>显示交互</td><td>AR-HUD、后排控制屏、多屏联动、座舱 HMI</td><td>华为系/鸿蒙智行、Tesla、BYD、海外高端标尺</td><td>cockpit-display-interaction</td><td>Tier0 + 屏幕/光学/芯片/软件生态</td><td><span class="tag green">必须迭代</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="pool">
+      <div class="section-head">
+        <h2>竞品池与头部标尺</h2>
+        <p class="section-note">正式报告需保留用户指定车型池,同时补充特斯拉、比亚迪、华为系/鸿蒙智行等头部企业作为外部标尺。</p>
+      </div>
+      <div class="visual-card card">
+        <div class="mini-media">
+          <img src="assets/vehicle_visuals/photo_real/global_ev_benchmark.png" data-fallback="assets/vehicle_visuals/global_ev_benchmark.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="全球新能源车头部标尺照片级 AI 示意图" />
+        </div>
+        <div>
+          <h3>国内外头部标尺</h3>
+          <p>头部企业只作为 Benchmarking 和 Matrix 的外部参照,不替代用户指定竞品池。海外标尺用于补足平台化、软件定义、成本效率和高端舒适配置的比较视角。</p>
+          <span class="tag">Tesla</span><span class="tag">BYD</span><span class="tag">Huawei/Harmony</span><span class="tag">Overseas benchmark</span>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>样本/标尺</th><th>角色</th><th>价格带/市场</th><th>纳入原因</th><th>数据状态</th></tr></thead>
+        <tbody>
+          <tr><td>理想 L6 / 问界 M7 / 零跑 C16</td><td>细分市场竞品</td><td>20-30 万 B-SUV</td><td>配置渗透率和家庭场景体验</td><td>A/B/C 源待填</td></tr>
+          <tr><td>特斯拉</td><td>海外头部标尺</td><td>全球 EV</td><td>平台化、软件定义、成本效率</td><td>官网/专利/产业链待填</td></tr>
+          <tr><td>比亚迪</td><td>国内头部标尺</td><td>中国 NEV</td><td>垂直整合、电池电驱、规模化下沉</td><td>官网/专利/供应链待填</td></tr>
+          <tr><td>华为系/鸿蒙智行</td><td>Tier0/生态标尺</td><td>智能化生态</td><td>座舱、智驾、渠道与跨 OEM 协同</td><td>公告/专利/合作线索待填</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="heatmap">
+      <div class="section-head">
+        <h2>配置渗透率热力矩阵</h2>
+        <p class="section-note">颜色表示配置搭载程度。正式报告需以官网配置表、汽车之家/懂车帝授权数据或可追溯页面为主源,冲突时并列披露。</p>
+      </div>
+      <div class="chapter-visuals">
+        <div class="card">
+          <div class="mini-media"><img src="assets/vehicle_visuals/photo_real/family_b_suv_comfort.png" data-fallback="assets/vehicle_visuals/china_nev_brand_wall.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="家庭 B-SUV 舒适场景照片级 AI 示意图" /></div>
+          <h3>座椅舒适</h3><p>用于二排腿托、座椅通风、地暖等家庭场景配置。</p>
+        </div>
+        <div class="card">
+          <div class="mini-media"><img src="assets/vehicle_visuals/photo_real/smart_cockpit_supply_chain.png" data-fallback="assets/vehicle_visuals/smart_cockpit_supply_chain.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="智能座舱供应链照片级 AI 示意图" /></div>
+          <h3>智能座舱</h3><p>用于 HUD、多屏联动、AI 助手和座舱域控配置。</p>
+        </div>
+        <div class="card">
+          <div class="mini-media"><img src="assets/vehicle_visuals/photo_real/battery_chassis_factory.png" data-fallback="assets/vehicle_visuals/battery_chassis_platform.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="电池底盘平台照片级 AI 示意图" /></div>
+          <h3>底盘/热管理</h3><p>用于智能底盘、热管理和平台化技术对标。</p>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>配置项</th><th>理想 L6</th><th>问界 M7</th><th>零跑 C16</th><th>头部标尺启发</th><th>渗透率</th><th>数据缺口</th><th>理论标签</th></tr></thead>
+        <tbody>
+          <tr><td>二排腿托</td><td class="heat high">有</td><td class="heat high">有</td><td class="heat mid">部分</td><td>中国家庭 SUV 强相关</td><td>高</td><td>官网/公开网页确认,授权配置库待复核</td><td><span class="tag">[Benchmarking]</span><span class="tag">[Kano]</span></td></tr>
+          <tr><td>电子外后视镜</td><td class="heat none">无</td><td class="heat low">选装</td><td class="heat none">无</td><td>法规/成本/用户接受仍制约</td><td>低</td><td>公开网页确认不足,需法规与配置库二次核验</td><td><span class="tag">[S-Curve]</span><span class="tag">[Patent Barrier]</span></td></tr>
+          <tr><td>地暖/热舒适</td><td class="heat low">低</td><td class="heat mid">部分</td><td class="heat none">无</td><td>热管理效率可做穿透分析</td><td>低-中</td><td>未核验全车系配置,需授权配置库确认</td><td><span class="tag">[QFD]</span><span class="tag">[Patsnap Penetration]</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="qfd-kano">
+      <div class="section-head">
+        <h2>QFD / 质量屋: 痛点到工程特性</h2>
+        <p class="section-note">QFD 不只列需求,还要标出痛点等级、权重、工程特性、竞品满足度、智慧芽证据强度和下一代目标动作。</p>
+      </div>
+      <table>
+        <thead><tr><th>痛点等级</th><th>用户需求</th><th>权重</th><th>配置项</th><th>工程特性</th><th>竞品满足度</th><th>智慧芽强度</th><th>目标/动作</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pain">P1</span></td><td>家庭长途舒适</td><td><span class="matrix-score">5</span></td><td>二排腿托/座椅通风</td><td>座椅骨架、电机、布置空间、耐久</td><td>中-高</td><td>形成中</td><td>下一代必须跟进,并按供应链成熟度分版本</td></tr>
+          <tr><td><span class="pain">P2</span></td><td>科技感与差异化</td><td><span class="matrix-score">3</span></td><td>电子外后视镜</td><td>摄像头、显示屏、低延迟、法规适配</td><td>低</td><td>待验证</td><td>观望或高端试点,优先评估法规和用户接受</td></tr>
+          <tr><td><span class="pain">P1</span></td><td>低温舒适与能耗</td><td><span class="matrix-score">4</span></td><td>地暖/热管理舒适包</td><td>加热膜、温控器、低功耗热管理控制</td><td>低-中</td><td>形成中</td><td>作为北方/家庭场景差异化押注</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="patsnap">
+      <div class="section-head">
+        <h2>智慧芽专利论文看板 + 技术域穿透证据墙</h2>
+        <p class="section-note">每个产品域一级技术都必须生成专利/论文池摘要卡。主报告展示规模、趋势、布局点和代表性专利,完整列表进入专利池详情页或同页锚点。</p>
+      </div>
+      <div class="patsnap-wall">
+        <div class="chain">
+          <span>市场配置现象<br><b>渗透率 / VOC / 头部标尺</b></span>
+          <span>专利池规模<br><b>检索式 / 数量 / 时间窗</b></span>
+          <span>论文/文献信号<br><b>论文前哨 / 主题热度</b></span>
+          <span>布局点分布<br><b>结构 / 控制 / 材料 / 集成</b></span>
+          <span>重点专利<br><b>公开号 / 法律状态 / 亮点</b></span>
+          <span>申请人/供应链<br><b>OEM / Tier0 / Tier1 / Tier2</b></span>
+          <span>未来 1-2 年判断<br><b>技术 / OEM / 价格带</b></span>
+        </div>
+
+        <div class="tech-pool-grid">
+          <article class="pool-card" id="pool-summary-seat-actuator">
+            <div>
+              <span class="tag">产品域: 座椅舒适</span>
+              <span class="tag">一级技术: 座椅执行机构</span>
+              <h3>座椅执行机构专利/论文池</h3>
+              <p class="pool-meta">关联配置: 二排腿托、座椅抽屉、座椅通风/加热联动。检索式、时间窗和同义词需按实际任务替换。</p>
+            </div>
+            <div class="pool-metrics">
+              <div class="pool-metric"><b>128</b><span>专利池规模示例</span></div>
+              <div class="pool-metric"><b>14</b><span>论文/文献示例</span></div>
+              <div class="pool-metric"><b>中</b><span>专利壁垒/置信度</span></div>
+            </div>
+            <div>
+              <h3>布局点分布</h3>
+              <div class="bar-list" aria-label="座椅执行机构布局点分布示例">
+                <div class="bar-row"><span>结构方案</span><span class="bar-track"><i class="bar-fill" style="width:72%"></i></span><b>72%</b></div>
+                <div class="bar-row"><span>控制策略</span><span class="bar-track"><i class="bar-fill" style="width:46%"></i></span><b>46%</b></div>
+                <div class="bar-row"><span>安全耐久</span><span class="bar-track"><i class="bar-fill" style="width:34%"></i></span><b>34%</b></div>
+              </div>
+            </div>
+            <div class="patent-card-grid">
+              <div class="patent-mini"><b>CNxxxxxxA</b><p>申请人、日期、法律状态、问题-方案-效果待替换。</p></div>
+              <div class="patent-mini"><b>CNxxxxxxB</b><p>说明核心执行机构、布置空间或耐久约束。</p></div>
+              <div class="patent-mini"><b>论文信号</b><p>若检索不到,显示“论文信号暂无，以专利为主”。</p></div>
+            </div>
+            <p><span class="tag">[Patsnap Penetration]</span><span class="tag">[Patent Barrier]</span><span class="tag">[Supply Linkage]</span> 未来状态: 量产导入 / 中高端下沉 / 供应链多元化待验证。</p>
+            <a class="btn-link" href="patent_pools/seat-actuator.html">进入专利池详情</a>
+          </article>
+
+          <article class="pool-card" id="pool-summary-cockpit-display">
+            <div>
+              <span class="tag">产品域: 智能座舱</span>
+              <span class="tag">一级技术: 显示交互</span>
+              <h3>显示交互专利/论文池</h3>
+              <p class="pool-meta">关联配置: HUD、多屏联动、AI 助手、座舱域控。若一级技术更多,按同样结构继续追加卡片。</p>
+            </div>
+            <div class="pool-metrics">
+              <div class="pool-metric"><b>236</b><span>专利池规模示例</span></div>
+              <div class="pool-metric"><b>0</b><span>论文信号暂无，以专利为主</span></div>
+              <div class="pool-metric"><b>高</b><span>申请人集中度示例</span></div>
+            </div>
+            <div>
+              <h3>布局点分布</h3>
+              <div class="bar-list" aria-label="显示交互布局点分布示例">
+                <div class="bar-row"><span>显示融合</span><span class="bar-track"><i class="bar-fill" style="width:68%"></i></span><b>68%</b></div>
+                <div class="bar-row"><span>人机交互</span><span class="bar-track"><i class="bar-fill" style="width:58%"></i></span><b>58%</b></div>
+                <div class="bar-row"><span>系统集成</span><span class="bar-track"><i class="bar-fill" style="width:51%"></i></span><b>51%</b></div>
+              </div>
+            </div>
+            <div class="data-gap">论文/文献检索为 0 或不可用时,该卡仍保留; 差异化判断不得仅凭论文缺失而降为不可做。</div>
+            <p><span class="tag">[S-Curve]</span><span class="tag">[Patent Barrier]</span> 代表性专利应展示公开号、申请人、日期、法律状态、技术亮点和规划含义。</p>
+            <a class="btn-link" href="patent_pools/cockpit-display.html">进入专利池详情</a>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>专利池详情页模板说明</h3>
+          <p>生成器应为每个一级技术输出 `patent_pools/{technology_slug}.html`。详情页复用本模板 CSS,包含标题区、检索范围、布局点分布、趋势图、重点专利卡、完整专利表、完整论文/文献表、申请人/供应链视图和数据缺口说明。</p>
+          <p>若只能生成单文件 HTML,则把详情内容放入 `#pool-{technology_slug}` 锚点区块,主报告链接改为同页跳转,并保持完整数据不被裁剪。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai-innovation">
+      <div class="section-head">
+        <h2>AI 前瞻创新发现</h2>
+        <p class="section-note">基于专利池、论文/文献信号和配置场景,筛选 3-5 个可进入下一代车型预研的新配置点。</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card"><h3>腿托通风/加热一体化</h3><p><span class="tag">关联技术域</span> 座椅执行与储物 / 座舱热舒适。</p><p>发现依据: 腿托机构、座椅舒适和热舒适专利信号交叉。上车设想: 二排舒适包升级为姿态 + 热舒适组合。1-2 年可行性: 中。供应链成熟度: 形成中。风险: 成本、耐久、NVH。建议动作: 样件验证 + Tier1 联合评估。</p></div>
+        <div class="card"><h3>局部红外脚部热舒适</h3><p><span class="tag">关联技术域</span> 热管理 / 低温舒适。</p><p>发现依据: EV 热舒适论文与辐射加热专利共同指向低能耗局部补热。上车设想: 北方包或冬季续航舒适包。1-2 年可行性: 中。供应链成熟度: 待验证。风险: 安全、材料、能耗收益不确定。建议动作: 冬季工况实验。</p></div>
+        <div class="card"><h3>电子外后视镜场景自适应亮度</h3><p><span class="tag">关联技术域</span> 镜像视觉。</p><p>发现依据: CMS 显示控制、亮度标定和人因论文信号。上车设想: 雨夜、倒车、变道场景自动切换显示策略。1-2 年可行性: 中低。供应链成熟度: 形成中。风险: 法规与用户接受。建议动作: 高配试点 + 用户研究。</p></div>
+        <div class="card"><h3>后排控制屏家庭模式联动</h3><p><span class="tag">关联技术域</span> 座舱显示交互。</p><p>发现依据: 多屏协同、后排控制和家庭出行场景交汇。上车设想: 儿童、长途、休息和露营模式联动空调、座椅、影音与隐私。1-2 年可行性: 高。供应链成熟度: 多元化。风险: 交互复杂度。建议动作: HMI 原型测试。</p></div>
+        <div class="card"><h3>座舱显示按驾驶场景重排</h3><p><span class="tag">关联技术域</span> 显示交互 / AR-HUD。</p><p>发现依据: HUD、玻璃投影和 HCI 文献关注信息区域与注意力。上车设想: 高速、城市、泊车、儿童乘坐场景下自动调整信息优先级。1-2 年可行性: 中。供应链成熟度: 形成中。风险: 安全验证和一致性。建议动作: 场景库 + 可用性测试。</p></div>
+      </div>
+    </section>
+
+    <section id="relationship">
+      <div class="section-head">
+        <h2>车企-供应商-专利关系图谱</h2>
+        <p class="section-note">关系图谱必须区分已验证合作、专利联合申请、产品/公告线索和待验证供应商线索。海外供应链需标注区域、市场覆盖和证据类型。</p>
+      </div>
+      <div class="visual-card compact card">
+        <div class="mini-media">
+          <img src="assets/vehicle_visuals/photo_real/tier0_smart_ecosystem.png" data-fallback="assets/vehicle_visuals/huawei_tier0_ecosystem.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="Tier0 智能生态照片级 AI 示意图" />
+        </div>
+        <div>
+          <h3>供应链关系只做有证据的连接</h3>
+          <p>联合申请、官方/产品公告、企业库和可信网页分别对应不同置信等级; 海外供应链线索弱时只作为待验证清单。</p>
+        </div>
+      </div>
+      <div class="relationship-map">
+        <div class="node"><b>OEM</b><p>比亚迪 / 特斯拉 / 理想 / 问界 / 零跑等,负责车型定义和系统集成。</p><span class="tag green">整车决策</span></div>
+        <div class="node"><b>Tier0 / 生态</b><p>华为系/鸿蒙智行等生态型集成方,影响座舱、智驾、渠道与跨 OEM 协同。</p><span class="tag amber">生态协同</span></div>
+        <div class="node"><b>Tier1 / Tier2</b><p>座椅、热管理、显示、摄像头、控制器、电机/滑轨等系统与零部件供应商,区分中国/欧美/日韩/东南亚线索。</p><span class="tag">供应链成熟度</span></div>
+        <div class="node"><b>Patent Applicants</b><p>通过联合申请、申请人技术分布和核心专利识别真实技术积累。</p><span class="tag">智慧芽证据</span></div>
+      </div>
+      <div class="link-row">
+        <div class="card"><h3>已验证合作</h3><p>官方公告、年报、拆解库或 OEM 案例支撑。</p><span class="tag green">高置信</span></div>
+        <div class="card"><h3>专利联合申请</h3><p>智慧芽 co-applicant 证据,需列公开号或同族。</p><span class="tag">技术绑定</span></div>
+        <div class="card"><h3>产品/公告线索</h3><p>产品页、上市材料、工信部或供应商页面支撑。</p><span class="tag amber">中置信</span></div>
+        <div class="card"><h3>待验证供应商线索</h3><p>PR、招聘、媒体或社交线索,只能作为后续核验清单。</p><span class="tag red">低置信</span></div>
+      </div>
+      <table style="margin-top:14px">
+        <thead><tr><th>企业/供应商</th><th>区域</th><th>市场覆盖</th><th>海外相关性</th><th>证据类型</th><th>关系状态</th></tr></thead>
+        <tbody>
+          <tr><td>Tesla / Volkswagen / Toyota / Hyundai / Mercedes-Benz</td><td>北美/欧洲/日韩/全球</td><td>海外/全球</td><td>头部标尺或技术参照</td><td>Patsnap 企业库/官网/年报/网页线索待填</td><td>不默认推断供应关系</td></tr>
+          <tr><td>海外 Tier1/Tier2 候选</td><td>欧美/日韩/东南亚</td><td>区域或全球</td><td>供应候选/本地化线索/技术参照</td><td>需官方、专利、年报或可靠拆解支撑</td><td>弱证据统一标为待验证海外供应链线索</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="quadrant">
+      <div class="section-head">
+        <h2>Matrix Analysis 配置机会矩阵</h2>
+        <p class="section-note">矩阵统一承接渗透率、QFD 权重、技术生命周期、专利壁垒、供应链成熟度和头部标尺,输出清晰配置动作。</p>
+      </div>
+      <table style="margin-bottom:14px">
+        <thead><tr><th>配置</th><th>渗透率</th><th>QFD 权重</th><th>生命周期</th><th>专利壁垒</th><th>供应成熟度</th><th>头部标尺</th><th>矩阵动作</th></tr></thead>
+        <tbody>
+          <tr><td>二排舒适包</td><td>中-高</td><td><span class="matrix-score">5</span></td><td>成熟/上升</td><td>中</td><td>多元化</td><td>中国家庭 SUV 标尺</td><td><span class="tag green">必须跟</span></td></tr>
+          <tr><td>电子外后视镜</td><td>低</td><td><span class="matrix-score">3</span></td><td>上升/观望</td><td>中-高</td><td>形成中</td><td>海外法规和高端试点</td><td><span class="tag amber">观望/试点</span></td></tr>
+        </tbody>
+      </table>
+      <div class="quad">
+        <div class="card must"><h3>必须跟</h3><p><span class="tag">[Benchmarking]</span> 高渗透 + 用户认可 + 低壁垒。</p><div class="status-strip"><span class="status green">供应链: 成熟</span><span class="status green">未来: 主流普及</span></div></div>
+        <div class="card bet"><h3>差异化押注</h3><p><span class="tag">[Kano]</span><span class="tag">[Patent Barrier]</span> 低渗透 + 专利/论文升温 + 供应链可行。</p><div class="status-strip"><span class="status amber">供应链: 形成中</span><span class="status green">未来: 中高端下沉</span></div></div>
+        <div class="card watch"><h3>谨慎观望</h3><p><span class="tag">[S-Curve]</span> 信号存在但法规、用户或成本不确定。</p><div class="status-strip"><span class="status amber">未来: 试点验证</span><span class="status amber">不确定: 法规/成本</span></div></div>
+        <div class="card avoid"><h3>规避 / 绕开</h3><p><span class="tag">[Patent Barrier]</span> 高壁垒、集中度高或 VOC 反向。</p><div class="status-strip"><span class="status red">专利: 高壁垒</span><span class="status red">动作: 需绕开</span></div></div>
+      </div>
+    </section>
+
+    <section id="lifecycle">
+      <div class="section-head">
+        <h2>技术生命周期 × 价格带配置策略</h2>
+        <p class="section-note">从生命周期角度评估竞品配置:高端要有引领技术,中端重视上升+成熟技术,低端可用成熟和接近退出技术控成本但需披露风险。</p>
+      </div>
+      <div class="visual-card compact card">
+        <div class="mini-media">
+          <img src="assets/vehicle_visuals/photo_real/battery_chassis_factory.png" data-fallback="assets/vehicle_visuals/battery_chassis_platform.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="技术生命周期平台化照片级 AI 示意图" />
+        </div>
+        <div>
+          <h3>从技术阶段到价格带动作</h3>
+          <p>引领、上升、成熟、接近退出和退出技术分别对应不同价格带策略,避免把所有配置都当成同一类机会。</p>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>技术阶段</th><th>识别依据</th><th>高端产品</th><th>中端产品</th><th>低端产品</th><th>风险提示</th></tr></thead>
+        <tbody>
+          <tr><td>引领技术</td><td>头部标尺采用、专利/论文/文献动能强、品牌信号明显</td><td>标杆配置</td><td>谨慎下放</td><td>通常不适合</td><td>成本、稳定性、用户教育</td></tr>
+          <tr><td>上升技术</td><td>申请人增加、供应链形成、早期上车</td><td>卖点配置</td><td>性价比卖点</td><td>观察</td><td>供应成熟度和价格</td></tr>
+          <tr><td>成熟技术</td><td>广泛搭载、供应稳定、壁垒可控</td><td>基础配置</td><td>基础配置</td><td>主力配置</td><td>差异化不足</td></tr>
+          <tr><td>接近退出技术</td><td>技术信号走弱但成本低</td><td>排除</td><td>少量成本约束场景</td><td>成本控制</td><td>体验和品牌风险</td></tr>
+          <tr><td>退出技术</td><td>负面 VOC、法规/技术淘汰或品牌不匹配</td><td>不能配置</td><td>排除</td><td>排除</td><td>合规、口碑、残值风险</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="recommendations">
+      <div class="section-head">
+        <h2>下一代配置组合建议 + 证据链附录</h2>
+        <p class="section-note">每条建议都必须带市场证据、用户证据、智慧芽证据、供应链关系、理论标签和置信度。</p>
+      </div>
+      <div class="visual-card compact card">
+        <div class="mini-media">
+          <img src="assets/vehicle_visuals/photo_real/family_b_suv_comfort.png" data-fallback="assets/vehicle_visuals/china_nev_brand_wall.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="下一代家庭 B-SUV 配置建议照片级 AI 示意图" />
+        </div>
+        <div>
+          <h3>建议区按“配置组合”阅读</h3>
+          <p>最终建议不是单点功能罗列,而是面向人群、产品域、供应链和生命周期的一组可执行配置组合。</p>
+        </div>
+      </div>
+      <div class="rec card">
+        <div><h3>二排舒适 + 热管理包</h3><span class="tag green">必须跟 / 差异化组合</span></div>
+        <div>
+          <p><span class="tag">[QFD]</span><span class="tag">[Kano]</span><span class="tag">[Supply Linkage]</span> 面向年轻家庭的长途舒适需求,建议标配二排腿托、座椅通风/加热和低能耗热舒适方案。</p>
+          <p>市场证据: 高渗透待填。用户证据: VOC 待填。智慧芽证据: 专利/论文/文献趋势和核心专利待填。供应链证据: 座椅系统 Tier1 与电机/滑轨/加热材料 Tier2 关系待填。</p>
+          <p>未来状态: 技术量产导入 / OEM 跟随者增加 / 20-30 万价格段主流普及。数据滞后时必须降低置信度。</p>
+        </div>
+        <div class="score">High</div>
+      </div>
+      <table class="sources">
+        <thead><tr><th>来源</th><th>等级</th><th>获取方式</th><th>用途</th><th>数据缺口/降级</th></tr></thead>
+        <tbody>
+          <tr><td>工信部公告 / OEM 官网</td><td>A</td><td>官方查询/PDF/页面</td><td>备案参数、配置、上市时间</td><td>缺失时用商业配置库并降级</td></tr>
+          <tr><td>汽车之家/懂车帝</td><td>B</td><td>授权 API 优先/爬虫备援</td><td>配置渗透率</td><td>无授权时标小样本限制</td></tr>
+          <tr><td>智慧芽专利/论文/文献/企业</td><td>核心</td><td>MCP/API</td><td>壁垒、成熟度、关键申请人、产业链</td><td>缺失时不做强判断</td></tr>
+          <tr><td>海外供应链网页/年报/官网</td><td>B/C</td><td>可靠网页或公开文件</td><td>欧美/日韩/东南亚供应链补强</td><td>弱证据只作待验证线索</td></tr>
+          <tr><td>本地视觉素材库</td><td>Asset</td><td>assets/vehicle_visuals/photo_real 优先,SVG 兜底</td><td>首屏视觉面板 + 章节小图转场</td><td>无匹配时用 SVG 或 CSS/图表占位,不影响报告生成</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <template id="patent-pool-detail-page-template">
+      <section class="pool-detail-page" id="pool-{technology_slug}">
+        <div class="pool-hero">
+          <span class="tag">Patent Pool Detail</span>
+          <h2>{level_1_technology} 专利/论文池详情</h2>
+          <p>{product_domain} / {level_2_configurations}。展示完整专利池、论文/文献池、布局点分布、重点专利解释、申请人/供应链视图和数据缺口。</p>
+          <div class="visual-card compact card">
+            <div class="mini-media">
+              <img src="../assets/vehicle_visuals/photo_real/smart_cockpit_supply_chain.png" data-fallback="../assets/vehicle_visuals/smart_cockpit_supply_chain.svg" onerror="if (this.dataset.fallback && this.src.indexOf(this.dataset.fallback) === -1) this.src = this.dataset.fallback;" alt="{level_1_technology} 技术摘要视觉" />
+            </div>
+            <div>
+              <h3>技术摘要视觉</h3>
+              <p>详情页图片路径必须使用 `../assets/vehicle_visuals/...`,并只作为阅读辅助,不得作为证据来源。</p>
+            </div>
+          </div>
+          <div class="pool-metrics">
+            <div class="pool-metric"><b>{patent_pool_count}</b><span>专利池规模</span></div>
+            <div class="pool-metric"><b>{literature_pool_count}</b><span>论文/文献池规模</span></div>
+            <div class="pool-metric"><b>{confidence}</b><span>置信度</span></div>
+          </div>
+        </div>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>检索范围</h3>
+            <p>{search_query}</p>
+            <p class="detail-note">时间窗: {search_window}; 数据截止: {patsnap_cutoff}; 工具/来源: {source_tool}</p>
+          </div>
+          <div class="card">
+            <h3>布局点分布</h3>
+            <div class="bar-list">{layout_clusters}</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h3>重点专利解释</h3>
+          <div class="patent-card-grid">{representative_patents}</div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h3>完整专利池</h3>
+          <div class="table-wrap">{full_patent_list}</div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <h3>完整论文/文献池</h3>
+          <div class="table-wrap">{full_literature_list}</div>
+          <p class="detail-note">无结果时填写“论文信号暂无，以专利为主”,并说明对判断的影响。</p>
+        </div>
+        <div class="data-gap" style="margin-top:14px">{data_gap}</div>
+      </section>
+    </template>
+
+    <footer>
+      棱镜车智-专利论文数据穿透报告模板。请替换示例数据并保留一句话结论、数据截止日期、QFD/质量屋、Matrix Analysis、产品域技术地图、专利论文看板、一级技术专利池、车企-供应商关系图谱、生命周期策略和数据缺口披露。图片素材为照片级 AI 示意图或 SVG 兜底视觉,非官方车型图,不得作为分析证据或声明为官网宣传图片。
+    </footer>
+  </div>
+</body>
+</html>

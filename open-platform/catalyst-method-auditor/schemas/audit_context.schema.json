@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalyst Method Audit Context",
+  "type": "object",
+  "required": ["meta", "material_profile", "extracted_elements", "audit_issues", "computed_summary"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["skill_version", "input_file", "input_sha256", "report_title"],
+      "properties": {
+        "skill_version": {"type": "string"},
+        "input_file": {"type": "string"},
+        "input_sha256": {"type": "string"},
+        "report_title": {"type": "string"},
+        "generated_at": {"type": "string"}
+      }
+    },
+    "material_profile": {
+      "type": "object",
+      "required": ["material_type", "audit_mode", "confidence", "scope_statement"],
+      "properties": {
+        "material_type": {"type": "string"},
+        "audit_mode": {"type": "string"},
+        "confidence": {"type": "string"},
+        "scope_statement": {"type": "string"}
+      }
+    },
+    "extracted_elements": {
+      "type": "object",
+      "required": ["catalyst_system", "preparation_steps", "sample_design", "evaluation_plan", "claims"],
+      "properties": {
+        "catalyst_system": {"type": "string"},
+        "preparation_steps": {"type": "array", "items": {"type": "object"}},
+        "sample_design": {"type": "array", "items": {"type": "object"}},
+        "evaluation_plan": {"type": "object"},
+        "claims": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "audit_issues": {"type": "array", "items": {"type": "object"}},
+    "computed_summary": {"type": "object"}
+  }
+}

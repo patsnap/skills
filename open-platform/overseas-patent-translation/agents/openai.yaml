@@ -1,0 +1,7 @@
+interface:
+  display_name: "海外专利申请翻译助手"
+  short_description: "按EP/US/JP/KR要求翻译并格式化专利文本"
+  default_prompt: "Use $overseas-patent-translation to translate my Chinese patent application for Europe, United States, Japan, or Korea filing."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,8 @@
+﻿{
+    "zhihuiya_base_url":  "https://connect.zhihuiya.com",
+    "zhihuiya_auth_mode":  "query_api_key",
+    "zhihuiya_api_key":  "PUT_YOUR_ZHIHUIYA_API_KEY_HERE",
+    "zhihuiya_connect_timeout_s":  10,
+    "zhihuiya_read_timeout_s":  60,
+    "zhihuiya_max_retries":  2
+}

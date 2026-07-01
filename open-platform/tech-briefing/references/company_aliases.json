@@ -1,0 +1,1720 @@
+{
+  "_comment": "公司名称映射表。key 为识别用的简称/常用名，aliases 为 PatSnap 申请人字段中实际使用的全称列表。",
+  "中国 · 新能源": {
+    "比亚迪": {
+      "aliases": [
+        "比亚迪股份有限公司",
+        "BYD Co., Ltd.",
+        "BYD Company Limited"
+      ]
+    },
+    "宁德时代": {
+      "aliases": [
+        "宁德时代新能源科技股份有限公司",
+        "Contemporary Amperex Technology Co., Limited",
+        "CATL"
+      ]
+    },
+    "亿纬锂能": {
+      "aliases": [
+        "湖北亿纬动力有限公司",
+        "惠州亿纬动力电池有限公司",
+        "亿纬锂能股份有限公司",
+        "EVE Energy Co., Ltd."
+      ]
+    },
+    "中创新航": {
+      "aliases": [
+        "中创新航科技集团股份有限公司",
+        "中创新航科技股份有限公司",
+        "CALB Co., Ltd."
+      ]
+    },
+    "蜂巢能源": {
+      "aliases": [
+        "蜂巢能源科技股份有限公司",
+        "Svolt Energy Technology Co., Ltd."
+      ]
+    },
+    "国轩高科": {
+      "aliases": [
+        "合肥国轩高科动力能源有限公司",
+        "Gotion High-Tech Co., Ltd."
+      ]
+    },
+    "孚能科技": {
+      "aliases": [
+        "孚能科技（赣州）股份有限公司",
+        "Farasis Energy (Ganzhou) Co., Ltd."
+      ]
+    },
+    "欣旺达": {
+      "aliases": [
+        "欣旺达电动汽车电池有限公司",
+        "欣旺达电子股份有限公司",
+        "Sunwoda Electronic Co., Ltd."
+      ]
+    }
+  },
+  "中国 · 汽车": {
+    "吉利": {
+      "aliases": [
+        "浙江吉利控股集团有限公司",
+        "吉利汽车集团有限公司",
+        "Geely Automobile Holdings Limited",
+        "Zhejiang Geely Holding Group Co., Ltd."
+      ]
+    },
+    "长城汽车": {
+      "aliases": [
+        "长城汽车股份有限公司",
+        "Great Wall Motor Company Limited"
+      ]
+    },
+    "长安汽车": {
+      "aliases": [
+        "重庆长安汽车股份有限公司",
+        "Chongqing Changan Automobile Co., Ltd."
+      ]
+    },
+    "上汽": {
+      "aliases": [
+        "上海汽车集团股份有限公司",
+        "SAIC Motor Corporation Limited"
+      ]
+    },
+    "广汽": {
+      "aliases": [
+        "广州汽车集团股份有限公司",
+        "GAC Group",
+        "Guangzhou Automobile Group Co., Ltd."
+      ]
+    },
+    "蔚来": {
+      "aliases": [
+        "蔚来汽车有限公司",
+        "NIO Inc.",
+        "NIO Co., Ltd."
+      ]
+    },
+    "小鹏": {
+      "aliases": [
+        "广州小鹏汽车科技有限公司",
+        "XPENG INC.",
+        "XPeng Inc."
+      ]
+    },
+    "理想": {
+      "aliases": [
+        "理想汽车有限公司",
+        "Li Auto Inc.",
+        "理想智造（北京）科技有限公司"
+      ]
+    },
+    "零跑": {
+      "aliases": [
+        "浙江零跑科技股份有限公司",
+        "Leapmotor",
+        "Zhejiang Leapmotor Technology Co., Ltd."
+      ]
+    },
+    "哪吒": {
+      "aliases": [
+        "合众新能源汽车股份有限公司",
+        "Hozon New Energy Automobile Co., Ltd."
+      ]
+    }
+  },
+  "中国 · 消费电子 / 通信": {
+    "华为": {
+      "aliases": [
+        "华为技术有限公司",
+        "HUAWEI TECHNOLOGIES CO., LTD.",
+        "Huawei Technologies Co., Ltd."
+      ]
+    },
+    "小米": {
+      "aliases": [
+        "小米科技有限责任公司",
+        "Xiaomi Inc.",
+        "Xiaomi Technology Co., Ltd.",
+        "XIAOMI INC."
+      ]
+    },
+    "OPPO": {
+      "aliases": [
+        "OPPO广东移动通信有限公司",
+        "Guangdong Oppo Mobile Telecommunications Corp., Ltd.",
+        "OPPO Mobile Telecommunications Corp., Ltd."
+      ]
+    },
+    "vivo": {
+      "aliases": [
+        "维沃移动通信有限公司",
+        "Vivo Mobile Communication Co., Ltd.",
+        "VIVO MOBILE COMMUNICATION CO., LTD."
+      ]
+    },
+    "荣耀": {
+      "aliases": [
+        "荣耀终端有限公司",
+        "Honor Device Co., Ltd.",
+        "HONOR DEVICE CO., LTD."
+      ]
+    },
+    "联想": {
+      "aliases": [
+        "联想（北京）有限公司",
+        "Lenovo (Beijing) Co., Ltd.",
+        "LENOVO (BEIJING) LIMITED",
+        "Lenovo Group Limited"
+      ]
+    },
+    "中兴": {
+      "aliases": [
+        "中兴通讯股份有限公司",
+        "ZTE Corporation",
+        "ZTE CORPORATION"
+      ]
+    },
+    "大疆": {
+      "aliases": [
+        "深圳市大疆创新科技有限公司",
+        "SZ DJI Technology Co., Ltd.",
+        "DJI"
+      ]
+    }
+  },
+  "中国 · 机器人": {
+    "宇树科技": {
+      "aliases": [
+        "宇树科技股份有限公司",
+        "Unitree Robotics Co., Ltd.",
+        "UNITREE ROBOTICS CO., LTD."
+      ]
+    },
+    "优必选": {
+      "aliases": [
+        "优必选科技股份有限公司",
+        "UBTECH Robotics Corp.",
+        "UBTECH ROBOTICS CORP LTD",
+        "Ubtech Robotics Corp Ltd"
+      ]
+    },
+    "智元机器人": {
+      "aliases": [
+        "上海智元新创技术有限公司",
+        "Shanghai Zhiyuan Innovation Technology Co., Ltd."
+      ]
+    },
+    "傅利叶智能": {
+      "aliases": [
+        "傅利叶智能科技有限公司",
+        "Fourier Intelligence Co., Ltd."
+      ]
+    },
+    "乐聚机器人": {
+      "aliases": [
+        "深圳乐聚机器人技术有限公司",
+        "Leju Robotics"
+      ]
+    },
+    "达闼科技": {
+      "aliases": [
+        "达闼机器人股份有限公司",
+        "CloudMinds Technology Co., Ltd."
+      ]
+    },
+    "科沃斯": {
+      "aliases": [
+        "科沃斯机器人股份有限公司",
+        "Ecovacs Robotics Co., Ltd."
+      ]
+    },
+    "石头科技": {
+      "aliases": [
+        "北京石头世纪科技股份有限公司",
+        "Roborock Technology Co., Ltd."
+      ]
+    },
+    "追觅科技": {
+      "aliases": [
+        "追觅创新科技（苏州）有限公司",
+        "Dreame Technology"
+      ]
+    }
+  },
+  "中国 · 半导体 / AI": {},
+  "中国 · 互联网 / 云": {
+    "百度": {
+      "aliases": [
+        "百度在线网络技术（北京）有限公司",
+        "Baidu Online Network Technology (Beijing) Co., Ltd.",
+        "百度（香港）有限公司",
+        "Baidu, Inc."
+      ]
+    },
+    "阿里巴巴": {
+      "aliases": [
+        "阿里巴巴集团控股有限公司",
+        "Alibaba Group Holding Limited",
+        "阿里云计算有限公司",
+        "Alibaba Cloud Computing Ltd."
+      ]
+    },
+    "腾讯": {
+      "aliases": [
+        "腾讯科技（深圳）有限公司",
+        "Tencent Technology (Shenzhen) Co., Ltd.",
+        "腾讯控股有限公司"
+      ]
+    },
+    "字节跳动": {
+      "aliases": [
+        "字节跳动有限公司",
+        "ByteDance Ltd.",
+        "北京字节跳动科技有限公司"
+      ]
+    },
+    "京东": {
+      "aliases": [
+        "京东科技控股股份有限公司",
+        "JD.com, Inc.",
+        "北京京东世纪贸易有限公司"
+      ]
+    },
+    "美团": {
+      "aliases": [
+        "美团",
+        "Meituan",
+        "北京三快在线科技有限公司"
+      ]
+    },
+    "商汤科技": {
+      "aliases": [
+        "商汤集团有限公司",
+        "SenseTime Group Limited",
+        "上海商汤智能科技有限公司"
+      ]
+    },
+    "旷视科技": {
+      "aliases": [
+        "旷视科技有限公司",
+        "Megvii Technology Limited"
+      ]
+    },
+    "科大讯飞": {
+      "aliases": [
+        "科大讯飞股份有限公司",
+        "iFLYTEK Co., Ltd."
+      ]
+    }
+  },
+  "中国 · 工业 / 能源": {
+    "国家电网": {
+      "aliases": [
+        "国家电网有限公司",
+        "State Grid Corporation of China"
+      ]
+    },
+    "中国石化": {
+      "aliases": [
+        "中国石油化工股份有限公司",
+        "China Petroleum & Chemical Corporation",
+        "Sinopec"
+      ]
+    },
+    "中国石油": {
+      "aliases": [
+        "中国石油天然气股份有限公司",
+        "PetroChina Company Limited"
+      ]
+    },
+    "隆基绿能": {
+      "aliases": [
+        "隆基绿能科技股份有限公司",
+        "LONGi Green Energy Technology Co., Ltd."
+      ]
+    },
+    "通威股份": {
+      "aliases": [
+        "通威股份有限公司",
+        "Tongwei Co., Ltd."
+      ]
+    },
+    "晶科能源": {
+      "aliases": [
+        "晶科能源股份有限公司",
+        "JinkoSolar Holding Co., Ltd."
+      ]
+    },
+    "天合光能": {
+      "aliases": [
+        "天合光能股份有限公司",
+        "Trina Solar Co., Ltd."
+      ]
+    }
+  },
+  "美国 · 科技": {
+    "谷歌": {
+      "aliases": [
+        "Google LLC",
+        "GOOGLE LLC",
+        "Google Inc.",
+        "谷歌有限责任公司"
+      ]
+    },
+    "微软": {
+      "aliases": [
+        "Microsoft Corporation",
+        "MICROSOFT CORPORATION",
+        "微软公司"
+      ]
+    },
+    "亚马逊": {
+      "aliases": [
+        "Amazon Technologies, Inc.",
+        "AMAZON TECHNOLOGIES, INC.",
+        "Amazon.com, Inc."
+      ]
+    },
+    "Meta": {
+      "aliases": [
+        "Meta Platforms, Inc.",
+        "META PLATFORMS, INC.",
+        "Facebook, Inc.",
+        "Facebook Technologies, LLC"
+      ]
+    },
+    "IBM": {
+      "aliases": [
+        "International Business Machines Corporation",
+        "IBM"
+      ]
+    },
+    "甲骨文": {
+      "aliases": [
+        "Oracle Corporation",
+        "ORACLE CORPORATION"
+      ]
+    },
+    "思科": {
+      "aliases": [
+        "Cisco Technology, Inc.",
+        "CISCO TECHNOLOGY, INC.",
+        "Cisco Systems, Inc."
+      ]
+    }
+  },
+  "美国 · 汽车 / 机器人": {
+    "特斯拉": {
+      "aliases": [
+        "Tesla, Inc.",
+        "TESLA, INC.",
+        "特斯拉汽车有限公司",
+        "Tesla Motors, Inc."
+      ]
+    },
+    "通用汽车": {
+      "aliases": [
+        "General Motors LLC",
+        "GENERAL MOTORS LLC",
+        "General Motors Company"
+      ]
+    },
+    "福特": {
+      "aliases": [
+        "Ford Motor Company",
+        "FORD MOTOR COMPANY"
+      ]
+    },
+    "波士顿动力": {
+      "aliases": [
+        "Boston Dynamics, Inc.",
+        "BOSTON DYNAMICS, INC."
+      ]
+    },
+    "直觉外科": {
+      "aliases": [
+        "Intuitive Surgical Operations, Inc.",
+        "INTUITIVE SURGICAL OPERATIONS, INC."
+      ]
+    }
+  },
+  "日本": {
+    "丰田": {
+      "aliases": [
+        "丰田自动车株式会社",
+        "TOYOTA JIDOSHA KABUSHIKI KAISHA",
+        "Toyota Motor Corporation",
+        "Toyota Jidosha Kabushiki Kaisha"
+      ]
+    },
+    "本田": {
+      "aliases": [
+        "本田技研工业株式会社",
+        "HONDA MOTOR CO., LTD.",
+        "Honda Motor Co., Ltd."
+      ]
+    },
+    "日产": {
+      "aliases": [
+        "日产自动车株式会社",
+        "NISSAN MOTOR CO., LTD.",
+        "Nissan Motor Co., Ltd."
+      ]
+    },
+    "松下": {
+      "aliases": [
+        "松下控股株式会社",
+        "Panasonic Holdings Corporation",
+        "PANASONIC HOLDINGS CORPORATION",
+        "Panasonic Corporation"
+      ]
+    },
+    "索尼": {
+      "aliases": [
+        "索尼集团公司",
+        "Sony Group Corporation",
+        "SONY GROUP CORPORATION",
+        "Sony Corporation"
+      ]
+    },
+    "发那科": {
+      "aliases": [
+        "发那科株式会社",
+        "FANUC CORPORATION",
+        "Fanuc Corporation"
+      ]
+    },
+    "安川电机": {
+      "aliases": [
+        "株式会社安川电机",
+        "YASKAWA ELECTRIC CORPORATION",
+        "Yaskawa Electric Corporation"
+      ]
+    },
+    "日立": {
+      "aliases": [
+        "株式会社日立制作所",
+        "Hitachi, Ltd.",
+        "HITACHI, LTD."
+      ]
+    },
+    "东芝": {
+      "aliases": [
+        "株式会社东芝",
+        "Toshiba Corporation",
+        "TOSHIBA CORPORATION"
+      ]
+    },
+    "村田制作所": {
+      "aliases": [
+        "株式会社村田制作所",
+        "Murata Manufacturing Co., Ltd.",
+        "MURATA MANUFACTURING CO., LTD."
+      ]
+    },
+    "京瓷": {
+      "aliases": [
+        "京瓷株式会社",
+        "Kyocera Corporation",
+        "KYOCERA CORPORATION"
+      ]
+    },
+    "TDK": {
+      "aliases": [
+        "TDK株式会社",
+        "TDK Corporation",
+        "TDK CORPORATION"
+      ]
+    },
+    "旭化成": {
+      "aliases": [
+        "旭化成株式会社",
+        "Asahi Kasei Corporation",
+        "ASAHI KASEI CORPORATION"
+      ]
+    }
+  },
+  "韩国": {
+    "LG": {
+      "aliases": [
+        "LG Energy Solution, Ltd.",
+        "LG化学株式会社",
+        "LG Chem, Ltd.",
+        "LG ELECTRONICS INC.",
+        "LG Electronics Inc."
+      ]
+    },
+    "SK": {
+      "aliases": [
+        "SK Innovation Co., Ltd.",
+        "SK ON Co., Ltd.",
+        "SK Hynix Inc.",
+        "SK INNOVATION CO., LTD."
+      ]
+    },
+    "现代": {
+      "aliases": [
+        "现代自动车株式会社",
+        "Hyundai Motor Company",
+        "HYUNDAI MOTOR COMPANY"
+      ]
+    },
+    "起亚": {
+      "aliases": [
+        "起亚株式会社",
+        "Kia Corporation",
+        "KIA CORPORATION"
+      ]
+    },
+    "三星SDI": {
+      "aliases": [
+        "三星SDI株式会社",
+        "Samsung SDI Co., Ltd.",
+        "SAMSUNG SDI CO., LTD."
+      ]
+    }
+  },
+  "欧洲": {
+    "大众": {
+      "aliases": [
+        "大众汽车股份公司",
+        "Volkswagen AG",
+        "VOLKSWAGEN AKTIENGESELLSCHAFT"
+      ]
+    },
+    "宝马": {
+      "aliases": [
+        "宝马股份公司",
+        "Bayerische Motoren Werke AG",
+        "BMW AG",
+        "BMW AKTIENGESELLSCHAFT"
+      ]
+    },
+    "奔驰": {
+      "aliases": [
+        "梅赛德斯-奔驰股份公司",
+        "Mercedes-Benz Group AG",
+        "MERCEDES-BENZ GROUP AG",
+        "Daimler AG"
+      ]
+    },
+    "博世": {
+      "aliases": [
+        "罗伯特·博世有限公司",
+        "Robert Bosch GmbH",
+        "ROBERT BOSCH GMBH"
+      ]
+    },
+    "西门子": {
+      "aliases": [
+        "西门子股份公司",
+        "Siemens AG",
+        "SIEMENS AKTIENGESELLSCHAFT"
+      ]
+    },
+    "ABB": {
+      "aliases": [
+        "ABB Ltd.",
+        "ABB Schweiz AG",
+        "ABB Technology Ltd.",
+        "ABB AB",
+        "ABB SCHWEIZ AG"
+      ]
+    },
+    "库卡": {
+      "aliases": [
+        "库卡股份公司",
+        "KUKA AG",
+        "KUKA Aktiengesellschaft",
+        "KUKA AKTIENGESELLSCHAFT"
+      ]
+    },
+    "爱立信": {
+      "aliases": [
+        "爱立信公司",
+        "Telefonaktiebolaget LM Ericsson",
+        "TELEFONAKTIEBOLAGET LM ERICSSON"
+      ]
+    },
+    "诺基亚": {
+      "aliases": [
+        "诺基亚技术有限公司",
+        "Nokia Technologies Oy",
+        "NOKIA TECHNOLOGIES OY",
+        "Nokia Corporation"
+      ]
+    },
+    "飞利浦": {
+      "aliases": [
+        "皇家飞利浦有限公司",
+        "Koninklijke Philips N.V.",
+        "KONINKLIJKE PHILIPS N.V."
+      ]
+    },
+    "雷诺": {
+      "aliases": [
+        "雷诺股份公司",
+        "Renault S.A.S.",
+        "RENAULT S.A.S."
+      ]
+    },
+    "斯特兰蒂斯": {
+      "aliases": [
+        "斯特兰蒂斯公司",
+        "Stellantis N.V.",
+        "STELLANTIS N.V.",
+        "PSA Automobiles SA"
+      ]
+    }
+  },
+  "中国台湾": {
+    "鸿海": {
+      "aliases": [
+        "鸿海精密工业股份有限公司",
+        "Hon Hai Precision Industry Co., Ltd.",
+        "Foxconn"
+      ]
+    },
+    "华硕": {
+      "aliases": [
+        "华硕电脑股份有限公司",
+        "ASUSTeK Computer Inc.",
+        "ASUSTEK COMPUTER INC."
+      ]
+    },
+    "宏碁": {
+      "aliases": [
+        "宏碁股份有限公司",
+        "Acer Incorporated",
+        "ACER INCORPORATED"
+      ]
+    },
+    "世界先进": {
+      "aliases": [
+        "世界先进积体电路股份有限公司",
+        "Vanguard International Semiconductor Corporation"
+      ]
+    },
+    "联咏科技": {
+      "aliases": [
+        "联咏科技股份有限公司",
+        "Novatek Microelectronics Corp."
+      ]
+    },
+    "瑞昱半导体": {
+      "aliases": [
+        "瑞昱半导体股份有限公司",
+        "Realtek Semiconductor Corp."
+      ]
+    },
+    "晶豪科技": {
+      "aliases": [
+        "晶豪科技股份有限公司",
+        "Etron Technology, Inc."
+      ]
+    },
+    "创意电子": {
+      "aliases": [
+        "创意电子股份有限公司",
+        "Global Unichip Corp.",
+        "GUC"
+      ]
+    }
+  },
+  "芯片产业链 · 设计（Fabless）": {
+    "高通": {
+      "aliases": [
+        "QUALCOMM Incorporated",
+        "Qualcomm Incorporated",
+        "高通股份有限公司",
+        "QUALCOMM INCORPORATED"
+      ]
+    },
+    "英伟达": {
+      "aliases": [
+        "NVIDIA Corporation",
+        "NVIDIA CORPORATION",
+        "英伟达公司"
+      ]
+    },
+    "AMD": {
+      "aliases": [
+        "Advanced Micro Devices, Inc.",
+        "ADVANCED MICRO DEVICES, INC.",
+        "超威半导体公司"
+      ]
+    },
+    "博通": {
+      "aliases": [
+        "Broadcom Inc.",
+        "BROADCOM INC.",
+        "Broadcom Corporation",
+        "Broadcom Limited"
+      ]
+    },
+    "联发科": {
+      "aliases": [
+        "联发科技股份有限公司",
+        "MediaTek Inc.",
+        "MEDIATEK INC."
+      ]
+    },
+    "苹果": {
+      "aliases": [
+        "Apple Inc.",
+        "APPLE INC."
+      ]
+    },
+    "ARM": {
+      "aliases": [
+        "ARM Limited",
+        "ARM LTD.",
+        "Arm Limited",
+        "ARM Holdings plc"
+      ]
+    },
+    "Marvell": {
+      "aliases": [
+        "Marvell Technology, Inc.",
+        "MARVELL TECHNOLOGY, INC.",
+        "Marvell Semiconductor, Inc."
+      ]
+    },
+    "Xilinx": {
+      "aliases": [
+        "Xilinx, Inc.",
+        "XILINX, INC."
+      ]
+    },
+    "Altera": {
+      "aliases": [
+        "Altera Corporation",
+        "ALTERA CORPORATION"
+      ]
+    },
+    "Microchip": {
+      "aliases": [
+        "Microchip Technology Incorporated",
+        "MICROCHIP TECHNOLOGY INCORPORATED"
+      ]
+    },
+    "Lattice": {
+      "aliases": [
+        "Lattice Semiconductor Corporation",
+        "LATTICE SEMICONDUCTOR CORPORATION"
+      ]
+    },
+    "Cirrus Logic": {
+      "aliases": [
+        "Cirrus Logic, Inc.",
+        "CIRRUS LOGIC, INC."
+      ]
+    },
+    "Monolithic Power": {
+      "aliases": [
+        "Monolithic Power Systems, Inc.",
+        "MONOLITHIC POWER SYSTEMS, INC.",
+        "MPS"
+      ]
+    },
+    "Silicon Laboratories": {
+      "aliases": [
+        "Silicon Laboratories Inc.",
+        "SILICON LABORATORIES INC."
+      ]
+    },
+    "MaxLinear": {
+      "aliases": [
+        "MaxLinear, Inc.",
+        "MAXLINEAR, INC."
+      ]
+    },
+    "寒武纪": {
+      "aliases": [
+        "中科寒武纪科技股份有限公司",
+        "Cambricon Technologies Corporation Limited"
+      ]
+    },
+    "地平线": {
+      "aliases": [
+        "地平线（上海）人工智能技术有限公司",
+        "Horizon Robotics (Shanghai) Co., Ltd."
+      ]
+    },
+    "海思": {
+      "aliases": [
+        "华为海思半导体有限公司",
+        "HiSilicon Technologies Co., Ltd."
+      ]
+    },
+    "兆易创新": {
+      "aliases": [
+        "兆易创新科技集团股份有限公司",
+        "GigaDevice Semiconductor Inc."
+      ]
+    },
+    "澜起科技": {
+      "aliases": [
+        "澜起科技股份有限公司",
+        "Montage Technology Co., Ltd."
+      ]
+    },
+    "韦尔股份": {
+      "aliases": [
+        "韦尔股份有限公司",
+        "Will Semiconductor Co., Ltd."
+      ]
+    },
+    "思特威": {
+      "aliases": [
+        "思特威（上海）电子科技股份有限公司",
+        "SmartSens Technology Co., Ltd."
+      ]
+    },
+    "格科微": {
+      "aliases": [
+        "格科微电子（上海）有限公司",
+        "GalaxyCore Inc."
+      ]
+    },
+    "卓胜微": {
+      "aliases": [
+        "卓胜微电子（上海）有限公司",
+        "Vanchip Technologies Co., Ltd."
+      ]
+    },
+    "芯原股份": {
+      "aliases": [
+        "芯原微电子（上海）股份有限公司",
+        "VeriSilicon Holdings Co., Ltd."
+      ]
+    },
+    "恒玄科技": {
+      "aliases": [
+        "恒玄科技（上海）股份有限公司",
+        "BES Technic Co., Ltd."
+      ]
+    },
+    "炬芯科技": {
+      "aliases": [
+        "炬芯科技股份有限公司",
+        "Actions Technology Co., Ltd."
+      ]
+    },
+    "全志科技": {
+      "aliases": [
+        "全志科技股份有限公司",
+        "Allwinner Technology Co., Ltd."
+      ]
+    },
+    "瑞芯微": {
+      "aliases": [
+        "瑞芯微电子股份有限公司",
+        "Rockchip Electronics Co., Ltd."
+      ]
+    },
+    "晶晨股份": {
+      "aliases": [
+        "晶晨股份（上海）有限公司",
+        "Amlogic (Shanghai) Co., Ltd."
+      ]
+    },
+    "紫光展锐": {
+      "aliases": [
+        "紫光展锐（上海）科技有限公司",
+        "UNISOC Technologies Co., Ltd."
+      ]
+    },
+    "龙芯中科": {
+      "aliases": [
+        "龙芯中科技术股份有限公司",
+        "Loongson Technology Corporation Limited"
+      ]
+    },
+    "飞腾": {
+      "aliases": [
+        "飞腾信息技术有限公司",
+        "Phytium Technology Co., Ltd."
+      ]
+    },
+    "华大九天": {
+      "aliases": [
+        "华大九天科技股份有限公司",
+        "Empyrean Technology Co., Ltd."
+      ]
+    },
+    "概伦电子": {
+      "aliases": [
+        "概伦电子股份有限公司",
+        "ProPlus Electronics Co., Ltd."
+      ]
+    }
+  },
+  "芯片产业链 · 制造（Foundry）": {
+    "台积电": {
+      "aliases": [
+        "台湾积体电路制造股份有限公司",
+        "Taiwan Semiconductor Manufacturing Co., Ltd.",
+        "TSMC"
+      ]
+    },
+    "三星晶圆代工": {
+      "aliases": [
+        "三星电子株式会社",
+        "Samsung Electronics Co., Ltd.",
+        "Samsung Foundry"
+      ]
+    },
+    "英特尔代工": {
+      "aliases": [
+        "Intel Corporation",
+        "INTEL CORPORATION",
+        "Intel Foundry Services"
+      ]
+    },
+    "中芯国际": {
+      "aliases": [
+        "中芯国际集成电路制造有限公司",
+        "Semiconductor Manufacturing International Corporation",
+        "SMIC"
+      ]
+    },
+    "联电": {
+      "aliases": [
+        "联华电子股份有限公司",
+        "United Microelectronics Corporation",
+        "UMC"
+      ]
+    },
+    "格芯": {
+      "aliases": [
+        "GLOBALFOUNDRIES Inc.",
+        "GLOBALFOUNDRIES INC.",
+        "GlobalFoundries"
+      ]
+    },
+    "力积电": {
+      "aliases": [
+        "力积电股份有限公司",
+        "Powerchip Semiconductor Manufacturing Corporation"
+      ]
+    },
+    "华虹半导体": {
+      "aliases": [
+        "华虹半导体有限公司",
+        "Hua Hong Semiconductor Limited",
+        "华虹宏力半导体制造有限公司"
+      ]
+    },
+    "晶合集成": {
+      "aliases": [
+        "合肥晶合集成电路股份有限公司",
+        "Nexchip Semiconductor Corporation"
+      ]
+    },
+    "粤芯半导体": {
+      "aliases": [
+        "粤芯半导体技术有限公司",
+        "Guangzhou SMIC"
+      ]
+    },
+    "积塔半导体": {
+      "aliases": [
+        "积塔半导体有限公司",
+        "SMEC"
+      ]
+    },
+    "Tower Semiconductor": {
+      "aliases": [
+        "Tower Semiconductor Ltd.",
+        "TOWER SEMICONDUCTOR LTD."
+      ]
+    },
+    "X-FAB": {
+      "aliases": [
+        "X-FAB Semiconductor Foundries SE",
+        "X-FAB SEMICONDUCTOR FOUNDRIES SE"
+      ]
+    }
+  },
+  "芯片产业链 · 存储": {
+    "三星存储": {
+      "aliases": [
+        "三星电子株式会社",
+        "Samsung Electronics Co., Ltd."
+      ]
+    },
+    "SK海力士": {
+      "aliases": [
+        "SK海力士株式会社",
+        "SK Hynix Inc.",
+        "SK HYNIX INC."
+      ]
+    },
+    "美光": {
+      "aliases": [
+        "Micron Technology, Inc.",
+        "MICRON TECHNOLOGY, INC.",
+        "美光科技"
+      ]
+    },
+    "西部数据": {
+      "aliases": [
+        "Western Digital Corporation",
+        "WESTERN DIGITAL CORPORATION",
+        "Western Digital Technologies, Inc."
+      ]
+    },
+    "铠侠": {
+      "aliases": [
+        "铠侠株式会社",
+        "Kioxia Corporation",
+        "KIOXIA CORPORATION",
+        "Toshiba Memory Corporation"
+      ]
+    },
+    "长江存储": {
+      "aliases": [
+        "长江存储科技有限责任公司",
+        "Yangtze Memory Technologies Co., Ltd.",
+        "YMTC"
+      ]
+    },
+    "长鑫存储": {
+      "aliases": [
+        "长鑫存储技术有限公司",
+        "Changxin Memory Technologies, Inc.",
+        "CXMT"
+      ]
+    },
+    "南亚科技": {
+      "aliases": [
+        "南亚科技股份有限公司",
+        "Nanya Technology Corporation"
+      ]
+    },
+    "华邦电子": {
+      "aliases": [
+        "华邦电子股份有限公司",
+        "Winbond Electronics Corporation"
+      ]
+    },
+    "旺宏电子": {
+      "aliases": [
+        "旺宏电子股份有限公司",
+        "Macronix International Co., Ltd."
+      ]
+    },
+    "Seagate": {
+      "aliases": [
+        "Seagate Technology LLC",
+        "SEAGATE TECHNOLOGY LLC",
+        "希捷科技"
+      ]
+    },
+    "NetApp": {
+      "aliases": [
+        "NetApp, Inc.",
+        "NETAPP, INC."
+      ]
+    }
+  },
+  "芯片产业链 · 封装测试（OSAT）": {
+    "日月光": {
+      "aliases": [
+        "日月光半导体制造股份有限公司",
+        "ASE Technology Holding Co., Ltd.",
+        "Advanced Semiconductor Engineering, Inc."
+      ]
+    },
+    "安靠": {
+      "aliases": [
+        "Amkor Technology, Inc.",
+        "AMKOR TECHNOLOGY, INC."
+      ]
+    },
+    "长电科技": {
+      "aliases": [
+        "江苏长电科技股份有限公司",
+        "JCET Group Co., Ltd."
+      ]
+    },
+    "通富微电": {
+      "aliases": [
+        "通富微电子股份有限公司",
+        "Tongfu Microelectronics Co., Ltd."
+      ]
+    },
+    "华天科技": {
+      "aliases": [
+        "甘肃华天电子集团股份有限公司",
+        "Huatian Technology Co., Ltd."
+      ]
+    },
+    "矽品精密": {
+      "aliases": [
+        "矽品精密工业股份有限公司",
+        "Siliconware Precision Industries Co., Ltd.",
+        "SPIL"
+      ]
+    },
+    "京元电子": {
+      "aliases": [
+        "京元电子股份有限公司",
+        "King Yuan Electronics Co., Ltd.",
+        "KYEC"
+      ]
+    },
+    "UTAC": {
+      "aliases": [
+        "UTAC Holdings Ltd.",
+        "UTAC HOLDINGS LTD."
+      ]
+    },
+    "星科金朋": {
+      "aliases": [
+        "STATS ChipPAC Pte. Ltd.",
+        "STATS CHIPPAC PTE. LTD."
+      ]
+    },
+    "力成科技": {
+      "aliases": [
+        "力成科技股份有限公司",
+        "Powertech Technology Inc.",
+        "PTI"
+      ]
+    }
+  },
+  "芯片产业链 · 设备": {
+    "阿斯麦": {
+      "aliases": [
+        "ASML Holding N.V.",
+        "ASML HOLDING N.V.",
+        "ASML Netherlands B.V.",
+        "阿斯麦控股公司"
+      ]
+    },
+    "应用材料": {
+      "aliases": [
+        "Applied Materials, Inc.",
+        "APPLIED MATERIALS, INC.",
+        "应用材料公司"
+      ]
+    },
+    "泛林集团": {
+      "aliases": [
+        "Lam Research Corporation",
+        "LAM RESEARCH CORPORATION",
+        "泛林半导体"
+      ]
+    },
+    "科磊": {
+      "aliases": [
+        "KLA Corporation",
+        "KLA CORPORATION",
+        "KLA-Tencor Corporation"
+      ]
+    },
+    "东京电子": {
+      "aliases": [
+        "东京电子株式会社",
+        "Tokyo Electron Limited",
+        "TOKYO ELECTRON LIMITED",
+        "TEL"
+      ]
+    },
+    "爱德万测试": {
+      "aliases": [
+        "爱德万测试株式会社",
+        "Advantest Corporation",
+        "ADVANTEST CORPORATION"
+      ]
+    },
+    "泰瑞达": {
+      "aliases": [
+        "Teradyne, Inc.",
+        "TERADYNE, INC.",
+        "泰瑞达公司"
+      ]
+    },
+    "科天半导体": {
+      "aliases": [
+        "Cohu, Inc.",
+        "COHU, INC."
+      ]
+    },
+    "日立高新": {
+      "aliases": [
+        "株式会社日立高新技术",
+        "Hitachi High-Tech Corporation",
+        "HITACHI HIGH-TECH CORPORATION"
+      ]
+    },
+    "尼康": {
+      "aliases": [
+        "株式会社尼康",
+        "Nikon Corporation",
+        "NIKON CORPORATION"
+      ]
+    },
+    "佳能": {
+      "aliases": [
+        "佳能株式会社",
+        "Canon Inc.",
+        "CANON INC."
+      ]
+    },
+    "北方华创": {
+      "aliases": [
+        "北方华创科技集团股份有限公司",
+        "NAURA Technology Group Co., Ltd."
+      ]
+    },
+    "中微公司": {
+      "aliases": [
+        "中微半导体设备（上海）股份有限公司",
+        "Advanced Micro-Fabrication Equipment Inc.",
+        "AMEC"
+      ]
+    },
+    "华海清科": {
+      "aliases": [
+        "华海清科股份有限公司",
+        "Hwatsing Technology Co., Ltd."
+      ]
+    },
+    "盛美上海": {
+      "aliases": [
+        "盛美半导体设备（上海）股份有限公司",
+        "ACM Research (Shanghai), Inc."
+      ]
+    },
+    "拓荆科技": {
+      "aliases": [
+        "拓荆科技股份有限公司",
+        "Piotech Inc."
+      ]
+    },
+    "芯源微": {
+      "aliases": [
+        "芯源微电子设备（大连）股份有限公司",
+        "Kingsemi Co., Ltd."
+      ]
+    },
+    "至纯科技": {
+      "aliases": [
+        "上海至纯洁净系统科技股份有限公司",
+        "Shanghai Zhichun Clean Technology Co., Ltd."
+      ]
+    },
+    "万业企业": {
+      "aliases": [
+        "上海万业企业股份有限公司",
+        "Kingstone Semiconductor Co., Ltd."
+      ]
+    },
+    "精测电子": {
+      "aliases": [
+        "武汉精测电子集团股份有限公司",
+        "Wuhan Jingce Electronic Group Co., Ltd."
+      ]
+    },
+    "长川科技": {
+      "aliases": [
+        "杭州长川科技股份有限公司",
+        "Hangzhou Changchuan Technology Co., Ltd."
+      ]
+    },
+    "Onto Innovation": {
+      "aliases": [
+        "Onto Innovation Inc.",
+        "ONTO INNOVATION INC."
+      ]
+    },
+    "Axcelis": {
+      "aliases": [
+        "Axcelis Technologies, Inc.",
+        "AXCELIS TECHNOLOGIES, INC."
+      ]
+    },
+    "Entegris": {
+      "aliases": [
+        "Entegris, Inc.",
+        "ENTEGRIS, INC."
+      ]
+    },
+    "Brooks Automation": {
+      "aliases": [
+        "Brooks Automation, Inc.",
+        "BROOKS AUTOMATION, INC."
+      ]
+    },
+    "拉姆研究": {
+      "aliases": [
+        "Lam Research Corporation",
+        "LAM RESEARCH CORPORATION",
+        "泛林半导体"
+      ]
+    }
+  },
+  "芯片产业链 · 材料": {
+    "信越化学": {
+      "aliases": [
+        "信越化学工业株式会社",
+        "Shin-Etsu Chemical Co., Ltd.",
+        "SHIN-ETSU CHEMICAL CO., LTD."
+      ]
+    },
+    "SUMCO": {
+      "aliases": [
+        "SUMCO Corporation",
+        "SUMCO CORPORATION",
+        "住友三菱硅片株式会社"
+      ]
+    },
+    "环球晶圆": {
+      "aliases": [
+        "环球晶圆股份有限公司",
+        "GlobalWafers Co., Ltd."
+      ]
+    },
+    "Siltronic": {
+      "aliases": [
+        "Siltronic AG",
+        "SILTRONIC AG"
+      ]
+    },
+    "SK硅业": {
+      "aliases": [
+        "SK Siltron Co., Ltd.",
+        "SK SILTRON CO., LTD."
+      ]
+    },
+    "住友电工": {
+      "aliases": [
+        "住友电气工业株式会社",
+        "Sumitomo Electric Industries, Ltd.",
+        "SUMITOMO ELECTRIC INDUSTRIES, LTD."
+      ]
+    },
+    "三菱化学": {
+      "aliases": [
+        "三菱化学株式会社",
+        "Mitsubishi Chemical Corporation",
+        "MITSUBISHI CHEMICAL CORPORATION"
+      ]
+    },
+    "JSR": {
+      "aliases": [
+        "JSR株式会社",
+        "JSR Corporation",
+        "JSR CORPORATION"
+      ]
+    },
+    "东京应化": {
+      "aliases": [
+        "东京应化工业株式会社",
+        "Tokyo Ohka Kogyo Co., Ltd.",
+        "TOKYO OHKA KOGYO CO., LTD.",
+        "TOK"
+      ]
+    },
+    "富士胶片": {
+      "aliases": [
+        "富士胶片株式会社",
+        "FUJIFILM Corporation",
+        "FUJIFILM CORPORATION"
+      ]
+    },
+    "杜邦": {
+      "aliases": [
+        "杜邦公司",
+        "DuPont de Nemours, Inc.",
+        "DUPONT DE NEMOURS, INC.",
+        "E. I. du Pont de Nemours and Company"
+      ]
+    },
+    "巴斯夫": {
+      "aliases": [
+        "巴斯夫欧洲公司",
+        "BASF SE",
+        "BASF AKTIENGESELLSCHAFT"
+      ]
+    },
+    "默克": {
+      "aliases": [
+        "默克股份两合公司",
+        "Merck KGaA",
+        "MERCK KGAA"
+      ]
+    },
+    "空气化工": {
+      "aliases": [
+        "空气化工产品公司",
+        "Air Products and Chemicals, Inc.",
+        "AIR PRODUCTS AND CHEMICALS, INC."
+      ]
+    },
+    "林德": {
+      "aliases": [
+        "林德股份公司",
+        "Linde plc",
+        "LINDE PLC",
+        "Linde AG"
+      ]
+    },
+    "法液空": {
+      "aliases": [
+        "法国液化空气公司",
+        "L'Air Liquide S.A.",
+        "AIR LIQUIDE"
+      ]
+    },
+    "安集科技": {
+      "aliases": [
+        "安集微电子科技（上海）股份有限公司",
+        "Anji Microelectronics Technology (Shanghai) Co., Ltd."
+      ]
+    },
+    "鼎龙股份": {
+      "aliases": [
+        "鼎龙股份有限公司",
+        "Cabot Microelectronics (China) Co., Ltd."
+      ]
+    },
+    "雅克科技": {
+      "aliases": [
+        "雅克科技股份有限公司",
+        "Yake Technology Co., Ltd."
+      ]
+    },
+    "南大光电": {
+      "aliases": [
+        "南大光电材料股份有限公司",
+        "Nanda Optoelectronics Co., Ltd."
+      ]
+    },
+    "上海新阳": {
+      "aliases": [
+        "上海新阳半导体材料股份有限公司",
+        "Shanghai Sinyang Semiconductor Materials Co., Ltd."
+      ]
+    },
+    "晶瑞电材": {
+      "aliases": [
+        "晶瑞电子材料股份有限公司",
+        "Suzhou Crystal Clear Chemical Co., Ltd."
+      ]
+    },
+    "江化微": {
+      "aliases": [
+        "江阴江化微电子材料股份有限公司",
+        "Jiangyin Jianghua Microelectronics Materials Co., Ltd."
+      ]
+    },
+    "Cabot Microelectronics": {
+      "aliases": [
+        "CMC Materials, Inc.",
+        "Cabot Microelectronics Corporation",
+        "CABOT MICROELECTRONICS CORPORATION"
+      ]
+    },
+    "Ferro": {
+      "aliases": [
+        "Ferro Corporation",
+        "FERRO CORPORATION"
+      ]
+    }
+  },
+  "芯片产业链 · EDA / IP": {
+    "Synopsys": {
+      "aliases": [
+        "Synopsys, Inc.",
+        "SYNOPSYS, INC.",
+        "新思科技"
+      ]
+    },
+    "Cadence": {
+      "aliases": [
+        "Cadence Design Systems, Inc.",
+        "CADENCE DESIGN SYSTEMS, INC.",
+        "楷登电子"
+      ]
+    },
+    "Mentor Graphics": {
+      "aliases": [
+        "Mentor Graphics Corporation",
+        "MENTOR GRAPHICS CORPORATION",
+        "Siemens EDA"
+      ]
+    },
+    "Ansys": {
+      "aliases": [
+        "ANSYS, Inc.",
+        "ANSYS, INC."
+      ]
+    },
+    "CEVA": {
+      "aliases": [
+        "CEVA, Inc.",
+        "CEVA, INC."
+      ]
+    },
+    "Rambus": {
+      "aliases": [
+        "Rambus Inc.",
+        "RAMBUS INC."
+      ]
+    },
+    "Imagination Technologies": {
+      "aliases": [
+        "Imagination Technologies Limited",
+        "IMAGINATION TECHNOLOGIES LIMITED"
+      ]
+    },
+    "芯华章": {
+      "aliases": [
+        "芯华章科技股份有限公司",
+        "X-Epic Technology Co., Ltd."
+      ]
+    },
+    "广立微": {
+      "aliases": [
+        "广立微电子股份有限公司",
+        "Guang Li Micro Co., Ltd."
+      ]
+    }
+  },
+  "芯片产业链 · IDM（垂直整合）": {
+    "英特尔": {
+      "aliases": [
+        "Intel Corporation",
+        "INTEL CORPORATION",
+        "英特尔公司"
+      ]
+    },
+    "三星": {
+      "aliases": [
+        "三星电子株式会社",
+        "Samsung Electronics Co., Ltd.",
+        "SAMSUNG ELECTRONICS CO., LTD."
+      ]
+    },
+    "德州仪器": {
+      "aliases": [
+        "Texas Instruments Incorporated",
+        "TEXAS INSTRUMENTS INCORPORATED",
+        "德州仪器公司"
+      ]
+    },
+    "意法半导体": {
+      "aliases": [
+        "意法半导体股份有限公司",
+        "STMicroelectronics N.V.",
+        "STMICROELECTRONICS N.V."
+      ]
+    },
+    "英飞凌": {
+      "aliases": [
+        "英飞凌科技股份公司",
+        "Infineon Technologies AG",
+        "INFINEON TECHNOLOGIES AG"
+      ]
+    },
+    "恩智浦": {
+      "aliases": [
+        "恩智浦半导体公司",
+        "NXP Semiconductors N.V.",
+        "NXP SEMICONDUCTORS N.V."
+      ]
+    },
+    "瑞萨电子": {
+      "aliases": [
+        "瑞萨电子株式会社",
+        "Renesas Electronics Corporation",
+        "RENESAS ELECTRONICS CORPORATION"
+      ]
+    },
+    "安森美": {
+      "aliases": [
+        "安森美半导体公司",
+        "onsemi",
+        "ON Semiconductor Corporation",
+        "ON SEMICONDUCTOR CORPORATION"
+      ]
+    },
+    "微芯科技": {
+      "aliases": [
+        "Microchip Technology Incorporated",
+        "MICROCHIP TECHNOLOGY INCORPORATED"
+      ]
+    },
+    "罗姆": {
+      "aliases": [
+        "罗姆株式会社",
+        "ROHM Co., Ltd.",
+        "ROHM CO., LTD."
+      ]
+    },
+    "富士电机": {
+      "aliases": [
+        "富士电机株式会社",
+        "Fuji Electric Co., Ltd.",
+        "FUJI ELECTRIC CO., LTD."
+      ]
+    },
+    "三菱电机": {
+      "aliases": [
+        "三菱电机株式会社",
+        "Mitsubishi Electric Corporation",
+        "MITSUBISHI ELECTRIC CORPORATION"
+      ]
+    },
+    "比亚迪半导体": {
+      "aliases": [
+        "比亚迪半导体股份有限公司",
+        "BYD Semiconductor Co., Ltd."
+      ]
+    },
+    "士兰微": {
+      "aliases": [
+        "杭州士兰微电子股份有限公司",
+        "Hangzhou Silan Microelectronics Co., Ltd."
+      ]
+    },
+    "扬杰科技": {
+      "aliases": [
+        "扬州扬杰电子科技股份有限公司",
+        "Yangzhou Yangjie Electronic Technology Co., Ltd."
+      ]
+    },
+    "华润微": {
+      "aliases": [
+        "华润微电子有限公司",
+        "CR Micro",
+        "China Resources Microelectronics Limited"
+      ]
+    },
+    "新洁能": {
+      "aliases": [
+        "无锡新洁能股份有限公司",
+        "Wuxi NCE Power Co., Ltd."
+      ]
+    },
+    "斯达半导": {
+      "aliases": [
+        "嘉兴斯达半导体股份有限公司",
+        "Starpower Semiconductor Ltd."
+      ]
+    },
+    "时代电气": {
+      "aliases": [
+        "株洲中车时代电气股份有限公司",
+        "CRRC Zhuzhou Institute Co., Ltd."
+      ]
+    }
+  }
+}

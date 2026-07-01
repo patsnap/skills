@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Global EV benchmark visual</title>
+  <desc id="desc">Generated local SVG visual for global EV benchmark report scenes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071014"/>
+      <stop offset=".5" stop-color="#13243a"/>
+      <stop offset="1" stop-color="#081016"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="820" fill="url(#bg)"/>
+  <circle cx="600" cy="420" r="278" fill="none" stroke="#6fb0ff" stroke-width="2" opacity=".42"/>
+  <circle cx="600" cy="420" r="186" fill="none" stroke="#18d4d2" stroke-width="2" opacity=".42"/>
+  <path d="M154 486c44-108 132-170 259-190h378c126 20 213 82 255 190h70v94H84v-94h70Z" fill="#111c23" stroke="#6fb0ff" stroke-width="4"/>
+  <path d="M390 310h328c91 0 160 58 206 145H254c42-78 79-125 136-145Z" fill="#6fb0ff" opacity=".74"/>
+  <path d="M214 580h748" stroke="#18d4d2" stroke-width="14" stroke-linecap="round" opacity=".8"/>
+  <g fill="#071014" stroke="#edf8f6" stroke-width="9">
+    <circle cx="304" cy="585" r="58"/>
+    <circle cx="900" cy="585" r="58"/>
+  </g>
+  <g font-family="Arial, 'PingFang SC', sans-serif" font-weight="700">
+    <text x="72" y="96" fill="#edf8f6" font-size="54">Global EV Benchmark</text>
+    <text x="76" y="146" fill="#9db0ad" font-size="24">Tesla / Volkswagen / Toyota / Hyundai / Mercedes-Benz</text>
+    <text x="76" y="718" fill="#18d4d2" font-size="26">Use for head-company benchmark and overseas market reference</text>
+  </g>
+</svg>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>徐工集团关注的自卸车专利简报（2026年2-3月公开）</title>
+<style>
+:root{--bg:#f0f2f5;--white:#fff;--border:#e4e8ef;--accent:#2563eb;--accent2:#1d4ed8;
+  --text:#1a1a2e;--sub:#64748b;--success:#16a34a;--warn:#d97706;--danger:#dc2626;
+  --nav-w:270px;--radius:12px;}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);display:flex;min-height:100vh;}
+#sidebar{width:var(--nav-w);min-width:var(--nav-w);background:var(--white);
+  border-right:1px solid var(--border);position:fixed;top:0;left:0;
+  height:100vh;overflow-y:auto;z-index:200;display:flex;flex-direction:column;}
+#sidebar-logo{padding:20px 18px 12px;border-bottom:1px solid var(--border);}
+#sidebar-logo h2{font-size:14px;font-weight:700;color:var(--accent);}
+#sidebar-logo p{font-size:11px;color:var(--sub);margin-top:3px;}
+#sidebar nav{padding:10px 0 40px;}
+.nav-part{display:flex;align-items:center;gap:8px;padding:9px 18px;
+  font-size:12px;font-weight:700;color:var(--sub);text-transform:uppercase;
+  letter-spacing:.06em;cursor:pointer;text-decoration:none;
+  border-left:3px solid transparent;transition:all .15s;}
+.nav-part:hover,.nav-part.active{color:var(--accent);background:#eff6ff;border-left-color:var(--accent);}
+.nav-sub{padding:4px 18px 4px 36px;}
+.nav-sub a{display:block;font-size:12px;color:var(--sub);text-decoration:none;
+  padding:4px 8px;border-radius:6px;transition:all .15s;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;}
+.nav-sub a:hover{background:#eff6ff;color:var(--accent);}
+.nav-sub a.active{background:#dbeafe;color:var(--accent2);font-weight:600;}
+.nav-assignee{padding:2px 18px 2px 52px;}
+.nav-assignee a{display:block;font-size:11px;color:#94a3b8;text-decoration:none;
+  padding:3px 6px;border-radius:4px;transition:all .15s;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;}
+.nav-assignee a:hover{color:var(--accent);background:#f0f9ff;}
+#main{margin-left:var(--nav-w);flex:1;padding:32px 36px 80px;max-width:1100px;}
+.hero{background:linear-gradient(135deg,#1e3a5f 0%,#1d4ed8 60%,#0ea5e9 100%);
+  border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;color:#fff;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,.08) 0%,transparent 60%);}
+.hero-dots{position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:28px 28px;}
+.hero-inner{position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+.hero h1{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+.hero-meta{font-size:12px;opacity:.7;}
+.hero-stats{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap;}
+.hero-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;padding:12px 20px;text-align:center;min-width:90px;}
+.hero-stat-num{font-size:26px;font-weight:800;line-height:1;}
+.hero-stat-label{font-size:11px;opacity:.8;margin-top:4px;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:24px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.section-hd{display:flex;align-items:center;gap:10px;padding:18px 24px 14px;
+  border-bottom:1px solid var(--border);}
+.section-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:16px;flex-shrink:0;}
+.section-title{font-size:16px;font-weight:700;}
+.section-bd{padding:20px 24px;}
+.part-label{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--accent);background:#dbeafe;padding:2px 8px;
+  border-radius:4px;margin-bottom:16px;}
+.meta-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:16px;}
+.query-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sub);margin-bottom:6px;}
+.query-text{font-family:'SF Mono',monospace;font-size:12px;color:var(--accent2);word-break:break-all;line-height:1.7;}
+.company-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.cbar{display:flex;align-items:center;gap:10px;}
+.cbar-name{font-size:13px;font-weight:600;min-width:120px;color:var(--text);}
+.cbar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.cbar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),#38bdf8);}
+.cbar-cnt{font-size:12px;color:var(--sub);min-width:36px;text-align:right;font-weight:600;}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.summary-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.summary-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.summary-name{font-size:14px;font-weight:700;}
+.summary-cnt{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.direction-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.direction-chip{background:var(--white);color:var(--sub);font-size:11px;padding:3px 10px;
+  border-radius:999px;border:1px solid var(--border);}
+.rep-tech{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.rep-tech li{font-size:12px;color:var(--text);padding-left:12px;position:relative;line-height:1.5;}
+.rep-tech li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent);}
+
+.company-section{margin-bottom:32px;}
+.company-section-title{font-size:15px;font-weight:700;color:var(--text);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  padding:10px 0 12px;border-bottom:2px solid var(--accent);}
+.company-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.company-cnt-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.branch-group{margin-bottom:20px;}
+.branch-label{font-size:12px;font-weight:600;color:var(--sub);text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.branch-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.patent-card{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.patent-card-hd{display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:#f0f5ff;border-bottom:1px solid #dbeafe;flex-wrap:wrap;}
+.pn-badge{display:inline-flex;align-items:center;gap:4px;background:#dbeafe;color:#1e3a8a;
+  font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;
+  font-family:'SF Mono',monospace;text-decoration:none;border:1px solid #93c5fd;}
+.pn-badge:hover{background:#bfdbfe;}
+.status{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;}
+.status.granted{background:rgba(22,163,74,.12);color:#15803d;}
+.status.pending{background:rgba(217,119,6,.12);color:#b45309;}
+.status.expired{background:rgba(220,38,38,.12);color:#b91c1c;}
+.status.other{background:rgba(100,116,139,.1);color:#475569;}
+.patent-tag{font-size:11px;padding:2px 10px;border-radius:999px;border:1px solid var(--border);
+  color:var(--sub);background:var(--bg);}
+.patent-tag.assignee{border-color:#9334e6;color:#7b1fa2;background:#f3e8fd;}
+.patent-tag.apdt{border-color:var(--accent);color:#1557b0;background:#e8f0fe;}
+.patent-tag.pbdt{border-color:#00897b;color:#00695c;background:#e0f2f1;}
+.patent-card-body{display:flex;gap:0;}
+.patent-fields{flex:1;min-width:0;padding:14px 18px;display:flex;flex-direction:column;gap:10px;}
+.p-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.5;}
+.p-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--sub);}
+.p-meta span b{color:var(--text);}
+.field{display:flex;flex-direction:column;gap:3px;}
+.field-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:#fff;padding:1px 7px;border-radius:3px;display:inline-block;width:fit-content;}
+.lbl-problem{background:#dc2626;}.lbl-approach{background:#16a34a;}.lbl-benefit{background:#d97706;}
+.field-val{font-size:12.5px;color:var(--text);line-height:1.7;}
+.patent-fig{flex-shrink:0;width:180px;background:linear-gradient(160deg,#f0f4ff,#e0eaff);
+  border-left:1px solid var(--border);padding:14px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;}
+.patent-fig img{width:100%;height:auto;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.fig-cap{font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;}
+
+.lit-card{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04);overflow:hidden;padding:20px 24px;}
+.lit-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.lit-idx{font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;letter-spacing:.04em;}
+.lit-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.55;margin-bottom:8px;}
+.lit-title a{color:var(--accent2);text-decoration:none;}
+.lit-title a:hover{text-decoration:underline;}
+.lit-authors{font-size:12px;color:var(--sub);margin-bottom:4px;line-height:1.5;}
+.lit-journal{font-size:12px;color:var(--sub);font-style:italic;margin-bottom:12px;}
+.lit-journal b{font-style:normal;font-weight:600;color:var(--text);}
+.lit-abstract{font-size:12.5px;color:#374151;line-height:1.8;margin-bottom:14px;
+  padding:12px 14px;background:var(--bg);border-radius:6px;border-left:3px solid var(--border);}
+.lit-abstract-toggle{font-size:11px;color:var(--accent);cursor:pointer;margin-left:6px;
+  background:none;border:none;padding:0;text-decoration:underline;}
+.lit-abstract-full{display:none;}
+.lit-abstract-full.open{display:inline;}
+.lit-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:12px;
+  border-top:1px solid var(--border);}
+.lit-doi{font-size:11px;color:var(--accent);text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;}
+.lit-doi:hover{text-decoration:underline;}
+.lit-cite{font-size:11px;padding:2px 10px;border-radius:999px;
+  border:1px solid #fcd34d;color:#92400e;background:#fffbeb;}
+.lit-ai-box{margin-top:24px;background:linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%);
+  border:1px solid #bfdbfe;border-radius:10px;padding:20px 24px;}
+.lit-ai-box h4{font-size:13px;font-weight:700;color:var(--accent2);margin:0 0 12px;
+  display:flex;align-items:center;gap:6px;}
+.lit-ai-content{font-size:13px;color:#1e293b;line-height:1.85;}
+.lit-ai-content strong,.lit-ai-content b{color:var(--accent2);}
+.lit-ai-content h3,.lit-ai-content h4{font-size:13px;font-weight:700;color:var(--text);
+  margin:14px 0 6px;}
+.lit-ai-ref{color:var(--accent);font-weight:700;text-decoration:none;
+  background:#dbeafe;border-radius:4px;padding:0 4px;}
+.lit-ai-ref:hover{background:#bfdbfe;}
+.footer{text-align:center;padding:32px;color:var(--sub);font-size:12px;
+  border-top:1px solid var(--border);margin-top:20px;}
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);transition:transform .3s;}
+  #sidebar.open{transform:translateX(0);}
+  #main{margin-left:0;padding:20px 16px 60px;}
+  .patent-card-body{flex-direction:column;}
+  .patent-fig{width:100%;border-left:none;border-top:1px solid var(--border);}
+}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="sidebar-logo"><h2>技术情报报告</h2><p>徐工集团关注的自卸车专利简报（2026年2-3月公开）</p></div>
+  <nav>
+    <a href="#sec1" class="nav-part">📊 新公开专利概况</a>
+    <a href="#sec2" class="nav-part">🏢 专利技术总结</a>
+    <a href="#sec3" class="nav-part">📋 专利详情</a>
+    <div class="nav-sub"><a href="#company-0">全部</a></div>
+<div class="nav-assignee"><a href="#branch-0-0">进行成像</a></div>
+
+    <a href="#sec4" class="nav-part">📄 相关期刊文献</a><div class="nav-sub"><a href="#lit-ai-box">🤖 AI 文献总结</a></div><div class="nav-sub"><a href="#lit-detail">📑 文献详情</a></div>
+  </nav>
+</div>
+<div id="main">
+
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">技术情报报告</div>
+    <h1>徐工集团关注的自卸车专利简报（2026年2-3月公开）</h1>
+    <div class="hero-meta">生成时间：2026-04-16 15:26</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">专利总数</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">分析公司</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">技术方向</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sec1">
+  <div class="section-hd">
+    <div class="section-icon">📊</div>
+    <div class="section-title">新公开专利概况</div>
+  </div>
+  <div class="section-bd">
+    <div class="company-bars"><div class="cbar"><div class="cbar-name">全部</div><div class="cbar-track"><div class="cbar-fill" style="width:100%"></div></div><div class="cbar-cnt">1</div></div></div>
+  </div>
+</div>
+
+<div class="section" id="sec2">
+  <div class="section-hd">
+    <div class="section-icon">🏢</div>
+    <div class="section-title">专利技术总结</div>
+  </div>
+  <div class="section-bd">
+    <div class="summary-grid">
+<div class="summary-card">
+  <div class="summary-card-hd">
+    <div class="summary-name" style="color:#9AA0A6">全部</div>
+    <span class="summary-cnt">1 件</span>
+  </div>
+  <div class="direction-chips"><span class="direction-chip">进行成像（1件）</span></div>
+  <ul class="rep-tech"><li>监测系统配备第一和第二成像装置,分别以特定视角拍摄工作设备和地面的图像,利用缺陷和巨石检测单元分别确定缺陷和巨石。</li></ul>
+</div></div>
+  </div>
+</div>
+
+<div class="section" id="sec3">
+  <div class="section-hd">
+    <div class="section-icon">📋</div>
+    <div class="section-title">专利详情</div>
+  </div>
+  <div class="section-bd">
+    
+<div class="company-section">
+  <div class="company-section-title" id="company-0">
+    <span class="company-dot" style="background:#9AA0A6"></span>
+    全部
+    <span class="company-cnt-badge">1 件</span>
+  </div>
+  
+<div class="branch-group">
+  <div class="branch-label" id="branch-0-0">进行成像（1 件）</div>
+  <div class="patent-card">
+  <div class="patent-card-hd">
+    <a class="pn-badge" href="https://analytics.zhihuiya.com/patent-view/abst?_type=query&source_type=search_result&rows=20&patentId=a9a494dc-9fc6-44b6-8582-13f89e8fa099" target="_blank">US20260071412A1</a>
+    <span class="status pending">实质审查</span>
+    <span class="patent-tag assignee">KOMATSU LTD.</span>
+    <span class="patent-tag apdt">申请 20230203</span>
+    <span class="patent-tag pbdt">公开 20260312</span>
+  </div>
+  <div class="patent-card-body">
+    <div class="patent-fields">
+      <div class="p-title">Work machine monitoring system and work machine monitoring method</div>
+      <div class="field"><div class="field-lbl lbl-problem">技术问题</div><div class="field-val">由于工作内容和环境的变化,工作机器存在损坏的风险,因此需要进行实时监控,以防止或及早发现损坏。</div></div><div class="field"><div class="field-lbl lbl-approach">技术手段</div><div class="field-val">监测系统配备第一和第二成像装置,分别以特定视角拍摄工作设备和地面的图像,利用缺陷和巨石检测单元分别确定缺陷和巨石。</div></div><div class="field"><div class="field-lbl lbl-benefit">技术功效</div><div class="field-val">能够实时监控工作机器的状态,及早发现缺陷和潜在危险,从而防止损坏。</div></div>
+    </div>
+    <div class="patent-fig"><img src="images/a9a494dc-9fc6-44b6-8582-13f89e8fa099.png" alt="US20260071412A1" loading="lazy"/><div class="fig-cap">摘要附图</div></div>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+</div>
+
+<div class="section" id="sec4">
+  <div class="section-hd">
+    <div class="section-icon">📄</div>
+    <div class="section-title">相关期刊文献（1455 条命中，展示前 20 条）</div>
+  </div>
+  <div class="section-bd">
+    <div class="lit-ai-box" id="lit-ai-box">
+  <h4>🤖 AI 文献总结</h4>
+  <div class="lit-ai-content"><h3>综合总结</h3>综合分析现有可查阅内容的文献可知，这批文献围绕“tipper/dumper/dump”的多语义应用场景展开，覆盖四大技术方向：一是适老化互联网服务领域，面向老年网民上网痛点研发上下文辅助工具；二是工业与交通基建领域，聚焦自卸/翻卸类设备的故障排查、性能评估与运维管理；三是激光技术领域，针对多场景应用需求研发空腔倾卸器驱动装置；四是地球物理勘探领域，开展大地电磁测深倾子数据的特征规律研究。整体研究趋势均以实际场景痛点为核心导向，通过实证调研、仿真模拟、装置研发等路径输出针对性解决方案，具备较强的落地应用属性。其余多数文献无有效摘要，无法纳入共性特征归纳。<br><br><h3>逐篇总结</h3><a class="lit-ai-ref" href="#lit-1">[1]</a> Tipper：通过对美国老年网民开展调研明确其上网痛点，设计了浏览器端上下文辅助系统Tipper，可用性测试验证该系统可有效提升老年人上网的便利性与熟练度。<br><a class="lit-ai-ref" href="#lit-2">[2]</a> Dumping Car：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-3">[3]</a> Dumping Car：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-4">[4]</a> dumper：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-5">[5]</a> Dumping Car：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-6">[6]</a> Tipper Gore：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-7">[7]</a> Dumping Car：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-8">[8]</a> Dumper derailment investigation and development of custom check rail：针对力拓铁矿帕克角作业区翻车机出口端频繁脱轨的问题，调研现有现场条件、对照通用标准排查问题根源，同时明确了原有非主动护轨失效的核心原因。<br><a class="lit-ai-ref" href="#lit-9">[9]</a> Dumper Truck Racing：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-10">[10]</a> Dump Truck Permit：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-11">[11]</a> New Dump Car：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-12">[12]</a> South Side of Highway Dump：为10号公路沿线冲沟倾倒区南侧拍摄的实地照片记录，拍摄朝向为西，拍摄时间为上午11:40。<br><a class="lit-ai-ref" href="#lit-13">[13]</a> The Research of Cavity Dumper Driver：基于空腔倾卸器原理设计了对应的驱动装置，可驱动声光单元输出多种重复频率的激光脉冲信号，可适配不同激光研究场景的需求。<br><a class="lit-ai-ref" href="#lit-14">[14]</a> The Addiction Solution: Unraveling the Mysteries of Addiction through Cutting-Edge Brain Science：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-15">[15]</a> Improved Dumping Wagon：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-16">[16]</a> Dump Trucks - Big or Bigger：印第安纳州公路部门为评估是否淘汰串联自卸卡车组建跨部门委员会，通过梳理作业记录、数据分析等方式开展该类车型运维成本与应用价值的专项调研。<br><a class="lit-ai-ref" href="#lit-17">[17]</a> Passerby helps prosecute fly-tipper：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-18">[18]</a> Fly tipper prosecuted：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-19">[19]</a> Dumpers foiled：无有效摘要，无法提炼核心技术要点。<br><a class="lit-ai-ref" href="#lit-20">[20]</a> Research on the character of tipper data：通过二维大地电磁测深正演模拟得到不同水平电界面模型下的倾子各分量数据，总结了倾子响应的异常特征与规律，为实测倾子数据的定性分析解释提供了理论依据。<br></div>
+</div>
+    <div id="lit-detail">
+<div class="lit-card" id="lit-1">
+  <div class="lit-idx">1</div>
+  <div class="lit-title"><a href="https://doi.org/10.1145/2702613.2732796" target="_blank">Tipper</a></div>
+  <div class="lit-authors">Dai, Yibo、Karalis, George、Kawas, Saba、Olsen, Chris</div>
+  <div class="lit-journal"><b>Proceedings of the 33rd Annual ACM Conference Extended Abstracts on Human Factors in Computing Systems，2015，pp.1773-1778</b></div>
+  <div class="lit-abstract">Most senior citizens in the U.S. use the Internet on a regular basis yet frequently run into basic issues they cannot solve themselves. We conducted contextual inquiry with 6 participants and an online survey with 25 participants to determine the difficulties and frustrations these users face. From <span class="lit-abstract-full" id="abs-1">the research findings we designed Tipper, a browser-based system to provide contextual help for seniors on the Web. Usability testing shows Tipper to be a simple yet powerful solution to make seniors more competent and comfortable on the Web. This paper reports the current progress of Tipper and indicates our future direction.</span><button class="lit-abstract-toggle" onclick="toggleAbs(1)">展开</button></div>
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1145/2702613.2732796" target="_blank">🔗 DOI: 10.1145/2702613.2732796</a><span class="lit-cite">文献引用 4 次</span><span class="lit-cite">专利引用 10 次</span></div>
+</div>
+<div class="lit-card" id="lit-2">
+  <div class="lit-idx">2</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican02071885-7578asupp" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1885，Vol.19(475supp)，pp.7578-7578</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican02071885-7578asupp" target="_blank">🔗 DOI: 10.1038/scientificamerican02071885-7578asupp</a></div>
+</div>
+<div class="lit-card" id="lit-3">
+  <div class="lit-idx">3</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican10041884-210c" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1884，Vol.51(14)，pp.210-210</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican10041884-210c" target="_blank">🔗 DOI: 10.1038/scientificamerican10041884-210c</a></div>
+</div>
+<div class="lit-card" id="lit-4">
+  <div class="lit-idx">4</div>
+  <div class="lit-title"><a href="https://doi.org/10.1007/978-3-540-72816-0_7004" target="_blank">dumper</a></div>
+  
+  <div class="lit-journal"><b>Dictionary of Gems and Gemology，pp.286-286</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1007/978-3-540-72816-0_7004" target="_blank">🔗 DOI: 10.1007/978-3-540-72816-0_7004</a></div>
+</div>
+<div class="lit-card" id="lit-5">
+  <div class="lit-idx">5</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican12011885-47bbuild" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1885，Vol.1(2build)，pp.47-47</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican12011885-47bbuild" target="_blank">🔗 DOI: 10.1038/scientificamerican12011885-47bbuild</a></div>
+</div>
+<div class="lit-card" id="lit-6">
+  <div class="lit-idx">6</div>
+  <div class="lit-title"><a href="https://doi.org/10.2307/jj.28697809.14" target="_blank">Tipper Gore</a></div>
+  
+  <div class="lit-journal"><b>East Tennessee Newsmakers，2024，pp.44-47</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.2307/jj.28697809.14" target="_blank">🔗 DOI: 10.2307/jj.28697809.14</a></div>
+</div>
+<div class="lit-card" id="lit-7">
+  <div class="lit-idx">7</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican11211885-323b" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1885，Vol.53(21)，pp.323-323</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican11211885-323b" target="_blank">🔗 DOI: 10.1038/scientificamerican11211885-323b</a></div>
+</div>
+<div class="lit-card" id="lit-8">
+  <div class="lit-idx">8</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dumper%20derailment%20investigation%20and%20development%20of%20custom%20check%20rail" target="_blank">Dumper derailment investigation and development of custom check rail</a></div>
+  <div class="lit-authors">Lindsay Dobson</div>
+  
+  <div class="lit-abstract">Rio Tinto Iron Ore owns and operates the largest privately owned rail system in Australia, with approximately 1700km of mainline, servicing 15 different mine sites. To haul the iron ore from the mines the railway utilises 191 locomotives and approximately 11500 wagons. The ore is loaded into the wag<span class="lit-abstract-full" id="abs-8">ons whereby it is transported via rail to one of 3 ports for</span><button class="lit-abstract-toggle" onclick="toggleAbs(8)">展开</button></div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-9">
+  <div class="lit-idx">9</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dumper%20Truck%20Racing" target="_blank">Dumper Truck Racing</a></div>
+  <div class="lit-authors">Joe Gates</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-10">
+  <div class="lit-idx">10</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dump%20Truck%20Permit" target="_blank">Dump Truck Permit</a></div>
+  <div class="lit-authors">pTools</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-11">
+  <div class="lit-idx">11</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican05151880-306a" target="_blank">New Dump Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1880，Vol.42(20)，pp.306-307</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican05151880-306a" target="_blank">🔗 DOI: 10.1038/scientificamerican05151880-306a</a></div>
+</div>
+<div class="lit-card" id="lit-12">
+  <div class="lit-idx">12</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=South%20Side%20of%20Highway%20Dump" target="_blank">South Side of Highway Dump</a></div>
+  <div class="lit-authors">Dallas (Tex.)</div>
+  
+  <div class="lit-abstract">Photograph of the south side of a washout dump along Highway #10. Photograph faces west and was taken at 11:40 am.</div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-13">
+  <div class="lit-idx">13</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=The%20Research%20of%20Cavity%20Dumper%20Driver" target="_blank">The Research of Cavity Dumper Driver</a></div>
+  <div class="lit-authors">Sheng Cuixia</div>
+  <div class="lit-journal"><b>Journal of Changchun Institute of Optics and Fine Mechanics，2004</b></div>
+  <div class="lit-abstract">In this article we introduce the theory of the cavity dumper theory,l design the cavity dumper driver and test it. The cavity dumper driver designed by us can drive the a cousto-optic cell output the different repeated rate laser pulse signal whose are 4MHz、8KHz、400KHz、80KHz、40KHz、8KHz、4KHz、800Hz、40<span class="lit-abstract-full" id="abs-13">0Hz,etc. So that it can meet the need of laser in different research.</span><button class="lit-abstract-toggle" onclick="toggleAbs(13)">展开</button></div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-14">
+  <div class="lit-idx">14</div>
+  <div class="lit-title"><a href="https://doi.org/10.1080/07347324.2013.746614" target="_blank">D. Kipper &amp; S. Whitney. The Addiction Solution: Unraveling the Mysteries of Addiction through Cutting-Edge Brain Science</a></div>
+  <div class="lit-authors">James P. Foster</div>
+  <div class="lit-journal"><b>Alcoholism Treatment Quarterly，2013，Vol.31(1)，pp.161-163</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1080/07347324.2013.746614" target="_blank">🔗 DOI: 10.1080/07347324.2013.746614</a></div>
+</div>
+<div class="lit-card" id="lit-15">
+  <div class="lit-idx">15</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican08221874-118a" target="_blank">Improved Dumping Wagon</a></div>
+  
+  <div class="lit-journal"><b>Scientific American，1874，Vol.31(8)，pp.118-118</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican08221874-118a" target="_blank">🔗 DOI: 10.1038/scientificamerican08221874-118a</a></div>
+</div>
+<div class="lit-card" id="lit-16">
+  <div class="lit-idx">16</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dump%20Trucks%20-%20Big%20or%20Bigger" target="_blank">Dump Trucks - Big or Bigger</a></div>
+  <div class="lit-authors">Larry Goode</div>
+  
+  <div class="lit-abstract">Mr. Don Lucas, chief engineer and deputy director of highway operations, announced at last year’s Road School the possible elimination of tandem dump trucks from the Indiana Department of Highways (IDOH) truck fleet. Mr. Lucas considered these trucks expensive to purchase and operate, and the money <span class="lit-abstract-full" id="abs-16">saved could be used for other equipment needed by the department. Mr. Ned Barr, maintenance operations engineer, was asked to chair a com­ mittee to investigate the situation. The effort was a joint cooperation between personnel in Maintenance Management, Maintenance Operations, Equipment Management, and Field Operations. The first meeting was held May 28, 1988. Many hours were spent reviewing crew day cards, work programs, and calendars. Extensive evaluation and analysis was conducted on the information obtained. Mr. Lucas asked a series of questions to which the panel responded.</span><button class="lit-abstract-toggle" onclick="toggleAbs(16)">展开</button></div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-17">
+  <div class="lit-idx">17</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Passerby%20helps%20prosecute%20fly-tipper" target="_blank">Passerby helps prosecute fly-tipper</a></div>
+  <div class="lit-authors">Alison Falconer</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-18">
+  <div class="lit-idx">18</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Fly%20tipper%20prosecuted" target="_blank">Fly tipper prosecuted</a></div>
+  <div class="lit-authors">Ceri Davis</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-19">
+  <div class="lit-idx">19</div>
+  <div class="lit-title"><a href="https://doi.org/10.1016/0025-326x(71" target="_blank">Dumpers foiled</a></div>
+  
+  <div class="lit-journal"><b>Marine Pollution Bulletin，1971，Vol.2(8)，pp.115</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1016/0025-326x(71" target="_blank">🔗 DOI: 10.1016/0025-326x(71)90249-9</a></div>
+</div>
+<div class="lit-card" id="lit-20">
+  <div class="lit-idx">20</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Research%20on%20the%20character%20of%20tipper%20data" target="_blank">Research on the character of tipper data</a></div>
+  <div class="lit-authors">Pan We</div>
+  
+  <div class="lit-abstract">Applying forward procedure of two-dimensional magnetotelluric sounding method for forward simulation under different situations of the model existed horizontal electrical interface,obtained the vertical component of the magnetic field,and then calculated the real part,the imaginary part,the amplitud<span class="lit-abstract-full" id="abs-20">e part and the phase part of tipper.then,the anomalies and rules of each models under different situations were analyzed.The results show that the tipper of the underground horizontal electrical interface has obvious response,but the characteristics and alilities of different parts are varies.the theoretical basis and guidance of qualitative analysis and interpretation of measured tipper of magnetotelluric method is provided by analysis and summary the feature of the tipper of theoretical model.</span><button class="lit-abstract-toggle" onclick="toggleAbs(20)">展开</button></div>
+  <div class="lit-meta"></div>
+</div></div>
+  </div>
+</div>
+<div class="footer">技术情报报告 · 2026-04-16 15:26</div>
+</div>
+<script>
+function toggleAbs(idx) {
+  const el = document.getElementById('abs-' + idx);
+  const btn = el.nextElementSibling;
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    btn.textContent = '展开';
+  } else {
+    el.classList.add('open');
+    btn.textContent = '收起';
+  }
+}
+const links = document.querySelectorAll('#sidebar a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a = document.querySelector('#sidebar a[href="#'+e.target.id+'"]');
+      if(a) a.classList.add('active');
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll('[id]').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

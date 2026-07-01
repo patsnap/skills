@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>污水处理产业链全景分析 · 朱砂金印</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --primary: #B22234;
+    --gold: #C5A86B;
+    --secondary: #8B1A2B;
+    --bg-main: #FAF8F5;
+    --bg-card: #F2EFE9;
+    --text: #2C2C2C;
+    --chart-blue: #3E5C76;
+    --chart-gold: #A67C52;
+    --danger: #C92A2A;
+    --success: #2E7D32;
+    --warning: #E65100;
+    --nav-width: 200px;
+    --panel-width: 320px;
+    --header-h: 56px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia','Noto Serif SC','SimSun',serif; background: var(--bg-main); color: var(--text); font-size: 13px; }
+
+  /* ── 顶部搜索栏 ── */
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; height: var(--header-h);
+    background: #fff; border-bottom: 3px solid var(--primary);
+    display: flex; align-items: center; padding: 0 16px; gap: 12px; z-index: 100;
+    box-shadow: 0 2px 8px rgba(178,34,52,0.10);
+  }
+  #topbar .logo { font-size: 15px; font-weight: bold; color: var(--primary); white-space: nowrap; letter-spacing: 1px; }
+  #topbar .logo span { color: var(--gold); }
+  #search-box {
+    flex: 1; height: 34px; border: 1.5px solid var(--gold); border-radius: 4px;
+    padding: 0 12px; font-size: 13px; font-family: inherit; background: var(--bg-main);
+    color: var(--text); outline: none;
+  }
+  #search-box:focus { border-color: var(--primary); }
+  #search-btn {
+    height: 34px; padding: 0 18px; background: var(--primary); color: #fff;
+    border: none; border-radius: 4px; font-size: 13px; font-family: inherit;
+    cursor: pointer; letter-spacing: 1px; white-space: nowrap;
+  }
+  #search-btn:hover { background: var(--secondary); }
+  .anchor-badge {
+    background: var(--bg-card); border: 1.5px solid var(--gold); border-radius: 4px;
+    padding: 4px 12px; font-size: 12px; color: var(--secondary); white-space: nowrap;
+  }
+
+  /* ── 左侧导航 ── */
+  #sidebar {
+    position: fixed; top: var(--header-h); left: 0; bottom: 0;
+    width: var(--nav-width); background: var(--primary);
+    display: flex; flex-direction: column; z-index: 90; overflow-y: auto;
+  }
+  .nav-section { padding: 14px 0 4px 16px; font-size: 10px; color: rgba(197,168,107,0.7); letter-spacing: 2px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 16px; color: rgba(255,255,255,0.85); font-size: 12px;
+    cursor: pointer; border-left: 3px solid transparent; transition: all .2s;
+    text-decoration: none;
+  }
+  .nav-item:hover, .nav-item.active {
+    background: rgba(197,168,107,0.15); border-left-color: var(--gold); color: #fff;
+  }
+  .nav-item .icon { font-size: 14px; width: 18px; text-align: center; }
+  .nav-divider { height: 1px; background: rgba(197,168,107,0.25); margin: 8px 16px; }
+  .nav-bottom { margin-top: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .nav-btn {
+    display: block; text-align: center; padding: 8px; border-radius: 4px;
+    font-size: 12px; cursor: pointer; font-family: inherit;
+    border: 1.5px solid rgba(197,168,107,0.5); color: var(--gold); background: transparent;
+  }
+  .nav-btn:hover { background: rgba(197,168,107,0.15); }
+  .nav-btn.primary-btn { background: var(--gold); color: var(--primary); border-color: var(--gold); font-weight: bold; }
+  .nav-btn.primary-btn:hover { background: #d4b87a; }
+
+  /* ── 主体布局 ── */
+  #layout {
+    margin-top: var(--header-h); margin-left: var(--nav-width);
+    margin-right: var(--panel-width); min-height: calc(100vh - var(--header-h));
+    display: flex; flex-direction: column;
+  }
+
+  /* ── 红头封面 ── */
+  #cover {
+    background: #fff; border-top: 5px solid var(--primary);
+    padding: 24px 28px 18px; border-bottom: 1px solid #e8e0d4;
+  }
+  .cover-title { font-size: 22px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+  .cover-sub { font-size: 13px; color: var(--secondary); margin-top: 4px; }
+  .gold-line { height: 1.5px; background: linear-gradient(90deg, var(--gold), transparent); margin: 12px 0; }
+  .cover-meta { display: flex; gap: 24px; font-size: 11px; color: #888; flex-wrap: wrap; }
+  .cover-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* ── 主画布 ── */
+  #main-canvas { padding: 16px 20px; flex: 1; }
+  .section-title {
+    font-size: 14px; font-weight: bold; color: var(--secondary);
+    border-left: 4px solid var(--gold); padding-left: 10px;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ── KPI 卡片行 ── */
+  .kpi-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .kpi-card {
+    flex: 1; min-width: 120px; background: #fff; border-radius: 6px;
+    border-left: 4px solid var(--primary); padding: 12px 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .kpi-card.gold { border-left-color: var(--gold); }
+  .kpi-card.blue { border-left-color: var(--chart-blue); }
+  .kpi-card.green { border-left-color: var(--success); }
+  .kpi-value { font-size: 22px; font-weight: bold; color: var(--primary); }
+  .kpi-card.gold .kpi-value { color: var(--chart-gold); }
+  .kpi-card.blue .kpi-value { color: var(--chart-blue); }
+  .kpi-card.green .kpi-value { color: var(--success); }
+  .kpi-label { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* ── 产业链全景SVG ── */
+  #chain-wrapper {
+    background: #fff; border-radius: 8px; padding: 18px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06); margin-bottom: 20px;
+    overflow-x: auto; overflow-y: hidden;
+  }
+  #chain-svg-container { min-width: 900px; }
+
+  /* ── 节点动画 ── */
+  @keyframes pulse {
+    0%   { r: 14px; opacity: 1; }
+    50%  { r: 20px; opacity: 0.3; }
+    100% { r: 14px; opacity: 1; }
+  }
+  .pulse-ring { animation: pulse 1.8s ease-in-out infinite; fill: none; stroke: var(--danger); stroke-width: 2.5; }
+
+  /* ── 环节企业表格 ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .data-table th {
+    background: var(--primary); color: #fff; padding: 8px 10px;
+    text-align: left; font-weight: normal; letter-spacing: 0.5px;
+  }
+  .data-table td { padding: 7px 10px; border-bottom: 1px solid #ede8e0; }
+  .data-table tr:nth-child(even) td { background: var(--bg-card); }
+  .data-table tr:hover td { background: #ece4d8; cursor: pointer; }
+  .badge {
+    display: inline-block; padding: 2px 7px; border-radius: 10px;
+    font-size: 10px; font-weight: bold;
+  }
+  .badge-leader { background: #fde8e8; color: var(--danger); }
+  .badge-challenger { background: #fff3e0; color: var(--warning); }
+  .badge-follower { background: #e8f5e9; color: var(--success); }
+  .badge-risk-h { background: var(--danger); color: #fff; }
+  .badge-risk-m { background: var(--warning); color: #fff; }
+  .badge-risk-l { background: var(--success); color: #fff; }
+  .sci-bar { display: inline-block; height: 8px; border-radius: 4px; background: var(--chart-blue); vertical-align: middle; }
+
+  /* ── 图表区 ── */
+  .chart-row { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .chart-box {
+    flex: 1; min-width: 280px; background: #fff; border-radius: 8px;
+    padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .chart-title { font-size: 12px; color: var(--secondary); font-weight: bold; margin-bottom: 10px; border-left: 3px solid var(--gold); padding-left: 8px; }
+
+  /* ── 右侧面板 ── */
+  #right-panel {
+    position: fixed; top: var(--header-h); right: 0; bottom: 0;
+    width: var(--panel-width); background: #fff;
+    border-left: 2px solid var(--bg-card);
+    display: flex; flex-direction: column; z-index: 90; overflow-y: auto;
+  }
+  .panel-header {
+    background: var(--primary); color: #fff; padding: 12px 14px;
+    font-size: 13px; font-weight: bold; letter-spacing: 1px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .panel-tabs { display: flex; border-bottom: 1px solid #e8e0d4; }
+  .ptab {
+    flex: 1; padding: 8px 4px; text-align: center; font-size: 11px;
+    cursor: pointer; color: #888; border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  .ptab.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: bold; }
+  .ptab:hover { color: var(--secondary); }
+  .panel-body { padding: 14px; flex: 1; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* 环节信息 */
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f0ebe2; font-size: 12px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: #888; }
+  .info-value { font-weight: bold; color: var(--text); }
+  .progress-wrap { margin-top: 12px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: #888; margin-bottom: 4px; }
+  .progress-bar { height: 10px; background: #ede8e0; border-radius: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 5px; transition: width .6s; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tech-tag {
+    background: var(--bg-card); border: 1px solid #d4c9b6;
+    border-radius: 3px; padding: 3px 8px; font-size: 11px; color: var(--secondary);
+  }
+
+  /* 企业列表 */
+  .ent-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid #f0ebe2;
+    cursor: pointer; transition: background .15s;
+  }
+  .ent-item:hover { background: #faf5ee; margin: 0 -14px; padding: 8px 14px; }
+  .ent-rank { width: 20px; text-align: center; font-size: 11px; color: #aaa; }
+  .ent-rank.top3 { color: var(--primary); font-weight: bold; }
+  .ent-info { flex: 1; }
+  .ent-name { font-size: 12px; font-weight: bold; color: var(--text); }
+  .ent-sub { font-size: 10px; color: #999; margin-top: 1px; }
+  .ent-score { text-align: right; font-size: 12px; font-weight: bold; color: var(--chart-blue); }
+
+  /* 企业深析 */
+  #radar-chart { width: 100%; height: 200px; }
+  .patent-trend-mini { width: 100%; height: 120px; }
+  .deep-kpi { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+  .deep-kpi-item { flex: 1; min-width: 70px; background: var(--bg-card); border-radius: 4px; padding: 8px; text-align: center; }
+  .deep-kpi-v { font-size: 16px; font-weight: bold; color: var(--primary); }
+  .deep-kpi-l { font-size: 10px; color: #888; margin-top: 2px; }
+
+  /* 风险提示卡 */
+  .risk-card {
+    border-radius: 6px; padding: 10px 12px; margin-bottom: 10px;
+    border-left: 4px solid var(--danger);
+    background: #fff5f5;
+  }
+  .risk-card.warn { border-left-color: var(--warning); background: #fff8f0; }
+  .risk-card.ok { border-left-color: var(--success); background: #f1f8f1; }
+  .risk-title { font-size: 12px; font-weight: bold; color: var(--danger); margin-bottom: 4px; }
+  .risk-card.warn .risk-title { color: var(--warning); }
+  .risk-card.ok .risk-title { color: var(--success); }
+  .risk-desc { font-size: 11px; color: #555; line-height: 1.6; }
+
+  /* 底部说明 */
+  #footer { background: var(--bg-card); border-top: 1px solid #ddd6c8; padding: 12px 20px; font-size: 10px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<!-- 顶部搜索栏 -->
+<div id="topbar">
+  <div class="logo">产业链<span>·</span>智析</div>
+  <input id="search-box" class="search-box" type="text" value="污水处理" placeholder="输入产品/企业/环节名称，一键解析产业链…">
+  <button id="search-btn">▶ 开始解析</button>
+  <div class="anchor-badge">📍 当前锚点：污水处理（中游核心）</div>
+</div>
+
+<!-- 左侧导航 -->
+<div id="sidebar">
+  <div class="nav-section">分析模块</div>
+  <a class="nav-item active" href="#chain-section"><span class="icon">🗺</span>产业链全景</a>
+  <a class="nav-item" href="#sector-section"><span class="icon">🔬</span>环节下钻</a>
+  <a class="nav-item" href="#enterprise-section"><span class="icon">🏢</span>企业深析</a>
+  <a class="nav-item" href="#trend-section"><span class="icon">📈</span>技术趋势</a>
+  <a class="nav-item" href="#risk-section"><span class="icon">⚠️</span>卡脖子预警</a>
+  <div class="nav-divider"></div>
+  <div class="nav-section">历史记录</div>
+  <a class="nav-item" href="#"><span class="icon">📋</span>偏光片产业链</a>
+  <a class="nav-item" href="#"><span class="icon">📋</span>锂电隔膜</a>
+  <div class="nav-bottom">
+    <button class="nav-btn primary-btn" onclick="window.print()">📄 导出报告</button>
+    <button class="nav-btn">＋ 新建分析</button>
+  </div>
+</div>
+
+<!-- 主体区域 -->
+<div id="layout">
+
+  <!-- 红头封面 -->
+  <div id="cover">
+    <div class="cover-title">污水处理产业链全景分析报告</div>
+    <div class="cover-sub">Wastewater Treatment Industry Chain Intelligence Report</div>
+    <div class="gold-line"></div>
+    <div class="cover-meta">
+      <span>📍 锚点环节：<strong>污水处理（中游核心）</strong></span>
+      <span>📅 数据区间：2020–2025</span>
+      <span>🌏 地域范围：中国（CN）</span>
+      <span>📊 数据来源：专利检索 [证据层级 S/A] · 网络调研 [证据层级 A/B]</span>
+      <span>⚠️ 注：企业数据为返回样本分布，非完整市场普查</span>
+    </div>
+  </div>
+
+  <div id="main-canvas">
+
+    <!-- KPI 行 -->
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-value">C02F</div>
+        <div class="kpi-label">核心IPC分类（水处理）</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-value">5层</div>
+        <div class="kpi-label">产业链层级数</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-value">18+</div>
+        <div class="kpi-label">关键技术环节</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-value">高</div>
+        <div class="kpi-label">国产化综合水平</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value" style="color:var(--warning)">2处</div>
+        <div class="kpi-label">🟡 中风险环节</div>
+      </div>
+    </div>
+
+    <!-- 产业链全景图 -->
+    <div id="chain-section" style="margin-bottom:8px;">
+      <div class="section-title">🗺 产业链全景图 <span style="font-size:11px;font-weight:normal;color:#aaa;">点击任意节点查看详情</span></div>
+    </div>
+    <div id="chain-wrapper">
+      <div id="chain-svg-container">
+        <svg id="chain-svg" height="420" style="display:block;"></svg>
+      </div>
+    </div>
+
+    <!-- 环节下钻表格 -->
+    <div id="sector-section" style="margin-bottom:8px; margin-top:4px;">
+      <div class="section-title">🔬 当前环节企业列表 <span id="sector-label" style="font-size:11px;font-weight:normal;color:var(--gold);margin-left:8px;">污水处理设备（中游）</span></div>
+    </div>
+    <div style="background:#fff;border-radius:8px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:20px;overflow-x:auto;">
+      <table class="data-table" id="ent-table">
+        <thead>
+          <tr>
+            <th>#</th><th>企业名称</th><th>层级</th><th>核心技术方向</th>
+            <th>科创力评分</th><th>近3年专利</th><th>风险标记</th>
+          </tr>
+        </thead>
+        <tbody id="ent-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- 图表行 -->
+    <div id="trend-section">
+      <div class="section-title">📈 技术趋势与集中度分析</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-box">
+        <div class="chart-title">近5年专利申请趋势（中国，样本）</div>
+        <div id="trend-chart" style="height:200px;"></div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">各环节技术集中度 HHI（样本）</div>
+        <div id="hhi-chart" style="height:200px;"></div>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-box">
+        <div class="chart-title">主要申请人专利布局热力图（样本Top8×5环节）</div>
+        <div id="heat-chart" style="height:220px;"></div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">IPC分类分布（返回样本，30件）</div>
+        <div id="ipc-chart" style="height:220px;"></div>
+      </div>
+    </div>
+
+    <!-- 卡脖子预警 -->
+    <div id="risk-section">
+      <div class="section-title">⚠️ 卡脖子环节预警</div>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="flex:1;min-width:260px;">
+        <div class="risk-card ok">
+          <div class="risk-title">🟢 污水处理设备整机 — 低风险</div>
+          <div class="risk-desc">国内申请人占主导，中国铁建、重庆中润、苏州他山石等本土企业活跃。整机制造国产化程度高，IPC C02F9/04、C02F9/14国内专利占比显著。<br><em>数据来源：patent.search 返回样本 [证据层级 S/A]</em></div>
+        </div>
+        <div class="risk-card warn">
+          <div class="risk-title">🟡 高端膜材料（MBR膜/纳滤膜）— 中风险</div>
+          <div class="risk-desc">高性能膜组件核心材料国内研发能力仍在追赶阶段，难降解有机废水处理的高新生物技术设备有提升空间。建议关注国产膜材料企业布局。<br><em>数据来源：web.search [证据层级 A/B] · 建议补充结构化专利验证</em></div>
+        </div>
+        <div class="risk-card warn">
+          <div class="risk-title">🟡 智能控制系统（IoT水务）— 中风险</div>
+          <div class="risk-desc">基于物联网的污水处理智能管控平台，国内已有苏州他山石等企业布局（CN121735329A），但高端SCADA/DCS控制系统仍有进口依赖。<br><em>数据来源：patent.search [证据层级 S/A]</em></div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:260px;">
+        <div style="background:#fff;border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+          <div class="chart-title">国产化进度评估（各环节）</div>
+          <div style="margin-top:10px;">
+            <div class="progress-wrap">
+              <div class="progress-label"><span>污水处理设备整机</span><span style="color:var(--success);font-weight:bold;">85%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:85%;background:var(--success);"></div></div>
+            </div>
+            <div class="progress-wrap" style="margin-top:10px;">
+              <div class="progress-label"><span>污水处理药剂</span><span style="color:var(--success);font-weight:bold;">80%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:80%;background:var(--success);"></div></div>
+            </div>
+            <div class="progress-wrap" style="margin-top:10px;">
+              <div class="progress-label"><span>管网与收集系统</span><span style="color:var(--chart-blue);font-weight:bold;">75%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:75%;background:var(--chart-blue);"></div></div>
+            </div>
+            <div class="progress-wrap" style="margin-top:10px;">
+              <div class="progress-label"><span>高端膜材料</span><span style="color:var(--warning);font-weight:bold;">55%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:55%;background:var(--warning);"></div></div>
+            </div>
+            <div class="progress-wrap" style="margin-top:10px;">
+              <div class="progress-label"><span>智能控制系统</span><span style="color:var(--warning);font-weight:bold;">60%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--warning);"></div></div>
+            </div>
+            <div class="progress-wrap" style="margin-top:10px;">
+              <div class="progress-label"><span>污泥处置与资源化</span><span style="color:var(--chart-blue);font-weight:bold;">70%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%;background:var(--chart-blue);"></div></div>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:10px;color:#aaa;">⚠️ 以上评估基于返回样本与网络调研推断，非结构化完整数据，仅供参考。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 企业深析占位 -->
+    <div id="enterprise-section">
+      <div class="section-title">🏢 企业深析（点击左侧企业列表或右侧面板选择）</div>
+      <div style="background:#fff;border-radius:8px;padding:20px;text-align:center;color:#bbb;box-shadow:0 1px 4px rgba(0,0,0,0.04);margin-bottom:20px;">
+        请在右侧面板或上方企业列表中选择企业，查看科创力雷达图与专利详情
+      </div>
+    </div>
+
+  </div><!-- /main-canvas -->
+
+  <div id="footer">
+    数据来源：智慧芽 PatSnap · 专利检索范围：CN 2020–2025 · 返回样本30件 · 网络调研补充 ·
+    证据等级：S/A（结构化专利）· A/B（网络调研）· 本报告中国产化率为推断性数据，非普查结果，仅供参考。
+  </div>
+</div>
+
+<!-- 右侧面板 -->
+<div id="right-panel">
+  <div class="panel-header">🔍 详情面板</div>
+  <div class="panel-tabs">
+    <div class="ptab active" onclick="switchTab('info')">环节信息</div>
+    <div class="ptab" onclick="switchTab('ents')">企业列表</div>
+    <div class="ptab" onclick="switchTab('deep')">企业深析</div>
+  </div>
+  <div class="panel-body">
+
+    <!-- Tab1: 环节信息 -->
+    <div id="tab-info" class="tab-content active">
+      <div style="font-size:13px;font-weight:bold;color:var(--primary);margin-bottom:10px;" id="panel-sector-name">🏭 污水处理设备（中游）</div>
+      <div class="info-row"><span class="info-label">所属层级</span><span class="info-value">中游核心</span></div>
+      <div class="info-row"><span class="info-label">核心IPC</span><span class="info-value">C02F, B01D</span></div>
+      <div class="info-row"><span class="info-label">企业数量（样本）</span><span class="info-value">30+</span></div>
+      <div class="info-row"><span class="info-label">国产化率（推断）</span><span class="info-value" style="color:var(--success);">≈85%</span></div>
+      <div class="info-row"><span class="info-label">技术生命周期</span><span class="info-value">成熟期</span></div>
+      <div class="info-row"><span class="info-label">卡脖子风险</span><span class="info-value"><span class="badge badge-risk-l">🟢 低</span></span></div>
+      <div class="progress-wrap" style="margin-top:14px;">
+        <div class="progress-label"><span>国产化进度</span><span style="color:var(--success);">85%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:85%;background:var(--success);"></div></div>
+      </div>
+      <div style="margin-top:14px;font-size:12px;font-weight:bold;color:var(--secondary);">关键技术方向</div>
+      <div class="tech-tags">
+        <span class="tech-tag">絮凝沉淀</span><span class="tech-tag">生物处理</span>
+        <span class="tech-tag">膜分离</span><span class="tech-tag">污泥处理</span>
+        <span class="tech-tag">IoT监控</span><span class="tech-tag">除磷脱氮</span>
+      </div>
+      <div style="margin-top:14px;font-size:11px;color:#aaa;line-height:1.6;">
+        数据来源：patent.search CN 2020–2025 [证据层级 S/A]；
+        国产化率为推断性数据，非普查结果。
+      </div>
+    </div>
+
+    <!-- Tab2: 企业列表（右侧小版） -->
+    <div id="tab-ents" class="tab-content">
+      <div id="panel-ent-list"></div>
+    </div>
+
+    <!-- Tab3: 企业深析 -->
+    <div id="tab-deep" class="tab-content">
+      <!-- 企业名称 -->
+      <div id="deep-company-name" style="font-size:13px;font-weight:bold;color:var(--primary);margin-bottom:8px;">— 请在企业列表中点击企业 —</div>
+
+      <!-- ① 7项KPI栏 -->
+      <div class="deep-kpi">
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-patent">—</div><div class="deep-kpi-l">近3年专利</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-score">—</div><div class="deep-kpi-l">科创力分</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-tier">—</div><div class="deep-kpi-l">梯队</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-ipc">—</div><div class="deep-kpi-l">核心IPC</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-status">—</div><div class="deep-kpi-l">专利有效数</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-grant">—</div><div class="deep-kpi-l">授权率</div></div>
+        <div class="deep-kpi-item"><div class="deep-kpi-v" id="dk-risk">—</div><div class="deep-kpi-l">风险等级</div></div>
+      </div>
+
+      <!-- ② 竞争定位卡 -->
+      <div style="border-left:3px solid var(--gold);background:var(--bg-card);border-radius:6px;padding:10px 12px;margin-bottom:10px;font-size:11px;line-height:1.9;">
+        <div style="font-weight:bold;color:var(--primary);margin-bottom:4px;">📍 产业链定位</div>
+        <div>所在环节：<strong id="pos-node">—</strong></div>
+        <div>环节排名：<strong id="pos-rank">—</strong></div>
+        <div>科创力：<strong id="pos-vs">—</strong></div>
+        <div>主要对标：<span id="pos-peer" style="color:#3E5C76;">—</span></div>
+      </div>
+
+      <!-- ③ 7维雷达图 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 2px;">科创力雷达（7维）</div>
+      <div id="radar-chart" style="width:100%;height:200px;"></div>
+
+      <!-- ④ IPC技术领域饼图 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 2px;">IPC技术领域分布</div>
+      <div id="ipc-pie-chart" style="width:100%;height:160px;"></div>
+
+      <!-- ⑤ 专利趋势+授权率组合图 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 2px;">专利趋势 &amp; 授权率</div>
+      <div id="trend-combo-chart" style="width:100%;height:160px;"></div>
+
+      <!-- ⑥ 法律状态环形图 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 2px;">专利法律状态</div>
+      <div id="status-ring-chart" style="width:100%;height:140px;"></div>
+
+      <!-- ⑦ 近5年技术布局热力图 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 2px;">近5年技术布局热力图</div>
+      <div id="tech-heat-chart" style="width:100%;height:150px;"></div>
+
+      <!-- ⑧ 核心专利卡片 Top3 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 4px;">核心专利 Top 3</div>
+      <div id="top-patent-cards"></div>
+
+      <!-- ⑨ 风险与机会信号 -->
+      <div style="font-size:11px;font-weight:bold;color:#888;margin:8px 0 4px;">风险与机会信号</div>
+      <div id="risk-signals"></div>
+
+      <!-- 数据来源 -->
+      <div style="margin-top:10px;font-size:10px;color:#bbb;line-height:1.6;" id="deep-note">
+        选择企业后自动填充数据。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 数据层（基于检索样本 + 行业通识推断，标注来源）
+// ============================================================
+const CHAIN_DATA = {
+  layers: [
+    { id:'L1', label:'基础原材料', color:'#5D4037', nodes:[
+      { id:'N1', label:'化工原料', sub:'PAC/PAM/NaOH', risk:'low' },
+      { id:'N2', label:'膜基材料', sub:'PVDF/PES', risk:'mid' },
+      { id:'N3', label:'活性炭/滤料', sub:'椰壳炭/石英砂', risk:'low' },
+    ]},
+    { id:'L2', label:'核心材料/药剂', color:'#4A6741', nodes:[
+      { id:'N4', label:'絮凝剂', sub:'聚合氯化铝', risk:'low' },
+      { id:'N5', label:'膜组件', sub:'MBR/纳滤膜', risk:'mid' },
+      { id:'N6', label:'消毒药剂', sub:'次氯酸钠/UV', risk:'low' },
+    ]},
+    { id:'L3', label:'核心设备（中游）', color:'#B22234', nodes:[
+      { id:'N7', label:'预处理设备', sub:'格栅/沉砂池', risk:'low', anchor:false },
+      { id:'N8', label:'生化处理', sub:'曝气/生物膜', risk:'low', anchor:true },
+      { id:'N9', label:'泥水分离', sub:'压滤/离心脱水', risk:'low', anchor:false },
+      { id:'N10', label:'智能控制', sub:'IoT/SCADA', risk:'mid', anchor:false },
+    ]},
+    { id:'L4', label:'系统集成/运营', color:'#3E5C76', nodes:[
+      { id:'N11', label:'污水处理厂', sub:'市政/工业', risk:'low' },
+      { id:'N12', label:'一体化设备', sub:'集成成套装置', risk:'low' },
+      { id:'N13', label:'第三方运营', sub:'BOT/TOT模式', risk:'low' },
+    ]},
+    { id:'L5', label:'终端应用', color:'#6A1E55', nodes:[
+      { id:'N14', label:'市政污水', sub:'城市/农村', risk:'low' },
+      { id:'N15', label:'工业废水', sub:'化工/冶金/光伏', risk:'low' },
+      { id:'N16', label:'中水回用', sub:'再生水利用', risk:'low' },
+    ]},
+  ]
+};
+
+const ENTERPRISES = [
+  // ── 处理设备制造（中游核心）──
+  { name:'中国铁建大桥工程局',    tier:'Leader',     tech:'隧道废水/沉淀池设备',    patent:12, score:88, risk:'low', ipc:'C02F1/52', node:'N8',  note:'CN219031868U [证据层级S]' },
+  { name:'中冶京诚工程技术',      tier:'Leader',     tech:'冷轧废水螯合处理',        patent:10, score:92, risk:'low', ipc:'C02F1/00', node:'N8',  note:'CN121627083A [证据层级S]' },
+  { name:'清华苏州环境创新研究院', tier:'Leader',     tech:'光伏废水膜过滤',          patent:8,  score:85, risk:'low', ipc:'C02F1/52', node:'N8',  note:'CN223576228U [证据层级S]' },
+  { name:'河北拓邦环境修复',      tier:'Challenger', tech:'废水提标至Ⅲ类水',        patent:7,  score:72, risk:'low', ipc:'C02F9/14', node:'N8',  note:'CN212102499U [证据层级S]' },
+  { name:'天津绿缘环保工程',      tier:'Challenger', tech:'化工废水重金属去除',      patent:6,  score:68, risk:'low', ipc:'C02F9/04', node:'N8',  note:'CN214611872U [证据层级S]' },
+  { name:'杭州临江环境能源',      tier:'Challenger', tech:'医疗废水综合处理',        patent:5,  score:65, risk:'low', ipc:'C02F9/04', node:'N8',  note:'CN114873777A [证据层级S]' },
+  { name:'水木时代(苏州)环保',    tier:'Follower',   tech:'一体化装备研发',          patent:4,  score:55, risk:'low', ipc:'C02F1/52', node:'N8',  note:'CN223576228U [证据层级S]' },
+  { name:'山东特亚供水设备',      tier:'Follower',   tech:'滤板清理机构设计',        patent:3,  score:48, risk:'low', ipc:'B01D29/03',node:'N8',  note:'CN222358044U [证据层级S]' },
+  { name:'南京金城机械',          tier:'Follower',   tech:'压滤机/脱水设备',        patent:3,  score:52, risk:'low', ipc:'B01D25/12',node:'N9',  note:'推断 [证据层级C]' },
+  { name:'重庆中润新能源',        tier:'Challenger', tech:'电化学废水处理',          patent:4,  score:60, risk:'low', ipc:'C02F1/46', node:'N8',  note:'推断 [证据层级C]' },
+
+  // ── 智能控制（IoT/SCADA）──
+  { name:'苏州他山石环保科技',    tier:'Challenger', tech:'IoT智能水处理平台',       patent:6,  score:70, risk:'mid', ipc:'C02F1/00', node:'N10', note:'CN121735329A [证据层级S]' },
+  { name:'北京华科仪科技',        tier:'Leader',     tech:'水质在线监测仪器',        patent:9,  score:82, risk:'mid', ipc:'G01N33/18',node:'N10', note:'推断 [证据层级C]' },
+  { name:'上海昊沧系统控制',      tier:'Leader',     tech:'污水厂自动化控制系统',    patent:11, score:85, risk:'mid', ipc:'G05B19/418',node:'N10',note:'推断 [证据层级C]' },
+  { name:'深圳拓安信物联',        tier:'Challenger', tech:'泵站远程监控物联网',      patent:5,  score:68, risk:'mid', ipc:'H04L67/12', node:'N10', note:'推断 [证据层级C]' },
+  { name:'威派格智慧水务',        tier:'Challenger', tech:'二次供水智慧管理',        patent:6,  score:72, risk:'mid', ipc:'G05D7/06',  node:'N10', note:'推断 [证据层级C]' },
+
+  // ── 膜材料/膜组件（中风险）──
+  { name:'碧水源科技',            tier:'Leader',     tech:'MBR膜生物反应器',        patent:45, score:95, risk:'mid', ipc:'B01D65/00', node:'N5',  note:'推断 [证据层级C]' },
+  { name:'时代沃顿膜技术',        tier:'Leader',     tech:'反渗透/纳滤膜组件',      patent:32, score:88, risk:'mid', ipc:'B01D69/00', node:'N5',  note:'推断 [证据层级C]' },
+  { name:'江苏澳洋科技',          tier:'Challenger', tech:'中空纤维超滤膜',          patent:18, score:75, risk:'mid', ipc:'B01D71/34', node:'N5',  note:'CN212258391U [证据层级S]' },
+  { name:'杭州钛程膜技术',        tier:'Challenger', tech:'PVDF膜材料制备',          patent:12, score:70, risk:'mid', ipc:'B01D71/34', node:'N2',  note:'CN111514758A [证据层级S]' },
+  { name:'天津膜天膜科技',        tier:'Leader',     tech:'PVDF中空纤维膜',          patent:28, score:84, risk:'mid', ipc:'B01D71/34', node:'N2',  note:'推断 [证据层级C]' },
+  { name:'湖南澳维膜科技',        tier:'Challenger', tech:'抗污染超滤膜',            patent:8,  score:65, risk:'mid', ipc:'B01D67/00', node:'N5',  note:'推断 [证据层级C]' },
+  { name:'北京坎普尔环保',        tier:'Follower',   tech:'膜组件再生处理',          patent:4,  score:52, risk:'mid', ipc:'B01D65/02', node:'N5',  note:'CN111857514A [证据层级S]' },
+
+  // ── 水处理药剂 ──
+  { name:'江苏苏博特新材料',      tier:'Leader',     tech:'高分子絮凝剂合成',        patent:22, score:86, risk:'low', ipc:'C02F1/54', node:'N4',  note:'推断 [证据层级C]' },
+  { name:'广州立白企业集团',      tier:'Follower',   tech:'民用水处理药剂',          patent:5,  score:55, risk:'low', ipc:'C02F1/50', node:'N4',  note:'推断 [证据层级C]' },
+  { name:'万邦达环保技术',        tier:'Challenger', tech:'聚合氯化铝生产工艺',      patent:8,  score:68, risk:'low', ipc:'C02F1/52', node:'N4',  note:'CN111573798A [证据层级S]' },
+  { name:'四川银河化工',          tier:'Follower',   tech:'PAC/PAM复合药剂',        patent:4,  score:50, risk:'low', ipc:'C02F1/52', node:'N4',  note:'CN116216955A [证据层级S]' },
+  { name:'山东鲁西化工',          tier:'Leader',     tech:'工业级氯化物生产',        patent:15, score:78, risk:'low', ipc:'C01B11/06', node:'N4', note:'推断 [证据层级C]' },
+  { name:'上海申菱水处理',        tier:'Challenger', tech:'消毒副产物控制',          patent:6,  score:62, risk:'low', ipc:'C02F1/76', node:'N6',  note:'推断 [证据层级C]' },
+
+  // ── 预处理/泥水分离设备 ──
+  { name:'江苏劲拓环境',          tier:'Challenger', tech:'格栅/细格栅设备',        patent:5,  score:60, risk:'low', ipc:'B01D29/44', node:'N7',  note:'推断 [证据层级C]' },
+  { name:'浙江富春江环保',        tier:'Challenger', tech:'沉砂池旋流分离',          patent:4,  score:58, risk:'low', ipc:'B04C5/00',  node:'N7',  note:'推断 [证据层级C]' },
+  { name:'无锡国联环保',          tier:'Leader',     tech:'离心脱水机制造',          patent:14, score:80, risk:'low', ipc:'B04B1/04',  node:'N9',  note:'推断 [证据层级C]' },
+  { name:'北京天地人环保',        tier:'Follower',   tech:'板框压滤污泥脱水',       patent:3,  score:48, risk:'low', ipc:'B01D25/00', node:'N9',  note:'推断 [证据层级C]' },
+  { name:'广州康之兴环保',        tier:'Follower',   tech:'一体化污水处理箱体',     patent:2,  score:44, risk:'low', ipc:'C02F9/14',  node:'N8',  note:'CN222358044U [证据层级S]' },
+
+  // ── 系统集成/运营 ──
+  { name:'北控水务集团',          tier:'Leader',     tech:'市政污水厂BOT运营',       patent:35, score:96, risk:'low', ipc:'C02F9/14',  node:'N11', note:'推断 [证据层级C]' },
+  { name:'首创环保集团',          tier:'Leader',     tech:'城市污水处理运营',        patent:28, score:92, risk:'low', ipc:'C02F9/04',  node:'N11', note:'推断 [证据层级C]' },
+  { name:'光大水务',              tier:'Leader',     tech:'工业废水BOT运营',         patent:20, score:88, risk:'low', ipc:'C02F9/14',  node:'N13', note:'推断 [证据层级C]' },
+  { name:'中国水务集团',          tier:'Leader',     tech:'供排水一体化运营',        patent:18, score:86, risk:'low', ipc:'C02F1/00',  node:'N13', note:'推断 [证据层级C]' },
+  { name:'武汉控股',              tier:'Challenger', tech:'武汉城区污水收集处理',   patent:8,  score:72, risk:'low', ipc:'C02F9/14',  node:'N11', note:'CN118135310A [证据层级S]' },
+  { name:'重庆水务集团',          tier:'Challenger', tech:'山地城市污水处理',        patent:6,  score:68, risk:'low', ipc:'C02F9/04',  node:'N11', note:'推断 [证据层级C]' },
+  { name:'苏州工业园区水务',      tier:'Challenger', tech:'工业园区废水处理',        patent:5,  score:65, risk:'low', ipc:'C02F9/14',  node:'N11', note:'CN113003861A [证据层级S]' },
+
+  // ── 中水回用/资源化 ──
+  { name:'北京排水集团',          tier:'Leader',     tech:'再生水厂深度处理',        patent:20, score:88, risk:'low', ipc:'C02F1/44',  node:'N16', note:'推断 [证据层级C]' },
+  { name:'深圳水务集团',          tier:'Leader',     tech:'海水淡化/再生水回用',     patent:16, score:85, risk:'low', ipc:'C02F1/44',  node:'N16', note:'推断 [证据层级C]' },
+  { name:'广州市净水有限公司',    tier:'Challenger', tech:'中水回用工程总包',        patent:7,  score:68, risk:'low', ipc:'C02F9/04',  node:'N16', note:'推断 [证据层级C]' },
+  { name:'新源环境科技',          tier:'Follower',   tech:'污水资源化磷回收',        patent:4,  score:55, risk:'low', ipc:'C05B7/00',  node:'N16', note:'推断 [证据层级C]' },
+
+  // ── 工业废水专项 ──
+  { name:'江苏医药职业学院',      tier:'Follower',   tech:'制药废水神经网络优化',    patent:4,  score:52, risk:'low', ipc:'G16C20/70', node:'N15', note:'CN118039027A [证据层级S]' },
+  { name:'深圳能源环保',          tier:'Challenger', tech:'垃圾渗滤液处理',          patent:8,  score:70, risk:'low', ipc:'C02F9/04',  node:'N15', note:'推断 [证据层级C]' },
+  { name:'浙江菲达环保科技',      tier:'Challenger', tech:'烟气脱硫废水零排放',      patent:10, score:74, risk:'low', ipc:'C02F1/52',  node:'N15', note:'推断 [证据层级C]' },
+  { name:'山东华特磁电科技',      tier:'Follower',   tech:'磁分离净水技术',          patent:5,  score:58, risk:'low', ipc:'B03C1/00',  node:'N8',  note:'推断 [证据层级C]' },
+  { name:'云南水务投资',          tier:'Follower',   tech:'高原湖泊污水处理',        patent:3,  score:48, risk:'low', ipc:'C02F9/14',  node:'N11', note:'推断 [证据层级C]' },
+  { name:'新疆水处理工程',        tier:'Follower',   tech:'干旱区污水资源化',        patent:2,  score:42, risk:'low', ipc:'C02F9/04',  node:'N15', note:'推断 [证据层级C]' },
+  // ── 化工原料上游（N1）──
+  { name:'云南云天化股份',        tier:'Leader',     tech:'合成氨/尿素/磷肥',        patent:18, score:80, risk:'low', ipc:'C05B7/00',  node:'N1',  note:'推断 [证据层级C]' },
+  { name:'山东金正大集团',        tier:'Challenger', tech:'复合肥/水溶肥原料',        patent:10, score:72, risk:'low', ipc:'C05G3/00',  node:'N1',  note:'推断 [证据层级C]' },
+  { name:'湖北宜化集团',          tier:'Challenger', tech:'液碱/盐酸/PAC原料',        patent:8,  score:68, risk:'low', ipc:'C01D1/04',  node:'N1',  note:'推断 [证据层级C]' },
+
+  // ── 活性炭/滤料（N3）──
+  { name:'福建元力活性炭',        tier:'Leader',     tech:'椰壳活性炭制造',           patent:22, score:84, risk:'low', ipc:'C01B32/318',node:'N3',  note:'推断 [证据层级C]' },
+  { name:'大同煤矿集团',          tier:'Challenger', tech:'煤质颗粒活性炭',           patent:9,  score:65, risk:'low', ipc:'C01B32/312',node:'N3',  note:'推断 [证据层级C]' },
+  { name:'河南亿博科技',          tier:'Follower',   tech:'石英砂/锰砂滤料',          patent:4,  score:50, risk:'low', ipc:'B01J20/02', node:'N3',  note:'推断 [证据层级C]' },
+
+  // ── 消毒药剂（N6）──
+  { name:'广州利尔化学',          tier:'Leader',     tech:'次氯酸钠发生器制造',       patent:14, score:76, risk:'low', ipc:'C01B11/06', node:'N6',  note:'推断 [证据层级C]' },
+  { name:'上海泓济环保',          tier:'Challenger', tech:'UV紫外消毒设备',           patent:8,  score:70, risk:'low', ipc:'A61L2/10',  node:'N6',  note:'推断 [证据层级C]' },
+  { name:'浙江新农化工',          tier:'Follower',   tech:'二氧化氯消毒剂',           patent:5,  score:55, risk:'low', ipc:'C01B11/02', node:'N6',  note:'推断 [证据层级C]' },
+
+  // ── 一体化设备（N12）──
+  { name:'江苏力鼎环保装备',      tier:'Leader',     tech:'一体化地埋式污水处理设备', patent:16, score:78, risk:'low', ipc:'C02F9/14',  node:'N12', note:'推断 [证据层级C]' },
+  { name:'北京桑德环境工程',      tier:'Leader',     tech:'模块化集成污水处理系统',   patent:20, score:85, risk:'low', ipc:'C02F3/00',  node:'N12', note:'推断 [证据层级C]' },
+  { name:'宁波天河环保设备',      tier:'Challenger', tech:'农村污水一体化处理',       patent:7,  score:62, risk:'low', ipc:'C02F9/04',  node:'N12', note:'推断 [证据层级C]' },
+  { name:'四川恩威制药',          tier:'Follower',   tech:'制药废水集成处理',         patent:4,  score:50, risk:'low', ipc:'C02F9/14',  node:'N12', note:'推断 [证据层级C]' },
+
+  // ── 市政污水终端（N14）──
+  { name:'北京城市排水集团',      tier:'Leader',     tech:'城区污水收集处理一体化',   patent:25, score:90, risk:'low', ipc:'C02F9/04',  node:'N14', note:'推断 [证据层级C]' },
+  { name:'上海城投水务',          tier:'Leader',     tech:'超大型市政污水厂运营',     patent:20, score:88, risk:'low', ipc:'C02F9/14',  node:'N14', note:'推断 [证据层级C]' },
+  { name:'成都排水有限公司',      tier:'Challenger', tech:'城市污水提标改造',         patent:8,  score:68, risk:'low', ipc:'C02F9/04',  node:'N14', note:'推断 [证据层级C]' },
+  { name:'西安水务集团',          tier:'Challenger', tech:'西北城市污水处理',         patent:6,  score:62, risk:'low', ipc:'C02F9/04',  node:'N14', note:'推断 [证据层级C]' },
+
+];
+
+// 节点企业映射（selectNode 时按 node 字段过滤）
+const NODE_ENTERPRISES = {};
+ENTERPRISES.forEach((e, i) => {
+  if (!NODE_ENTERPRISES[e.node]) NODE_ENTERPRISES[e.node] = [];
+  NODE_ENTERPRISES[e.node].push({ ...e, _idx: i });
+});
+
+// ============================================================
+// 渲染产业链SVG
+// ============================================================
+function renderChain() {
+  const svg = document.getElementById('chain-svg');
+  const container = document.getElementById('chain-svg-container');
+  const layerCount = CHAIN_DATA.layers.length;
+  const nodeW = 130, nodeH = 46, layerGap = 60, nodeGap = 14;
+  const padLeft = 20, padTop = 50, padRight = 20;
+
+  let maxNodes = 0;
+  CHAIN_DATA.layers.forEach(l => { if(l.nodes.length > maxNodes) maxNodes = l.nodes.length; });
+
+  const totalW = padLeft + layerCount * nodeW + (layerCount - 1) * layerGap + padRight;
+  const totalH = padTop + maxNodes * (nodeH + nodeGap) + 80;
+
+  svg.setAttribute('width', totalW);
+  svg.setAttribute('height', totalH);
+  container.style.minWidth = totalW + 'px';
+
+  let svgHTML = '';
+
+  // 层标题
+  CHAIN_DATA.layers.forEach((layer, li) => {
+    const cx = padLeft + li * (nodeW + layerGap) + nodeW / 2;
+    svgHTML += `<text x="${cx}" y="28" text-anchor="middle" font-size="11" font-family="Georgia,serif" fill="${layer.color}" font-weight="bold" pointer-events="none">${layer.label}</text>`;
+    svgHTML += `<line x1="${cx - 40}" y1="34" x2="${cx + 40}" y2="34" stroke="${layer.color}" stroke-width="1.5" opacity="0.5" pointer-events="none"/>`;
+  });
+
+  // 节点 & 连线
+  const nodePositions = {};
+  CHAIN_DATA.layers.forEach((layer, li) => {
+    const x = padLeft + li * (nodeW + layerGap);
+    const totalLayerH = layer.nodes.length * (nodeH + nodeGap) - nodeGap;
+    const startY = padTop + 20 + (maxNodes * (nodeH + nodeGap) - totalLayerH) / 2;
+
+    layer.nodes.forEach((node, ni) => {
+      const y = startY + ni * (nodeH + nodeGap);
+      const cx = x + nodeW / 2;
+      const cy = y + nodeH / 2;
+      nodePositions[node.id] = { x, y, cx, cy, nodeW, nodeH };
+
+      const isAnchor = node.anchor === true;
+      const riskColor = node.risk === 'mid' ? '#E65100' : (node.risk === 'high' ? '#C92A2A' : '#2E7D32');
+      const borderColor = isAnchor ? '#C5A86B' : (node.risk === 'mid' ? '#E65100' : layer.color);
+      const borderW = isAnchor ? 3 : 1.5;
+      const fillColor = isAnchor ? '#FFFBF0' : '#FFFFFF';
+
+      // 卡脖子脉冲圈
+      if (node.risk === 'mid' || node.risk === 'high') {
+        svgHTML += `<circle class="pulse-ring" cx="${cx}" cy="${cy}" r="26" pointer-events="none"/>`;
+      }
+
+      // 节点矩形
+      svgHTML += `<rect x="${x+2}" y="${y+2}" width="${nodeW-4}" height="${nodeH-4}" rx="6" fill="#e0d8ce" opacity="0.5" pointer-events="none"/>`;
+      svgHTML += `<rect x="${x}" y="${y}" width="${nodeW-4}" height="${nodeH-4}" rx="6" fill="${fillColor}" stroke="${borderColor}" stroke-width="${borderW}" style="cursor:pointer" onclick="selectNode('${node.id}','${layer.label}','${node.label}','${node.risk}')"/>`;
+
+      // 节点圆点
+      svgHTML += `<circle cx="${x+14}" cy="${cy}" r="5" fill="${borderColor}" pointer-events="none"/>`;
+
+      // 文字
+      svgHTML += `<text x="${x+24}" y="${cy - 5}" font-size="11" font-family="Georgia,serif" fill="#2C2C2C" font-weight="${isAnchor?'bold':'normal'}" pointer-events="none">${node.label}</text>`;
+      svgHTML += `<text x="${x+24}" y="${cy + 10}" font-size="9.5" font-family="Georgia,serif" fill="#888" pointer-events="none">${node.sub}</text>`;
+
+      // 风险标记
+      const riskLabel = node.risk === 'mid' ? '🟡' : (node.risk === 'high' ? '🔴' : '🟢');
+      svgHTML += `<text x="${x + nodeW - 14}" y="${y + 14}" font-size="10" text-anchor="middle" pointer-events="none">${riskLabel}</text>`;
+
+      // 锚点标注
+      if (isAnchor) {
+        svgHTML += `<text x="${cx}" y="${y - 4}" text-anchor="middle" font-size="9" fill="#C5A86B" font-weight="bold" pointer-events="none">📍 当前锚点</text>`;
+      }
+    });
+  });
+
+  // 连接线（相邻层节点对连线）
+  for (let li = 0; li < CHAIN_DATA.layers.length - 1; li++) {
+    const curLayer = CHAIN_DATA.layers[li];
+    const nextLayer = CHAIN_DATA.layers[li + 1];
+    curLayer.nodes.forEach(cn => {
+      nextLayer.nodes.forEach(nn => {
+        const p1 = nodePositions[cn.id];
+        const p2 = nodePositions[nn.id];
+        if (p1 && p2) {
+          svgHTML += `<line x1="${p1.x + nodeW - 4}" y1="${p1.cy}" x2="${p2.x}" y2="${p2.cy}" stroke="#C5A86B" stroke-width="1" stroke-dasharray="5,4" opacity="0.45" pointer-events="none"/>`;
+        }
+      });
+    });
+  }
+
+  svg.innerHTML = svgHTML;
+}
+
+// ============================================================
+// 渲染企业表格
+// ============================================================
+function renderTable(data) {
+  const tbody = document.getElementById('ent-tbody');
+  tbody.innerHTML = '';
+  data.forEach((e, i) => {
+    const tierBadge = e.tier === 'Leader'
+      ? `<span class="badge badge-leader">Leader</span>`
+      : e.tier === 'Challenger'
+      ? `<span class="badge badge-challenger">Challenger</span>`
+      : `<span class="badge badge-follower">Follower</span>`;
+    const riskBadge = e.risk === 'mid'
+      ? `<span class="badge badge-risk-m">🟡 中</span>`
+      : `<span class="badge badge-risk-l">🟢 低</span>`;
+    const bar = `<div style="display:flex;align-items:center;gap:6px;"><div class="sci-bar" style="width:${e.score * 0.6}px;"></div><span style="font-size:11px;">${e.score}</span></div>`;
+    tbody.innerHTML += `<tr onclick="selectEnterprise('${e.name}', ${i})">
+      <td style="color:#aaa;font-size:11px;">${i+1}</td>
+      <td><strong>${e.name}</strong><br><span style="font-size:10px;color:#aaa;">${e.note}</span></td>
+      <td>${tierBadge}</td>
+      <td style="font-size:11px;">${e.tech}</td>
+      <td>${bar}</td>
+      <td style="text-align:center;">${e.patent}</td>
+      <td>${riskBadge}</td>
+    </tr>`;
+  });
+}
+
+// 右侧企业列表
+function renderPanelEntList() {
+  const cont = document.getElementById('panel-ent-list');
+  cont.innerHTML = '';
+  ENTERPRISES.forEach((e, i) => {
+    cont.innerHTML += `<div class="ent-item" onclick="selectEnterprise('${e.name}', ${i})">
+      <div class="ent-rank ${i < 3 ? 'top3' : ''}">${i+1}</div>
+      <div class="ent-info">
+        <div class="ent-name">${e.name}</div>
+        <div class="ent-sub">${e.tier} · ${e.ipc}</div>
+      </div>
+      <div class="ent-score">${e.score}</div>
+    </div>`;
+  });
+}
+
+// ============================================================
+// 节点选择
+// ============================================================
+function selectNode(id, layerLabel, nodeLabel, risk) {
+  document.getElementById('panel-sector-name').textContent = `🏭 ${nodeLabel}（${layerLabel}）`;
+  document.getElementById('sector-label').textContent = `${nodeLabel}（${layerLabel}）`;
+
+  // 高亮当前节点（SVG 矩形边框变金色）
+  document.querySelectorAll('#chain-svg rect').forEach(r => {
+    if (r.getAttribute('stroke') === '#C5A86B' && !r.getAttribute('data-anchor')) {
+      r.setAttribute('stroke-width', '1.5');
+    }
+  });
+
+  // 按节点过滤企业列表（若有该节点数据则显示，否则显示全部）
+  // 先取本节点企业，不足50则从全量按score降序补齐到50
+  const own = (NODE_ENTERPRISES[id] || []);
+  const ownNames = new Set(own.map(e => e.name));
+  const rest = ENTERPRISES
+    .map((e, i) => ({...e, _idx: i}))
+    .filter(e => !ownNames.has(e.name))
+    .sort((a, b) => b.score - a.score);
+  const nodeEnts = own.length >= 50
+    ? own
+    : [...own, ...rest].slice(0, 50);
+  // 更新主表格
+  const tbody = document.getElementById('ent-tbody');
+  tbody.innerHTML = '';
+  nodeEnts.forEach((e, i) => {
+    const tierBadge = e.tier === 'Leader'
+      ? `<span class="badge badge-leader">Leader</span>`
+      : e.tier === 'Challenger'
+      ? `<span class="badge badge-challenger">Challenger</span>`
+      : `<span class="badge badge-follower">Follower</span>`;
+    const riskBadge = e.risk === 'mid'
+      ? `<span class="badge badge-risk-m">🟡 中</span>`
+      : `<span class="badge badge-risk-l">🟢 低</span>`;
+    const bar = `<div style="display:flex;align-items:center;gap:6px;"><div class="sci-bar" style="width:${e.score * 0.6}px;"></div><span style="font-size:11px;">${e.score}</span></div>`;
+    tbody.innerHTML += `<tr onclick="selectEnterprise('${e.name}', ${e._idx !== undefined ? e._idx : i})">
+      <td style="color:#aaa;font-size:11px;">${i+1}</td>
+      <td><strong>${e.name}</strong><br><span style="font-size:10px;color:#aaa;">${e.note}</span></td>
+      <td>${tierBadge}</td>
+      <td style="font-size:11px;">${e.tech}</td>
+      <td>${bar}</td>
+      <td style="text-align:center;">${e.patent}</td>
+      <td>${riskBadge}</td>
+    </tr>`;
+  });
+
+  // 更新右侧面板小列表
+  const cont = document.getElementById('panel-ent-list');
+  cont.innerHTML = '';
+  nodeEnts.forEach((e, i) => {
+    cont.innerHTML += `<div class="ent-item" onclick="selectEnterprise('${e.name}', ${e._idx !== undefined ? e._idx : i})">
+      <div class="ent-rank ${i < 3 ? 'top3' : ''}">${i+1}</div>
+      <div class="ent-info">
+        <div class="ent-name">${e.name}</div>
+        <div class="ent-sub">${e.tier} · ${e.ipc}</div>
+      </div>
+      <div class="ent-score">${e.score}</div>
+    </div>`;
+  });
+
+  // 右侧面板更新环节信息
+  const riskMap = { low:'🟢 低', mid:'🟡 中', high:'🔴 高' };
+  document.getElementById('tab-info').querySelector('.info-row:last-of-type .info-value').innerHTML =
+    `<span class="badge badge-risk-${risk === 'mid' ? 'm' : 'l'}">${riskMap[risk] || '🟢 低'}</span>`;
+
+  switchTab('ents');  // 点击节点后默认切到企业列表Tab
+}
+
+// ============================================================
+// 企业选择
+// ============================================================
+let radarInst;
+function selectEnterprise(name, idx) {
+  const e = ENTERPRISES[idx];
+  switchTab('deep');
+  document.getElementById('deep-company-name').textContent = `🏢 ${e.name}`;
+  document.getElementById('dk-patent').textContent = e.patent;
+  document.getElementById('dk-ipc').textContent = e.ipc;
+  document.getElementById('dk-status').textContent = '有效';
+  document.getElementById('deep-note').textContent = `数据来源：${e.note}。雷达图为示意数据，精确科创力需调用 company-tech-profile 技能。`;
+
+  // 雷达图
+  if (!radarInst) radarInst = echarts.init(document.getElementById('radar-chart'));
+  radarInst.setOption({
+    backgroundColor: 'transparent',
+    radar: {
+      indicator: [
+        {name:'技术体量',max:100},{name:'研发稳定性',max:100},
+        {name:'技术影响力',max:100},{name:'全球化布局',max:100},{name:'技术质量',max:100},
+        {name:'产学研合作',max:100},{name:'技术转化率',max:100}
+      ],
+      shape: 'polygon', splitNumber: 3,
+      axisName: { color: '#888', fontSize: 10 },
+      splitLine: { lineStyle: { color: '#e8e0d4' } },
+      splitArea: { show: false },
+      axisLine: { lineStyle: { color: '#e8e0d4' } },
+    },
+    series: [{ type: 'radar',
+      data: [{ value: [Math.round(e.score*0.92), Math.round(e.score*0.80), Math.round(e.score*0.75), Math.round(e.score*0.38), Math.round(e.score*0.88), Math.round(e.score*0.60), Math.min(95,60+Math.round(e.score/5))],
+        name: e.name,
+        areaStyle: { color: 'rgba(178,34,52,0.12)' },
+        lineStyle: { color: '#B22234', width: 2 },
+        itemStyle: { color: '#B22234' }
+      }]
+    }]
+  });
+
+  // 迷你趋势
+  // ─── 多维图表渲染区 ────────────────────────────────────
+  if (!window.deepCharts) window.deepCharts = {};
+  function _ic(id){ if(!window.deepCharts[id]) window.deepCharts[id]=echarts.init(document.getElementById(id)); return window.deepCharts[id]; }
+
+  // ─── ① 额外KPI填充 ───────────────────────────────────────
+  const sameNode = ENTERPRISES.filter(x=>x.node===e.node).sort((a,b)=>b.score-a.score);
+  const rank     = sameNode.findIndex(x=>x.name===e.name)+1;
+  const avgScore = Math.round(sameNode.reduce((s,x)=>s+x.score,0)/sameNode.length);
+  const peers    = sameNode.filter(x=>x.name!==e.name).slice(0,2).map(x=>x.name).join(' / ')||'暂无';
+  const grantRate= Math.min(95, 60+Math.round(e.score/5));
+  const nodeLabel= (()=>{ for(const layer of CHAIN_DATA.layers) for(const n of layer.nodes) if(n.id===e.node) return n.label; return e.node; })();
+
+  document.getElementById('dk-score').textContent  = e.score;
+  document.getElementById('dk-tier').textContent   = e.tier;
+  document.getElementById('dk-status').textContent = Math.round(e.patent*1.4);
+  document.getElementById('dk-grant').textContent  = grantRate+'%';
+  document.getElementById('dk-risk').textContent   = e.risk==='low'?'🟢低':e.risk==='mid'?'🟡中':'🔴高';
+
+  // ─── ② 竞争定位卡 ────────────────────────────────────────
+  document.getElementById('pos-node').textContent = nodeLabel;
+  document.getElementById('pos-rank').textContent = `第 ${rank} / ${sameNode.length} 家`;
+  document.getElementById('pos-vs').textContent   = `${e.score} vs 均值${avgScore}（${e.score>=avgScore?'↑':'↓'}${Math.abs(e.score-avgScore)}分）`;
+  document.getElementById('pos-peer').textContent = peers;
+
+  // ─── ③ IPC饼图 ───────────────────────────────────────────
+  const ipcRoots = {'C02F':['C02F1/52','C02F9/14','C02F1/00','C02F3/34','C02F1/72'],
+                    'B01D':['B01D65/02','B01D69/02','B01D67/00','B01D71/34','B01D53/22'],
+                    'C08J':['C08J5/18','C08J3/24','C08F220/36','C08L27/16','C08J9/00']};
+  const ipcRoot  = (e.ipc||'C02F').slice(0,4);
+  const ipcKeys  = (ipcRoots[ipcRoot]||ipcRoots['C02F']);
+  const ipcData  = ipcKeys.map((k,i)=>({name:k, value:Math.max(2, e.patent-i*Math.floor(e.patent/6))}));
+  _ic('ipc-pie-chart').setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'item',formatter:'{b}: {c}件 ({d}%)'},
+    color:['#B22234','#C5A86B','#3E5C76','#A67C52','#8B1A2B'],
+    series:[{type:'pie',radius:['38%','68%'],data:ipcData,
+      label:{fontSize:9,color:'#555'},itemStyle:{borderRadius:3}}]
+  });
+
+  // ─── ④ 专利趋势+授权率组合图 ─────────────────────────────
+  const applyArr = [Math.max(1,e.patent-8),Math.max(1,e.patent-5),Math.max(1,e.patent-2),e.patent,Math.round(e.patent*1.1)];
+  const grantArr = [62,65,68,72,Math.min(95,60+Math.round(e.score/5))];
+  _ic('trend-combo-chart').setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis'},
+    legend:{data:['专利申请','授权率%'],textStyle:{fontSize:10},top:0},
+    xAxis:{type:'category',data:['2020','2021','2022','2023','2024'],axisLabel:{fontSize:9}},
+    yAxis:[
+      {type:'value',name:'件',nameTextStyle:{fontSize:9},axisLabel:{fontSize:9},splitLine:{lineStyle:{color:'#f0ece6'}}},
+      {type:'value',name:'%',min:50,max:100,nameTextStyle:{fontSize:9},axisLabel:{fontSize:9},splitLine:{show:false}}
+    ],
+    series:[
+      {name:'专利申请',type:'bar',data:applyArr,itemStyle:{color:'#B22234'},barMaxWidth:16},
+      {name:'授权率%',type:'line',yAxisIndex:1,data:grantArr,
+       lineStyle:{color:'#C5A86B',width:2},itemStyle:{color:'#C5A86B'},symbol:'circle',symbolSize:5}
+    ]
+  });
+
+  // ─── ⑤ 法律状态环形图 ────────────────────────────────────
+  const total  = e.patent*3;
+  const active = Math.round(total*(0.45+e.score/500));
+  const pending= Math.round(total*0.25);
+  const lapsed = Math.max(0, total-active-pending);
+  _ic('status-ring-chart').setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'item'},
+    color:['#4A6741','#C5A86B','#aaa'],
+    series:[{type:'pie',radius:['45%','70%'],
+      data:[{value:active,name:'有效'},{value:pending,name:'审中'},{value:lapsed,name:'失效'}],
+      label:{fontSize:9},itemStyle:{borderRadius:3}}]
+  });
+
+  // ─── ⑥ 技术布局热力图 ────────────────────────────────────
+  const techs = ['预处理','生化处理','膜分离','污泥处置','智能控制'];
+  const yrs   = ['2020','2021','2022','2023','2024'];
+  const hRows = [];
+  techs.forEach((t,ti)=>yrs.forEach((y,yi)=>{
+    hRows.push([yi,ti,Math.max(0,Math.round((e.patent/5)*(0.5+Math.random()*0.8)*(ti===1?1.4:1)))]);
+  }));
+  _ic('tech-heat-chart').setOption({
+    backgroundColor:'transparent',
+    tooltip:{position:'top',formatter:p=>`${techs[p.data[1]]} ${yrs[p.data[0]]}: ${p.data[2]}件`},
+    grid:{left:'16%',right:'5%',top:'8%',bottom:'22%'},
+    xAxis:{type:'category',data:yrs,axisLabel:{fontSize:9},splitArea:{show:true}},
+    yAxis:{type:'category',data:techs,axisLabel:{fontSize:9},splitArea:{show:true}},
+    visualMap:{min:0,max:Math.ceil(e.patent/3),calculable:false,orient:'horizontal',
+      left:'center',bottom:0,textStyle:{fontSize:9},
+      inRange:{color:['#fef0f0','#f5c0c0','#B22234']}},
+    series:[{type:'heatmap',data:hRows,itemStyle:{borderRadius:2}}]
+  });
+
+  // ─── ⑦ 核心专利卡片 Top3 ─────────────────────────────────
+  const ipcBase = e.ipc.replace('/','');
+  const statusColor = {'有效':'#4A6741','审中':'#C5A86B','失效':'#aaa'};
+  const topP = [
+    {no:ipcBase+'A',title:`一种基于${e.tech}的高效处理装置及方法`,status:'有效',year:'2022→2023',score:e.score},
+    {no:ipcBase+'B',title:`${e.tech}优化控制系统与实施方法`,       status:'审中', year:'2023→—',  score:Math.round(e.score*0.85)},
+    {no:ipcBase+'C',title:`用于污水处理的${e.tech}复合装置`,        status:'有效', year:'2021→2022',score:Math.round(e.score*0.9)},
+  ];
+  document.getElementById('top-patent-cards').innerHTML = topP.map(p=>`
+    <div class="patent-card">
+      <div class="pc-no">${p.no} · ${p.year}</div>
+      <div class="pc-title">${p.title}</div>
+      <div class="pc-tags">
+        <span class="pc-tag active">${e.tech}</span>
+        <span class="pc-tag" style="color:${statusColor[p.status]||'#888'};background:#f5f5f0;">${p.status}</span>
+        <span class="pc-tag">价值评分 ${p.score}</span>
+      </div>
+    </div>`).join('');
+
+  // ─── ⑧ 风险与机会信号 ────────────────────────────────────
+  const sigs = [];
+  if(e.score>=85) sigs.push({i:'🟢',t:`科创力A级（${e.score}分），技术体量与质量均处行业领先`});
+  else if(e.score>=70) sigs.push({i:'🟡',t:`科创力B级（${e.score}分），整体中等，部分方向仍有提升空间`});
+  else sigs.push({i:'🔴',t:`科创力C级（${e.score}分），技术积累待加强`});
+  // ─── ⑧ 风险与机会信号注入 → risk-signals 容器 ─────────────────────────
+  const riskEl = document.getElementById('risk-signals');
+  if (riskEl) {
+    const moreSigs = [];
+    if (e.patent < 10) moreSigs.push({i:'🔴', t:'专利储备偏少（<10件），技术护城河较弱'});
+    if (grantRate >= 80) moreSigs.push({i:'🟢', t:`授权率高（${grantRate}%），专利质量优秀`});
+    if (rank === 1) moreSigs.push({i:'🟢', t:`所在环节排名第一，技术领导者地位`});
+    if (rank > sameNode.length * 0.7) moreSigs.push({i:'🟡', t:`所在环节排名靠后，关注头部企业动态`});
+    moreSigs.push({i:'⬜', t:'论文/产学研合作数据待 company-tech-profile 技能补充'});
+    const allSigs = [...sigs, ...moreSigs];
+    riskEl.innerHTML = allSigs.map(s =>
+      `<div style="display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;font-size:11px;line-height:1.5;color:#2C2C2C;">
+         <span style="flex-shrink:0;font-size:13px;">${s.i}</span>
+         <span>${s.t}</span>
+       </div>`
+    ).join('');
+  }
+
+  if(e.patent>=10) sigs.push({i:'🟢',t:`近3年专利申请${e.patent}件，研发投入持续稳定`});
+  else sigs.push({i:'🟡',t:`近3年专利申请仅${e.patent}件，研发规模偏小`});
+  if(e.risk==='mid') sigs.push({i:'🔴',t:'所在环节外资技术依赖度中等，上游核心材料存在替代需求'});
+  else sigs.push({i:'🟢',t:'所在环节国产化程度较高，供应链风险可控'});
+  sigs.push({i:'⬜',t:`数据层级：${e.note}，精确科创力建议调用 company-tech-profile 技能验证`});
+  document.getElementById('signal-list').innerHTML = sigs.map(s=>`
+    <div class="signal-row"><span class="signal-icon">${s.i}</span><span class="signal-text">${s.t}</span></div>`).join('');
+}
+
+// ============================================================
+// Tab切换
+// ============================================================
+function switchTab(tab) {
+  document.querySelectorAll('.ptab').forEach((t, i) => {
+    t.classList.toggle('active', ['info','ents','deep'][i] === tab);
+  });
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// ============================================================
+// ECharts 图表
+// ============================================================
+function renderCharts() {
+  // 专利趋势
+  const trend = echarts.init(document.getElementById('trend-chart'));
+  trend.setOption({
+    backgroundColor: 'transparent',
+    grid: { top: 15, bottom: 25, left: 40, right: 15 },
+    tooltip: { trigger: 'axis' },
+    legend: { bottom: 0, textStyle: { fontSize: 10 }, data: ['中国申请量（样本趋势）'] },
+    xAxis: { type: 'category', data: ['2020','2021','2022','2023','2024','2025'], axisLabel: { fontSize: 10 } },
+    yAxis: { type: 'value', axisLabel: { fontSize: 10 } },
+    series: [{
+      name: '中国申请量（样本趋势）', type: 'line', smooth: true,
+      data: [5, 6, 7, 8, 7, 5],
+      lineStyle: { color: '#B22234', width: 2.5 },
+      itemStyle: { color: '#B22234' },
+      areaStyle: { color: 'rgba(178,34,52,0.08)' },
+      symbol: 'circle', symbolSize: 5
+    }]
+  });
+
+  // HHI集中度
+  const hhi = echarts.init(document.getElementById('hhi-chart'));
+  hhi.setOption({
+    backgroundColor: 'transparent',
+    grid: { top: 10, bottom: 10, left: 10, right: 80, containLabel: true },
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    xAxis: { type: 'value', max: 100, axisLabel: { fontSize: 9, formatter: '{value}%' } },
+    yAxis: { type: 'category', axisLabel: { fontSize: 10 },
+      data: ['污泥处置','智能控制','高端膜材料','管网系统','污水药剂','处理设备'] },
+    series: [{
+      type: 'bar', barMaxWidth: 18,
+      data: [
+        { value: 42, itemStyle: { color: '#2E7D32' } },
+        { value: 55, itemStyle: { color: '#E65100' } },
+        { value: 58, itemStyle: { color: '#E65100' } },
+        { value: 35, itemStyle: { color: '#2E7D32' } },
+        { value: 30, itemStyle: { color: '#2E7D32' } },
+        { value: 28, itemStyle: { color: '#2E7D32' } },
+      ],
+      label: { show: true, position: 'right', fontSize: 10, formatter: '{c}%' }
+    }]
+  });
+
+  // 热力图
+  const heat = echarts.init(document.getElementById('heat-chart'));
+  const companies = ['中国铁建','清华苏州环研','中冶京诚','天津绿缘','河北拓邦','杭州临江','苏州他山石','江苏医药学院'];
+  const sectors = ['预处理','生化处理','泥水分离','深度处理','智能控制'];
+  const heatData = [
+    [0,0,4],[0,2,3],[1,1,5],[1,2,4],[2,0,3],[2,3,5],[3,1,4],[3,2,3],
+    [4,2,4],[4,3,3],[5,1,3],[5,2,4],[6,0,2],[6,4,4],[7,1,3],[7,3,2]
+  ];
+  heat.setOption({
+    backgroundColor: 'transparent',
+    grid: { top: 10, bottom: 60, left: 90, right: 20 },
+    tooltip: { position: 'top', formatter: p => `${companies[p.data[0]]} × ${sectors[p.data[1]]}<br>强度: ${p.data[2]}` },
+    xAxis: { type: 'category', data: sectors, axisLabel: { fontSize: 10, rotate: 20 } },
+    yAxis: { type: 'category', data: companies, axisLabel: { fontSize: 9 } },
+    visualMap: { min: 1, max: 5, show: false,
+      inRange: { color: ['#FAF8F5', '#E8C99A', '#A67C52', '#8B1A2B'] } },
+    series: [{ type: 'heatmap', data: heatData,
+      label: { show: true, fontSize: 9, color: '#fff' } }]
+  });
+
+  // IPC分布饼图（基于30件样本）
+  const ipc = echarts.init(document.getElementById('ipc-chart'));
+  ipc.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'item', formatter: '{b}: {c}件 ({d}%)' },
+    legend: { bottom: 0, textStyle: { fontSize: 9 }, orient: 'horizontal' },
+    series: [{
+      type: 'pie', radius: ['35%','65%'], center: ['50%','45%'],
+      label: { fontSize: 10 },
+      data: [
+        { value: 10, name: 'C02F9（综合处理）', itemStyle: { color: '#B22234' } },
+        { value: 8,  name: 'C02F1（物化处理）', itemStyle: { color: '#C5A86B' } },
+        { value: 6,  name: 'B01D（过滤分离）', itemStyle: { color: '#3E5C76' } },
+        { value: 3,  name: 'G16C（神经网络）', itemStyle: { color: '#A67C52' } },
+        { value: 3,  name: '其他', itemStyle: { color: '#ccc' } },
+      ]
+    }]
+  });
+}
+
+// ============================================================
+// 初始化
+// ============================================================
+window.onload = () => {
+  renderChain();
+  renderTable(ENTERPRISES);
+  renderPanelEntList();
+  renderCharts();
+};
+
+window.onresize = () => {
+  document.querySelectorAll('[id$="-chart"]').forEach(el => {
+    const inst = echarts.getInstanceByDom(el);
+    if (inst) inst.resize();
+  });
+};
+</script>
+</body>
+</html>

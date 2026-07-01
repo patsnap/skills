@@ -1,0 +1,117 @@
+version: 0.4.0
+issues:
+  PREP_MISSING_REAGENT_AMOUNT:
+    dimension: preparation_executability
+    level: HIGH
+    title: 关键试剂用量未明确
+    trigger: preparation contains reagent without mass, volume, concentration, or molar amount
+    recommendation: 补充关键试剂的质量、体积、浓度或摩尔量，并说明试剂纯度或规格。
+  PREP_MISSING_SOLVENT_VOLUME:
+    dimension: preparation_executability
+    level: MEDIUM
+    title: 溶剂体积或配比未明确
+    trigger: dissolution or washing operation lacks solvent volume or ratio
+    recommendation: 补充溶剂体积、配比和洗涤次数，以保证可复现性。
+  PREP_MISSING_STIRRING_CONDITION:
+    dimension: preparation_executability
+    level: LOW
+    title: 搅拌条件不完整
+    trigger: stirring operation lacks time or speed
+    recommendation: 补充搅拌时间；如对结果敏感，补充搅拌转速或方式。
+  PREP_MISSING_HYDROTHERMAL_FILLING:
+    dimension: preparation_executability
+    level: LOW
+    title: 水热反应釜体积或填充率未说明
+    trigger: hydrothermal/autoclave operation has temperature and time but lacks vessel volume/filling ratio
+    recommendation: 补充水热釜规格、内衬材质、装液量或填充率。
+  PREP_MISSING_CALCINATION_RAMP:
+    dimension: preparation_executability
+    level: LOW
+    title: 煅烧升温速率未说明
+    trigger: calcination operation has temperature/time/atmosphere but lacks ramp rate
+    recommendation: 补充升温速率和冷却方式，避免晶相或颗粒尺寸不可控。
+  PREP_MISSING_REDUCTION_FLOW:
+    dimension: preparation_executability
+    level: MEDIUM
+    title: 还原气体流量或空速未说明
+    trigger: reduction operation has temperature/atmosphere/time but lacks gas flow rate or space velocity
+    recommendation: 补充还原气体流量、空速或管式炉装样量，并说明升温程序。
+  PREP_MISSING_SEPARATION_DETAIL:
+    dimension: preparation_executability
+    level: LOW
+    title: 离心或过滤条件未明确
+    trigger: centrifugation/filtration operation lacks speed/time/filter specification
+    recommendation: 补充离心转速、时间或过滤介质规格。
+  SAMPLE_NO_BLANK_SUPPORT:
+    dimension: controls_and_baselines
+    level: MEDIUM
+    title: 缺少空白载体或无活性组分对照
+    trigger: active-metal catalyst is proposed but support-only/control catalyst is absent
+    recommendation: 增加空白载体或无活性金属样品，用于判断活性组分贡献。
+  SAMPLE_NO_BASELINE:
+    dimension: controls_and_baselines
+    level: HIGH
+    title: 缺少基准样或对照样
+    trigger: scheme has target catalyst but no comparable baseline/control sample
+    recommendation: 设置未改性样、常规负载样、商业样或文献基准样，并保持关键制备和评价条件一致。
+  SAMPLE_MULTI_VARIABLE_CHANGE:
+    dimension: variable_attribution
+    level: HIGH
+    title: 样品间同时改变多个关键变量，归因关系不足
+    trigger: target and baseline differ by more than one major variable such as active component, loading method, support, promoter, calcination, reduction
+    recommendation: 设计单因素样品矩阵，逐一改变负载方式、掺杂量、焙烧温度、还原条件或助剂比例。
+  SAMPLE_NAMING_NOT_TRACEABLE:
+    dimension: variable_attribution
+    level: LOW
+    title: 样品命名与变量关系不够清晰
+    trigger: sample labels exist but do not encode or map to preparation differences
+    recommendation: 建立样品命名表，明确每个样品对应的关键变量和制备差异。
+  EVAL_MISSING_REACTION_CONDITIONS:
+    dimension: evaluation_reliability
+    level: HIGH
+    title: 缺少催化评价条件
+    trigger: no catalytic testing or reaction evaluation conditions found
+    recommendation: 补充目标反应、反应器类型、催化剂用量、原料组成、温度、压力、流量或空速、预处理和分析方法。
+  EVAL_MISSING_ANALYTICAL_METHOD:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: 产物分析方法未明确
+    trigger: catalytic testing exists but lacks GC/HPLC/MS/TCD/FID or calibration method
+    recommendation: 补充定量分析方法、检测器、标准曲线、内标或校正因子。
+  EVAL_MISSING_REPEAT_ERROR:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: 重复实验和误差控制未明确
+    trigger: no replicate count, error bar, standard deviation, fitting confidence, or uncertainty handling
+    recommendation: 补充重复实验次数、误差表示方式和异常数据处理规则。
+  EVAL_MISSING_BALANCE:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: 物料平衡或碳平衡要求未明确
+    trigger: conversion/selectivity/yield evaluation likely needed but no balance criteria
+    recommendation: 补充碳平衡、氯平衡、质量平衡或元素平衡的计算口径和合格阈值。
+  CLAIM_NO_METRIC:
+    dimension: claim_validation_linkage
+    level: HIGH
+    title: 性能主张缺少对应评价指标
+    trigger: text claims improved activity/selectivity/stability/resistance without measurable metric
+    recommendation: 将性能主张转化为可测指标，例如转化率、选择性、收率、TOF、STY、TOS 稳定性或抗毒化保持率。
+  CLAIM_STABILITY_NO_TOS:
+    dimension: claim_validation_linkage
+    level: HIGH
+    title: 稳定性主张缺少连续评价设计
+    trigger: text claims stable, robust, anti-deactivation but no time-on-stream/cycle/regeneration test
+    recommendation: 增加连续运行、循环使用、再生前后性能或反应前后表征方案。
+  CLAIM_MECHANISM_NO_CHARACTERIZATION:
+    dimension: claim_validation_linkage
+    level: MEDIUM
+    title: 机理或结构主张缺少对应表征
+    trigger: text claims active site, phase, oxidation state, doping, hydrophobicity, facet, vacancy without characterization plan
+    recommendation: 补充能够对应主张的 XRD、XPS、TEM、BET、TPR/TPD、DRIFTS、Mössbauer、contact angle 或原位/准原位表征。
+
+  CHAR_MISSING_PREPARATION_VERIFICATION:
+    dimension: claim_validation_linkage
+    level: MEDIUM
+    title: 催化剂形成与结构确认项目未明确
+    trigger: preparation scheme creates doped/loaded/core-shell/supported catalyst but lacks characterization plan
+    recommendation: 补充 XRD、ICP/XRF、XPS、TEM/SEM、BET 或 H2-TPR 等表征项目，用于确认样品组成、晶相、负载量、价态和形貌。

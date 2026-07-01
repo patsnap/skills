@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">China NEV brand-level visual</title>
+  <desc id="desc">Generated local SVG visual for China NEV brand-level report scenes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071014"/>
+      <stop offset=".55" stop-color="#0d2831"/>
+      <stop offset="1" stop-color="#071014"/>
+    </linearGradient>
+    <linearGradient id="car" x1="0" x2="1">
+      <stop offset="0" stop-color="#1be4dc"/>
+      <stop offset=".55" stop-color="#76b8ff"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="820" fill="url(#bg)"/>
+  <g opacity=".22" stroke="#18d4d2" stroke-width="1">
+    <path d="M0 170H1200M0 310H1200M0 450H1200M0 590H1200"/>
+    <path d="M170 0V820M370 0V820M610 0V820M850 0V820M1030 0V820"/>
+  </g>
+  <g transform="translate(120 230)">
+    <path d="M84 267c35-86 82-138 154-160h385c78 18 139 72 184 160h104c38 0 69 31 69 69v53H18v-53c0-38 31-69 69-69h-3Z" fill="#0f2229" stroke="#18d4d2" stroke-width="4"/>
+    <path d="M256 113h296c77 0 126 43 170 117H145c28-58 60-98 111-117Z" fill="url(#car)" opacity=".82"/>
+    <circle cx="232" cy="391" r="73" fill="#061014" stroke="#edf8f6" stroke-width="10"/>
+    <circle cx="232" cy="391" r="30" fill="#18d4d2"/>
+    <circle cx="768" cy="391" r="73" fill="#061014" stroke="#edf8f6" stroke-width="10"/>
+    <circle cx="768" cy="391" r="30" fill="#18d4d2"/>
+  </g>
+  <g font-family="Arial, 'PingFang SC', sans-serif" font-weight="700">
+    <text x="72" y="96" fill="#edf8f6" font-size="54">China NEV Benchmark</text>
+    <text x="76" y="146" fill="#9db0ad" font-size="24">BYD / Huawei Ecosystem / Li Auto / AITO / Leapmotor / Avatr</text>
+    <g transform="translate(78 660)" font-size="24">
+      <rect width="1040" height="72" rx="8" fill="rgba(24,212,210,.12)" stroke="#18d4d2"/>
+      <text x="28" y="45" fill="#18d4d2">Local asset: brand-level generated visual, not official OEM photography</text>
+    </g>
+  </g>
+</svg>

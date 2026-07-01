@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>专利交底书智能引导系统</title>
+  <style>
+    :root {
+      --blue-950: #0f1f5c;
+      --blue-900: #17347f;
+      --blue-700: #2457c5;
+      --blue-100: #eaf1ff;
+      --indigo: #5964e8;
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --paper: #f4f7ff;
+      --panel: #ffffff;
+      --green: #059669;
+      --green-50: #ecfdf5;
+      --amber: #d97706;
+      --amber-50: #fffbeb;
+      --radius: 12px;
+      --shadow: 0 18px 44px rgba(15, 31, 92, .12);
+      font-family: Inter, "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      background: linear-gradient(135deg, var(--blue-950), var(--blue-900) 58%, var(--blue-700));
+      box-shadow: 0 2px 20px rgba(15, 31, 92, .32);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 10px;
+      color: #fff;
+      background: rgba(255, 255, 255, .12);
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo-name {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .logo-tagline {
+      margin-top: 1px;
+      color: rgba(255, 255, 255, .68);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-badge {
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, .82);
+      background: rgba(255, 255, 255, .12);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .ghost-btn {
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(255, 255, 255, .12);
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 38px 32px 34px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 24% 40%, rgba(89, 100, 232, .2), transparent 55%),
+        radial-gradient(ellipse at 76% 18%, rgba(36, 87, 197, .18), transparent 48%),
+        linear-gradient(135deg, var(--blue-950), var(--blue-900) 62%, #2457c5);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, .82);
+      background: rgba(255, 255, 255, .1);
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .hero-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #93c5fd;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      color: #fff;
+      font-size: 28px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, .72);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 22px;
+    }
+
+    .hero-stat {
+      min-width: 124px;
+      padding: 0 22px;
+      border-right: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .hero-stat:last-child {
+      border-right: 0;
+    }
+
+    .hero-stat b {
+      display: block;
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, .62);
+      font-size: 11px;
+      letter-spacing: .03em;
+    }
+
+    .progress-wrap {
+      position: sticky;
+      top: 72px;
+      z-index: 20;
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 1px 4px rgba(15, 31, 92, .05);
+      backdrop-filter: blur(12px);
+    }
+
+    .progress-bar {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .prog-step {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      gap: 5px;
+      padding: 4px 2px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .prog-step::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 15px;
+      width: 1px;
+      height: 26px;
+      background: var(--line);
+    }
+
+    .prog-step:last-child::after {
+      display: none;
+    }
+
+    .prog-dot {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .prog-label {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .prog-step.active .prog-dot,
+    .prog-step.done .prog-dot {
+      border-color: var(--blue-700);
+      color: #fff;
+      background: var(--blue-700);
+    }
+
+    .prog-step.active .prog-label {
+      color: var(--blue-700);
+      font-weight: 800;
+    }
+
+    .main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+    }
+
+    .step-card {
+      display: none;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .step-card.active {
+      display: block;
+    }
+
+    .step-header {
+      padding: 26px 30px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #f9fbff);
+    }
+
+    .step-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .step-badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--blue-700);
+      background: var(--blue-100);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .step-tag {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .step-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .step-desc {
+      max-width: 720px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .step-body {
+      padding: 26px 30px;
+    }
+
+    .guide-panel {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 22px;
+      padding: 16px;
+      border: 1px solid #c7d7fe;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f8fbff, #ffffff);
+    }
+
+    .guide-title {
+      color: var(--blue-700);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .guide-items {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .guide-items li {
+      position: relative;
+      padding-left: 18px;
+      color: #40516a;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .guide-items li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .68em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue-700);
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .welcome-card {
+      min-height: 150px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .welcome-card small {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 14px;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--blue-700);
+      font-weight: 800;
+    }
+
+    .welcome-card b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .welcome-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .tip {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      color: #6b4d16;
+      background: var(--amber-50);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .tip::before {
+      content: "i";
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--amber);
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .field-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0;
+      color: #1f2937;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .ai-actions {
+      display: flex;
+      gap: 7px;
+      flex: 0 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .ai-btn {
+      min-height: 28px;
+      padding: 0 9px;
+      border: 1px solid #c7d7fe;
+      border-radius: 999px;
+      color: var(--blue-700);
+      background: #f8fbff;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .ai-btn:hover {
+      background: var(--blue-100);
+    }
+
+    .ai-note {
+      display: none;
+      margin-top: 8px;
+      padding: 9px 11px;
+      border: 1px solid #bbf7d0;
+      border-radius: 9px;
+      color: #166534;
+      background: #f0fdf4;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .ai-note.show {
+      display: block;
+    }
+
+    .required {
+      color: #dc2626;
+    }
+
+    .field-hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .why {
+      margin: 8px 0 10px;
+      padding: 12px 13px;
+      border-left: 3px solid var(--blue-700);
+      border-radius: 8px;
+      color: #40516a;
+      background: #f8fbff;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+
+    input, select {
+      min-height: 44px;
+      padding: 0 13px;
+    }
+
+    textarea {
+      min-height: 112px;
+      padding: 12px 13px;
+      line-height: 1.65;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue-700);
+      box-shadow: 0 0 0 3px rgba(36, 87, 197, .12);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #40516a;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .chip.selected {
+      border-color: var(--blue-700);
+      color: var(--blue-700);
+      background: var(--blue-100);
+      font-weight: 800;
+    }
+
+    .formula {
+      margin-bottom: 20px;
+      padding: 18px;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff7ed, #fffbeb);
+    }
+
+    .formula b {
+      display: block;
+      margin-bottom: 8px;
+      color: #9a3412;
+    }
+
+    .formula p {
+      margin: 0;
+      color: #7c4a1b;
+      line-height: 1.8;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .summary {
+      display: grid;
+      gap: 12px;
+    }
+
+    .summary-block {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .summary-block h3 {
+      margin: 0 0 8px;
+      color: var(--blue-700);
+      font-size: 16px;
+    }
+
+    .summary-block p {
+      min-height: 26px;
+      margin: 0;
+      color: #40516a;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 30px;
+      border-top: 1px solid var(--line);
+      background: #fbfcff;
+    }
+
+    .btn {
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      border-color: var(--blue-700);
+      color: #fff;
+      background: var(--blue-700);
+    }
+
+    .btn-primary:hover {
+      background: #1d4eb4;
+    }
+
+    .btn-secondary:hover {
+      border-color: #b9c6d4;
+      background: #f8fafc;
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 760px) {
+      .header {
+        position: static;
+        height: auto;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+      }
+
+      .logo-tagline,
+      .header-badge {
+        white-space: normal;
+      }
+
+      .hero {
+        padding: 28px 16px 30px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .hero-stats,
+      .welcome-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .hero-stat {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+        padding: 12px 0;
+      }
+
+      .hero-stat:last-child {
+        border-bottom: 0;
+      }
+
+      .progress-wrap {
+        position: static;
+        padding: 12px 10px;
+        overflow-x: auto;
+      }
+
+      .progress-bar {
+        min-width: 720px;
+      }
+
+      .main {
+        padding: 18px 12px 34px;
+      }
+
+      .step-header,
+      .step-body,
+      .step-nav {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .guide-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .step-title {
+        font-size: 21px;
+      }
+
+      .field-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">交</div>
+      <div>
+        <div class="logo-name">专利交底书智能引导系统</div>
+        <div class="logo-tagline">由专业代理团队提供支持 · 帮助客户系统梳理创新技术</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-badge">知识产权专业服务</div>
+      <button class="ghost-btn" id="fillDemo">填充示例</button>
+      <button class="ghost-btn" id="langBtn">EN</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Patent Filing Assistant</div>
+      <h1>专利交底书智能引导系统</h1>
+      <p>通过分步骤问题引导，帮助发明人把技术方案、创新点、实施方式和保护目标说清楚，最终生成结构化交底书草稿。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>7</b><span>步引导流程</span></div>
+        <div class="hero-stat"><b>20</b><span>分钟完成初稿</span></div>
+        <div class="hero-stat"><b>8</b><span>节标准输出</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar">
+      <button class="prog-step active" data-step="0"><span class="prog-dot">0</span><span class="prog-label">开始</span></button>
+      <button class="prog-step" data-step="1"><span class="prog-dot">1</span><span class="prog-label">基本信息</span></button>
+      <button class="prog-step" data-step="2"><span class="prog-dot">2</span><span class="prog-label">技术背景</span></button>
+      <button class="prog-step" data-step="3"><span class="prog-dot">3</span><span class="prog-label">核心发明</span></button>
+      <button class="prog-step" data-step="4"><span class="prog-dot">4</span><span class="prog-label">技术方案</span></button>
+      <button class="prog-step" data-step="5"><span class="prog-dot">5</span><span class="prog-label">实施方式</span></button>
+      <button class="prog-step" data-step="6"><span class="prog-dot">6</span><span class="prog-label">保护目标</span></button>
+      <button class="prog-step" data-step="7"><span class="prog-dot">7</span><span class="prog-label">生成导出</span></button>
+    </div>
+  </div>
+
+  <main class="main">
+    <section class="step-card active" id="step0">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">欢迎</span><span class="step-tag">预计 20 分钟</span></div>
+        <div class="step-title">您好，欢迎使用专利交底书引导系统</div>
+        <div class="step-desc">本工具将通过 7 个步骤，引导您系统梳理技术方案，最终生成一份结构完整的专利交底书草稿，供代理团队进一步完善。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="0">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="welcome-grid">
+          <div class="welcome-card"><small>1</small><b>逐步引导填写</b><p>每道问题附有说明和示例，无需专利背景也能完成。</p></div>
+          <div class="welcome-card"><small>2</small><b>聚焦核心创新</b><p>帮助提炼最有价值的发明点，避免材料只停留在产品描述。</p></div>
+          <div class="welcome-card"><small>3</small><b>生成标准草稿</b><p>自动整理为技术领域、背景、方案、效果等标准章节。</p></div>
+        </div>
+        <div class="tip"><strong>填写建议：</strong>请尽量提供具体数据、实验结果、系统结构和与现有技术的对比。信息越完整，代理团队越容易为您争取更充分的保护。</div>
+      </div>
+      <div class="step-nav">
+        <button class="btn btn-secondary" disabled>上一步</button>
+        <button class="btn btn-primary" data-next>开始填写</button>
+      </div>
+    </section>
+
+    <section class="step-card" id="step1">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第一步</span><span class="step-tag">基本信息</span></div>
+        <div class="step-title">技术领域与发明信息</div>
+        <div class="step-desc">首先说明这项发明叫什么、属于哪个领域，以及发明人和申请人信息。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="1">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="field">
+          <div class="field-label">发明名称 <span class="required">*</span></div>
+          <div class="field-hint">建议格式：「一种 + 技术特征 + 的产品/方法/系统」</div>
+          <input id="title" placeholder="例：一种基于用户行为反馈的智能推荐方法及系统">
+        </div>
+        <div class="field">
+          <div class="field-label">技术领域</div>
+          <div class="chips" data-target="domain">
+            <button class="chip">人工智能/AI</button>
+            <button class="chip">医疗器械</button>
+            <button class="chip">电子电气</button>
+            <button class="chip">机械装备</button>
+            <button class="chip">化工材料</button>
+            <button class="chip">软件/互联网</button>
+            <button class="chip">新能源</button>
+            <button class="chip">汽车/交通</button>
+          </div>
+          <input id="domain" placeholder="或直接输入具体技术领域">
+        </div>
+        <div class="two-col">
+          <div class="field"><div class="field-label">发明人姓名</div><input id="inventors" placeholder="例：张三、李四"></div>
+          <div class="field"><div class="field-label">申请人/所属单位</div><input id="org" placeholder="例：XX科技有限公司"></div>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>下一步</button></div>
+    </section>
+
+    <section class="step-card" id="step2">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第二步</span><span class="step-tag">技术背景</span></div>
+        <div class="step-title">现有技术与存在的问题</div>
+        <div class="step-desc">描述这项发明出现之前，业界通常如何解决问题，以及现有方案有哪些不足。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="2">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="field">
+          <div class="field-label">现有技术是如何做的？</div>
+          <div class="why"><strong>为什么问：</strong>专利说明书需要描述背景技术，说明发明之前的通行做法，这会影响新颖性和创造性判断。</div>
+          <textarea id="prior" placeholder="例：目前通常基于人工规则或简单标签匹配进行推荐，难以结合用户实时行为。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">现有方案有哪些核心缺陷？</div>
+          <div class="chips" data-target="defects">
+            <button class="chip">效率低下</button>
+            <button class="chip">准确率不足</button>
+            <button class="chip">成本过高</button>
+            <button class="chip">操作复杂</button>
+            <button class="chip">安全性差</button>
+            <button class="chip">适应性弱</button>
+          </div>
+          <textarea id="defects" placeholder="请进一步描述具体缺陷，如有量化数据更佳。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">了解的竞品、论文或对比文件</div>
+          <textarea id="refs" placeholder="例：竞品产品名称、论文名称、专利公开号等。"></textarea>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>下一步</button></div>
+    </section>
+
+    <section class="step-card" id="step3">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第三步</span><span class="step-tag">核心发明点</span></div>
+        <div class="step-title">核心发明点与技术效果</div>
+        <div class="step-desc">这是整份交底书最关键的部分：究竟发明了什么、解决了什么问题、达到了什么效果。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="3">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="formula">
+          <b>推荐表达模板</b>
+          <p>针对【现有技术的具体缺陷】，本发明通过【核心技术手段】，实现了【技术效果或性能提升】。</p>
+        </div>
+        <div class="field">
+          <div class="field-label">核心创新思路 <span class="required">*</span></div>
+          <div class="why"><strong>为什么问：</strong>这直接对应独立权利要求的核心技术特征，是决定保护范围的关键。</div>
+          <textarea id="core" placeholder="例：本发明基于用户历史行为、实时上下文和反馈数据构建多维特征，并通过两阶段排序模型输出推荐结果。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">量化技术效果</div>
+          <textarea id="effect" placeholder="例：相比现有方案，推荐采纳率提升 25%，人工筛选时间减少 40%。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">最难被模仿或绕过的技术特征</div>
+          <textarea id="moat" placeholder="例：特定特征组合、排序策略、反馈更新机制或系统架构。"></textarea>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>下一步</button></div>
+    </section>
+
+    <section class="step-card" id="step4">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第四步</span><span class="step-tag">技术方案</span></div>
+        <div class="step-title">技术方案详细描述</div>
+        <div class="step-desc">请尽量详细描述技术方案的完整架构、关键步骤、数据来源和参数配置。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="4">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="field">
+          <div class="field-label">整体技术方案 / 系统架构</div>
+          <div class="why"><strong>为什么问：</strong>这对应说明书“技术方案”章节，需要清晰描述系统由哪些模块或步骤组成，以及各模块如何协作。</div>
+          <textarea id="arch" placeholder="例：系统包括数据采集模块、特征构建模块、候选召回模块、排序模块和反馈更新模块。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">关键技术参数或配置</div>
+          <textarea id="params" placeholder="例：特征维度、阈值、模型结构、训练周期、采样频率等。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">其他可行实施变体</div>
+          <div class="why"><strong>为什么问：</strong>变体实施方案有助于拓宽从属权利要求覆盖范围，防止竞争对手通过细微修改规避保护。</div>
+          <textarea id="variants" placeholder="例：排序模型可替换为规则评分、图模型或深度学习模型。"></textarea>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>下一步</button></div>
+    </section>
+
+    <section class="step-card" id="step5">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第五步</span><span class="step-tag">实施方式</span></div>
+        <div class="step-title">具体实施方式与附图说明</div>
+        <div class="step-desc">通过一个具体应用场景说明技术方案如何运作，并说明是否有流程图、结构图或实验图。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="5">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="field">
+          <div class="field-label">最佳实施例</div>
+          <div class="why"><strong>为什么问：</strong>具体实施方式用于充分公开发明、支持权利要求，内容越具体，专利越稳固。</div>
+          <textarea id="example" placeholder="例：用户进入系统后，系统获取最近 30 天行为数据，构建用户画像，并结合当前需求生成候选方案。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">附图情况</div>
+          <div class="chips" data-target="figures">
+            <button class="chip">有流程图</button>
+            <button class="chip">有系统结构图</button>
+            <button class="chip">有数据处理图</button>
+            <button class="chip">暂无附图</button>
+          </div>
+          <textarea id="figures" placeholder="请说明可提供的附图或希望代理团队协助绘制的图。"></textarea>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>下一步</button></div>
+    </section>
+
+    <section class="step-card" id="step6">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">第六步</span><span class="step-tag">保护目标</span></div>
+        <div class="step-title">希望重点保护什么</div>
+        <div class="step-desc">请说明最希望通过专利保护的对象、商业重点和不希望竞争对手模仿的部分。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="6">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="field">
+          <div class="field-label">希望保护的对象</div>
+          <div class="chips" data-target="protection">
+            <button class="chip">方法流程</button>
+            <button class="chip">系统架构</button>
+            <button class="chip">算法模型</button>
+            <button class="chip">设备结构</button>
+            <button class="chip">应用场景</button>
+            <button class="chip">数据处理方式</button>
+          </div>
+          <textarea id="protect" placeholder="请说明最希望保护的技术点和商业价值。"></textarea>
+        </div>
+        <div class="field">
+          <div class="field-label">是否已公开或计划公开</div>
+          <select id="publicStatus">
+            <option>尚未公开</option>
+            <option>已发表论文或会议摘要</option>
+            <option>已上线产品或对外演示</option>
+            <option>计划近期公开</option>
+          </select>
+        </div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" data-next>生成草稿</button></div>
+    </section>
+
+    <section class="step-card" id="step7">
+      <div class="step-header">
+        <div class="step-meta"><span class="step-badge">生成导出</span><span class="step-tag">交底书草稿</span></div>
+        <div class="step-title">结构化交底书草稿</div>
+        <div class="step-desc">以下内容可供客户确认，并由代理团队进一步完善为正式申请文件。</div>
+      </div>
+      <div class="step-body">
+        <div class="guide-panel" data-guide="7">
+          <div class="guide-title"></div>
+          <ul class="guide-items"></ul>
+        </div>
+        <div class="summary" id="summary"></div>
+      </div>
+      <div class="step-nav"><button class="btn btn-secondary" data-prev>上一步</button><button class="btn btn-primary" id="copyDraft">复制草稿</button></div>
+    </section>
+  </main>
+
+  <script>
+    let currentLang = "zh";
+    const totalSteps = 8;
+    let currentStep = 0;
+    const data = {};
+    const dict = {
+      zh: {
+        logoName: "专利交底书智能引导系统",
+        tagline: "由专业代理团队提供支持 · 帮助客户系统梳理创新技术",
+        badge: "知识产权专业服务",
+        fillDemo: "填充示例",
+        langBtn: "EN",
+        heroLabel: "Patent Filing Assistant",
+        heroTitle: "专利交底书智能引导系统",
+        heroDesc: "通过分步骤问题引导，帮助发明人把技术方案、创新点、实施方式和保护目标说清楚，最终生成结构化交底书草稿。",
+        stats: ["步引导流程", "分钟完成初稿", "节标准输出"],
+        steps: ["开始", "基本信息", "技术背景", "核心发明", "技术方案", "实施方式", "保护目标", "生成导出"],
+        navPrev: "上一步",
+        navNext: "下一步",
+        start: "开始填写",
+        generate: "生成草稿",
+        copy: "复制草稿",
+        copied: "已复制",
+        copyFail: "复制失败",
+        complete: "AI 补全",
+        aiEmpty: "请先简单写一点内容，AI 会基于您的原话进行补全。",
+        aiDone: "AI 已生成建议表达，请确认是否符合您的真实意思；如有偏差可继续修改。",
+        guideTitle: "本步怎么填",
+        guides: [
+          ["先了解 7 步流程", "准备产品资料、论文摘要、实验数据或已有说明", "点击开始后逐步回答，无需一次写完整"],
+          ["先给发明起一个可识别的名称", "再选择技术领域，帮助后续问题更贴合场景", "最后补充发明人和申请人，便于生成草稿抬头"],
+          ["先说明行业里原来怎么做", "再点出现有方案的具体缺陷", "最后补充竞品、论文或对比文件，帮助代理人判断区别"],
+          ["先用一句话套入推荐表达模板", "再补充可量化效果，优先写百分比、时间、准确率等", "最后说明最难被模仿的技术特征"],
+          ["先把方案拆成模块或步骤", "再补充关键参数、数据来源和处理规则", "最后列出替代实现，帮助扩大保护范围"],
+          ["先用一个真实使用场景把流程跑通", "再说明每一步输入、处理和输出", "最后确认是否已有流程图或结构图"],
+          ["先选择希望保护的方法、系统或数据处理方式", "再说明商业上最重要的部分", "最后确认是否已经公开，避免影响申请时机"],
+          ["先检查哪些章节仍是待补充", "再复制草稿发给代理团队或客户确认", "如发现遗漏，可回到对应步骤继续修改"]
+        ],
+        stepTitles: [
+          "您好，欢迎使用专利交底书引导系统",
+          "技术领域与发明信息",
+          "现有技术与存在的问题",
+          "核心发明点与技术效果",
+          "技术方案详细描述",
+          "具体实施方式与附图说明",
+          "希望重点保护什么",
+          "结构化交底书草稿"
+        ],
+        stepDescs: [
+          "本工具将通过 7 个步骤，引导您系统梳理技术方案，最终生成一份结构完整的专利交底书草稿，供代理团队进一步完善。",
+          "首先说明这项发明叫什么、属于哪个领域，以及发明人和申请人信息。",
+          "描述这项发明出现之前，业界通常如何解决问题，以及现有方案有哪些不足。",
+          "这是整份交底书最关键的部分：究竟发明了什么、解决了什么问题、达到了什么效果。",
+          "请尽量详细描述技术方案的完整架构、关键步骤、数据来源和参数配置。",
+          "通过一个具体应用场景说明技术方案如何运作，并说明是否有流程图、结构图或实验图。",
+          "请说明最希望通过专利保护的对象、商业重点和不希望竞争对手模仿的部分。",
+          "以下内容可供客户确认，并由代理团队进一步完善为正式申请文件。"
+        ],
+        summaryTitles: ["一、发明名称", "二、技术领域", "三、背景技术", "四、现有技术缺陷", "五、核心发明点", "六、技术效果", "七、技术方案", "八、具体实施方式", "九、保护目标", "十、公开状态"]
+      },
+      en: {
+        logoName: "Intelligent Patent Disclosure System",
+        tagline: "Powered by professional patent counsel · Document innovations systematically",
+        badge: "IP Professional Services",
+        fillDemo: "Fill Demo",
+        langBtn: "中文",
+        heroLabel: "Patent Filing Assistant",
+        heroTitle: "Intelligent Patent Disclosure System",
+        heroDesc: "A guided workflow that helps inventors explain the technical solution, core innovation, implementation details, and protection goals, then generates a structured disclosure draft.",
+        stats: ["Guided Steps", "Minutes to Draft", "Standard Sections"],
+        steps: ["Start", "Basic Info", "Background", "Core Idea", "Solution", "Embodiment", "Protection", "Export"],
+        navPrev: "Back",
+        navNext: "Next",
+        start: "Get Started",
+        generate: "Generate Draft",
+        copy: "Copy Draft",
+        copied: "Copied",
+        copyFail: "Copy Failed",
+        complete: "AI Complete",
+        aiEmpty: "Please write a short draft first. AI will complete it based on your wording.",
+        aiDone: "AI has generated a suggested expression. Please confirm whether it reflects your intended meaning.",
+        guideTitle: "How to complete this step",
+        guides: [
+          ["Review the 7-step workflow first", "Prepare product materials, paper abstracts, test data, or existing notes", "Answer step by step; the first draft does not need to be perfect"],
+          ["Start with a recognizable invention title", "Select the technical field so later questions fit the scenario", "Add inventor and applicant information for the draft heading"],
+          ["Explain how the industry solved the problem before", "Select or describe the specific defects", "Add competitor products, papers, or prior art if available"],
+          ["Use the formula to write one core innovation sentence", "Add measurable effects such as percentage, time, or accuracy", "Explain the feature that is hardest to imitate"],
+          ["Break the solution into modules or process steps", "Add key parameters, data sources, and processing rules", "List alternative implementations to broaden coverage"],
+          ["Run through one real application scenario", "Describe each step's input, processing, and output", "Confirm whether flowcharts or structure diagrams are available"],
+          ["Choose whether to protect the method, system, model, device, or data processing", "Explain the commercially important part", "Confirm whether the invention has been publicly disclosed"],
+          ["Check which sections still need completion", "Copy the draft for counsel or customer confirmation", "Go back to any step to refine missing information"]
+        ],
+        stepTitles: [
+          "Welcome to the Patent Disclosure Guide",
+          "Technical Field and Invention Information",
+          "Existing Technology and Problems",
+          "Core Invention and Technical Effects",
+          "Detailed Technical Solution",
+          "Implementation and Drawing Notes",
+          "Protection Objectives",
+          "Structured Disclosure Draft"
+        ],
+        stepDescs: [
+          "This tool guides you through 7 steps to organize your technical solution and generate a structured disclosure draft for your patent counsel to refine.",
+          "Start with the invention title, technical field, inventors, and applicant information.",
+          "Describe how the problem was solved before this invention and what limitations existed.",
+          "This is the most important part: what was invented, what problem it solves, and what technical effect it achieves.",
+          "Describe the complete architecture, key steps, data sources, and technical parameters in as much detail as possible.",
+          "Use a concrete application scenario to explain how the solution works, and indicate whether flowcharts or structure diagrams are available.",
+          "Explain what you most want the patent to protect and which parts competitors should not be able to copy.",
+          "The following draft can be confirmed by the customer and further refined by the patent team."
+        ],
+        summaryTitles: ["1. Invention Title", "2. Technical Field", "3. Background Art", "4. Problems in Existing Technology", "5. Core Invention", "6. Technical Effects", "7. Technical Solution", "8. Specific Implementation", "9. Protection Objectives", "10. Public Disclosure Status"]
+      }
+    };
+
+    function value(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : "";
+    }
+
+    const completeMap = {
+      title: text => text.includes("一种") ? text : `一种${text}的方法及系统`,
+      domain: text => text,
+      inventors: text => text,
+      org: text => text,
+      prior: text => `现有技术通常采用${text.replace(/[。.]$/, "")}。该方式在实际应用中仍存在响应不及时、适配能力不足或依赖人工经验等问题。`,
+      defects: text => `现有方案的主要缺陷包括：${text.replace(/[。.]$/, "")}。这些缺陷会导致实施效率、准确性或稳定性难以满足实际业务需求。`,
+      refs: text => `可参考的对比对象包括：${text.replace(/[。.]$/, "")}。后续可进一步补充其公开资料、产品页面、论文或专利文献编号。`,
+      core: text => `本发明的核心创新在于：${text.replace(/[。.]$/, "")}，从而使系统能够在具体应用场景下获得更稳定、准确或高效的技术效果。`,
+      effect: text => `经对比，本方案能够实现如下技术效果：${text.replace(/[。.]$/, "")}。建议进一步补充测试条件、样本规模和对比基线。`,
+      moat: text => `较难被竞争对手模仿或绕开的技术特征为：${text.replace(/[。.]$/, "")}。该特征可作为后续权利要求布局的重点。`,
+      arch: text => `整体技术方案包括：${text.replace(/[。.]$/, "")}。各模块之间按照数据输入、处理、判断和输出的顺序协同工作。`,
+      params: text => `关键参数或配置包括：${text.replace(/[。.]$/, "")}。建议明确参数范围、默认值、可替代配置及其对应效果。`,
+      variants: text => `除上述实施方式外，本方案还可以采用如下变体：${text.replace(/[。.]$/, "")}，以覆盖不同部署环境或实现路径。`,
+      example: text => `在一个具体实施例中，${text.replace(/[。.]$/, "")}。该实施例可用于说明技术方案的输入、处理过程和输出结果。`,
+      figures: text => `附图情况：${text.replace(/[。.]$/, "")}。建议至少提供系统架构图、方法流程图或关键数据处理流程图之一。`,
+      protect: text => `建议重点保护：${text.replace(/[。.]$/, "")}。后续可围绕方法、系统、装置和存储介质进行多层次布局。`
+    };
+
+    function improveText(id, mode) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const raw = el.value.trim();
+      const note = el.closest(".field")?.querySelector(".ai-note");
+      if (!raw) {
+        if (note) {
+          note.textContent = dict[currentLang].aiEmpty;
+          note.classList.add("show");
+        }
+        return;
+      }
+      if (currentLang === "en") {
+        el.value = `Suggested disclosure expression: ${raw.replace(/[。.]$/, "")}. Please confirm whether this accurately reflects the intended technical meaning and add implementation details or evidence if needed.`;
+        if (note) note.textContent = dict[currentLang].aiDone;
+      } else if (completeMap[id]) {
+        el.value = completeMap[id](raw);
+        if (note) note.textContent = dict[currentLang].aiDone;
+      } else {
+        el.value = raw;
+        if (note) note.textContent = dict[currentLang].aiDone;
+      }
+      if (note) {
+        note.classList.add("show");
+      }
+      saveData();
+    }
+
+    function installAiActions() {
+      document.querySelectorAll(".field input, .field textarea").forEach(el => {
+        const field = el.closest(".field");
+        const label = field?.querySelector(".field-label");
+        if (!field || !label || field.querySelector(".ai-actions")) return;
+        const top = document.createElement("div");
+        top.className = "field-top";
+        label.parentNode.insertBefore(top, label);
+        top.appendChild(label);
+        const actions = document.createElement("div");
+        actions.className = "ai-actions";
+        actions.innerHTML = `<button type="button" class="ai-btn" data-ai="complete" data-for="${el.id}"></button>`;
+        top.appendChild(actions);
+        const note = document.createElement("div");
+        note.className = "ai-note";
+        field.appendChild(note);
+      });
+      document.querySelectorAll("[data-ai]").forEach(button => {
+        button.addEventListener("click", () => improveText(button.dataset.for, button.dataset.ai));
+      });
+    }
+
+    function saveData() {
+      [
+        "title", "domain", "inventors", "org", "prior", "defects", "refs",
+        "core", "effect", "moat", "arch", "params", "variants", "example",
+        "figures", "protect", "publicStatus"
+      ].forEach(id => data[id] = value(id));
+    }
+
+    function updateProgress() {
+      document.querySelectorAll(".prog-step").forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+        step.classList.toggle("done", index < currentStep);
+      });
+    }
+
+    function goToStep(index) {
+      saveData();
+      currentStep = Math.max(0, Math.min(totalSteps - 1, index));
+      document.querySelectorAll(".step-card").forEach((card, cardIndex) => {
+        card.classList.toggle("active", cardIndex === currentStep);
+      });
+      updateProgress();
+      if (currentStep === 7) renderSummary();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderSummary() {
+      saveData();
+      const t = dict[currentLang];
+      const fallback = currentLang === "zh" ? "待补充" : "To be completed";
+      const rows = [
+        [t.summaryTitles[0], data.title || fallback],
+        [t.summaryTitles[1], data.domain || fallback],
+        [t.summaryTitles[2], data.prior || fallback],
+        [t.summaryTitles[3], data.defects || fallback],
+        [t.summaryTitles[4], data.core || fallback],
+        [t.summaryTitles[5], data.effect || fallback],
+        [t.summaryTitles[6], data.arch || fallback],
+        [t.summaryTitles[7], data.example || fallback],
+        [t.summaryTitles[8], data.protect || fallback],
+        [t.summaryTitles[9], data.publicStatus || (currentLang === "zh" ? "尚未确认" : "Not confirmed")]
+      ];
+      document.getElementById("summary").innerHTML = rows.map(([title, body]) => `
+        <article class="summary-block">
+          <h3>${title}</h3>
+          <p>${body}</p>
+        </article>
+      `).join("");
+    }
+
+    document.querySelectorAll("[data-next]").forEach(button => {
+      button.addEventListener("click", () => goToStep(currentStep + 1));
+    });
+
+    document.querySelectorAll("[data-prev]").forEach(button => {
+      button.addEventListener("click", () => goToStep(currentStep - 1));
+    });
+
+    document.querySelectorAll(".prog-step").forEach(button => {
+      button.addEventListener("click", () => goToStep(Number(button.dataset.step)));
+    });
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        chip.classList.toggle("selected");
+        const group = chip.closest(".chips");
+        const target = group && group.dataset.target;
+        if (target) {
+          const selected = Array.from(group.querySelectorAll(".selected")).map(item => item.textContent.trim()).join("、");
+          const field = document.getElementById(target);
+          if (field && field.tagName !== "TEXTAREA") field.value = selected;
+          if (field && field.tagName === "TEXTAREA") field.value = selected;
+        }
+      });
+    });
+
+    document.getElementById("fillDemo").addEventListener("click", () => {
+      const demo = {
+        title: "一种基于用户行为反馈的智能推荐方法及系统",
+        domain: "人工智能/AI、软件/互联网",
+        inventors: "张三、李四",
+        org: "某某科技有限公司",
+        prior: "现有推荐系统主要基于静态标签或人工配置规则进行推荐，难以及时结合用户实时行为和反馈变化。",
+        defects: "推荐准确率不足，人工筛选成本较高，无法根据用户反馈快速调整推荐策略。",
+        refs: "可与公司旧版本推荐系统及行业内规则推荐产品进行对比。",
+        core: "本发明通过融合用户历史行为、当前需求上下文和反馈数据，构建多维特征，并通过候选召回和排序模型输出个性化推荐结果。",
+        effect: "相比旧版本，推荐采纳率提升约 25%，人工筛选时间减少约 40%。",
+        moat: "反馈数据驱动的动态特征更新机制和两阶段排序策略较难被简单规则系统复现。",
+        arch: "系统包括数据采集模块、特征构建模块、候选召回模块、排序推荐模块和反馈更新模块。",
+        params: "可配置行为时间窗口、候选数量、排序权重和反馈更新周期。",
+        variants: "排序模型可替换为规则评分模型、图模型或深度学习模型。",
+        example: "用户进入系统后，系统读取其历史行为和当前需求，生成候选方案集合，再根据匹配分和反馈权重排序输出推荐结果。",
+        figures: "有流程图，可补充系统结构图。",
+        protect: "重点保护推荐方法流程、特征构建方式和反馈更新机制。",
+        publicStatus: "尚未公开"
+      };
+      Object.entries(demo).forEach(([id, text]) => {
+        const el = document.getElementById(id);
+        if (el) el.value = text;
+      });
+      goToStep(1);
+    });
+
+    function applyLanguage() {
+      const t = dict[currentLang];
+      document.querySelector(".logo-name").textContent = t.logoName;
+      document.querySelector(".logo-tagline").textContent = t.tagline;
+      document.querySelector(".header-badge").textContent = t.badge;
+      document.getElementById("fillDemo").textContent = t.fillDemo;
+      document.getElementById("langBtn").textContent = t.langBtn;
+      document.querySelector(".hero-label").textContent = t.heroLabel;
+      document.querySelector(".hero h1").textContent = t.heroTitle;
+      document.querySelector(".hero p").textContent = t.heroDesc;
+      document.querySelectorAll(".hero-stat span").forEach((el, index) => el.textContent = t.stats[index]);
+      document.querySelectorAll(".prog-label").forEach((el, index) => el.textContent = t.steps[index]);
+      document.querySelectorAll(".step-title").forEach((el, index) => el.textContent = t.stepTitles[index]);
+      document.querySelectorAll(".step-desc").forEach((el, index) => el.textContent = t.stepDescs[index]);
+      document.querySelectorAll(".guide-panel").forEach(panel => {
+        const index = Number(panel.dataset.guide);
+        panel.querySelector(".guide-title").textContent = t.guideTitle;
+        panel.querySelector(".guide-items").innerHTML = t.guides[index].map(item => `<li>${item}</li>`).join("");
+      });
+      document.querySelectorAll('[data-ai="complete"]').forEach(el => el.textContent = t.complete);
+      document.querySelectorAll("[data-prev]").forEach(el => el.textContent = t.navPrev);
+      document.querySelectorAll("[data-next]").forEach((el, index) => {
+        el.textContent = index === 0 ? t.start : index === 6 ? t.generate : t.navNext;
+      });
+      const copyBtn = document.getElementById("copyDraft");
+      if (copyBtn) copyBtn.textContent = t.copy;
+      if (currentStep === 7) renderSummary();
+    }
+
+    document.getElementById("langBtn").addEventListener("click", () => {
+      currentLang = currentLang === "zh" ? "en" : "zh";
+      applyLanguage();
+    });
+
+    document.getElementById("copyDraft").addEventListener("click", async () => {
+      renderSummary();
+      const text = Array.from(document.querySelectorAll(".summary-block")).map(block => {
+        return `${block.querySelector("h3").textContent}\n${block.querySelector("p").textContent}`;
+      }).join("\n\n");
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("copyDraft").textContent = dict[currentLang].copied;
+      } catch {
+        document.getElementById("copyDraft").textContent = dict[currentLang].copyFail;
+      }
+    });
+
+    installAiActions();
+    applyLanguage();
+    updateProgress();
+  </script>
+</body>
+</html>

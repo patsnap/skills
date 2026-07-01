@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">Battery and chassis platform visual</title>
+  <desc id="desc">Generated local SVG visual for battery, thermal management, chassis, and platformization scenes.</desc>
+  <rect width="1200" height="820" fill="#071014"/>
+  <g transform="translate(130 150)">
+    <rect x="0" y="178" width="940" height="236" rx="32" fill="#101d22" stroke="#18d4d2" stroke-width="5"/>
+    <rect x="76" y="222" width="164" height="148" rx="14" fill="#13252c" stroke="#86efac" stroke-width="4"/>
+    <rect x="286" y="222" width="164" height="148" rx="14" fill="#13252c" stroke="#86efac" stroke-width="4"/>
+    <rect x="496" y="222" width="164" height="148" rx="14" fill="#13252c" stroke="#86efac" stroke-width="4"/>
+    <rect x="706" y="222" width="164" height="148" rx="14" fill="#13252c" stroke="#86efac" stroke-width="4"/>
+    <path d="M52 136h836c38 0 70 18 96 54l68 96" fill="none" stroke="#6fb0ff" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="136" cy="462" r="58" fill="#061014" stroke="#edf8f6" stroke-width="9"/>
+    <circle cx="820" cy="462" r="58" fill="#061014" stroke="#edf8f6" stroke-width="9"/>
+  </g>
+  <g font-family="Arial, 'PingFang SC', sans-serif" font-weight="800">
+    <text x="72" y="92" fill="#edf8f6" font-size="54">Battery / Chassis Platform</text>
+    <text x="76" y="142" fill="#9db0ad" font-size="24">Use for BYD, Tesla, battery, thermal management, chassis, and platformization analysis</text>
+    <text x="155" y="430" fill="#86efac" font-size="24">Cell</text>
+    <text x="356" y="430" fill="#86efac" font-size="24">Pack</text>
+    <text x="557" y="430" fill="#86efac" font-size="24">Thermal</text>
+    <text x="767" y="430" fill="#86efac" font-size="24">Chassis</text>
+  </g>
+</svg>

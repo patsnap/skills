@@ -1,0 +1,292 @@
+/* fto-review v7.1 — FIXED STYLE SHEET
+ * 此文件是唯一样式来源，生成的 HTML 禁止出现内联样式属性。
+ * 版本：v7.1-fixed
+ */
+
+/* ── 基础 ── */
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: #1f2937;
+  font: 14px/1.65 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* ── Hero 头部 ── */
+.hero {
+  background: #123b5d;
+  color: white;
+  padding: 34px 42px;
+}
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.hero .subtitle {
+  opacity: 0.82;
+  font-size: 13px;
+  margin: 0 0 18px;
+}
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.meta div {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 10px;
+  border-radius: 6px;
+}
+.meta span {
+  display: block;
+  opacity: 0.72;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+/* ── 内容区 ── */
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 22px;
+}
+
+/* ── 卡片 ── */
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 14px;
+  color: #123b5d;
+  font-size: 17px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+.card h3 {
+  margin: 16px 0 10px;
+  color: #1e3a5f;
+  font-size: 14px;
+}
+
+/* ── 特殊卡片 ── */
+.card.verify {
+  border: 3px solid #dc2626;
+  background: #fff7f7;
+}
+.card.mitigation {
+  border: 3px solid #16a34a;
+  background: #f7fff9;
+}
+
+/* ── 执行摘要得分 ── */
+.score {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 4px 0 8px;
+}
+.grade-label {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* ── 四维度评分条 ── */
+.dim {
+  display: grid;
+  grid-template-columns: 150px 1fr 80px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+.bar {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+.dim b {
+  font-size: 14px;
+  text-align: right;
+}
+.dim small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* ── 章节编号 ── */
+.chapter-no {
+  display: inline-block;
+  min-width: 28px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* ── 表格 ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #123b5d;
+  color: white;
+  font-weight: 600;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+
+/* ── 固定状态颜色 ── */
+.grade-excellent { color: #1f8f4d; background: #1f8f4d; }
+.grade-good { color: #2563eb; background: #2563eb; }
+.grade-pass { color: #d97706; background: #d97706; }
+.grade-warning { color: #ea580c; background: #ea580c; }
+.grade-fail { color: #dc2626; background: #dc2626; }
+.grade-none { color: #64748b; background: #64748b; }
+
+.score.grade-excellent,
+.score.grade-good,
+.score.grade-pass,
+.score.grade-warning,
+.score.grade-fail,
+.score.grade-none {
+  background: transparent;
+}
+
+.recall-ok .gauge-fill { background: #16a34a; }
+.recall-ok .gauge-value { color: #16a34a; }
+.recall-low .gauge-fill { background: #d97706; }
+.recall-low .gauge-value { color: #d97706; }
+.recall-bad .gauge-fill { background: #dc2626; }
+.recall-bad .gauge-value { color: #dc2626; }
+.recall-none .gauge-fill { background: #64748b; }
+.recall-none .gauge-value { color: #64748b; }
+
+.risk-high td {
+  background: #ffeaea;
+  border-left: 4px solid #dc2626;
+}
+.risk-medium td {
+  background: #fff3cd;
+  border-left: 4px solid #d97706;
+}
+.risk-normal td {
+  background: white;
+}
+
+/* ── 固定宽度档位：所有动态宽度仅通过这些 class 控制 ── */
+.pct-0 { width: 0%; }
+.pct-10 { width: 10%; }
+.pct-20 { width: 20%; }
+.pct-30 { width: 30%; }
+.pct-40 { width: 40%; }
+.pct-50 { width: 50%; }
+.pct-60 { width: 60%; }
+.pct-70 { width: 70%; }
+.pct-80 { width: 80%; }
+.pct-90 { width: 90%; }
+.pct-100 { width: 100%; }
+
+/* ── 链接 ── */
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── 召回率仪表盘 ── */
+.gauge-wrap {
+  margin: 14px 0 18px;
+}
+.gauge-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.gauge-bar {
+  height: 18px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.gauge-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.gauge-value {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* ── 标签 ── */
+.tag-new {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 11px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.ipc-tag {
+  display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 12px;
+}
+
+/* ── 整改行动列表 ── */
+ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+ol li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 820px) {
+  .meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dim {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 22px 18px;
+  }
+  .wrap {
+    padding: 16px 12px;
+  }
+}
+@media (max-width: 480px) {
+  .meta {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>仿药速探筛查平台</title>
+  <style>
+    :root {
+      --bg: #eef3fb;
+      --panel: #fff;
+      --ink: #142033;
+      --muted: #5b6980;
+      --line: #dce3ee;
+      --soft: #f4f9ff;
+      --navy: #071a44;
+      --blue: #0A3DFF;
+      --green: #0FCC7A;
+      --amber: #b46500;
+      --red: #b42318;
+      --cyan: #12d5ff;
+      --shadow: 0 14px 34px rgba(18, 35, 57, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 78% -8%, rgba(10, 61, 255, .16), transparent 28%),
+        radial-gradient(circle at 12% 0%, rgba(15, 204, 122, .12), transparent 24%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 340px, #f5f7fb 100%);
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .layout { min-height: 100vh; position: relative; }
+    main { max-width: 1280px; margin: 0 auto; padding: 20px 30px 46px; min-width: 0; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+    .page-title { margin-bottom: 14px; padding: 4px 2px 2px; }
+    .page-title h1 { margin: 0 0 6px; color: var(--navy); font-size: 28px; line-height: 1.2; }
+    .page-title p { margin: 0; max-width: 760px; color: var(--muted); font-size: 14px; }
+    .topbar { height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 14px; padding: 0 18px; background: rgba(255,255,255,.86); border: 1px solid rgba(220,227,238,.82); border-radius: 14px; box-shadow: 0 10px 28px rgba(18,35,57,.06); backdrop-filter: blur(16px); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); font-size: 18px; font-weight: 850; letter-spacing: 0; }
+    .brand small { display: block; margin-top: -2px; color: var(--muted); font-size: 11px; font-weight: 650; }
+    .brand-mark { width: 34px; height: 34px; border-radius: 11px; background: linear-gradient(135deg, var(--blue), var(--green)); box-shadow: 0 10px 22px rgba(10,61,255,.20); position: relative; flex: 0 0 auto; }
+    .brand-mark::before { content: ""; position: absolute; inset: 8px 11px; border-radius: 999px; background: rgba(255,255,255,.92); }
+    .brand-mark::after { content: ""; position: absolute; width: 16px; height: 2px; left: 9px; top: 16px; background: var(--green); transform: rotate(-28deg); border-radius: 2px; }
+    .top-actions { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(15,204,122,.12); }
+    .top-pill { min-height: 26px; display: inline-flex; align-items: center; gap: 7px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-weight: 700; }
+    .hero { position: relative; min-height: 246px; padding: 28px 30px; margin-bottom: 14px; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f4f9ff 48%, #ecfff7 100%); border: 1px solid rgba(10,61,255,.10); border-radius: 18px; color: var(--ink); box-shadow: 0 18px 42px rgba(18,35,57,.08); }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 88% 18%, rgba(15,204,122,.22), transparent 34%), radial-gradient(ellipse at 70% 100%, rgba(10,61,255,.12), transparent 42%); opacity: .9; }
+    .hero::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--green)); pointer-events: none; }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-copy { max-width: 570px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(15,204,122,.12); }
+    .hero h2 { margin: 0 0 10px; color: var(--navy); font-size: 34px; line-height: 1.15; }
+    .hero p { max-width: 680px; margin: 0; color: var(--muted); font-size: 15px; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .hero-tag { min-height: 26px; padding: 2px 10px; border: 1px solid rgba(10,61,255,.12); border-radius: 999px; color: #1741a8; background: #f7fbff; font-size: 12px; font-weight: 720; }
+    .hero-line { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .hero-line span { min-height: 30px; display: inline-flex; align-items: center; gap: 7px; padding: 0 11px; border: 1px solid rgba(10,61,255,.12); border-radius: 999px; background: rgba(255,255,255,.72); color: #1741a8; font-size: 12px; font-weight: 760; }
+    .hero-line span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .hero-visual { position: absolute; right: -2px; bottom: -10px; width: 500px; height: 282px; pointer-events: none; z-index: 0; opacity: .99; }
+    .visual-card { position: relative; width: 100%; height: 100%; overflow: visible; }
+    .visual-card::before { content: ""; position: absolute; right: 24px; bottom: 20px; width: 250px; height: 128px; border-radius: 50%; background: radial-gradient(circle, rgba(15,204,122,.15), rgba(10,61,255,.07) 48%, transparent 72%); filter: blur(12px); }
+    .visual-card img { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; filter: saturate(1.04) contrast(1.03) drop-shadow(0 16px 20px rgba(10,61,255,.10)); }
+    .filters { padding: 16px; margin-bottom: 14px; background: #fff; border-radius: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto; gap: 12px; align-items: end; }
+    label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+    select, input { width: 100%; height: 36px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); padding: 0 10px; font: inherit; outline-color: var(--blue); }
+    .fixed-field { height: 36px; border: 1px solid var(--line); border-radius: 8px; background: #f8fafc; color: var(--ink); padding: 0 10px; display: flex; align-items: center; font-weight: 650; }
+    button { height: 36px; border: 1px solid var(--blue); border-radius: 8px; background: linear-gradient(135deg, var(--blue), #1268ff); color: #fff; padding: 0 14px; font: inherit; font-weight: 720; cursor: pointer; white-space: nowrap; box-shadow: 0 10px 20px rgba(10,61,255,.18); }
+    button.secondary { background: #fff; color: var(--blue); box-shadow: none; }
+    button:disabled { opacity: .55; cursor: wait; }
+    .hint { margin-top: 10px; color: var(--muted); font-size: 12px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+    .metric { padding: 14px 15px; border-radius: 14px; }
+    .metric .k { color: var(--muted); font-size: 12px; margin-bottom: 7px; }
+    .metric .v { color: var(--navy); font-size: 24px; font-weight: 780; line-height: 1; }
+    .metric .s { color: var(--muted); font-size: 12px; margin-top: 7px; }
+    .section { padding: 16px; margin-bottom: 14px; border-radius: 14px; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    h3 { margin: 0; color: var(--navy); font-size: 17px; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; padding: 6px; background: rgba(255,255,255,.74); border: 1px solid var(--line); border-radius: 14px; }
+    .tab { height: 34px; border: 1px solid transparent; background: transparent; color: var(--muted); border-radius: 10px; padding: 0 12px; font: inherit; font-weight: 700; cursor: pointer; box-shadow: none; }
+    .tab.active { border-color: rgba(10,61,255,.16); background: #fff; color: var(--blue); box-shadow: 0 8px 18px rgba(18,35,57,.06); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tools { display: flex; gap: 8px; align-items: center; }
+    .tools input { width: 230px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+    table { width: 100%; min-width: 1120px; border-collapse: collapse; background: #fff; font-size: 13px; }
+    th { padding: 9px 10px; background: linear-gradient(135deg, var(--blue), #064fcf); color: #fff; text-align: left; white-space: nowrap; font-weight: 730; cursor: pointer; user-select: none; }
+    td { padding: 9px 10px; border-bottom: 1px solid #e9edf3; vertical-align: top; color: #2f3845; }
+    tr:nth-child(even) td { background: #f7faff; }
+    tr:hover td { background: #eef5ff; }
+    .badge { display: inline-flex; align-items: center; min-height: 20px; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 760; white-space: nowrap; }
+    .green { background: #e8fff5; color: #08794a; border: 1px solid rgba(15,204,122,.34); }
+    .amber { background: #fff4dc; color: var(--amber); border: 1px solid #f3d797; }
+    .red { background: #fff0ed; color: var(--red); border: 1px solid #ffc9c0; }
+    .gray { background: #f3f5f8; color: #596273; border: 1px solid #d8dee8; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 12px; }
+    .empty { padding: 28px; text-align: center; color: var(--muted); background: var(--soft); border-radius: 8px; }
+    .error { color: var(--red); background: #fff0ed; border: 1px solid #ffc9c0; padding: 10px 12px; border-radius: 8px; margin-top: 10px; display: none; }
+    .disclaimer { color: #5f4300; background: #fffaf0; border: 1px solid #ead7a6; padding: 12px 14px; border-radius: 8px; font-size: 12px; }
+    .priority-grid { display: grid; gap: 12px; }
+    .priority-block { padding: 14px 16px; border: 1px solid #c8dcff; border-left: 4px solid var(--blue); border-radius: 8px; background: #f7fbff; }
+    .priority-block h4 { margin: 0 0 8px; color: var(--navy); font-size: 15px; }
+    .priority-block p { margin: 4px 0; color: #344054; font-size: 13px; }
+    .priority-rule { margin: 0 0 12px; color: #344054; font-size: 13px; }
+    .priority-reason { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #bdd3f8; color: #1f2933; font-weight: 650; }
+    .notes-list { margin: 0; padding-left: 18px; color: #344054; line-height: 1.9; }
+    .sources-list { columns: 2; column-gap: 28px; margin: 0; padding-left: 18px; color: #4b5563; font-size: 12px; line-height: 1.9; }
+    .source-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .source-group { border: 1px solid var(--line); border-radius: 10px; background: #fff; overflow: hidden; }
+    .source-group h4 { margin: 0; padding: 10px 12px; color: var(--navy); font-size: 14px; background: #f7fbff; border-bottom: 1px solid var(--line); }
+    .source-group ul { margin: 0; padding: 10px 12px 10px 28px; color: #4b5563; font-size: 12px; line-height: 1.8; }
+    .source-group li { word-break: break-word; }
+    .value-modal { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 28px; background: rgba(7, 26, 68, .32); backdrop-filter: blur(8px); }
+    .value-modal.open { display: flex; }
+    .value-dialog { width: min(1180px, calc(100vw - 56px)); max-height: calc(100vh - 56px); overflow: hidden; border-radius: 18px; background: #fff; border: 1px solid rgba(10,61,255,.16); box-shadow: 0 28px 80px rgba(7,26,68,.22); }
+    .value-head { display: none; }
+    .value-head::after { content: ""; position: absolute; right: -80px; top: -110px; width: 330px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(15,204,122,.22), rgba(10,61,255,.10) 50%, transparent 70%); }
+    .value-kicker { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--blue); font-size: 12px; font-weight: 820; letter-spacing: .06em; text-transform: uppercase; }
+    .value-kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(15,204,122,.12); }
+    .value-head h2 { position: relative; z-index: 1; margin: 0 0 6px; color: var(--navy); font-size: 34px; line-height: 1.12; }
+    .value-head p { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; color: var(--muted); font-size: 14px; }
+    .value-close { position: absolute; z-index: 2; right: 14px; top: 14px; width: 34px; height: 34px; padding: 0; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.92); color: var(--muted); box-shadow: 0 8px 20px rgba(7,26,68,.12); font-size: 20px; line-height: 1; }
+    .value-body { padding: 0; }
+    .value-image-wrap { width: 100%; max-height: calc(100vh - 56px); display: flex; align-items: center; justify-content: center; background: #fff; }
+    .value-image-wrap img { width: 100%; height: auto; max-height: calc(100vh - 56px); object-fit: contain; display: block; }
+    .infographic { display: grid; grid-template-columns: 180px minmax(0, 1fr) 190px; gap: 12px; align-items: stretch; }
+    .info-panel { border: 1px solid rgba(10,61,255,.14); border-radius: 16px; background: rgba(255,255,255,.78); overflow: hidden; }
+    .info-panel h3 { margin: 0; padding: 10px 12px; color: #fff; text-align: center; font-size: 17px; background: linear-gradient(135deg, var(--blue), #05277d); }
+    .info-panel.value h3 { background: linear-gradient(135deg, #038a85, var(--green)); }
+    .info-item { padding: 13px 14px; border-bottom: 1px dashed rgba(10,61,255,.14); }
+    .info-item:last-child { border-bottom: 0; }
+    .info-item strong { display: block; color: var(--navy); font-size: 14px; margin-bottom: 4px; }
+    .info-item span { color: var(--muted); font-size: 12px; }
+    .pipeline { border: 1px solid rgba(10,61,255,.14); border-radius: 16px; background: rgba(255,255,255,.70); padding: 12px; }
+    .pipeline-top { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+    .pipe-step { position: relative; min-height: 76px; padding: 11px 10px; border: 1px solid rgba(10,61,255,.14); border-radius: 12px; background: #fff; }
+    .pipe-step b { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; margin-bottom: 6px; color: #fff; background: var(--blue); }
+    .pipe-step:nth-child(3) b { background: #038a85; }
+    .pipe-step:nth-child(4) b { background: #db7a21; }
+    .pipe-step strong { display: block; color: var(--navy); font-size: 14px; }
+    .pipe-step span { color: var(--muted); font-size: 12px; }
+    .pipeline-visual { display: grid; grid-template-columns: 130px 1fr 130px 1fr 150px; gap: 10px; align-items: center; min-height: 190px; }
+    .mini-box { border: 1px solid rgba(10,61,255,.12); border-radius: 14px; background: #fff; padding: 12px; text-align: center; color: var(--navy); font-weight: 760; }
+    .mini-icon { width: 54px; height: 54px; margin: 0 auto 8px; border-radius: 16px; background: linear-gradient(135deg, rgba(10,61,255,.14), rgba(15,204,122,.18)); }
+    .stream { height: 34px; border-radius: 999px; background: linear-gradient(90deg, rgba(10,61,255,.10), rgba(15,204,122,.38), rgba(219,122,33,.20)); }
+    .stream.blue { background: linear-gradient(90deg, rgba(10,61,255,.10), rgba(10,61,255,.34), rgba(15,204,122,.24)); }
+    .bottom-sources { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .source-chip { min-height: 34px; display: flex; align-items: center; justify-content: center; padding: 0 8px; border: 1px solid rgba(10,61,255,.12); border-radius: 10px; background: #f7fbff; color: #1741a8; font-size: 12px; font-weight: 760; }
+    .modal-disclaimer { margin-top: 12px; padding: 9px 12px; border-radius: 12px; color: #fff; text-align: center; font-weight: 760; background: linear-gradient(135deg, #08245d, #031944); }
+    .value-hero-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .value-card { border: 1px solid rgba(10,61,255,.12); border-radius: 12px; background: rgba(255,255,255,.74); padding: 11px 12px; }
+    .value-card strong { display: block; color: var(--navy); font-size: 15px; margin-bottom: 5px; }
+    .value-card span { color: var(--muted); font-size: 12px; }
+    .value-card.major { min-height: 108px; background: linear-gradient(135deg, #fff, #f5fbff); border-color: rgba(10,61,255,.16); }
+    .value-card.major .num { display: block; margin-bottom: 6px; color: var(--blue); font-size: 23px; font-weight: 850; line-height: 1; }
+    .value-card.major:nth-child(2) .num, .value-card.major:nth-child(4) .num { color: #07995f; }
+    .value-section-title { margin: 4px 0 8px; color: var(--navy); font-size: 15px; font-weight: 820; }
+    .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+    .flow-step { position: relative; min-height: 82px; padding: 10px 10px; border: 1px solid rgba(10,61,255,.14); border-radius: 12px; background: #fff; }
+    .flow-step b { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; margin-bottom: 6px; font-size: 12px; }
+    .flow-step strong { display: block; color: var(--navy); margin-bottom: 4px; }
+    .flow-step span { color: var(--muted); font-size: 12px; }
+    .pain-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 12px; }
+    .pain-row .value-card { background: rgba(255,255,255,.62); }
+    .value-note { margin-top: 10px; color: #5f4300; background: #fffaf0; border: 1px solid #ead7a6; padding: 8px 10px; border-radius: 10px; font-size: 12px; }
+    .value-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 10; display: inline-flex; align-items: center; gap: 8px; height: 38px; border-radius: 999px; box-shadow: 0 14px 30px rgba(10,61,255,.18); }
+    .value-launcher::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    @media (max-width: 1100px) { .grid, .metrics { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 920px) { .hero-copy { max-width: none; } }
+    @media (max-width: 900px) { .source-groups, .infographic, .pipeline-top, .pipeline-visual, .bottom-sources, .value-hero-grid, .pain-row, .flow { grid-template-columns: 1fr; } .value-dialog { overflow: auto; } }
+    @media (max-width: 720px) { main { padding: 16px; } .topbar { height: auto; align-items: flex-start; flex-direction: column; padding: 14px; } .hero { padding: 22px; } .hero h2 { font-size: 27px; } .grid, .metrics { grid-template-columns: 1fr; } .section-head { flex-direction: column; align-items: stretch; } .tools { flex-direction: column; align-items: stretch; } .tools input { width: 100%; } .value-modal { padding: 14px; } .value-head, .value-body { padding-left: 18px; padding-right: 18px; } }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <main>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>仿药速探<small>Generic Patent Expiry Scout</small></span>
+        </div>
+        <div class="top-actions">
+          <span class="top-pill"><span class="status-dot"></span>MCP 数据在线</span>
+          <span class="top-pill">CN · 小分子 · 晶型</span>
+        </div>
+      </header>
+
+      <section class="hero card">
+        <div class="hero-copy">
+          <div class="eyebrow">AI Screening Workspace</div>
+          <h2>仿药速探</h2>
+          <p>洞见潜在机遇</p>
+          <div class="hero-tags">
+            <span class="hero-tag">CN 小分子化药</span>
+            <span class="hero-tag">晶型专利</span>
+            <span class="hero-tag">Phase 3+</span>
+            <span class="hero-tag">证据链筛查</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-card">
+            <img src="/assets/scout-logo-header-transparent.png" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="filters card" id="filters">
+        <div class="grid">
+          <div>
+            <label>药物类型</label>
+            <div class="fixed-field">小分子化药</div>
+          </div>
+          <div>
+            <label>专利类型</label>
+            <div class="fixed-field">晶型专利</div>
+          </div>
+          <div>
+            <label>地区</label>
+            <div class="fixed-field">中国 CN</div>
+          </div>
+          <div>
+            <label for="fromDate">窗口开始</label>
+            <input id="fromDate" type="date">
+          </div>
+          <div>
+            <label for="toDate">窗口结束</label>
+            <input id="toDate" type="date">
+          </div>
+          <button id="runBtn" type="button">开始筛查</button>
+        </div>
+        <div class="hint">当前版本只筛查“中国地区的小分子化药晶型专利”。化合物专利到期日用于辅助判断机会窗口，不会把候选药物提前排除。概览中的“符合条件的晶型专利”表示数据库命中的总量，“已处理晶型专利”表示本次已完成药物回连和证据补充的数量。</div>
+        <div class="error" id="errorBox"></div>
+      </section>
+
+      <section class="metrics">
+        <div class="metric card"><div class="k">符合条件的晶型专利</div><div class="v" id="mHits">-</div><div class="s">数据库检索总数</div></div>
+        <div class="metric card"><div class="k">已处理晶型专利</div><div class="v" id="mRetrieved">-</div><div class="s">本次已完成分析</div></div>
+        <div class="metric card"><div class="k">进入主表</div><div class="v" id="mPromoted">-</div><div class="s">审计通过</div></div>
+        <div class="metric card"><div class="k">未进入主表</div><div class="v" id="mExcluded">-</div><div class="s">证据不足</div></div>
+      </section>
+
+      <nav class="tabs" aria-label="报告内容">
+        <button class="tab active" data-tab="resultPanel" type="button">筛查结果</button>
+        <button class="tab" data-tab="priorityPanel" type="button">重点候选说明</button>
+        <button class="tab" data-tab="excludedPanel" type="button">未进入主表</button>
+        <button class="tab" data-tab="notesPanel" type="button">数据说明与局限性</button>
+        <button class="tab" data-tab="sourcesPanel" type="button">来源</button>
+      </nav>
+
+      <section class="section card tab-panel active" id="resultPanel">
+        <div class="section-head">
+          <h3>主表结果</h3>
+          <div class="tools">
+            <input id="tableSearch" placeholder="搜索药物/专利/权利人">
+            <button class="secondary" id="exportBtn" type="button">导出 CSV</button>
+            <button class="secondary" id="exportReportBtn" type="button">导出报告 HTML</button>
+            <button class="secondary" id="printReportBtn" type="button">打印 / PDF</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="resultTable">
+            <thead>
+              <tr>
+                <th data-key="drug_name">药物名称</th>
+                <th data-key="drug_type">药物类型</th>
+                <th data-key="phase">阶段</th>
+                <th data-key="assignee">专利权人</th>
+                <th data-key="compound_expiry">化合物到期</th>
+                <th data-key="crystal_expiry">晶型到期</th>
+                <th data-key="delta_sort">差值</th>
+                <th data-key="match_level">匹配等级</th>
+                <th data-key="compound_patent">代表化合物专利</th>
+                <th data-key="crystal_patent">代表晶型专利</th>
+                <th data-key="notes">备注</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="empty" id="emptyState">设置条件后点击“开始筛查”。</div>
+      </section>
+
+      <section class="section card tab-panel" id="priorityPanel">
+        <div class="section-head"><h3>重点候选说明</h3></div>
+        <p class="priority-rule">以下为优先级较高候选：优先看“化合物专利已到期或临近到期 + 晶型专利即将到期 + 药物阶段已进入 Phase 3 及以后 + 证据链完整”。</p>
+        <div class="priority-grid" id="priorityList">
+          <div class="empty">开始筛查后，将按晶型专利到期时间展示进入主表的重点候选。</div>
+        </div>
+      </section>
+
+      <section class="section card tab-panel" id="excludedPanel">
+        <div class="section-head"><h3>未进入主表</h3></div>
+        <div class="table-wrap">
+          <table id="excludedTable">
+            <thead><tr><th>候选</th><th>原因</th><th>缺失证据</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="empty" id="excludedEmpty">开始筛查后，未进入主表的候选会在这里展示。</div>
+      </section>
+
+      <section class="section card tab-panel" id="notesPanel">
+        <div class="section-head"><h3>数据说明与局限性</h3></div>
+        <ul class="notes-list">
+          <li>V1 固定筛查范围为中国 CN、小分子化药、晶型专利，更贴合晶型专利筛查逻辑。</li>
+          <li>主表只放入已回连药物、满足 Phase 3 及以后阶段、且能补充代表化合物专利信息的候选。</li>
+          <li>化合物专利到期日用于辅助判断晶型专利相对位置，不作为本轮筛选条件。</li>
+          <li>未进入主表的记录保留在独立页签中，便于后续补数或人工复核。</li>
+          <li>专利法律状态、到期日和药物阶段可能随数据库更新变化，正式立项前仍需人工核验。</li>
+        </ul>
+        <div class="disclaimer">本结果仅为信息参考，不构成立项建议、法律意见或投资建议。“符合条件的晶型专利”是数据库命中的总数，“已处理晶型专利”是本次已完成药物回连、阶段验证和化合物专利补充的数量。</div>
+      </section>
+
+      <section class="section card tab-panel" id="sourcesPanel">
+        <div class="section-head"><h3>来源</h3></div>
+        <div class="source-groups" id="sourcesList">
+          <div class="source-group">
+            <h4>数据接口</h4>
+            <ul>
+              <li>智慧芽药物与专利检索 MCP：ls_patent_search</li>
+              <li>智慧芽药物详情 MCP：ls_drug_search / drug_id_view</li>
+              <li>智慧芽专利详情 MCP：patsnap_fetch</li>
+            </ul>
+          </div>
+          <div class="source-group">
+            <h4>本次结果涉及专利</h4>
+            <ul><li>开始筛查后自动汇总晶型专利与化合物专利编号。</li></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="value-launcher" id="valueLauncher" type="button">价值亮点</button>
+
+  <div class="value-modal" id="valueModal" role="dialog" aria-modal="true" aria-labelledby="valueTitle">
+      <div class="value-dialog">
+        <div class="value-head">
+        <h2 id="valueTitle">仿药速探 Agent</h2>
+      </div>
+      <div class="value-body">
+        <button class="value-close" id="valueClose" type="button" aria-label="关闭">×</button>
+        <div class="value-image-wrap">
+          <img src="/assets/value-page.png" alt="仿药速探 Agent 价值亮点">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const state = { rows: [], notPromoted: [], sortKey: "crystal_expiry", sortDir: "asc" };
+    const $ = id => document.getElementById(id);
+
+    function fmtDate(date) {
+      return date.toISOString().slice(0, 10);
+    }
+
+    function initDates() {
+      const today = new Date();
+      const end = new Date(today);
+      end.setFullYear(end.getFullYear() + 2);
+      $("fromDate").value = fmtDate(today);
+      $("toDate").value = fmtDate(end);
+    }
+
+    function deltaSort(value) {
+      const match = String(value || "").match(/([+-]?\\d+)/);
+      return match ? Number(match[1]) : -99999;
+    }
+
+    function badge(value, type) {
+      const cls = type || (String(value).includes("未") || String(value).includes("无法") ? "gray" : "green");
+      return `<span class="badge ${cls}">${escapeHtml(value || "")}</span>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+    }
+
+    function render() {
+      const term = $("tableSearch").value.trim().toLowerCase();
+      let rows = state.rows.map(row => ({ ...row, delta_sort: deltaSort(row.delta) }));
+      rows.sort((a, b) => {
+        const av = a[state.sortKey] ?? "";
+        const bv = b[state.sortKey] ?? "";
+        const result = typeof av === "number" && typeof bv === "number" ? av - bv : String(av).localeCompare(String(bv), "zh-CN");
+        return state.sortDir === "asc" ? result : -result;
+      });
+      if (term) {
+        rows = rows.filter(row => Object.values(row).join(" ").toLowerCase().includes(term));
+      }
+
+      const body = document.querySelector("#resultTable tbody");
+      body.innerHTML = rows.map(row => `
+        <tr>
+          <td><strong>${escapeHtml(row.drug_name)}</strong></td>
+          <td>${badge(row.drug_type, "green")}</td>
+          <td>${badge(row.phase, row.phase === "Approved" ? "green" : "amber")}</td>
+          <td>${escapeHtml(row.assignee || "-")}</td>
+          <td>${badge(row.compound_expiry)}</td>
+          <td>${badge(row.crystal_expiry, "amber")}</td>
+          <td>${badge(row.delta, row.delta === "无法计算" ? "gray" : "amber")}</td>
+          <td>${escapeHtml(row.match_level || "-")}</td>
+          <td class="mono">${escapeHtml(row.compound_patent || "-")}</td>
+          <td class="mono">${escapeHtml(row.crystal_patent || "-")}</td>
+          <td>${escapeHtml(row.notes || "")}</td>
+        </tr>`).join("");
+      $("emptyState").style.display = rows.length ? "none" : "block";
+
+      const excluded = document.querySelector("#excludedTable tbody");
+      excluded.innerHTML = state.notPromoted.map(row => `
+        <tr><td>${escapeHtml(row.candidate)}</td><td>${escapeHtml(row.reason)}</td><td>${escapeHtml(row.missing)}</td></tr>
+      `).join("");
+      $("excludedEmpty").style.display = state.notPromoted.length ? "none" : "block";
+      renderPriority();
+      renderSources();
+    }
+
+    function renderPriority() {
+      const host = $("priorityList");
+      if (!state.rows.length) {
+        host.innerHTML = '<div class="empty">开始筛查后，将按晶型专利到期时间展示进入主表的重点候选。</div>';
+        return;
+      }
+      const rows = [...state.rows].sort((a, b) => String(a.crystal_expiry || "").localeCompare(String(b.crystal_expiry || ""))).slice(0, 5);
+      host.innerHTML = rows.map((row, index) => {
+        const reason = priorityReason(row);
+        return `
+          <article class="priority-block">
+            <h4>${index + 1}. ${escapeHtml(row.drug_name)} ｜ ${escapeHtml(row.phase || "Phase 3+")}</h4>
+            <p>晶型专利 <span class="mono">${escapeHtml(row.crystal_patent || "-")}</span> 预计到期 <strong>${escapeHtml(row.crystal_expiry || "-")}</strong>。</p>
+            <p>代表化合物专利 <span class="mono">${escapeHtml(row.compound_patent || "-")}</span> 预计到期 <strong>${escapeHtml(row.compound_expiry || "-")}</strong>；晶型相对化合物专利差值为 <strong>${escapeHtml(row.delta || "无法计算")}</strong>。</p>
+            <p>证据状态：${escapeHtml(row.match_level || "-")}；权利人：${escapeHtml(row.assignee || "-")}。</p>
+            <p class="priority-reason">重点原因：${escapeHtml(reason)}</p>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function priorityReason(row) {
+      const delta = deltaSort(row.delta);
+      const crystal = row.crystal_expiry || "窗口内";
+      const compound = row.compound_expiry || "未返回";
+      const phase = row.phase || "Phase 3+";
+      if (String(compound).includes("未")) {
+        return `药物已达到 ${phase}，晶型专利在 ${crystal} 到期，但化合物专利到期日仍需复核，因此作为需补证候选优先跟进。`;
+      }
+      if (delta <= 0) {
+        return `化合物专利已在 ${compound} 到期或不晚于晶型专利，晶型专利在 ${crystal} 到期，当前主要障碍更可能集中在晶型专利本身。`;
+      }
+      if (delta <= 24) {
+        return `化合物专利与晶型专利到期差距约 ${row.delta}，两类核心专利窗口接近，适合优先做立项复核和专利稳定性判断。`;
+      }
+      return `晶型专利在 ${crystal} 落入筛查窗口，药物阶段满足 ${phase}，且已找到代表化合物专利，可作为证据链完整候选继续评估。`;
+    }
+
+    function renderSources() {
+      const crystalSet = new Set();
+      const compoundSet = new Set();
+      state.rows.forEach(row => {
+        if (row.crystal_patent) crystalSet.add(row.crystal_patent);
+        if (row.compound_patent && row.compound_patent !== "未检索到") compoundSet.add(row.compound_patent);
+      });
+      const patentItems = [
+        ...[...crystalSet].map(item => `<li><strong>晶型专利：</strong>${escapeHtml(item)}</li>`),
+        ...[...compoundSet].map(item => `<li><strong>化合物专利：</strong>${escapeHtml(item)}</li>`)
+      ].join("") || "<li>开始筛查后自动汇总晶型专利与化合物专利编号。</li>";
+      $("sourcesList").innerHTML = `
+        <div class="source-group">
+          <h4>数据接口</h4>
+          <ul>
+            <li>智慧芽药物与专利检索 MCP：ls_patent_search</li>
+            <li>智慧芽药物详情 MCP：ls_drug_search / drug_id_view</li>
+            <li>智慧芽专利详情 MCP：patsnap_fetch</li>
+          </ul>
+        </div>
+        <div class="source-group">
+          <h4>本次结果涉及专利</h4>
+          <ul>${patentItems}</ul>
+        </div>
+      `;
+    }
+
+    function applyReportData(data) {
+      state.rows = data.rows || [];
+      state.notPromoted = data.not_promoted || [];
+      $("mHits").textContent = data.summary?.total_crystal_hits ?? "-";
+      $("mRetrieved").textContent = data.summary?.processed_patents ?? data.summary?.retrieved ?? "-";
+      $("mPromoted").textContent = data.summary?.promoted ?? state.rows.length;
+      $("mExcluded").textContent = data.summary?.not_promoted ?? state.notPromoted.length;
+      render();
+    }
+
+    async function runSearch() {
+      $("runBtn").disabled = true;
+      $("runBtn").textContent = "筛查中...";
+      $("errorBox").style.display = "none";
+      try {
+        const payload = {
+          drug_type: "Small molecule drug",
+          country: "CN",
+          date_from: $("fromDate").value,
+          date_to: $("toDate").value,
+          retrieval_cap: 100
+        };
+        const response = await fetch("/api/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "查询失败");
+        applyReportData(data);
+      } catch (error) {
+        $("errorBox").textContent = error.message;
+        $("errorBox").style.display = "block";
+      } finally {
+        $("runBtn").disabled = false;
+        $("runBtn").textContent = "开始筛查";
+      }
+    }
+
+    function exportCsv() {
+      const headers = ["药物名称","药物类型","阶段","专利权人","化合物到期","晶型到期","差值","匹配等级","代表化合物专利","代表晶型专利","备注"];
+      const rows = state.rows.map(row => [row.drug_name,row.drug_type,row.phase,row.assignee,row.compound_expiry,row.crystal_expiry,row.delta,row.match_level,row.compound_patent,row.crystal_patent,row.notes]);
+      const csv = [headers, ...rows].map(cols => cols.map(value => `"${String(value ?? "").replace(/"/g, '""')}"`).join(",")).join("\\n");
+      const blob = new Blob(["\\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "仿药速探筛查结果.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function currentReportHtml() {
+      const generatedAt = new Date().toLocaleString("zh-CN");
+      const rowHtml = state.rows.map(row => `
+        <tr>
+          <td>${escapeHtml(row.drug_name)}</td>
+          <td>${escapeHtml(row.drug_type)}</td>
+          <td>${escapeHtml(row.phase)}</td>
+          <td>${escapeHtml(row.assignee || "-")}</td>
+          <td>${escapeHtml(row.compound_expiry || "-")}</td>
+          <td>${escapeHtml(row.crystal_expiry || "-")}</td>
+          <td>${escapeHtml(row.delta || "-")}</td>
+          <td>${escapeHtml(row.match_level || "-")}</td>
+          <td>${escapeHtml(row.compound_patent || "-")}</td>
+          <td>${escapeHtml(row.crystal_patent || "-")}</td>
+          <td>${escapeHtml(row.notes || "")}</td>
+        </tr>`).join("");
+      const priorityRows = [...state.rows].sort((a, b) => String(a.crystal_expiry || "").localeCompare(String(b.crystal_expiry || ""))).slice(0, 5);
+      const priorityHtml = priorityRows.map((row, index) => `
+        <div class="priority">
+          <h3>${index + 1}. ${escapeHtml(row.drug_name)} ｜ ${escapeHtml(row.phase || "Phase 3+")}</h3>
+          <p>晶型专利 ${escapeHtml(row.crystal_patent || "-")} 预计到期 ${escapeHtml(row.crystal_expiry || "-")}。</p>
+          <p>代表化合物专利 ${escapeHtml(row.compound_patent || "-")} 预计到期 ${escapeHtml(row.compound_expiry || "-")}；差值 ${escapeHtml(row.delta || "无法计算")}。</p>
+          <p><strong>重点原因：</strong>${escapeHtml(priorityReason(row))}</p>
+        </div>`).join("") || "<p>暂无进入主表的重点候选。</p>";
+      const excludedHtml = state.notPromoted.map(row => `
+        <tr><td>${escapeHtml(row.candidate)}</td><td>${escapeHtml(row.reason)}</td><td>${escapeHtml(row.missing)}</td></tr>
+      `).join("") || '<tr><td colspan="3">暂无未进入主表记录。</td></tr>';
+      const sources = [...new Set([
+        "智慧芽药物与专利检索 MCP：ls_patent_search",
+        "智慧芽药物详情 MCP：ls_drug_search / drug_id_view",
+        "智慧芽专利详情 MCP：patsnap_fetch",
+        ...state.rows.flatMap(row => [row.crystal_patent ? `晶型专利：${row.crystal_patent}` : "", row.compound_patent ? `化合物专利：${row.compound_patent}` : ""]).filter(Boolean)
+      ])];
+      return `<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>仿药速探 V1 筛查报告</title>
+<style>
+body{margin:0;background:#f5f7fb;color:#142033;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-size:13px;line-height:1.65}
+.wrap{max-width:1180px;margin:24px auto;padding:30px 34px;background:#fff;border:1px solid #dce3ee;border-radius:12px}
+h1{margin:0 0 8px;color:#071a44;font-size:26px;border-bottom:3px solid #0A3DFF;padding-bottom:12px}
+h2{margin:28px 0 10px;color:#071a44;font-size:18px;border-left:4px solid #0A3DFF;padding-left:10px}
+h3{margin:0 0 6px;color:#071a44;font-size:15px}
+.meta,.metrics{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.chip,.metric{border:1px solid #dce3ee;border-radius:999px;background:#f8fbff;padding:6px 10px;color:#5b6980}
+.metric strong{color:#071a44;font-size:18px;margin-right:4px}
+table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12px}
+th{background:#071a44;color:#fff;text-align:left;padding:8px;border:1px solid #071a44}
+td{padding:8px;border:1px solid #e6ebf2;vertical-align:top}
+tr:nth-child(even) td{background:#f7faff}
+.priority{margin:10px 0;padding:12px 14px;border:1px solid #c8dcff;border-left:4px solid #0A3DFF;border-radius:8px;background:#f7fbff}
+.note{margin-top:10px;padding:10px 12px;border:1px solid #ead7a6;border-radius:8px;background:#fffaf0;color:#5f4300}
+@media print{body{background:#fff}.wrap{margin:0;border:0;border-radius:0}.no-print{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>仿药速探 V1 筛查报告</h1>
+<div class="meta">
+  <span class="chip">药物类型：小分子化药</span>
+  <span class="chip">专利类型：晶型专利</span>
+  <span class="chip">地区：中国 CN</span>
+  <span class="chip">到期窗口：${escapeHtml($("fromDate").value)} 至 ${escapeHtml($("toDate").value)}</span>
+  <span class="chip">生成时间：${escapeHtml(generatedAt)}</span>
+</div>
+<h2>数据概览</h2>
+<div class="metrics">
+  <span class="metric"><strong>${escapeHtml($("mHits").textContent)}</strong>符合条件的晶型专利</span>
+  <span class="metric"><strong>${escapeHtml($("mRetrieved").textContent)}</strong>已处理晶型专利</span>
+  <span class="metric"><strong>${escapeHtml($("mPromoted").textContent)}</strong>进入主表</span>
+  <span class="metric"><strong>${escapeHtml($("mExcluded").textContent)}</strong>未进入主表</span>
+</div>
+<h2>筛查结果明细</h2>
+<table><thead><tr><th>药物名称</th><th>药物类型</th><th>阶段</th><th>专利权人</th><th>化合物到期</th><th>晶型到期</th><th>差值</th><th>匹配等级</th><th>化合物专利</th><th>晶型专利</th><th>备注</th></tr></thead><tbody>${rowHtml || '<tr><td colspan="11">暂无主表结果。</td></tr>'}</tbody></table>
+<h2>重点候选说明</h2>
+${priorityHtml}
+<h2>未进入主表</h2>
+<table><thead><tr><th>候选</th><th>原因</th><th>缺失证据</th></tr></thead><tbody>${excludedHtml}</tbody></table>
+<h2>数据说明与局限性</h2>
+<ul>
+  <li>V1 固定筛查范围为中国 CN、小分子化药、晶型专利。</li>
+  <li>化合物专利到期日用于辅助判断机会窗口，不作为本轮硬过滤条件。</li>
+  <li>专利法律状态、到期日和药物阶段可能随数据库更新变化，正式立项前仍需人工核验。</li>
+</ul>
+<h2>来源</h2>
+<ul>${sources.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+<div class="note">本报告仅作情报参考，不构成立项建议、法律意见或投资建议。</div>
+</div>
+</body>
+</html>`;
+    }
+
+    function exportReportHtml() {
+      const blob = new Blob([currentReportHtml()], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "仿药速探V1筛查报告.html";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function printReport() {
+      const win = window.open("", "_blank");
+      if (!win) {
+        alert("浏览器阻止了新窗口，请允许弹窗后重试。");
+        return;
+      }
+      win.document.open();
+      win.document.write(currentReportHtml());
+      win.document.close();
+      win.focus();
+      setTimeout(() => win.print(), 250);
+    }
+
+    document.querySelectorAll("#resultTable th").forEach(th => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        if (state.sortKey === key) state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+        else { state.sortKey = key; state.sortDir = "asc"; }
+        render();
+      });
+    });
+    document.querySelectorAll(".tab").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(item => item.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.remove("active"));
+        button.classList.add("active");
+        $(button.dataset.tab).classList.add("active");
+      });
+    });
+    function openValueModal() {
+      $("valueModal").classList.add("open");
+    }
+
+    function closeValueModal() {
+      $("valueModal").classList.remove("open");
+    }
+
+    $("valueLauncher").addEventListener("click", openValueModal);
+    $("valueClose").addEventListener("click", closeValueModal);
+    $("valueModal").addEventListener("click", event => {
+      if (event.target === $("valueModal")) closeValueModal();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeValueModal();
+    });
+    $("runBtn").addEventListener("click", runSearch);
+    $("tableSearch").addEventListener("input", render);
+    $("exportBtn").addEventListener("click", exportCsv);
+    $("exportReportBtn").addEventListener("click", exportReportHtml);
+    $("printReportBtn").addEventListener("click", printReport);
+    initDates();
+    if (window.INITIAL_REPORT_PARAMS) {
+      if (window.INITIAL_REPORT_PARAMS.date_from) $("fromDate").value = window.INITIAL_REPORT_PARAMS.date_from;
+      if (window.INITIAL_REPORT_PARAMS.date_to) $("toDate").value = window.INITIAL_REPORT_PARAMS.date_to;
+    }
+    if (window.INITIAL_REPORT_DATA) {
+      applyReportData(window.INITIAL_REPORT_DATA);
+    }
+    openValueModal();
+  </script>
+</body>
+</html>

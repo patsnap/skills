@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海程新材料 · 竞争情报简报 2026Q2</title>
+<style>
+  :root {
+    --bg: #EEF3F8;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text-primary: #1a202c;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --blue: #3b82f6;
+    --blue-light: #eff6ff;
+    --green: #22c55e;
+    --green-light: #f0fdf4;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --orange: #f97316;
+    --orange-light: #fff7ed;
+    --yellow: #f59e0b;
+    --yellow-light: #fffbeb;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.12);
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text-primary); display: flex; min-height: 100vh; }
+
+  /* ─── 侧边导航 ─── */
+  .sidebar {
+    width: 220px; min-width: 220px; background: var(--card); border-right: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 100;
+    display: flex; flex-direction: column;
+  }
+  .sidebar-logo {
+    padding: 20px 16px 16px; border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg,#3b82f6,#8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .sidebar-logo .logo-icon span { color: #fff; font-size: 16px; font-weight: 700; }
+  .sidebar-logo h2 { font-size: 13px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+  .sidebar-logo p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .nav-section { padding: 12px 0; }
+  .nav-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; padding: 0 16px 6px; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer; border-radius: 0; transition: all 0.2s; font-size: 12.5px; color: var(--text-secondary); border-left: 3px solid transparent; }
+  .nav-item:hover { background: var(--blue-light); color: var(--blue); }
+  .nav-item.active { background: var(--blue-light); color: var(--blue); border-left-color: var(--blue); font-weight: 600; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ─── 主内容 ─── */
+  .main { margin-left: 220px; flex: 1; padding: 28px 32px; max-width: calc(100vw - 220px); }
+
+  /* ─── 顶部Header ─── */
+  .page-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 60%, #60a5fa 100%);
+    border-radius: var(--radius); padding: 28px 32px; margin-bottom: 24px;
+    color: #fff; display: flex; justify-content: space-between; align-items: center;
+  }
+  .page-header h1 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+  .page-header p { font-size: 13px; opacity: 0.85; }
+  .header-meta { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .header-tag { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #fff; }
+  .header-btns { display: flex; gap: 8px; margin-top: 10px; }
+  .btn { padding: 7px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-white { background: #fff; color: var(--blue); }
+  .btn-outline { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+  .btn-white:hover { background: #f0f9ff; }
+
+  /* ─── 章节标题 ─── */
+  .section { margin-bottom: 32px; scroll-margin-top: 20px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--blue); }
+  .section-num { width: 28px; height: 28px; background: var(--blue); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .section-title { font-size: 17px; font-weight: 700; color: var(--text-primary); }
+  .section-pill { background: var(--blue-light); color: var(--blue); border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+
+  /* ─── KPI 卡片 ─── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+  .kpi-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+  .kpi-card {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 20px; position: relative; overflow: hidden;
+    cursor: pointer; transition: all 0.2s; border: 1px solid var(--border);
+  }
+  .kpi-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .kpi-card.blue::before { background: var(--blue); }
+  .kpi-card.green::before { background: var(--green); }
+  .kpi-card.red::before { background: var(--red); }
+  .kpi-card.orange::before { background: var(--orange); }
+  .kpi-card.purple::before { background: var(--purple); }
+  .kpi-card.yellow::before { background: var(--yellow); }
+  .kpi-label { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .kpi-value { font-size: 32px; font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 6px; }
+  .kpi-desc { font-size: 11px; color: var(--text-secondary); margin-bottom: 10px; }
+  .kpi-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .pill-green { background: var(--green-light); color: #16a34a; }
+  .pill-red { background: var(--red-light); color: #dc2626; }
+  .pill-yellow { background: var(--yellow-light); color: #d97706; }
+  .pill-blue { background: var(--blue-light); color: var(--blue); }
+  .pill-orange { background: var(--orange-light); color: #ea580c; }
+  .pill-purple { background: var(--purple-light); color: #7c3aed; }
+
+  /* ─── 图表卡片 ─── */
+  .chart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+  .chart-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px; }
+  .chart-card {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 20px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+  }
+  .chart-card:hover { box-shadow: var(--shadow-hover); }
+  .chart-card.full { grid-column: 1/-1; }
+  .chart-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; }
+  .chart-wrap { position: relative; height: 200px; }
+  .chart-wrap-sm { position: relative; height: 160px; }
+  .chart-wrap-lg { position: relative; height: 260px; }
+
+  /* ─── 执行摘要 ─── */
+  .exec-summary {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    border: 1px solid var(--border); overflow: hidden; margin-bottom: 24px;
+  }
+  .exec-summary-header {
+    background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+    padding: 18px 24px; display: flex; align-items: center; gap: 12px;
+  }
+  .exec-summary-header .icon { font-size: 22px; }
+  .exec-summary-header h2 { color: #fff; font-size: 16px; font-weight: 700; }
+  .exec-summary-header p { color: rgba(255,255,255,0.8); font-size: 12px; margin-top: 2px; }
+  .exec-body { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .exec-col { padding: 20px; border-right: 1px solid var(--border); }
+  .exec-col:last-child { border-right: none; }
+  .exec-col-title { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid; }
+  .exec-col-title.threat { color: var(--red); border-color: var(--red); }
+  .exec-col-title.oppo { color: var(--green); border-color: var(--green); }
+  .exec-col-title.action { color: var(--blue); border-color: var(--blue); }
+  .exec-col-title.score { color: var(--purple); border-color: var(--purple); }
+  .exec-item { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 8px; font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+  .exec-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .exec-item .dot.red { background: var(--red); }
+  .exec-item .dot.green { background: var(--green); }
+  .exec-item .dot.blue { background: var(--blue); }
+  .exec-score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .exec-score-item { text-align: center; background: var(--bg); border-radius: 8px; padding: 8px 4px; }
+  .exec-score-item .s-val { font-size: 20px; font-weight: 800; }
+  .exec-score-item .s-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ─── 企业画像卡 ─── */
+  .company-card {
+    background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    border: 1px solid var(--border); overflow: hidden; margin-bottom: 16px;
+  }
+  .company-header { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+  .company-header-left { display: flex; align-items: center; gap: 12px; }
+  .company-avatar { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .company-name { font-size: 15px; font-weight: 700; }
+  .company-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .company-body { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 0; }
+  .company-col { padding: 16px 20px; border-right: 1px solid var(--border); }
+  .company-col:last-child { border-right: none; }
+  .col-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .info-row { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 6px; font-size: 12px; }
+  .info-key { color: var(--text-muted); min-width: 60px; flex-shrink: 0; }
+  .info-val { color: var(--text-primary); font-weight: 500; line-height: 1.4; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .tag-blue { background: var(--blue-light); color: var(--blue); }
+  .tag-green { background: var(--green-light); color: #16a34a; }
+  .tag-red { background: var(--red-light); color: #dc2626; }
+  .tag-orange { background: var(--orange-light); color: #ea580c; }
+  .tag-yellow { background: var(--yellow-light); color: #d97706; }
+  .tag-purple { background: var(--purple-light); color: #7c3aed; }
+  .tag-gray { background: #f1f5f9; color: var(--text-secondary); }
+
+  /* ─── SWOT ─── */
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .swot-box { border-radius: 10px; padding: 14px; }
+  .swot-box.S { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .swot-box.W { background: #fef2f2; border: 1px solid #fecaca; }
+  .swot-box.O { background: #eff6ff; border: 1px solid #bfdbfe; }
+  .swot-box.T { background: #fffbeb; border: 1px solid #fde68a; }
+  .swot-title { font-size: 11px; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .swot-box.S .swot-title { color: #16a34a; }
+  .swot-box.W .swot-title { color: #dc2626; }
+  .swot-box.O .swot-title { color: var(--blue); }
+  .swot-box.T .swot-title { color: #d97706; }
+  .swot-item { font-size: 11.5px; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 5px; line-height: 1.4; }
+  .swot-item::before { content: '•'; flex-shrink: 0; }
+
+  /* ─── 专利表格 ─── */
+  .patent-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .patent-table th { background: #f8fafc; color: var(--text-muted); font-weight: 700; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 11px; }
+  .patent-table td { padding: 9px 12px; border-bottom: 1px solid #f1f5f9; color: var(--text-secondary); vertical-align: top; }
+  .patent-table tr:last-child td { border-bottom: none; }
+  .patent-table tr:hover td { background: #f8fafc; }
+  .patent-link { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 11px; }
+  .patent-link:hover { text-decoration: underline; }
+  .status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+  .status-active { background: var(--green-light); color: #16a34a; }
+  .status-pending { background: var(--yellow-light); color: #d97706; }
+  .status-expired { background: #f1f5f9; color: var(--text-muted); }
+
+  /* ─── 威胁矩阵 ─── */
+  .threat-list { display: flex; flex-direction: column; gap: 10px; }
+  .threat-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
+  .threat-rank { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .threat-content { flex: 1; }
+  .threat-name { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .threat-desc { font-size: 11.5px; color: var(--text-secondary); line-height: 1.4; }
+  .threat-bar-wrap { width: 120px; flex-shrink: 0; }
+  .threat-score-label { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; text-align: right; }
+  .threat-bar { height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+  .threat-bar-fill { height: 100%; border-radius: 3px; }
+
+  /* ─── 应对建议 ─── */
+  .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .action-card { border-radius: 12px; padding: 16px; border: 1px solid; }
+  .action-card.P1 { background: #fff5f5; border-color: #fecaca; }
+  .action-card.P2 { background: #fffbeb; border-color: #fde68a; }
+  .action-card.P3 { background: #f0fdf4; border-color: #bbf7d0; }
+  .action-priority { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+  .P1 .action-priority { background: #fee2e2; color: #dc2626; }
+  .P2 .action-priority { background: #fef3c7; color: #d97706; }
+  .P3 .action-priority { background: #dcfce7; color: #16a34a; }
+  .action-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+  .action-desc { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
+  .action-timeline { font-size: 10px; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+
+  /* ─── 时间轴 ─── */
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .timeline-item { position: relative; margin-bottom: 16px; }
+  .timeline-dot { position: absolute; left: -17px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; }
+  .timeline-date { font-size: 10px; color: var(--text-muted); font-weight: 700; margin-bottom: 3px; text-transform: uppercase; }
+  .timeline-title { font-size: 12.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .timeline-desc { font-size: 11.5px; color: var(--text-secondary); line-height: 1.4; }
+
+  /* ─── OEM矩阵 ─── */
+  .oem-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .oem-table th { background: #f8fafc; color: var(--text-muted); font-weight: 700; padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); font-size: 11px; white-space: nowrap; }
+  .oem-table td { padding: 10px; border-bottom: 1px solid #f1f5f9; color: var(--text-secondary); vertical-align: top; }
+  .oem-table tr:hover td { background: #f8fafc; }
+  .difficulty-bar { display: flex; gap: 2px; }
+  .diff-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* ─── 浮层弹窗 ─── */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; align-items: center; justify-content: center; }
+  .modal-overlay.show { display: flex; }
+  .modal { background: var(--card); border-radius: var(--radius); width: 640px; max-width: 90vw; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+  .modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg,#1e3a5f,#3b82f6); color: #fff; }
+  .modal-header h3 { font-size: 14px; font-weight: 700; }
+  .modal-close { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; color: #fff; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+  .modal-body { padding: 16px 20px; overflow-y: auto; flex: 1; }
+  .modal-patent-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border-radius: 8px; margin-bottom: 6px; border: 1px solid var(--border); transition: background 0.15s; }
+  .modal-patent-item:hover { background: var(--blue-light); }
+  .modal-patent-num { font-size: 11px; font-weight: 700; color: var(--blue); min-width: 120px; }
+  .modal-patent-title { font-size: 12px; color: var(--text-secondary); flex: 1; line-height: 1.4; }
+  .modal-patent-link { font-size: 11px; color: var(--blue); text-decoration: none; white-space: nowrap; padding: 3px 8px; background: var(--blue-light); border-radius: 4px; font-weight: 600; }
+
+  /* ─── 综合评分 ─── */
+  .score-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .score-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); padding: 16px; text-align: center; }
+  .score-name { font-size: 12px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+  .score-circle { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 22px; font-weight: 800; color: #fff; }
+  .score-dims { display: flex; flex-direction: column; gap: 4px; }
+  .score-dim { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--text-muted); align-items: center; }
+  .score-dim-bar { width: 50px; height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+  .score-dim-fill { height: 100%; border-radius: 2px; }
+
+  /* ─── 响应式 ─── */
+  @media (max-width: 1100px) {
+    .kpi-grid { grid-template-columns: repeat(2,1fr); }
+    .chart-grid { grid-template-columns: 1fr 1fr; }
+    .exec-body { grid-template-columns: 1fr 1fr; }
+    .company-body { grid-template-columns: 1fr; }
+    .score-grid { grid-template-columns: repeat(3,1fr); }
+  }
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .modal-overlay { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── 侧边导航 ───────── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><span>海</span></div>
+    <h2>海程新材料</h2>
+    <p>竞争情报简报 2026Q2</p>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">概览</div>
+    <div class="nav-item active" onclick="scrollTo('exec')"><div class="nav-dot" style="background:#3b82f6"></div>执行摘要</div>
+    <div class="nav-item" onclick="scrollTo('market')"><div class="nav-dot" style="background:#22c55e"></div>市场全景 & 海程评估</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">A级竞争对手</div>
+    <div class="nav-item" onclick="scrollTo('zephyros')"><div class="nav-dot" style="background:#ef4444"></div>Zephyros / L&L</div>
+    <div class="nav-item" onclick="scrollTo('sika')"><div class="nav-dot" style="background:#3b82f6"></div>Sika AG</div>
+    <div class="nav-item" onclick="scrollTo('henkel')"><div class="nav-dot" style="background:#f59e0b"></div>Henkel AG</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">B级 & OEM</div>
+    <div class="nav-item" onclick="scrollTo('bgrade')"><div class="nav-dot" style="background:#8b5cf6"></div>B级竞争对手</div>
+    <div class="nav-item" onclick="scrollTo('oem')"><div class="nav-dot" style="background:#06b6d4"></div>整车厂OEM矩阵</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">分析</div>
+    <div class="nav-item" onclick="scrollTo('dynamics')"><div class="nav-dot" style="background:#f97316"></div>近期重大动态</div>
+    <div class="nav-item" onclick="scrollTo('threat')"><div class="nav-dot" style="background:#ef4444"></div>竞争威胁评估</div>
+    <div class="nav-item" onclick="scrollTo('actions')"><div class="nav-dot" style="background:#22c55e"></div>应对建议</div>
+    <div class="nav-item" onclick="scrollTo('summary')"><div class="nav-dot" style="background:#3b82f6"></div>总结摘要</div>
+  </div>
+</nav>
+
+<!-- ───────── 主内容 ───────── -->
+<main class="main">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>🏭 Baffle & SNS 竞争情报简报</h1>
+      <p>海程新材料有限公司 · 研发部内参 · 覆盖25家竞争对手</p>
+      <div class="header-btns">
+        <button class="btn btn-white" onclick="downloadHTML()">⬇ 下载 HTML</button>
+        <button class="btn btn-outline" onclick="window.print()">🖨 打印 / PDF</button>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="header-tag">📅 2026 Q2</span>
+      <span class="header-tag">🔍 Baffle · SNS</span>
+      <span class="header-tag">🌍 全球市场</span>
+      <span class="header-tag">⚡ 25家企业</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       执行摘要（全文总览）
+  ══════════════════════════════════════════ -->
+  <div id="exec" class="section">
+    <div class="section-header">
+      <div class="section-num">📋</div>
+      <div class="section-title">执行摘要 · 全文总览</div>
+      <div class="section-pill">一眼看清风险与机会</div>
+    </div>
+
+    <!-- 顶部4个核心指标 -->
+    <div class="kpi-grid" style="margin-bottom:16px">
+      <div class="kpi-card red" onclick="showModal('综合威胁等级','当前最高威胁来自Sika泵注型SikaSeal-832对传统Baffle的工艺替代，以及Henkel/Zephyros在BEV平台的技术锁定。建议优先启动配方升级与专利回避双线应对。', threatPatents)">
+        <div class="kpi-label">综合威胁等级</div>
+        <div class="kpi-value" style="color:#ef4444">HIGH</div>
+        <div class="kpi-desc">3家A级威胁企业同步提速本土化</div>
+        <span class="kpi-pill pill-red">⚠ 需立即关注</span>
+      </div>
+      <div class="kpi-card orange" onclick="showModal('核心风险点','①Sika SikaSeal-832泵注方案可绕过传统Baffle装配工位；②Henkel EP2576293有效专利存在侵权风险；③BEV平台低温活化（≤130℃）新标准海程尚未覆盖；④外资本土化降价预计2026年内落地。', riskPatents)">
+        <div class="kpi-label">核心风险点</div>
+        <div class="kpi-value" style="color:#f97316">4项</div>
+        <div class="kpi-desc">工艺替代 · 专利侵权 · 技术标准 · 降价</div>
+        <span class="kpi-pill pill-orange">⚡ 高优先级</span>
+      </div>
+      <div class="kpi-card green" onclick="showModal('战略机会窗口','①中国自主品牌OEM国产替代需求旺盛；②GM/Stellantis平台2025-2026重新招标；③BEV新平台Baffle技术规格未锁定，先入为主机会存在；④Sonderhoff FIPFG技术可评估引进或合作。', oppoPatents)">
+        <div class="kpi-label">战略机会窗口</div>
+        <div class="kpi-value" style="color:#22c55e">3个</div>
+        <div class="kpi-desc">国产替代 · OEM招标 · BEV平台切入</div>
+        <span class="kpi-pill pill-green">↑ 立即布局</span>
+      </div>
+      <div class="kpi-card blue" onclick="showModal('海程综合竞争力','当前综合评分52/100，在本土化响应速度和成本控制上具有优势，但在专利储备、国际布局和BEV适配技术上存在明显差距。建议12个月内重点补强配方升级和专利布局。', hcPatents)">
+        <div class="kpi-label">海程综合评分</div>
+        <div class="kpi-value" style="color:#3b82f6">52<span style="font-size:16px">/100</span></div>
+        <div class="kpi-desc">本土优势明显，技术深度待补强</div>
+        <span class="kpi-pill pill-blue">→ 目标 75分</span>
+      </div>
+    </div>
+
+    <!-- 执行摘要主体 -->
+    <div class="exec-summary">
+      <div class="exec-summary-header">
+        <span class="icon">🎯</span>
+        <div>
+          <h2>竞争态势速览 · 风险-机会-行动三维总结</h2>
+          <p>基于PatSnap专利数据库 + 公开市场信息综合研判，供研发决策参考</p>
+        </div>
+      </div>
+      <div class="exec-body">
+        <div class="exec-col">
+          <div class="exec-col-title threat">⚠ 核心风险（立即响应）</div>
+          <div class="exec-item"><div class="dot red"></div>Sika SikaSeal-832泵注方案颠覆传统Baffle装配工位，一旦OEM大规模采用将改变竞争赛道</div>
+          <div class="exec-item"><div class="dot red"></div>Henkel EP2576293（带弹簧翻盖Baffle装置）仍有效，现有产品结构需比对回避</div>
+          <div class="exec-item"><div class="dot red"></div>BEV平台要求低温活化≤130℃，现有EVA配方是否满足尚需验证</div>
+          <div class="exec-item"><div class="dot red"></div>Sika/Henkel 2026年内本土化降价10-20%，成本优势将快速收窄</div>
+        </div>
+        <div class="exec-col">
+          <div class="exec-col-title oppo">✅ 战略机会（主动把握）</div>
+          <div class="exec-item"><div class="dot green"></div>中国新能源OEM（比亚迪/理想/蔚来）声学包本土供应商需求激增，进入窗口开放</div>
+          <div class="exec-item"><div class="dot green"></div>GM 2025年供应商资质认证轮换，Stellantis STLA平台重新招标，存在国产替代窗口</div>
+          <div class="exec-item"><div class="dot green"></div>BEV专属Baffle技术规格尚未标准化，率先完成认证可形成先发优势</div>
+          <div class="exec-item"><div class="dot green"></div>集成件（Baffle+SNS一体化）为海程差异化优势方向，竞品尚未规模化</div>
+        </div>
+        <div class="exec-col">
+          <div class="exec-col-title action">🚀 优先行动（12个月内）</div>
+          <div class="exec-item"><div class="dot blue"></div><strong>P1：</strong>开发低温活化（目标120-130℃）BEV专用Baffle配方，3个月内完成实验室验证</div>
+          <div class="exec-item"><div class="dot blue"></div><strong>P1：</strong>对Henkel EP2576293进行详细侵权比对，出具回避设计方案</div>
+          <div class="exec-item"><div class="dot blue"></div><strong>P2：</strong>提交3-5件集成件方向自主专利申请，构建专利护城河</div>
+          <div class="exec-item"><div class="dot blue"></div><strong>P2：</strong>启动GM/Stellantis供应商资质申请，准备技术数据包</div>
+        </div>
+        <div class="exec-col">
+          <div class="exec-col-title score">📊 竞争格局评分</div>
+          <div class="exec-score-grid">
+            <div class="exec-score-item">
+              <div class="s-val" style="color:#ef4444">⭐⭐⭐⭐⭐</div>
+              <div class="s-label">Zephyros/L&L</div>
+            </div>
+            <div class="exec-score-item">
+              <div class="s-val" style="color:#ef4444">⭐⭐⭐⭐⭐</div>
+              <div class="s-label">Sika AG</div>
+            </div>
+            <div class="exec-score-item">
+              <div class="s-val" style="color:#ef4444">⭐⭐⭐⭐⭐</div>
+              <div class="s-label">Henkel AG</div>
+            </div>
+            <div class="exec-score-item">
+              <div class="s-val" style="color:#f97316">⭐⭐⭐⭐</div>
+              <div class="s-label">BASF/Dow</div>
+            </div>
+            <div class="exec-score-item" style="grid-column:1/-1">
+              <div class="s-val" style="color:#3b82f6;font-size:16px">海程目标: 75/100</div>
+              <div class="s-label">当前: 52 → 12个月目标</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       01 市场全景 & 海程综合评估（合并板块）
+  ══════════════════════════════════════════ -->
+  <div id="market" class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">市场全景 & 海程综合评估</div>
+      <div class="section-pill">Baffle · SNS · 汽车声学结构</div>
+    </div>
+
+    <!-- 市场KPI -->
+    <div class="kpi-grid">
+      <div class="kpi-card blue" onclick="showModal('全球市场规模','汽车声学与结构密封市场（Baffle+SNS+密封胶）2025年全球市场规模约42亿美元，预计2030年达到58亿美元，CAGR约6.6%。', marketPatents)">
+        <div class="kpi-label">全球市场规模</div>
+        <div class="kpi-value">$4.2<span style="font-size:18px">B</span></div>
+        <div class="kpi-desc">2025年汽车声学结构密封市场</div>
+        <span class="kpi-pill pill-blue">↑ CAGR 6.6%</span>
+      </div>
+      <div class="kpi-card green" onclick="showModal('新能源渗透率','新能源车型对Baffle的技术要求显著提升（低温活化/铝车身兼容/更高气密）。预计2026年BEV平台Baffle采购量占比达35%以上。', evPatents)">
+        <div class="kpi-label">新能源渗透率</div>
+        <div class="kpi-value">38<span style="font-size:18px">%</span></div>
+        <div class="kpi-desc">BEV平台Baffle需求占比(2026E)</div>
+        <span class="kpi-pill pill-green">↑ 快速增长</span>
+      </div>
+      <div class="kpi-card red" onclick="showModal('三巨头市场份额','Zephyros（L&L）、Sika、Henkel三家合计占据全球Baffle+SNS市场约65-70%份额，形成寡头垄断格局。中国本土供应商合计份额约10-15%，增长空间大。', top3Patents)">
+        <div class="kpi-label">三巨头市场份额</div>
+        <div class="kpi-value">65<span style="font-size:18px">%</span></div>
+        <div class="kpi-desc">Zephyros+Sika+Henkel合计占比</div>
+        <span class="kpi-pill pill-red">⚠ 高度集中</span>
+      </div>
+      <div class="kpi-card orange" onclick="showModal('中国市场机会','中国是全球最大汽车市场，本土供应商Baffle市场份额约10-15%，随新能源国产化要求提升，预计3年内本土供应商份额可达25-30%。', cnPatents)">
+        <div class="kpi-label">中国市场机会</div>
+        <div class="kpi-value">¥18<span style="font-size:18px">亿</span></div>
+        <div class="kpi-desc">国内Baffle+SNS市场规模(2025E)</div>
+        <span class="kpi-pill pill-orange">↑ 国产替代加速</span>
+      </div>
+    </div>
+
+    <!-- 市场图表 -->
+    <div class="chart-grid">
+      <div class="chart-card" onclick="showModal('市场份额分布','点击各企业查看其代表性专利。', marketSharePatents)">
+        <div class="chart-title">🥧 全球市场份额分布（2025E）</div>
+        <div class="chart-wrap">
+<div style="padding:8px 0">
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:12px">
+    <div style="text-align:center">
+      <div style="width:100px;height:100px;border-radius:50%;background:conic-gradient(#ef4444 0% 28%,#3b82f6 28% 48%,#f59e0b 48% 65%,#8b5cf6 65% 75%,#e2e8f0 75% 100%);margin:0 auto 6px"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;justify-content:center">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:12px;height:12px;background:#ef4444;border-radius:3px;display:inline-block"></span>Zephyros/L&L <b>28%</b></div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:12px;height:12px;background:#3b82f6;border-radius:3px;display:inline-block"></span>Sika AG <b>20%</b></div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:12px;height:12px;background:#f59e0b;border-radius:3px;display:inline-block"></span>Henkel AG <b>17%</b></div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:12px;height:12px;background:#8b5cf6;border-radius:3px;display:inline-block"></span>BASF/Dow <b>10%</b></div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:12px;height:12px;background:#e2e8f0;border-radius:3px;display:inline-block"></span>其他（含本土）<b>25%</b></div>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+      <div class="chart-card" onclick="showModal('市场规模增长趋势','全球Baffle+SNS市场2020-2030年增长趋势，BEV渗透加速推动2024年后增速提升。', marketGrowthPatents)">
+        <div class="chart-title">📈 市场规模增长趋势（2020-2030E）</div>
+        <div class="chart-wrap">
+<div style="padding:8px 4px">
+  <div style="display:flex;align-items:flex-end;gap:6px;height:90px;margin-bottom:6px">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#dbeafe;border-radius:3px 3px 0 0;width:100%;height:48%"></div>
+      <span style="font-size:9px;color:#64748b">2020</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#bfdbfe;border-radius:3px 3px 0 0;width:100%;height:52%"></div>
+      <span style="font-size:9px;color:#64748b">2021</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#93c5fd;border-radius:3px 3px 0 0;width:100%;height:55%"></div>
+      <span style="font-size:9px;color:#64748b">2022</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#60a5fa;border-radius:3px 3px 0 0;width:100%;height:60%"></div>
+      <span style="font-size:9px;color:#64748b">2023</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#3b82f6;border-radius:3px 3px 0 0;width:100%;height:66%"></div>
+      <span style="font-size:9px;color:#64748b">2024</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#2563eb;border-radius:3px 3px 0 0;width:100%;height:72%"></div>
+      <span style="font-size:9px;color:#64748b">2025E</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#1d4ed8;border-radius:3px 3px 0 0;width:100%;height:79%"></div>
+      <span style="font-size:9px;color:#64748b">2026E</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#1e40af;border-radius:3px 3px 0 0;width:100%;height:86%"></div>
+      <span style="font-size:9px;color:#64748b">2027E</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#1e3a8a;border-radius:3px 3px 0 0;width:100%;height:93%"></div>
+      <span style="font-size:9px;color:#64748b">2028E</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="background:#172554;border-radius:3px 3px 0 0;width:100%;height:97%"></div>
+      <span style="font-size:9px;color:#64748b">2030E</span>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:11px;color:#64748b">市场规模：$2.8B(2020) → $4.2B(2025E) → $5.8B(2030E) · CAGR≈7.2%</div>
+</div>
+</div>
+      </div>
+      <div class="chart-card" onclick="showModal('地区市场分布','欧洲最大（40%），亚太增速最快，中国本土替代机会显著。', regionPatents)">
+        <div class="chart-title">🌍 地区市场分布</div>
+        <div class="chart-wrap">
+<div style="padding:8px 4px">
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:70px;text-align:right;flex-shrink:0">欧洲</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden">
+        <div style="width:40%;background:#3b82f6;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">40%</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:70px;text-align:right;flex-shrink:0">北美</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden">
+        <div style="width:25%;background:#ef4444;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">25%</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:70px;text-align:right;flex-shrink:0">中国</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden">
+        <div style="width:18%;background:#22c55e;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">18%</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:70px;text-align:right;flex-shrink:0">亚太其他</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden">
+        <div style="width:12%;background:#f59e0b;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">12%</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:70px;text-align:right;flex-shrink:0">其他</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden">
+        <div style="width:5%;background:#94a3b8;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:6px">
+          <span style="font-size:11px;color:#fff;font-weight:700">5%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:8px;font-size:11px;color:#64748b;text-align:center">🔥 中国市场增速最快，国产替代机会显著</div>
+</div>
+</div>
+      </div>
+    </div>
+
+    <!-- 海程综合评估 -->
+    <div style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:16px">
+      <div style="background:linear-gradient(135deg,#1e3a5f,#3b82f6);padding:14px 20px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">🏠</span>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:700">海程新材料有限公司 · 综合评估</div>
+          <div style="color:rgba(255,255,255,0.8);font-size:11px">全称：海程新材料有限公司 · 主营：Baffle隔音胶块 / SNS结构增强件 · 定位：汽车声学结构一体化解决方案</div>
+        </div>
+      </div>
+      <!-- 战略标签 -->
+      <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">核心战略标签</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="tag tag-blue">🏠 本土化快速响应</span>
+          <span class="tag tag-green">🔗 Baffle+SNS集成设计</span>
+          <span class="tag tag-orange">⚡ 新能源平台切入</span>
+          <span class="tag tag-purple">🔬 配方自主研发</span>
+          <span class="tag tag-yellow">💰 成本竞争优势</span>
+          <span class="tag tag-red">🛡 专利防御布局中</span>
+        </div>
+      </div>
+      <!-- SWOT + 专利 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="padding:16px 20px;border-right:1px solid var(--border)">
+          <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">SWOT 分析</div>
+          <div class="swot-grid">
+            <div class="swot-box S">
+              <div class="swot-title">S 优势</div>
+              <div class="swot-item">本土化响应速度快，交期灵活</div>
+              <div class="swot-item">Baffle+SNS集成件差异化优势</div>
+              <div class="swot-item">中国市场渠道成本低</div>
+              <div class="swot-item">自主配方研发能力积累中</div>
+            </div>
+            <div class="swot-box W">
+              <div class="swot-title">W 劣势</div>
+              <div class="swot-item">专利储备量少，国际布局空白</div>
+              <div class="swot-item">BEV低温活化配方尚未验证</div>
+              <div class="swot-item">品牌认知度低，无国际客户</div>
+              <div class="swot-item">检测认证体系不完整</div>
+            </div>
+            <div class="swot-box O">
+              <div class="swot-title">O 机会</div>
+              <div class="swot-item">新能源OEM国产配套需求旺盛</div>
+              <div class="swot-item">GM/Stellantis招标开放窗口</div>
+              <div class="swot-item">BEV平台技术规格未锁定</div>
+              <div class="swot-item">外资本土化需要合作伙伴</div>
+            </div>
+            <div class="swot-box T">
+              <div class="swot-title">T 威胁</div>
+              <div class="swot-item">Sika泵注方案替代传统Baffle</div>
+              <div class="swot-item">Henkel EP2576293侵权风险</div>
+              <div class="swot-item">外资本土降价压缩成本优势</div>
+              <div class="swot-item">BEV新标准门槛持续提升</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 20px">
+          <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">专利组合全景（23件样本）</div>
+          <div class="chart-grid-2" style="margin-bottom:0">
+            <div class="chart-card" style="padding:12px" onclick="showModal('海程专利IPC分类','海程23件专利按IPC技术分类分布。', hcPatents)">
+              <div class="chart-title" style="font-size:12px">IPC技术分类</div>
+              <div class="chart-wrap-sm">
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:4px 0">
+  <div style="text-align:center">
+    <div style="width:70px;height:70px;border-radius:50%;background:conic-gradient(#22c55e 0% 45%,#3b82f6 45% 75%,#f59e0b 75% 93%,#8b5cf6 93% 100%);margin:0 auto 4px"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:4px;justify-content:center">
+    <div style="font-size:10px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:#22c55e;border-radius:2px;display:inline-block"></span>B60R13隔音 45%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:#3b82f6;border-radius:2px;display:inline-block"></span>B62D29增强 30%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:#f59e0b;border-radius:2px;display:inline-block"></span>集成件 18%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:#8b5cf6;border-radius:2px;display:inline-block"></span>工艺方法 7%</div>
+  </div>
+</div>
+</div>
+            </div>
+            <div class="chart-card" style="padding:12px" onclick="showModal('海程年度申请趋势','海程专利年度申请趋势，2022年后快速增长。', hcPatents)">
+              <div class="chart-title" style="font-size:12px">年度申请趋势</div>
+              <div class="chart-wrap-sm">
+<div style="padding:4px 0">
+  <div style="display:flex;align-items:flex-end;gap:5px;height:70px;margin-bottom:4px">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#86efac;border-radius:2px 2px 0 0;width:100%;height:14%"></div><span style="font-size:9px;color:#64748b">2020</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#4ade80;border-radius:2px 2px 0 0;width:100%;height:29%"></div><span style="font-size:9px;color:#64748b">2021</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#22c55e;border-radius:2px 2px 0 0;width:100%;height:57%"></div><span style="font-size:9px;color:#64748b">2022</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#16a34a;border-radius:2px 2px 0 0;width:100%;height:86%"></div><span style="font-size:9px;color:#64748b">2023</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#15803d;border-radius:2px 2px 0 0;width:100%;height:100%"></div><span style="font-size:9px;color:#64748b">2024</span></div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px"><div style="background:#166534;border-radius:2px 2px 0 0;width:100%;height:43%"></div><span style="font-size:9px;color:#64748b">2025</span></div>
+  </div>
+  <div style="text-align:center;font-size:10px;color:#64748b">申请量：1→2→4→6→7→3件（2025年进行中）</div>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 各企业专利对比 -->
+    <div class="chart-grid-2">
+      <div class="chart-card" onclick="showModal('企业专利总量对比','点击各企业柱体查看其代表性专利。', allPatents)">
+        <div class="chart-title">📊 各企业专利总量对比</div>
+        <div class="chart-wrap-lg">
+<div style="padding:8px 4px">
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">Zephyros/L&L</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:100%;background:#ef4444;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">600+ 件</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">Sika AG</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:70%;background:#3b82f6;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">425+ 件</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">Henkel AG</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:63%;background:#f59e0b;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">380+ 件</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">BASF</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:53%;background:#8b5cf6;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">320+ 件</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">Dow Global</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:46%;background:#06b6d4;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">280+ 件</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:11px;color:#374151;width:90px;text-align:right;flex-shrink:0">海程</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:22px">
+        <div style="width:4%;background:#22c55e;height:100%;border-radius:4px;min-width:40px;display:flex;align-items:center;padding-left:8px">
+          <span style="font-size:11px;color:#fff;font-weight:700">23 件</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+      <div class="chart-card" onclick="showModal('IPC技术领域覆盖对比','各企业在主要IPC技术分类（B60R13/B62D29/C08J9/B29C44）上的专利布局对比。', ipcComparePatents)">
+        <div class="chart-title">🕸 技术领域覆盖雷达图</div>
+        <div class="chart-wrap-lg">
+<div style="padding:8px">
+  <table style="width:100%;border-collapse:collapse;font-size:11px">
+    <thead>
+      <tr style="background:#f8fafc">
+        <th style="padding:6px 8px;text-align:left;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0">技术维度</th>
+        <th style="padding:6px 8px;text-align:center;color:#ef4444;font-weight:700;border-bottom:1px solid #e2e8f0">Zephyros</th>
+        <th style="padding:6px 8px;text-align:center;color:#3b82f6;font-weight:700;border-bottom:1px solid #e2e8f0">Sika</th>
+        <th style="padding:6px 8px;text-align:center;color:#f59e0b;font-weight:700;border-bottom:1px solid #e2e8f0">Henkel</th>
+        <th style="padding:6px 8px;text-align:center;color:#22c55e;font-weight:700;border-bottom:1px solid #e2e8f0">海程</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f1f5f9">
+        <td style="padding:5px 8px;color:#374151">B60R13 隔音</td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#ef4444;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">95</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#3b82f6;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">90</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#f59e0b;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">85</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#dcfce7;border-radius:4px;padding:2px 4px;color:#16a34a;font-weight:700;display:inline-block">40</div></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fafafa">
+        <td style="padding:5px 8px;color:#374151">B62D29 增强</td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#ef4444;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">90</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#bfdbfe;border-radius:4px;padding:2px 4px;color:#1d4ed8;font-weight:700;display:inline-block">70</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#f59e0b;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">80</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#dcfce7;border-radius:4px;padding:2px 4px;color:#16a34a;font-weight:700;display:inline-block">35</div></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9">
+        <td style="padding:5px 8px;color:#374151">C08J9 发泡</td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#fca5a5;border-radius:4px;padding:2px 4px;color:#991b1b;font-weight:700;display:inline-block">75</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#3b82f6;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">85</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#f59e0b;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">80</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#dcfce7;border-radius:4px;padding:2px 4px;color:#16a34a;font-weight:700;display:inline-block">30</div></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fafafa">
+        <td style="padding:5px 8px;color:#374151">集成件</td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#fca5a5;border-radius:4px;padding:2px 4px;color:#991b1b;font-weight:700;display:inline-block">60</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#bfdbfe;border-radius:4px;padding:2px 4px;color:#1d4ed8;font-weight:700;display:inline-block">55</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#fde68a;border-radius:4px;padding:2px 4px;color:#92400e;font-weight:700;display:inline-block">50</div></td>
+        <td style="padding:5px 8px;text-align:center"><div style="background:#22c55e;border-radius:4px;padding:2px 4px;color:#fff;font-weight:700;display:inline-block">65⭐</div></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:6px;font-size:10px;color:#64748b;text-align:center">⭐ 海程在集成件方向具备差异化优势，建议重点强化</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       02 Zephyros / L&L Products
+  ══════════════════════════════════════════ -->
+  <div id="zephyros" class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">Zephyros / L&L Products</div>
+      <div class="section-pill">威胁等级 ⭐⭐⭐⭐⭐</div>
+    </div>
+    <div class="company-card">
+      <div class="company-header">
+        <div class="company-header-left">
+          <div class="company-avatar" style="background:linear-gradient(135deg,#ef4444,#f97316)">Z</div>
+          <div>
+            <div class="company-name">Zephyros, Inc. / L&L Products, Inc.</div>
+            <div class="company-sub">美国密歇根州 Romeo · 1958年创立 · 全球汽车声学与结构解决方案领导者</div>
+          </div>
+        </div>
+        <div class="tag-list">
+          <span class="tag tag-red">A级威胁</span>
+          <span class="tag tag-blue">全球布局</span>
+          <span class="tag tag-orange">BEV加速</span>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="company-col">
+          <div class="col-title">公司基础信息</div>
+          <div class="info-row"><span class="info-key">全称</span><span class="info-val">Zephyros, Inc.（L&L Products旗下独立品牌）</span></div>
+          <div class="info-row"><span class="info-key">主营</span><span class="info-val">膨胀Baffle · 结构增强泡沫 · 声学包系统</span></div>
+          <div class="info-row"><span class="info-key">定位</span><span class="info-val">汽车空腔密封+结构增强一体化，OEM Tier 1直供</span></div>
+          <div class="info-row"><span class="info-key">客户</span><span class="info-val">VW · BMW · Ford · GM · 宝马全系平台</span></div>
+          <div class="info-row"><span class="info-key">定价</span><span class="info-val">高端溢价，单件ASP高于市场均价20-35%</span></div>
+          <div style="margin-top:10px">
+            <div class="swot-grid">
+              <div class="swot-box S"><div class="swot-title">优势</div><div class="swot-item">技术壁垒最高，核心专利护城河强</div><div class="swot-item">OEM深度绑定，换供难度大</div></div>
+              <div class="swot-box W"><div class="swot-title">劣势</div><div class="swot-item">价格溢价高，成本敏感型OEM难渗透</div><div class="swot-item">中国本土化服务响应慢</div></div>
+              <div class="swot-box O"><div class="swot-title">机会</div><div class="swot-item">BEV平台新品开发主导权</div></div>
+              <div class="swot-box T"><div class="swot-title">威胁</div><div class="swot-item">中国本土竞争者价格冲击</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">近期动态 & 预判</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#ef4444"></div>
+              <div class="timeline-date">2024 Q4</div>
+              <div class="timeline-title">BEV专属Baffle加速研发</div>
+              <div class="timeline-desc">专注电池包结构腔体密封，低温活化（≤130℃）新产品</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#f97316"></div>
+              <div class="timeline-date">2025 Q1</div>
+              <div class="timeline-title">亚太本地化生产布局</div>
+              <div class="timeline-desc">向亚太市场输出技术授权信号，寻找本地合作</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#f59e0b"></div>
+              <div class="timeline-date">2026 预判</div>
+              <div class="timeline-title">中国寻找合资/代工伙伴</div>
+              <div class="timeline-desc">加速本土交付，对海程构成直接竞争压力</div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">专利组合全景</div>
+          <div class="chart-card" style="padding:10px;margin-bottom:10px" onclick="showModal('Zephyros代表专利','Zephyros核心专利清单', zephyrosPatents)">
+            <div class="chart-title" style="font-size:11px">专利分类分布（点击查看专利）</div>
+            <div class="chart-wrap-sm">
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:2px 0">
+  <div style="width:60px;height:60px;border-radius:50%;background:conic-gradient(#ef4444 0% 40%,#f97316 40% 75%,#f59e0b 75% 90%,#e2e8f0 90% 100%);margin:auto"></div>
+  <div style="display:flex;flex-direction:column;gap:3px;justify-content:center">
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#ef4444;border-radius:2px;display:inline-block"></span>B60R13 40%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#f97316;border-radius:2px;display:inline-block"></span>B62D29 35%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#f59e0b;border-radius:2px;display:inline-block"></span>F16J 15%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#e2e8f0;border-radius:2px;display:inline-block"></span>其他 10%</div>
+  </div>
+</div>
+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center">
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Zephyros专利总量','600+件全球专利，主要布局在US/EP/CN三大市场。', zephyrosPatents)">
+              <div style="font-size:18px;font-weight:800;color:#ef4444">600+</div>
+              <div style="font-size:10px;color:var(--text-muted)">专利总量</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Zephyros有效专利','72%有效专利，核心护城河专利大多仍在有效期内。', zephyrosPatents)">
+              <div style="font-size:18px;font-weight:800;color:#22c55e">72%</div>
+              <div style="font-size:10px;color:var(--text-muted)">有效率</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Zephyros管辖区','主要在US/EP/CN三大管辖区布局，覆盖主要汽车市场。', zephyrosPatents)">
+              <div style="font-size:14px;font-weight:800;color:#3b82f6">US·EP·CN</div>
+              <div style="font-size:10px;color:var(--text-muted)">核心管辖区</div>
+            </div>
+          </div>
+          <div style="margin-top:10px">
+            <table class="patent-table">
+              <tr><th>专利号</th><th>标题</th><th>状态</th></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=ca058fa2-82d6-4f6f-be33-2955443c421f" target="_blank">US7913814B2</a></td><td>Acoustic baffle assembly</td><td><span class="status-badge status-active">有效</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=3bd66924-b863-4747-bd21-29f6043c5737" target="_blank">US6953219B2</a></td><td>Reinforcing members</td><td><span class="status-badge status-expired">已过期</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=d17187aa-c604-4c9d-92f7-8c48b3b27d27" target="_blank">WO2018075734A1</a></td><td>Acoustic absorber composited baffle</td><td><span class="status-badge status-active">有效</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       03 Sika AG
+  ══════════════════════════════════════════ -->
+  <div id="sika" class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">Sika AG</div>
+      <div class="section-pill">威胁等级 ⭐⭐⭐⭐⭐ · ⚠ 工艺替代威胁</div>
+    </div>
+    <div class="company-card">
+      <div class="company-header">
+        <div class="company-header-left">
+          <div class="company-avatar" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">S</div>
+          <div>
+            <div class="company-name">Sika AG</div>
+            <div class="company-sub">瑞士Baar · 1910年创立 · 全球建筑+汽车化学材料双线巨头</div>
+          </div>
+        </div>
+        <div class="tag-list">
+          <span class="tag tag-red">A级威胁</span>
+          <span class="tag tag-red">⚠ 工艺替代</span>
+          <span class="tag tag-blue">并购扩张</span>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="company-col">
+          <div class="col-title">核心产品体系</div>
+          <div class="info-row"><span class="info-key">Baffle</span><span class="info-val">SikaBaffle®系列（多形态可定制热膨胀Baffle）</span></div>
+          <div class="info-row"><span class="info-key">密封</span><span class="info-val">SikaSeal®系列（含⚠ SikaSeal-832泵注型新品）</span></div>
+          <div class="info-row"><span class="info-key">SNS</span><span class="info-val">SikaReinforcer®（结构增强泡沫，对标海程SNS）</span></div>
+          <div class="info-row"><span class="info-key">客户</span><span class="info-val">VW集团 · Stellantis · Renault-Nissan</span></div>
+          <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px;margin-top:10px">
+            <div style="font-size:11px;font-weight:700;color:#dc2626;margin-bottom:6px">⚠ 核心威胁：SikaSeal-832 泵注型方案</div>
+            <div style="font-size:11.5px;color:#7f1d1d;line-height:1.5">泵注型密封方案可在装配线原位注射成型，<strong>绕过传统预成型Baffle装配工位</strong>，一旦OEM大规模采用将直接改变竞争赛道，对传统Baffle供应商构成工艺降维威胁。</div>
+          </div>
+          <div style="margin-top:10px">
+            <div class="swot-grid">
+              <div class="swot-box S"><div class="swot-title">优势</div><div class="swot-item">产品体系最完整，覆盖全链条</div><div class="swot-item">泵注型技术颠覆性强</div></div>
+              <div class="swot-box W"><div class="swot-title">劣势</div><div class="swot-item">泵注方案需OEM改造装配线，推广周期长</div></div>
+              <div class="swot-box O"><div class="swot-title">机会</div><div class="swot-item">BEV低温活化需求与其新品完美契合</div></div>
+              <div class="swot-box T"><div class="swot-title">威胁</div><div class="swot-item">OEM保守性可能延缓泵注方案采用</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">近期动态 & 预判</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#3b82f6"></div>
+              <div class="timeline-date">2024 Q3</div>
+              <div class="timeline-title">SikaSeal-832泵注型上市</div>
+              <div class="timeline-desc">低密度、低释放温度，专为BEV铝车身120℃烤漆工艺设计</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#06b6d4"></div>
+              <div class="timeline-date">2024-2025</div>
+              <div class="timeline-title">亚太并购扩张</div>
+              <div class="timeline-desc">完成多起亚太分销商并购，强化中国本土服务能力</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#f59e0b"></div>
+              <div class="timeline-date">2026 预判</div>
+              <div class="timeline-title">中国本土降价10-20%</div>
+              <div class="timeline-desc">本土化成本下降，价格竞争将直接冲击海程</div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">专利组合全景</div>
+          <div class="chart-card" style="padding:10px;margin-bottom:10px" onclick="showModal('Sika代表专利','Sika核心专利清单', sikaPatents)">
+            <div class="chart-title" style="font-size:11px">专利分类分布</div>
+            <div class="chart-wrap-sm">
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:2px 0">
+  <div style="width:60px;height:60px;border-radius:50%;background:conic-gradient(#3b82f6 0% 38%,#06b6d4 38% 66%,#60a5fa 66% 88%,#93c5fd 88% 100%);margin:auto"></div>
+  <div style="display:flex;flex-direction:column;gap:3px;justify-content:center">
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#3b82f6;border-radius:2px;display:inline-block"></span>B60R13 38%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#06b6d4;border-radius:2px;display:inline-block"></span>C08J9 28%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#60a5fa;border-radius:2px;display:inline-block"></span>F16J15 22%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#93c5fd;border-radius:2px;display:inline-block"></span>B62D29 12%</div>
+  </div>
+</div>
+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center">
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Sika专利总量','425+件专利。', sikaPatents)">
+              <div style="font-size:18px;font-weight:800;color:#3b82f6">425+</div><div style="font-size:10px;color:var(--text-muted)">专利总量</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Sika有效专利','68%有效率。', sikaPatents)">
+              <div style="font-size:18px;font-weight:800;color:#22c55e">68%</div><div style="font-size:10px;color:var(--text-muted)">有效率</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Sika管辖区','EP/US/CN三大管辖区。', sikaPatents)">
+              <div style="font-size:14px;font-weight:800;color:#3b82f6">EP·US·CN</div><div style="font-size:10px;color:var(--text-muted)">管辖区</div>
+            </div>
+          </div>
+          <div style="margin-top:10px">
+            <table class="patent-table">
+              <tr><th>专利号</th><th>标题</th><th>状态</th></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=dbb76dae-faa4-4519-afda-f05a1de2f7a5" target="_blank">EP1323588A1</a></td><td>Acoustic baffle w/ flap assembly</td><td><span class="status-badge status-expired">已过期</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=fe268b72-26fb-4057-8381-a72cd7e8db05" target="_blank">EP3254939B1</a></td><td>Baffle</td><td><span class="status-badge status-active">有效</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=9451537b-03c6-4c27-bd3e-5c088a6664d0" target="_blank">US10384419B2</a></td><td>Baffle</td><td><span class="status-badge status-active">有效</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       04 Henkel AG
+  ══════════════════════════════════════════ -->
+  <div id="henkel" class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">Henkel AG</div>
+      <div class="section-pill">威胁等级 ⭐⭐⭐⭐⭐ · ⚠ 侵权风险</div>
+    </div>
+    <div class="company-card">
+      <div class="company-header">
+        <div class="company-header-left">
+          <div class="company-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">H</div>
+          <div>
+            <div class="company-name">Henkel AG & Co. KGaA</div>
+            <div class="company-sub">德国杜塞尔多夫 · Teroson/TEROSTAT品牌 · 汽车OEM粘接/密封/NVH综合供应商</div>
+          </div>
+        </div>
+        <div class="tag-list">
+          <span class="tag tag-red">A级威胁</span>
+          <span class="tag tag-red">⚠ 侵权风险</span>
+          <span class="tag tag-yellow">OEM深度绑定</span>
+        </div>
+      </div>
+      <div class="company-body">
+        <div class="company-col">
+          <div class="col-title">核心产品与侵权风险</div>
+          <div class="info-row"><span class="info-key">Baffle</span><span class="info-val">Teroson GB系列膨胀Baffle</span></div>
+          <div class="info-row"><span class="info-key">SNS</span><span class="info-val">Terocore®结构泡沫（直接对标海程SNS）</span></div>
+          <div class="info-row"><span class="info-key">密封</span><span class="info-val">热熔型空腔密封胶，低VOC配方</span></div>
+          <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px;margin-top:10px">
+            <div style="font-size:11px;font-weight:700;color:#dc2626;margin-bottom:6px">⚠ 侵权风险警报：EP2576293</div>
+            <div style="font-size:11.5px;color:#7f1d1d;line-height:1.5">Henkel持有<strong>EP2576293B2（仍有效）</strong>，涉及带弹簧翻盖的声学Baffle装置结构。若海程现有产品包含类似翻盖结构，存在侵权风险，<strong>建议立即进行详细比对</strong>并出具回避设计方案。</div>
+          </div>
+          <div style="margin-top:10px">
+            <div class="swot-grid">
+              <div class="swot-box S"><div class="swot-title">优势</div><div class="swot-item">与德系OEM共创，换供壁垒极高</div><div class="swot-item">800V高压平台声学解决方案领先</div></div>
+              <div class="swot-box T"><div class="swot-title">威胁海程</div><div class="swot-item">EP2576293有效专利，侵权风险实质</div><div class="swot-item">Terocore与SNS直接产品竞争</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">近期动态 & 预判</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#f59e0b"></div>
+              <div class="timeline-date">2024</div>
+              <div class="timeline-title">低VOC/低气味Baffle配方推出</div>
+              <div class="timeline-desc">满足车内空气质量法规（VOC法规加严）</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#ef4444"></div>
+              <div class="timeline-date">2025</div>
+              <div class="timeline-title">800V高压声学密封方案量产</div>
+              <div class="timeline-desc">与德系OEM同步推进，技术门槛持续拔高</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:#f97316"></div>
+              <div class="timeline-date">2026 预判</div>
+              <div class="timeline-title">Teroson中国加大推广</div>
+              <div class="timeline-desc">品牌本土化运营加强，直接在华争夺市场份额</div>
+            </div>
+          </div>
+        </div>
+        <div class="company-col">
+          <div class="col-title">专利组合全景</div>
+          <div class="chart-card" style="padding:10px;margin-bottom:10px" onclick="showModal('Henkel代表专利','Henkel核心专利清单（含⚠EP2576293侵权风险专利）', henkelPatents)">
+            <div class="chart-title" style="font-size:11px">专利分类分布</div>
+            <div class="chart-wrap-sm">
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:2px 0">
+  <div style="width:60px;height:60px;border-radius:50%;background:conic-gradient(#f59e0b 0% 42%,#ef4444 42% 67%,#f97316 67% 87%,#fbbf24 87% 100%);margin:auto"></div>
+  <div style="display:flex;flex-direction:column;gap:3px;justify-content:center">
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#f59e0b;border-radius:2px;display:inline-block"></span>B60R13 42%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#ef4444;border-radius:2px;display:inline-block"></span>C08J9 25%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#f97316;border-radius:2px;display:inline-block"></span>B62D29 20%</div>
+    <div style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;background:#fbbf24;border-radius:2px;display:inline-block"></span>F16J 13%</div>
+  </div>
+</div>
+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center">
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Henkel专利总量','380+件专利。', henkelPatents)">
+              <div style="font-size:18px;font-weight:800;color:#f59e0b">380+</div><div style="font-size:10px;color:var(--text-muted)">专利总量</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Henkel有效专利','65%有效率。', henkelPatents)">
+              <div style="font-size:18px;font-weight:800;color:#22c55e">65%</div><div style="font-size:10px;color:var(--text-muted)">有效率</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:8px;cursor:pointer" onclick="showModal('Henkel管辖区','EP/DE/US三大管辖区。', henkelPatents)">
+              <div style="font-size:14px;font-weight:800;color:#f59e0b">EP·DE·US</div><div style="font-size:10px;color:var(--text-muted)">管辖区</div>
+            </div>
+          </div>
+          <div style="margin-top:10px">
+            <table class="patent-table">
+              <tr><th>专利号</th><th>标题</th><th>状态</th></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=ebf5b502-a6e0-4a3f-8baf-7f4db7745a3a" target="_blank" style="color:#dc2626">EP2576293B2 ⚠</a></td><td>Acoustic baffle device（带弹簧翻盖）</td><td><span class="status-badge status-active">有效</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=c167fb06-c8c3-4079-b05a-4fb6a112ca72" target="_blank">US8573355B2</a></td><td>Acoustic baffle device</td><td><span class="status-badge status-active">有效</span></td></tr>
+              <tr><td><a class="patent-link" href="https://eureka.zhihuiya.com/view/#/fullText?patentId=268282f7-4d2e-45ac-a795-c8e8163496e9" target="_blank">EP1590145B1</a></td><td>High expansion structural foam</td><td><span class="status-badge status-active">有效</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       05 B级竞争对手
+  ══════════════════════════════════════════ -->
+  <div id="bgrade" class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">B级竞争对手</div>
+      <div class="section-pill">BASF · Dow · LANXESS · Sonderhoff · Orotek · IIDA</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card purple" onclick="showModal('BASF SE','BASF提供Baffle/SNS原材料体系（PU发泡、环氧热膨胀配方）。2025年加大生物基/低碳汽车声学泡沫研发，向中国本土零部件商开放配方授权。主要威胁：若向海程竞争对手提供差异化配方支持，将拉大性能差距。', basfPatents)">
+        <div class="kpi-label">BASF SE</div>
+        <div class="kpi-value" style="font-size:20px;color:#8b5cf6">原料垄断</div>
+        <div class="kpi-desc">Elastofoam®/环氧热膨胀配方体系</div>
+        <span class="kpi-pill pill-purple">⭐⭐⭐⭐ 上游威胁</span>
+      </div>
+      <div class="kpi-card blue" onclick="showModal('Dow Global Technologies','Dow推出新型低密度BETAFOAM™配方，专门针对EV车身轻量化需求。与亚洲本土转化商合作扩大市场渗透。主要产品：BETAFOAM™聚氨酯发泡系统、VORAFLEX®。', dowPatents)">
+        <div class="kpi-label">Dow Global Technologies</div>
+        <div class="kpi-value" style="font-size:20px;color:#3b82f6">配方竞争</div>
+        <div class="kpi-desc">BETAFOAM™ · VORAFLEX® EV专用</div>
+        <span class="kpi-pill pill-blue">⭐⭐⭐ 原材料端</span>
+      </div>
+      <div class="kpi-card orange" onclick="showModal('Sonderhoff（汉高子公司）','FIPFG（现场成型发泡密封）工艺设备+材料一体化供应商。该工艺可在装配线现场注射成型密封，与传统预成型Baffle形成直接工艺竞争。需重点跟踪其FIPFG在汽车Baffle领域的渗透进度。', sonderhoffPatents)">
+        <div class="kpi-label">Sonderhoff（汉高子公司）</div>
+        <div class="kpi-value" style="font-size:20px;color:#f97316">FIPFG工艺</div>
+        <div class="kpi-desc">现场成型发泡密封，替代预成型Baffle</div>
+        <span class="kpi-pill pill-orange">⭐⭐⭐ 工艺替代</span>
+      </div>
+      <div class="kpi-card green" onclick="showModal('LANXESS / Orotek / IIDA','LANXESS：高性能PA/Durethan骨架材料，推出玻纤增强PA6用于汽车结构件，与国内尼龙骨架Baffle竞争。Orotek：土耳其橡胶发泡密封件供应商，主要服务欧洲OEM。IIDA（飯田産業）：日系Baffle供应商，主要服务丰田/本田/日产平台，中国渗透有限。', otherPatents)">
+        <div class="kpi-label">LANXESS · Orotek · IIDA</div>
+        <div class="kpi-value" style="font-size:20px;color:#22c55e">区域竞争</div>
+        <div class="kpi-desc">骨架材料 · 欧洲橡胶件 · 日系配套</div>
+        <span class="kpi-pill pill-green">⭐⭐⭐ 区域影响</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       06 整车厂OEM矩阵
+  ══════════════════════════════════════════ -->
+  <div id="oem" class="section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title">整车厂 OEM 矩阵</div>
+      <div class="section-pill">技术要求 · 切入难度 · 海程机会</div>
+    </div>
+    <div style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:16px">
+      <div style="padding:0 0 0 0;overflow-x:auto">
+        <table class="oem-table">
+          <thead>
+            <tr>
+              <th>整车厂</th>
+              <th>平台/关联</th>
+              <th>Baffle/SNS核心要求</th>
+              <th>主要现有供应商</th>
+              <th>切入难度</th>
+              <th>对海程机会</th>
+              <th>建议动作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>大众/奥迪/保时捷</strong></td>
+              <td>MEB/PPE平台</td>
+              <td>低温活化≤130℃，减重>15%，BBP关联内制</td>
+              <td>Sika · Henkel</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#e2e8f0"></div></div>高</td>
+              <td><span class="kpi-pill pill-yellow">中等 观望</span></td>
+              <td>跟踪BBP内制动向，准备技术数据包</td>
+            </tr>
+            <tr>
+              <td><strong>BMW / 宝马集团</strong></td>
+              <td>NEUE KLASSE</td>
+              <td>Baffle集成排水功能，IP防护等级提升</td>
+              <td>Zephyros · Henkel</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div></div>极高</td>
+              <td><span class="kpi-pill pill-red">低 暂缓</span></td>
+              <td>积累技术案例，3年后再尝试</td>
+            </tr>
+            <tr>
+              <td><strong>Daimler / Mercedes</strong></td>
+              <td>EQS/EQE系列</td>
+              <td>电池包空腔IP67气密，技术门槛极高</td>
+              <td>Henkel · Sika</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div><div class="diff-dot" style="background:#ef4444"></div></div>极高</td>
+              <td><span class="kpi-pill pill-red">低 暂缓</span></td>
+              <td>持续跟踪标准，优先提升气密能力</td>
+            </tr>
+            <tr>
+              <td><strong>GM Global</strong></td>
+              <td>Ultium平台</td>
+              <td>低成本路线，多供应商竞价</td>
+              <td>L&L · Zephyros</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div></div>中</td>
+              <td><span class="kpi-pill pill-green">高 ⭐立即行动</span></td>
+              <td>2025年认证轮换窗口，优先申请资质</td>
+            </tr>
+            <tr>
+              <td><strong>Ford</strong></td>
+              <td>电动化平台</td>
+              <td>成本导向，多供应商策略</td>
+              <td>Zephyros · L&L</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#f59e0b"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div></div>中</td>
+              <td><span class="kpi-pill pill-yellow">中等 跟进</span></td>
+              <td>准备竞标材料，强调成本优势</td>
+            </tr>
+            <tr>
+              <td><strong>Stellantis</strong></td>
+              <td>STLA平台</td>
+              <td>声学包重新招标，本土供应商开放</td>
+              <td>Sika · 待定</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#22c55e"></div><div class="diff-dot" style="background:#22c55e"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div></div>低</td>
+              <td><span class="kpi-pill pill-green">高 ⭐立即行动</span></td>
+              <td>STLA招标已开放，最优先级切入</td>
+            </tr>
+            <tr>
+              <td><strong>中国新能源OEM</strong></td>
+              <td>比亚迪/理想/蔚来</td>
+              <td>国产配套优先，响应速度要求高</td>
+              <td>尚未形成主导供应商</td>
+              <td><div class="difficulty-bar"><div class="diff-dot" style="background:#22c55e"></div><div class="diff-dot" style="background:#22c55e"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div><div class="diff-dot" style="background:#e2e8f0"></div></div>低</td>
+              <td><span class="kpi-pill pill-green">最高 ⭐⭐ 核心目标</span></td>
+              <td>以本土化速度+集成件差异化切入，重点突破</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- OEM机会评分图 -->
+    <div class="chart-card" onclick="showModal('OEM切入难度对比','各整车厂切入难度与海程机会综合评分。', oemPatents)">
+      <div class="chart-title">📊 OEM 机会 vs 切入难度评分对比</div>
+      <div class="chart-wrap">
+<div style="padding:8px 4px">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;color:#374151;width:80px;text-align:right;flex-shrink:0">中国新能源</span>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:95%;background:#22c55e;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#22c55e;font-weight:700;width:36px">机会95</span>
+      </div>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:30%;background:#ef4444;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#ef4444;font-weight:700;width:36px">难度30</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;color:#374151;width:80px;text-align:right;flex-shrink:0">Stellantis</span>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:85%;background:#22c55e;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#22c55e;font-weight:700;width:36px">机会85</span>
+      </div>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:35%;background:#ef4444;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#ef4444;font-weight:700;width:36px">难度35</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;color:#374151;width:80px;text-align:right;flex-shrink:0">GM</span>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:80%;background:#22c55e;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#22c55e;font-weight:700;width:36px">机会80</span>
+      </div>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:45%;background:#f59e0b;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#f59e0b;font-weight:700;width:36px">难度45</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;color:#374151;width:80px;text-align:right;flex-shrink:0">大众/奥迪</span>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:40%;background:#3b82f6;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#3b82f6;font-weight:700;width:36px">机会40</span>
+      </div>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:80%;background:#ef4444;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#ef4444;font-weight:700;width:36px">难度80</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:11px;color:#374151;width:80px;text-align:right;flex-shrink:0">BMW/Daimler</span>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:18%;background:#94a3b8;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#94a3b8;font-weight:700;width:36px">机会18</span>
+      </div>
+      <div style="flex:1;display:flex;gap:3px;align-items:center">
+        <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px"><div style="width:92%;background:#ef4444;height:100%;border-radius:4px"></div></div>
+        <span style="font-size:10px;color:#ef4444;font-weight:700;width:36px">难度92</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       07 近期重大动态
+  ══════════════════════════════════════════ -->
+  <div id="dynamics" class="section">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title">近期重大动态</div>
+      <div class="section-pill">2024-2026 事件追踪</div>
+    </div>
+    <div class="chart-grid-2">
+      <div class="chart-card" onclick="showModal('企业战略活跃度','2024-2026各企业战略动作数量对比，Sika/Henkel动作最为密集。', dynamicsPatents)">
+        <div class="chart-title">📊 企业战略活跃度（动作数量）</div>
+        <div class="chart-wrap-lg">
+<div style="padding:8px 4px">
+  <div style="display:flex;align-items:flex-end;gap:8px;height:100px;margin-bottom:8px;border-bottom:1px solid #e2e8f0;padding-bottom:4px">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:20px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:15px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:20px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#374151;margin-top:3px;font-weight:600">Sika</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:15px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:15px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:15px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#374151;margin-top:3px;font-weight:600">Henkel</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:15px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:10px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:15px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#374151;margin-top:3px;font-weight:600">Zephyros</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:5px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:10px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:10px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#374151;margin-top:3px;font-weight:600">BASF</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:5px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:10px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:10px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#374151;margin-top:3px;font-weight:600">Dow</span>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:1px">
+        <div style="width:80%;background:#f59e0b;height:15px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#22c55e;height:10px;border-radius:2px;margin-bottom:1px"></div>
+        <div style="width:80%;background:#3b82f6;height:5px;border-radius:2px"></div>
+      </div>
+      <span style="font-size:10px;color:#22c55e;margin-top:3px;font-weight:700">海程🏠</span>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:center">
+    <div style="display:flex;align-items:center;gap:3px;font-size:10px"><span style="width:10px;height:10px;background:#3b82f6;border-radius:2px;display:inline-block"></span>2024年</div>
+    <div style="display:flex;align-items:center;gap:3px;font-size:10px"><span style="width:10px;height:10px;background:#22c55e;border-radius:2px;display:inline-block"></span>2025年</div>
+    <div style="display:flex;align-items:center;gap:3px;font-size:10px"><span style="width:10px;height:10px;background:#f59e0b;border-radius:2px;display:inline-block"></span>2026预计</div>
+  </div>
+</div>
+</div>
+      </div>
+      <div style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:20px">
+        <div class="chart-title">📅 2024-2026 关键事件时间轴</div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot" style="background:#3b82f6"></div><div class="timeline-date">2024 Q3 · Sika</div><div class="timeline-title">SikaSeal-832泵注型方案上市</div><div class="timeline-desc">颠覆传统Baffle工艺路线，对行业格局影响深远</div></div>
+          <div class="timeline-item"><div class="timeline-dot" style="background:#f59e0b"></div><div class="timeline-date">2024 Q4 · Henkel</div><div class="timeline-title">800V高压平台声学密封方案量产</div><div class="timeline-desc">与德系OEM同步，低VOC配方满足法规</div></div>
+          <div class="timeline-item"><div class="timeline-dot" style="background:#ef4444"></div><div class="timeline-date">2025 Q1 · L&L/Zephyros</div><div class="timeline-title">亚太本地化生产布局启动</div><div class="timeline-desc">寻找中国合资/代工伙伴，加速本土交付</div></div>
+          <div class="timeline-item"><div class="timeline-dot" style="background:#8b5cf6"></div><div class="timeline-date">2025 · BASF</div><div class="timeline-title">生物基PU发泡体系上市</div><div class="timeline-desc">向中国转化商开放配方授权，上游材料差异化</div></div>
+          <div class="timeline-item"><div class="timeline-dot" style="background:#22c55e"></div><div class="timeline-date">2025 · GM</div><div class="timeline-title">供应商资质认证轮换开启</div><div class="timeline-desc">国产替代窗口，海程应优先申请</div></div>
+          <div class="timeline-item"><div class="timeline-dot" style="background:#06b6d4"></div><div class="timeline-date">2026 E · Stellantis</div><div class="timeline-title">STLA平台声学包重新招标</div><div class="timeline-desc">对本土供应商开放，最优先级机会窗口</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       08 竞争威胁评估
+  ══════════════════════════════════════════ -->
+  <div id="threat" class="section">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title">竞争威胁评估</div>
+      <div class="section-pill">影响 × 概率 矩阵</div>
+    </div>
+    <div class="chart-grid-2" style="margin-bottom:16px">
+      <div class="chart-card" onclick="showModal('威胁矩阵详情','6大威胁影响×概率矩阵，红色区域为立即响应区。', threatPatents)" style="cursor:pointer;">
+        <div class="chart-title">🎯 威胁影响 × 发生概率 矩阵</div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px;position:relative;">
+
+          <!-- 坐标轴标签 -->
+          <div style="grid-column:1/3;display:flex;justify-content:space-between;padding:0 4px;font-size:10px;color:#94a3b8;font-weight:600;">
+            <span>低影响</span><span style="font-weight:700;color:#64748b;">← 影响程度 →</span><span>高影响</span>
+          </div>
+
+          <!-- 象限②：高概率·低影响（左上） -->
+          <div style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border-radius:10px;padding:12px;border:1.5px solid #fbbf24;">
+            <div style="font-size:10px;font-weight:700;color:#d97706;margin-bottom:8px;">⚡ 高概率 · 低影响</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #f59e0b;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">原料垄断风险</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">BASF/Dow配方差异化授权</div>
+                <div style="margin-top:5px;height:5px;background:#fef3c7;border-radius:3px;overflow:hidden;"><div style="width:68%;height:100%;background:#f59e0b;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#d97706;margin-top:2px;text-align:right;">风险指数 68</div>
+              </div>
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #f59e0b;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">合资/代工威胁</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">外资寻求本土合作伙伴</div>
+                <div style="margin-top:5px;height:5px;background:#fef3c7;border-radius:3px;overflow:hidden;"><div style="width:55%;height:100%;background:#f59e0b;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#d97706;margin-top:2px;text-align:right;">风险指数 55</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 象限①：高概率·高影响（右上，红色警戒） -->
+          <div style="background:linear-gradient(135deg,#fef2f2,#fee2e2);border-radius:10px;padding:12px;border:2px solid #ef4444;">
+            <div style="font-size:10px;font-weight:700;color:#dc2626;margin-bottom:8px;">🔴 高概率 · 高影响 <span style="background:#ef4444;color:#fff;font-size:9px;padding:1px 5px;border-radius:4px;margin-left:4px;">立即响应</span></div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #ef4444;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">Sika 泵注型工艺替代</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">SikaSeal-832绕过传统Baffle装配工位</div>
+                <div style="margin-top:5px;height:5px;background:#fee2e2;border-radius:3px;overflow:hidden;"><div style="width:92%;height:100%;background:#ef4444;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#dc2626;margin-top:2px;text-align:right;">风险指数 92</div>
+              </div>
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #ef4444;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">BEV 标准升级门槛</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">低温活化≤130℃强制要求</div>
+                <div style="margin-top:5px;height:5px;background:#fee2e2;border-radius:3px;overflow:hidden;"><div style="width:85%;height:100%;background:#ef4444;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#dc2626;margin-top:2px;text-align:right;">风险指数 85</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 象限③：低概率·低影响（左下） -->
+          <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:10px;padding:12px;border:1.5px solid #86efac;">
+            <div style="font-size:10px;font-weight:700;color:#16a34a;margin-bottom:8px;">✅ 低概率 · 低影响</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #22c55e;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">外资本土价格战</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">本土化降价10-20%预期</div>
+                <div style="margin-top:5px;height:5px;background:#dcfce7;border-radius:3px;overflow:hidden;"><div style="width:48%;height:100%;background:#22c55e;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#16a34a;margin-top:2px;text-align:right;">风险指数 48</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 象限④：低概率·高影响（右下） -->
+          <div style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-radius:10px;padding:12px;border:1.5px solid #c4b5fd;">
+            <div style="font-size:10px;font-weight:700;color:#7c3aed;margin-bottom:8px;">⚠️ 低概率 · 高影响</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #8b5cf6;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">Henkel 专利侵权预警</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">EP2576293 翻盖Baffle结构</div>
+                <div style="margin-top:5px;height:5px;background:#ede9fe;border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:#8b5cf6;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#7c3aed;margin-top:2px;text-align:right;">风险指数 78</div>
+              </div>
+              <div style="background:#fff;border-radius:6px;padding:7px 10px;border-left:3px solid #8b5cf6;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+                <div style="font-size:12px;font-weight:700;color:#1a202c;">外资降价竞争加剧</div>
+                <div style="font-size:10px;color:#64748b;margin-top:2px;">Sika/Henkel中国本土扩产</div>
+                <div style="margin-top:5px;height:5px;background:#ede9fe;border-radius:3px;overflow:hidden;"><div style="width:72%;height:100%;background:#8b5cf6;border-radius:3px;"></div></div>
+                <div style="font-size:9px;color:#7c3aed;margin-top:2px;text-align:right;">风险指数 72</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div style="margin-top:10px;font-size:10px;color:#94a3b8;text-align:center;">点击查看关联专利详情 →</div>
+      </div>
+      <div style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:20px">
+        <div class="chart-title">📋 6大核心威胁优先级</div>
+        <div class="threat-list">
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#ef4444">1</div>
+            <div class="threat-content">
+              <div class="threat-name">Sika 泵注型工艺替代</div>
+              <div class="threat-desc">SikaSeal-832绕过传统Baffle装配工位，颠覆竞争赛道</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 92</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:92%;background:#ef4444"></div></div>
+            </div>
+          </div>
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#ef4444">2</div>
+            <div class="threat-content">
+              <div class="threat-name">Henkel EP2576293 侵权风险</div>
+              <div class="threat-desc">带弹簧翻盖Baffle专利仍有效，需立即比对回避</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 88</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:88%;background:#ef4444"></div></div>
+            </div>
+          </div>
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#f97316">3</div>
+            <div class="threat-content">
+              <div class="threat-name">BEV平台技术标准升级</div>
+              <div class="threat-desc">低温活化≤130℃/气密要求，现有配方可能不达标</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 80</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:80%;background:#f97316"></div></div>
+            </div>
+          </div>
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#f97316">4</div>
+            <div class="threat-content">
+              <div class="threat-name">外资本土化降价</div>
+              <div class="threat-desc">Sika/Henkel 2026年前降价10-20%，成本优势收窄</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 75</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:75%;background:#f97316"></div></div>
+            </div>
+          </div>
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#f59e0b">5</div>
+            <div class="threat-content">
+              <div class="threat-name">上游原料垄断</div>
+              <div class="threat-desc">BASF/Dow向竞争对手独家授权，形成配方代差</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 65</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:65%;background:#f59e0b"></div></div>
+            </div>
+          </div>
+          <div class="threat-item">
+            <div class="threat-rank" style="background:#22c55e">6</div>
+            <div class="threat-content">
+              <div class="threat-name">L&L/Zephyros中国合资</div>
+              <div class="threat-desc">若与本土企业合资，将直接在中国市场竞争</div>
+            </div>
+            <div class="threat-bar-wrap">
+              <div class="threat-score-label">风险指数 55</div>
+              <div class="threat-bar"><div class="threat-bar-fill" style="width:55%;background:#22c55e"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       09 应对建议
+  ══════════════════════════════════════════ -->
+  <div id="actions" class="section">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title">我方应对建议</div>
+      <div class="section-pill">P1紧急 · P2重要 · P3规划</div>
+    </div>
+    <div class="action-grid">
+      <div class="action-card P1">
+        <span class="action-priority">P1 紧急 · 0-3月</span>
+        <div class="action-title">🔬 BEV配方升级</div>
+        <div class="action-desc">开发低温活化（目标120-130℃）BEV专用EVA/橡胶复合发泡配方，完成实验室验证，补齐对Sika/Henkel的核心技术差距。</div>
+        <div class="action-timeline">⏱ 3个月内完成实验室验证</div>
+      </div>
+      <div class="action-card P1">
+        <span class="action-priority">P1 紧急 · 0-3月</span>
+        <div class="action-title">⚖ 专利侵权比对</div>
+        <div class="action-desc">对Henkel EP2576293进行详细侵权比对，出具正式的回避设计方案，确保现有及新开发产品不存在侵权风险。</div>
+        <div class="action-timeline">⏱ 1个月内完成比对报告</div>
+      </div>
+      <div class="action-card P1">
+        <span class="action-priority">P1 紧急 · 0-6月</span>
+        <div class="action-title">🛡 SNS性能数据包</div>
+        <div class="action-desc">强化SNS热膨胀结构胶+复合骨架的组合性能，建立可对标Henkel Terocore®的完整力学性能测试数据包，支撑客户技术评审。</div>
+        <div class="action-timeline">⏱ 6个月内建立标准测试规范</div>
+      </div>
+      <div class="action-card P2">
+        <span class="action-priority">P2 重要 · 3-12月</span>
+        <div class="action-title">📋 OEM资质认证</div>
+        <div class="action-desc">积极对接GM 2025年认证轮换和Stellantis STLA平台招标，准备完整供应商资质申请材料，争取进入合格供应商名单。</div>
+        <div class="action-timeline">⏱ 6-12个月内提交认证申请</div>
+      </div>
+      <div class="action-card P2">
+        <span class="action-priority">P2 重要 · 3-12月</span>
+        <div class="action-title">📝 自主专利布局</div>
+        <div class="action-desc">在Baffle引流阀结构、低密度配方、多腔体一体件、Baffle+SNS集成件等方向申请3-5件自主专利，构建初步专利护城河。</div>
+        <div class="action-timeline">⏱ 12个月内提交专利申请</div>
+      </div>
+      <div class="action-card P2">
+        <span class="action-priority">P2 重要 · 6-18月</span>
+        <div class="action-title">🚗 新能源OEM突破</div>
+        <div class="action-desc">以本土化速度+集成件差异化优势，重点突破比亚迪/理想/蔚来等新能源OEM，形成可展示的标杆案例。</div>
+        <div class="action-timeline">⏱ 18个月内获取至少1家OEM定点</div>
+      </div>
+      <div class="action-card P3">
+        <span class="action-priority">P3 规划 · 1-3年</span>
+        <div class="action-title">🔄 泵注工艺评估</div>
+        <div class="action-desc">跟踪Sika SikaSeal型泵注工艺趋势，评估是否开发此类产品线，避免被工艺路线降维打击，可考虑技术合作引进。</div>
+        <div class="action-timeline">⏱ 1-3年内完成可行性评估</div>
+      </div>
+      <div class="action-card P3">
+        <span class="action-priority">P3 规划 · 1-3年</span>
+        <div class="action-title">🧪 原料自主化</div>
+        <div class="action-desc">与国内EVA/改性橡胶材料商联合开发专用发泡基材，降低对BASF/Dow的依赖，建立自主供应链体系。</div>
+        <div class="action-timeline">⏱ 3年内建立稳定本土原料供应</div>
+      </div>
+      <div class="action-card P3">
+        <span class="action-priority">P3 规划 · 2-3年</span>
+        <div class="action-title">🌍 国际市场布局</div>
+        <div class="action-desc">待国内市场份额稳固后，逐步向东南亚/印度汽车市场布局，跟随中国OEM出海策略，拓展海外营收来源。</div>
+        <div class="action-timeline">⏱ 3年内进入至少1个海外市场</div>
+      </div>
+    </div>
+    <div class="chart-grid" style="margin-top:16px">
+      <div class="chart-card" onclick="showModal('行动优先级分布','P1/P2/P3各级行动数量与资源投入比例。', actionPatents)">
+        <div class="chart-title">📊 行动优先级资源分配</div>
+        <div class="chart-wrap">
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:4px 0;align-items:center">
+  <div style="width:90px;height:90px;border-radius:50%;background:conic-gradient(#ef4444 0% 50%,#f59e0b 50% 85%,#22c55e 85% 100%);margin:auto"></div>
+  <div style="display:flex;flex-direction:column;gap:6px;justify-content:center">
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="width:12px;height:12px;background:#ef4444;border-radius:3px;display:inline-block;flex-shrink:0"></span>
+      <span style="font-size:12px;font-weight:700;color:#dc2626">P1 紧急行动</span>
+      <span style="font-size:14px;font-weight:800;color:#dc2626">50%</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="width:12px;height:12px;background:#f59e0b;border-radius:3px;display:inline-block;flex-shrink:0"></span>
+      <span style="font-size:12px;font-weight:700;color:#d97706">P2 重要行动</span>
+      <span style="font-size:14px;font-weight:800;color:#d97706">35%</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="width:12px;height:12px;background:#22c55e;border-radius:3px;display:inline-block;flex-shrink:0"></span>
+      <span style="font-size:12px;font-weight:700;color:#16a34a">P3 规划行动</span>
+      <span style="font-size:14px;font-weight:800;color:#16a34a">15%</span>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+      <div class="chart-card chart-card full" onclick="showModal('战略甘特图','12-36个月行动路线图。', actionPatents)">
+        <div class="chart-title">📅 战略行动路线图（甘特图）</div>
+        <div class="chart-wrap">
+<div style="padding:6px 0">
+  <div style="display:flex;flex-direction:column;gap:5px">
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">BEV配方升级</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:0;width:25%;background:#ef4444;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">0-3月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#ef4444;font-weight:700;flex-shrink:0">P1</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">专利侵权比对</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:0;width:8%;background:#ef4444;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">0-1月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#ef4444;font-weight:700;flex-shrink:0">P1</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">SNS性能数据包</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:0;width:50%;background:#ef4444;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">0-6月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#ef4444;font-weight:700;flex-shrink:0">P1</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">OEM资质认证</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:0%;width:100%;background:#f59e0b;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">6-18月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#f59e0b;font-weight:700;flex-shrink:0">P2</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">自主专利布局</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:25%;width:75%;background:#f59e0b;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">12-24月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#f59e0b;font-weight:700;flex-shrink:0">P2</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">泵注工艺评估</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:50%;width:50%;background:#22c55e;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">18-36月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#22c55e;font-weight:700;flex-shrink:0">P3</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;color:#374151;width:100px;text-align:right;flex-shrink:0">原料自主化</span>
+      <div style="flex:1;background:#f1f5f9;border-radius:4px;height:16px;position:relative">
+        <div style="position:absolute;left:50%;width:50%;background:#22c55e;height:100%;border-radius:4px;display:flex;align-items:center;padding-left:4px">
+          <span style="font-size:9px;color:#fff">24-36月</span>
+        </div>
+      </div>
+      <span style="font-size:9px;color:#22c55e;font-weight:700;flex-shrink:0">P3</span>
+    </div>
+  </div>
+  <div style="margin-top:6px;display:flex;gap:10px;justify-content:center">
+    <span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:10px;height:10px;background:#ef4444;border-radius:2px;display:inline-block"></span>P1 0-6月</span>
+    <span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:10px;height:10px;background:#f59e0b;border-radius:2px;display:inline-block"></span>P2 6-24月</span>
+    <span style="font-size:10px;display:flex;align-items:center;gap:3px"><span style="width:10px;height:10px;background:#22c55e;border-radius:2px;display:inline-block"></span>P3 24-36月</span>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       10 总结摘要
+  ══════════════════════════════════════════ -->
+  <div id="summary" class="section">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">总结摘要</div>
+      <div class="section-pill">综合评分 · 核心结论</div>
+    </div>
+    <!-- 综合评分 -->
+    <div class="score-grid" style="margin-bottom:16px">
+      <div class="score-card">
+        <div class="score-name">海程新材料</div>
+        <div class="score-circle" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)">52</div>
+        <div class="score-dims">
+          <div class="score-dim"><span>技术深度</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:45%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>专利储备</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:20%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>本土化</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:85%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>客户资源</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:35%;background:#3b82f6"></div></div></div>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-name">Zephyros/L&L</div>
+        <div class="score-circle" style="background:linear-gradient(135deg,#ef4444,#f97316)">91</div>
+        <div class="score-dims">
+          <div class="score-dim"><span>技术深度</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:95%;background:#ef4444"></div></div></div>
+          <div class="score-dim"><span>专利储备</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:92%;background:#ef4444"></div></div></div>
+          <div class="score-dim"><span>本土化</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:60%;background:#ef4444"></div></div></div>
+          <div class="score-dim"><span>客户资源</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:95%;background:#ef4444"></div></div></div>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-name">Sika AG</div>
+        <div class="score-circle" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">88</div>
+        <div class="score-dims">
+          <div class="score-dim"><span>技术深度</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:90%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>专利储备</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:85%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>本土化</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:75%;background:#3b82f6"></div></div></div>
+          <div class="score-dim"><span>客户资源</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:88%;background:#3b82f6"></div></div></div>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-name">Henkel AG</div>
+        <div class="score-circle" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">85</div>
+        <div class="score-dims">
+          <div class="score-dim"><span>技术深度</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:88%;background:#f59e0b"></div></div></div>
+          <div class="score-dim"><span>专利储备</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:80%;background:#f59e0b"></div></div></div>
+          <div class="score-dim"><span>本土化</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:65%;background:#f59e0b"></div></div></div>
+          <div class="score-dim"><span>客户资源</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:90%;background:#f59e0b"></div></div></div>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-name">BASF / Dow</div>
+        <div class="score-circle" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4)">72</div>
+        <div class="score-dims">
+          <div class="score-dim"><span>技术深度</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:80%;background:#8b5cf6"></div></div></div>
+          <div class="score-dim"><span>专利储备</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:75%;background:#8b5cf6"></div></div></div>
+          <div class="score-dim"><span>本土化</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:50%;background:#8b5cf6"></div></div></div>
+          <div class="score-dim"><span>客户资源</span><div class="score-dim-bar"><div class="score-dim-fill" style="width:70%;background:#8b5cf6"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- 综合雷达对比 + 核心结论 -->
+    <div class="chart-grid-2">
+      <div class="chart-card" onclick="showModal('综合竞争力雷达','五家企业6维综合竞争力雷达图。', summaryPatents)">
+        <div class="chart-title">🕸 综合竞争力雷达对比</div>
+        <div class="chart-wrap-lg">
+<div style="padding:6px">
+  <table style="width:100%;border-collapse:collapse;font-size:11px">
+    <thead>
+      <tr style="background:#f8fafc">
+        <th style="padding:6px 8px;text-align:left;color:#64748b;font-weight:600;border-bottom:1px solid #e2e8f0">竞争维度</th>
+        <th style="padding:6px;text-align:center;color:#ef4444;border-bottom:1px solid #e2e8f0">Zephyros</th>
+        <th style="padding:6px;text-align:center;color:#3b82f6;border-bottom:1px solid #e2e8f0">Sika</th>
+        <th style="padding:6px;text-align:center;color:#f59e0b;border-bottom:1px solid #e2e8f0">Henkel</th>
+        <th style="padding:6px;text-align:center;color:#22c55e;border-bottom:1px solid #e2e8f0">海程当前</th>
+        <th style="padding:6px;text-align:center;color:#16a34a;border-bottom:1px solid #e2e8f0">海程目标</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f1f5f9">
+        <td style="padding:5px 8px">技术深度</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">95</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">90</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">88</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#f0fdf4;color:#16a34a;border-radius:4px;padding:2px 6px;font-weight:700">45</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">70</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fafafa">
+        <td style="padding:5px 8px">专利储备</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">92</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">85</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">80</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef9c3;color:#854d0e;border-radius:4px;padding:2px 6px;font-weight:700">20</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">55</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9">
+        <td style="padding:5px 8px">本土化能力</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">60</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">75</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">65</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#22c55e;color:#fff;border-radius:4px;padding:2px 6px;font-weight:700">85⭐</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">90</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;background:#fafafa">
+        <td style="padding:5px 8px">客户资源</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">95</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">88</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">90</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef9c3;color:#854d0e;border-radius:4px;padding:2px 6px;font-weight:700">35</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">60</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9">
+        <td style="padding:5px 8px">产品广度</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">85</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">92</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">80</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef9c3;color:#854d0e;border-radius:4px;padding:2px 6px;font-weight:700">40</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">65</span></td>
+      </tr>
+      <tr>
+        <td style="padding:5px 8px">创新活跃度</td>
+        <td style="padding:5px;text-align:center"><span style="background:#fef2f2;color:#dc2626;border-radius:4px;padding:2px 6px;font-weight:700">80</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#eff6ff;color:#2563eb;border-radius:4px;padding:2px 6px;font-weight:700">88</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#fffbeb;color:#d97706;border-radius:4px;padding:2px 6px;font-weight:700">82</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#f0fdf4;color:#16a34a;border-radius:4px;padding:2px 6px;font-weight:700">50</span></td>
+        <td style="padding:5px;text-align:center"><span style="background:#dcfce7;color:#15803d;border-radius:4px;padding:2px 6px;font-weight:700">70</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:8px;text-align:center;font-size:11px;color:#64748b">⭐ 本土化能力是海程核心差异化优势，目标综合分从现在的 <b style="color:#f59e0b">46分</b> 提升至 <b style="color:#22c55e">68分</b></div>
+</div>
+</div>
+      </div>
+      <div style="background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:20px">
+        <div class="chart-title">💡 核心结论（5条）</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+          <div style="background:#fef2f2;border-left:3px solid #ef4444;border-radius:0 8px 8px 0;padding:10px 14px">
+            <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:4px">① 最紧迫：双重威胁叠加</div>
+            <div style="font-size:11.5px;color:#7f1d1d;line-height:1.5">Sika工艺替代威胁 + Henkel专利侵权风险同时存在，需在3个月内完成应对方案。</div>
+          </div>
+          <div style="background:#fff7ed;border-left:3px solid #f97316;border-radius:0 8px 8px 0;padding:10px 14px">
+            <div style="font-size:12px;font-weight:700;color:#ea580c;margin-bottom:4px">② 最关键：BEV平台窗口期</div>
+            <div style="font-size:11.5px;color:#7c2d12;line-height:1.5">BEV专属技术规格尚未锁定，2026年前完成认证可获得先发优势，窗口期有限。</div>
+          </div>
+          <div style="background:#f0fdf4;border-left:3px solid #22c55e;border-radius:0 8px 8px 0;padding:10px 14px">
+            <div style="font-size:12px;font-weight:700;color:#16a34a;margin-bottom:4px">③ 最优先：中国新能源OEM</div>
+            <div style="font-size:11.5px;color:#14532d;line-height:1.5">本土化速度+集成件差异化是核心竞争武器，应集中资源率先突破国内新能源市场。</div>
+          </div>
+          <div style="background:#eff6ff;border-left:3px solid #3b82f6;border-radius:0 8px 8px 0;padding:10px 14px">
+            <div style="font-size:12px;font-weight:700;color:#1d4ed8;margin-bottom:4px">④ 战略机会：GM/Stellantis窗口</div>
+            <div style="font-size:11.5px;color:#1e3a8a;line-height:1.5">2025年GM认证轮换和Stellantis STLA招标是进入国际OEM体系的最佳时机，应优先投入资源。</div>
+          </div>
+          <div style="background:#f5f3ff;border-left:3px solid #8b5cf6;border-radius:0 8px 8px 0;padding:10px 14px">
+            <div style="font-size:12px;font-weight:700;color:#7c3aed;margin-bottom:4px">⑤ 长期护城河：专利+原料自主化</div>
+            <div style="font-size:11.5px;color:#4c1d95;line-height:1.5">12个月内申请3-5件核心专利，同时启动本土原料联合开发，逐步摆脱对外资原料的依赖。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 数据来源 -->
+    <div style="background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:16px 20px;margin-top:16px;font-size:11.5px;color:var(--text-muted)">
+      📌 <strong>数据来源声明：</strong>专利数据来源于PatSnap智慧芽专利数据库（检索覆盖上述主要申请人Baffle/SNS相关专利样本）；市场规模数据来源于公开市场研究报告（综合整理，仅供参考）；竞争对手动向部分属行业综合推断，建议结合第一手渠道交叉核实。所有专利标号可点击跳转智慧芽PatSnap查阅全文。
+    </div>
+  </div>
+
+</main>
+
+<!-- ───────── 专利浮层弹窗 ───────── -->
+<div class="modal-overlay" id="patentModal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">专利详情</h3>
+      <button class="modal-close" onclick="document.getElementById('patentModal').classList.remove('show')">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalDesc" style="font-size:12.5px;color:var(--text-secondary);margin-bottom:14px;padding:10px;background:var(--bg);border-radius:8px;line-height:1.6"></div>
+      <div id="modalPatentList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── 专利数据库 ───
+const hcPatents = [
+  {num:'CN218287631U', title:'一种空腔隔音胶块和结构增强件集成的结构', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=f222d145-3ae8-496f-9fec-d4fe4add866e', status:'有效'},
+  {num:'CN115520109B', title:'一种空腔隔音胶块和结构增强件集成的结构', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=38b1da21-60b8-42a7-8925-95e431df2400', status:'有效'},
+  {num:'CN115520109A', title:'一种空腔隔音胶块和结构增强件集成的结构(公开)', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=9033e351-9b7e-42e1-b0e5-5d000a80c6af', status:'审中'},
+  {num:'CN222973333U', title:'一种汽车内部空腔密封发泡件固定结构', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=5553c6cb-327d-4796-82d7-2365efd2f43e', status:'有效'},
+  {num:'CN121133853A', title:'一种汽车安全结构件及其制造方法', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=add275ef-f177-4bf1-8e17-a1b4366cdbe4', status:'审中'},
+];
+const zephyrosPatents = [
+  {num:'US7913814B2', title:'Acoustic baffle assembly', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=ca058fa2-82d6-4f6f-be33-2955443c421f', status:'有效'},
+  {num:'US20090223739A1', title:'Acoustic baffle assembly', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=e5dc4e28-977b-4019-9f8e-afccedfb93f0', status:'审中'},
+  {num:'US20130087406A1', title:'Acoustic baffle device', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=9a2bb167-47ad-4943-8a66-2436463efbc3', status:'有效'},
+  {num:'US6953219B2', title:'Reinforcing members', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=3bd66924-b863-4747-bd21-29f6043c5737', status:'已过期'},
+  {num:'US7478478B2', title:'Method of providing reinforcing members', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=126be641-3952-4b5b-94c0-6952a174dae4', status:'有效'},
+  {num:'WO2018075734A1', title:'Acoustic absorber composited baffle assembly', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=d17187aa-c604-4c9d-92f7-8c48b3b27d27', status:'有效'},
+  {num:'US20260103245A1', title:'Clamshell Structural Reinforcement', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=88755fc1-f122-49e7-be62-5dc1183051f5', status:'审中'},
+  {num:'US20250340242A1', title:'Multiple stage deformation reinforcement structure', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=dee17e54-949d-4c0a-9530-ecba0a627ba4', status:'审中'},
+];
+const sikaPatents = [
+  {num:'EP1323588A1', title:'Acoustic baffle equipped with flap assembly', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=dbb76dae-faa4-4519-afda-f05a1de2f7a5', status:'已过期'},
+  {num:'EP3254939B1', title:'Baffle', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=fe268b72-26fb-4057-8381-a72cd7e8db05', status:'有效'},
+  {num:'US10384419B2', title:'Baffle', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=9451537b-03c6-4c27-bd3e-5c088a6664d0', status:'有效'},
+  {num:'EP3344689A1', title:'Heat expandable foam', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=4a4f4183-15ad-4d6e-87c4-6d1668de1b21', status:'审中'},
+  {num:'US20180223065A1', title:'Heat expandable foam', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=72d1de76-dc2a-4e76-9540-0f9e8faf29bf', status:'有效'},
+  {num:'EP3063053B1', title:'Baffle or reinforcement element for sealing/reinforcing a cavity', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=49df8ec1-d078-40a2-a26c-8abdec946210', status:'有效'},
+];
+const henkelPatents = [
+  {num:'EP2576293B2 ⚠', title:'Acoustic baffle device（带弹簧翻盖）【侵权风险】', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=ebf5b502-a6e0-4a3f-8baf-7f4db7745a3a', status:'有效'},
+  {num:'US8573355B2', title:'Acoustic baffle device', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=c167fb06-c8c3-4079-b05a-4fb6a112ca72', status:'有效'},
+  {num:'EP1590145B1', title:'High expansion two-component structural foam', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=268282f7-4d2e-45ac-a795-c8e8163496e9', status:'有效'},
+  {num:'US20220289309A1', title:'Bulkhead part', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=25ca6402-a0fb-47b0-92be-4b19b5210fb6', status:'审中'},
+];
+const allPatents = [...hcPatents, ...zephyrosPatents, ...sikaPatents, ...henkelPatents];
+const threatPatents = [...henkelPatents.slice(0,1), ...sikaPatents.slice(0,2)];
+const riskPatents = [...henkelPatents.slice(0,1), ...sikaPatents.slice(0,1)];
+const oppoPatents = [...hcPatents];
+const marketPatents = [...zephyrosPatents.slice(0,3), ...sikaPatents.slice(0,3)];
+const evPatents = [...sikaPatents.slice(2,4)];
+const top3Patents = [...zephyrosPatents.slice(0,2), ...sikaPatents.slice(0,2), ...henkelPatents.slice(0,2)];
+const cnPatents = [...hcPatents];
+const marketSharePatents = [...zephyrosPatents.slice(0,2), ...sikaPatents.slice(0,2), ...henkelPatents.slice(0,2)];
+const marketGrowthPatents = [...sikaPatents.slice(2,4)];
+const regionPatents = [...hcPatents, ...zephyrosPatents.slice(0,2)];
+const ipcComparePatents = [...allPatents.slice(0,6)];
+const basfPatents = [{num:'EP4685176A1', title:'2-component foams based on acetylacetonate', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=340703d5-a2db-46a0-88c4-9842a75bd45e', status:'审中'},{num:'WO2026021768A1', title:'Foamable composition based on multifunctional acetoacetate', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=17acbd40-83ae-4e7e-8eb5-d766b1329551', status:'审中'}];
+const dowPatents = [{num:'US20180223065A1', title:'Heat expandable foam (Dow)', url:'https://eureka.zhihuiya.com/view/#/fullText?patentId=72d1de76-dc2a-4e76-9540-0f9e8faf29bf', status:'有效'}];
+const sonderhoffPatents = [...henkelPatents.slice(1,3)];
+const otherPatents = [...basfPatents];
+const oemPatents = [...zephyrosPatents.slice(0,2), ...sikaPatents.slice(0,2)];
+const dynamicsPatents = [...sikaPatents.slice(0,2), ...henkelPatents.slice(0,2)];
+const actionPatents = [...hcPatents];
+const summaryPatents = [...allPatents.slice(0,8)];
+
+// ─── 弹窗逻辑 ───
+function showModal(title, desc, patents) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDesc').textContent = desc;
+  const list = document.getElementById('modalPatentList');
+  list.innerHTML = '';
+  if (patents && patents.length > 0) {
+    patents.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'modal-patent-item';
+      item.innerHTML = `<div class="modal-patent-num">${p.num}</div><div class="modal-patent-title">${p.title}</div><a class="modal-patent-link" href="${p.url}" target="_blank">查看全文 →</a>`;
+      list.appendChild(item);
+    });
+  }
+  document.getElementById('patentModal').classList.add('show');
+}
+function closeModal(e) { if (e.target.id === 'patentModal') document.getElementById('patentModal').classList.remove('show'); }
+
+// ─── 导航高亮 ───
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+}
+window.addEventListener('scroll', () => {
+  const sections = ['exec','market','zephyros','sika','henkel','bgrade','oem','dynamics','threat','actions','summary'];
+  const navMap = {'exec':0,'market':1,'zephyros':2,'sika':3,'henkel':4,'bgrade':5,'oem':6,'dynamics':7,'threat':8,'actions':9,'summary':10};
+  let current = 'exec';
+  sections.forEach(id => { const el = document.getElementById(id); if (el && window.scrollY >= el.offsetTop - 80) current = id; });
+  document.querySelectorAll('.nav-item').forEach((n,i) => { n.classList.toggle('active', i === navMap[current]); });
+});
+
+// ─── 下载功能 ───
+function downloadHTML() {
+  const blob = new Blob([document.documentElement.outerHTML], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = '竞争情报简报_海程新材料_2026Q2.html'; a.click();
+}
+
+// ─── 图表初始化 ───
+
+const CHART_DEFAULTS = { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10},padding:8}},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.formattedValue}}} };
+
+// 市场份额饼图
+
+
+// 市场增长趋势
+
+
+// 地区分布
+
+
+// 海程IPC饼图
+
+
+// 海程年度趋势
+
+
+// 专利总量对比
+new Chart(document.getElementById('patentCountChart'), {type:'bar', data:{labels:['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'],datasets:[{label:'专利总量(估算)',data:[600,425,380,320,280,23],backgroundColor:['rgba(239,68,68,0.8)','rgba(59,130,246,0.8)','rgba(245,158,11,0.8)','rgba(139,92,246,0.8)','rgba(6,182,212,0.8)','rgba(34,197,94,0.8)'],borderRadius:4}]}, options:{...CHART_DEFAULTS, scales:{y:{beginAtZero:true,grid:{color:'#f0f1f3'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}, onClick:(e,els)=>{ if(els.length>0){const i=els[0].index;const pMap=[zephyrosPatents,sikaPatents,henkelPatents,basfPatents,dowPatents,hcPatents];const nMap=['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'];showModal(nMap[i]+' 代表专利','点击专利号查看PatSnap全文',pMap[i]);}}}}); 
+
+// 技术雷达
+
+
+// Zephyros IPC饼图
+
+
+// Sika IPC饼图
+
+
+// Henkel IPC饼图
+
+
+// OEM机会评分
+
+
+// 战略活跃度
+
+
+// 威胁矩阵散点图
+
+
+// 行动资源分配饼图
+
+
+// 甘特图（用横向条形图模拟）
+
+
+// 最终雷达图
+
+</script>
+</body>
+</html>

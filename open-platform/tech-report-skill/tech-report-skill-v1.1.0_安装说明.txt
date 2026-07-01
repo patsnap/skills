@@ -1,0 +1,43 @@
+tech-report-skill v1.1.0 安装说明
+========================================
+
+## 方法 1：使用 tar.gz 安装
+
+tar -xzf tech-report-skill-v1.1.0.tar.gz
+cd tech-report-skill-v1.1.0
+bash install.sh
+
+## 方法 2：使用 zip 安装（如果有）
+
+unzip tech-report-skill-v1.1.0.zip
+cd tech-report-skill-v1.1.0
+bash install.sh
+
+## 方法 3：手动安装
+
+1. 解压文件到任意位置
+2. 运行：bash install.sh
+
+## 安装后使用
+
+在 Claude Code 中输入：
+"请用XX技术主题生成研发简报"
+
+或命令行运行：
+cd ~/.claude/skills/tech-report-skill
+bash scripts/run.sh <Excel路径> <技术主题> <开始日期> <结束日期>
+
+## 查看文档
+
+- README.md: 快速入门
+- SKILL.md: 详细说明
+- IMPROVEMENTS.md: 技术改进
+- CHANGELOG.md: 版本历史
+
+## 需要帮助？
+
+查看 examples/SAMPLE_DATA.md 了解数据格式要求
+查看 config/README.md 了解如何创建配置文件
+
+版本: v1.1.0
+日期: 2026-06-06

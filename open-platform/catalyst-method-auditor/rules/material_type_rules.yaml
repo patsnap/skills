@@ -1,0 +1,34 @@
+version: 0.4.0
+material_types:
+  preparation_steps:
+    zh: 制备步骤型方案
+    indicators:
+      - contains sequential operations such as 称取, 溶于, 混合, 搅拌, 转移, 水热, 离心, 洗涤, 干燥, 煅烧, 还原, 标记
+      - contains reagent amounts, temperatures, times, atmosphere, sample names
+    audit_mode: full_method_audit
+  preparation_and_evaluation_scheme:
+    zh: 制备与评价完整方案
+    indicators:
+      - contains preparation steps and catalytic testing conditions
+      - contains reaction type, feed, temperature, pressure, catalyst amount, analysis method
+    audit_mode: full_method_audit
+  draft_idea:
+    zh: 研发设想或方案初稿
+    indicators:
+      - contains goals and design ideas but few operational steps
+    audit_mode: draft_audit
+  paper_methods:
+    zh: 论文方法片段
+    indicators:
+      - contains Methods, Catalyst preparation, Catalytic testing, Characterization sections
+    audit_mode: method_reproducibility_audit
+  patent_example:
+    zh: 专利实施例
+    indicators:
+      - contains example, embodiment, 实施例, claims, patent
+    audit_mode: embodiment_method_audit
+  insufficient:
+    zh: 材料信息不足
+    indicators:
+      - contains fewer than 3 actionable operations and no clear catalyst system
+    audit_mode: insufficient_material

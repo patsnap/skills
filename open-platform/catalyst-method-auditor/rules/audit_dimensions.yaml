@@ -1,0 +1,17 @@
+version: 0.4.0
+dimensions:
+  preparation_executability:
+    zh: 制备步骤可执行性
+    purpose: 判断实验人员能否根据方案完成催化剂制备并复现实验。
+  variable_attribution:
+    zh: 变量设计与归因关系
+    purpose: 判断样品差异是否清晰，实验结果是否能归因到目标变量。
+  controls_and_baselines:
+    zh: 对照样与基准样设置
+    purpose: 判断是否设置足够的空白、基准、未改性或负载/掺杂对照。
+  evaluation_reliability:
+    zh: 评价条件与数据可靠性
+    purpose: 判断反应评价条件、分析方法、重复实验和数据可靠性控制是否明确。
+  claim_validation_linkage:
+    zh: 性能主张与验证项目对应关系
+    purpose: 判断性能或机理主张是否有相应验证项目支撑。

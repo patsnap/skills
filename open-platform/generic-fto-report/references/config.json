@@ -1,0 +1,24 @@
+{
+  "_comment": "通用行业 FTO 默认业务配置。具体项目优先使用命令行参数或 Word 文档元数据覆盖，不要在通用报告中沿用旧的服务器滑轨固定范围。",
+  "product_name": "",
+  "project_name": "",
+  "industry": "",
+  "target_company": "",
+  "ipc_filter": "",
+  "mipc_filter": "",
+  "legal_status": "1",
+  "authority": "CN",
+  "page_size": 100,
+  "max_total": 500,
+  "max_candidates": 10,
+  "max_query2_subs": 12,
+  "relevance_keywords": [],
+  "_field_notes": {
+    "target_company": "竞争对手、目标申请人或专利权人；多个名称可用逗号、顿号、分号或换行分隔。",
+    "ipc_filter": "IPC 分类限制，例如 B60R21/ or B62D25/。为空时不拼接 IPC 限制。",
+    "mipc_filter": "主分类限制，例如 B60R21/00。为空时不生成 classification 检索式。",
+    "legal_status": "智慧芽 SIMPLE_LEGAL_STATUS 过滤值；默认 1 表示有效。",
+    "authority": "专利局/区域过滤，例如 CN、US、EP，或用户提供的合法 PatSnap 检索表达式。",
+    "max_query2_subs": "自动构建 feature_pair 检索式时的重要特征-普通特征组合上限。"
+  }
+}

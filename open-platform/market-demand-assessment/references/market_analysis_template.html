@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中节能万润 | 市场部询价预筛选分析模板</title>
+<style>
+  :root {
+    --primary: #1a5276;
+    --primary-light: #2e86c1;
+    --accent: #148f77;
+    --accent-light: #1abc9c;
+    --warn: #d4ac0d;
+    --danger: #c0392b;
+    --success: #1e8449;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --border: #dce3ed;
+    --text: #2c3e50;
+    --muted: #7f8c8d;
+    --tag-bg: #eaf2fb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff;
+    padding: 28px 40px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 12px rgba(0,0,0,.18);
+  }
+  .header-left h1 { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .header-left p  { font-size: 13px; opacity: .82; margin-top: 4px; }
+  .header-right { text-align: right; font-size: 12px; opacity: .78; }
+  .header-right .doc-no { font-size: 15px; font-weight: 600; opacity: 1; }
+
+  /* ── Container ── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  /* ── Section title ── */
+  .sec-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 700; color: var(--primary);
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-light);
+  }
+  .sec-title .num {
+    background: var(--primary-light);
+    color: #fff;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  }
+
+  /* ── Progress Bar (流程导航) ── */
+  .progress-bar {
+    display: flex; align-items: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .step-pill {
+    display: flex; flex-direction: column; align-items: center;
+    flex: 1; min-width: 100px;
+    position: relative;
+  }
+  .step-pill:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 18px; left: 60%;
+    width: 80%; height: 2px;
+    background: var(--border);
+  }
+  .step-circle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+    z-index: 1;
+  }
+  .step-label { font-size: 12px; color: var(--muted); margin-top: 6px; text-align: center; }
+
+  /* ── Form grid ── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group.span2 { grid-column: span 2; }
+  .form-group.span3 { grid-column: span 3; }
+  label { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .form-field {
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    padding: 9px 12px;
+    font-size: 13px;
+    color: var(--text);
+    background: #fafbfc;
+    min-height: 36px;
+    transition: border .2s;
+  }
+  .form-field:focus { outline: none; border-color: var(--primary-light); background: #fff; }
+  .form-field.textarea { min-height: 60px; resize: vertical; }
+  .required::after { content: ' *'; color: var(--danger); }
+
+  /* ── Check list ── */
+  .checklist { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .check-item {
+    display: flex; align-items: center; gap: 7px;
+    background: var(--tag-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 13px;
+    user-select: none;
+  }
+  .check-item input[type="checkbox"] { accent-color: var(--primary-light); width: 15px; height: 15px; }
+  .check-item:hover { border-color: var(--primary-light); background: #dbeeff; }
+
+  /* ── Score Table ── */
+  .score-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .score-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .score-table th:first-child { border-radius: 8px 0 0 0; }
+  .score-table th:last-child  { border-radius: 0 8px 0 0; }
+  .score-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .score-table tr:nth-child(even) td { background: #f8fafc; }
+  .score-table tr:last-child td { border-bottom: none; }
+  .score-table td.dim-name { font-weight: 600; color: var(--primary); width: 110px; }
+
+  /* Radio score */
+  .radio-group { display: flex; gap: 8px; }
+  .radio-btn {
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer;
+  }
+  .radio-btn input[type="radio"] { display: none; }
+  .radio-label {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700;
+    color: var(--muted);
+    background: #fafbfc;
+    transition: all .2s;
+    cursor: pointer;
+  }
+  .radio-btn input[type="radio"]:checked + .radio-label {
+    border-color: var(--primary-light);
+    background: var(--primary-light);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(46,134,193,.4);
+  }
+  .radio-sub { font-size: 10px; color: var(--muted); margin-top: 3px; text-align: center; width: 42px; }
+
+  /* ── Score Summary ── */
+  .score-summary {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, #eaf2fb, #fdfefe);
+    border: 1.5px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-top: 16px;
+  }
+  .score-total-label { font-size: 13px; color: var(--muted); }
+  .score-total-value { font-size: 36px; font-weight: 800; color: var(--primary); }
+  .score-total-max { font-size: 18px; color: var(--muted); }
+  .verdict-box {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  }
+  .verdict-badge {
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .verdict-pass    { background: #d4efdf; color: var(--success); border: 2px solid #1e8449; }
+  .verdict-review  { background: #fef9e7; color: #d68910; border: 2px solid #d4ac0d; }
+  .verdict-reject  { background: #fadbd8; color: var(--danger); border: 2px solid #c0392b; }
+  .verdict-hint { font-size: 12px; color: var(--muted); }
+
+  /* ── Decision result card ── */
+  .decision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 4px; }
+  .decision-card {
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .decision-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .decision-card.pass   { border-color: var(--success); background: #f0faf4; }
+  .decision-card.review { border-color: var(--warn);    background: #fffdf0; }
+  .decision-card.reject { border-color: var(--danger);  background: #fdf5f5; }
+  .dc-icon { font-size: 28px; }
+  .dc-score { font-size: 13px; font-weight: 700; margin: 6px 0 4px; }
+  .dc-score.pass   { color: var(--success); }
+  .dc-score.review { color: #d68910; }
+  .dc-score.reject { color: var(--danger); }
+  .dc-action { font-size: 12px; color: var(--muted); }
+
+  /* ── RD push form ── */
+  .push-checklist { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+  .push-check {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #fafbfc;
+  }
+  .push-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+  .push-check-label { font-size: 13px; flex: 1; }
+  .push-check-sub { font-size: 11px; color: var(--muted); }
+  .push-check-note { margin-left: auto; }
+  .push-check-note .form-field { width: 160px; min-height: unset; padding: 6px 10px; }
+
+  /* ── Priority selector ── */
+  .priority-group { display: flex; gap: 10px; margin-top: 6px; }
+  .priority-btn {
+    flex: 1; padding: 12px 0; border-radius: 8px; border: 2px solid var(--border);
+    font-size: 13px; font-weight: 700; text-align: center; cursor: pointer;
+    transition: all .2s;
+  }
+  .priority-btn.high   { border-color: var(--danger);  color: var(--danger); }
+  .priority-btn.medium { border-color: var(--warn);    color: #d68910; }
+  .priority-btn.low    { border-color: var(--accent);  color: var(--accent); }
+  .priority-btn.high:hover   { background: #fadbd8; }
+  .priority-btn.medium:hover { background: #fef9e7; }
+  .priority-btn.low:hover    { background: #d5f5e3; }
+  .priority-btn input[type="radio"] { display: none; }
+  .priority-btn.selected.high   { background: var(--danger);  color: #fff; }
+  .priority-btn.selected.medium { background: var(--warn);    color: #fff; }
+  .priority-btn.selected.low    { background: var(--accent);  color: #fff; }
+
+  /* ── Footer actions ── */
+  .form-actions {
+    display: flex; gap: 12px; justify-content: flex-end;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .btn {
+    padding: 11px 28px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-outline:hover { border-color: var(--primary-light); color: var(--primary-light); }
+  .btn-primary {
+    background: var(--primary-light);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(46,134,193,.35);
+  }
+  .btn-primary:hover { background: var(--primary); }
+  .btn-success {
+    background: var(--success);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(30,132,73,.35);
+  }
+  .btn-success:hover { background: #145a32; }
+  .btn-danger {
+    background: var(--danger);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(192,57,43,.35);
+  }
+  .btn-danger:hover { background: #922b21; }
+
+  /* ── Info banner ── */
+  .info-banner {
+    background: #eaf2fb; border-left: 4px solid var(--primary-light);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 16px;
+    font-size: 13px; color: var(--primary);
+    margin-bottom: 14px;
+  }
+
+  /* ── Tag ── */
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: .5px;
+  }
+  .tag-new  { background: #fdebd0; color: #d35400; }
+  .tag-exist{ background: #d5f5e3; color: #1e8449; }
+  .tag-part { background: #fef9e7; color: #d68910; }
+
+  /* ── Tooltip hint ── */
+  .score-hint {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;
+  }
+  .hint-chip {
+    font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 1px solid var(--border);
+    color: var(--muted); background: #fafbfc;
+  }
+
+  /* Responsive */
+  @media (max-width: 680px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+    .form-group.span2 { grid-column: span 2; }
+    .form-group.span3 { grid-column: span 2; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════  HEADER  ═══════════════════ -->
+<div class="header">
+  <div class="header-left">
+    <h1>🏢 中节能万润 · 市场部询价预筛选分析表</h1>
+    <p>Customer Inquiry Pre-screening & R&D Push Evaluation</p>
+  </div>
+  <div class="header-right">
+    <div class="doc-no">MKT-EVAL-2025</div>
+    <div>填表人：___________</div>
+    <div id="today-date" style="margin-top:4px;"></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── 流程进度导航 ── -->
+  <div class="progress-bar">
+    <div class="step-pill">
+      <div class="step-circle">1</div>
+      <div class="step-label">信息完整性<br>核验</div>
+    </div>
+    <div class="step-pill">
+      <div class="step-circle">2</div>
+      <div class="step-label">产品归类<br>判断</div>
+    </div>
+    <div class="step-pill">
+      <div class="step-circle">3</div>
+      <div class="step-label">五维快速<br>评分</div>
+    </div>
+    <div class="step-pill">
+      <div class="step-circle">4</div>
+      <div class="step-label">研发成本<br>预估</div>
+    </div>
+    <div class="step-pill">
+      <div class="step-circle" style="background:var(--accent);">✓</div>
+      <div class="step-label">决策结论<br>& 推送</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STEP 1 · 信息完整性核验
+  ══════════════════════════════════════════════════ -->
+  <div class="sec-title">
+    <div class="num">1</div>
+    基本信息 & 完整性核验
+  </div>
+
+  <div class="card">
+    <div class="info-banner">📌 请先填写询价基本信息，缺少带 <strong>*</strong> 的必填项时，应先回邮补充，暂停后续评估流程。</div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="required">客户名称</label>
+        <input class="form-field" type="text" placeholder="请输入客户全称">
+      </div>
+      <div class="form-group">
+        <label>客户类型</label>
+        <select class="form-field">
+          <option value="">-- 请选择 --</option>
+          <option>战略长期客户</option>
+          <option>曾有合作客户</option>
+          <option>首次询价新客户</option>
+          <option>国际客户</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>询价日期</label>
+        <input class="form-field" type="date">
+      </div>
+
+      <div class="form-group span2">
+        <label class="required">产品名称</label>
+        <input class="form-field" type="text" placeholder="请填写产品中英文名称">
+      </div>
+      <div class="form-group">
+        <label class="required">CAS 号</label>
+        <input class="form-field" type="text" placeholder="例：64-17-5">
+      </div>
+
+      <div class="form-group">
+        <label class="required">规格 / 纯度要求</label>
+        <input class="form-field" type="text" placeholder="例：≥99.5%，EP级">
+      </div>
+      <div class="form-group">
+        <label class="required">询价数量</label>
+        <input class="form-field" type="text" placeholder="单次数量，含单位">
+      </div>
+      <div class="form-group">
+        <label>年用量预计</label>
+        <input class="form-field" type="text" placeholder="例：50吨/年（可选）">
+      </div>
+
+      <div class="form-group">
+        <label class="required">目标价格</label>
+        <input class="form-field" type="text" placeholder="含币种，例：￥120,000/吨">
+      </div>
+      <div class="form-group">
+        <label class="required">期望交期</label>
+        <input class="form-field" type="text" placeholder="例：2025-08-01前">
+      </div>
+      <div class="form-group">
+        <label>贸易条款</label>
+        <select class="form-field">
+          <option value="">-- 请选择 --</option>
+          <option>FOB</option><option>CIF</option><option>EXW</option><option>DDP</option><option>其他</option>
+        </select>
+      </div>
+
+      <div class="form-group span3">
+        <label>客户补充要求 / 用途说明</label>
+        <textarea class="form-field textarea" placeholder="例：用于医药中间体合成，需提供COA+MSDS；或有特殊包装要求等..."></textarea>
+      </div>
+    </div>
+
+    <!-- 必要信息完整性勾选 -->
+    <div style="margin-top:16px;">
+      <label style="font-size:12px;color:var(--primary);font-weight:700;">✅ 必要字段完整性核验（5项全勾方可进入下一步）</label>
+      <div class="checklist" style="margin-top:8px;">
+        <label class="check-item"><input type="checkbox">产品名称已确认</label>
+        <label class="check-item"><input type="checkbox">CAS号已提供</label>
+        <label class="check-item"><input type="checkbox">质量规格明确</label>
+        <label class="check-item"><input type="checkbox">数量已知</label>
+        <label class="check-item"><input type="checkbox">目标价格已知</label>
+        <label class="check-item"><input type="checkbox">交期已明确</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STEP 2 · 产品归类判断
+  ══════════════════════════════════════════════════ -->
+  <div class="sec-title">
+    <div class="num">2</div>
+    产品归类判断（查询内部产品库）
+  </div>
+
+  <div class="card">
+    <div class="info-banner">🔍 查询市场数据库 / 科研数据库 / 技术文件 / 子公司产品库，确认该 CAS 号对应产品的内部存量情况。</div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-size:12px;color:var(--primary);font-weight:700;">查询来源（可多选）</label>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox">市场数据库</label>
+        <label class="check-item"><input type="checkbox">科研数据库</label>
+        <label class="check-item"><input type="checkbox">技术文件库</label>
+        <label class="check-item"><input type="checkbox">子公司产品目录</label>
+        <label class="check-item"><input type="checkbox">生产排期系统</label>
+        <label class="check-item"><input type="checkbox">历史报价记录</label>
+      </div>
+    </div>
+
+    <label style="font-size:12px;color:var(--primary);font-weight:700;">产品归类结论（单选）</label>
+    <div class="decision-grid" style="margin-top:10px;">
+      <label class="decision-card pass" onclick="selectCategory(this,'A')">
+        <input type="radio" name="category" value="A" style="display:none">
+        <div class="dc-icon">✅</div>
+        <div class="dc-score pass">A 类 — 完全现有产品</div>
+        <div class="dc-action">有库存或可按现有工艺排产<br><strong>→ 直接报价，无需推送研发</strong></div>
+        <div style="margin-top:8px;"><span class="tag tag-exist">直接报价</span></div>
+      </label>
+      <label class="decision-card review" onclick="selectCategory(this,'B')">
+        <input type="radio" name="category" value="B" style="display:none">
+        <div class="dc-icon">⚠️</div>
+        <div class="dc-score review">B 类 — 现有产品但不满足</div>
+        <div class="dc-action">产品有基础，但质量/规格/<br>数量不满足客户要求<br><strong>→ 进入五维评分</strong></div>
+        <div style="margin-top:8px;"><span class="tag tag-part">需评估</span></div>
+      </label>
+      <label class="decision-card reject" onclick="selectCategory(this,'C')">
+        <input type="radio" name="category" value="C" style="display:none">
+        <div class="dc-icon">🆕</div>
+        <div class="dc-score reject">C 类 — 全新产品</div>
+        <div class="dc-action">CAS 号不在现有产品库中<br>需全新开发或引进<br><strong>→ 进入五维评分（门槛更高）</strong></div>
+        <div style="margin-top:8px;"><span class="tag tag-new">全新研发</span></div>
+      </label>
+    </div>
+
+    <div class="form-grid" style="margin-top:14px;">
+      <div class="form-group span3">
+        <label>产品库查询备注（差异描述、相近产品编号等）</label>
+        <textarea class="form-field textarea" placeholder="例：现有 CAS 64-17-5 产品纯度为 99.0%，客户要求 99.5% EP 级，差距在纯化工艺..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STEP 3 · 五维快速评分
+  ══════════════════════════════════════════════════ -->
+  <div class="sec-title">
+    <div class="num">3</div>
+    五维快速评分（仅 B/C 类填写）
+  </div>
+
+  <div class="card">
+    <div class="info-banner">⚡ 每个维度选 1–3 分，满分 15 分。<strong>≥10分推送研发 · 7-9分上报主管 · ≤6分婉拒或观察</strong></div>
+
+    <table class="score-table" id="scoreTable">
+      <thead>
+        <tr>
+          <th style="width:110px">评估维度</th>
+          <th>评分标准说明</th>
+          <th style="width:180px;text-align:center">评分选择</th>
+          <th style="width:120px">参考依据 / 备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 维度1 -->
+        <tr>
+          <td class="dim-name">① 订单规模</td>
+          <td>
+            <div style="color:var(--danger)">1分：合同额 &lt;10万元</div>
+            <div style="color:var(--warn)">2分：合同额 10–50万元</div>
+            <div style="color:var(--success)">3分：合同额 &gt;50万元</div>
+            <div class="score-hint">
+              <span class="hint-chip">数量 × 目标价</span>
+              <span class="hint-chip">含年度复购潜力</span>
+            </div>
+          </td>
+          <td>
+            <div class="radio-group" style="justify-content:center">
+              <label class="radio-btn">
+                <input type="radio" name="s1" value="1" onchange="calcScore()">
+                <span class="radio-label">1</span>
+                <span class="radio-sub">&lt;10万</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s1" value="2" onchange="calcScore()">
+                <span class="radio-label">2</span>
+                <span class="radio-sub">10–50万</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s1" value="3" onchange="calcScore()">
+                <span class="radio-label">3</span>
+                <span class="radio-sub">&gt;50万</span>
+              </label>
+            </div>
+          </td>
+          <td><input class="form-field" type="text" placeholder="估算金额..."></td>
+        </tr>
+        <!-- 维度2 -->
+        <tr>
+          <td class="dim-name">② 客户质量</td>
+          <td>
+            <div style="color:var(--danger)">1分：新客户 / 无记录</div>
+            <div style="color:var(--warn)">2分：曾合作但规模小</div>
+            <div style="color:var(--success)">3分：战略/长期合作客户</div>
+            <div class="score-hint">
+              <span class="hint-chip">查客户历史订单</span>
+              <span class="hint-chip">信用评级</span>
+            </div>
+          </td>
+          <td>
+            <div class="radio-group" style="justify-content:center">
+              <label class="radio-btn">
+                <input type="radio" name="s2" value="1" onchange="calcScore()">
+                <span class="radio-label">1</span>
+                <span class="radio-sub">新客户</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s2" value="2" onchange="calcScore()">
+                <span class="radio-label">2</span>
+                <span class="radio-sub">曾合作</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s2" value="3" onchange="calcScore()">
+                <span class="radio-label">3</span>
+                <span class="radio-sub">战略客户</span>
+              </label>
+            </div>
+          </td>
+          <td><input class="form-field" type="text" placeholder="客户编号/历史..."></td>
+        </tr>
+        <!-- 维度3 -->
+        <tr>
+          <td class="dim-name">③ 价格空间</td>
+          <td>
+            <div style="color:var(--danger)">1分：价格严重倒挂（低于成本）</div>
+            <div style="color:var(--warn)">2分：微利（成本 ±10%）</div>
+            <div style="color:var(--success)">3分：合理利润（毛利 &gt;15%）</div>
+            <div class="score-hint">
+              <span class="hint-chip">参考同类产品成本</span>
+              <span class="hint-chip">含运营费用</span>
+            </div>
+          </td>
+          <td>
+            <div class="radio-group" style="justify-content:center">
+              <label class="radio-btn">
+                <input type="radio" name="s3" value="1" onchange="calcScore()">
+                <span class="radio-label">1</span>
+                <span class="radio-sub">倒挂</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s3" value="2" onchange="calcScore()">
+                <span class="radio-label">2</span>
+                <span class="radio-sub">微利</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s3" value="3" onchange="calcScore()">
+                <span class="radio-label">3</span>
+                <span class="radio-sub">&gt;15%</span>
+              </label>
+            </div>
+          </td>
+          <td><input class="form-field" type="text" placeholder="参考成本估算..."></td>
+        </tr>
+        <!-- 维度4 -->
+        <tr>
+          <td class="dim-name">④ 技术可行性</td>
+          <td>
+            <div style="color:var(--danger)">1分：全新领域，无任何技术基础</div>
+            <div style="color:var(--warn)">2分：有相关技术但需改进/放大</div>
+            <div style="color:var(--success)">3分：技术路线清晰，有可靠基础</div>
+            <div class="score-hint">
+              <span class="hint-chip">参考研发能力地图</span>
+              <span class="hint-chip">合成路线可查</span>
+            </div>
+          </td>
+          <td>
+            <div class="radio-group" style="justify-content:center">
+              <label class="radio-btn">
+                <input type="radio" name="s4" value="1" onchange="calcScore()">
+                <span class="radio-label">1</span>
+                <span class="radio-sub">无基础</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s4" value="2" onchange="calcScore()">
+                <span class="radio-label">2</span>
+                <span class="radio-sub">需改进</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s4" value="3" onchange="calcScore()">
+                <span class="radio-label">3</span>
+                <span class="radio-sub">路线清晰</span>
+              </label>
+            </div>
+          </td>
+          <td><input class="form-field" type="text" placeholder="技术判断依据..."></td>
+        </tr>
+        <!-- 维度5 -->
+        <tr>
+          <td class="dim-name">⑤ 战略匹配度</td>
+          <td>
+            <div style="color:var(--danger)">1分：完全偏离公司主营方向</div>
+            <div style="color:var(--warn)">2分：边缘相关，可延伸布局</div>
+            <div style="color:var(--success)">3分：高度契合主业（精细化学品/新材料）</div>
+            <div class="score-hint">
+              <span class="hint-chip">对照公司产品路线图</span>
+              <span class="hint-chip">年度战略方向</span>
+            </div>
+          </td>
+          <td>
+            <div class="radio-group" style="justify-content:center">
+              <label class="radio-btn">
+                <input type="radio" name="s5" value="1" onchange="calcScore()">
+                <span class="radio-label">1</span>
+                <span class="radio-sub">偏离</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s5" value="2" onchange="calcScore()">
+                <span class="radio-label">2</span>
+                <span class="radio-sub">边缘</span>
+              </label>
+              <label class="radio-btn">
+                <input type="radio" name="s5" value="3" onchange="calcScore()">
+                <span class="radio-label">3</span>
+                <span class="radio-sub">高度契合</span>
+              </label>
+            </div>
+          </td>
+          <td><input class="form-field" type="text" placeholder="战略方向说明..."></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 实时计分 -->
+    <div class="score-summary">
+      <div>
+        <div class="score-total-label">五维综合评分</div>
+        <div>
+          <span class="score-total-value" id="totalScore">—</span>
+          <span class="score-total-max"> / 15 分</span>
+        </div>
+      </div>
+      <div class="verdict-box">
+        <div class="verdict-badge" id="verdictBadge" style="background:#eee;color:#999;border-color:#ccc;">请完成评分</div>
+        <div class="verdict-hint" id="verdictHint">五项全部评分后自动显示结论</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STEP 4 · 研发成本预估
+  ══════════════════════════════════════════════════ -->
+  <div class="sec-title">
+    <div class="num">4</div>
+    研发成本预估（推送研发前必填）
+  </div>
+
+  <div class="card">
+    <div class="info-banner">💰 在推送给研发之前，附上以下初步成本预判，帮助研发团队快速评估接单可行性，减少沟通来回。</div>
+
+    <div class="push-checklist">
+      <div class="push-check">
+        <input type="checkbox" id="c1">
+        <div class="flex-1" style="flex:1">
+          <div class="push-check-label"><label for="c1">🧪 是否需要全新合成路线开发？（适用于全新 CAS）</label></div>
+          <div class="push-check-sub">如已有文献路线或专利路线，请注明来源</div>
+        </div>
+        <div class="push-check-note">
+          <select class="form-field" style="width:120px">
+            <option>-- 选择 --</option>
+            <option>是，全新开发</option>
+            <option>有文献路线</option>
+            <option>有专利路线</option>
+            <option>否/现有路线</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="push-check">
+        <input type="checkbox" id="c2">
+        <div style="flex:1">
+          <div class="push-check-label"><label for="c2">🧲 是否需要购买原材料 / 标准品进行试验？</label></div>
+          <div class="push-check-sub">估算试验原料采购费用</div>
+        </div>
+        <div class="push-check-note">
+          <input class="form-field" type="text" placeholder="估算费用（元）" style="width:160px">
+        </div>
+      </div>
+
+      <div class="push-check">
+        <input type="checkbox" id="c3">
+        <div style="flex:1">
+          <div class="push-check-label"><label for="c3">🔬 是否涉及特殊分析检测？（如手性HPLC、质谱、同位素等）</label></div>
+          <div class="push-check-sub">含外包检测费用</div>
+        </div>
+        <div class="push-check-note">
+          <select class="form-field" style="width:120px">
+            <option>-- 选择 --</option>
+            <option>是，需外包</option>
+            <option>是，内部可检</option>
+            <option>否</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="push-check">
+        <input type="checkbox" id="c4">
+        <div style="flex:1">
+          <div class="push-check-label"><label for="c4">📅 预计研发周期是否能满足客户交期？</label></div>
+          <div class="push-check-sub">参考同类产品历史研发周期</div>
+        </div>
+        <div class="push-check-note">
+          <select class="form-field" style="width:120px">
+            <option>-- 选择 --</option>
+            <option>能满足</option>
+            <option>待确认</option>
+            <option>无法满足</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="push-check">
+        <input type="checkbox" id="c5">
+        <div style="flex:1">
+          <div class="push-check-label"><label for="c5">⚠️ 是否涉及危险化学品 / 环保合规风险？</label></div>
+          <div class="push-check-sub">涉及则需同步评估合规成本</div>
+        </div>
+        <div class="push-check-note">
+          <select class="form-field" style="width:120px">
+            <option>-- 选择 --</option>
+            <option>无风险</option>
+            <option>低风险</option>
+            <option>需专项评估</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-grid" style="margin-top:14px;">
+      <div class="form-group">
+        <label>预估研发投入总费用</label>
+        <input class="form-field" type="text" placeholder="例：约 3–5 万元">
+      </div>
+      <div class="form-group">
+        <label>预估研发周期</label>
+        <input class="form-field" type="text" placeholder="例：2–4 周">
+      </div>
+      <div class="form-group">
+        <label>建议研发介入时间节点</label>
+        <input class="form-field" type="date">
+      </div>
+      <div class="form-group span3">
+        <label>研发成本预估备注</label>
+        <textarea class="form-field textarea" placeholder="补充说明：如参考文献路线、同类产品经验、特殊原材料采购周期等..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STEP 5 · 决策结论 & 研发推送单
+  ══════════════════════════════════════════════════ -->
+  <div class="sec-title">
+    <div class="num" style="background:var(--accent);">✓</div>
+    决策结论 & 研发推送单
+  </div>
+
+  <div class="card">
+    <div class="info-banner">📋 综合以上四关评估，填写最终决策并生成研发推送单（如需推送研发，请在下方填写优先级与说明）。</div>
+
+    <!-- 最终决策 -->
+    <label style="font-size:12px;color:var(--primary);font-weight:700;">最终处置决策（单选）</label>
+    <div class="decision-grid" style="margin-top:10px;">
+      <div class="decision-card pass" onclick="selectDecision(this,'pass')">
+        <div class="dc-icon">🚀</div>
+        <div class="dc-score pass">推送研发</div>
+        <div class="dc-action">总分 ≥10 分<br>或主管批准</div>
+      </div>
+      <div class="decision-card review" onclick="selectDecision(this,'review')">
+        <div class="dc-icon">👆</div>
+        <div class="dc-score review">上报主管决策</div>
+        <div class="dc-action">总分 7–9 分<br>需主管判断</div>
+      </div>
+      <div class="decision-card reject" onclick="selectDecision(this,'reject')">
+        <div class="dc-icon">🔄</div>
+        <div class="dc-score reject">婉拒 / 观察池</div>
+        <div class="dc-action">总分 ≤6 分<br>或明显不符合</div>
+      </div>
+    </div>
+
+    <!-- 研发优先级 -->
+    <div style="margin-top:20px;">
+      <label style="font-size:12px;color:var(--primary);font-weight:700;">研发介入优先级（推送研发时填写）</label>
+      <div class="priority-group">
+        <label class="priority-btn high" onclick="togglePriority(this)">
+          <input type="radio" name="priority" value="high">
+          🔴 高优先级<br><span style="font-size:11px;font-weight:400">战略/紧急，优先排期</span>
+        </label>
+        <label class="priority-btn medium" onclick="togglePriority(this)">
+          <input type="radio" name="priority" value="medium">
+          🟡 中优先级<br><span style="font-size:11px;font-weight:400">正常排期</span>
+        </label>
+        <label class="priority-btn low" onclick="togglePriority(this)">
+          <input type="radio" name="priority" value="low">
+          🟢 低优先级<br><span style="font-size:11px;font-weight:400">有空再排，可推迟</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 汇总填写 -->
+    <div class="form-grid" style="margin-top:18px;">
+      <div class="form-group">
+        <label>市场部负责人</label>
+        <input class="form-field" type="text" placeholder="签字确认人">
+      </div>
+      <div class="form-group">
+        <label>主管审核意见</label>
+        <input class="form-field" type="text" placeholder="如需主管审核，在此签字">
+      </div>
+      <div class="form-group">
+        <label>推送研发日期</label>
+        <input class="form-field" type="date">
+      </div>
+      <div class="form-group span3">
+        <label>市场部综合结论与建议</label>
+        <textarea class="form-field textarea" style="min-height:80px"
+          placeholder="例：客户为长期战略合作伙伴，该产品与公司新材料方向高度契合，虽属全新CAS，但技术路线有文献支撑，建议高优先级推送研发，预计Q3可完成小试..."></textarea>
+      </div>
+      <div class="form-group span3">
+        <label>婉拒模板 / 观察池备注（婉拒时填写）</label>
+        <textarea class="form-field textarea"
+          placeholder="例：感谢贵司询价，经内部评估，目前该产品暂不在我司开发计划内，如贵司有其他需求欢迎再次联系。（已录入观察池，编号：OBS-20250001）"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer Actions ── -->
+  <div class="form-actions">
+    <button class="btn btn-outline" onclick="clearForm()">🗑 重置表单</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨 打印 / 导出PDF</button>
+    <button class="btn btn-success" onclick="submitForm()">✅ 确认提交 / 推送研发</button>
+  </div>
+
+</div>
+
+<!-- ════════ SCRIPT ════════ -->
+<script>
+  // 日期填充
+  const today = new Date();
+  document.getElementById('today-date').textContent =
+    today.toLocaleDateString('zh-CN', {year:'numeric', month:'long', day:'numeric'});
+
+  // 五维计分
+  function calcScore() {
+    let total = 0, filled = 0;
+    for (let i = 1; i <= 5; i++) {
+      const v = document.querySelector(`input[name="s${i}"]:checked`);
+      if (v) { total += parseInt(v.value); filled++; }
+    }
+    const el = document.getElementById('totalScore');
+    const badge = document.getElementById('verdictBadge');
+    const hint  = document.getElementById('verdictHint');
+
+    if (filled < 5) {
+      el.textContent = filled > 0 ? total + '…' : '—';
+      badge.className = 'verdict-badge';
+      badge.style.cssText = 'background:#eee;color:#999;border-color:#ccc;';
+      badge.textContent = '请完成评分';
+      hint.textContent = `已填 ${filled}/5 项`;
+      return;
+    }
+    el.textContent = total;
+    if (total >= 10) {
+      badge.className = 'verdict-badge verdict-pass';
+      badge.style.cssText = '';
+      badge.textContent = '✅ 推送研发';
+      hint.textContent = `总分 ${total}/15 · 达到推送阈值（≥10分），建议推送研发`;
+    } else if (total >= 7) {
+      badge.className = 'verdict-badge verdict-review';
+      badge.style.cssText = '';
+      badge.textContent = '⚠️ 上报主管';
+      hint.textContent = `总分 ${total}/15 · 处于边界区（7–9分），请上报主管决策`;
+    } else {
+      badge.className = 'verdict-badge verdict-reject';
+      badge.style.cssText = '';
+      badge.textContent = '❌ 建议婉拒';
+      hint.textContent = `总分 ${total}/15 · 低于门槛（≤6分），建议礼貌婉拒或列入观察池`;
+    }
+  }
+
+  // 产品归类选择
+  function selectCategory(el, val) {
+    document.querySelectorAll('.decision-card').forEach(c => c.style.opacity = '1');
+    // highlight
+  }
+
+  // 最终决策选择
+  function selectDecision(el, type) {
+    document.querySelectorAll('[onclick^="selectDecision"]').forEach(c => {
+      c.style.transform = '';
+      c.style.boxShadow = '';
+    });
+    el.style.transform = 'translateY(-4px)';
+    el.style.boxShadow = '0 6px 20px rgba(0,0,0,.15)';
+  }
+
+  // 优先级选择
+  function togglePriority(el) {
+    document.querySelectorAll('.priority-btn').forEach(b => {
+      b.classList.remove('selected');
+    });
+    el.classList.add('selected');
+  }
+
+  // 重置
+  function clearForm() {
+    if (confirm('确认重置所有填写内容？')) {
+      document.querySelectorAll('input[type="text"], input[type="date"], textarea, select').forEach(el => {
+        el.value = '';
+      });
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
+        el.checked = false;
+      });
+      document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('selected'));
+      document.getElementById('totalScore').textContent = '—';
+      document.getElementById('verdictBadge').textContent = '请完成评分';
+      document.getElementById('verdictBadge').className = 'verdict-badge';
+      document.getElementById('verdictBadge').style.cssText = 'background:#eee;color:#999;border-color:#ccc;';
+      document.getElementById('verdictHint').textContent = '五项全部评分后自动显示结论';
+    }
+  }
+
+  // 提交
+  function submitForm() {
+    const score = document.getElementById('totalScore').textContent;
+    if (score === '—' || score.includes('…')) {
+      alert('请先完成五维评分（第三关）后再提交。');
+      return;
+    }
+    alert(`✅ 表单已确认！\n\n五维评分：${score}/15 分\n\n您可通过「打印 / 导出PDF」按钮保存本表单，或将页面截图附于研发推送邮件中。`);
+  }
+</script>
+
+</body>
+</html>

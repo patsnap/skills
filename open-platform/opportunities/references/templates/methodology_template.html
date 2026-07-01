@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TOPIC}} — 方法与限制</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-base: #070b14;
+  --bg-surface: #0d1525;
+  --bg-card: #111c33;
+  --bg-elevated: #162040;
+  --color-primary: #3b82f6;
+  --color-accent: #06d6a0;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-purple: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --border-subtle: rgba(59,130,246,0.15);
+  --glow-blue: 0 0 20px rgba(59,130,246,0.3);
+  --radius-card: 16px;
+  --radius-sm: 8px;
+  --font-title: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-base);color:var(--text-primary);font-family:var(--font-body);min-height:100vh;}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(7,11,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-subtle);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:var(--font-title);font-weight:700;font-size:1rem;color:var(--color-accent);}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:0.85rem;transition:color .2s;}
+.nav-links a:hover{color:var(--color-primary);}
+.page-header{padding:100px 2rem 40px;max-width:1000px;margin:0 auto;}
+.page-title{font-family:var(--font-title);font-size:2rem;font-weight:800;margin-bottom:0.5rem;}
+.page-title span{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.content-body{max-width:1000px;margin:0 auto;padding:0 2rem 4rem;display:flex;flex-direction:column;gap:2rem;}
+.section-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:2rem;}
+.section-card h2{font-family:var(--font-title);font-size:1.1rem;font-weight:700;color:var(--color-primary);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;}
+.section-card p,.section-card li{font-size:0.9rem;color:var(--text-secondary);line-height:1.8;}
+.section-card ul{padding-left:1.25rem;}
+.section-card li{margin-bottom:0.4rem;}
+.code-block{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:0.8rem;color:var(--color-accent);line-height:1.7;overflow-x:auto;white-space:pre-wrap;word-break:break-all;}
+.check-table{width:100%;border-collapse:collapse;}
+.check-table th{text-align:left;padding:0.6rem 1rem;font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;border-bottom:1px solid var(--border-subtle);}
+.check-table td{padding:0.75rem 1rem;font-size:0.85rem;color:var(--text-secondary);border-bottom:1px solid rgba(59,130,246,0.06);vertical-align:top;}
+.check-table tr:last-child td{border-bottom:none;}
+.pass{color:var(--color-accent);font-weight:600;}
+.fail{color:var(--color-danger);font-weight:600;}
+.warn{color:var(--color-warning);font-weight:600;}
+.forbidden-list{list-style:none;padding:0;}
+.forbidden-list li{display:flex;align-items:flex-start;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(239,68,68,0.1);font-size:0.875rem;color:#fca5a5;}
+.forbidden-list li::before{content:'❌';flex-shrink:0;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">{{TOPIC}} · 专利情报</span>
+  <div class="nav-links">
+    <a href="index.html">总览</a>
+    <a href="patents.html">专利列表</a>
+    <a href="subfields.html">技术分支</a>
+    <a href="evidence.html">证据链</a>
+    <a href="methodology.html">方法说明</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div style="display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:0.4rem 1.2rem;font-size:0.75rem;color:var(--color-primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">METHODOLOGY</div>
+  <h1 class="page-title"><span>方法说明</span> 与数据限制</h1>
+  <p style="color:var(--text-secondary);font-size:0.9rem;">检索日期：{{SEARCH_DATE}} · 数据来源：智慧芽PatSnap全球专利数据库</p>
+</div>
+<div class="content-body">
+  <div class="section-card">
+    <h2>🔍 检索策略</h2>
+    <p>{{SEARCH_STRATEGY_DESC}}</p>
+    <div class="code-block" style="margin-top:1rem;">{{SEARCH_QUERY}}</div>
+  </div>
+  <div class="section-card">
+    <h2>📊 统计口径说明</h2>
+    <ul>
+      <li>年度趋势图：逐年分桶检索，每年单独获取 matched_total，共 {{YEAR_COUNT}} 次检索，时间跨度 2015—{{CURRENT_YEAR}}</li>
+      <li>中国趋势图：同上，加 jurisdiction=CN 过滤</li>
+      <li>子技术分支：每个方向独立检索，matched_total 为真实全量数据</li>
+      <li>代表专利：TopK50 相关度排序样本，仅用于专利详情展示，不用于统计图表</li>
+    </ul>
+  </div>
+  <div class="section-card">
+    <h2>✅ 质量核查结果</h2>
+    <table class="check-table">
+      <thead><tr><th>核查项</th><th>结果</th><th>说明</th></tr></thead>
+      <tbody>{{QUALITY_CHECK_ROWS}}</tbody>
+    </table>
+  </div>
+  <div class="section-card" style="border-color:rgba(239,68,68,0.3);">
+    <h2 style="color:var(--color-danger);">🚫 永久禁止生成的图表</h2>
+    <ul class="forbidden-list">
+      <li>申请人排名图 — 当前工具不具备全量聚合接口，无法统计全量申请人分布</li>
+      <li>地域分布图 — 同上，无国家维度全量聚合数据</li>
+      <li>法律状态分布图 — 同上，无全量法律状态聚合数据</li>
+      <li>授权率统计图 — 同上，无全量授权/驳回数据</li>
+    </ul>
+  </div>
+  <div class="section-card">
+    <h2>⚠️ 局限性说明</h2>
+    <ul>{{LIMITATIONS_LIST}}</ul>
+  </div>
+  <div class="section-card">
+    <h2>📋 免责声明</h2>
+    <p>本报告基于智慧芽PatSnap专利公开信息生成，仅供技术研究参考，不构成法律意见、投资建议，不替代FTO分析、市场调研、法规评估和技术专家判断。</p>
+  </div>
+</div>
+</body>
+</html>

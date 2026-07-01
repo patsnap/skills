@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[技术主题] 技术洞察报告 V1.0 | [副标题]</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ===== CSS变量体系（暗色科技风）===== */
+:root {
+  --bg-dark:        #050d1a;
+  --bg-card:        #0a1628;
+  --accent-cyan:    #00d4ff;
+  --accent-blue:    #0080ff;
+  --accent-purple:  #7b2fff;
+  --accent-green:   #00ff88;
+  --accent-orange:  #ff8c00;
+  --accent-red:     #ff3b5c;
+  --accent-yellow:  #ffd600;
+  --text-primary:   #e8f4ff;
+  --text-secondary: #8ab0d0;
+  --border-subtle:  rgba(0,212,255,0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-dark); color: var(--text-primary); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+
+/* ===== 导航栏 ===== */
+nav { position: sticky; top: 0; background: rgba(5,13,26,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-subtle); z-index: 100; padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; }
+nav a { color: var(--text-secondary); text-decoration: none; padding: 12px 10px; font-size: 13px; white-space: nowrap; transition: color 0.2s; }
+nav a:hover { color: var(--accent-cyan); }
+
+/* ===== Header ===== */
+.report-header { padding: 48px 32px 32px; border-bottom: 1px solid var(--border-subtle); }
+.report-title { font-size: 2rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px; }
+.report-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 16px; }
+.meta-bar { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); }
+.meta-item span { color: var(--text-primary); font-weight: 500; }
+
+/* ===== 通用章节 ===== */
+section { padding: 40px 32px; border-bottom: 1px solid var(--border-subtle); max-width: 1200px; margin: 0 auto; }
+h2 { font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle); }
+h3 { font-size: 1.1rem; color: var(--text-primary); margin: 20px 0 12px; }
+
+/* ===== 卡片 ===== */
+.card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 16px; }
+
+/* ===== 表格 ===== */
+.table-wrap { overflow-x: auto; margin-bottom: 16px; }
+.table-scroll-hint { display: none; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+@media (max-width: 900px) { .table-scroll-hint { display: block; } }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: rgba(0,212,255,0.08); color: var(--accent-cyan); padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+tr:hover td { background: rgba(0,212,255,0.03); }
+
+/* ===== 图表 ===== */
+.chart-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px; margin-bottom: 16px; overflow: hidden; }
+.chart-fallback { margin-top: 12px; }
+.chart-fallback summary { cursor: pointer; color: var(--text-secondary); font-size: 12px; padding: 4px 0; }
+.chart-fallback .fallback-table { max-height: 320px; overflow-y: auto; display: block; margin-top: 8px; }
+
+/* ===== IPC条形图CSS四件套（必须完整）===== */
+.ipc-bar-row   { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.ipc-bar-bg    { flex: 1; max-width: 320px; height: 14px; background: rgba(255,255,255,0.08); border-radius: 7px; overflow: hidden; }
+.ipc-bar-fill  { height: 100%; border-radius: 7px; }
+.ipc-label     { width: 160px; font-size: 12px; flex-shrink: 0; color: var(--text-secondary); }
+.ipc-count     { font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+
+/* ===== 估算标注 ===== */
+.est-label { color: var(--accent-yellow); font-style: italic; font-size: 12px; }
+
+/* ===== 风险标签 ===== */
+.risk-critical { color: var(--accent-red); font-weight: 700; }
+.risk-high     { color: var(--accent-orange); font-weight: 700; }
+.risk-medium   { color: var(--accent-yellow); }
+.risk-low      { color: var(--accent-green); }
+
+/* ===== 法律软化框 ===== */
+.avoid-note-soft { background: rgba(0,212,255,0.06); border-left: 3px solid var(--accent-cyan); padding: 12px 16px; border-radius: 4px; font-size: 13px; color: var(--text-secondary); margin-top: 12px; }
+
+/* ===== 回顶按钮 ===== */
+.back-to-top { position: fixed; bottom: 24px; right: 24px; background: var(--accent-cyan); color: var(--bg-dark); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; font-size: 16px; z-index: 999; opacity: 0.8; transition: opacity 0.2s; }
+.back-to-top:hover { opacity: 1; }
+
+/* ===== Footer ===== */
+footer { text-align: center; padding: 24px; color: var(--text-secondary); font-size: 12px; border-top: 1px solid var(--border-subtle); }
+</style>
+</head>
+<body>
+
+<!-- ===== 导航栏 ===== -->
+<nav>
+  <a href="#s0">§0 决策建议</a>
+  <a href="#s1">§1 市场格局</a>
+  <a href="#s2">§2 技术路线</a>
+  <a href="#s3">§3 竞争情报</a>
+  <a href="#s4">§4 专利全景</a>
+  <a href="#s5">§5 标准法规</a>
+  <a href="#s6">§6 热点白点</a>
+  <a href="#s7">§7 前沿应用</a>
+  <a href="#s8">§8 规避建议</a>
+  <a href="#s9">§9 垂直场景</a>
+</nav>
+
+<!-- ===== Header ===== -->
+<header class="report-header">
+  <div class="report-title">[技术主题] 技术洞察报告</div>
+  <div class="report-subtitle">[副标题，如：专利情报 × 市场竞争 × 规避建议]</div>
+  <div class="meta-bar">
+    <span class="meta-item">版本 <span>V1.0</span></span>
+    <span class="meta-item">数据截止 <span>[YYYY年MM月DD日]</span></span>
+    <span class="meta-item">分析范围 <span>[技术边界说明]</span></span>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:var(--text-secondary);">
+    ⚠️ 免责声明：本报告仅供技术研究参考，不构成法律意见。专利侵权风险判断请委托专业律师进行FTO分析。
+  </p>
+</header>
+
+<!-- ===== §0 决策建议 ===== -->
+<section id="s0">
+  <h2>§0 决策建议</h2>
+  <!-- P1/P2/P3 行动矩阵 -->
+  <div class="card">
+    <h3>🔴 P1 立即行动（0–3个月）</h3>
+    <p><!-- [高风险专利Claim Chart分析 + 行动建议] --></p>
+  </div>
+  <div class="card">
+    <h3>🟠 P2 近期规划（3–12个月）</h3>
+    <p><!-- [中风险专利监控 + 技术布局建议] --></p>
+  </div>
+  <div class="card">
+    <h3>🟡 P3 持续关注（12个月+）</h3>
+    <p><!-- [白点布局 + 标准参与 + 市场机会] --></p>
+  </div>
+  <p class="avoid-note-soft">以上决策建议基于公开信息分析，不构成法律意见。量产前请委托专利律师进行正式FTO分析。</p>
+</section>
+
+<!-- ===== §1 市场格局 ===== -->
+<section id="s1">
+  <h2>§1 市场格局</h2>
+  <!-- 市场规模图 -->
+  <div class="chart-card">
+    <canvas id="marketChart" height="80"></canvas>
+    <details class="chart-fallback">
+      <summary>📋 离线备用数据（图表无法显示时查看）</summary>
+      <table class="fallback-table">
+        <thead><tr><th>年份</th><th>市场规模</th><th>来源</th></tr></thead>
+        <tbody>
+          <!-- [填入数据行] -->
+        </tbody>
+      </table>
+    </details>
+  </div>
+  <!-- Porter五力分析 -->
+  <h3>Porter五力分析</h3>
+  <div class="card-grid">
+    <!-- [五力卡片，颜色用描述性色，不用accent-red] -->
+  </div>
+</section>
+
+<!-- ===== §2 技术路线演进 ===== -->
+<section id="s2">
+  <h2>§2 技术路线演进</h2>
+  <!-- 技术代际时间轴 -->
+  <!-- [注意：代际并行时加注"代际划分以技术路线为准，非严格时间递进顺序"] -->
+</section>
+
+<!-- ===== §3 竞争情报 ===== -->
+<section id="s3">
+  <h2>§3 竞争情报</h2>
+  <p class="table-scroll-hint">← 左右滑动查看完整表格</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>企业</th>
+          <th>量产技术方案</th>
+          <th>代表专利</th>
+          <th>价值链定位</th>
+          <th>近期动态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- [每行写完立即验证列数 = 5，结尾</td></tr>] -->
+        <!-- [待核实信息不进本表，移入下方隔离框] -->
+      </tbody>
+    </table>
+  </div>
+  <!-- 待核实信息隔离框（可选） -->
+  <!-- <div class="unverified-box" style="border:1px dashed var(--accent-yellow);padding:16px;border-radius:6px;margin-top:16px;">
+    <h3>⚠️ 待核实信息（双路径核实后移入主表）</h3>
+    ...
+  </div> -->
+
+  <!-- 本土时序表（明确时间范围） -->
+  <h3>本土时序（[YYYY–YYYY年申请时序]）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>时间</th><th>企业</th><th>专利/产品</th><th>技术层级</th><th>状态</th></tr></thead>
+      <tbody>
+        <!-- [时间范围外的专利行不在此表，移入§4或§3国际表] -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== §4 专利全景 ===== -->
+<section id="s4">
+  <h2>§4 专利全景与高风险排查</h2>
+  <!-- IPC热度地图 -->
+  <h3>IPC技术热度地图</h3>
+  <div class="card">
+    <!-- [ipc-bar-row × N条，CSS四件套已在<style>中定义] -->
+    <div class="ipc-bar-row">
+      <span class="ipc-label">[IPC分类]</span>
+      <div class="ipc-bar-bg"><div class="ipc-bar-fill" style="width:80%;background:var(--accent-cyan);"></div></div>
+      <span class="ipc-count">~[N]件</span>
+    </div>
+  </div>
+
+  <!-- 高风险专利清单 -->
+  <h3>高风险专利清单（Claim Chart级别）</h3>
+  <p class="table-scroll-hint">← 左右滑动查看完整表格</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>专利号</th><th>申请人</th><th>法律状态</th>
+          <th>风险等级</th><th>侵权触发特征</th><th>规避方向（完整论述见§8）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- [每件专利：专利号有PatSnap链接，风险等级🔴极高/🟠高/🟡中] -->
+        <!-- [🔴极高专利必须在§0有对应P1行动] -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== §5 标准法规 ===== -->
+<section id="s5">
+  <h2>§5 标准法规</h2>
+  <div class="card-grid">
+    <!-- [标准卡片：标准编号/名称/范围/空白条款/来源] -->
+  </div>
+</section>
+
+<!-- ===== §6 热点白点 ===== -->
+<section id="s6">
+  <h2>§6 行业热点与技术白点</h2>
+  <h3>🔥 技术热点</h3>
+  <!-- [≥3个热点，每个有检索数据支撑] -->
+
+  <h3>⬜ 技术白点（布局机会）</h3>
+  <!-- [≥3个白点，每个标注：类型/IPC范围/验证检索结果数量/技术可行性] -->
+  <!-- [§4 IPC空白区在此必须有对应描述] -->
+  <!-- [§5标准空白条款在此必须有对应切入点] -->
+</section>
+
+<!-- ===== §7 前沿应用 ===== -->
+<section id="s7">
+  <h2>§7 前沿应用场景</h2>
+  <!-- [新兴场景迁移分析，技术参数标注预估值来源] -->
+</section>
+
+<!-- ===== §8 规避建议 ===== -->
+<section id="s8">
+  <h2>§8 专利规避建议</h2>
+  <!-- [每件高风险专利一张avoid-card，完整三路规避方向] -->
+  <!-- [§4高风险清单中的每件专利在此必须有对应] -->
+
+  <p class="avoid-note-soft">
+    以上规避建议为技术方向参考，不构成法律意见。所有规避方案在量产前请委托专业专利律师进行正式FTO分析和法律评估。
+  </p>
+</section>
+
+<!-- ===== §9 垂直场景 ===== -->
+<section id="s9">
+  <h2>§9 垂直场景专项分析</h2>
+  <!-- 雷达图（所有维度统一"数值越高=需求越强"）-->
+  <div class="chart-card">
+    <canvas id="radarChart" height="100"></canvas>
+    <div class="radar-note" style="font-size:12px;color:var(--text-secondary);margin-top:8px;">
+      ⚠️ 以上为专家估算值（非实测数据），仅供参考。所有维度：数值越高=该维度需求/能力越强。
+    </div>
+    <details class="chart-fallback">
+      <summary>📋 离线备用数据表（雷达图无法渲染时查看）</summary>
+      <table class="fallback-table">
+        <thead><tr><th>维度</th><th>[场景A]</th><th>[场景B]</th><th>说明</th></tr></thead>
+        <tbody>
+          <!-- [6个维度，数值与JS data完全一致] -->
+        </tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  [技术主题] 技术洞察报告 V1.0 · 数据截止 [YYYY年MM月DD日] · 本报告仅供技术研究参考，不构成法律意见
+</footer>
+
+<!-- ===== 回顶按钮 ===== -->
+<a class="back-to-top" href="#s0" title="回到顶部">↑</a>
+
+<script>
+// ===== CDN失效检测：自动展开所有降级表 =====
+window.addEventListener('load', function() {
+  if (typeof Chart === 'undefined') {
+    document.querySelectorAll('.chart-fallback').forEach(d => d.open = true);
+    return;
+  }
+
+  // ===== 市场规模图 =====
+  const marketCtx = document.getElementById('marketChart');
+  if (marketCtx) {
+    new Chart(marketCtx, {
+      type: 'bar',
+      data: {
+        labels: [/* [年份列表] */],
+        datasets: [
+          {
+            label: '权威来源数据',
+            data: [/* [数值] */],
+            backgroundColor: 'rgba(0,212,255,0.7)',
+          },
+          {
+            label: '内部估算',
+            data: [/* [数值] */],
+            backgroundColor: 'rgba(255,214,0,0.5)',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'bottom', labels: { color: '#8ab0d0' } },
+          tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw}亿美元` } }
+        },
+        scales: { y: { ticks: { color: '#8ab0d0' } }, x: { ticks: { color: '#8ab0d0' } } }
+      }
+    });
+  }
+
+  // ===== 雷达图 =====
+  const radarCtx = document.getElementById('radarChart');
+  if (radarCtx) {
+    new Chart(radarCtx, {
+      type: 'radar',
+      data: {
+        labels: ['[维度1]', '[维度2]', '[维度3]', '[维度4]', '[维度5]', '[维度6]'],
+        datasets: [
+          {
+            label: '[场景A]',
+            data: [/* 6个数值，与离线表完全一致 */],
+            borderColor: 'rgba(0,212,255,0.8)',
+            backgroundColor: 'rgba(0,212,255,0.15)',
+          },
+          {
+            label: '[场景B]',
+            data: [/* 6个数值，与离线表完全一致 */],
+            borderColor: 'rgba(255,140,0,0.8)',
+            backgroundColor: 'rgba(255,140,0,0.15)',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'bottom', labels: { color: '#8ab0d0' } }
+        },
+        scales: {
+          r: {
+            min: 0, max: 100,
+            ticks: { color: '#8ab0d0', stepSize: 20 },
+            pointLabels: { color: '#e8f4ff', font: { size: 12 } },
+            grid: { color: 'rgba(255,255,255,0.1)' },
+            angleLines: { color: 'rgba(255,255,255,0.1)' }
+          }
+        }
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
