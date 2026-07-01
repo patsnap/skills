@@ -37,7 +37,7 @@ The original life-sciences skills integrate with PatSnap LifeScience MCP service
 
 ## Open Platform Skills
 
-Additional biomedical workflows imported from Skill Hub are available in `../open-platform/`, including `adc-patent-weekly-report`, `generic-drug-scout-v1`, `mab-fto-check`, and `target-discovery`.
+Additional biomedical workflows imported from Skill Hub are available in `../open-platform/`, including `adc-patent-weekly-report`, `generic-drug-scout`, `mab-fto-check`, and `target-discovery`.
 
 ## MCP Setup Guide
 

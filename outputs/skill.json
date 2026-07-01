@@ -1,0 +1,2814 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "https://github.com/patsnap/skills",
+  "branch": "main",
+  "generated_from_commit": "ebeee1e57927a29c4ee087a0c648675dadafec5f",
+  "count": 83,
+  "skills": [
+    {
+      "skill_name": "ai-amazing-tech",
+      "display_name": "ai tech amazing",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/ai-amazing-tech/SKILL.md",
+      "description": "技术创新突破情报官 — 根据用户需求自动路由至三个独立模块：技术全景分析、专利挖掘、技术情报简报，每个模块均输出对应风格统一的 HTML 报告。支持用户输入技术领域关键词或直接输入专利检索式，基于智慧芽 PatSnap 全球专利数据库进行检索，报告中呈现检索到的专利总量（matched_total），不仅呈现样本数量。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/ai-amazing-tech",
+      "skill_file": "open-platform/ai-amazing-tech/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0041"
+      ],
+      "source_display_names": [
+        "AI技术创新突破情报官"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "altshuller-perspective",
+      "display_name": "根里奇·阿奇舒勒（Genrich Altshuller）思维视角",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/altshuller-perspective/SKILL.md",
+      "description": "根里奇·阿奇舒勒（Genrich Altshuller）思维视角 Skill。\nTRIZ理论创始人，苏联发明家、工程师、科幻作家（笔名 Altov）。\n核心信念：创新是有规律的科学，矛盾是发明的引擎，理想解是思考的北极星。\n本 Skill 基于其著作、传记资料和历史事件提炼，来源以英文学术资料为主，中文资料为辅。\n调研截止：2026年4月。\n触发词：「TRIZ视角」「阿奇舒勒怎么看」「用TRIZ分析」「发明矛盾」「理想解」「发明家思维」。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/altshuller-perspective",
+      "skill_file": "open-platform/altshuller-perspective/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "TRIZ"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "TRIZ"
+      ],
+      "source_record_ids": [
+        "SKILL-0076"
+      ],
+      "source_display_names": [
+        "根里奇·阿奇舒勒（Genrich Altshuller）思维视角"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "auto-industry-report",
+      "display_name": "汽车行业技术全景报告",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/auto-industry-report/SKILL.md",
+      "description": "汽车行业五大域+零部件企业100强深度技术全景报告生成器（V11版）",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/auto-industry-report",
+      "skill_file": "open-platform/auto-industry-report/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "汽车行业"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0044"
+      ],
+      "source_display_names": [
+        "汽车行业技术全景报告"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "catalyst-method-auditor",
+      "display_name": "能源化工材料催化剂制备与评价方案审核 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/catalyst-method-auditor/SKILL.md",
+      "description": "审核能源化工材料催化剂制备与评价方案，重点判断输入材料是否具备实验执行、复现、对照比较和性能主张验证条件。适用于催化剂制备步骤截图、论文方法、专利实施例、人工方案、智能体生成方案和研发设想。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/catalyst-method-auditor",
+      "skill_file": "open-platform/catalyst-method-auditor/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0020"
+      ],
+      "source_display_names": [
+        "能源化工材料催化剂制备与评价方案审核"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "ceae-skill",
+      "display_name": "ceae-skill — 硬件产品参数根因分析（TRIZ小组协作模式）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/ceae-skill/SKILL.md",
+      "description": "面向硬件工程师的根因分析技能。输入模糊优化目标，通过4角色TRIZ小组协作（🔧机械+🧪材料+⚡电气+🏭制造），用第一性原理三层框架+5Why公式拆解+机料法环测穷举找到硬件产品参数无法达标的根本原因，输出关键问题列表+Mermaid因果图+PNG存档。触发词：根因分析、因果图、TRIZ小组、参数超标、找根本原因、5Why分析、ceae。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/ceae-skill",
+      "skill_file": "open-platform/ceae-skill/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "成果转化",
+        "TRIZ"
+      ],
+      "tags": [
+        "研发工程",
+        "成果转化",
+        "TRIZ"
+      ],
+      "source_record_ids": [
+        "SKILL-0077"
+      ],
+      "source_display_names": [
+        "硬件产品参数根因分析（TRIZ小组协作模式）"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "client-demo-portal",
+      "display_name": null,
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/client-demo-portal/SKILL.md",
+      "description": "为企业客户快速搭建智慧芽情报门户演示原型，涵盖需求分析、本地搭建、数据对接、演示话术全流程",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/client-demo-portal",
+      "skill_file": "open-platform/client-demo-portal/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "source_record_ids": [
+        "SKILL-0045"
+      ],
+      "source_display_names": [
+        "企业客户情报门户演示搭建"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "competitive-intel-report",
+      "display_name": "competitive-intel-report",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/competitive-intel-report/SKILL.md",
+      "description": "汽车NVH声学密封与结构增强件竞争情报HTML报告生成器。输入我方公司名称、竞争对手列表及专利检索结果，自动生成与V12版本风格完全一致的浅色交互式HTML情报简报，内嵌纯CSS图文图表（无外部依赖）、执行摘要KPI直展详情、SWOT分析、专利全景对比、威胁矩阵、应对建议等10大模块，所有专利链接可直接跳转智慧芽PatSnap。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/competitive-intel-report",
+      "skill_file": "open-platform/competitive-intel-report/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "汽车行业"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0047"
+      ],
+      "source_display_names": [
+        "汽车NVH竞争情报报告"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "corp-innovation-brief",
+      "display_name": "corp-innovation-brief · 企业科创力评估简报",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/corp-innovation-brief/SKILL.md",
+      "description": "企业科创力评估与信贷分析简报生成技能。输入企业名称，自动检索全量专利、相关论文和公开网络数据，输出包含公司概况、主营业务、核心专利技术方向、专利组合分析、市场地位与战略合作、信贷评审关注点六大板块的结构化简报。面向银行信贷客户经理、审批人员和风险控制人员。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/corp-innovation-brief",
+      "skill_file": "open-platform/corp-innovation-brief/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0049"
+      ],
+      "source_display_names": [
+        "企业科创力评估简报"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "disclosure-completion-assistant",
+      "display_name": "交底书智能补全助手",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/disclosure-completion-assistant/SKILL.md",
+      "description": "A bilingual patent disclosure completion assistant for patent agencies, inventors, and R&D teams. It packages a standalone customer-facing HTML guide that collects invention information through a structured 7-step workflow, provides AI completion for rough R&D notes, and generates a structured invention disclosure draft for patent attorney review.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/disclosure-completion-assistant",
+      "skill_file": "open-platform/disclosure-completion-assistant/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "成果转化",
+        "质量审核",
+        "销售支持"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "成果转化",
+        "质量审核",
+        "销售支持"
+      ],
+      "source_record_ids": [
+        "SKILL-0010"
+      ],
+      "source_display_names": [
+        "交底书智能补全助手"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "external-tech-acquisition",
+      "display_name": "央企外部科技成果吸纳工作流",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/external-tech-acquisition/SKILL.md",
+      "description": "央企外部科技成果吸纳工作流。覆盖从战略需求→情报扫描→成果评估→尽职调查→转化路径→决策证据链的完整闭环，通过五大工作模式调用智慧芽MCP能力，系统性解决央企科技管理部门在吸纳外部科技成果时面临的六大难点。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/external-tech-acquisition",
+      "skill_file": "open-platform/external-tech-acquisition/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0112"
+      ],
+      "source_display_names": [
+        "央企外部科技成果吸纳工作流"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "feasibility-review",
+      "display_name": "feasibility-review · 可研报告立项审查技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/feasibility-review/SKILL.md",
+      "description": "可行性研究报告立项审查技能。自动解析用户上传的项目指南与可研报告，执行形式审查（文本规范、篇章结构、完整性、一致性）和实质审查（技术路线提取、创新点提取、专利/论文多维分析、政策分析），最终生成结构化立项审查报告，辅助科技管理人员做立项研判。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/feasibility-review",
+      "skill_file": "open-platform/feasibility-review/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0052"
+      ],
+      "source_display_names": [
+        "可研报告立项审查技能"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "industry-analysis",
+      "display_name": "综合产业分析报告生成工具",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/industry-analysis/SKILL.md",
+      "description": "综合产业分析报告生成工具",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/industry-analysis",
+      "skill_file": "open-platform/industry-analysis/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "生命科学",
+        "汽车行业"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "生命科学",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0054"
+      ],
+      "source_display_names": [
+        "综合产业分析报告生成工具"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "industry-chain-intelligence",
+      "display_name": "企业决策者产业链战略报告系统",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/industry-chain-intelligence/SKILL.md",
+      "description": "企业决策者产业链战略报告系统。面向企业CEO/CTO/战略总监，输入公司名称或产业链，\n一键生成10页白皮书风格HTML报告，涵盖产业链定位、上游卡脖子风险、下游市场格局、\n技术竞争态势、科创力雷达、趋势机会及行动路线图。\n视觉风格严格遵循 coolingstyle_v2_whitepaper.html 白皮书 DNA：象牙白底、深海军蓝标题、\n朱红强调、古金装饰、Noto Serif/Sans/Roboto Mono 字体三件套、960px宽/52px页边距。\n数据通过智慧芽MCP实时获取，图表默认统计范围2012-当前年月。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/industry-chain-intelligence",
+      "skill_file": "open-platform/industry-chain-intelligence/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0021"
+      ],
+      "source_display_names": [
+        "企业决策者产业链战略报告系统"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "innovation-radar",
+      "display_name": "研发创新点雷达",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/innovation-radar/SKILL.md",
+      "description": "研发创新点雷达：从研发周报、会议纪要、技术方案、实验记录等材料中，\n自动发现潜在创新点，并给出保护建议、价值评分（新颖性潜力×技术完整度）\n和后续补充问题。\n\n触发场景：\n- 用户提交研发周报/项目进展，询问\"有没有值得保护的创新点\"\n- 用户粘贴会议纪要，询问\"这次会议有哪些技术变化点\"\n- 用户上传技术方案/架构文档，询问\"哪些部分可以申请专利\"\n- 用户直接描述一个技术改进，询问\"这个算不算创新\"\n- 关键词触发：创新点、专利点、可以申请专利吗、值得保护吗、技术交底",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/innovation-radar",
+      "skill_file": "open-platform/innovation-radar/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0029"
+      ],
+      "source_display_names": [
+        "研发创新雷达"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "inventor-resignation-monitor",
+      "display_name": "发明人离职监控简报 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/inventor-resignation-monitor/SKILL.md",
+      "description": "发明人离职监控简报生成工具。输入目标公司名称+技术领域，或直接输入发明人姓名，自动识别疑似离职发明人、检索其近N年在他处申请的专利，分析与原公司技术的相似度，输出结构化HTML风险预警简报。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/inventor-resignation-monitor",
+      "skill_file": "open-platform/inventor-resignation-monitor/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "source_record_ids": [
+        "SKILL-0102"
+      ],
+      "source_display_names": [
+        "发明人离职监控简报"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "market-demand-assessment",
+      "display_name": "产品市场需求调研",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/market-demand-assessment/SKILL.md",
+      "description": "产品市场需求调研——中节能万润市场部专用。对客户询价需求进行系统性预筛选评估，通过四关决策流程（信息核验→产品归类→五维评分→成本预估）判断是否推送给研发部门，输出可视化HTML分析表单。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/market-demand-assessment",
+      "skill_file": "open-platform/market-demand-assessment/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "质量审核",
+        "生命科学"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "质量审核",
+        "生命科学"
+      ],
+      "source_record_ids": [
+        "SKILL-0003"
+      ],
+      "source_display_names": [
+        "产品市场需求调研"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "oled-intelligence-portal",
+      "display_name": "技术领域情报简报门户生成器",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/oled-intelligence-portal/SKILL.md",
+      "description": "输入任意技术领域关键词（如\"OLED\"、\"固态电池\"、\"mRNA疫苗\"），自动生成该领域的情报简报门户（HTML网站）。监控的企业和技术分支由AI模型自动检索和拆解，新闻由智慧芽新闻向量检索自动获取，专利使用关键词扩展后在智慧芽专利数据库直接检索。当用户说\"生成XXX情报门户\"、\"XXX领域情报简报\"、\"帮我监控XXX技术\"时触发。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/oled-intelligence-portal",
+      "skill_file": "open-platform/oled-intelligence-portal/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "生命科学",
+        "汽车行业"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "生命科学",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0097"
+      ],
+      "source_display_names": [
+        "技术领域情报简报门户生成器"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "qiye-risk-platform",
+      "display_name": "金融机构风控管理平台 — 完整复原手册",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/qiye-risk-platform/SKILL.md",
+      "description": "企业风险平台2——金融机构风控管理平台完整复原手册。基于智慧芽PatSnap科创类数据，支持评级变动分析、科创风险快照、批量风险巡检、季度预警名单，自动扫描6个严重风险维度和8个关注风险维度，输出三层可解释风险快照报告（HTML）。含5步分步复原指令，客户可从零复原金融机构风控管理平台。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/qiye-risk-platform",
+      "skill_file": "open-platform/qiye-risk-platform/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "成果转化"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0011"
+      ],
+      "source_display_names": [
+        "金融机构风控管理平台 — 完整复原手册"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "rd-direction-finder",
+      "display_name": "rd-direction-finder（科技项目研发方向检索报告生成）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/rd-direction-finder/SKILL.md",
+      "description": "给定工程/技术问题描述，按\"需求牵引-瓶颈分析-解决思路\"三维解析需求，提取互斥技术难题，识别核心攻关方向，并行执行专利、论文及 Web 多平台检索，综合输出不超过 max_directions（默认 10）路结构化研发方向（含核心问题、研发内容、技术目标、代表参考证据），并按固定骨架同步生成 Markdown 检索报告与可渲染 HTML 报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/rd-direction-finder",
+      "skill_file": "open-platform/rd-direction-finder/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0062"
+      ],
+      "source_display_names": [
+        "科技项目研发方向检索报告生成"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "semi-intel-platform",
+      "display_name": "半导体设备智能情报平台",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/semi-intel-platform/SKILL.md",
+      "description": "半导体设备智能情报平台（SemiWatch Pro）— 融合智慧芽 PatSnap MCP 真实专利数据，覆盖专利竞争、供应链风险、技术代差、政策管制、竞争对手等12个功能模块的单文件 HTML 情报看板",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/semi-intel-platform",
+      "skill_file": "open-platform/semi-intel-platform/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "source_record_ids": [
+        "SKILL-0064"
+      ],
+      "source_display_names": [
+        "半导体设备智能情报平台"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "smart-construction-analysis",
+      "display_name": "智能建造技术深度分析技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/smart-construction-analysis/SKILL.md",
+      "description": "智能建造技术深度分析技能：面向桥梁、隧道、高速公路等基础设施领域，融合专利、学术文献、商业报道、展会及成果转化案例等多维数据源，自动完成核心技术主体识别、专利布局分析、竞争格局评估，并生成HTML/Word双格式专业分析报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/smart-construction-analysis",
+      "skill_file": "open-platform/smart-construction-analysis/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0034"
+      ],
+      "source_display_names": [
+        "智能建造技术深度分析技能"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "smart-intel",
+      "display_name": "智慧情报（smart-intel）Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/smart-intel/SKILL.md",
+      "description": "智慧情报与政策孵化技能。面向企业/研究机构，一键生成集情报中心、政策孵化工作台、\n技术路线研判、科技创新管理四大模块于一体的可交互HTML情报门户。\n支持按目标企业/行业定制数据、调用PatSnap专利数据与网络情报，输出本地可用的单文件HTML。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/smart-intel",
+      "skill_file": "open-platform/smart-intel/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "立项论证"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0033"
+      ],
+      "source_display_names": [
+        "智慧情报（smart-intel）"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "tech-evolution-analysis",
+      "display_name": "Tech Evolution Analysis · 技术进化趋势分析 7 步流水线",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-evolution-analysis/SKILL.md",
+      "description": "基于 TRIZ 11 进化路线 + SVOP 功能化 + patsnap 四轨检索（专利+论文）的技术进化趋势分析 7 步流水线。当用户给出一个产品名称（如智能手表、AR 眼镜、扫地机器人、新能源车电池等）并希望识别该产品的进化方向、空白点、跨域类比候选、3-5-10 年下一代形态预测、灰犀牛与黑天鹅技术信号时调用。触发关键词：技术进化、进化趋势、下一代形态、TRIZ 进化树、空白点、跨域类比、技术路线图、黑天鹅信号、灰犀牛技术、技术预测",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-evolution-analysis",
+      "skill_file": "open-platform/tech-evolution-analysis/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0007"
+      ],
+      "source_display_names": [
+        "黑天鹅与灰犀牛-技术预测预警"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "tech-insight-report",
+      "display_name": "技术主题洞察报告 · 标准化Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-insight-report/SKILL.md",
+      "description": "技术主题洞察报告全流程生成Skill。覆盖选题→采集→HTML编写→质检→发布五阶段SOP，内置六维信源框架、专利高风险排查、避坑经验与自动化质检脚本。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-insight-report",
+      "skill_file": "open-platform/tech-insight-report/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0084"
+      ],
+      "source_display_names": [
+        "技术主题洞察报告 · 标准化"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "tech-report-skill",
+      "display_name": "技术研发简报生成 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-report-skill/SKILL.md",
+      "description": "基于专利Excel数据生成技术研发简报HTML。输入包含专利清单的Excel文件路径、技术主题、时间范围，自动完成关键词标引、数据分析、HTML简报生成全流程。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-report-skill",
+      "skill_file": "open-platform/tech-report-skill/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "情报监控",
+        "汽车行业"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "情报监控",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0107"
+      ],
+      "source_display_names": [
+        "技术研发简报生成"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "triz-functional-search",
+      "display_name": "功能导向检索skill：利用此技能帮助研发人员寻找跨领域技术方案",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/triz-functional-search/SKILL.md",
+      "description": "功能导向检索skill：利用此技能帮助研发人员寻找跨领域技术方案",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/triz-functional-search",
+      "skill_file": "open-platform/triz-functional-search/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "TRIZ"
+      ],
+      "tags": [
+        "研发工程",
+        "专利分析",
+        "检索",
+        "TRIZ"
+      ],
+      "source_record_ids": [
+        "SKILL-0078"
+      ],
+      "source_display_names": [
+        "功能导向检索skill：利用此技能帮助研发人员寻找跨领域技术方案"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "xiong-an-due-diligence",
+      "display_name": "雄安国创中心企业及技术专项尽调报告技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/xiong-an-due-diligence/SKILL.md",
+      "description": "雄安国创中心企业及技术专项尽调报告自动生成技能。输入目标企业全称+统一社会信用代码+核心技术关键词，自动执行七步尽调工作流（立项范围界定→框架搭建→外部数据检索→内部规则融合→技术深度分析→报告整合→HTML输出），调用智慧芽专利检索、论文检索、网络搜索工具，输出含执行摘要、知识产权尽调、FTO风险、竞品对标、风险等级标注的标准化HTML尽调报告。触发词：企业尽调、技术尽调、尽调报告、IP尽调、雄安尽调、国创中心尽调。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/xiong-an-due-diligence",
+      "skill_file": "open-platform/xiong-an-due-diligence/SKILL.md",
+      "category": "研发工程",
+      "categories": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证"
+      ],
+      "tags": [
+        "研发工程",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0028"
+      ],
+      "source_display_names": [
+        "企业及技术专项尽调报告技能"
+      ],
+      "source_domain": "engineering",
+      "source_domain_label": "研发工程"
+    },
+    {
+      "skill_name": "asset-dashboard-search",
+      "display_name": "asset-dashboard-search",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/asset-dashboard-search/SKILL.md",
+      "description": "专利资产看板检索技能，封装多个智慧芽专利检索API能力，支持按申请人、关键词等维度检索专利，返回去重后的专利列表。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/asset-dashboard-search",
+      "skill_file": "open-platform/asset-dashboard-search/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "汽车行业"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0074"
+      ],
+      "source_display_names": [
+        "专利资产看板检索"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "auto-lamp-ip-advisor",
+      "display_name": "汽车车灯供应链与知识产权分析专家（Auto Lamp IP Advisor）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/auto-lamp-ip-advisor/SKILL.md",
+      "description": "汽车车灯零部件供应链决策与专利侵权风险分析专家。根据用户提供的车灯设计图描述或零件清单，完成四阶段分析：零件模块拆解、外购vs自制决策、专利侵权风险评估（含发明专利、实用新型、外观设计三类比对，疑似侵权专利对照表与绕行建议）、综合采购与设计策略汇总，最终输出网页版Tab导航HTML格式报告并打包为zip提供下载。检索范围覆盖中国及US/EP/JP/KR等主要海外专利局。覆盖前照灯、尾灯、雾灯、氛围灯，熟悉法雷奥、海拉、马瑞利、斯坦雷、小糸等主要供应商专利布局，以及奥迪\"雷神之锤\"等经典海外车灯专利。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/auto-lamp-ip-advisor",
+      "skill_file": "open-platform/auto-lamp-ip-advisor/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "销售支持"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "销售支持"
+      ],
+      "source_record_ids": [
+        "SKILL-0024"
+      ],
+      "source_display_names": [
+        "汽车车灯供应链与知识产权分析专家"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "automotive-patent-valuation",
+      "display_name": "汽车行业高价值专利评估 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/automotive-patent-valuation/SKILL.md",
+      "description": "汽车行业高价值专利评估 Skill：基于14维三大维度（技术40%/法律30%/经济30%）评分模型，结合国资委14项高价值专利标签，对汽车行业专利进行系统性高价值评估、竞品对标与战略建议输出。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/automotive-patent-valuation",
+      "skill_file": "open-platform/automotive-patent-valuation/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0025"
+      ],
+      "source_display_names": [
+        "汽车行业高价值专利评估"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "base-station-antenna-monitor",
+      "display_name": "基站天线专利监控 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/base-station-antenna-monitor/SKILL.md",
+      "description": "基站天线专利技术监控工具，面向普罗斯通信技术使用。自动检索近一个月内华为、康普、京信、爱立信等17家核心企业的基站天线相关专利，按振子、天线罩、反射板三大技术分支分类，生成包含专利清单与技术概要的专业HTML报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/base-station-antenna-monitor",
+      "skill_file": "open-platform/base-station-antenna-monitor/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "source_record_ids": [
+        "SKILL-0008"
+      ],
+      "source_display_names": [
+        "基站天线专利监控"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "competitive-patent-landscape",
+      "display_name": "Competitive Patent Landscape — 竞品最新专利布局分析",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/competitive-patent-landscape/SKILL.md",
+      "description": "针对指定行业，自动检索竞品近5年全球专利，按品牌专利簇、技术路线趋势、国家布局三个维度深度分析，生成面向客户高层（总裁/CXO）汇报用的专业 HTML 报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/competitive-patent-landscape",
+      "skill_file": "open-platform/competitive-patent-landscape/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "汽车行业"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0046"
+      ],
+      "source_display_names": [
+        "竞品最新专利布局分析"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "competitor-patent-landscape",
+      "display_name": "竞争对手专利布局策略调研技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/competitor-patent-landscape/SKILL.md",
+      "description": "竞争对手专利布局策略调研技能：给定竞争对手公司名称与技术领域，自动检索专利、识别重点布局、分析核心/外围策略，输出带有产品图可视化的HTML/PDF报告供企业IP团队和研发参考。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/competitor-patent-landscape",
+      "skill_file": "open-platform/competitor-patent-landscape/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "汽车行业"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0104"
+      ],
+      "source_display_names": [
+        "竞争对手专利布局策略调研技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "competitor-skill",
+      "display_name": "Competitor Patent Report Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/competitor-skill/SKILL.md",
+      "description": "\"给定 PatSnap 专业检索式，检索专利数据库，生成竞争对手专利分析报告。当用户输入包含 PatSnap 字段操作符（如 ANCS:、TAC_all:、DESC_B:、MAINF:、ALL_AN:、PN:、APD:、PBD:、APNO:、PRNO: 等）的检索式时触发。\"",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/competitor-skill",
+      "skill_file": "open-platform/competitor-skill/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控"
+      ],
+      "source_record_ids": [
+        "SKILL-0101"
+      ],
+      "source_display_names": [
+        "竞争对手专利分析报告"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "cross-border-patent-risk-screen",
+      "display_name": "跨境电商专利侵权风险初筛技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/cross-border-patent-risk-screen/SKILL.md",
+      "description": "跨境电商全类型专利侵权风险初筛工具（外观+发明+实用新型三合一）。支持产品图片URL或产品链接输入，AI自动提取外观设计特征与技术特征，与智慧芽全球专利数据库比对，10分钟内输出美国/欧洲/日本等目标市场的侵权风险等级与规避建议，覆盖174个国家和地区。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/cross-border-patent-risk-screen",
+      "skill_file": "open-platform/cross-border-patent-risk-screen/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0013"
+      ],
+      "source_display_names": [
+        "跨境电商专利侵权风险初筛技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "discover-patent-white-space-opportunities",
+      "display_name": "专利空白点创新机会发现",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/discover-patent-white-space-opportunities/SKILL.md",
+      "description": "从专利地图中发现候选空白点，评估其问题价值，诊断空白背后的关键矛盾，并提出矛盾化解思路。适用于分析专利地图、技术-功效矩阵、技术-应用矩阵、专利聚类图、技术路线图或专利稀疏区域。候选空白点选择后及问题价值评估后，必须分别取得用户确认；不开展后续技术验证、商业验证或专利布局论证。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/discover-patent-white-space-opportunities",
+      "skill_file": "open-platform/discover-patent-white-space-opportunities/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0075"
+      ],
+      "source_display_names": [
+        "专利空白点创新机会发现"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "enterprise-patent-report",
+      "display_name": "企业专利战略研究报告生成技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/enterprise-patent-report/SKILL.md",
+      "description": "基于智慧芽PatSnap数据，为企业生成完整的专利战略研究报告（HTML格式，常规报告排版）。涵盖公司概况、核心竞争力、竞争格局、市场机会、核心风险、战略建议、智慧芽解决方案八大部分，每个主张均有专利/文献证据支撑。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/enterprise-patent-report",
+      "skill_file": "open-platform/enterprise-patent-report/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0023"
+      ],
+      "source_display_names": [
+        "企业专利战略研究报告生成技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "european-patent-claims-review",
+      "display_name": "欧洲专利申请文件权利要求书审核",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/european-patent-claims-review/SKILL.md",
+      "description": "Use when a user uploads or references a European patent application document, claims set, draft specification, PCT/EP national phase text, Chinese patent text intended for Europe, or asks for 欧洲专利申请文件权利要求书审核, EPO/EPC claim review, Art. 84/83/123(2)/54/56 risk analysis, unity review, claim amendment suggestions, or European patent attorney-style claim drafting QA.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/european-patent-claims-review",
+      "skill_file": "open-platform/european-patent-claims-review/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0087"
+      ],
+      "source_display_names": [
+        "欧洲专利申请文件权利要求书审核"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "fto-report-quality",
+      "display_name": "FTO报告质量审核技能（fto-review）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/fto-report-quality/SKILL.md",
+      "description": "\"FTO报告质量审核技能（通用版，一包双模块+可选Harness校验）v9.0。适用于任意公司、法务团队或专利代理所，接收已有FTO报告、专利侵权风险分析报告或展会知识产权风险自评报告，按事实层、法律判断层、决策可用层三层方法论进行质量审核，并用A/B/C/D四维度量化评分。新增：矩阵式场景识别、五轨检索（含时序轨）、Jackknife召回率估算、致命缺陷一票否决、摘要优先输出模式、桑基图可视化、可执行优先级建议排序、Harness跨字段逻辑校验。触发本skill进行FTO报告质量审核时，必须调用generate_report.py生成正式HTML文件；当用户明确要求校验时，再使用内置validate_report.py检查HTML结果。\"",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/fto-report-quality",
+      "skill_file": "open-platform/fto-report-quality/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0053"
+      ],
+      "source_display_names": [
+        "FTO报告质量审核"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "generic-fto-report",
+      "display_name": "通用行业 FTO 报告",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/generic-fto-report/SKILL.md",
+      "description": "Generate general-industry patent FTO reports from a risk-point Word document and user-provided PatSnap search queries. Use when a patent risk analyst provides target product/technology features plus one or more direct search queries, and wants Codex to execute P002 patent searches, obtain claim 1 with P018, run AI07 auxiliary infringement comparison, and output a traceable FTO report.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/generic-fto-report",
+      "skill_file": "open-platform/generic-fto-report/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0103"
+      ],
+      "source_display_names": [
+        "通用行业 FTO 报告"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "inner-mongolia-energy-ip-platform",
+      "display_name": "内蒙古现代能源知识产权运营中心平台",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/inner-mongolia-energy-ip-platform/SKILL.md",
+      "description": "内蒙古自治区现代能源知识产权运营中心平台生成器——通过 PatSnap MCP 检索真实专利数据，生成包含7大功能模块的完整单页 HTML 平台。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/inner-mongolia-energy-ip-platform",
+      "skill_file": "open-platform/inner-mongolia-energy-ip-platform/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0019"
+      ],
+      "source_display_names": [
+        "内蒙古现代能源知识产权运营中心平台"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "ip-stat-workflow",
+      "display_name": "知识产权成果统计工作流程助手",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/ip-stat-workflow/SKILL.md",
+      "description": "知识产权成果统计工作流程助手。结合智慧芽MCP工具，引导科技管理部门从数据采集、核验、分类、评级到汇总上报的全流程操作，输出台账、质量分级简报与上报材料。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/ip-stat-workflow",
+      "skill_file": "open-platform/ip-stat-workflow/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0111"
+      ],
+      "source_display_names": [
+        "知识产权成果统计工作流程助手"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "j-patent-strategy-analyzer",
+      "display_name": "企业专利战略匹配分析（模板驱动版）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/j-patent-strategy-analyzer/SKILL.md",
+      "description": "Jary66原创，企业战略专利布局分析（模板驱动版）。通过了解企业产品及经营动态与企业全球专利，做对比映射分析。从知产管理视角了解企业的专利布局情况、优势、不足、风险、下一步行动计划等。输出为独立HTML文件（所有CSS和图表内联，零外部依赖）。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/j-patent-strategy-analyzer",
+      "skill_file": "open-platform/j-patent-strategy-analyzer/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0022"
+      ],
+      "source_display_names": [
+        "企业专利战略匹配分析（模板驱动版）"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "jp-patent-claims-review",
+      "display_name": "日本专利申请文件权利要求书审核（jp-patent-claims-review）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/jp-patent-claims-review/SKILL.md",
+      "description": "日本专利申请文件权利要求书审核工具。用户上传PDF或Word版专利申请文件后，自动按日本特許法（§29、§36等）及JPO审查实务标准，从法律合规性、新颖性/进步性预判、撰写结构、审查实务风险、涉外申请及战略保护六大维度逐项审核权利要求书；维度二强制调用 novelty-check 和 non-obviousness-check skill 执行全球检索，将 MCP 检索结果作为权利稳定性评审依据；最终输出完整 HTML 格式审核报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/jp-patent-claims-review",
+      "skill_file": "open-platform/jp-patent-claims-review/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0095"
+      ],
+      "source_display_names": [
+        "日本专利申请文件权利要求书审核"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "kr-patent-claims-review",
+      "display_name": "韩国专利申请文件权利要求书审核（kr-patent-claims-review）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/kr-patent-claims-review/SKILL.md",
+      "description": "韩国专利申请文件权利要求书审核工具。用户上传PDF或Word版专利申请文件后，自动按韩国专利法（§42等）及韩国特许厅审查实务标准，从法律合规性、保护范围策略、措辞规范、审查实务风险等六大维度逐项审核权利要求书，输出结构化审核报告及逐条修改建议。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/kr-patent-claims-review",
+      "skill_file": "open-platform/kr-patent-claims-review/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0094"
+      ],
+      "source_display_names": [
+        "韩国专利申请文件权利要求书审核"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "litigation-risk-monitor",
+      "display_name": "litigation-risk-monitor — 涉诉专利风险监测 v10（target-centric 报告模板）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/litigation-risk-monitor/SKILL.md",
+      "description": "涉诉专利风险监测与同族扩展分析技能。触发场景：用户提供目标申请人名单（1～N 个，中英文均可），希望自动检索这些申请人名下的涉诉专利，做 INPADOC 同族扩展，结合 Patsnap legal 模块与 web.search 公开诉讼信息双向交叉，输出同族基础分析（地域/技术点/法律状态/审查历史）、诉讼时间线（含涉案专利号）、涉诉案件深度分析（原被告/案号/进程/争议焦点/抗辩/结果）、核心发明人近 3 年延伸分析，并生成单一 HTML 报告 + 结构化 JSON/CSV 附件，给出地域风险、应诉预警、趋势预测三维结论。不适用于：单件专利新颖性/创造性分析（路由 novelty-check / non-obviousness-check）、纯 FTO 法律意见、无申请人名单的开放式情报、与\"涉诉专利同族 + 诉讼案件 + 发明人趋势\"无关的一般性问答。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/litigation-risk-monitor",
+      "skill_file": "open-platform/litigation-risk-monitor/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0055"
+      ],
+      "source_display_names": [
+        "涉诉专利风险监测"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "multi-patent-avoidance",
+      "display_name": "多专利规避设计（8步法）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/multi-patent-avoidance/SKILL.md",
+      "description": "多专利规避方法论（8步法）——同时规避N件风险专利（N≥2）的应用驱动型FTO分析流程。\n本技能嵌套调用 application-requirements-card（前置）+ patent-avoidance-design（深度规避主要风险专利）两个子技能，\n通过\"应用需求驱动+情报矩阵+安全区识别+交叉扫描+定向修复\"实现多专利联合规避。\n触发词包括：\"多专利规避\"、\"FTO\"、\"自由实施分析\"、\"规避多个专利\"、\"专利风险地图\"、\"专利组合规避\"。\n本技能产出：FTO安全区图谱、配方/方案候选、交叉扫描矩阵、风险修复版方案、FTO意见书框架。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/multi-patent-avoidance",
+      "skill_file": "open-platform/multi-patent-avoidance/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0080"
+      ],
+      "source_display_names": [
+        "多专利规避设计（8步法）"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "ninebot-patent-sentinel",
+      "display_name": "纳恩博专利态势官",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/ninebot-patent-sentinel/SKILL.md",
+      "description": "纳恩博专利态势官——纳恩博高级专利分析师工作台，集成专利到期预警续约管理、竞争对手定向追踪、全景雷达、碰撞分析与FTO预警、论文前沿、行业新闻六大模块，每周生成双Tab CEO级HTML态势周报。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/ninebot-patent-sentinel",
+      "skill_file": "open-platform/ninebot-patent-sentinel/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0018"
+      ],
+      "source_display_names": [
+        "纳恩博专利态势官"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "opportunities",
+      "display_name": "opportunities — 技术方向专利机会评估 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/opportunities/SKILL.md",
+      "description": "技术方向专利机会评估与报告生成 Skill。输入细分技术方向或具体技术方案，自动调用智慧芽专利检索、趋势分析、子技术方向统计等 MCP 工具，生成含交互式 ECharts 图表的多页面 HTML 报告、JSON 中间数据和 CSV 证据链，最终给出研发/投资机会评分与明确建议。本 Skill 不使用 Python，所有文件通过 MCP 和文件写入能力生成。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/opportunities",
+      "skill_file": "open-platform/opportunities/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "生命科学"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "生命科学"
+      ],
+      "source_record_ids": [
+        "SKILL-0056"
+      ],
+      "source_display_names": [
+        "技术方向专利机会评估"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "overseas-patent-translation",
+      "display_name": "Overseas Patent Translation",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/overseas-patent-translation/SKILL.md",
+      "description": "Translate Chinese patent application documents for overseas filing and format them for Europe, United States, Japan, or Korea. Use when the user uploads or describes a Chinese patent specification, claims, abstract, drawings, priority text, or technical disclosure and asks for overseas patent application translation, 涉外专利翻译, PCT/巴黎公约进入海外文本, EP/US/JP/KR patent filing text, target-country formatting, translation QA, terminology consistency, or jurisdiction-specific patent translation guidance.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/overseas-patent-translation",
+      "skill_file": "open-platform/overseas-patent-translation/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0090"
+      ],
+      "source_display_names": [
+        "海外专利申请翻译"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-analysis-insights",
+      "display_name": "专利分析洞察",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-analysis-insights/SKILL.md",
+      "description": "由 MCP 数据驱动的专利检索、标引与分析工作流。让专利数据不再躺在表格里，而是变成战略判断",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-analysis-insights",
+      "skill_file": "open-platform/patent-analysis-insights/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0050"
+      ],
+      "source_display_names": [
+        "专利分析洞察"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-application-evaluation-assistant",
+      "display_name": "专利申请评级智能体",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-application-evaluation-assistant/SKILL.md",
+      "description": "面向企业 IPR、专利工程师、专利代理人的专利申请预评估智能体。当用户需要评估专利申请可行性、分析技术交底书、进行专利预评估或查新检索时触发。基于技术交底书或研发资料，自动完成材料完整性检查、专利及非专利文献查新、中美欧授权可行性分析，输出 A/B/C 评级、评分依据、主要风险和处理建议。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-application-evaluation-assistant",
+      "skill_file": "open-platform/patent-application-evaluation-assistant/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0036"
+      ],
+      "source_display_names": [
+        "专利申请评级智能体"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-asset-grading",
+      "display_name": "专利资产分级评审工具",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-asset-grading/SKILL.md",
+      "description": "专利资产分级评审工具。用户批量输入专利申请号/公开号/公告号，自动调用智慧芽MCP获取专利数据，依据IPC分类自动识别所属行业，按行业差异化权重方案对技术关联性、权利要求强度、市场覆盖度、剩余保护期、被引用/交叉价值五个维度逐项打分，最终输出含等级（S/A/B/C/D）、各维度分值及评分依据的Word或Excel评审结果清单。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-asset-grading",
+      "skill_file": "open-platform/patent-asset-grading/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "质量审核",
+        "生命科学"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "质量审核",
+        "生命科学"
+      ],
+      "source_record_ids": [
+        "SKILL-0110"
+      ],
+      "source_display_names": [
+        "专利资产分级评审工具"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-avoidance-design",
+      "display_name": "专利规避设计技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-avoidance-design/SKILL.md",
+      "description": "基于TRIZ方法论的完整专利规避设计流程。\n当用户要求分析专利进行规避设计、生成不侵权替代方案、或进行专利规避分析时使用。\n触发词包括：\"专利规避\"、\"规避设计\"、\"专利规避设计\"、\"不侵权方案\"、\"patent avoidance\"、\"生成不侵权方案\"。\n本技能嵌套调用 patent-claim-to-funcmodel 子技能完成功能模型还原（8步），\n然后执行：(1) TRIZ裁剪（规则A/B/C），(2) 功能导向检索FOS，\n(3) 非等效方案生成，(4) 侵权判定（全面覆盖原则 + 等同原则 + 禁止反悔原则）。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-avoidance-design",
+      "skill_file": "open-platform/patent-avoidance-design/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "TRIZ",
+        "生命科学"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "TRIZ",
+        "生命科学"
+      ],
+      "source_record_ids": [
+        "SKILL-0079"
+      ],
+      "source_display_names": [
+        "专利规避设计技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-family-analyzer",
+      "display_name": "同族专利分析技能 (Patent Family Analyzer)",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-family-analyzer/SKILL.md",
+      "description": "同族专利深度分析工具。输入任意一件有同族的专利号，自动检索全部同族专利，绘制同族树状图，逐件分析技术问题/手段/效果/权利要求要点，分析技术关联性，生成主题交叉分析表，总结技术演进路线，最终输出交互式HTML报告。目标用户：专利分析师。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-family-analyzer",
+      "skill_file": "open-platform/patent-family-analyzer/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0027"
+      ],
+      "source_display_names": [
+        "同族专利分析技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-infringement-watch",
+      "display_name": "patent-infringement-watch",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-infringement-watch/SKILL.md",
+      "description": "竞争对手产品专利侵权监测工具。用户输入己方公司名称，配合上传竞对产品文件（路径A）或输入竞对公司名称（路径B），自动检索己方专利组合、提取竞对产品技术特征、完成权利要求要素比对，输出带风险等级的侵权分析报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-infringement-watch",
+      "skill_file": "open-platform/patent-infringement-watch/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0109"
+      ],
+      "source_display_names": [
+        "专利侵权监测"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-inventor-profile-report",
+      "display_name": "patent-inventor-profile-report（v7.5.1）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-inventor-profile-report/SKILL.md",
+      "description": "高质量技术人才科创能力画像HTML报告生成器（v7.5.1正式版）。输入发明人姓名+所属机构，自动执行多维专利数据检索与分析，生成深蓝色现代科技风格的完整HTML画像报告。每次输出强制以zhang_xian_profile_20260528为黄金标准模版执行格式规范，不可降级、不可跳过任何格式要素。综合评级体系采用S/A/B/C四级（最高为S级·卓越科创领军人才，严禁使用0级）。Step1/Step2专利超过100件时强制分页返回全量数据（循环分页，≤1000件上限，不可抽样替代）。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-inventor-profile-report",
+      "skill_file": "open-platform/patent-inventor-profile-report/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0058"
+      ],
+      "source_display_names": [
+        "专利发明人科创能力画像报告"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-layout-analysis",
+      "display_name": "产品/技术领域立项全景分析技能 v3.0",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-layout-analysis/SKILL.md",
+      "description": "针对指定技术/产品领域，完成包含市场规模、竞争格局（国内+海外龙头）、技术热点与空白点、申请人全球受理局布局、差异化机会的完整立项分析报告，并输出专业 HTML 报告",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-layout-analysis",
+      "skill_file": "open-platform/patent-layout-analysis/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0002"
+      ],
+      "source_display_names": [
+        "产品/技术领域立项全景分析技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-lifecycle-agent",
+      "display_name": "patent-lifecycle-agent · 专利全生命周期管理 Agent V5",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-lifecycle-agent/SKILL.md",
+      "description": "专利全生命周期管理 Agent V5（授权导向专业版）。从技术交底→布局规划→查新检索→撰写辅助→审查应对→授权维护→侵权监控，\n覆盖专利代理人视角下的全周期工作流，融合 Eureka 查新、PatSnap 专利检索、Web Search、\nPython附图生成（matplotlib+ezdxf）等能力，生成各阶段专业输出文件。\nV5新增：授权导向模式（以下证授权为目标）、OA预案预埋、独权精准化、附图Base64内嵌、\n深化检索（6路IPC×关键词系统覆盖）、版本控制。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-lifecycle-agent",
+      "skill_file": "open-platform/patent-lifecycle-agent/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0059"
+      ],
+      "source_display_names": [
+        "专利全生命周期管理 Agent"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-management-system",
+      "display_name": "专利管理系统构建 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-management-system/SKILL.md",
+      "description": "企业专利管理系统构建助手 —— 基于智慧芽 PatSnap API，为合成生物学/生命科学企业自动构建完整专利管理系统，输出单文件 HTML 可视化系统。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-management-system",
+      "skill_file": "open-platform/patent-management-system/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "销售支持"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "销售支持"
+      ],
+      "source_record_ids": [
+        "SKILL-0035"
+      ],
+      "source_display_names": [
+        "专利管理系统构建"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-mining-agent",
+      "display_name": "专利挖掘 Agent",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-mining-agent/SKILL.md",
+      "description": "专利挖掘 Agent——面向企业研发工程师，输入技术领域与挖掘目的，自动执行四块十步专利挖掘全流程，生成结构化专利挖掘报告。支持快速模式与深度模式，融合 PatSnap 专利数据与 Web 检索，覆盖九类挖掘场景。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-mining-agent",
+      "skill_file": "open-platform/patent-mining-agent/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0091"
+      ],
+      "source_display_names": [
+        "专利挖掘 Agent"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-panorama-analysis",
+      "display_name": "专利技术全景分析 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-panorama-analysis/SKILL.md",
+      "description": "专利技术全景分析报告自动生成。用户上传专利数据Excel表格（含标题、申请人、申请日、法律状态、受理局、被引次数等字段）和技术拆解Excel表格后，自动分析专利数据并生成可编辑的HTML全景分析报告。\n报告包含5大模块：技术概况分析、重点技术分支分析、竞争对手分析、专利风险分析、企业专利布局建议。\n触发条件：当用户提及\"专利分析\"\"技术全景分析\"\"专利全景报告\"\"专利布局分析\"\"CMC专利分析\"\"专利竞争分析\"\"专利风险\"\"FTO分析\"\"技术分解\"\"专利趋势\"等关键词时自动触发。也适用于用户上传专利数据Excel并要求生成分析报告的场景。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-panorama-analysis",
+      "skill_file": "open-platform/patent-panorama-analysis/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析"
+      ],
+      "source_record_ids": [
+        "SKILL-0096"
+      ],
+      "source_display_names": [
+        "专利技术全景分析"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-pre-evaluation-report",
+      "display_name": "Patent Pre-Application Evaluation Report",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-pre-evaluation-report/SKILL.md",
+      "description": "Create and iteratively improve Chinese patent pre-application evaluation reports from a technical proposal, disclosure draft, invention idea, or prior report. Use when the user asks for 专利申请前预评估, 专利预评估报告, 查新点提炼, 可专利性分析, 非正常申请风险排查, 申请策略建议, or report updates driven by PatSnap/智慧芽 search evidence.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-pre-evaluation-report",
+      "skill_file": "open-platform/patent-pre-evaluation-report/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0057"
+      ],
+      "source_display_names": [
+        "专利申请前预评估报告"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-pre-filing-assessment",
+      "display_name": "专利申请前评估技能",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-pre-filing-assessment/SKILL.md",
+      "description": "专利申请前评估技能。输入技术交底书或专利号，自动执行四大维度（法律可专利性、技术质量、市场价值、战略布局）系统性评估，输出含综合结论（建议积极申请/优化后申请/谨慎暂缓/不建议申请）的可视化HTML报告，依据可溯源至国知局标准与GB/T 42748-2023。可专利性（新颖性+创造性）模块使用 novelty-check 技能规范流程执行。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-pre-filing-assessment",
+      "skill_file": "open-platform/patent-pre-filing-assessment/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "立项论证"
+      ],
+      "source_record_ids": [
+        "SKILL-0037"
+      ],
+      "source_display_names": [
+        "专利申请前评估技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-project-proposal",
+      "display_name": "专利分析支撑立项报告生成 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-project-proposal/SKILL.md",
+      "description": "专利分析支撑立项报告生成 Agent——用户明确说项目立项时触发，自动执行「技术领域界定→检索策略→7大模块分析（竞争格局/企业定位/创新论证/知产布局/技术路线/FTO风险/考核指标）→整合输出完整立项报告」全流程，融合 PatSnap 智慧芽专利数据，生成数据驱动的科研项目立项报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-project-proposal",
+      "skill_file": "open-platform/patent-project-proposal/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0093"
+      ],
+      "source_display_names": [
+        "专利分析支撑立项报告生成"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-quality-review-pro",
+      "display_name": "专利申请文件质量审核工具（全量指标版）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-quality-review-pro/SKILL.md",
+      "description": "专利申请文件质量审核工具（全量指标版）。上传PDF或Word版专利申请文件，自动对全部评审指标进行统一评审（无重点/非重点分档），结合复审无效实践中的常见决定要点辅助判断，并生成标准格式《专利申请文件质量评价表》Word文件（主表+附表1，两页分页）。支持化学/机械/电学/通用四领域AHP权重方案自动切换；权利稳定性须显式加载 novelty-check 与 non-obviousness-check。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-quality-review-pro",
+      "skill_file": "open-platform/patent-quality-review-pro/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "质量审核",
+        "风险排查",
+        "检索",
+        "TRIZ"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "质量审核",
+        "风险排查",
+        "检索",
+        "TRIZ"
+      ],
+      "source_record_ids": [
+        "SKILL-0082"
+      ],
+      "source_display_names": [
+        "专利申请文件质量审核工具（全量指标版）"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-research-analyst",
+      "display_name": "专利检索与分析 Agent —— 工作手册",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-research-analyst/SKILL.md",
+      "description": "科研立项专利检索与分析 Agent——输入技术问题与初步技术方案，自动执行「信息收集→多轮专利检索→五维分析（技术路线/立项查新/FTO风险/竞对跟踪/新公开专利）→HTML+Word双格式报告输出」全流程。融合 PatSnap 智慧芽全球专利数据，生成包含7章正文+3个附录的完整专利分析报告。触发词：专利检索分析、立项查新、FTO分析、技术路线分析、竞对跟踪、专利风险排查、帮我做专利检索。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-research-analyst",
+      "skill_file": "open-platform/patent-research-analyst/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0092"
+      ],
+      "source_display_names": [
+        "专利检索与分析 Agent —— 工作手册"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "patent-transfer",
+      "display_name": "专利成果转化简报 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/patent-transfer/SKILL.md",
+      "description": "智慧芽专利资产运营转化专家 — 基于输入的专利号，调用专利检索、语义检索、企业情报、新闻资讯 MCP，识别潜在转化企业并生成可直接推送的专利成果转化简报 HTML。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/patent-transfer",
+      "skill_file": "open-platform/patent-transfer/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0098"
+      ],
+      "source_display_names": [
+        "专利成果转化简报"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "pps-tag",
+      "display_name": "pps-search — Patent Panorama Search & Query-Construction Layer (环节1)",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/pps-tag/SKILL.md",
+      "description": "Use this skill for 环节1 of a patent panorama project. It builds an expert-grade, field-scoped, anchored and de-noised search configuration, validates per-branch precision by sampling, and exports a clean candidate pool plus per-branch queries — the input contract for 环节2 (pps-stats). Statistics, portraits and core-patent recall live in 环节2.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/pps-tag",
+      "skill_file": "open-platform/pps-tag/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0060"
+      ],
+      "source_display_names": [
+        "专利全景项目标签体系构建"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "prism-auto-config-map",
+      "display_name": "棱镜车智-专利论文数据穿透",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/prism-auto-config-map/SKILL.md",
+      "description": "棱镜车智-专利论文数据穿透 Skill。用于车企下一代车型规划、竞品配置对标、\n技术趋势预测、供应链机会识别和售前 Demo。围绕特定细分市场、车型清单或\n关键配置，基于 QFD/质量屋 + Matrix Analysis 为主轴，辅以 Benchmarking、\nKano、技术 S 曲线、专利壁垒矩阵，融合官方参数、配置库、VOC 与智慧芽专利/论文/文献/企业产业链数据，\n输出强视觉 HTML 前瞻决策报告。核心价值是把市场配置现象穿透到专利、\n论文/文献、关键申请人、供应链合作关系和未来 1-2 年量产机会。\n不适用于 FTO 法律意见、精确 BOM 成本测算、泛财报融资分析或脱离车型\n配置决策的公司战略画像。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/prism-auto-config-map",
+      "skill_file": "open-platform/prism-auto-config-map/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0015"
+      ],
+      "source_display_names": [
+        "棱镜智析-产品规划与专利论文穿透"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "product-feature-patent-finder",
+      "display_name": "Product Feature Patent Finder",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/product-feature-patent-finder/SKILL.md",
+      "description": "通过产品特性描述调研关键技术、检索相关专利并生成含产品资料与专利相关性评分的 HTML 报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/product-feature-patent-finder",
+      "skill_file": "open-platform/product-feature-patent-finder/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0119"
+      ],
+      "source_display_names": [
+        "产品特性专利检索"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "rd-ip-accelerator",
+      "display_name": "研发IP全栈加速器 v7.1.0",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/rd-ip-accelerator/SKILL.md",
+      "description": "研发IP全栈加速器——面向全行业研发创新型企业，输入企业名称自动驱动六大IP模块（全部内置，用户只需安装本技能）：\n①诉讼情报预警、②友商情报监控（完整内置tech-intel-monitor逻辑·Eureka Monitor风格）、③FTO产品防侵权、\n④技术方案探索（5改进+4创新+6白点+工程可靠性）、⑤查新检索（8步严谨分析·PatentBench认证X检出率81%）、\n⑥技术交底书（九章标准格式+3实施例+Word自动下载），形成从IP意识唤醒到高质量专利申请的完整闭环。\n无需安装其他技能，一包搞定全部功能。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/rd-ip-accelerator",
+      "skill_file": "open-platform/rd-ip-accelerator/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "立项论证",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0030"
+      ],
+      "source_display_names": [
+        "研发IP全栈加速器"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "sleeping-patent-asset-activation",
+      "display_name": "沉睡专利资产盘活官",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/sleeping-patent-asset-activation/SKILL.md",
+      "description": "将沉睡的专利和无形资产组合转化为可执行的许可、转让、联合开发、融资、续费或放弃决策。适用于用户要求盘活沉睡专利资产、筛选可许可/可转让专利、做年费续缴决策、生成资产包/买方线索/招商页面/管理层报告，或结合 Patsnap/Zhihuiya MCP 专利证据与公开市场信号开展企业知识产权商业化的场景。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/sleeping-patent-asset-activation",
+      "skill_file": "open-platform/sleeping-patent-asset-activation/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0004"
+      ],
+      "source_display_names": [
+        "沉睡专利资产盘活官"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "smartlink-ip-workbench",
+      "display_name": "SmartLink IP Workbench",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/smartlink-ip-workbench/SKILL.md",
+      "description": "Build, update, run, and validate the SmartLink / 智界通 cross-border e-commerce IP HTML workbench. Use when the user asks to modify 智界通-SmartLink智能工作台, 智慧芽跨境电商IP解决方案 pages, MCP-backed patent workflows, competitor patent analysis, listing compliance, infringement complaint/OCR flows, knowledge support search, local HTML saving, localhost preview, or real-time Patsnap/Zhihuiya data linkage in a single-file HTML demo.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/smartlink-ip-workbench",
+      "skill_file": "open-platform/smartlink-ip-workbench/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0067"
+      ],
+      "source_display_names": [
+        "跨境电商知识产权工作台"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "tech-briefing",
+      "display_name": "技术简报 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-briefing/SKILL.md",
+      "description": "给定公司名称和/或技术领域，自动检索智慧芽专利、学术文献、行业新闻，生成面向客户交付的技术简报 HTML 报告。当用户明确要求\"技术简报\"、\"专利简报\"、\"技术报告\"，或同时出现公司名与技术主题的\"竞品分析\"、\"技术动态\"、\"行业简报\"时触发。示例：\"生成华为和小米5G技术简报\"、\"帮我做固态电池技术动态报告\"、\"宁德时代最近半年的专利简报\"。闲聊式问\"最近汽车行业怎么样\"不触发。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-briefing",
+      "skill_file": "open-platform/tech-briefing/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "汽车行业"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "汽车行业"
+      ],
+      "source_record_ids": [
+        "SKILL-0100"
+      ],
+      "source_display_names": [
+        "技术简报"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "tech-transfer-match",
+      "display_name": "科技成果转移转化供需匹配技能 v4.0",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-transfer-match/SKILL.md",
+      "description": "科技成果转移转化供需匹配分析技能 v4.0。触发词：供需匹配、技术转移、成果转化、转移转化分析、成果匹配、技术对接。执行6步工作流：技术内容分析→先进性评估→专利价值评估→三维度二层潜在接受方挖掘→HTML可视化报告生成（自动保存桌面）→文件服务。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-transfer-match",
+      "skill_file": "open-platform/tech-transfer-match/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0012"
+      ],
+      "source_display_names": [
+        "科技成果转移转化供需匹配技能"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "tech-transfer-target-discovery",
+      "display_name": "科技成果转化·对接对象发现（自有成果对外输出版）",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/tech-transfer-target-discovery/SKILL.md",
+      "description": "央企科技成果对外输出——对接对象发现工具。用户输入拟输出的专利号或技术描述，先调用智慧芽MCP提取资产技术特征，再识别输出路径（许可/转让/作价入股/质押佐证），执行三轨检索并输出有专利证据支撑的目标企业短名单及推荐对接路径。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/tech-transfer-target-discovery",
+      "skill_file": "open-platform/tech-transfer-target-discovery/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "成果转化",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0113"
+      ],
+      "source_display_names": [
+        "科技成果转化·对接对象发现（自有成果对外输出版）"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "trademark-similarity-judgment",
+      "display_name": "Trademark Similarity Judgment",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/trademark-similarity-judgment/SKILL.md",
+      "description": "Professional trademark similarity and confusion-risk assessment for Chinese trademark work. Use when a user uploads or describes a mark, logo, packaging, screenshot, search result, trademark list, image, Word/PDF/Excel file, or asks for 商标近似判断, 图文双模态比对, 驳回风险, 引证商标分析, 商品/服务类似判断, 混淆可能性评估, or handling suggestions before filing, review, opposition, invalidation, coexistence, or brand clearance.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/trademark-similarity-judgment",
+      "skill_file": "open-platform/trademark-similarity-judgment/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "风险排查",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "风险排查",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0089"
+      ],
+      "source_display_names": [
+        "商标近似判断"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "us-patent-claims-review",
+      "display_name": "U.S. Patent Claims Review",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/us-patent-claims-review/SKILL.md",
+      "description": "Review U.S. patent application documents and claim sets from uploaded or referenced DOCX, PDF, TXT, Markdown, or pasted text. Use when the user asks for 美国专利申请文件权利要求书审核, U.S. patent claims review, claim drafting QA, 35 U.S.C. 101/102/103/112 risk analysis, BRI review, means-plus-function/112(f) review, claim amendment suggestions, infringement-readiness review, restriction/election risk, or senior U.S. patent attorney/agent style patent claim review.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/us-patent-claims-review",
+      "skill_file": "open-platform/us-patent-claims-review/SKILL.md",
+      "category": "IP",
+      "categories": [
+        "IP",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "tags": [
+        "IP",
+        "专利分析",
+        "检索",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0088"
+      ],
+      "source_display_names": [
+        "美国专利权利要求审查"
+      ],
+      "source_domain": "ip",
+      "source_domain_label": "IP"
+    },
+    {
+      "skill_name": "adc-patent-weekly-report",
+      "display_name": "ADC 专利情报周报生成器",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/adc-patent-weekly-report/SKILL.md",
+      "description": "ADC专利情报周报生成器：检索指定自然周内WO受理局公开的ADC专利，两轮过滤去噪，P025三要素+AI洞察改写，生成复刻Eureka Desktop固定版式的HTML周报（Codex适配版，v6.4-codex）",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/adc-patent-weekly-report",
+      "skill_file": "open-platform/adc-patent-weekly-report/SKILL.md",
+      "category": "生物医药",
+      "categories": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0039"
+      ],
+      "source_display_names": [
+        "ADC 专利情报周报生成器"
+      ],
+      "source_domain": "life-sciences",
+      "source_domain_label": "生物医药"
+    },
+    {
+      "skill_name": "generic-drug-scout",
+      "display_name": "仿药速探 V1",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/generic-drug-scout/SKILL.md",
+      "description": "Run 仿药速探 V1 to create a static interactive HTML report or seeded screening page for generic-drug opportunity discovery. Use when the user asks to screen China small-molecule crystal-form patent expiry opportunities, generate 仿药速探 V1 with results, or create a local report backed by configured Zhihuiya/PatSnap MCPs.",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/generic-drug-scout",
+      "skill_file": "open-platform/generic-drug-scout/SKILL.md",
+      "category": "生物医药",
+      "categories": [
+        "生物医药",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "生命科学"
+      ],
+      "tags": [
+        "生物医药",
+        "专利分析",
+        "检索",
+        "质量审核",
+        "生命科学"
+      ],
+      "source_record_ids": [
+        "SKILL-0005"
+      ],
+      "source_display_names": [
+        "仿药速探"
+      ],
+      "source_domain": "life-sciences",
+      "source_domain_label": "生物医药"
+    },
+    {
+      "skill_name": "mab-fto-check",
+      "display_name": "mab-fto-check — 单抗药物FTO分析 Skill",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/mab-fto-check/SKILL.md",
+      "description": "单克隆抗体（mAb）药物专利自由实施（FTO）分析。基于智慧芽专利数据库（PatSnap）+ 序列比对（ls_sequence_alignment）+ 化学结构检索（ls_structure_search），执行9模块并行检索+M1.5修饰检索（含中文专项检索），遵循全面覆盖原则+等同原则，输出HTML格式FTO报告（七章标准结构）。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/mab-fto-check",
+      "skill_file": "open-platform/mab-fto-check/SKILL.md",
+      "category": "生物医药",
+      "categories": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "tags": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "质量审核"
+      ],
+      "source_record_ids": [
+        "SKILL-0083"
+      ],
+      "source_display_names": [
+        "单抗药物FTO分析"
+      ],
+      "source_domain": "life-sciences",
+      "source_domain_label": "生物医药"
+    },
+    {
+      "skill_name": "target-discovery",
+      "display_name": "Target Discovery Skill — 化合物库反向靶点发现",
+      "github_url": "https://github.com/patsnap/skills/blob/main/open-platform/target-discovery/SKILL.md",
+      "description": "化合物库反向靶点发现工作流。给定化合物 SMILES，依次执行 ADMET 成药性过滤、骨架分析、结构相似检索、靶点情报验证、FTO 专利风险扫描、SAR 构效关系提取，输出优先级靶点-化合物改造方向清单，支持生成 PPT 与 PDF 报告。",
+      "domain": "open-platform",
+      "domain_label": "Open Platform",
+      "path": "open-platform/target-discovery",
+      "skill_file": "open-platform/target-discovery/SKILL.md",
+      "category": "生物医药",
+      "categories": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "tags": [
+        "生物医药",
+        "风险排查",
+        "专利分析",
+        "检索",
+        "情报监控",
+        "成果转化"
+      ],
+      "source_record_ids": [
+        "SKILL-0068"
+      ],
+      "source_display_names": [
+        "化合物库反向靶点发现"
+      ],
+      "source_domain": "life-sciences",
+      "source_domain_label": "生物医药"
+    }
+  ],
+  "category_fields": {
+    "category": "Primary category from the Skill Hub source sheet.",
+    "categories": "Primary category plus source tags, de-duplicated for filtering.",
+    "tags": "Original tag keywords from the Skill Hub source sheet.",
+    "source_record_ids": "Source Skill Hub record ID retained for this skill entry."
+  },
+  "category_missing_count": 0
+}
