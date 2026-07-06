@@ -64,7 +64,7 @@ Keep each skill directory intact when installing or publishing, because `SKILL.m
 
 ## Open Platform Skills
 
-Additional engineering and R&D workflows imported from Skill Hub are available in `../open-platform/`, including technical reports, industry intelligence, due diligence, market assessment, TRIZ functional search, and technology forecasting workflows.
+Additional engineering and R&D workflows imported from Skill Hub are available in `../open-platform/`, including technical reports, industry intelligence, due diligence, market assessment, TRIZ functional search, technology forecasting, NSFC proposal writing, park investment reports, evidence-based labeling, carbon-credit rating, and technology alliance leader scouting workflows.
 
 ## MCP Dependencies
 

@@ -19,7 +19,7 @@
 3. **配置示例**
    - ✅ `config/BIPV_keywords.py` - BIPV关键词配置示例
    - ✅ `config/BIPV_content.py` - BIPV内容配置示例
-   - ✅ `config/咖啡机_keywords.py` - 咖啡机关键词配置示��
+   - ✅ `config/咖啡机_keywords.py` - 咖啡机关键词配置示例
    - ✅ `config/咖啡机_content.py` - 咖啡机内容配置示例
 
 ### ❌ 需要补充的部分

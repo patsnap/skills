@@ -1,0 +1,25 @@
+{
+  "task_id": "",
+  "task_object": "",
+  "business_goal": "",
+  "mode": "discovery",
+  "state": "pending_validation",
+  "source_files": [],
+  "record_id_field": "",
+  "text_fields": [],
+  "metadata_fields": [],
+  "dimensions": [],
+  "allow_candidate_labels": true,
+  "preserve_original_columns": true,
+  "taxonomy_version": "draft",
+  "rules_version": "default-v1.1",
+  "review_routing": {
+    "record_review": "decision_can_change_current_labels",
+    "taxonomy_gap": "taxonomy_backlog",
+    "not_applicable": "auto_pass_when_optional_and_evidence_complete",
+    "deduplicate_gaps": true
+  },
+  "mcp_policy": "selective",
+  "output_format": "xlsx",
+  "confirmations": {}
+}

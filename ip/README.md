@@ -43,7 +43,7 @@ Do not present free-tier results as legal advice or as a substitute for full cla
 
 ## Open Platform Skills
 
-Additional patent and IP workflows imported from Skill Hub are available in `../open-platform/`, including patent quality review, FTO report generation, claims review, patent mining, lifecycle management, asset grading, technology transfer, litigation monitoring, portfolio analysis, and vertical patent intelligence workflows.
+Additional patent and IP workflows imported from Skill Hub are available in `../open-platform/`, including patent quality review, FTO report generation, claims review, patent mining, lifecycle management, asset grading, technology transfer, litigation monitoring, portfolio analysis, high-value patent package screening, applicant-topic retrieval, and vertical patent intelligence workflows.
 
 ## Related PatSnap Products
 
