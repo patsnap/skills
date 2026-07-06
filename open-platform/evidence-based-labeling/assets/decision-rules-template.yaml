@@ -1,0 +1,15 @@
+{
+  "rules_version": "default-v1.1",
+  "evidence_required": true,
+  "parent_child_coexistence": false,
+  "prefer_most_specific_supported_label": true,
+  "allow_candidate_labels": true,
+  "new_formal_labels_during_full_run": false,
+  "low_confidence_action": "manual_review",
+  "missing_required_dimension_action": "manual_review_without_guessing",
+  "unclassified_action": "taxonomy_backlog_unless_record_decision_required",
+  "not_applicable_action": "auto_pass_when_optional_and_evidence_complete",
+  "formal_parent_action": "auto_pass_when_output_eligible_and_supported",
+  "review_deduplication": "group_by_issue_type",
+  "mcp_policy": "selective"
+}

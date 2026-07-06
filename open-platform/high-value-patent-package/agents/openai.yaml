@@ -1,0 +1,4 @@
+interface:
+  display_name: "High Value Patent Package"
+  short_description: "Screen high-value patent packages and generate an HTML report (Word optional)."
+  default_prompt: "输入一个专利检索式，筛选高价值专利并输出HTML报告（专利公开公告号可点击跳转到智慧芽专利页）。如需Word版请额外说明。"

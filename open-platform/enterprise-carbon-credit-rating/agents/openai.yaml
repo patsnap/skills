@@ -1,0 +1,4 @@
+interface:
+  display_name: "企业碳资信评级报告"
+  short_description: "从客户材料自动抽取字段、确认行业参数、计算企业碳资信评分并生成正式 Word 报告。"
+  default_prompt: "根据客户提供的企业资料，自动抽取碳资信评价字段，提示缺失项并确认行业参数，计算评分后生成正式 Word 报告。"

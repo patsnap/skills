@@ -1,6 +1,6 @@
 # PatSnap Life Sciences Skills
 
-Life Sciences skills in this directory support the core pharmaceutical and biomedical intelligence workflows, including disease, target, biomarker, company, drug, and oncology analysis. Imported antibody FTO, generic-drug opportunity, ADC patent monitoring, and target-discovery workflows now live in `../open-platform/`.
+Life Sciences skills in this directory support the core pharmaceutical and biomedical intelligence workflows, including disease, target, biomarker, company, drug, and oncology analysis. Imported antibody FTO, generic-drug opportunity, ADC patent monitoring, target-discovery, pharma conference insight, project initiation, and small-RNA patent landscape workflows now live in `../open-platform/`.
 
 Install all life-sciences skills:
 
@@ -37,7 +37,7 @@ The original life-sciences skills integrate with PatSnap LifeScience MCP service
 
 ## Open Platform Skills
 
-Additional biomedical workflows imported from Skill Hub are available in `../open-platform/`, including `adc-patent-weekly-report`, `generic-drug-scout`, `mab-fto-check`, and `target-discovery`.
+Additional biomedical workflows imported from Skill Hub are available in `../open-platform/`, including `adc-patent-weekly-report`, `generic-drug-scout`, `mab-fto-check`, `target-discovery`, `pharma-conference-insight-report`, `pharma-project-initiation-report`, and `small-rna-patent-landscape`.
 
 ## MCP Setup Guide
 

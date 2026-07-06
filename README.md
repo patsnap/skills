@@ -43,20 +43,18 @@ skills/
 | IP / Patent Intelligence | `ip/` | 2 | Free patent-search skills in English and Chinese. |
 | Life Sciences | `life-sciences/` | 12 | Original pharma intelligence skills and Chinese variants. |
 | Materials | `materials/` | 10 | Includes materials explanation, technology scouting, problem solving, product translation and alloy composition search skills. |
-| Open Platform | `open-platform/` | 83 | Skill Hub imported workflows for IP, R&D, engineering, life sciences, reports, FTO, patent operations, technology transfer and vertical intelligence. |
+| Open Platform | `open-platform/` | 96 | Skill Hub imported workflows for IP, R&D, engineering, life sciences, reports, FTO, patent operations, technology transfer and vertical intelligence. |
 
 ## Open Platform Imports
 
-The 2026-06-30 Skill Hub batch has been normalized into the top-level `open-platform/` directory instead of being mixed into the core domain directories. Two older duplicate submissions from the same authors were removed from the import metadata (`SKILL-0009` and `SKILL-0038`), leaving the later submissions (`SKILL-0084` and `SKILL-0082`) as the retained records.
+The 2026-06-30 and 2026-07-03 Skill Hub batches have been normalized into the top-level `open-platform/` directory instead of being mixed into the core domain directories.
 
 | Domain | Imported skills |
 |---|---:|
-| Engineering / R&D source category | 27 |
-| IP source category | 52 |
-| Life Sciences source category | 4 |
-| Total imported skill directories | 83 |
-
-The generated upload/index metadata is available locally at `outputs/skill.json` when the import-preparation outputs are present. It includes `skill_name`, `github_url`, `description`, domain, path and `SKILL.md` file location for the newly imported skills.
+| Engineering / R&D source category | 33 |
+| IP source category | 56 |
+| Life Sciences source category | 7 |
+| Total imported skill directories | 96 |
 
 ## Core Skills
 

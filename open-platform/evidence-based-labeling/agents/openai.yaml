@@ -1,0 +1,4 @@
+interface:
+  display_name: "证据化通用标引"
+  short_description: "用MCP证据构建并执行可复核标签体系"
+  default_prompt: "使用 $evidence-based-labeling 分析我的标引目标和数据，通过MCP补强标签发现、定义与边界判断，并产出可追溯结果。"

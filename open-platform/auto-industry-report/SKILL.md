@@ -5,30 +5,30 @@ description: 汽车行业五大域+零部件企业100强深度技术全景报告
 
 # 汽车行业技术全景报告
 
-## ??
+## 概述
 
 汽车行业五大域+零部件企业100强深度技术全景报告生成器（V11版）。一键生成包含智能驾驶、新能源动力、智能座舱、底盘安全、车身制造五大域及汽车零部件企业100强的完整离线HTML报告，含四级导航、市场分析、技术路径、企业排名、核心专利、Chart.js数据图表等模块。触发词：生成汽车行业报告 / 汽车五大域报告 / 汽车行业分析报告
 
-## ????
+## 触发场景
 
 - 请基于以下资料生成auto-industry-report。
 - 请提炼核心结论、关键证据和后续行动建议。
 
-## ????
+## 核心能力
 
-- **明确auto-industry-report输入范围**?把用户提供的对象、条件、文件或检索式转化为可执行的auto-industry-report分析任务。
-- **组织auto-industry-report分析步骤**?围绕auto-industry-report完成数据调用、信息筛选、判断依据整理和关键结论提炼。
-- **生成auto-industry-report交付材料**?把auto-industry-report相关分散材料汇总成可复核、可继续编辑的HTML页面、图表、报告。
+- **明确auto-industry-report输入范围**：把用户提供的对象、条件、文件或检索式转化为可执行的auto-industry-report分析任务。
+- **组织auto-industry-report分析步骤**：围绕auto-industry-report完成数据调用、信息筛选、判断依据整理和关键结论提炼。
+- **生成auto-industry-report交付材料**：把auto-industry-report相关分散材料汇总成可复核、可继续编辑的HTML页面、图表、报告。
 
-## ????
+## 输出内容
 
-- **auto-industry-report结果**?输出围绕auto-industry-report形成的核心判断、关键证据和处理建议。
-- **auto-industry-report过程依据**?保留auto-industry-report输入条件、筛选逻辑、命中对象和主要判断依据，便于后续复核。
-- **auto-industry-report后续动作**?给出auto-industry-report继续检索、人工校验、业务沟通或材料完善的下一步建议。
+- **auto-industry-report结果**：输出围绕auto-industry-report形成的核心判断、关键证据和处理建议。
+- **auto-industry-report过程依据**：保留auto-industry-report输入条件、筛选逻辑、命中对象和主要判断依据，便于后续复核。
+- **auto-industry-report后续动作**：给出auto-industry-report继续检索、人工校验、业务沟通或材料完善的下一步建议。
 
-## ????
+## 使用注意事项
 
-- ???????????????/???????????
-- ???????????????????? PatSnap/Zhihuiya MCP ???
-- ???????????????????????????
-- ?????????????FTO??????????????????????
+- 不要编造不存在的专利、市场或技术证据。
+- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 明确标注数据来源、检索范围、时间范围和不确定性。
+- 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。
