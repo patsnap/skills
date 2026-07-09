@@ -1,104 +1,103 @@
 ---
 name: patent-pre-evaluation-report
-description: |
-  Create and iteratively improve Chinese patent pre-application evaluation reports from a technical proposal, disclosure draft, invention idea, or prior report. Use when the user asks for 专利申请前预评估, 专利预评估报告, 查新点提炼, 可专利性分析, 非正常申请风险排查, 申请策略建议, or report updates driven by PatSnap/智慧芽 search evidence.
+description: 根据技术方案、交底书草稿、发明构思或既有报告，创建并迭代完善中文专利申请前预评估报告。适用于用户要求专利申请前预评估、专利预评估报告、查新点提炼、可专利性分析、非正常申请风险排查、申请策略建议，或基于 PatSnap/智慧芽检索证据更新报告的场景。
 ---
 
-# Patent Pre-Application Evaluation Report
+# 专利申请前预评估报告
 
-## Overview
+## 概述
 
-Use this skill to turn a technical proposal into a structured Chinese patent pre-application evaluation report, output as a complete **HTML file** whose CSS and layout exactly match the `CUMT-IP-PRE-2026-0001.html` reference template (deep-blue/gold color scheme, A4 portrait cover page, section-number circles, progress bars, conclusion quick-view page).
+使用本 Skill 将技术方案转化为结构化中文专利申请前预评估报告，输出为完整 **HTML 文件**，其 CSS 和布局必须与 `CUMT-IP-PRE-2026-0001.html` 参考模板完全一致（深蓝/金色配色、A4 竖版封面、章节编号圆圈、进度条、综合结论快览页）。
 
-Treat the report as an iterative artifact: draft from the proposal, run real PatSnap/智慧芽 searches via the installed MCP tools, incorporate evidence, reassess risks, and update the conclusion.
+将报告视为可迭代产物：从技术方案起草，通过已安装 MCP 工具执行真实 PatSnap/智慧芽检索，纳入证据，重新评估风险，并更新结论。
 
-Load `references/report-workflow.md` when drafting or revising a report.
+起草或修订报告时，加载 `references/report-workflow.md`。
 
-## Core Workflow
+## 核心工作流
 
-### Step 1 — Clarify Input
-- If the user provides only a technology idea, extract: invention title, field, problem, solution, technical effects, application scenario, and likely inventors/applicant.
-- If the user provides a disclosure or prior report, preserve existing facts; mark uncertain or missing content as `待补充`.
-- If the user asks to iterate, identify the specific sections affected by new evidence.
+### 步骤 1 — 明确输入
+- 如果用户只提供技术构思，提取：发明名称、领域、问题、方案、技术效果、应用场景，以及可能的发明人/申请人。
+- 如果用户提供交底书或既有报告，保留既有事实；不确定或缺失内容标记为 `待补充`。
+- 如果用户要求迭代，识别新增证据影响的具体章节。
 
-### Step 2 — Extract Technical Structure (MCP)
-Call the following MCP tools from `hub-mcp-gateway-novelty-search` in order:
-1. `novelty_summary` — extract tech problem / solution / efficacy (three elements)
-2. `novelty_feature_extract` — classify technical features and build the feature table
-3. Convert strongest feature combinations into numbered 查新点 (3–6 points). Keep each 查新点 concrete: component, data, rule, parameter, workflow, model, or interaction logic — not broad effects.
+### 步骤 2 — 提取技术结构（MCP）
+按顺序调用 `hub-mcp-gateway-novelty-search` 中的以下 MCP 工具：
+1. `novelty_summary` — 提取技术问题 / 技术方案 / 技术效果（三要素）
+2. `novelty_feature_extract` — 分类技术特征并建立特征表
+3. 将最强特征组合转化为编号查新点（3–6 个）。每个查新点必须具体：组件、数据、规则、参数、工作流、模型或交互逻辑；不要写成宽泛效果。
 
-### Step 3 — Build Search Strategy (MCP)
-Call in order:
-1. `novelty_keywords_extract` — generate Chinese/English keyword groups + IPC classification
-2. `novelty_keywords_extend` — expand synonyms, hypernyms, hyponyms for each keyword
-3. `novelty_query_planner` — plan multi-round Boolean retrieval queries
+### 步骤 3 — 构建检索策略（MCP）
+按顺序调用：
+1. `novelty_keywords_extract` — 生成中英文关键词组 + IPC 分类
+2. `novelty_keywords_extend` — 为每组关键词扩展同义词、上位词、下位词
+3. `novelty_query_planner` — 规划多轮布尔检索式
 
-Output of this step populates the **检索范围与策略** chapter (databases, languages, date range, keyword table, IPC table, Boolean query strings).
+该步骤输出填入**检索范围与策略**章节（数据库、语言、日期范围、关键词表、IPC 表、布尔检索式）。
 
-### Step 4 — Execute Real Search (MCP)
-For each 查新点, call:
-1. `novelty_search_agent` (preferred, full-pipeline AI search entry point) — OR split into:
-   - `novelty_semantic_search` (semantic similarity search)
-   - `novelty_patent_search` (keyword Boolean search)
-   - `novelty_paper_search` (academic paper search)
-2. `novelty_fetch_patent_data` — fetch title, abstract, assignee, publication date, abstract figure for top hits
-3. `novelty_abstract_figure_similarity` — evaluate abstract figure similarity against the input solution (optional, when figures are available)
+### 步骤 4 — 执行真实检索（MCP）
+对每个查新点调用：
+1. `novelty_search_agent`（优先，完整流程 AI 检索入口）——或拆分为：
+   - `novelty_semantic_search`（语义相似检索）
+   - `novelty_patent_search`（关键词布尔检索）
+   - `novelty_paper_search`（学术论文检索）
+2. `novelty_fetch_patent_data` — 获取标题、摘要、申请人、公开日、摘要附图等高相关命中信息
+3. `novelty_abstract_figure_similarity` — 将摘要附图与输入方案进行相似度评估（可选，适用于有附图时）
 
-Record for every search: database, query string, date range, total hits, screened count, and selected references. Cite these in the report. Do not invent publication numbers, dates, applicants, or similarity scores.
+每次检索都记录：数据库、检索式、日期范围、总命中量、筛选数量和入选参考文献。在报告中引用这些记录。不得编造公开号、日期、申请人或相似度分数。
 
-### Step 5 — Feature Comparison (MCP)
-1. `novelty_feature_comparison` (or `novelty_feature_comparison_async` + `novelty_cc_result` for large sets) — compare each close reference feature-by-feature against 查新点
-2. `novelty_rl_predict` — predict novelty / inventiveness score for top references
-3. `novelty_report_generate` — generate the comparison narrative paragraph
+### 步骤 5 — 特征比对（MCP）
+1. `novelty_feature_comparison`（大集合可用 `novelty_feature_comparison_async` + `novelty_cc_result`）——将每篇接近文献逐特征与查新点比对
+2. `novelty_rl_predict` — 预测重点参考文献的新颖性 / 创造性分数
+3. `novelty_report_generate` — 生成比对叙述段落
 
-Classify each feature as: `相同` / `相近` / `部分公开` / `未见` / `待复核`.
-Do not claim novelty from absence of evidence alone; phrase as "在当前检索样本中未见相同公开".
+将每项特征分类为：`相同` / `相近` / `部分公开` / `未见` / `待复核`。
+不要仅凭未检索到证据就声称具有新颖性；应表述为“在当前检索样本中未见相同公开”。
 
-### Step 6 — Evaluate & Iterate
-- Map each search result to one or more 查新点.
-- Classify relevance: `密切相关` / `相关` / `一般相关`.
-- When evidence weakens a 查新点, suggest narrowing, recombination, dependent-claim placement, or additional experimental support.
-- When evidence supports a strong conclusion, explain which distinguishing features carry novelty/inventiveness.
-- For market/industry context (转化价值评估 chapter), optionally call `novelty_website_search`.
+### 步骤 6 — 评估并迭代
+- 将每条检索结果映射到一个或多个查新点。
+- 相关度分类：`密切相关` / `相关` / `一般相关`。
+- 当证据削弱某个查新点时，建议限缩、重组、放入从属权利要求，或补充实验支持。
+- 当证据支持强结论时，说明哪些区别特征承载新颖性/创造性。
+- 市场/行业背景（转化价值评估章节）可选调用 `novelty_website_search`。
 
-### Step 7 — Generate HTML Report
-After all MCP results are collected, generate a **single self-contained HTML file** with the following requirements:
+### 步骤 7 — 生成 HTML 报告
+收集完全部 MCP 结果后，生成**单个自包含 HTML 文件**，并满足以下要求：
 
-**Style requirements (must match reference template exactly):**
-- CSS variables: `--primary: #1a3a6b`, `--primary-light: #2a5298`, `--accent: #c8a94b`, `--accent-light: #f5e6b8`, `--danger: #c0392b`, `--warning: #e67e22`, `--success: #27ae60`, `--info: #2980b9`, `--gray: #f4f6f9`, `--border: #d0d7e3`
-- Cover page: A4 portrait (`width: 210mm; max-width: 210mm; min-height: 297mm; margin: 0 auto`), `linear-gradient(145deg, #0d1f4a, #1a3a6b, #2a5298)` deep-blue gradient background; see Cover Page Layout below
-- Main content area: `width: 210mm; max-width: 210mm; margin: 0 auto; padding: 24px 0 60px` (no left/right padding so content width equals cover width)
-- Section number circles: `#1a3a6b` background, white text
-- Section titles: `border-bottom: 2px solid #c8a94b` gold underline
-- Left-border highlights: `border-left: 4px solid #c8a94b`
-- Table headers: `#1a3a6b` background, white text
-- Similarity progress bars: red (≥70%) / orange (40–69%) / green (<40%)
-- Conclusion quick-view page: deep-blue gradient background + gold-border cards
-- Fixed print button: bottom-right corner
-- Footer: `#1a3a6b` background
+**样式要求（必须与参考模板完全一致）：**
+- CSS 变量：`--primary: #1a3a6b`, `--primary-light: #2a5298`, `--accent: #c8a94b`, `--accent-light: #f5e6b8`, `--danger: #c0392b`, `--warning: #e67e22`, `--success: #27ae60`, `--info: #2980b9`, `--gray: #f4f6f9`, `--border: #d0d7e3`
+- 封面页：A4 竖版（`width: 210mm; max-width: 210mm; min-height: 297mm; margin: 0 auto`），`linear-gradient(145deg, #0d1f4a, #1a3a6b, #2a5298)` 深蓝渐变背景；见下方封面页布局
+- 主内容区：`width: 210mm; max-width: 210mm; margin: 0 auto; padding: 24px 0 60px`（无左右 padding，使内容宽度等于封面宽度）
+- 章节编号圆圈：`#1a3a6b` 背景，白色文字
+- 章节标题：`border-bottom: 2px solid #c8a94b` 金色下划线
+- 左边框高亮：`border-left: 4px solid #c8a94b`
+- 表头：`#1a3a6b` 背景，白色文字
+- 相似度进度条：红色（≥70%）/ 橙色（40–69%）/ 绿色（<40%）
+- 综合结论快览页：深蓝渐变背景 + 金色边框卡片
+- 固定打印按钮：右下角
+- 页脚：`#1a3a6b` 背景
 
-**Cover Page Layout (竖版A4封面，从上到下):**
-1. Top deep-blue bar (`height: 14mm`, `linear-gradient(90deg, #0d1f4a, #1a3a6b, #2a5298)`)
-2. Gold decorative line (`height: 4px`, gradient gold)
-3. Institution header: left = "中国矿业大学" (17pt, bold, letter-spacing 3px) + English full name; right = circular gold-border "矿" badge
-4. Divider line (blue-gold gradient)
-5. Confidentiality badge (gold-border ellipse label: "内部保密 · 申请前预评估 · PatSnap 智慧芽支持")
-6. Chinese main title (21pt, deep-blue bold, centered, two lines)
-7. English subtitle (gray uppercase)
-8. Report type box (deep-blue gradient background + gold text "专利 申 请 前 评 估 报 告")
-9. Basic info table (2-col 8-row: report number, date, unit, field, inventors, IPC, confidentiality level, recommendation)
-10. Red risk alert bar (red background, key risk conclusion + recommendation)
-11. Confidentiality notice (light-gray dashed border, small text, usage restrictions)
-12. Bottom deep-blue bar: left = institution name, right = report number + date (gold text)
+**封面页布局（竖版A4封面，从上到下）：**
+1. 顶部深蓝条（`height: 14mm`，`linear-gradient(90deg, #0d1f4a, #1a3a6b, #2a5298)`）
+2. 金色装饰线（`height: 4px`，金色渐变）
+3. 机构页眉：左 = "中国矿业大学"（17pt，加粗，letter-spacing 3px）+ 英文全称；右 = 金色描边圆形“矿”徽章
+4. 分隔线（蓝金渐变）
+5. 保密徽章（金色描边椭圆标签："内部保密 · 申请前预评估 · PatSnap 智慧芽支持"）
+6. 中文主标题（21pt，深蓝加粗，居中，两行）
+7. 英文副标题（灰色大写）
+8. 报告类型框（深蓝渐变背景 + 金色文字“专利 申 请 前 评 估 报 告”）
+9. 基本信息表（2列8行：报告编号、日期、单位、领域、发明人、IPC、保密级别、建议）
+10. 红色风险提示条（红色背景，关键风险结论 + 建议）
+11. 保密提示（浅灰虚线边框，小号文字，使用限制）
+12. 底部深蓝条：左 = 机构名称，右 = 报告编号 + 日期（金色文字）
 
-**Appendix card style (附件区块样式):**
-- Section title uses same gold-underline style as other chapters
-- Each appendix item rendered as a rounded card: `border: 1px solid #d0d7e3`, `border-radius: 8px`, `background: #fff`, `padding: 20px`, `margin-bottom: 12px`
-- Left gold circle badge: `background: #c8a94b`, `color: #fff`, `font-weight: bold`, `border-radius: 50%`, `width: 32px`, `height: 32px`, display inline-flex, align-center
-- Appendix title: `color: #1a3a6b`, `font-weight: bold`, `font-size: 1.05em`
-- Description text: `color: #666`, `font-size: 0.9em`, `margin-top: 6px`
+**附件卡片样式（附件区块样式）：**
+- 章节标题使用与其他章节相同的金色下划线样式
+- 每个附件项渲染为圆角卡片：`border: 1px solid #d0d7e3`，`border-radius: 8px`，`background: #fff`，`padding: 20px`，`margin-bottom: 12px`
+- 左侧金色圆形徽章：`background: #c8a94b`，`color: #fff`，`font-weight: bold`，`border-radius: 50%`，`width: 32px`，`height: 32px`，display inline-flex，居中对齐
+- 附件标题：`color: #1a3a6b`，`font-weight: bold`，`font-size: 1.05em`
+- 描述文字：`color: #666`，`font-size: 0.9em`，`margin-top: 6px`
 
-**Report chapters (in order):**
+**报告章节（按顺序）：**
 1. 封面 & 基本信息（竖版A4，见 Cover Page Layout）
 2. 数据安全与保密声明（固定模板，见下方说明，放在政策背景之前）
 3. 政策背景（固定模板文字，含职称改革政策，见下方说明）
@@ -157,30 +156,30 @@ After all MCP results are collected, generate a **single self-contained HTML fil
 - 内容：报告引用的政策文件列表，包括但不限于：教科技〔2020〕1号、国务院办公厅《专利转化运用专项行动方案（2023—2025年）》、国家知识产权局令第77号、人社部发〔2020〕100号、教育部破除唯论文配套政策、江苏省专利申请预审规范及教师职称评价相关文件
 - 数据来源：固定政策模板 + 正文第三章政策背景引用
 
-**Output path:** `@session/reports/[报告编号].html`
-Use `files.begin_write` → repeated `files.append` → `files.finish_write` for large HTML files (never write the entire file in one payload).
+**输出路径：** `@session/reports/[报告编号].html`
+对于大型 HTML 文件，使用 `files.begin_write` → repeated `files.append` → `files.finish_write`（不要在一个 payload 中写完整文件）。
 
-### Step 8 — Final Decision
-Give one of: `建议申请` / `修改后申请` / `暂缓申请` / `不建议申请`.
-Include: application type, independent-claim focus, dependent-claim candidates, evidence gaps, and next actions.
-Add review caveat: AI辅助结论及PatSnap检索结果，正式申请前须经知识产权专员或专利代理人复核。
+### 步骤 8 — 最终决定
+给出以下之一：`建议申请` / `修改后申请` / `暂缓申请` / `不建议申请`。
+包含：申请类型、独立权利要求重点、从属权利要求候选、证据缺口和下一步行动。
+添加复核提示：AI辅助结论及PatSnap检索结果，正式申请前须经知识产权专员或专利代理人复核。
 
-## Output Rules
+## 输出规则
 
-- Write primarily in Chinese unless the user asks otherwise.
-- Professional report tone, not marketing copy.
-- Use tables for: search strategy, close references, feature comparison, patentability risk, abnormal application risk.
-- Preserve provenance: cite search date, database, query, result count, screened count, and evidence source for every search conclusion.
-- Mark uncertain bibliographic data as `待复核`; never invent publication numbers, applicants, dates, or similarity scores.
-- Keep confidentiality language visible when the report is based on unpublished technology.
-- **Final output must always be a complete HTML file saved to `@session/reports/`**, not a Markdown block in chat.
+- 除非用户另有要求，主要使用中文。
+- 使用专业报告语气，不写营销文案。
+- 对检索策略、接近文献、特征比对、可专利性风险、非正常申请风险使用表格。
+- 保留出处：每个检索结论都引用检索日期、数据库、检索式、结果数量、筛选数量和证据来源。
+- 不确定的文献数据标记为 `待复核`；不得编造公开号、申请人、日期或相似度分数。
+- 当报告基于未公开技术时，保持保密语言可见。
+- **最终输出必须始终是保存到 `@session/reports/` 的完整 HTML 文件**，不能是聊天中的 Markdown 块。
 - **附件1—附件6必须全部生成**，每个附件用独立卡片渲染，缺失任何一个附件视为报告不完整。
 - **数据安全与保密声明必须生成**，位于政策背景章节之前。
 - **section-num 圆圈内仅放数字或单个emoji**，不放文字，避免溢出。
 
-## References
+## 参考
 
-- `references/report-workflow.md`: report section skeleton, MCP tool call sequence, PatSnap evidence schema, risk scoring guidance, HTML style guide, and iteration checklist.
+- `references/report-workflow.md`：报告章节骨架、MCP 工具调用顺序、PatSnap 证据架构、风险评分指南、HTML 样式指南和迭代检查清单。
 
 ## 使用前配置
 本 Skill 依赖智慧芽开放平台 MCP 服务：

@@ -1,99 +1,99 @@
 ---
 name: generic-drug-scout
-description: Run 仿药速探 V1 to create a static interactive HTML report or seeded screening page for generic-drug opportunity discovery. Use when the user asks to screen China small-molecule crystal-form patent expiry opportunities, generate 仿药速探 V1 with results, or create a local report backed by configured Zhihuiya/PatSnap MCPs.
+description: 运行仿药速探 V1，创建用于仿制药机会发现的静态交互式 HTML 报告或预置结果筛查页面。适用于用户要求筛选中国小分子晶型专利到期机会、生成带结果的仿药速探 V1，或创建由已配置智慧芽/PatSnap MCP 支撑的本地报告的场景。
 ---
 
 # 仿药速探 V1
 
-Use this skill to run V1 first-pass screening and create a local interactive HTML report preloaded with results. The intended user experience is:
+使用本 Skill 运行 V1 首轮筛查，并创建已预载结果的本地交互式 HTML 报告。目标用户体验为：
 
-1. User asks for 仿药速探 V1 screening.
-2. The skill runs the first screening through the configured Zhihuiya/PatSnap MCPs.
-3. The skill generates a local `.html` report page already filled with the first-pass result.
-4. The user can open the file directly, without starting a local server.
+1. 用户要求进行仿药速探 V1 筛查。
+2. Skill 通过已配置的智慧芽/PatSnap MCP 执行首轮筛查。
+3. Skill 生成已填入首轮结果的本地 `.html` 报告页面。
+4. 用户可直接打开文件，无需启动本地服务。
 
-## V1 Scope
+## V1 范围
 
-Keep V1 focused and do not broaden the filter surface unless the user explicitly asks:
+V1 保持聚焦；除非用户明确要求，否则不要扩展筛选条件范围：
 
-- Region: China / CN only.
-- Drug type: small-molecule chemical drugs only.
-- Patent focus: crystal-form/polymorph patents.
-- Screening output: main candidates, priority explanations, excluded records, data notes, sources, and an exportable full report.
-- Compound patent expiry is supporting evidence only; it is not a hard filter.
+- 地区：仅限中国 / CN。
+- 药物类型：仅限小分子化学药。
+- 专利重点：晶型/多晶型专利。
+- 筛查输出：主候选、优先级解释、排除记录、数据说明、来源，以及可导出的完整报告。
+- 化合物专利到期仅作为辅助证据，不作为硬性筛选条件。
 
-Read `references/v1-scope.md` when the user asks about why V1 is scoped this way or how to explain the business logic.
+当用户询问为什么 V1 这样限定，或如何解释业务逻辑时，读取 `references/v1-scope.md`。
 
-## Bundled Report UI
+## 内置报告 UI
 
-The platform template is bundled at:
+平台模板内置于：
 
 `assets/platform-template/app`
 
-It contains:
+其中包含：
 
-- `index.html`: frontend report UI, including the V1 value-highlight modal.
-- `server.py`: local HTTP server and MCP-backed `/api/search` endpoint.
-- `assets/`: local images used by the page.
+- `index.html`：前端报告 UI，包含 V1 价值亮点弹窗。
+- `server.py`：本地 HTTP 服务和由 MCP 支撑的 `/api/search` 端点。
+- `assets/`：页面使用的本地图片。
 
-The backend expects the following MCP server names in `~/.codex/config.toml`:
+后端期望 `~/.codex/config.toml` 中存在以下 MCP 服务名：
 
-- `zhihuiya_logic_096456` for pharma intelligence.
-- `zhihuiya_logic_2b0355` for PatSnap patent search/fetch.
+- `zhihuiya_logic_096456`：用于医药情报。
+- `zhihuiya_logic_2b0355`：用于 PatSnap 专利检索/获取。
 
-## Default Workflow: Static Interactive HTML Report
+## 默认工作流：静态交互式 HTML 报告
 
-When the user asks to screen opportunities, the final deliverable should be a standalone HTML report generated from live MCP data. Do not use bundled sample data for a real screening request, and do not provide a `127.0.0.1` link unless the user explicitly asks for the server version.
+当用户要求筛查机会时，最终交付物应是基于实时 MCP 数据生成的独立 HTML 报告。真实筛查请求不得使用内置样例数据；除非用户明确要求服务器版本，否则不要提供 `127.0.0.1` 链接。
 
-First run live MCP screening:
-
-```powershell
-python generic-drug-scout\scripts\create_seeded_screening_platform.py --target .\仿药速探V1_真实结果平台 --window-years 2 --overwrite
-```
-
-Then create the static report from the MCP result JSON:
+先运行实时 MCP 筛查：
 
 ```powershell
-python generic-drug-scout\scripts\create_static_report_html.py --data .\仿药速探V1_真实结果平台\first_screening_result.json --output .\仿药速探V1_真实数据静态报告.html
+python generic-drug-scout-v1\scripts\create_seeded_screening_platform.py --target .\仿药速探V1_真实结果平台 --window-years 2 --overwrite
 ```
 
-After the report is generated, open it automatically in the default browser:
+然后根据 MCP 结果 JSON 创建静态报告：
+
+```powershell
+python generic-drug-scout-v1\scripts\create_static_report_html.py --data .\仿药速探V1_真实结果平台\first_screening_result.json --output .\仿药速探V1_真实数据静态报告.html
+```
+
+报告生成后，自动用默认浏览器打开：
 
 ```powershell
 Start-Process ".\仿药速探V1_真实数据静态报告.html"
 ```
 
-Or via exec:
+或通过 exec：
 
 ```python
 import subprocess, os
 subprocess.Popen(["cmd", "/c", "start", "", html_path])
 ```
 
-Keep the generated `_assets` folder next to the HTML file. The report images are bundled inside the skill and copied beside each generated report so the file can be opened without a server.
+将生成的 `_assets` 文件夹与 HTML 文件放在同一目录。报告图片内置在 Skill 中，并复制到每次生成报告的旁边，使文件无需服务器即可打开。
 
-The resulting page is a report-style HTML with first-pass results already loaded. It keeps local interactions such as tabs, search, sort, CSV export, report HTML export, print/PDF, and the value-highlight modal. It does not show a「开始筛查」button and does not call `/api/search`.
+生成页面是报告式 HTML，已加载首轮结果。它保留本地交互能力，例如标签页、搜索、排序、CSV 导出、报告 HTML 导出、打印/PDF，以及价值亮点弹窗。它不显示「开始筛查」按钮，也不会调用 `/api/search`。
 
-For UI preview only, without rerunning MCP, the bundled sample result can be used:
+仅用于 UI 预览且不重新运行 MCP 时，可使用内置样例结果：
 
 ```powershell
-python generic-drug-scout\scripts\create_static_report_html.py --output .\仿药速探V1_样例静态报告.html
+python generic-drug-scout-v1\scripts\create_static_report_html.py --output .\仿药速探V1_样例静态报告.html
 ```
 
-`create_seeded_screening_platform.py` writes `first_screening_result.json` beside the generated app for auditability. That JSON contains the fixed V1 parameters and the raw report result used to seed the page.
+`create_seeded_screening_platform.py` 会在生成的应用旁写入 `first_screening_result.json`，用于审计。该 JSON 包含固定 V1 参数，以及用于预置页面的原始报告结果。
 
-If the MCP call fails or times out, do not fabricate data. Report the MCP error and, only if the user asks, use the bundled sample data for UI review.
+如果 MCP 调用失败或超时，不要伪造数据。报告 MCP 错误；仅当用户要求时，才使用内置样例数据做 UI 评审。
 
-## Reply Rules After Screening
+## 筛查后的回复规则
 
-After a screening run completes and the report is generated, the agent MUST follow these output rules strictly:
+筛查运行完成并生成报告后，Agent 必须严格遵循以下输出规则：
 
-1. **Do NOT output screening result tables, candidate lists, or data summaries into the chat.** The report HTML is the only place for result content.
-2. **Only output the absolute local path of the generated HTML file** in a code block, plus a one-line confirmation such as「✅ 报告已生成，已用浏览器打开」.
-3. **Automatically open the generated HTML file in the default browser** using `exec` or `subprocess` immediately after the file is written. Do not wait for the user to ask.
-4. If the browser-open step fails, report the error but still show the path so the user can open it manually.
+1. **不要在聊天中输出筛查结果表、候选清单或数据摘要。** 报告 HTML 是展示结果内容的唯一位置。
+2. **只在代码块中输出生成 HTML 文件的绝对本地路径**，并附一句确认，例如「✅ 报告已生成，已用浏览器打开」。
+3. **写入文件后立即使用 `exec` 或 `subprocess` 自动在默认浏览器打开生成的 HTML 文件。** 不要等用户再要求。
+4. 如果打开浏览器失败，报告错误，但仍显示路径，便于用户手动打开。
 
-Example of the correct reply format:
+正确回复格式示例：
 
 ```
 ✅ 报告已生成，已用浏览器打开。
@@ -102,89 +102,89 @@ Example of the correct reply format:
 C:\Users\...\仿药速探V1_真实数据静态报告.html
 ```
 
-Do not add tables, candidate counts, drug lists, or any other result content after this block.
+不要在该内容之后添加表格、候选数量、药物清单或任何其他结果内容。
 
-## Optional Server Platform
+## 可选服务器平台
 
-Use this only when the user explicitly wants to adjust the expiry window and rerun screening inside the page:
+仅当用户明确希望在页面中调整到期窗口并重新运行筛查时使用：
 
 ```powershell
-python generic-drug-scout\scripts\create_seeded_screening_platform.py --window-years 2 --overwrite
+python generic-drug-scout-v1\scripts\create_seeded_screening_platform.py --window-years 2 --overwrite
 python .\仿药速探V1_首轮结果平台\app\server.py
 ```
 
-Open:
+打开：
 
 ```text
 http://127.0.0.1:8790/
 ```
 
-## Create Or Restore The Platform
+## 创建或恢复平台
 
-Use this only when the user wants an empty/manual platform, or when MCP screening is unavailable and the user still wants to inspect the UI:
+仅当用户需要空白/手动平台，或 MCP 筛查不可用但用户仍希望查看 UI 时使用：
 
 ```powershell
-python generic-drug-scout\scripts\materialize_platform.py --target .\仿药速探V1平台 --overwrite
+python generic-drug-scout-v1\scripts\materialize_platform.py --target .\仿药速探V1平台 --overwrite
 ```
 
-Then run:
+然后运行：
 
 ```powershell
 python .\仿药速探V1平台\app\server.py
 ```
 
-Open:
+打开：
 
 ```text
 http://127.0.0.1:8790/
 ```
 
-If port `8790` is already occupied, stop the old local process or edit `app/server.py` only if the user asks for a different port.
+如果端口 `8790` 已被占用，停止旧的本地进程；只有用户要求使用其他端口时，才编辑 `app/server.py`。
 
-## UI Rules For V1
+## V1 UI 规则
 
-When updating the UI:
+更新 UI 时：
 
-- Keep the page functional; avoid fake features and decorative controls that do not work.
-- Preserve the value-highlight modal: it opens on page load, can be closed, and can be reopened from the bottom-right entry.
-- Preserve report export controls: CSV, full HTML report, and print/PDF.
-- Preserve seeded-result support through `window.INITIAL_REPORT_PARAMS` and `window.INITIAL_REPORT_DATA`.
-- Preserve the fixed V1 filter text: CN + small molecule + crystal-form patent; only the expiry window is adjustable.
-- Preserve tabs for main table, priority candidates, excluded records, data notes, and sources.
-- For static reports, remove the「开始筛查」button and any visible instruction that tells the user to click it.
-- Keep the modal one-screen on desktop when possible.
-- Before changing images, inspect whether they are transparent, cropped, compressed, or visually disconnected from the background.
-- After changing the frontend, verify in the browser that tabs still switch and the modal opens/closes.
+- 保持页面功能可用；避免假功能和无法工作的装饰控件。
+- 保留价值亮点弹窗：页面加载时打开，可关闭，也可从右下角入口重新打开。
+- 保留报告导出控件：CSV、完整 HTML 报告和打印/PDF。
+- 保留通过 `window.INITIAL_REPORT_PARAMS` 和 `window.INITIAL_REPORT_DATA` 预置结果的支持。
+- 保留固定 V1 筛选文本：CN + 小分子 + 晶型专利；只有到期窗口可调整。
+- 保留主表、优先候选、排除记录、数据说明和来源的标签页。
+- 对静态报告，移除「开始筛查」按钮，以及任何提示用户点击该按钮的可见说明。
+- 尽可能让弹窗在桌面端一屏内显示完整。
+- 更换图片前，检查图片是否透明、被裁切、压缩，或与背景视觉割裂。
+- 修改前端后，在浏览器中验证标签页仍可切换，弹窗仍可打开/关闭。
 
-## Backend Rules
+## 后端规则
 
-When updating `server.py`:
+更新 `server.py` 时：
 
-- Do not embed API keys in the platform files.
-- Read MCP URLs from `~/.codex/config.toml`.
-- Keep V1 query parameters fixed to small molecule + CN + crystal-form patent, except date window.
-- Preserve separate `rows` and `not_promoted` outputs so the UI can distinguish main-table candidates from excluded records.
-- `rows` are candidates promoted to the main table after drug evidence verification.
-- `not_promoted` are still shown in the platform so the user can see what did not enter the main table and why.
+- 不要在平台文件中嵌入 API key。
+- 从 `~/.codex/config.toml` 读取 MCP URL。
+- 除日期窗口外，保持 V1 查询参数固定为小分子 + CN + 晶型专利。
+- 保留独立的 `rows` 和 `not_promoted` 输出，使 UI 能区分主表候选和排除记录。
+- `rows` 是经过药物证据验证后进入主表的候选。
+- `not_promoted` 仍在平台中展示，让用户看到哪些记录未进入主表以及原因。
 
-## Output Contract
+## 输出契约
 
-The platform should expose all result sections needed for a report:
+平台应展示报告所需的全部结果区块：
 
-- Title/header and current V1 filter settings.
-- Data overview cards.
-- Main screening result table.
-- Priority candidate explanations with reasons.
-- Not-promoted records.
-- Data notes and limitations.
-- Source summary.
-- Export controls for CSV, full HTML report, and print/PDF.
+- 标题/页眉和当前 V1 筛选设置。
+- 数据概览卡片。
+- 主筛查结果表。
+- 带理由的优先候选解释。
+- 未提升记录。
+- 数据说明和限制。
+- 来源摘要。
+- CSV、完整 HTML 报告和打印/PDF 导出控件。
 
-The generated platform is a local deliverable. Other users need their own MCP configuration if they want to rerun screening; the preloaded HTML can still display the seeded results without rerunning MCP.
+生成的平台是本地交付物。其他用户如需重新运行筛查，需要自行配置 MCP；预载 HTML 无需重新运行 MCP 也能展示预置结果。
 
-## Packaging
+## 打包
 
-To package this skill for sharing, zip the whole `generic-drug-scout` folder. Do not include runtime `__pycache__` folders.
+分享该 Skill 时，压缩整个 `generic-drug-scout-v1` 文件夹。不要包含运行时 `__pycache__` 文件夹。
 
 ## 使用前配置
 本 Skill 依赖智慧芽开放平台 MCP 服务：
