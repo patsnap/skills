@@ -1,95 +1,94 @@
 ---
 name: trademark-similarity-judgment
-description: |
-  Professional trademark similarity and confusion-risk assessment for Chinese trademark work. Use when a user uploads or describes a mark, logo, packaging, screenshot, search result, trademark list, image, Word/PDF/Excel file, or asks for 商标近似判断, 图文双模态比对, 驳回风险, 引证商标分析, 商品/服务类似判断, 混淆可能性评估, or handling suggestions before filing, review, opposition, invalidation, coexistence, or brand clearance.
+description: 面向中国商标工作的专业商标近似与混淆风险评估。适用于用户上传或描述商标、Logo、包装、截图、检索结果、商标清单、图片、Word/PDF/Excel 文件，或要求进行商标近似判断、图文双模态比对、驳回风险、引证商标分析、商品/服务类似判断、混淆可能性评估，以及申请、复审、异议、无效、共存或品牌检索前处理建议的场景。
 ---
 
-# Trademark Similarity Judgment
+# 商标近似判断
 
-## Objective
+## 目标
 
-Assess whether the user's target mark is likely to be considered identical or similar to prior marks on identical or similar goods/services, with emphasis on confusion likelihood under Chinese trademark practice. Produce a professional risk level, reasoning, evidence gaps, and handling suggestions.
+评估用户的目标商标是否可能因与在先商标用于相同或类似商品/服务而被认定为相同或近似，重点关注中国商标实践中的混淆可能性。输出专业的风险等级、理由、证据缺口和处理建议。
 
-This skill is a business/legal analysis aid, not a legal opinion. State uncertainty when official registry data, status, goods/services, or image quality is incomplete.
+本 Skill 是商业/法律分析辅助工具，不构成法律意见。当官方注册数据、状态、商品/服务或图片质量不完整时，应说明不确定性。
 
-## Inputs To Collect
+## 需收集的输入
 
-Use the uploaded files and user text first. If key facts are missing, proceed with explicit assumptions and list the missing items instead of blocking, unless the missing item makes the assessment impossible.
+优先使用上传文件和用户文字。如果关键事实缺失，在明确假设并列出缺失项的前提下继续处理；除非缺失项导致评估无法进行，否则不要阻塞。
 
-Collect:
+收集以下内容：
 
-- Target mark: text, image, logo, packaging/screenshot, pronunciation, meaning, colors, layout, dominant elements.
-- Goods/services: Nice class, standard item names, business scenario, sales channels, target consumers.
-- Prior marks: registration/application number, owner, mark sample, class, goods/services, filing date, status, cited mark source.
-- Market context: actual use, brand fame, evidence of coexistence or confusion, planned filing strategy.
+- 目标商标：文字、图片、Logo、包装/截图、读音、含义、颜色、布局、显著元素。
+- 商品/服务：尼斯分类、标准项目名称、业务场景、销售渠道、目标消费者。
+- 在先商标：注册/申请号、权利人、商标样本、类别、商品/服务、申请日、状态、引证商标来源。
+- 市场背景：实际使用、品牌知名度、共存或混淆证据、计划申请策略。
 
-For image uploads, inspect both the whole visual impression and separable elements: text, figure, shape, color, layout, packaging trade dress, and the visually dominant part.
+对于图片上传，同时检查整体视觉印象和可分离元素：文字、图形、形状、颜色、布局、包装装潢，以及视觉上占主导的部分。
 
-## Workflow
+## 工作流
 
-1. **Normalize the target mark**
-   - Extract text in Chinese, English, pinyin, numbers, symbols, and variants.
-   - Describe graphic elements, composition, color, and dominant visual features.
-   - Identify weak elements such as generic names, descriptive words, model numbers, geographic terms, common slogans, and decorative shapes.
+1. **规范化目标商标**
+   - 提取中文、英文、拼音、数字、符号和变体文字。
+   - 描述图形元素、构图、颜色和主要视觉特征。
+   - 识别弱显著性元素，如通用名称、描述性词语、型号、地理名称、常见口号和装饰性形状。
 
-2. **Define goods/services**
-   - Identify class and specific goods/services.
-   - Compare function, purpose, raw materials, providers, sales channels, consumer groups, service content, and transaction scenes.
-   - Do not rely only on class number; explain cross-class association when commercially relevant.
+2. **界定商品/服务**
+   - 识别类别和具体商品/服务。
+   - 比较功能、用途、原材料、提供主体、销售渠道、消费群体、服务内容和交易场景。
+   - 不要只依赖类别号；当商业上相关时，解释跨类关联。
 
-3. **Identify prior rights**
-   - Use user-provided cited marks when available.
-   - If the user asks for live registry verification, browse or use available official sources where possible; cite source limits.
-   - Check status and dates: valid, pending, rejected, invalidated, cancelled, expired, renewal status, and vulnerability to non-use cancellation.
+3. **识别在先权利**
+   - 有用户提供的引证商标时优先使用。
+   - 如果用户要求实时注册信息核验，尽可能浏览或使用可用官方来源，并说明来源限制。
+   - 检查状态和日期：有效、待审、驳回、无效、撤销、过期、续展状态，以及是否可能被连续不使用撤销。
 
-4. **Compare signs**
-   - Text marks: compare character shape, pronunciation, meaning, word order, length, rhythm, translation/transliteration, and overall call.
-   - English/pinyin/number marks: compare letters, syllables, prefixes/suffixes, pronunciation, meaning, and visual length.
-   - Graphic marks: compare subject, outline, composition, color, style, and overall visual impression.
-   - Composite marks: apply overall observation while identifying the dominant/distinctive part.
-   - Packaging/screenshots: separate trademark similarity from broader trade dress similarity, then explain both if relevant.
+4. **比对标志**
+   - 文字商标：比较字形、读音、含义、词序、长度、节奏、翻译/音译和整体呼叫。
+   - 英文/拼音/数字商标：比较字母、音节、前后缀、读音、含义和视觉长度。
+   - 图形商标：比较主题、轮廓、构图、颜色、风格和整体视觉印象。
+   - 组合商标：适用整体观察，同时识别主要/显著部分。
+   - 包装/截图：先区分商标近似与更广义的商品装潢近似，如相关则分别说明。
 
-5. **Assess distinctiveness and fame**
-   - Weigh invented or highly distinctive elements more heavily than descriptive/common elements.
-   - If the shared part is weak, require stronger overall similarity or stronger goods/service overlap for high risk.
-   - If a prior mark is famous or highly distinctive, treat protection scope as broader and explain why.
+5. **评估显著性和知名度**
+   - 对臆造或高显著性元素赋予更高权重，描述性/常见元素权重较低。
+   - 如果共同部分显著性弱，则需要更强的整体近似或更高的商品/服务重合度才可认定高风险。
+   - 如果在先商标知名或显著性很强，应视为保护范围更宽，并解释原因。
 
-6. **Assess confusion likelihood**
-   - Evaluate whether relevant consumers may believe the goods/services come from the same source or from affiliated, licensed, series-brand, group-company, franchise, distributor, or cooperation relationships.
-   - Consider consumer attention level, purchase scenario, channel overlap, actual use, search/e-commerce display, and evidence of actual confusion or coexistence.
+6. **评估混淆可能性**
+   - 评估相关公众是否可能认为商品/服务来自同一来源，或存在关联、许可、系列品牌、集团公司、加盟、经销或合作关系。
+   - 考虑消费者注意程度、购买场景、渠道重合、实际使用、搜索/电商展示，以及实际混淆或共存证据。
 
-7. **Assign risk level**
-   - High: close sign similarity plus identical/similar goods/services, valid prior right, distinctive or known prior mark, likely confusion.
-   - Medium: partial similarity or arguable goods/service relationship; outcome depends on dominant elements, evidence, or examiner discretion.
-   - Low: clear overall differences, unrelated goods/services, weak shared elements, invalid prior right, or persuasive coexistence/no-confusion facts.
-   - Arguable: likely office action or dispute risk, but there are credible review, non-use cancellation, invalidation, coexistence, or narrowing arguments.
+7. **分配风险等级**
+   - 高：标志近似度高，商品/服务相同或类似，在先权利有效，在先商标有显著性或知名度，混淆可能性高。
+   - 中：部分近似或商品/服务关系可争议；结论取决于主要元素、证据或审查员自由裁量。
+   - 低：整体差异清楚，商品/服务不相关，共同元素显著性弱，在先权利无效，或存在有说服力的共存/无混淆事实。
+   - 可争议：可能出现审查意见或争议风险，但存在可信的复审、撤三、无效、共存或限缩论证空间。
 
-8. **Recommend handling**
-   - Filing: proceed, redesign, add distinguishing elements, change name, change logo, adjust colors/layout, split applications.
-   - Goods/services: delete or narrow high-risk items, reclassify, stage filing, add defensive filings.
-   - Prior-right strategy: monitor, non-use cancellation, invalidation, assignment, license/coexistence negotiation, evidence preparation.
-   - Dispute response: prepare refusal review, distinction arguments, use evidence, fame evidence, coexistence evidence, or challenge cited marks.
+8. **建议处理方式**
+   - 申请：继续申请、重新设计、增加区别元素、更名、更换 Logo、调整颜色/布局、拆分申请。
+   - 商品/服务：删除或限缩高风险项目、重新分类、分阶段申请、补充防御性申请。
+   - 在先权利策略：监控、撤三、无效、转让、许可/共存谈判、证据准备。
+   - 争议应对：准备驳回复审、区别性论证、使用证据、知名度证据、共存证据，或挑战引证商标。
 
-## Output Format
+## 输出格式
 
-Use concise professional Chinese unless the user asks otherwise.
+除非用户另有要求，使用简洁、专业的中文。
 
-Include:
+包含：
 
-- **结论**: risk level and one-sentence reason.
-- **对象拆解**: target mark elements and dominant/distinctive parts.
-- **商品/服务关系**: identical, similar, related, or unrelated, with reasons.
-- **近似比对**: text, pronunciation, meaning, graphic, layout, and overall impression as applicable.
-- **混淆可能性**: relevant public, channels, source association risk.
-- **风险等级**: high/medium/low/arguable, with confidence.
-- **处理建议**: concrete next actions.
-- **需补充信息**: only items that materially affect the conclusion.
+- **结论**：风险等级和一句话理由。
+- **对象拆解**：目标商标元素及主要/显著部分。
+- **商品/服务关系**：相同、类似、相关或不相关，并说明理由。
+- **近似比对**：按需覆盖文字、读音、含义、图形、布局和整体印象。
+- **混淆可能性**：相关公众、渠道、来源关联风险。
+- **风险等级**：高/中/低/可争议，并给出信心判断。
+- **处理建议**：具体下一步动作。
+- **需补充信息**：只列出会实质影响结论的信息。
 
-For complex matters or multiple cited marks, use a table with columns: cited mark, status, goods/services relation, sign similarity, key risk reason, risk level, action.
+复杂事项或多个引证商标时，使用表格，列包括：引证商标、状态、商品/服务关系、标志近似度、核心风险理由、风险等级、行动建议。
 
-## Reference
+## 参考
 
-For a fuller checklist, scoring rubric, and report template, read `references/assessment-framework.md` when the user asks for a formal report, batch review, detailed scoring, or deliverable suitable for business handoff.
+当用户要求正式报告、批量审核、详细评分或适合业务交接的交付物时，读取 `references/assessment-framework.md`，其中包含更完整的检查清单、评分规则和报告模板。
 
 ## 使用前配置
 本 Skill 依赖智慧芽开放平台 MCP 服务：

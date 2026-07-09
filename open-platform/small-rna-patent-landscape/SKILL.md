@@ -1,67 +1,67 @@
 ---
 name: small-rna-patent-landscape
-description: Build a small-nucleic-acid company patent technology landscape from a patent number list. Use when the user asks to fetch patent originals, analyze ASO/siRNA/mRNA/RNA medicine patent portfolios, create an XLSX patent landscape workbook, classify small RNA technology tags, or generate a multidimensional patent timeline/lane HTML dashboard for one company.
+description: 基于专利号清单构建小核酸企业专利技术全景。适用于用户要求获取专利原文、分析 ASO/siRNA/mRNA/RNA 药物专利组合、创建 XLSX 专利全景工作簿、分类小 RNA 技术标签，或为单家公司生成多维专利时间轴/泳道 HTML 仪表盘的场景。
 ---
 
-# Small RNA Patent Landscape
+# 小 RNA 专利技术全景
 
-## Purpose
+## 目标
 
-Use this skill to turn a list of patent publication/application numbers into a company-level patent technology landscape for small nucleic acid therapeutics. The standard output is:
+使用本 Skill 将专利公开号/申请号清单转化为面向小核酸治疗领域的公司级专利技术全景。标准输出包括：
 
-- local patent full-text markdown corpus
-- structured XLSX workbook with a strategy-analysis layer
-- multidimensional HTML timeline with technology lanes, tag filters, hover cards, distribution summaries, and visible opportunity-gap markers
+- 本地专利全文 Markdown 语料库
+- 带策略分析层的结构化 XLSX 工作簿
+- 多维 HTML 时间轴，包含技术泳道、标签筛选、悬浮卡片、分布摘要，以及可见的机会缺口标记
 
-Prefer Chinese output labels when the final audience is a China-based customer; keep patent claims/abstract source text in the source language unless the user asks for translation.
+当最终受众是中国客户时，优先使用中文输出标签；除非用户要求翻译，否则专利权利要求/摘要源文本保持原文语言。
 
-## Workflow
+## 工作流
 
-1. **Normalize patent input**
-   - Accept one patent number per line or a pasted list.
-   - Preserve the user's order as `输入序号`.
-   - If a number has no kind code, try suffixes in this order: original, `A`, `A1`, `A2`, `B`, `B1`, `B2`.
-   - Store the successful matched number as `当前匹配公开号`.
+1. **规范化专利输入**
+   - 接受每行一个专利号，或粘贴的专利号列表。
+   - 将用户输入顺序保留为 `输入序号`。
+   - 如果号码没有文献种类代码，按以下顺序尝试后缀：原始值、`A`、`A1`、`A2`、`B`、`B1`、`B2`。
+   - 将成功匹配的号码保存为 `当前匹配公开号`。
 
-2. **Fetch patent originals**
-   - Use the available patent MCP/tooling, preferably 智慧芽 MCP, to fetch markdown full text.
-   - Save one markdown per successful patent under `patent_markdowns/`.
-   - Save `fetch_summary.csv/json` with input number, matched number, status, file path, and fallback attempts.
-   - For missing claims, substitute English claims from another family member when available, and mark the substitution.
+2. **获取专利原文**
+   - 使用可用专利 MCP/工具，优先使用智慧芽 MCP，获取 Markdown 全文。
+   - 每个成功获取的专利在 `patent_markdowns/` 下保存一份 Markdown。
+   - 保存 `fetch_summary.csv/json`，记录输入号码、匹配号码、状态、文件路径和回退尝试。
+   - 对缺失权利要求的专利，如有同族成员英文权利要求可用，则用其替代并标注替代情况。
 
-3. **Build structured patent rows**
-   - Extract title, abstract, claims, applicant, publication date, legal status, family numbers, family earliest publication date, family count, and family jurisdictions.
-   - Normalize applicants to English names.
-   - Use family/legal data from the patent MCP if available. If not available, clearly flag estimated or missing fields.
-   - Create one JSON/CSV intermediate file before generating XLSX/HTML.
+3. **构建结构化专利行**
+   - 提取标题、摘要、权利要求、申请人、公开日、法律状态、同族号、同族最早公开日、同族数量和同族司法辖区。
+   - 将申请人规范化为英文名称。
+   - 如可用，使用专利 MCP 提供的同族/法律数据；如不可用，明确标记估算或缺失字段。
+   - 生成 XLSX/HTML 之前，先创建一个 JSON/CSV 中间文件。
 
-4. **Classify small RNA technology**
-   - Apply the tag taxonomy in `references/tag-taxonomy.md`.
-   - Keep both expert tags and customer-readable tags:
-     - expert tag example: `SCN1A / Dravet / Nav1.1`
-     - customer-readable tag example: `中枢神经遗传病蛋白上调 ASO`
-   - Do not use “generation 1/2/3” as the main axis unless the user explicitly asks; modern portfolios are better explained by disease assets, mechanism platforms, chemistry/structure, delivery/tissue, and productization stage.
+4. **分类小 RNA 技术**
+   - 应用 `references/tag-taxonomy.md` 中的标签体系。
+   - 同时保留专家标签和客户可读标签：
+     - 专家标签示例：`SCN1A / Dravet / Nav1.1`
+     - 客户可读标签示例：`中枢神经遗传病蛋白上调 ASO`
+   - 除非用户明确要求，否则不要将“第 1/2/3 代”作为主轴；现代专利组合更适合按疾病资产、机制平台、化学/结构、递送/组织和产品化阶段解释。
 
-5. **Generate XLSX**
-   - Use the field schema in `references/workbook-schema.md`.
-   - Include at minimum a main analysis sheet, tag summary sheet, timeline source sheet, methodology sheet, and the strategy sheets listed in `references/workbook-schema.md`.
-   - Add a second-layer strategy analysis:
-     -重点专利证据链
-     -布局缺口矩阵
-     -研发启发卡片
-     -龙头布局借鉴
-     -策略建议总览
-   - Use professional Chinese column names for customer-facing sheets.
+5. **生成 XLSX**
+   - 使用 `references/workbook-schema.md` 中的字段架构。
+   - 至少包含主分析表、标签摘要表、时间轴源数据表、方法说明表，以及 `references/workbook-schema.md` 中列出的策略表。
+   - 添加第二层策略分析：
+     - 重点专利证据链
+     - 布局缺口矩阵
+     - 研发启发卡片
+     - 龙头布局借鉴
+     - 策略建议总览
+   - 面向客户的工作表使用专业中文列名。
 
-6. **Generate HTML timeline**
-   - Use the design/output rules in `references/html-dashboard.md`.
-   - The page title should be `{Company} 公司多维标签时间轴`.
-   - Default view should use customer-readable technology directions, not raw gene names.
-   - Provide dimension switches for technology direction, mechanism, RNA modality, chemistry/structure, delivery/tissue, and productization stage.
-   - Hover cards should include title, professional subdivision, patent type, mechanism, chemistry, delivery/tissue, family count, entered jurisdictions, importance, evidence chain, borrowable strategy, possible breakthrough, recommended action, and Chinese strategic interpretation.
-   - Add strategy cards above the timeline for `查漏补缺`, `研发启发`, and `布局借鉴`.
-   - Add visible yellow/dashed `技术缺口` or `机会点` markers on relevant future or next-step timeline cells. These markers should not represent real patents; they represent suggested patent-layout opportunities inferred from the portfolio.
-   - For small RNA companies, always consider opportunity markers for delivery/tissue gaps and platform-mechanism migration, especially:
+6. **生成 HTML 时间轴**
+   - 使用 `references/html-dashboard.md` 中的设计/输出规则。
+   - 页面标题应为 `{Company} 公司多维标签时间轴`。
+   - 默认视图应使用客户可读技术方向，而不是原始基因名。
+   - 提供技术方向、机制、RNA 类型、化学/结构、递送/组织和产品化阶段的维度切换。
+   - 悬浮卡片应包含标题、专业细分、专利类型、机制、化学、递送/组织、同族数量、进入司法辖区、重要性、证据链、可借鉴策略、可能突破点、建议行动和中文策略解读。
+   - 在时间轴上方添加 `查漏补缺`、`研发启发` 和 `布局借鉴` 策略卡片。
+   - 在相关未来或下一步时间轴单元中添加可见的黄色/虚线 `技术缺口` 或 `机会点` 标记。这些标记不代表真实专利，而是基于组合推断出的专利布局机会建议。
+   - 对小 RNA 公司，始终考虑递送/组织缺口和平台机制迁移方面的机会标记，尤其包括：
      - CNS/鞘内给药参数补强
      - 眼科/玻璃体腔给药外延
      - 肾脏组织选择性
@@ -70,30 +70,30 @@ Prefer Chinese output labels when the final audience is a China-based customer; 
      - 剪接转换适应症拓展
      - 患者筛选/诊断准入壁垒
 
-7. **Validate**
-   - Open or render the XLSX enough to confirm sheet names and row counts.
-   - Serve and preview the HTML locally when possible; check that the default view and at least one alternate dimension render correctly.
-   - Confirm no obvious English-only customer-facing labels remain, except necessary gene/protein/drug abbreviations.
+7. **验证**
+   - 打开或渲染 XLSX，至少确认工作表名称和行数。
+   - 如可行，本地提供并预览 HTML；检查默认视图和至少一个替代维度能正确渲染。
+   - 确认可面向客户的标签中没有明显的纯英文残留，必要的基因/蛋白/药物缩写除外。
 
-## Output Naming
+## 输出命名
 
-Use a stable output folder such as `outputs/patent_analysis/`.
+使用稳定输出文件夹，例如 `outputs/patent_analysis/`。
 
-Recommended artifacts:
+建议产物：
 
 - `{company_slug}_patent_landscape.xlsx`
 - `{company_slug}_multidimensional_tag_timeline.html`
 - `patent_analysis_rows.json`
 - `patent_markdowns/`
 
-## Bundled References
+## 内置参考
 
-- `references/tag-taxonomy.md`: classification logic and Chinese display names.
-- `references/workbook-schema.md`: workbook sheets and required columns.
-- `references/html-dashboard.md`: dashboard behavior, hover-card content, and visual conventions.
+- `references/tag-taxonomy.md`：分类逻辑和中文显示名称。
+- `references/workbook-schema.md`：工作簿表格和必需列。
+- `references/html-dashboard.md`：仪表盘行为、悬浮卡片内容和视觉约定。
 
-## Bundled Script
+## 内置脚本
 
-- `scripts/create_landscape_project.py`: creates a reusable project scaffold with `patent_markdowns/`, `outputs/patent_analysis/`, and starter config files.
+- `scripts/create_landscape_project.py`：创建可复用项目脚手架，包含 `patent_markdowns/`、`outputs/patent_analysis/` 和初始配置文件。
 
-Use the script as a starting point, then adapt local data-fetching and parsing code to the available MCP/tooling in the active workspace.
+将该脚本作为起点，然后根据当前工作区可用的 MCP/工具调整本地数据获取和解析代码。

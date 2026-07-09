@@ -1,79 +1,78 @@
 ---
 name: overseas-patent-translation
-description: |
-  Translate Chinese patent application documents for overseas filing and format them for Europe, United States, Japan, or Korea. Use when the user uploads or describes a Chinese patent specification, claims, abstract, drawings, priority text, or technical disclosure and asks for overseas patent application translation, 涉外专利翻译, PCT/巴黎公约进入海外文本, EP/US/JP/KR patent filing text, target-country formatting, translation QA, terminology consistency, or jurisdiction-specific patent translation guidance.
+description: 将中国专利申请文件翻译为海外申请文本，并按欧洲、美国、日本或韩国要求进行格式化。适用于用户上传或描述中文专利说明书、权利要求书、摘要、附图、优先权文本或技术交底书，并要求进行海外专利申请翻译、涉外专利翻译、PCT/巴黎公约进入海外文本、EP/US/JP/KR patent filing text、目标国家格式化、翻译质检、术语一致性，或特定司法辖区专利翻译指导的场景。
 ---
 
-# Overseas Patent Translation
+# 海外专利申请翻译
 
-## Purpose
+## 目标
 
-Produce target-jurisdiction patent application translations from Chinese priority/application text while preserving priority support, claim scope, terminology consistency, and local filing format.
+基于中文优先权/申请文本，生成目标司法辖区的专利申请译文，同时保持优先权支持、权利要求保护范围、术语一致性和当地申请格式。
 
-## Intake Workflow
+## 输入处理工作流
 
-1. Confirm uploaded/input Chinese materials.
-   - Identify whether the user provided claims, description, abstract, drawing descriptions, drawings, sequence listing, or only a technical disclosure.
-   - If only partial materials are provided, proceed with the available sections and state what is missing.
-   - Preserve the Chinese priority disclosure; do not add unsupported technical features, effects, parameters, or embodiments.
+1. 确认已上传/已输入的中文材料。
+   - 判断用户提供的是权利要求书、说明书、摘要、附图说明、附图、序列表，还是仅提供技术交底。
+   - 如果只提供了部分材料，就基于已有章节继续处理，并说明缺失内容。
+   - 保留中文优先权披露内容；不要添加未支持的技术特征、效果、参数或实施例。
 
-2. Ask the user to choose target jurisdiction if not already specified.
-   - Supported options: Europe, United States, Japan, Korea.
-   - Allow multiple selections; generate a separate jurisdiction-specific output for each selection.
+2. 若用户尚未指定目标司法辖区，请用户选择。
+   - 支持选项：欧洲、美国、日本、韩国。
+   - 允许多选；每个选中的司法辖区都生成一份对应格式的输出。
 
-3. Load only the relevant reference file:
-   - Europe: `references/europe.md`
-   - United States: `references/united-states.md`
-   - Japan: `references/japan.md`
-   - Korea: `references/korea.md`
+3. 只加载相关参考文件：
+   - 欧洲：`references/europe.md`
+   - 美国：`references/united-states.md`
+   - 日本：`references/japan.md`
+   - 韩国：`references/korea.md`
 
-4. Translate and format.
-   - Convert Chinese patent language into target-language patent drafting style.
-   - Keep technical facts anchored to the Chinese text.
-   - Preserve claim dependencies, numbering, units, reference signs, formulas, tables, and sequence-listing identifiers.
-   - Use local section headings and document order from the loaded jurisdiction reference.
+4. 翻译并格式化。
+   - 将中文专利语言转换为目标语言的专利撰写风格。
+   - 技术事实必须锚定在中文文本中。
+   - 保留权利要求引用关系、编号、单位、附图标记、公式、表格和序列表标识。
+   - 使用已加载司法辖区参考文件中的本地章节标题和文件顺序。
 
-5. Deliver the output.
-   - Provide the formatted translated application text.
-   - Include a terminology table for core terms.
-   - Include a concise translation QA/risk note when issues are found.
+5. 交付输出。
+   - 提供格式化后的申请译文。
+   - 包含核心术语表。
+   - 如发现问题，包含简洁的翻译质检/风险说明。
 
-## Translation Rules
+## 翻译规则
 
-- Prioritize claims first; they control protection scope.
-- Keep the same technical term translated consistently across claims, description, abstract, and drawing descriptions.
-- Preserve open-ended claim language unless the Chinese text clearly requires a closed limitation.
-- Do not turn optional, preferred, or exemplary features into mandatory claim limitations.
-- Do not silently impose a strict step order in method claims unless the Chinese text or technical logic requires it.
-- Treat "至少一个", "多个", "任一", "和/或", "可选地", "优选地", and "包括/包含" as high-risk scope terms and translate deliberately.
-- Avoid overclaiming effects such as "significantly", "completely", or "substantially" unless supported by data or explicit Chinese disclosure.
-- Clean up Chinese-style long sentences and missing subjects only to improve clarity; do not change the technical content.
-- Flag unclear Chinese source text instead of inventing unsupported meaning.
+- 优先处理权利要求；权利要求决定保护范围。
+- 同一技术术语在权利要求书、说明书、摘要和附图说明中必须保持一致翻译。
+- 除非中文文本明确要求封闭式限定，否则保留开放式权利要求语言。
+- 不要把可选、优选或示例性特征改写为必要权利要求限定。
+- 除非中文文本或技术逻辑要求严格步骤顺序，否则不要在方法权利要求中默默施加强制步骤顺序。
+- 将“至少一个”“多个”“任一”“和/或”“可选地”“优选地”“包括/包含”视为高风险范围词，翻译时需有意控制。
+- 除非有数据或中文披露明确支持，否则避免夸大为“显著地”“完全地”或“实质上”等效果表述。
+- 可为提升清晰度而整理中文式长句和缺主语问题，但不得改变技术内容。
+- 对不清楚的中文源文本进行标注，不要编造未支持含义。
 
-## Quality Checks
+## 质量检查
 
-Before final delivery, check:
+最终交付前检查：
 
-- Claim numbering and dependencies are intact.
-- Each claim term appears consistently in the description.
-- Reference signs match the drawings and drawing descriptions.
-- Units, ranges, formulas, algorithm steps, materials, and test conditions are preserved.
-- Abstract, title, and section headings match the target jurisdiction format.
-- No source-disclosure expansion or unintended narrowing appears in the translation.
+- 权利要求编号和引用关系完整。
+- 每个权利要求术语都在说明书中保持一致。
+- 附图标记与附图及附图说明匹配。
+- 单位、范围、公式、算法步骤、材料和测试条件均被保留。
+- 摘要、标题和章节标题符合目标司法辖区格式。
+- 未出现源披露扩展或非预期限缩。
 
-## Output Pattern
+## 输出模式
 
-For each selected jurisdiction, structure the response as:
+对每个选中的司法辖区，按以下结构回复：
 
 ```text
-[Jurisdiction] Patent Application Translation
+[司法辖区] 专利申请译文
 
-1. Formatted translated application text
-2. Terminology table
-3. Translation QA and risk notes
+1. 格式化后的申请译文
+2. 术语表
+3. 翻译质检和风险说明
 ```
 
-When creating files, use this folder convention unless the user requests another structure:
+创建文件时，除非用户要求其他结构，否则使用以下文件夹约定：
 
 ```text
 project-name/

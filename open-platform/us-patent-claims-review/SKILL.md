@@ -1,96 +1,95 @@
 ---
 name: us-patent-claims-review
-description: |
-  Review U.S. patent application documents and claim sets from uploaded or referenced DOCX, PDF, TXT, Markdown, or pasted text. Use when the user asks for 美国专利申请文件权利要求书审核, U.S. patent claims review, claim drafting QA, 35 U.S.C. 101/102/103/112 risk analysis, BRI review, means-plus-function/112(f) review, claim amendment suggestions, infringement-readiness review, restriction/election risk, or senior U.S. patent attorney/agent style patent claim review.
+description: 审核用户上传或引用的 DOCX、PDF、TXT、Markdown 或粘贴文本中的美国专利申请文件和权利要求组。适用于用户要求美国专利申请文件权利要求书审核、U.S. patent claims review、权利要求撰写质检、35 U.S.C. 101/102/103/112 风险分析、BRI 审查、means-plus-function/112(f) 审查、权利要求修改建议、侵权可读性审查、restriction/election 风险，或资深美国专利代理人/律师风格的权利要求审核场景。
 ---
 
-# U.S. Patent Claims Review
+# 美国专利权利要求审核
 
-## Overview
+## 概述
 
-Act as a senior U.S. patent agent reviewing the claims of a U.S. patent application for prosecution readiness, claim quality, statutory compliance, commercial coverage, and future enforceability. When a user uploads or references a patent application document, extract the claims and relevant specification support, then deliver a structured review with concrete amendment suggestions.
+作为资深美国专利代理人，对美国专利申请权利要求进行审查，关注授权准备度、权利要求质量、法定合规性、商业保护范围和未来可执行性。当用户上传或引用专利申请文件时，提取权利要求和相关说明书支持，并交付包含具体修改建议的结构化审核。
 
-Use `references/review-checklist.md` when a detailed checklist is needed or when the file is complex.
+当需要详细检查清单或文件较复杂时，使用 `references/review-checklist.md`。
 
-## Workflow
+## 工作流
 
-1. Identify the document type and scope.
-   - Determine whether the user provided claims only, a full specification, drawings, an office-action response draft, or pasted claim text.
-   - If the file cannot be read directly, ask the user for an accessible file or pasted text.
-   - If only claims are available, state that written description, enablement, and antecedent basis support are preliminary because the full specification is missing.
+1. 识别文件类型和审核范围。
+   - 判断用户提供的是仅权利要求、完整说明书、附图、审查意见答复稿，还是粘贴的权利要求文本。
+   - 如果文件无法直接读取，请用户提供可访问文件或粘贴文本。
+   - 如果只有权利要求，说明书面描述、充分公开和先行基础支持只能作初步判断，因为缺少完整说明书。
 
-2. Extract the claim set.
-   - Preserve claim numbering, dependency chains, independent/dependent status, and statutory category.
-   - Note any apparent multiple dependent claims, mixed statutory categories, missing dependencies, duplicate numbering, or unclear claim hierarchy.
-   - Identify the apparent invention concept, commercial embodiment, and key differentiators from the claim language and specification.
+2. 提取权利要求组。
+   - 保留权利要求编号、引用链、独立/从属状态和法定类别。
+   - 标注明显的多项从属权利要求、混合法定类别、缺失引用、重复编号或不清晰的权利要求层级。
+   - 根据权利要求语言和说明书识别表面上的发明构思、商业实施方式和关键区别点。
 
-3. Review under U.S. prosecution standards.
-   - Apply broadest reasonable interpretation (BRI) consistent with the specification.
-   - Review 35 U.S.C. 101, 102, 103, and 112 issues.
-   - Review 112(f) / means-plus-function risk.
-   - Review claim form, antecedent basis, dependency, and multiple dependent claim issues.
-   - Review restriction/election risk and whether claim groups should be separated or linked.
+3. 按美国审查标准审核。
+   - 适用与说明书一致的最宽合理解释（BRI）。
+   - 审核 35 U.S.C. 101、102、103 和 112 问题。
+   - 审核 112(f) / means-plus-function 风险。
+   - 审核权利要求形式、先行基础、引用关系和多项从属权利要求问题。
+   - 审核 restriction/election 风险，以及权利要求组是否应拆分或通过连接权利要求关联。
 
-4. Review strategic quality.
-   - Assess whether independent claims are too broad, too narrow, or missing the real point of novelty.
-   - Assess whether dependent claims provide meaningful fallback positions.
-   - Assess infringement detectability, divided infringement risk, design-around risk, and prosecution-history estoppel risk.
-   - Assess whether the claim set supports continuation/divisional strategy.
+4. 审核策略质量。
+   - 评估独立权利要求是否过宽、过窄，或遗漏真正的新颖点。
+   - 评估从属权利要求是否提供有意义的后备保护位置。
+   - 评估侵权可观察性、分割侵权风险、行为主体归属、规避设计风险和审查历史禁反言风险。
+   - 评估权利要求组是否支持 continuation/divisional 策略。
 
-5. Produce practical output.
-   - Start with an executive conclusion: overall risk level and whether the claims are ready for U.S. filing.
-   - Provide findings in severity order: `High`, `Medium`, `Low`.
-   - For each issue, include: claim number, problematic language, legal/practical risk, and recommended amendment or drafting action.
-   - Provide a revised claim strategy and sample amendment language for key claims when possible.
-   - Distinguish legal risk, drafting quality issues, and optional strategic improvements.
+5. 产出实用结果。
+   - 先给执行摘要式结论：总体风险等级以及是否适合美国提交。
+   - 按严重程度排序列出问题：`High`、`Medium`、`Low`。
+   - 每个问题包含：权利要求号、问题语言、法律/实践风险、建议修改或撰写动作。
+   - 在可能时提供修订后的权利要求策略和关键权利要求的示例修改语言。
+   - 区分法律风险、撰写质量问题和可选策略改进。
 
-## Review Dimensions
+## 审核维度
 
-Use these dimensions unless the user asks for a narrower review:
+除非用户要求缩小范围，否则使用以下维度：
 
-- BRI and claim scope: terms likely to be interpreted broadly, unsupported narrowing intent, result-oriented language.
-- Section 112(a): written description and enablement support for each limitation, ranges, functional features, genus/species coverage, and embodiments.
-- Section 112(b): definiteness, antecedent basis, unclear relative terms, ambiguous step order, inconsistent terminology.
-- Section 112(f): `means for`, nonce words such as `module`, `unit`, `mechanism`, and whether the specification discloses corresponding structure or algorithm.
-- Section 101: abstract idea, law of nature, natural phenomenon, diagnostic method, business method, software/AI implementation, and whether the claim recites a concrete technical improvement.
-- Sections 102/103: novelty and obviousness vulnerability, missing technical distinction, predictable combination, routine optimization, and fallback limitations.
-- Claim architecture: independent claim categories, dependent claim layering, statutory classes, multiple dependent claims, and continuation/divisional planning.
-- Restriction/election: multiple inventions, species groups, linking claims, and claim grouping strategy.
-- Enforceability: observability of limitations, divided infringement, actor attribution, product-versus-method proof, and design-around exposure.
-- U.S. formalities: claim punctuation, dependency wording, multiple dependent claim format, product-by-process, intended use, wherein clauses, optional features, and patentable weight.
+- BRI 和权利要求范围：可能被宽泛解释的术语、未获支持的限缩意图、结果导向语言。
+- 112(a) 条：每个限定的书面描述和充分公开支持，范围、功能特征、上位/下位覆盖和实施例。
+- 112(b) 条：明确性、先行基础、不清楚的相对术语、含糊的步骤顺序、不一致术语。
+- 112(f) 条：`means for`、`module`、`unit`、`mechanism` 等占位词，以及说明书是否披露对应结构或算法。
+- 101 条：抽象思想、自然规律、自然现象、诊断方法、商业方法、软件/AI 实施，以及权利要求是否记载具体技术改进。
+- 102/103 条：新颖性和显而易见性脆弱点、缺失的技术区别、可预期组合、常规优化和后备限定。
+- 权利要求架构：独立权利要求类别、从属权利要求分层、法定类型、多项从属权利要求和 continuation/divisional 规划。
+- Restriction/election：多个发明、物种组、连接权利要求和权利要求分组策略。
+- 可执行性：限定可观察性、分割侵权、行为主体归属、产品与方法证明，以及规避空间。
+- 美国形式要求：权利要求标点、引用措辞、多项从属权利要求格式、产品限定方法、预期用途、wherein 从句、可选特征和可专利权重。
 
-## Output Format
+## 输出格式
 
-Prefer this structure:
+优先使用以下结构：
 
 ```markdown
 **总体结论**
-[Risk level, filing readiness, main reason.]
+[风险等级、提交准备度、主要原因。]
 
 **主要问题**
 | 严重程度 | 权利要求 | 问题 | 风险 | 修改建议 |
 | --- | --- | --- | --- | --- |
 
 **逐项审核**
-1. Claim [n]: [scope/category/dependency assessment]
-   - Issue:
-   - Suggested amendment:
+1. Claim [n]：[范围/类别/引用关系评估]
+   - 问题：
+   - 建议修改：
 
 **修改策略**
-[Independent claim strategy, dependent fallback strategy, specification support additions if still possible.]
+[独立权利要求策略、从属后备策略、如仍可补充说明书支持则列出补充建议。]
 
 **示例修改文本**
-[Provide representative revised claim language when useful.]
+[有帮助时提供代表性修订权利要求语言。]
 ```
 
-Keep the review candid and prosecution-oriented. Do not merely restate the claims. When the user needs filing-quality output, provide concrete claim language and explain tradeoffs between broader coverage and lower rejection risk.
+审核应坦率并面向授权实践，不要只是复述权利要求。当用户需要可用于提交质量的输出时，提供具体权利要求语言，并解释更宽保护范围与较低驳回风险之间的取舍。
 
-## Important Caveats
+## 重要提示
 
-- Do not represent the output as legal advice from a licensed attorney. Frame it as patent drafting and prosecution quality review assistance.
-- Do not invent prior art. If no prior-art search has been performed, say that 102/103 review is structural and risk-based, not a novelty search conclusion.
-- Do not assume specification support when only claims are provided.
-- If the document is for another jurisdiction but the user requests U.S. review, identify jurisdiction-specific wording that may need U.S. conversion.
+- 不要将输出表述为持证律师的法律意见。应定位为专利撰写和审查质量辅助。
+- 不要编造现有技术。如果未执行现有技术检索，应说明 102/103 审查是结构性和风险导向判断，不是新颖性检索结论。
+- 只有权利要求时，不要假定说明书支持。
+- 如果文件属于其他司法辖区但用户要求美国审查，应指出可能需要美国化转换的辖区特定措辞。
 
 ## 使用前配置
 本 Skill 依赖智慧芽开放平台 MCP 服务：
