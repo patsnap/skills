@@ -1,7 +1,7 @@
 # Query & Taxonomy Construction Methodology
 
 Abstracted from a real expert-grade manual patent landscape engagement (humanoid / embodied-AI domain).
-This document encodes **how a professional analyst constructs search queries and a technology breakdown table** — the reusable decision logic, not the domain-specific strings. Use it as a reference for the built-in search planning step and `pps-tag` taxonomy proposal.
+This document encodes **how a professional analyst constructs search queries and a technology breakdown table** — the reusable decision logic, not the domain-specific strings. Use it as a reference in `patent-panorama-insights-search` (Step 1, M2.5) and `patent-panorama-insights-tag` (taxonomy proposal).
 
 The worked examples below are anonymized fragments. Do not reuse client-specific keyword strings verbatim; reuse the **structure and decision rules**.
 
@@ -166,11 +166,11 @@ This rubric is what fills `recommendation_reason` in `patent_index.core` and the
 
 | Skill step | Apply |
 |---|---|
-| Search planning Step 1-A/B/D | Use Part A2 anchor, A4 IPC by-pass, A5 tiered NOT. Use the `/33072f` query-planning / keyword-extension tools (`suggest_keywords`, `query_classification_helper`) to draft, then audit against this methodology. |
-| Search planning Step 1-E | Present each branch query decomposed into the A6 four-part skeleton so the user audits each lever. |
-| Search planning M2.5 | Generate one A6-skeleton query per confirmed branch. |
-| `pps-tag` taxonomy proposal | Produce the Part B 4-column table (≤40 level-3), plus the B4 key-question list. Tagging itself is done in the client SaaS tool. |
-| `pps-tag` / search planning M4 | Use the B5 recommendation-reason rubric for `recommendation_reason`. |
+| `patent-panorama-insights-search` Step 1-A/B/D | Use Part A2 anchor, A4 IPC by-pass, A5 tiered NOT. Use the `/33072f` query-planning / keyword-extension tools (`suggest_keywords`, `query_classification_helper`) to draft, then audit against this methodology. |
+| `patent-panorama-insights-search` Step 1-E | Present each branch query decomposed into the A6 four-part skeleton so the user audits each lever. |
+| `patent-panorama-insights-search` M2.5 | Generate one A6-skeleton query per confirmed branch. |
+| `patent-panorama-insights-tag` taxonomy proposal | Produce the Part B 4-column table (≤40 level-3), plus the B4 key-question list. Tagging itself is done in the client SaaS tool. |
+| `patent-panorama-insights-tag` / `patent-panorama-insights-search` M4 | Use the B5 recommendation-reason rubric for `recommendation_reason`. |
 
 ## Part D — Precision validation (addresses "how accurate is the retrieval?")
 
