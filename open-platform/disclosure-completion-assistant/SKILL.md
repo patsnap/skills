@@ -1,7 +1,6 @@
 ---
 name: disclosure-completion-assistant
-description: |
-  A bilingual patent disclosure completion assistant for patent agencies, inventors, and R&D teams. It packages a standalone customer-facing HTML guide that collects invention information through a structured 7-step workflow, provides AI completion for rough R&D notes, and generates a structured invention disclosure draft for patent attorney review.
+description: 一款面向专利代理机构、发明人和研发团队的双语专利披露补全助手。它提供一个独立的面向客户的 HTML 指南，通过结构化的 7 步流程收集发明信息，对粗略的研发笔记进行 AI 补全，并生成结构化的发明披露草稿供专利律师审阅。
 ---
 
 # 交底书智能补全助手

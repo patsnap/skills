@@ -1,0 +1,26 @@
+{
+  "name": "disclosure-completion-assistant",
+  "description": "A bilingual patent disclosure completion assistant for patent agencies, inventors, and R&D teams. It packages a standalone customer-facing HTML guide that collects invention information through a structured 7-step workflow, provides AI completion for rough R&D notes, and generates a structured invention disclosure draft for patent attorney review.",
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [],
+  "outputs": [
+    {
+      "name": "disclosure-guide",
+      "format": "html",
+      "description": "Standalone bilingual customer-facing patent disclosure guide with guided inventor input and AI completion demo."
+    },
+    {
+      "name": "patent-disclosure-draft",
+      "format": "html",
+      "description": "Generated structured disclosure draft inside the HTML page for patent attorney review."
+    }
+  ],
+  "extra": {
+    "language": [
+      "zh-CN",
+      "en"
+    ],
+    "primary_asset": "assets/disclosure-guide.html"
+  }
+}
