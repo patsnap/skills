@@ -1,0 +1,4 @@
+interface:
+  display_name: "抗体序列FTO初筛（Antibody Sequence FTO Screening）"
+  short_description: "开展抗体及生物序列专利检索和FTO风险初筛"
+  default_prompt: "Use $antibody-sequence-fto to screen antibody sequence patents and identify potential FTO risks."

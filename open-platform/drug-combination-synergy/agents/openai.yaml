@@ -1,0 +1,4 @@
+interface:
+  display_name: "药物组合协同分析（Drug Combination Synergy Analysis）"
+  short_description: "分析药物组合机制、协同证据与联合开发策略"
+  default_prompt: "Use $drug-combination-synergy to assess the evidence and development logic for a drug combination."

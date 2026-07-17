@@ -1,0 +1,28 @@
+{
+  "name": "pharma-company-intelligence",
+  "description": "制药企业深度调研：12模块自动化，输出专利全表+LCA+ADMET+竞品+融资+中国市场风险HTML报告",
+  "runtime": {
+    "python_version": "3.12",
+    "isolated_env": false,
+    "dependencies": []
+  },
+  "mcp_dependencies": [
+    "patent-search",
+    "web-search",
+    "patsnap-patent-legal",
+    "patsnap-patent-search",
+    "patsnap-zhihuiya-analysis-report"
+  ],
+  "credentials": [],
+  "outputs": [],
+  "tests": [
+    "trigger_by_company_name",
+    "patent_search_covers_all_entities",
+    "lca_valuation_runs",
+    "admet_table_generated",
+    "html_report_generated",
+    "china_market_section_present",
+    "financial_data_verified",
+    "no_fabricated_numbers"
+  ]
+}

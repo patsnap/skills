@@ -1,0 +1,4 @@
+interface:
+  display_name: "微生物组疾病机制研究（Microbiome Disease Research）"
+  short_description: "研究微生物组与疾病机制证据链并形成研究假设"
+  default_prompt: "Use $microbiome-disease-research to investigate microbiome-disease mechanisms and generate testable hypotheses."

@@ -1,0 +1,20 @@
+{
+  "name": "biopharma-fto-analysis",
+  "description": "面向指定产品、市场和时间点的初步FTO检索、法域状态核验与权利要求要素映射。",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "adc_domain",
+    "basic_flow",
+    "small_molecule_domain",
+    "claim_chart_evidence",
+    "jurisdiction_status_check"
+  ],
+  "outputs": [],
+  "extra": {}
+}

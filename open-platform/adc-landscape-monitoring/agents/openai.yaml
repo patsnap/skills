@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADC研发专利与交易监控（ADC R&D, Patent & Deal Monitoring）"
+  short_description: "持续监控ADC研发、临床、专利、交易与竞争事件"
+  default_prompt: "Use $adc-landscape-monitoring to monitor ADC R&D, patent, evidence, deal, and competitive developments."

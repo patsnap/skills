@@ -1,0 +1,4 @@
+interface:
+  display_name: "单药全生命周期评估（Single-Drug Lifecycle Evaluation）"
+  short_description: "整合单药研发、临床、竞争、交易和专利证据"
+  default_prompt: "Use $drug-lifecycle-evaluation to evaluate one drug across its R&D, clinical, competitive, deal, and patent lifecycle."

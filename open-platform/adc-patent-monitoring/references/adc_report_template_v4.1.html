@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADC专利动态周报 | {{WEEK_LABEL}} | {{DATE_RANGE}}</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --primary: #1a5276;
+    --accent: #1abc9c;
+    --accent2: #e74c3c;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --border: #dde3ea;
+    --text: #2c3e50;
+    --muted: #7f8c8d;
+    --tag-compound: #2980b9;
+    --tag-linker: #8e44ad;
+    --tag-dac: #16a085;
+    --tag-combo: #e67e22;
+    --tag-payload: #c0392b;
+    --tag-formulation: #7f8c8d;
+    --tag-process: #27ae60;
+    --tag-bispecific: #16a085;
+    --tag-use: #d68910;
+    --tag-nononc: #566573;
+    --tag-other: #95a5a6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+  /* ── Header ── */
+  .header { background: linear-gradient(135deg, #1a5276 0%, #1abc9c 100%); color: white; padding: 32px 48px; }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+  .header .subtitle { font-size: 14px; opacity: 0.85; margin-top: 6px; }
+  .header .meta { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; align-items: center; }
+  .header .meta span { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+
+  /* ── Nav ── */
+  .nav { background: var(--primary); padding: 0 48px; display: flex; gap: 0; overflow-x: auto; }
+  .nav a { color: rgba(255,255,255,0.75); text-decoration: none; padding: 12px 20px; font-size: 13px; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav a:hover, .nav a.active { color: white; border-bottom-color: var(--accent); }
+
+  /* ── Main ── */
+  .main { max-width: 1600px; margin: 0 auto; padding: 32px 48px; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 12px; margin-bottom: 20px; }
+
+  /* ── Stats ── */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card { background: var(--card); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+  .stat-card .num { font-size: 36px; font-weight: 800; color: var(--primary); }
+  .stat-card .num.highlight { color: #e67e22; }
+  .stat-card .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ── Table ── */
+  .table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .table-wrap table { min-width: 1450px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); }
+  col.col-no { width: 48px; }
+  col.col-pn { width: 132px; }
+  col.col-assignee { width: 150px; }
+  col.col-type { width: 118px; }
+  col.col-target { width: 120px; }
+  col.col-payload { width: 135px; }
+  col.col-linker { width: 155px; }
+  col.col-conj { width: 105px; }
+  col.col-dar { width: 92px; }
+  col.col-pipeline { width: 120px; }
+  col.col-stage { width: 88px; }
+  col.col-note { width: auto; min-width: 300px; }
+  thead th { background: var(--primary); color: white; padding: 12px 14px; text-align: left; font-size: 13px; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:hover { background: #f0f8ff; }
+  tbody td { padding: 10px 14px; vertical-align: top; font-size: 13px; line-height: 1.5; }
+  tbody td a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  tbody td a:hover { text-decoration: underline; }
+  .cn-org { color: #c0392b; font-weight: 600; }
+  td .cn-org { color: #c0392b; font-weight: 700; }
+
+  /* ── Tags ── */
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 11px; font-weight: 600; color: white; margin: 2px; }
+  .tag-compound { background: var(--tag-compound); }
+  .tag-linker { background: var(--tag-linker); }
+  .tag-dac { background: var(--tag-dac); }
+  .tag-combo { background: var(--tag-combo); }
+  .tag-payload { background: var(--tag-payload); }
+  .tag-formulation { background: var(--tag-formulation); }
+  .tag-process { background: var(--tag-process); }
+  .tag-bispecific { background: var(--tag-bispecific); }
+  .tag-use { background: var(--tag-use); }
+  .tag-nononc { background: var(--tag-nononc); }
+  .tag-other { background: var(--tag-other); }
+  .tag-cn { background: #c0392b; }
+  .tag-intl { background: #2471a3; }
+  .tag-key { background: #e67e22; }
+
+  /* ── Chart area ── */
+  .chart-card { background: var(--card); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border); margin-bottom: 24px; }
+  .chart-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+  /* 固定容器宽度，overflow:hidden 防止 Chart.js resize 死循环 */
+  .chart-wrap { position: relative; overflow: hidden; }
+  .chart-wrap canvas { display: block; }
+
+  /* 两列小图并排 */
+  .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* ── Patent Card ── */
+  .patent-card {
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    overflow: hidden;
+  }
+  .patent-card.key-patent { border-left-color: #e67e22; }
+
+  /* 卡片头 – 点击折叠 */
+  .card-header {
+    padding: 18px 24px 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-header:hover { background: #f8fafc; }
+  .pn-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .pn { font-size: 15px; font-weight: 700; color: var(--primary); }
+  .pn a { color: var(--primary); text-decoration: none; }
+  .pn a:hover { text-decoration: underline; }
+  .collapse-icon { margin-left: auto; font-size: 18px; color: var(--muted); transition: transform 0.25s; }
+  .collapsed .collapse-icon { transform: rotate(-90deg); }
+  .assignee-line { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .patent-title { font-size: 14px; font-weight: 600; color: var(--text); }
+
+  /* 卡片正文 */
+  .card-body { padding: 0 24px 20px; }
+  .card-body.hidden { display: none; }
+
+  /* ── AI 解读区块 ── */
+  .ai-interpret {
+    background: #f8f9fb;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 14px;
+    border: 1px solid #e8ecf0;
+  }
+  .ai-interpret-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ai-interpret-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #dde3ea;
+  }
+
+  /* 三个模块 */
+  .interpret-block { margin-bottom: 14px; }
+  .interpret-block:last-child { margin-bottom: 0; }
+
+  .interpret-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+  .label-protect { background: #d6eaf8; color: #1a5276; }   /* 核心保护点 – 蓝 */
+  .label-innov   { background: #fdebd0; color: #9c5700; }   /* 创新/新颖性 – 橙 */
+  .label-compete { background: #fadbd8; color: #922b21; }   /* 竞争意义 – 红 */
+
+  .interpret-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #3d4a5c;
+  }
+
+  /* 行内高亮辅助类 */
+  .hl-blue   { color: #1a5276; font-weight: 700; }
+  .hl-orange { color: #d35400; font-weight: 700; }
+  .hl-red    { color: #922b21; font-weight: 700; }
+  .hl-big    { font-size: 14.5px; font-weight: 700; }
+
+  /* 详细版额外子项 */
+  .sub-item {
+    background: #fff;
+    border-left: 3px solid #bdc3c7;
+    padding: 8px 12px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #4a5568;
+  }
+  .sub-item strong { color: var(--primary); }
+
+  /* 摘要折叠块 */
+  .abstract-toggle {
+    font-size: 12px;
+    color: var(--primary);
+    cursor: pointer;
+    margin-top: 12px;
+    display: inline-block;
+    border-bottom: 1px dashed var(--primary);
+  }
+  .abstract-box {
+    background: #f0f4f8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #555;
+    display: none;
+  }
+
+  /* ── Footer ── */
+  .footer { background: var(--primary); color: rgba(255,255,255,0.8); padding: 32px 48px; font-size: 12px; line-height: 1.9; }
+  .footer strong { color: white; }
+  .footer pre { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 12px 16px; font-size: 11px; white-space: pre-wrap; word-break: break-all; margin-top: 8px; }
+
+  @media (max-width: 900px) {
+    .main { padding: 16px; }
+    .header { padding: 20px 16px; }
+    .charts-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <h1>🧬 ADC专利动态周报</h1>
+  <div class="subtitle">Antibody-Drug Conjugate Patent Intelligence Weekly</div>
+  <div class="meta">
+    <span>📅 {{WEEK_LABEL}} | {{DATE_RANGE}}</span>
+    <span>🌐 WO受理局</span>
+    <span>🔬 抗体-药物偶联物（ADC/DAC/XDC）</span>
+  </div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<div class="nav">
+  <a href="#stats" class="active">概览</a>
+  <a href="#summary-table">专利汇总表</a>
+  <a href="#charts">分布分析</a>
+  <a href="#deep-dive">重点解读</a>
+  <a href="#patents">专利解读</a>
+</div>
+
+<div class="main">
+
+
+  <!-- ══════════ EXECUTIVE SUMMARY ══════════ -->
+  <!-- EXECUTIVE_SUMMARY_START --><!-- EXECUTIVE_SUMMARY_END -->
+
+  <!-- ══════════ STATS ══════════ -->
+  <div id="stats" class="section">
+    <div class="section-title">本周数据概览</div>
+    <div class="stats">
+      <div class="stat-card"><div class="num">{{TOTAL_RAW}}</div><div class="label">本周检索命中</div></div>
+      <div class="stat-card"><div class="num highlight">{{TOTAL}}</div><div class="label">去重后本周总数</div></div>
+      <div class="stat-card"><div class="num">{{ASSIGNEE_COUNT}}</div><div class="label">涉及申请人数</div></div>
+      <div class="stat-card"><div class="num">{{KEY_COUNT}}</div><div class="label">⭐ 重点关注</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════ SUMMARY TABLE ══════════ -->
+  <div id="summary-table" class="section">
+    <div class="section-title">本周专利汇总表</div>
+    <div class="table-wrap">
+      <table>
+        <colgroup>
+          <col class="col-no"><col class="col-pn"><col class="col-assignee"><col class="col-type">
+          <col class="col-target"><col class="col-payload"><col class="col-linker"><col class="col-conj"><col class="col-dar">
+          <col class="col-pipeline"><col class="col-stage"><col class="col-note">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>专利号</th>
+            <th>申请人</th>
+            <th>专利类型</th>
+            <th>靶点</th>
+            <th>载荷类型</th>
+            <th>Linker</th>
+            <th>偶联方式</th>
+            <th>DAR</th>
+            <th>专利关联管线</th>
+            <th>研发阶段</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- SUMMARY_TABLE_TBODY_START -->
+          <!-- ★★★ 示例行1 – 重点专利 ★★★ -->
+          <tr>
+            <td>1 ⭐</td>
+            <td><a href="#" target="_blank">WO2026XXXXXX</a></td>
+            <td class="cn-org">四川科伦博泰</td>
+            <td><span class="tag tag-compound">ADC化合物</span></td>
+            <td>HER2</td>
+            <td>PARP抑制剂 + Topo I抑制剂（双载荷）</td>
+            <td>分支型linker</td>
+            <td>随机</td>
+            <td>4-8</td>
+            <td>SKB264</td>
+            <td><span style="background:#d5f5e3;color:#1a7a43;padding:2px 7px;border-radius:8px;font-size:11px;font-weight:600;">Phase 3</span></td>
+            <td>国内创新，双载荷双机制</td>
+          </tr>
+          <!-- 示例行2 – 普通专利 -->
+          <tr>
+            <td>2</td>
+            <td><a href="#" target="_blank">WO2026YYYYYY</a></td>
+            <td>Eli Lilly</td>
+            <td><span class="tag tag-linker">Linker专利</span></td>
+            <td>平台</td>
+            <td>siRNA寡核苷酸</td>
+            <td>bis-MSPT（单步偶联）</td>
+            <td>定点（Cys）</td>
+            <td>未披露</td>
+            <td>—</td>
+            <td>—</td>
+            <td>RNA-ADC平台linker</td>
+          </tr>
+          <!-- 示例行3 -->
+          <tr>
+            <td>3</td>
+            <td><a href="#" target="_blank">WO2026ZZZZZZ</a></td>
+            <td>ORUM Therapeutics</td>
+            <td><span class="tag tag-dac">DAC降解剂偶联</span></td>
+            <td>CD123</td>
+            <td>GSPT1 neoDegrader</td>
+            <td>—</td>
+            <td>—</td>
+            <td>未披露</td>
+            <td>—</td>
+            <td>—</td>
+            <td>靶向蛋白降解，血液肿瘤</td>
+          </tr>
+        <!-- SUMMARY_TABLE_TBODY_END -->
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:#7f8c8d;">
+      ⚠️ 管线关联遵循"宁缺毋滥"原则，无法唯一确认的留空。<br>
+      🔴 过滤排除：制剂/剂型专利，不属于ADC本体创新。
+    </div>
+  </div>
+
+  <!-- ══════════ CHARTS ══════════ -->
+  <div id="charts" class="section">
+    <div class="section-title">统计分析</div>
+
+    <!-- 申请人分布图（合并，全量Y轴） -->
+    <div class="chart-card">
+      <div class="chart-title">📊 申请人分布（合并，本周全量）</div>
+      <!-- 高度由 JS 动态写入，父容器 overflow:hidden 防死循环 -->
+      <div class="chart-wrap" id="assigneeWrap">
+        <canvas id="assigneeChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 两列小图 -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">🏷️ 专利类型分布</div>
+        <div class="chart-wrap" style="height:260px;">
+          <canvas id="typeChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">🎯 靶点分布</div>
+        <div class="chart-wrap" style="height:260px;">
+          <canvas id="targetChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ DEEP DIVE ══════════ -->
+  <div id="deep-dive" class="section">
+    <div class="section-title">重点专利深度解读</div>
+    <!-- DEEP_DIVE_START --><!-- DEEP_DIVE_END -->
+  </div>
+
+  <!-- ══════════ PATENT DETAIL ══════════ -->
+  <div id="patents" class="section">
+    <div class="section-title">专利 AI 解读</div>
+    <!-- PATENT_CARDS_START -->
+
+    <!-- ╔═══ 示例卡片1：重点专利（详细版） ╗ -->
+    <div class="patent-card key-patent" id="card-1">
+      <div class="card-header" onclick="toggleCard('card-1')">
+        <div class="pn-row">
+          <span class="pn"><a href="#" target="_blank" onclick="event.stopPropagation()">WO2026XXXXXX</a></span>
+          <span class="tag tag-compound">ADC化合物</span>
+          <span class="tag tag-cn">中国申请人</span>
+          <span class="tag tag-key">⭐ 重点关注</span>
+          <span class="collapse-icon">▾</span>
+        </div>
+        <div class="assignee-line">📌 四川科伦博泰生物制药股份有限公司 | 公开日：2026-04-02</div>
+        <div class="patent-title">Dual-Payload ADC Targeting HER2 with PARP and Topo I Inhibitors（靶向HER2的双载荷ADC）</div>
+      </div>
+      <div class="card-body" id="body-card-1">
+
+        <!-- ── AI 解读 ── -->
+        <div class="ai-interpret">
+          <div class="ai-interpret-title">🤖 AI 专利解读</div>
+
+          <!-- 核心保护点 -->
+          <div class="interpret-block">
+            <div class="interpret-label label-protect">🔑 核心保护点</div>
+            <div class="interpret-text">
+              独立权利要求保护一类<span class="hl-blue hl-big">以分支型linker同时携带PARP抑制剂与Topo I抑制剂两种细胞毒载荷</span>的HER2靶向ADC结构，其特征在于：
+              <div class="sub-item">
+                <strong>结构边界：</strong>抗HER2抗体（含特定CDR序列）+ 分支型可裂解linker + PARP抑制剂（奥拉帕利衍生物）+ Topo I抑制剂（DXd类），DAR值约4–8。
+              </div>
+              <div class="sub-item">
+                <strong>权利要求范围：</strong>覆盖"每条抗体链至少偶联一种以上载荷"的通式结构，包括特定偶联位点（Cys/Lys）及两种载荷的摩尔比范围（1:1–1:3）。
+              </div>
+            </div>
+          </div>
+
+          <!-- 创新/新颖性 -->
+          <div class="interpret-block">
+            <div class="interpret-label label-innov">✨ 创新与新颖性</div>
+            <div class="interpret-text">
+              与现有主流ADC（DS-8201单一DXd载荷、T-DM1单一emtansine载荷）相比，本专利的核心创新在于：
+              <div class="sub-item">
+                <span class="hl-orange">双机制协同杀伤</span>：PARP抑制剂破坏DNA损伤修复，Topo I抑制剂直接导致DNA断裂，两种机制叠加使耐DS-8201的HER2+肿瘤细胞无法单一逃逸。
+              </div>
+              <div class="sub-item">
+                <span class="hl-orange">分支型linker架构</span>：通过"一点挂两药"的分支结构解决了传统双载荷ADC DAR过高导致的聚集和毒性问题，维持了均一的DAR值。
+              </div>
+            </div>
+          </div>
+
+          <!-- 竞争意义 -->
+          <div class="interpret-block">
+            <div class="interpret-label label-compete">⚠️ 竞争意义</div>
+            <div class="interpret-text">
+              <span class="hl-red">高度关注</span>：科伦博泰已有SKB264（Topo I ADC）处于Phase 3，本专利是其在已验证临床靶点上的<span class="hl-red">第二代迭代布局</span>，一旦授权将对阿斯利康/第一三共的DS-8201后线治疗构成直接竞争。若与PARP抑制剂联用专利组合，可形成"双载荷+联用"的立体保护网。
+            </div>
+          </div>
+        </div>
+
+        <!-- 摘要折叠 -->
+        <span class="abstract-toggle" onclick="toggleAbstract(this)">▶ 展开原始摘要</span>
+        <div class="abstract-box">
+          【占位摘要】本发明提供一种含双载荷的抗体-药物偶联物，包含靶向HER2的抗体、分支型连接子以及PARP抑制剂和Topo I抑制剂。所述偶联物在体内外对HER2阳性肿瘤（包括对DS-8201耐药的肿瘤）展现出协同抑制作用……
+        </div>
+      </div>
+    </div>
+    <!-- ╚═══ 卡片1结束 ╝ -->
+
+    <!-- ╔═══ 示例卡片2：普通专利（精简版） ╗ -->
+    <div class="patent-card" id="card-2">
+      <div class="card-header collapsed" onclick="toggleCard('card-2')">
+        <div class="pn-row">
+          <span class="pn"><a href="#" target="_blank" onclick="event.stopPropagation()">WO2026YYYYYY</a></span>
+          <span class="tag tag-linker">Linker专利</span>
+          <span class="collapse-icon">▾</span>
+        </div>
+        <div class="assignee-line">📌 Eli Lilly and Company（美国礼来） | 公开日：2026-04-02</div>
+        <div class="patent-title">Conjugates Comprising Bis-MSPT Linker for Oligonucleotide Delivery（bis-MSPT单步偶联接头）</div>
+      </div>
+      <div class="card-body hidden" id="body-card-2">
+
+        <div class="ai-interpret">
+          <div class="ai-interpret-title">🤖 AI 专利解读</div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-protect">🔑 核心保护点</div>
+            <div class="interpret-text">
+              保护一类<span class="hl-blue">bis-MSPT双功能接头化合物</span>，核心特征是其可在<span class="hl-blue">单步反应</span>中同时与抗体半胱氨酸二硫键及siRNA的游离氨基发生偶联，无需传统工艺中的预还原/再氧化步骤。权利要求覆盖该接头的通式结构、合成方法及包含该接头的AOC（抗体-寡核苷酸偶联物）。
+            </div>
+          </div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-innov">✨ 创新与新颖性</div>
+            <div class="interpret-text">
+              <span class="hl-orange">简化AOC制造工艺</span>：传统siRNA偶联至少需要3步化学反应，bis-MSPT压缩为1步，显著降低工艺复杂度和批间差异。这是礼来在RNA-ADC赛道的关键平台型专利布局。
+            </div>
+          </div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-compete">⚠️ 竞争意义</div>
+            <div class="interpret-text">
+              平台专利，<span class="hl-red">潜在封锁性</span>——若bis-MSPT成为AOC制造标准接头，可对后进入者形成工艺壁垒。建议跟踪礼来RNA-ADC管线进展。
+            </div>
+          </div>
+        </div>
+
+        <span class="abstract-toggle" onclick="toggleAbstract(this)">▶ 展开原始摘要</span>
+        <div class="abstract-box">
+          【占位摘要】本发明涉及含bis-MSPT接头的偶联物及其制备方法，所述接头可一步将寡核苷酸（如siRNA）与抗体偶联，具有良好的血浆稳定性……
+        </div>
+      </div>
+    </div>
+    <!-- ╚═══ 卡片2结束 ╝ -->
+
+    <!-- ╔═══ 示例卡片3：DAC新模式（标准版） ╗ -->
+    <div class="patent-card" id="card-3">
+      <div class="card-header collapsed" onclick="toggleCard('card-3')">
+        <div class="pn-row">
+          <span class="pn"><a href="#" target="_blank" onclick="event.stopPropagation()">WO2026ZZZZZZ</a></span>
+          <span class="tag tag-dac">DAC降解剂偶联</span>
+          <span class="collapse-icon">▾</span>
+        </div>
+        <div class="assignee-line">📌 ORUM Therapeutics（韩国） | 公开日：2026-04-02</div>
+        <div class="patent-title">Anti-CD123 Antibodies and NeoDegrader Conjugates（CD123靶向分子胶降解剂偶联物）</div>
+      </div>
+      <div class="card-body hidden" id="body-card-3">
+
+        <div class="ai-interpret">
+          <div class="ai-interpret-title">🤖 AI 专利解读</div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-protect">🔑 核心保护点</div>
+            <div class="interpret-text">
+              权利要求保护<span class="hl-blue">CD123特异性抗体与GSPT1 neoDegrader（分子胶降解剂）偶联形成的DAC结构</span>，关键特征包括：特定VH/VL序列的抗CD123抗体、linker结构及偶联方式，以及GSPT1降解剂的化学通式。
+            </div>
+          </div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-innov">✨ 创新与新颖性</div>
+            <div class="interpret-text">
+              <span class="hl-orange">ADC载荷从"毒素"到"降解剂"的范式突破</span>：传统ADC依赖细胞毒素杀伤，本专利首次将分子胶降解剂（neoDegrader）作为DAC载荷，利用肿瘤细胞内的蛋白降解机制（GSPT1→CRBN E3连接酶途径）实现靶向蛋白清除，对不依赖细胞毒作用的肿瘤亚群具有独特优势。
+            </div>
+          </div>
+
+          <div class="interpret-block">
+            <div class="interpret-label label-compete">⚠️ 竞争意义</div>
+            <div class="interpret-text">
+              CD123是AML/MDS重要靶点，现有竞品（IMGN632、Talacotuzumab ADC）均以毒素为载荷。本专利若获授权，将在<span class="hl-red">降解剂型DAC + CD123靶点</span>的交叉空间建立独占布局，是该细分赛道目前最早的WO公开专利之一，值得重点跟踪。
+            </div>
+          </div>
+        </div>
+
+        <span class="abstract-toggle" onclick="toggleAbstract(this)">▶ 展开原始摘要</span>
+        <div class="abstract-box">
+          【占位摘要】本发明提供一种抗CD123抗体及其与GSPT1 neoDegrader的偶联物，所述偶联物可特异性结合表达CD123的肿瘤细胞，并在胞内降解GSPT1蛋白，对白血病细胞株展现出强效抑制……
+        </div>
+      </div>
+    </div>
+    <!-- ╚═══ 卡片3结束 ╝ -->
+    <!-- PATENT_CARDS_END -->
+
+  </div><!-- /patents section -->
+
+</div><!-- /main -->
+
+<!-- ══════════ FOOTER ══════════ -->
+<div class="footer">
+  <strong>检索说明</strong>：本报告AI解读基于专利标题，AI专利摘要（技术问题，技术手段，技术功效），权利要求综合生成，仅供参考。
+  
+</div>
+
+<!-- ══════════ JS ══════════ -->
+<script>
+/* ── 折叠/展开卡片 ── */
+function toggleCard(cardId) {
+  const header = document.querySelector('#' + cardId + ' .card-header');
+  const body   = document.getElementById('body-' + cardId);
+  if (!header || !body) return;
+  const isCollapsed = header.classList.contains('collapsed');
+  if (isCollapsed) {
+    header.classList.remove('collapsed');
+    body.classList.remove('hidden');
+  } else {
+    header.classList.add('collapsed');
+    body.classList.add('hidden');
+  }
+}
+
+/* ── 展开原始摘要 ── */
+function toggleAbstract(el) {
+  const box = el.nextElementSibling;
+  if (!box) return;
+  const isOpen = box.style.display === 'block';
+  box.style.display = isOpen ? 'none' : 'block';
+  el.textContent = isOpen ? '▶ 展开原始摘要' : '▼ 收起原始摘要';
+}
+
+/* ── 图表数据（占位示例，运行时替换） ── */
+window.addEventListener('DOMContentLoaded', function () {
+
+  /* ① 申请人分布图 – 全量Y轴，高度动态 */
+  const assigneeData = {
+    labels: {{ASSIGNEE_LABELS}},
+    counts: {{ASSIGNEE_VALUES}},
+    colors: {{ASSIGNEE_COLORS}}
+  };
+
+  /* 每条 barThickness=22px，padding 上下各 40px */
+  var barH   = 26;
+  var padH   = 80;
+  var chartH = assigneeData.labels.length * barH + padH;
+  chartH     = Math.max(chartH, 400);
+
+  var wrap = document.getElementById('assigneeWrap');
+  wrap.style.height = chartH + 'px';
+
+  var canvas1 = document.getElementById('assigneeChart');
+  canvas1.width  = wrap.offsetWidth || 800;
+  canvas1.height = chartH;
+
+  new Chart(canvas1, {
+    type: 'bar',
+    data: {
+      labels: assigneeData.labels,
+      datasets: [{
+        label: '专利数',
+        data: assigneeData.counts,
+        backgroundColor: assigneeData.colors,
+        borderRadius: 4,
+        barThickness: barH - 4
+      }]
+    },
+    options: {
+      responsive: false,
+      indexAxis: 'y',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ' ' + ctx.parsed.x + ' 件专利'; }
+          }
+        }
+      },
+      scales: {
+        y: {
+          ticks: { font: { size: 12 }, autoSkip: false },
+          grid: { display: false }
+        },
+        x: {
+          ticks: { stepSize: 1 },
+          grid: { color: 'rgba(0,0,0,0.06)' }
+        }
+      }
+    }
+  });
+
+  /* ② 专利类型分布 – 甜甜圈 */
+  new Chart(document.getElementById('typeChart'), {
+    type: 'doughnut',
+    data: {
+      labels: {{TYPE_LABELS}},
+      datasets: [{
+        data: {{TYPE_VALUES}},
+        backgroundColor: ['#2980b9','#8e44ad','#16a085','#e67e22','#c0392b','#27ae60'],
+        borderWidth: 2,
+        borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 10 } }
+      }
+    }
+  });
+
+  /* ③ 靶点分布 – 横向柱状 */
+  new Chart(document.getElementById('targetChart'), {
+    type: 'bar',
+    data: {
+      labels: {{TARGET_LABELS}},
+      datasets: [{
+        label: '专利数',
+        data: {{TARGET_VALUES}},
+        backgroundColor: '#1a5276',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { ticks: { font: { size: 12 } }, grid: { display: false } },
+        x: { ticks: { stepSize: 1 }, grid: { color: 'rgba(0,0,0,0.06)' } }
+      }
+    }
+  });
+
+});
+</script>
+
+  <!-- ══════════ DATA NOTE ══════════ -->
+  <!-- DATA_NOTE_START --><!-- DATA_NOTE_END -->
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "医药企业综合情报（Pharma Company Intelligence）"
+  short_description: "整合医药企业管线、专利、交易和战略竞争情报"
+  default_prompt: "Use $pharma-company-intelligence to develop an evidence-backed intelligence profile of a pharmaceutical company."

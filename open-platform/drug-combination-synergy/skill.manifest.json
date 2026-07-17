@@ -1,0 +1,39 @@
+{
+  "name": "drug-combination-synergy",
+  "version": "",
+  "description": null,
+  "author": "",
+  "alias": "",
+  "salt": "",
+  "exclude_paths": [],
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "admet_prediction",
+    "basic_flow",
+    "literature_search",
+    "word_export"
+  ],
+  "outputs": [
+    {
+      "name": null,
+      "format": null,
+      "description": "三阶段实验设计方案Markdown文本"
+    },
+    {
+      "name": null,
+      "format": null,
+      "description": "协同机制分析Markdown文本，含ADMET对比、机制矩阵、可检验假说"
+    },
+    {
+      "name": null,
+      "format": null,
+      "description": "带DOI内联引用的Word报告（.docx），中文楷体+英文Times New Roman"
+    }
+  ]
+}

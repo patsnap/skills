@@ -1,0 +1,4 @@
+interface:
+  display_name: "生物医药专利检索与组合研究（Biopharma Patent Landscape Research）"
+  short_description: "开展生物医药专利检索、专利族和组合布局研究"
+  default_prompt: "Use $biopharma-patent-landscape to research a biopharma patent portfolio or technology landscape."

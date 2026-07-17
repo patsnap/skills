@@ -1,0 +1,4 @@
+interface:
+  display_name: "靶点药物资产BP评估（Target-Drug Asset Business Plan）"
+  short_description: "支持靶点药物科研成果转化评估和资产BP编制"
+  default_prompt: "Use $target-drug-asset-bp to assess a target-drug research asset and prepare a commercialization business plan."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "生物医药FTO分析（Biopharma FTO Analysis）"
+  short_description: "面向多种药物模态开展权利要求映射与FTO初筛"
+  default_prompt: "Use $biopharma-fto-analysis to perform a preliminary FTO assessment for a biopharma product or platform."

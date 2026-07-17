@@ -1,0 +1,4 @@
+interface:
+  display_name: "靶点药物证据评估（Target-Drug Evidence Evaluation）"
+  short_description: "通过多维证据矩阵评估靶点药物并支持立项判断"
+  default_prompt: "Use $target-drug-evidence-evaluation to evaluate target-drug evidence and support a Go/No-Go decision."

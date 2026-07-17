@@ -1,0 +1,4 @@
+interface:
+  display_name: "中国生物医药专利撰写（CN Biopharma Patent Drafting）"
+  short_description: "辅助生物医药发明查新、权利要求设计和申请草拟"
+  default_prompt: "Use $cn-biopharma-patent-drafting to prepare a CN biopharma patent application draft for professional review."

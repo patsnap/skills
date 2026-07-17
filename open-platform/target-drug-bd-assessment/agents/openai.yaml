@@ -1,0 +1,4 @@
+interface:
+  display_name: "靶点药物BD综合评估（Target-Drug BD Assessment）"
+  short_description: "整合靶点证据、药物管线、专利与交易开展BD评估"
+  default_prompt: "Use $target-drug-bd-assessment to assess a target or targeted drug for R&D and business development decisions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "中国专利审查意见答复（CN Patent OA Response）"
+  short_description: "分析CNIPA审查意见并形成修改依据与答复草案"
+  default_prompt: "Use $cn-patent-oa-response to analyze a CNIPA office action and prepare a response draft for professional review."

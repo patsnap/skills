@@ -1,0 +1,21 @@
+{
+  "name": "pharma-intelligence-brief",
+  "description": "在严格时间窗口内检索并去重专利、文献、临床、交易和新闻，生成来源可追溯的HTML情报简报。",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "time_window_filter",
+    "event_deduplication",
+    "renderer_schema_compatibility"
+  ],
+  "outputs": [
+    "validated_json",
+    "pharma_intel_brief_html"
+  ],
+  "extra": {}
+}

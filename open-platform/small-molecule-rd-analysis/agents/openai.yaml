@@ -1,0 +1,4 @@
+interface:
+  display_name: "小分子研发分析（Small-Molecule R&D Analysis）"
+  short_description: "分析小分子结构、性质、合成路线和研发风险"
+  default_prompt: "Use $small-molecule-rd-analysis to analyze a small molecule's structure, properties, synthesis, and R&D context."
