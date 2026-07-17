@@ -1,0 +1,16 @@
+{
+  "name": "biopharma-asset-valuation",
+  "description": "BD管线估值系统，十章节专业报告输出（无PPT）",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [
+    "pharma_intelligence"
+  ],
+  "tests": [],
+  "outputs": [],
+  "extra": {}
+}

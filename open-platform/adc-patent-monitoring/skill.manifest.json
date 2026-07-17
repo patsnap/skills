@@ -1,0 +1,17 @@
+{
+  "name": "adc-patent-weekly-report",
+  "description": null,
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "basic_flow",
+    "cli"
+  ],
+  "outputs": [],
+  "extra": {}
+}

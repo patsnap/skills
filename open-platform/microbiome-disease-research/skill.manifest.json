@@ -1,0 +1,31 @@
+{
+  "name": "microbiome-disease-research",
+  "description": "肠道微生物菌群文献全景调研 Skill：针对食品/营养领域，执行多轮PatSnap检索，整理50+篇代表性文献，输出含左侧固定导航栏的HTML全景报告（11个模块）。",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [
+    "patent-search"
+  ],
+  "tests": [
+    "basic_flow",
+    "html_render",
+    "min_50_docs"
+  ],
+  "outputs": [
+    {
+      "name": null,
+      "format": "html",
+      "description": "HTML全景报告，左侧导航栏固定，11个模块"
+    },
+    {
+      "name": null,
+      "format": "markdown",
+      "description": "所有[S#]引用的完整来源列表"
+    }
+  ],
+  "extra": {}
+}

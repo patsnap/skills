@@ -1,0 +1,17 @@
+{
+  "name": "target-drug-evidence-evaluation",
+  "description": null,
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [
+    "patent-search",
+    "tool-collection-pharma-intelligence"
+  ],
+  "tests": [],
+  "outputs": [],
+  "extra": {}
+}

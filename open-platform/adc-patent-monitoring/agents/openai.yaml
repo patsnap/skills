@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADC专利监控（ADC Patent Monitoring）"
+  short_description: "监控ADC新申请、专利族、法律状态和竞争风险"
+  default_prompt: "Use $adc-patent-monitoring to monitor ADC patent families, legal status changes, and competitive risks."

@@ -1,0 +1,23 @@
+{
+  "name": "biotech-pipeline-landscape",
+  "version": "1.0.0",
+  "description": "生物治疗专项调研 Skill：针对生物制药企业（CAR-T、基因治疗、细胞治疗等），从管线梳理→单品种深度调研→专属评估体系→序列FTO分析→竞品格局→HTML报告生成的端到端工作流。",
+  "author": "",
+  "alias": "",
+  "salt": "",
+  "exclude_paths": [],
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [],
+  "outputs": [
+    {"name": null, "format": null, "description": "CAR-T专属8模块评分表"},
+    {"name": null, "format": null, "description": "序列FTO风险矩阵"},
+    {"name": null, "format": null, "description": "生物治疗专项调研HTML报告"},
+    {"name": null, "format": null, "description": "管线全览表（Markdown格式）"}
+  ]
+}

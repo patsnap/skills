@@ -1,0 +1,27 @@
+{
+  "name": "biopharma-patent-landscape",
+  "description": "药企及其专利持有实体的近期专利组合检索、核验、富化和Excel交付。",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [
+      "openpyxl>=3.1.0",
+      "requests>=2.31.0"
+    ],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "applicant_scope_confirmation",
+    "pagination_reconciliation",
+    "column_mapping_check",
+    "sheet_preservation_check",
+    "source_traceability_check"
+  ],
+  "outputs": [
+    "assignees_list",
+    "result_xlsx",
+    "verified_company_json"
+  ],
+  "extra": {}
+}

@@ -1,0 +1,17 @@
+{
+  "name": "drug-potential-assessment",
+  "description": null,
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [],
+  "outputs": [
+    "candidate_table",
+    "report"
+  ],
+  "extra": {}
+}

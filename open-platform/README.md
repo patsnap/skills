@@ -18,7 +18,7 @@ npx skills add patsnap/skills/tree/main/open-platform/patent-quality-review-pro
 
 | Type | Count | Notes |
 |---|---:|---|
-| Total skill directories | 101 | Skill Hub / Open Platform workflow skills normalized into this directory. |
+| Total skill directories | 121 | Skill Hub / Open Platform workflow skills normalized into this directory. |
 | Engineering / R&D source category | 33 | Technical reports, market assessment, TRIZ workflows, industry intelligence, due diligence, forecasting, research proposals, labeling, alliance scouting and carbon-credit rating. |
 | IP source category | 61 | Patent search, FTO, claims review, patent quality, portfolio, panorama, risk, transfer, lifecycle, high-value package and asset workflows. |
 | Life Sciences source category | 7 | ADC patent monitoring, generic-drug scouting, antibody FTO, target discovery, pharma conference insights, project initiation and small-RNA patent landscapes. |
@@ -42,6 +42,10 @@ The 2026-07-09 batch refreshed 11 Chinese-localized Open Platform skills and add
 | IP / Patent Intelligence | [`patent-panorama-insights`](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights), [`patent-panorama-insights-search`](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-search), [`patent-panorama-insights-stats`](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-stats), [`patent-panorama-insights-tag`](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-tag), [`patent-panorama-insights-report`](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-report), [`patent-pre-evaluation-report`](https://open.zhihuiya.com/marketplace/agent-skills/patent-pre-evaluation-report), [`smartlink-ip-workbench`](https://open.zhihuiya.com/marketplace/agent-skills/smartlink-ip-workbench), [`european-patent-claims-review`](https://open.zhihuiya.com/marketplace/agent-skills/european-patent-claims-review), [`us-patent-claims-review`](https://open.zhihuiya.com/marketplace/agent-skills/us-patent-claims-review), [`trademark-similarity-judgment`](https://open.zhihuiya.com/marketplace/agent-skills/trademark-similarity-judgment), [`overseas-patent-translation`](https://open.zhihuiya.com/marketplace/agent-skills/overseas-patent-translation), [`generic-fto-report`](https://open.zhihuiya.com/marketplace/agent-skills/generic-fto-report) |
 | Engineering / R&D | [`prism-auto-config-map`](https://open.zhihuiya.com/marketplace/agent-skills/prism-auto-config-map) |
 | Life Sciences | [`generic-drug-scout`](https://open.zhihuiya.com/marketplace/agent-skills/generic-drug-scout), [`small-rna-patent-landscape`](https://open.zhihuiya.com/marketplace/agent-skills/small-rna-patent-landscape) |
+
+## Additional skill-20 Batch
+
+The `skill-20` batch adds 20 biomedical, biopharma, drug-development, patent-drafting, and experiment-costing workflows under this directory.
 
 ## Skill Groups
 

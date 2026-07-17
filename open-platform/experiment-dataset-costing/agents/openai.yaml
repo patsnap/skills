@@ -1,0 +1,4 @@
+interface:
+  display_name: "实验数据集成本估算（Experiment Dataset Cost Estimation）"
+  short_description: "估算实验和科研数据集所需资源、周期与成本"
+  default_prompt: "Use $experiment-dataset-costing to estimate the resources, schedule, and cost of an experiment or scientific dataset."

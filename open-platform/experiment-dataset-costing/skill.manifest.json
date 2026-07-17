@@ -1,0 +1,31 @@
+{
+  "name": "experiment-dataset-costing",
+  "version": "",
+  "description": null,
+  "author": "",
+  "alias": "",
+  "salt": "",
+  "exclude_paths": [],
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [
+      "openpyxl>=3.1.0",
+      "pandas>=2.0.0",
+      "python-docx>=1.1.0",
+      "requests>=2.31.0"
+    ],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "basic_flow",
+    "cli"
+  ],
+  "outputs": [
+    "{task_slug}-compliance-matrix.csv",
+    "{task_slug}-cost-summary.json",
+    "{task_slug}-data-inventory.csv",
+    "{task_slug}-dataset-scheme.docx"
+  ]
+}

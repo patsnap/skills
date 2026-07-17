@@ -1,0 +1,4 @@
+interface:
+  display_name: "药物研发潜力评估（Drug Potential Assessment）"
+  short_description: "评估候选药物的成药性、差异化和研发商业潜力"
+  default_prompt: "Use $drug-potential-assessment to compare the development potential of one or more drug candidates."

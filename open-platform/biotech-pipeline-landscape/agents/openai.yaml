@@ -1,0 +1,4 @@
+interface:
+  display_name: "生物技术管线全景研究（Biotech Pipeline Landscape）"
+  short_description: "研究治疗领域或技术模态的临床管线和竞争格局"
+  default_prompt: "Use $biotech-pipeline-landscape to map the development pipeline and competitive landscape for a biotech field."

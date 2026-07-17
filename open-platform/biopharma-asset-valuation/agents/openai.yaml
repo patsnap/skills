@@ -1,0 +1,4 @@
+interface:
+  display_name: "生物医药资产估值（Biopharma Asset Valuation）"
+  short_description: "结合rNPV与可比交易评估生物医药资产价值"
+  default_prompt: "Use $biopharma-asset-valuation to value a biopharma asset using transparent assumptions and comparable deals."

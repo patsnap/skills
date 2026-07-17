@@ -1,0 +1,32 @@
+{
+  "name": "drug-lifecycle-evaluation",
+  "description": "覆盖临床、竞争、交易和初步IP信号的证据可追溯单药综合评价。",
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [
+    "patent-search",
+    "virtual-mcp-pharma-intelligence"
+  ],
+  "tests": [
+    "bd_deal_search",
+    "clinical_data_search",
+    "competitor_search",
+    "entity_normalize",
+    "epidemiology_search",
+    "guideline_search",
+    "html_report_generation",
+    "indication_search",
+    "milestone_fetch",
+    "patent_signal_boundary",
+    "target_fetch",
+    "evidence_conflict_check"
+  ],
+  "outputs": [
+    "HTML综合评估报告（@session/outputs/<药物名>_evaluation.html）"
+  ],
+  "extra": {}
+}

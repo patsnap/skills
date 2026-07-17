@@ -1,0 +1,4 @@
+interface:
+  display_name: "医药情报简报（Pharma Intelligence Brief）"
+  short_description: "生成药物、赛道或技术模态的周期性情报简报"
+  default_prompt: "Use $pharma-intelligence-brief to create a concise, evidence-backed pharmaceutical intelligence brief."

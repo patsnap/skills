@@ -1,0 +1,29 @@
+{
+  "name": "target-drug-bd-assessment",
+  "version": "1.0.0",
+  "description": "连接靶点生物学、管线、临床、专利、文献和交易证据的肿瘤靶点立项报告。",
+  "author": "",
+  "alias": "",
+  "salt": "",
+  "exclude_paths": [],
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "target_normalization",
+    "pipeline_pagination",
+    "patent_coverage_boundary",
+    "go_no_go_evidence"
+  ],
+  "outputs": [
+    {
+      "name": "target_initiation_report",
+      "format": "html",
+      "description": "生成的 HTML 立项报告文件"
+    }
+  ]
+}
