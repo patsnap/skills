@@ -3,7 +3,7 @@
 Open Platform marketplace skill imported from the Skill Hub batch.
 
 - Skill name: `patent-panorama-insights-stats`
-- Marketplace: [open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-stats](https://open.zhihuiya.com/marketplace/agent-skills/patent-panorama-insights-stats)
+- Marketplace: [open.zhihuiya.com/marketplace/skill-hub/patent-panorama-insights-stats](https://open.zhihuiya.com/marketplace/skill-hub/patent-panorama-insights-stats)
 - GitHub: [patsnap/skills/open-platform/patent-panorama-insights-stats](https://github.com/patsnap/skills/tree/main/open-platform/patent-panorama-insights-stats)
 
 ## Install
