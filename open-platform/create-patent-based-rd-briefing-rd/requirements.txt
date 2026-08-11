@@ -1,0 +1,2 @@
+pandas>=2.0.0
+openpyxl>=3.1.0

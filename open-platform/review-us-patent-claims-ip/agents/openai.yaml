@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review US Patent Claims"
+  short_description: "Review US patent claims for prosecution, statutory, drafting, and strategy risks"
+  default_prompt: "Review the supplied US patent application claims and available specification/prosecution materials. Identify the exact claim version and document limits; analyze BRI, 35 U.S.C. 101/102/103/112, 112(f), claim form/dependency, restriction/election, architecture, amendment basis, and infringement observability; distinguish structural 102/103 risk from an executed prior-art search; provide severity-ranked issues, support locators, concrete amendments, scope trade-offs, and qualified-counsel gates."

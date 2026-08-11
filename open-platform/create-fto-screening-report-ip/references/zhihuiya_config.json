@@ -1,0 +1,9 @@
+{
+  "patsnap_base_url": "https://connect.patsnap.com",
+  "patsnap_auth_mode": "bearer_api_key",
+  "patsnap_api_key": "PUT_YOUR_PATSNAP_API_KEY_HERE",
+  "patsnap_connect_timeout_s": 10,
+  "patsnap_read_timeout_s": 60,
+  "patsnap_max_retries": 2,
+  "patsnap_retry_backoff_s": 1.0
+}

@@ -1,0 +1,742 @@
+<!doctype html>
+<!--
+  Technology-evolution report skeleton.
+
+  The legacy filename is retained solely to preserve source topology. This
+  localized template does not claim affiliation with McKinsey & Company.
+
+  Population rules:
+  1. Replace every FILL comment with reviewed, escaped content.
+  2. Preserve all fourteen numbered sections and the source register.
+  3. Derive displayed totals from one accepted evidence registry.
+  4. Keep patent publications, families, papers, standards, cases, and web
+     evidence as separately labeled units.
+  5. Do not turn “not observed in the reviewed dataset” into global white space.
+  6. Do not insert raw user HTML, script, external fonts, charts, or runtimes.
+  7. Remove demonstration rows only after replacing them with explicit empty
+     states or reviewed records.
+  8. Validate links, accessibility, narrow-screen layout, and print output.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><!-- FILL: Product or system | Technology Evolution Evidence Report --></title>
+<style>
+:root {
+  --canvas: #eaf0f3;
+  --paper: #ffffff;
+  --ink: #16232d;
+  --muted: #5f6d78;
+  --line: #cbd5dc;
+  --navy: #123247;
+  --blue: #0b6b9a;
+  --light-blue: #e6f3f8;
+  --teal: #0f766e;
+  --light-teal: #e8f6f3;
+  --amber: #9a6700;
+  --light-amber: #fff7df;
+  --red: #a12a2a;
+  --light-red: #fceded;
+  --radius: 7px;
+  --shadow: 0 8px 24px rgba(18, 50, 71, .08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 15px/1.65 Inter, Arial, "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: var(--blue);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.cover {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+  background: var(--navy);
+  color: #ffffff;
+  border-bottom: 6px solid #38bdf8;
+  box-shadow: var(--shadow);
+}
+
+.cover .eyebrow {
+  color: #7dd3fc;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.cover h1 {
+  max-width: 900px;
+  margin: 12px 0;
+  font: 700 clamp(2.4rem, 6vw, 4.8rem)/1.05 Georgia, "Times New Roman", serif;
+}
+
+.cover .subtitle {
+  max-width: 850px;
+  color: #d6e5ec;
+  font-size: 1.15rem;
+}
+
+.cover .meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 28px;
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid #557180;
+  color: #c7d9e2;
+  font-size: .82rem;
+}
+
+.cover .meta strong {
+  display: block;
+  color: #ffffff;
+}
+
+.toc,
+section {
+  margin: 24px 0;
+  padding: 30px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.toc ol {
+  columns: 2;
+  column-gap: 40px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.toc li {
+  margin: 6px 0;
+  break-inside: avoid;
+}
+
+h2 {
+  margin: 0 0 22px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+  font: 700 1.75rem/1.2 Georgia, "Times New Roman", serif;
+}
+
+h2 .number {
+  margin-right: 10px;
+  color: var(--blue);
+  font: 800 .82rem Consolas, monospace;
+  letter-spacing: .08em;
+}
+
+h3 {
+  margin: 28px 0 10px;
+  font: 700 1.22rem/1.3 Georgia, "Times New Roman", serif;
+}
+
+h4 {
+  margin: 20px 0 8px;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+.lead {
+  padding: 18px 20px;
+  background: #f7fafc;
+  border-left: 5px solid var(--blue);
+  font-size: 1.02rem;
+}
+
+.metadata {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.metadata div {
+  padding: 12px;
+  background: #f7fafc;
+  border: 1px solid var(--line);
+}
+
+.metadata dt {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.metadata dd {
+  margin: 3px 0 0;
+  font-weight: 700;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.kpi {
+  padding: 16px;
+  background: #f7fafc;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+}
+
+.kpi .value {
+  display: block;
+  font: 700 1.8rem Georgia, serif;
+}
+
+.kpi .label {
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 14px 0 22px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+}
+
+caption {
+  padding: 8px 0;
+  text-align: left;
+  color: var(--muted);
+}
+
+th {
+  background: var(--navy);
+  color: #ffffff;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid var(--line);
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background: #f6f9fa;
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.callout {
+  margin: 16px 0;
+  padding: 16px 18px;
+  background: var(--light-blue);
+  border-left: 5px solid var(--blue);
+}
+
+.callout.warning {
+  background: var(--light-amber);
+  border-left-color: var(--amber);
+}
+
+.callout.critical {
+  background: var(--light-red);
+  border-left-color: var(--red);
+}
+
+.callout.success {
+  background: var(--light-teal);
+  border-left-color: var(--teal);
+}
+
+.callout-title {
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f3f6f8;
+  font-size: .72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.badge.evidence {
+  background: var(--light-blue);
+  border-color: #7dd3fc;
+  color: #075985;
+}
+
+.badge.high {
+  background: var(--light-teal);
+  border-color: #86d8c9;
+  color: var(--teal);
+}
+
+.badge.medium {
+  background: var(--light-amber);
+  border-color: #e9c96c;
+  color: var(--amber);
+}
+
+.badge.low {
+  background: var(--light-red);
+  border-color: #e9a0a0;
+  color: var(--red);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+}
+
+.card h4 {
+  margin-top: 0;
+}
+
+.card .meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 18px;
+  margin: 7px 0;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.specification {
+  margin: 14px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.spec-row:last-child {
+  border-bottom: 0;
+}
+
+.spec-row .key {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.branch {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--blue);
+}
+
+.branch.accelerated {
+  border-top-color: var(--amber);
+}
+
+.branch.disruption {
+  border-top-color: var(--red);
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.footer {
+  margin: 30px 0;
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+  font-size: .78rem;
+}
+
+@media (max-width: 850px) {
+  .page {
+    padding: 14px;
+  }
+
+  .cover {
+    min-height: auto;
+    padding: 44px 24px;
+  }
+
+  .cover .meta,
+  .metadata,
+  .kpi-grid,
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .branches {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .cover .meta,
+  .metadata,
+  .kpi-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toc ol {
+    columns: 1;
+  }
+
+  section,
+  .toc {
+    padding: 20px;
+  }
+
+  .spec-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    font-size: 10pt;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cover {
+    min-height: 92vh;
+    background: #ffffff;
+    color: var(--ink);
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .cover .subtitle,
+  .cover .meta {
+    color: var(--muted);
+  }
+
+  .cover .meta strong {
+    color: var(--ink);
+  }
+
+  section,
+  .toc {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="cover">
+  <p class="eyebrow">Technology Evolution Evidence Report</p>
+  <h1><!-- FILL: Product or system name and decision title --></h1>
+  <p class="subtitle"><!-- FILL: One-sentence scope, method, and decision context --></p>
+  <div class="meta">
+    <div><strong>Report date</strong><!-- FILL: YYYY-MM-DD --></div>
+    <div><strong>Evidence cutoff</strong><!-- FILL: YYYY-MM-DD --></div>
+    <div><strong>Decision context</strong><!-- FILL --></div>
+    <div><strong>Geographies</strong><!-- FILL --></div>
+    <div><strong>Languages</strong><!-- FILL --></div>
+    <div><strong>Patent count unit</strong><!-- FILL --></div>
+    <div><strong>Analytical taxonomy</strong><!-- FILL --></div>
+    <div><strong>Display taxonomy</strong><!-- FILL --></div>
+    <div><strong>Review status</strong><!-- FILL --></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Report contents">
+  <h2><span class="number">00</span>Contents</h2>
+  <ol>
+    <li><a href="#executive-summary">Executive summary</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#evidence-funnel">Evidence funnel</a></li>
+    <li><a href="#decomposition">System decomposition</a></li>
+    <li><a href="#routes">Route distribution</a></li>
+    <li><a href="#forest">Evolution-forest findings</a></li>
+    <li><a href="#route-evidence">Route-defining evidence</a></li>
+    <li><a href="#gaps-analogies">Evidence-gap and analogy candidates</a></li>
+    <li><a href="#scenarios">Horizon scenarios</a></li>
+    <li><a href="#signals">Pathways and disruptions</a></li>
+    <li><a href="#concept">Concept specification</a></li>
+    <li><a href="#branches">Alternative branches</a></li>
+    <li><a href="#disclosure">Methods, checks, and limitations</a></li>
+  </ol>
+</nav>
+
+<section id="executive-summary">
+  <h2><span class="number">01</span>Executive Summary</h2>
+  <p class="lead"><!-- FILL: Decision-relevant conclusion with evidence IDs and bounded language --></p>
+  <dl class="metadata">
+    <div><dt>Scope</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Evidence cutoff</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Review status</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Next review</dt><dd><!-- FILL --></dd></div>
+  </dl>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Functional units reviewed</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Accepted patent records or families</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Accepted papers</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Other accepted evidence</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Supported route trunks</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Evidence-gap candidates</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Analogy candidates</span></div>
+    <div class="kpi"><span class="value"><!-- FILL --></span><span class="label">Open review items</span></div>
+  </div>
+  <h3>Decision findings</h3>
+  <div class="table-wrap"><table>
+    <caption>Every finding resolves to evidence in the source register.</caption>
+    <thead><tr><th>ID</th><th>Finding</th><th>Evidence</th><th>Confidence</th><th>Decision implication</th></tr></thead>
+    <tbody><!-- FILL: reviewed finding rows or an explicit empty-state row --></tbody>
+  </table></div>
+  <h3>Material limitations</h3>
+  <div class="callout warning"><p class="callout-title">Scope boundary</p><p><!-- FILL --></p></div>
+</section>
+
+<section id="methodology">
+  <h2><span class="number">02</span>Methodology</h2>
+  <p><!-- FILL: Seven-stage method, taxonomy status, and review boundaries --></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Stage</th><th>Action</th><th>Method</th><th>Reviewed output</th><th>Gate</th></tr></thead>
+    <tbody>
+      <!-- FILL: Stages 1–7; preserve one row per stage -->
+    </tbody>
+  </table></div>
+  <div class="callout"><p class="callout-title">Taxonomy boundary</p><p><!-- FILL: analytical/display taxonomy and crosswalk status --></p></div>
+</section>
+
+<section id="evidence-funnel">
+  <h2><span class="number">03</span>Evidence Funnel</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Evidence type</th><th>Returned</th><th>Reviewed</th><th>Accepted</th><th>Rejected/quarantined</th><th>Count unit</th><th>Coverage limits</th></tr></thead>
+    <tbody><!-- FILL: separate rows by evidence type and unit --></tbody>
+  </table></div>
+  <h3>Search coverage</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Track</th><th>Sources/tools</th><th>Queries</th><th>Languages</th><th>Date coverage</th><th>Status</th><th>Limitations</th></tr></thead>
+    <tbody><!-- FILL: reproducible coverage rows --></tbody>
+  </table></div>
+</section>
+
+<section id="decomposition">
+  <h2><span class="number">04</span>System Decomposition</h2>
+  <p><!-- FILL: product boundary and decomposition rationale --></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Major system</th><th>Subsystems</th><th>Components</th><th>Critical units</th><th>Boundary decisions</th><th>Evidence/search implications</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+  <h3>SVOP anchors</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Unit</th><th>Subject</th><th>Verb</th><th>Object</th><th>Parameters/conditions</th><th>Search exclusions</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+</section>
+
+<section id="routes">
+  <h2><span class="number">05</span>Route Distribution</h2>
+  <p><!-- FILL: route taxonomy and counting method --></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Route</th><th>Functional units</th><th>Observed nodes</th><th>Accepted evidence by type</th><th>Confidence</th><th>Interpretation limits</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+</section>
+
+<section id="forest">
+  <h2><span class="number">06</span>Evolution-Forest Findings</h2>
+  <p><!-- FILL: parallel trunks and accepted dependency relationships --></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Functional unit</th><th>Supported trunks</th><th>Observed frontier states</th><th>Accepted dependency edges</th><th>Contradictions</th><th>Evidence</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+  <div class="callout warning"><p class="callout-title">Visualization rule</p><p>A zero-hit display node means only “not observed in the reviewed dataset.” It is not a global-white-space, novelty, FTO, or commercial-opportunity conclusion.</p></div>
+</section>
+
+<section id="route-evidence">
+  <h2><span class="number">07</span>Route-Defining Evidence</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Evidence</th><th>Type</th><th>Functional unit</th><th>Route/node</th><th>Reviewed technical change</th><th>Maturity</th><th>Confidence</th></tr></thead>
+    <tbody><!-- FILL: reviewed records; do not rank only by citation --></tbody>
+  </table></div>
+</section>
+
+<section id="gaps-analogies">
+  <h2><span class="number">08</span>Evidence-Gap and Analogy Candidates</h2>
+  <h3>Evidence-gap candidates</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Unit/route</th><th>Candidate state</th><th>Gap-check searches</th><th>Feasibility question</th><th>Invalidation condition</th><th>Confidence</th></tr></thead>
+    <tbody><!-- FILL; use bounded “not observed” language --></tbody>
+  </table></div>
+  <h3>Cross-domain analogy candidates</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Source → target</th><th>Shared mechanism</th><th>Matching conditions</th><th>Different conditions/barriers</th><th>Required validation</th><th>Evidence</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+</section>
+
+<section id="scenarios">
+  <h2><span class="number">09</span>Horizon Scenarios</h2>
+  <p class="lead"><!-- FILL: Baseline date, horizon ranges, and timing method --></p>
+  <h3>Nearer horizon</h3>
+  <div class="card-grid"><!-- FILL: scenario cards --></div>
+  <h3>Middle horizon</h3>
+  <div class="card-grid"><!-- FILL: scenario cards --></div>
+  <h3>Longer horizon</h3>
+  <div class="card-grid"><!-- FILL: scenario cards --></div>
+  <!-- Card pattern:
+  <article class="card">
+    <h4>Scenario ID and candidate state</h4>
+    <p class="meta-line"><span>Calendar range</span><span>Confidence</span><span>Review date</span></p>
+    <p><strong>Current state:</strong> ...</p>
+    <p><strong>Dependencies:</strong> ...</p>
+    <p><strong>Supporting / contradicting evidence:</strong> ...</p>
+    <p><strong>Trigger / invalidation:</strong> ...</p>
+  </article>
+  -->
+</section>
+
+<section id="signals">
+  <h2><span class="number">10</span>High-Probability Pathways and Low-Probability Disruptions</h2>
+  <p><!-- FILL: operational classification and any exploratory rubric method --></p>
+  <h3>High-probability pathways</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Pathway</th><th>Evidence</th><th>Calendar range</th><th>Milestones</th><th>Monitoring</th><th>Decision action</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+  <h3>Low-probability disruptions</h3>
+  <div class="card-grid"><!-- FILL: disruption cards with mechanism, triggers, threshold, owner, cadence, and contingency --></div>
+  <h3>Linked baseline and disruption conditions</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Topic</th><th>Baseline pathway</th><th>Disruption condition</th><th>Relationship</th><th>Monitoring owner</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+</section>
+
+<section id="concept">
+  <h2><span class="number">11</span>Concept Specification</h2>
+  <p class="lead"><!-- FILL: concept name, value proposition, and branch --></p>
+  <!-- FILL: one specification block per system -->
+  <article class="specification">
+    <h3><!-- FILL: System name --></h3>
+    <div class="spec-row"><span class="key">Candidate state</span><span><!-- FILL --></span></div>
+    <div class="spec-row"><span class="key">Evidence</span><span><!-- FILL --></span></div>
+    <div class="spec-row"><span class="key">Dependencies</span><span><!-- FILL --></span></div>
+    <div class="spec-row"><span class="key">System budgets</span><span><!-- FILL --></span></div>
+    <div class="spec-row"><span class="key">Conflicts</span><span><!-- FILL --></span></div>
+    <div class="spec-row"><span class="key">Required validation</span><span><!-- FILL --></span></div>
+  </article>
+  <h3>Compatibility review</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Interface or budget</th><th>Requirement</th><th>Candidate demand</th><th>Conflict</th><th>Resolution/test</th><th>Status</th></tr></thead>
+    <tbody><!-- FILL --></tbody>
+  </table></div>
+</section>
+
+<section id="branches">
+  <h2><span class="number">12</span>Alternative Branches</h2>
+  <div class="branches">
+    <article class="branch conservative"><h3>Conservative</h3><p><!-- FILL --></p><ul><!-- FILL --></ul></article>
+    <article class="branch accelerated"><h3>Accelerated</h3><p><!-- FILL --></p><ul><!-- FILL --></ul></article>
+    <article class="branch disruption"><h3>Disruption-conditioned</h3><p><!-- FILL --></p><ul><!-- FILL --></ul></article>
+  </div>
+</section>
+
+<section id="disclosure">
+  <h2><span class="number">13</span>Methods, Consistency Checks, and Limitations</h2>
+  <h3>Consistency checks</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Check</th><th>Requirement</th><th>Status</th><th>Evidence</th><th>Open issue</th></tr></thead>
+    <tbody><!-- FILL: LR-01 through LR-12 --></tbody>
+  </table></div>
+  <h3>Search and analysis limitations</h3>
+  <ul><!-- FILL: specific limitations, not generic boilerplate --></ul>
+  <h3>Specialist review boundaries</h3>
+  <div class="callout critical"><p class="callout-title">Not a substitute for specialist advice</p><p><!-- FILL: patent, safety, regulatory, clinical, financial, or other boundaries --></p></div>
+  <h3>Complete source register</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Evidence ID</th><th>Type</th><th>Title/record</th><th>Source/organization</th><th>Date</th><th>Review depth</th><th>Used in</th><th>Limitations</th></tr></thead>
+    <tbody><!-- FILL: every accepted evidence record exactly once --></tbody>
+  </table></div>
+  <h3>Review record</h3>
+  <dl class="metadata">
+    <div><dt>Analyst</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Technical reviewer</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Specialist reviewers</dt><dd><!-- FILL --></dd></div>
+    <div><dt>Reviewed on</dt><dd><!-- FILL --></dd></div>
+  </dl>
+</section>
+
+<footer class="footer">
+  <!-- FILL: version, report date, evidence cutoff, taxonomy versions, and next review -->
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "European Patent Claim Review"
+  short_description: "Review European patent application claims under EPC and EPO practice"
+  default_prompt: "Use $review-ep-patent-claims-ip to review the claims in my European patent application materials and provide prioritized amendment options."

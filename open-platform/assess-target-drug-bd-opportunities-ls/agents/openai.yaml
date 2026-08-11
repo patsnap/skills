@@ -1,0 +1,4 @@
+interface:
+  display_name: "Target and Drug BD Assessment"
+  short_description: "Integrate target, pipeline, clinical, patent, scientific, and deal evidence for R&D and BD decisions."
+  default_prompt: "Use $assess-target-drug-bd-opportunities-ls to evaluate a target or targeted asset for evidence-backed R&D and business-development decisions."

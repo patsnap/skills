@@ -1,0 +1,1395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Invention Disclosure Guide</title>
+  <style>
+    :root {
+      --ink: #101828;
+      --muted: #475467;
+      --subtle: #667085;
+      --line: #d0d5dd;
+      --paper: #ffffff;
+      --wash: #f8fafc;
+      --blue: #175cd3;
+      --blue-dark: #1849a9;
+      --blue-wash: #eff8ff;
+      --green: #067647;
+      --green-wash: #ecfdf3;
+      --amber: #b54708;
+      --amber-wash: #fffaeb;
+      --red: #b42318;
+      --red-wash: #fef3f2;
+      --radius: 7px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .05);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--wash);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #84adff;
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: white;
+      padding: 8px 12px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .topbar {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 1160px;
+      padding: 14px 24px;
+    }
+
+    .brand {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      background: var(--blue-dark);
+      border-radius: 4px;
+      color: white;
+      display: grid;
+      font-size: 13px;
+      font-weight: 800;
+      height: 36px;
+      place-items: center;
+      width: 36px;
+    }
+
+    .brand-name {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .brand-note {
+      color: var(--subtle);
+      font-size: 11px;
+    }
+
+    .privacy-badge {
+      background: var(--green-wash);
+      border: 1px solid #75e0a7;
+      border-radius: 999px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+    }
+
+    .hero {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 42px 24px 34px;
+    }
+
+    .hero-inner {
+      margin: 0 auto;
+      max-width: 960px;
+    }
+
+    .eyebrow {
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin: 0 0 9px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 47px);
+      letter-spacing: -.03em;
+      line-height: 1.08;
+      margin: 0;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 800px;
+    }
+
+    .boundary {
+      background: var(--amber-wash);
+      border: 1px solid #fec84b;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      margin-top: 22px;
+      padding: 14px 16px;
+    }
+
+    .progress-shell {
+      background: rgba(255, 255, 255, .97);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(84px, 1fr));
+      margin: 0 auto;
+      max-width: 1160px;
+      overflow-x: auto;
+      padding: 10px 24px;
+    }
+
+    .progress button {
+      background: transparent;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      color: var(--subtle);
+      cursor: pointer;
+      font-size: 11px;
+      padding: 8px 4px;
+    }
+
+    .progress button.active {
+      border-bottom-color: var(--blue);
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+
+    .progress button.done {
+      color: var(--green);
+    }
+
+    main {
+      margin: 0 auto;
+      max-width: 980px;
+      padding: 28px 24px 64px;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .step-head {
+      border-bottom: 1px solid var(--line);
+      padding: 22px 24px;
+    }
+
+    .step-kicker {
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .step-head h2 {
+      font-size: 25px;
+      letter-spacing: -.015em;
+      margin: 6px 0;
+    }
+
+    .step-head p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .step-body {
+      padding: 24px;
+    }
+
+    .prompt-box {
+      background: var(--blue-wash);
+      border: 1px solid #b2ddff;
+      border-radius: var(--radius);
+      margin-bottom: 22px;
+      padding: 14px 16px;
+    }
+
+    .prompt-box strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .prompt-box ul {
+      margin: 5px 0 0;
+      padding-left: 20px;
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    label,
+    legend {
+      font-weight: 750;
+    }
+
+    .required {
+      color: var(--red);
+    }
+
+    .hint {
+      color: var(--subtle);
+      font-size: 12px;
+      margin: 4px 0 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--ink);
+      width: 100%;
+    }
+
+    input,
+    select {
+      min-height: 43px;
+      padding: 0 11px;
+    }
+
+    textarea {
+      min-height: 112px;
+      padding: 10px 11px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px #d1e9ff;
+      outline: none;
+    }
+
+    fieldset {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin: 0 0 20px;
+      padding: 14px;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 16px;
+      margin-top: 9px;
+    }
+
+    .choice {
+      align-items: center;
+      display: flex;
+      gap: 6px;
+      font-weight: 400;
+    }
+
+    .choice input {
+      min-height: auto;
+      width: auto;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    summary {
+      color: var(--blue-dark);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .example {
+      background: var(--gray-wash, #f2f4f7);
+      border-radius: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+      padding: 10px;
+    }
+
+    .step-actions {
+      align-items: center;
+      background: var(--wash);
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .btn {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 40px;
+      padding: 0 15px;
+    }
+
+    .btn.primary {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      color: white;
+      font-weight: 750;
+    }
+
+    .btn.danger {
+      border-color: #fda29b;
+      color: var(--red);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: .45;
+    }
+
+    .message {
+      border-radius: 5px;
+      display: none;
+      margin: 0 0 18px;
+      padding: 11px 13px;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.error {
+      background: var(--red-wash);
+      border: 1px solid #fda29b;
+      color: var(--red);
+    }
+
+    .message.success {
+      background: var(--green-wash);
+      border: 1px solid #75e0a7;
+      color: var(--green);
+    }
+
+    .draft {
+      display: grid;
+      gap: 12px;
+    }
+
+    .draft-section {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    .draft-section h3 {
+      color: var(--blue-dark);
+      font-size: 15px;
+      margin: 0 0 7px;
+    }
+
+    .draft-section p {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .needs-input {
+      background: var(--amber-wash);
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .review-list {
+      background: var(--amber-wash);
+      border: 1px solid #fec84b;
+      border-radius: var(--radius);
+      margin-bottom: 18px;
+      padding: 15px;
+    }
+
+    .review-list h3 {
+      margin: 0 0 7px;
+    }
+
+    .review-list ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: #eaecf0;
+      font-size: 12px;
+      padding: 25px 24px;
+    }
+
+    .footer-inner {
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      main {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .step-body,
+      .step-head,
+      .step-actions {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        font-size: 10pt;
+      }
+
+      .topbar,
+      .hero,
+      .progress-shell,
+      .step-actions,
+      .prompt-box,
+      .footer,
+      .message {
+        display: none !important;
+      }
+
+      main {
+        max-width: none;
+        padding: 0;
+      }
+
+      .step {
+        display: none !important;
+      }
+
+      #step7 {
+        display: block !important;
+      }
+
+      .step-card,
+      .draft-section {
+        border: 0;
+        box-shadow: none;
+      }
+
+      .draft-section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to disclosure form</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">ID</div>
+        <div>
+          <div class="brand-name">Invention Disclosure Guide</div>
+          <div class="brand-note">Structured technical intake for inventor and patent-professional review</div>
+        </div>
+      </div>
+      <span class="privacy-badge">Browser-local · no intentional network transmission</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Seven-step technical intake</p>
+      <h1>Describe the invention clearly enough to review, test and refine.</h1>
+      <p class="hero-copy">
+        Organize the technical problem, changed features, mechanism, evidence, implementation details, alternatives, drawings and disclosure history into a structured draft.
+      </p>
+      <div class="boundary">
+        <strong>Important:</strong>
+        This tool does not determine inventorship, ownership, patentability, validity, infringement, freedom to operate or filing deadlines.
+        The draft requires inventor and qualified patent-professional review.
+        Do not enter confidential information on an unapproved device or browser.
+      </div>
+    </div>
+  </section>
+
+  <nav class="progress-shell" aria-label="Disclosure steps">
+    <div class="progress" id="progress">
+      <button type="button" class="active" data-step-button="0">Start</button>
+      <button type="button" data-step-button="1">1 · Context</button>
+      <button type="button" data-step-button="2">2 · Background</button>
+      <button type="button" data-step-button="3">3 · Core invention</button>
+      <button type="button" data-step-button="4">4 · Solution</button>
+      <button type="button" data-step-button="5">5 · Evidence</button>
+      <button type="button" data-step-button="6">6 · Timing</button>
+      <button type="button" data-step-button="7">7 · Review</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="message error" id="errorMessage" role="alert"></div>
+    <div class="message success" id="successMessage" role="status"></div>
+
+    <section class="step active" id="step0" data-step="0">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Before you begin</div>
+          <h2>Prepare technical facts, not patent language.</h2>
+          <p>Answer in your own engineering words. Unknown information should remain visible rather than being invented.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Useful source material</strong>
+            <ul>
+              <li>design and architecture notes;</li>
+              <li>laboratory/test records and baselines;</li>
+              <li>drawings, flow diagrams and interface definitions;</li>
+              <li>known products, papers, standards or patents;</li>
+              <li>dates/audiences for any past or planned disclosure.</li>
+            </ul>
+          </div>
+          <div class="field-grid">
+            <div class="prompt-box">
+              <strong>What the guide does</strong>
+              Structures supplied information and identifies gaps.
+            </div>
+            <div class="prompt-box">
+              <strong>What the guide does not do</strong>
+              It does not call an AI model, search databases, draft claims or give legal advice.
+            </div>
+          </div>
+        </div>
+        <div class="step-actions">
+          <span>Estimated time depends on technical complexity.</span>
+          <button class="btn primary" type="button" data-next>Begin</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step1" data-step="1">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 1</div>
+          <h2>Invention and project context</h2>
+          <p>Identify the technical subject, contributors and matter context without deciding inventorship or ownership.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Writing prompt</strong>
+            Use a working technical title. Avoid promotional terms such as “revolutionary,” “smart” or “best” unless they describe a defined technical feature.
+          </div>
+          <div class="field">
+            <label for="title">Working invention title <span class="required">*</span></label>
+            <div class="hint">Example form: “Method and system for [technical function] using [distinguishing technical feature].”</div>
+            <input id="title" autocomplete="off" required>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="domain">Technical field</label>
+              <div class="hint">Include adjacent fields when interfaces matter.</div>
+              <input id="domain" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="project">Project / product / revision</label>
+              <input id="project" autocomplete="off">
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="contributors">Contributors and contribution notes</label>
+              <div class="hint">List who contributed to which technical concepts; counsel determines inventorship.</div>
+              <textarea id="contributors"></textarea>
+            </div>
+            <div class="field">
+              <label for="organization">Organization / applicant context</label>
+              <div class="hint">For ownership review only; the form does not determine ownership.</div>
+              <textarea id="organization"></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label for="confidentiality">Confidentiality and approved access</label>
+            <textarea id="confidentiality" placeholder="Matter restrictions, approved recipients, or unknown"></textarea>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step2" data-step="2">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 2</div>
+          <h2>Background, baseline and known approaches</h2>
+          <p>Explain how the problem is addressed today and under which conditions the known approaches fall short.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Legal-language caution</strong>
+            Describe known references factually. Do not admit that a document is legally prior art or that a feature is conventional; leave those conclusions to counsel.
+          </div>
+          <div class="field">
+            <label for="background">Known approaches and system context</label>
+            <textarea id="background" placeholder="Components, sequence, mechanism, users, inputs/outputs and operating conditions"></textarea>
+          </div>
+          <div class="field">
+            <label for="baseline">Baseline or comparison condition</label>
+            <textarea id="baseline" placeholder="Existing implementation, metric, method, sample size and conditions"></textarea>
+          </div>
+          <div class="field">
+            <label for="limitations">Specific technical limitations</label>
+            <textarea id="limitations" placeholder="What fails, when, by how much, and why that matters technically"></textarea>
+          </div>
+          <div class="field">
+            <label for="knownReferences">Known products, papers, standards or patent records</label>
+            <textarea id="knownReferences" placeholder="Title/identifier, source, date and known relevance; do not invent identifiers"></textarea>
+          </div>
+          <details>
+            <summary>Example of a useful limitation statement</summary>
+            <div class="example">Under [defined load/temperature/dataset], the baseline exhibits [measured response ± uncertainty], which exceeds/falls below [requirement] because [supported mechanism or open hypothesis].</div>
+          </details>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step3" data-step="3">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 3</div>
+          <h2>Technical problem, core change and effect</h2>
+          <p>Connect the proposed technical change to an effect through a mechanism and distinguish measured results from expectations.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Structure</strong>
+            Given [baseline/problem], change [feature or relationship], operating through [mechanism], to produce [technical effect under conditions].
+          </div>
+          <div class="field">
+            <label for="technicalProblem">Technical problem <span class="required">*</span></label>
+            <textarea id="technicalProblem" required></textarea>
+          </div>
+          <div class="field">
+            <label for="coreChange">Core changed feature or relationship <span class="required">*</span></label>
+            <textarea id="coreChange" required></textarea>
+          </div>
+          <div class="field">
+            <label for="mechanism">Why the change produces the effect</label>
+            <textarea id="mechanism" placeholder="Physical, chemical, electrical, computational or control mechanism and assumptions"></textarea>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="observedEffects">Observed technical effects</label>
+              <textarea id="observedEffects" placeholder="Metric, value, unit, baseline, method, sample size and uncertainty"></textarea>
+            </div>
+            <div class="field">
+              <label for="expectedEffects">Expected but unverified effects</label>
+              <textarea id="expectedEffects" placeholder="Prediction, basis and validation required"></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label for="essentialFeatures">Features currently believed essential</label>
+            <textarea id="essentialFeatures" placeholder="Explain why each is essential and what happens if it is removed"></textarea>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step4" data-step="4">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 4</div>
+          <h2>Architecture, sequence, parameters and alternatives</h2>
+          <p>Describe the complete technical solution and how its parts interact.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Completeness check</strong>
+            Identify inputs, transformations, states, outputs, interfaces, ordering, units, conditions, required/optional elements and failure handling.
+          </div>
+          <div class="field">
+            <label for="architecture">System/device/material architecture</label>
+            <textarea id="architecture"></textarea>
+          </div>
+          <div class="field">
+            <label for="process">Method or process sequence</label>
+            <textarea id="process" placeholder="Numbered steps, ordering constraints, branch/loop conditions and outputs"></textarea>
+          </div>
+          <div class="field">
+            <label for="interfaces">Interfaces and information/energy/material flow</label>
+            <textarea id="interfaces"></textarea>
+          </div>
+          <div class="field">
+            <label for="parameters">Parameters, ranges, units and selection rationale</label>
+            <textarea id="parameters"></textarea>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="alternatives">Alternative implementations and substitutions</label>
+              <textarea id="alternatives"></textarea>
+            </div>
+            <div class="field">
+              <label for="failureModes">Dependencies, assumptions and failure modes</label>
+              <textarea id="failureModes"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step5" data-step="5">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 5</div>
+          <h2>Embodiments, experiments and drawings</h2>
+          <p>Provide enough detail for a technical reader to understand how to make, run or test the proposal at its current stage.</p>
+        </div>
+        <div class="step-body">
+          <div class="field">
+            <label for="embodiment">Best-known implementation or worked example</label>
+            <textarea id="embodiment" placeholder="Setup, components/materials/data, initial state, sequence, conditions, outputs and results"></textarea>
+          </div>
+          <div class="field">
+            <label for="experiments">Experiments, simulations or prototypes</label>
+            <textarea id="experiments" placeholder="Method, controls, samples, results, uncertainty, raw-data location and open tests"></textarea>
+          </div>
+          <div class="field">
+            <label for="negativeEvidence">Failed tests, negative examples and contradictory evidence</label>
+            <textarea id="negativeEvidence"></textarea>
+          </div>
+          <div class="field">
+            <label for="drawings">Drawings and figure descriptions</label>
+            <textarea id="drawings" placeholder="Figure number, type, elements/steps shown, labels and file location"></textarea>
+          </div>
+          <fieldset>
+            <legend>Evidence currently available</legend>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="evidence" value="prototype"> Prototype</label>
+              <label class="choice"><input type="checkbox" name="evidence" value="test-data"> Test data</label>
+              <label class="choice"><input type="checkbox" name="evidence" value="simulation"> Simulation</label>
+              <label class="choice"><input type="checkbox" name="evidence" value="drawings"> Drawings</label>
+              <label class="choice"><input type="checkbox" name="evidence" value="source-code"> Source code</label>
+              <label class="choice"><input type="checkbox" name="evidence" value="none-yet"> None yet</label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step6" data-step="6">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 6</div>
+          <h2>Priorities, workarounds and disclosure timing</h2>
+          <p>Record what matters, how others might implement alternatives, and any public/private disclosures for professional review.</p>
+        </div>
+        <div class="step-body">
+          <div class="prompt-box">
+            <strong>Do not calculate legal consequences here.</strong>
+            Record exact facts, dates, audiences, confidentiality and documents. Patent professionals will assess jurisdiction-specific implications.
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="priorities">Technical/commercial priorities</label>
+              <textarea id="priorities"></textarea>
+            </div>
+            <div class="field">
+              <label for="workarounds">Likely alternative or workaround routes</label>
+              <textarea id="workarounds"></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pastDisclosures">Past disclosures</label>
+            <textarea id="pastDisclosures" placeholder="Date, type, audience, content, location/URL and confidentiality terms"></textarea>
+          </div>
+          <div class="field">
+            <label for="plannedDisclosures">Planned disclosures or product events</label>
+            <textarea id="plannedDisclosures" placeholder="Expected date, event/audience, content and responsible owner"></textarea>
+          </div>
+          <div class="field">
+            <label for="reviewDeadlines">Known business or review deadlines</label>
+            <textarea id="reviewDeadlines" placeholder="Record the deadline source; do not infer a legal filing deadline"></textarea>
+          </div>
+          <div class="field">
+            <label for="openQuestions">Open technical, inventorship, ownership or legal questions</label>
+            <textarea id="openQuestions"></textarea>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <button class="btn primary" type="button" data-next>Generate review draft</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step7" data-step="7">
+      <div class="step-card">
+        <div class="step-head">
+          <div class="step-kicker">Step 7</div>
+          <h2>Structured disclosure draft and gap review</h2>
+          <p>Review every statement for technical accuracy. “Needs input” remains visible where the source material is incomplete.</p>
+        </div>
+        <div class="step-body">
+          <div class="review-list">
+            <h3>Required review</h3>
+            <ul>
+              <li>Inventors confirm technical accuracy and contributor facts.</li>
+              <li>Technical reviewers confirm mechanism, parameters, evidence and drawings.</li>
+              <li>Qualified patent professionals assess inventorship, ownership, disclosure timing, patentability and filing requirements.</li>
+            </ul>
+          </div>
+
+          <details open>
+            <summary>Technical completeness review</summary>
+            <div class="field-grid" style="margin-top:12px">
+              <div class="prompt-box">
+                <strong>Problem and baseline</strong>
+                <ul>
+                  <li>Is the response or technical problem defined?</li>
+                  <li>Are the baseline, conditions and comparison method explicit?</li>
+                  <li>Are units, sample size and uncertainty included where relevant?</li>
+                  <li>Are legal characterizations of known references avoided?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Core change and mechanism</strong>
+                <ul>
+                  <li>Does the draft identify a changed feature or relationship?</li>
+                  <li>Does a technical mechanism connect the change to the effect?</li>
+                  <li>Are required and optional features distinguished?</li>
+                  <li>Are assumptions and boundary conditions visible?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Architecture and process</strong>
+                <ul>
+                  <li>Are components, interfaces, states, inputs and outputs reconciled?</li>
+                  <li>Are step order, branching, feedback and termination described?</li>
+                  <li>Do parameter values include units and selection rationale?</li>
+                  <li>Are dependencies and failure handling documented?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Alternatives and scope support</strong>
+                <ul>
+                  <li>Are technically credible substitutions and variants described?</li>
+                  <li>Are likely workarounds identified without legal conclusions?</li>
+                  <li>Does each alternative retain a mechanism and expected effect?</li>
+                  <li>Are infeasible or failed alternatives explained?</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Evidence and reproducibility review</summary>
+            <div class="field-grid" style="margin-top:12px">
+              <div class="prompt-box">
+                <strong>Implementation</strong>
+                <ul>
+                  <li>Can a technical reader identify materials, equipment, data or components?</li>
+                  <li>Are setup, initial state and operating conditions described?</li>
+                  <li>Are inputs, transformations and outputs traceable?</li>
+                  <li>Are implementation gaps labeled rather than silently filled?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Experiments and results</strong>
+                <ul>
+                  <li>Are controls, replicates and comparison baselines stated?</li>
+                  <li>Are results separated from predictions?</li>
+                  <li>Are raw-data or notebook locations referenced under approved access?</li>
+                  <li>Are negative and contradictory results retained?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Software and AI-specific support</strong>
+                <ul>
+                  <li>Are data origin, preprocessing, splits and leakage controls described?</li>
+                  <li>Are model architecture, training objective and inference flow described?</li>
+                  <li>Are evaluation metrics, comparator and deployment constraints stated?</li>
+                  <li>Are human, safety and failure-monitoring controls included where relevant?</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Materials and device-specific support</strong>
+                <ul>
+                  <li>Are composition, structure, processing and measurement methods explicit?</li>
+                  <li>Are ranges supported by examples or physical rationale?</li>
+                  <li>Are environmental, aging and manufacturing conditions stated?</li>
+                  <li>Are analytical methods and detection limits documented?</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Drawing and terminology review</summary>
+            <div class="field-grid" style="margin-top:12px">
+              <div class="prompt-box">
+                <strong>Figures</strong>
+                <ul>
+                  <li>Every figure has a number, title and purpose.</li>
+                  <li>Every label is defined consistently in the text.</li>
+                  <li>Arrows and flows have an explained direction.</li>
+                  <li>Alternatives are not accidentally presented as mandatory.</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Terminology</strong>
+                <ul>
+                  <li>Acronyms are defined at first use.</li>
+                  <li>The same component or step uses one consistent name.</li>
+                  <li>Relative terms such as high, fast or thin have a reference.</li>
+                  <li>Translated terms preserve the original technical meaning.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Disclosure-event and professional-review record</summary>
+            <div class="field-grid" style="margin-top:12px">
+              <div class="prompt-box">
+                <strong>Disclosure facts</strong>
+                <ul>
+                  <li>Exact date and time where material.</li>
+                  <li>Audience, location/platform and materials disclosed.</li>
+                  <li>Confidentiality agreement or access restriction facts.</li>
+                  <li>Copies, URLs, invitations or presentation files retained.</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>Questions for counsel</strong>
+                <ul>
+                  <li>Who contributed to each claimed technical concept?</li>
+                  <li>Which agreements may affect ownership or obligations?</li>
+                  <li>Which jurisdictions and deadlines require assessment?</li>
+                  <li>What search, drafting and figure work remains?</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Safe handling and export review</summary>
+            <div class="field-grid" style="margin-top:12px">
+              <div class="prompt-box">
+                <strong>Before copy or download</strong>
+                <ul>
+                  <li>Confirm the device, browser and matter are approved.</li>
+                  <li>Close unapproved screen-sharing or recording tools.</li>
+                  <li>Consider clipboard history and browser extensions.</li>
+                  <li>Choose an approved matter-storage destination.</li>
+                </ul>
+              </div>
+              <div class="prompt-box">
+                <strong>After export</strong>
+                <ul>
+                  <li>Move the draft from Downloads to the approved matter location.</li>
+                  <li>Apply access, retention and deletion controls.</li>
+                  <li>Clear this page and sensitive clipboard content when required.</li>
+                  <li>Do not circulate an unreviewed draft as a patent application.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <div class="draft" id="draft" aria-live="polite"></div>
+        </div>
+        <div class="step-actions">
+          <button class="btn" type="button" data-prev>Back</button>
+          <div class="button-group">
+            <button class="btn" type="button" id="copyDraft">Copy as text</button>
+            <button class="btn" type="button" id="downloadDraft">Download .txt</button>
+            <button class="btn" type="button" id="printDraft">Print</button>
+            <button class="btn danger" type="button" id="clearDraft">Clear all entries</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <strong>Invention Disclosure Guide</strong>
+      <p>This static page intentionally makes no network request and stores no entry after reload. Clipboard, downloads, browser extensions and device backups remain subject to your organization's controls.</p>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const totalSteps = 8;
+    let currentStep = 0;
+
+    const fieldIds = [
+      "title",
+      "domain",
+      "project",
+      "contributors",
+      "organization",
+      "confidentiality",
+      "background",
+      "baseline",
+      "limitations",
+      "knownReferences",
+      "technicalProblem",
+      "coreChange",
+      "mechanism",
+      "observedEffects",
+      "expectedEffects",
+      "essentialFeatures",
+      "architecture",
+      "process",
+      "interfaces",
+      "parameters",
+      "alternatives",
+      "failureModes",
+      "embodiment",
+      "experiments",
+      "negativeEvidence",
+      "drawings",
+      "priorities",
+      "workarounds",
+      "pastDisclosures",
+      "plannedDisclosures",
+      "reviewDeadlines",
+      "openQuestions"
+    ];
+
+    const sections = [
+      ["1. Working invention title", ["title"]],
+      ["2. Technical field and project context", ["domain", "project"]],
+      ["3. Contributors and organization context (for review)", ["contributors", "organization", "confidentiality"]],
+      ["4. Background and known approaches", ["background", "baseline", "limitations", "knownReferences"]],
+      ["5. Technical problem and core invention", ["technicalProblem", "coreChange", "mechanism", "essentialFeatures"]],
+      ["6. Technical effects and evidence status", ["observedEffects", "expectedEffects"]],
+      ["7. Detailed technical solution", ["architecture", "process", "interfaces", "parameters"]],
+      ["8. Alternatives, dependencies and failure modes", ["alternatives", "failureModes", "workarounds"]],
+      ["9. Embodiments, experiments and drawings", ["embodiment", "experiments", "negativeEvidence", "drawings"]],
+      ["10. Technical/commercial priorities", ["priorities"]],
+      ["11. Disclosure history and planned disclosures", ["pastDisclosures", "plannedDisclosures", "reviewDeadlines"]],
+      ["12. Open review questions", ["openQuestions"]]
+    ];
+
+    const labels = {};
+
+    fieldIds.forEach((id) => {
+      const element = document.getElementById(id);
+      const label = element ? document.querySelector(`label[for="${id}"]`) : null;
+      labels[id] = label ? label.textContent.replace("*", "").trim() : id;
+    });
+
+    function value(id) {
+      const element = document.getElementById(id);
+      return element ? element.value.trim() : "";
+    }
+
+    function selectedEvidence() {
+      return Array.from(document.querySelectorAll('input[name="evidence"]:checked'))
+        .map((item) => item.value)
+        .join(", ");
+    }
+
+    function showMessage(type, message) {
+      const error = document.getElementById("errorMessage");
+      const success = document.getElementById("successMessage");
+      error.classList.remove("show");
+      success.classList.remove("show");
+      const target = type === "error" ? error : success;
+      target.textContent = message;
+      target.classList.add("show");
+      window.setTimeout(() => target.classList.remove("show"), 7000);
+    }
+
+    function validateForStep(step) {
+      const requiredByStep = {
+        1: ["title"],
+        3: ["technicalProblem", "coreChange"]
+      };
+      const missing = (requiredByStep[step] || []).filter((id) => !value(id));
+      if (missing.length) {
+        showMessage("error", "Complete the required field(s): " + missing.map((id) => labels[id]).join(", "));
+        const first = document.getElementById(missing[0]);
+        if (first) {
+          first.focus();
+        }
+        return false;
+      }
+      return true;
+    }
+
+    function updateProgress() {
+      document.querySelectorAll("[data-step-button]").forEach((button) => {
+        const step = Number(button.dataset.stepButton);
+        button.classList.toggle("active", step === currentStep);
+        button.classList.toggle("done", step < currentStep);
+        button.setAttribute("aria-current", step === currentStep ? "step" : "false");
+      });
+    }
+
+    function goToStep(nextStep, enforceCurrent = false) {
+      if (enforceCurrent && !validateForStep(currentStep)) {
+        return;
+      }
+      currentStep = Math.max(0, Math.min(totalSteps - 1, nextStep));
+      document.querySelectorAll(".step").forEach((step) => {
+        step.classList.toggle("active", Number(step.dataset.step) === currentStep);
+      });
+      updateProgress();
+      if (currentStep === 7) {
+        renderDraft();
+      }
+      document.getElementById("main").scrollIntoView({behavior: "smooth", block: "start"});
+    }
+
+    function addDraftSection(container, title, ids) {
+      const article = document.createElement("article");
+      article.className = "draft-section";
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+      article.appendChild(heading);
+
+      const supplied = ids
+        .map((id) => ({label: labels[id], content: value(id)}))
+        .filter((record) => record.content);
+
+      if (!supplied.length) {
+        const gap = document.createElement("p");
+        gap.className = "needs-input";
+        gap.textContent = "Needs input: no reviewed information supplied for this section.";
+        article.appendChild(gap);
+      } else {
+        supplied.forEach((record) => {
+          const paragraph = document.createElement("p");
+          const strong = document.createElement("strong");
+          strong.textContent = record.label + ": ";
+          paragraph.appendChild(strong);
+          paragraph.appendChild(document.createTextNode(record.content));
+          article.appendChild(paragraph);
+        });
+      }
+      container.appendChild(article);
+    }
+
+    function renderDraft() {
+      const draft = document.getElementById("draft");
+      draft.replaceChildren();
+      sections.forEach(([title, ids]) => addDraftSection(draft, title, ids));
+
+      const evidence = document.createElement("article");
+      evidence.className = "draft-section";
+      const heading = document.createElement("h3");
+      heading.textContent = "13. Available technical evidence";
+      const paragraph = document.createElement("p");
+      paragraph.textContent = selectedEvidence() || "Needs input: evidence availability not specified.";
+      if (!selectedEvidence()) {
+        paragraph.className = "needs-input";
+      }
+      evidence.append(heading, paragraph);
+      draft.appendChild(evidence);
+
+      const review = document.createElement("article");
+      review.className = "draft-section";
+      const reviewHeading = document.createElement("h3");
+      reviewHeading.textContent = "14. Required professional review";
+      const reviewParagraph = document.createElement("p");
+      reviewParagraph.textContent = "Confirm technical accuracy, contributors/inventorship, ownership, confidentiality, disclosure timing, patentability questions, jurisdiction-specific requirements, figures and missing support before use.";
+      review.append(reviewHeading, reviewParagraph);
+      draft.appendChild(review);
+    }
+
+    function draftAsText() {
+      renderDraft();
+      return Array.from(document.querySelectorAll(".draft-section"))
+        .map((article) => {
+          const heading = article.querySelector("h3");
+          const paragraphs = Array.from(article.querySelectorAll("p"));
+          return [heading ? heading.textContent : "", ...paragraphs.map((paragraph) => paragraph.textContent)].join("\n");
+        })
+        .join("\n\n");
+    }
+
+    function safeFilename() {
+      const raw = value("title") || "invention-disclosure-draft";
+      const normalized = raw
+        .normalize("NFKD")
+        .replace(/[^a-zA-Z0-9._-]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80);
+      return (normalized || "invention-disclosure-draft") + ".txt";
+    }
+
+    document.querySelectorAll("[data-next]").forEach((button) => {
+      button.addEventListener("click", () => goToStep(currentStep + 1, true));
+    });
+
+    document.querySelectorAll("[data-prev]").forEach((button) => {
+      button.addEventListener("click", () => goToStep(currentStep - 1));
+    });
+
+    document.querySelectorAll("[data-step-button]").forEach((button) => {
+      button.addEventListener("click", () => goToStep(Number(button.dataset.stepButton)));
+    });
+
+    document.getElementById("copyDraft").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(draftAsText());
+        showMessage("success", "Draft copied as plain text. Store it only in an approved matter location.");
+      } catch (error) {
+        showMessage("error", "Clipboard access failed. Use Download .txt or select the rendered draft manually.");
+      }
+    });
+
+    document.getElementById("downloadDraft").addEventListener("click", () => {
+      const blob = new Blob([draftAsText()], {type: "text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = safeFilename();
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      showMessage("success", "Draft downloaded. Move it to an approved matter location and apply retention controls.");
+    });
+
+    document.getElementById("printDraft").addEventListener("click", () => {
+      renderDraft();
+      window.print();
+    });
+
+    document.getElementById("clearDraft").addEventListener("click", () => {
+      const confirmed = window.confirm("Clear every field from this browser page? This cannot be undone.");
+      if (!confirmed) {
+        return;
+      }
+      fieldIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.value = "";
+        }
+      });
+      document.querySelectorAll('input[name="evidence"]').forEach((item) => {
+        item.checked = false;
+      });
+      document.getElementById("draft").replaceChildren();
+      goToStep(0);
+      showMessage("success", "All entries were cleared from the page.");
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "complete-invention-disclosures-rd",
+  "description": "An English-first invention disclosure completion assistant for inventors, R&D teams, in-house IP teams, and patent professionals. It packages a standalone customer-facing HTML guide that collects invention information through a structured seven-step workflow and generates a reviewable disclosure draft without claiming to provide patent drafting or legal advice.",
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [],
+  "outputs": [
+    {
+      "name": "disclosure-guide",
+      "format": "html",
+      "description": "Standalone English customer-facing invention disclosure guide with guided inventor input, writing prompts, completeness review, safe draft generation, and copy/download support."
+    },
+    {
+      "name": "invention-disclosure-draft",
+      "format": "html",
+      "description": "A structured invention disclosure draft rendered inside the HTML page for inventor and qualified patent-professional review."
+    }
+  ],
+  "extra": {
+    "language": [
+      "en"
+    ],
+    "primary_asset": "assets/disclosure-guide.html",
+    "data_processing": "browser-local; no intentional network transmission",
+    "legal_boundary": "not a patent application or legal opinion"
+  }
+}

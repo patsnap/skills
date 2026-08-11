@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence-Based Technical Labeling"
+  short_description: "Build and apply an auditable technical taxonomy"
+  default_prompt: "Use $classify-technical-evidence-ip to assess my labeling objective and data, establish an evidence-backed taxonomy, and produce traceable results. Ask before sending any source records to external MCP services."

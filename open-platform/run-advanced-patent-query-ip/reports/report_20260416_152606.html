@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historical fixture: dump-truck patent briefing (publications from February–March 2026)</title>
+<style>
+:root{--bg:#f0f2f5;--white:#fff;--border:#e4e8ef;--accent:#2563eb;--accent2:#1d4ed8;
+  --text:#1a1a2e;--sub:#64748b;--success:#16a34a;--warn:#d97706;--danger:#dc2626;
+  --nav-w:270px;--radius:12px;}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);color:var(--text);display:flex;min-height:100vh;}
+#sidebar{width:var(--nav-w);min-width:var(--nav-w);background:var(--white);
+  border-right:1px solid var(--border);position:fixed;top:0;left:0;
+  height:100vh;overflow-y:auto;z-index:200;display:flex;flex-direction:column;}
+#sidebar-logo{padding:20px 18px 12px;border-bottom:1px solid var(--border);}
+#sidebar-logo h2{font-size:14px;font-weight:700;color:var(--accent);}
+#sidebar-logo p{font-size:11px;color:var(--sub);margin-top:3px;}
+#sidebar nav{padding:10px 0 40px;}
+.nav-part{display:flex;align-items:center;gap:8px;padding:9px 18px;
+  font-size:12px;font-weight:700;color:var(--sub);text-transform:uppercase;
+  letter-spacing:.06em;cursor:pointer;text-decoration:none;
+  border-left:3px solid transparent;transition:all .15s;}
+.nav-part:hover,.nav-part.active{color:var(--accent);background:#eff6ff;border-left-color:var(--accent);}
+.nav-sub{padding:4px 18px 4px 36px;}
+.nav-sub a{display:block;font-size:12px;color:var(--sub);text-decoration:none;
+  padding:4px 8px;border-radius:6px;transition:all .15s;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;}
+.nav-sub a:hover{background:#eff6ff;color:var(--accent);}
+.nav-sub a.active{background:#dbeafe;color:var(--accent2);font-weight:600;}
+.nav-assignee{padding:2px 18px 2px 52px;}
+.nav-assignee a{display:block;font-size:11px;color:#94a3b8;text-decoration:none;
+  padding:3px 6px;border-radius:4px;transition:all .15s;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;}
+.nav-assignee a:hover{color:var(--accent);background:#f0f9ff;}
+#main{margin-left:var(--nav-w);flex:1;padding:32px 36px 80px;max-width:1100px;}
+.hero{background:#173f63;border:1px solid #173f63;
+  border-radius:4px;padding:30px 34px;margin-bottom:28px;color:#fff;position:relative;overflow:hidden;}
+.hero::before{content:none;}
+.hero-dots{display:none;}
+.hero-inner{position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:transparent;border:1px solid rgba(255,255,255,.55);
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;margin-bottom:14px;}
+.hero h1{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+.hero-meta{font-size:12px;opacity:.7;}
+.hero-stats{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap;}
+.hero-stat{background:transparent;border:1px solid rgba(255,255,255,.4);
+  border-radius:3px;padding:12px 20px;text-align:center;min-width:90px;}
+.hero-stat-num{font-size:26px;font-weight:800;line-height:1;}
+.hero-stat-label{font-size:11px;opacity:.8;margin-top:4px;}
+.section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:24px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.section-hd{display:flex;align-items:center;gap:10px;padding:18px 24px 14px;
+  border-bottom:1px solid var(--border);}
+.section-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:16px;flex-shrink:0;}
+.section-title{font-size:16px;font-weight:700;}
+.section-bd{padding:20px 24px;}
+.part-label{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--accent);background:#dbeafe;padding:2px 8px;
+  border-radius:4px;margin-bottom:16px;}
+.meta-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:16px;}
+.query-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--sub);margin-bottom:6px;}
+.query-text{font-family:'SF Mono',monospace;font-size:12px;color:var(--accent2);word-break:break-all;line-height:1.7;}
+.company-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.cbar{display:flex;align-items:center;gap:10px;}
+.cbar-name{font-size:13px;font-weight:600;min-width:120px;color:var(--text);}
+.cbar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.cbar-fill{height:100%;border-radius:0;background:var(--accent);}
+.cbar-cnt{font-size:12px;color:var(--sub);min-width:36px;text-align:right;font-weight:600;}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.summary-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.summary-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.summary-name{font-size:14px;font-weight:700;}
+.summary-cnt{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.direction-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.direction-chip{background:var(--white);color:var(--sub);font-size:11px;padding:3px 10px;
+  border-radius:999px;border:1px solid var(--border);}
+.rep-tech{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.rep-tech li{font-size:12px;color:var(--text);padding-left:12px;position:relative;line-height:1.5;}
+.rep-tech li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent);}
+
+.company-section{margin-bottom:32px;}
+.company-section-title{font-size:15px;font-weight:700;color:var(--text);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  padding:10px 0 12px;border-bottom:2px solid var(--accent);}
+.company-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.company-cnt-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.branch-group{margin-bottom:20px;}
+.branch-label{font-size:12px;font-weight:600;color:var(--sub);text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.branch-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.patent-card{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.patent-card-hd{display:flex;align-items:center;gap:10px;padding:10px 16px;
+  background:#f0f5ff;border-bottom:1px solid #dbeafe;flex-wrap:wrap;}
+.pn-badge{display:inline-flex;align-items:center;gap:4px;background:#dbeafe;color:#1e3a8a;
+  font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;
+  font-family:'SF Mono',monospace;text-decoration:none;border:1px solid #93c5fd;}
+.pn-badge:hover{background:#bfdbfe;}
+.status{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;}
+.status.granted{background:rgba(22,163,74,.12);color:#15803d;}
+.status.pending{background:rgba(217,119,6,.12);color:#b45309;}
+.status.expired{background:rgba(220,38,38,.12);color:#b91c1c;}
+.status.other{background:rgba(100,116,139,.1);color:#475569;}
+.patent-tag{font-size:11px;padding:2px 10px;border-radius:999px;border:1px solid var(--border);
+  color:var(--sub);background:var(--bg);}
+.patent-tag.assignee{border-color:#9334e6;color:#7b1fa2;background:#f3e8fd;}
+.patent-tag.apdt{border-color:var(--accent);color:#1557b0;background:#e8f0fe;}
+.patent-tag.pbdt{border-color:#00897b;color:#00695c;background:#e0f2f1;}
+.patent-card-body{display:flex;gap:0;}
+.patent-fields{flex:1;min-width:0;padding:14px 18px;display:flex;flex-direction:column;gap:10px;}
+.p-title{font-size:13px;font-weight:600;color:var(--text);line-height:1.5;}
+.p-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--sub);}
+.p-meta span b{color:var(--text);}
+.field{display:flex;flex-direction:column;gap:3px;}
+.field-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:#fff;padding:1px 7px;border-radius:3px;display:inline-block;width:fit-content;}
+.lbl-problem{background:#dc2626;}.lbl-approach{background:#16a34a;}.lbl-benefit{background:#d97706;}
+.field-val{font-size:12.5px;color:var(--text);line-height:1.7;}
+.patent-fig{flex-shrink:0;width:180px;background:#f0f4f8;
+  border-left:1px solid var(--border);padding:14px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;}
+.patent-fig img{width:100%;height:auto;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.fig-cap{font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;}
+
+.lit-card{background:var(--white);border:1px solid var(--border);border-radius:10px;
+  margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04);overflow:hidden;padding:20px 24px;}
+.lit-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.lit-idx{font-size:11px;font-weight:700;color:var(--sub);margin-bottom:6px;letter-spacing:.04em;}
+.lit-title{font-size:14px;font-weight:700;color:var(--text);line-height:1.55;margin-bottom:8px;}
+.lit-title a{color:var(--accent2);text-decoration:none;}
+.lit-title a:hover{text-decoration:underline;}
+.lit-authors{font-size:12px;color:var(--sub);margin-bottom:4px;line-height:1.5;}
+.lit-journal{font-size:12px;color:var(--sub);font-style:italic;margin-bottom:12px;}
+.lit-journal b{font-style:normal;font-weight:600;color:var(--text);}
+.lit-abstract{font-size:12.5px;color:#374151;line-height:1.8;margin-bottom:14px;
+  padding:12px 14px;background:var(--bg);border-radius:6px;border-left:3px solid var(--border);}
+.lit-abstract-toggle{font-size:11px;color:var(--accent);cursor:pointer;margin-left:6px;
+  background:none;border:none;padding:0;text-decoration:underline;}
+.lit-abstract-full{display:none;}
+.lit-abstract-full.open{display:inline;}
+.lit-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:12px;
+  border-top:1px solid var(--border);}
+.lit-doi{font-size:11px;color:var(--accent);text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;}
+.lit-doi:hover{text-decoration:underline;}
+.lit-cite{font-size:11px;padding:2px 10px;border-radius:999px;
+  border:1px solid #fcd34d;color:#92400e;background:#fffbeb;}
+.lit-ai-box{margin-top:24px;background:#f3f6f8;
+  border:1px solid #bfdbfe;border-radius:10px;padding:20px 24px;}
+.lit-ai-box h4{font-size:13px;font-weight:700;color:var(--accent2);margin:0 0 12px;
+  display:flex;align-items:center;gap:6px;}
+.lit-ai-content{font-size:13px;color:#1e293b;line-height:1.85;}
+.lit-ai-content strong,.lit-ai-content b{color:var(--accent2);}
+.lit-ai-content h3,.lit-ai-content h4{font-size:13px;font-weight:700;color:var(--text);
+  margin:14px 0 6px;}
+.lit-ai-ref{color:var(--accent);font-weight:700;text-decoration:none;
+  background:#dbeafe;border-radius:4px;padding:0 4px;}
+.lit-ai-ref:hover{background:#bfdbfe;}
+.footer{text-align:center;padding:32px;color:var(--sub);font-size:12px;
+  border-top:1px solid var(--border);margin-top:20px;}
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);transition:transform .3s;}
+  #sidebar.open{transform:translateX(0);}
+  #main{margin-left:0;padding:20px 16px 60px;}
+  .patent-card-body{flex-direction:column;}
+  .patent-fig{width:100%;border-left:none;border-top:1px solid var(--border);}
+}
+@media print{
+  body{display:block;background:#fff;font-size:10pt;}
+  #sidebar{display:none;}
+  #main{margin:0;max-width:none;padding:0;}
+  .section,.patent-card,.lit-card{box-shadow:none;break-inside:avoid;}
+  a{color:inherit;text-decoration:underline;}
+  button{display:none;}
+  .lit-abstract-full{display:inline;}
+}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="sidebar-logo"><h2>Technology intelligence report</h2><p>Historical fixture: dump-truck patent briefing (publications from February–March 2026)</p></div>
+  <nav>
+    <a href="#sec1" class="nav-part">Patent overview</a>
+    <a href="#sec2" class="nav-part">Technology summaries</a>
+    <a href="#sec3" class="nav-part">Patent details</a>
+    <div class="nav-sub"><a href="#company-0">All applicants</a></div>
+<div class="nav-assignee"><a href="#branch-0-0">Imaging</a></div>
+
+    <a href="#sec4" class="nav-part">Related literature</a><div class="nav-sub"><a href="#lit-ai-box">AI-assisted synthesis</a></div><div class="nav-sub"><a href="#lit-detail">Literature records</a></div>
+  </nav>
+</div>
+<div id="main">
+
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Technology intelligence report</div>
+    <h1>Historical fixture: dump-truck patent briefing (publications from February–March 2026)</h1>
+    <div class="hero-meta">Generated: 2026-04-16 15:26</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">Patent records</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">Company groups</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">Technical topics</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="sec1">
+  <div class="section-hd">
+    <div class="section-title">Recently published patent overview</div>
+  </div>
+  <div class="section-bd">
+    <div class="company-bars"><div class="cbar"><div class="cbar-name">All applicants</div><div class="cbar-track"><div class="cbar-fill" style="width:100%"></div></div><div class="cbar-cnt">1</div></div></div>
+  </div>
+</div>
+
+<div class="section" id="sec2">
+  <div class="section-hd">
+    <div class="section-title">Company technology summaries</div>
+  </div>
+  <div class="section-bd">
+    <div class="summary-grid">
+<div class="summary-card">
+  <div class="summary-card-hd">
+    <div class="summary-name" style="color:#245b8a">All applicants</div>
+    <span class="summary-cnt">1 records</span>
+  </div>
+  <div class="direction-chips"><span class="direction-chip">Imaging (1)</span></div>
+  <ul class="rep-tech"><li>The monitoring system uses first and second imaging devices to capture the work equipment and ground from defined viewpoints, then applies defect- and boulder-detection units to identify hazards.</li></ul>
+</div></div>
+  </div>
+</div>
+
+<div class="section" id="sec3">
+  <div class="section-hd">
+    <div class="section-title">Patent details</div>
+  </div>
+  <div class="section-bd">
+    
+<div class="company-section">
+  <div class="company-section-title" id="company-0">
+    <span class="company-dot" style="background:#245b8a"></span>
+    All applicants
+    <span class="company-cnt-badge">1 records</span>
+  </div>
+  
+<div class="branch-group">
+  <div class="branch-label" id="branch-0-0">Imaging (1 records)</div>
+  <div class="patent-card">
+  <div class="patent-card-hd">
+    <a class="pn-badge" href="https://analytics.patsnap.com/patent-view/abst?patentId=a9a494dc-9fc6-44b6-8582-13f89e8fa099" target="_blank">US20260071412A1</a>
+    <span class="status pending">Pending substantive examination in the historical source; reverify before use</span>
+    <span class="patent-tag assignee">KOMATSU LTD.</span>
+    <span class="patent-tag apdt">Applied 2023-02-03</span>
+    <span class="patent-tag pbdt">Published 2026-03-12</span>
+  </div>
+  <div class="patent-card-body">
+    <div class="patent-fields">
+      <div class="p-title">Work machine monitoring system and work machine monitoring method</div>
+      <div class="field"><div class="field-lbl lbl-problem">Technical problem</div><div class="field-val">Changes in work content and operating conditions can expose a work machine to damage; real-time monitoring may support prevention or earlier detection.</div></div><div class="field"><div class="field-lbl lbl-approach">Technical approach</div><div class="field-val">First and second imaging devices capture work equipment and the ground from defined viewpoints, while defect- and boulder-detection units identify the respective conditions.</div></div><div class="field"><div class="field-lbl lbl-benefit">Technical benefit</div><div class="field-val">The disclosed monitoring approach is intended to detect defects and potential hazards earlier and reduce damage risk.</div></div>
+    </div>
+    <figure class="patent-fig"><img src="images/a9a494dc-9fc6-44b6-8582-13f89e8fa099.png" alt="Patent drawing for US20260071412A1" loading="lazy"/><figcaption class="fig-cap">Patent drawing</figcaption></figure>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+</div>
+
+<div class="section" id="sec4">
+  <div class="section-hd">
+    <div class="section-title">Related literature (1455 matches; showing 20)</div>
+  </div>
+  <div class="section-bd">
+    <div class="lit-ai-box" id="lit-ai-box">
+  <h4>AI-assisted literature synthesis</h4>
+  <div class="lit-ai-content">The historical literature result set is not suitable for technology synthesis because most retrieved records are lexical false positives. Of the 20 displayed records, only a small subset concerns dumping vehicles, rail-car dumpers, or dump-truck operations, and those records span 1874–2016 with different technical purposes. Before using literature evidence, narrow the query with vehicle, mining, earthmoving, haulage, hydraulic-bed, chassis, braking, payload, or work-machine concepts; exclude person names, waste enforcement, lasers, and magnetotelluric terminology; then review precision and recall manually.<br><br>#### Record-level disposition<br><br>- <a class="lit-ai-ref" href="#lit-1">[1]</a> Exclude: web-accessibility system named Tipper.<br>- <a class="lit-ai-ref" href="#lit-2">[2]</a> Review historical relevance: dumping car; no abstract.<br>- <a class="lit-ai-ref" href="#lit-3">[3]</a> Review historical relevance: dumping car; no abstract.<br>- <a class="lit-ai-ref" href="#lit-4">[4]</a> Exclude: gemology dictionary entry.<br>- <a class="lit-ai-ref" href="#lit-5">[5]</a> Review historical relevance: dumping car; no abstract.<br>- <a class="lit-ai-ref" href="#lit-6">[6]</a> Exclude: person-name match.<br>- <a class="lit-ai-ref" href="#lit-7">[7]</a> Review historical relevance: dumping car; no abstract.<br>- <a class="lit-ai-ref" href="#lit-8">[8]</a> Retain for adjacent rail-car-dumper reliability context.<br>- <a class="lit-ai-ref" href="#lit-9">[9]</a> Insufficient evidence.<br>- <a class="lit-ai-ref" href="#lit-10">[10]</a> Verify; likely nontechnical permit content.<br>- <a class="lit-ai-ref" href="#lit-11">[11]</a> Review historical relevance: dump car; no abstract.<br>- <a class="lit-ai-ref" href="#lit-12">[12]</a> Exclude: location photograph.<br>- <a class="lit-ai-ref" href="#lit-13">[13]</a> Exclude: laser cavity-dumper system.<br>- <a class="lit-ai-ref" href="#lit-14">[14]</a> Exclude: addiction book review.<br>- <a class="lit-ai-ref" href="#lit-15">[15]</a> Review historical relevance: dumping wagon; no abstract.<br>- <a class="lit-ai-ref" href="#lit-16">[16]</a> Retain for adjacent fleet economics and operations.<br>- <a class="lit-ai-ref" href="#lit-17">[17]</a> Exclude: illegal waste disposal.<br>- <a class="lit-ai-ref" href="#lit-18">[18]</a> Exclude: illegal waste disposal.<br>- <a class="lit-ai-ref" href="#lit-19">[19]</a> Exclude: marine waste disposal.<br>- <a class="lit-ai-ref" href="#lit-20">[20]</a> Exclude: magnetotelluric tipper data.<br><br><h3>Fixture limitations</h3><br>- The patent legal status is historical and must be reverified.<br>- The patent count reflects a single returned record, not a complete family landscape.<br>- The literature query has low precision and is intentionally retained as a negative test case.<br>- Citation counts are historical source values and are not quality or relevance scores.<br>- No conclusion in this fixture should be reused without a current search.<br></div>
+</div>
+    <div id="lit-detail">
+<div class="lit-card" id="lit-1">
+  <div class="lit-idx">1</div>
+  <div class="lit-title"><a href="https://doi.org/10.1145/2702613.2732796" target="_blank">Tipper</a></div>
+  <div class="lit-authors">Dai, Yibo; Karalis, George; Kawas, Saba; Olsen, Chris</div>
+  <div class="lit-journal"><b>Proceedings of the 33rd Annual ACM Conference Extended Abstracts on Human Factors in Computing Systems, 2015, pp. 1773–1778</b></div>
+  <div class="lit-abstract">Most senior citizens in the U.S. use the Internet regularly but can encounter basic issues they cannot solve themselves. The researchers used contextual inquiry and an online survey to study these difficulties, then designed Tipper, a browser-based contextual-help system. This record is unrelated to<span class="lit-abstract-full" id="abs-1"> dump-truck technology and is a false positive caused by lexical ambiguity.</span><button type="button" class="lit-abstract-toggle" aria-controls="abs-1" onclick="toggleAbs(1)">Show more</button></div>
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1145/2702613.2732796" target="_blank" rel="noopener noreferrer">DOI: 10.1145/2702613.2732796</a><span class="lit-cite">cited by 4 literature records</span><span class="lit-cite">cited by 10 patent records</span></div>
+</div>
+<div class="lit-card" id="lit-2">
+  <div class="lit-idx">2</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican02071885-7578asupp" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1885, vol. 19 (475 supplement), p. 7578</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican02071885-7578asupp" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican02071885-7578asupp</a></div>
+</div>
+<div class="lit-card" id="lit-3">
+  <div class="lit-idx">3</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican10041884-210c" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1884, vol. 51 (14), p. 210</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican10041884-210c" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican10041884-210c</a></div>
+</div>
+<div class="lit-card" id="lit-4">
+  <div class="lit-idx">4</div>
+  <div class="lit-title"><a href="https://doi.org/10.1007/978-3-540-72816-0_7004" target="_blank">dumper</a></div>
+  
+  <div class="lit-journal"><b>Dictionary of Gems and Gemology, p. 286</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1007/978-3-540-72816-0_7004" target="_blank" rel="noopener noreferrer">DOI: 10.1007/978-3-540-72816-0_7004</a></div>
+</div>
+<div class="lit-card" id="lit-5">
+  <div class="lit-idx">5</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican12011885-47bbuild" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1885, vol. 1 (2 build), p. 47</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican12011885-47bbuild" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican12011885-47bbuild</a></div>
+</div>
+<div class="lit-card" id="lit-6">
+  <div class="lit-idx">6</div>
+  <div class="lit-title"><a href="https://doi.org/10.2307/jj.28697809.14" target="_blank">Tipper Gore</a></div>
+  
+  <div class="lit-journal"><b>East Tennessee Newsmakers, 2024, pp. 44–47</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.2307/jj.28697809.14" target="_blank" rel="noopener noreferrer">DOI: 10.2307/jj.28697809.14</a></div>
+</div>
+<div class="lit-card" id="lit-7">
+  <div class="lit-idx">7</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican11211885-323b" target="_blank">Dumping Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1885, vol. 53 (21), p. 323</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican11211885-323b" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican11211885-323b</a></div>
+</div>
+<div class="lit-card" id="lit-8">
+  <div class="lit-idx">8</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dumper%20derailment%20investigation%20and%20development%20of%20custom%20check%20rail" target="_blank">Dumper derailment investigation and development of custom check rail</a></div>
+  <div class="lit-authors">Lindsay Dobson</div>
+  
+  <div class="lit-abstract">Rio Tinto Iron Ore operates a large private rail network serving multiple mine sites. Wagons are unloaded through rotary car dumpers. Repeated derailments occurred at the outgoing side of dumpers at Parker Point. The work assessed site conditions, applicable standards, root causes, and why an earlie<span class="lit-abstract-full" id="abs-8">r passive check-rail mitigation did not operate as intended.</span><button type="button" class="lit-abstract-toggle" aria-controls="abs-8" onclick="toggleAbs(8)">Show more</button></div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-9">
+  <div class="lit-idx">9</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dumper%20Truck%20Racing" target="_blank">Dumper Truck Racing</a></div>
+  <div class="lit-authors">Joe Gates</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-10">
+  <div class="lit-idx">10</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dump%20Truck%20Permit" target="_blank">Dump Truck Permit</a></div>
+  <div class="lit-authors">pTools</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-11">
+  <div class="lit-idx">11</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican05151880-306a" target="_blank">New Dump Car</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1880, vol. 42 (20), pp. 306–307</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican05151880-306a" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican05151880-306a</a></div>
+</div>
+<div class="lit-card" id="lit-12">
+  <div class="lit-idx">12</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=South%20Side%20of%20Highway%20Dump" target="_blank">South Side of Highway Dump</a></div>
+  <div class="lit-authors">Dallas (Tex.)</div>
+  
+  <div class="lit-abstract">Photograph of the south side of a washout dump along Highway 10, facing west at 11:40 a.m.</div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-13">
+  <div class="lit-idx">13</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=The%20Research%20of%20Cavity%20Dumper%20Driver" target="_blank">The Research of Cavity Dumper Driver</a></div>
+  <div class="lit-authors">Sheng Cuixia</div>
+  <div class="lit-journal"><b>Journal of Changchun Institute of Optics and Fine Mechanics, 2004</b></div>
+  <div class="lit-abstract">The work describes a cavity-dumper driver for an acousto-optic cell that produces laser-pulse signals at multiple repetition rates.</div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-14">
+  <div class="lit-idx">14</div>
+  <div class="lit-title"><a href="https://doi.org/10.1080/07347324.2013.746614" target="_blank">D. Kipper &amp; S. Whitney. The Addiction Solution: Unraveling the Mysteries of Addiction through Cutting-Edge Brain Science</a></div>
+  <div class="lit-authors">James P. Foster</div>
+  <div class="lit-journal"><b>Alcoholism Treatment Quarterly, 2013, vol. 31 (1), pp. 161–163</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1080/07347324.2013.746614" target="_blank" rel="noopener noreferrer">DOI: 10.1080/07347324.2013.746614</a></div>
+</div>
+<div class="lit-card" id="lit-15">
+  <div class="lit-idx">15</div>
+  <div class="lit-title"><a href="https://doi.org/10.1038/scientificamerican08221874-118a" target="_blank">Improved Dumping Wagon</a></div>
+  
+  <div class="lit-journal"><b>Scientific American, 1874, vol. 31 (8), p. 118</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1038/scientificamerican08221874-118a" target="_blank" rel="noopener noreferrer">DOI: 10.1038/scientificamerican08221874-118a</a></div>
+</div>
+<div class="lit-card" id="lit-16">
+  <div class="lit-idx">16</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Dump%20Trucks%20%E2%80%94%20Big%20or%20Bigger" target="_blank">Dump Trucks — Big or Bigger</a></div>
+  <div class="lit-authors">Larry Goode</div>
+  
+  <div class="lit-abstract">The Indiana Department of Highways formed a cross-functional committee to assess whether tandem dump trucks should be removed from its fleet. The team reviewed work records, programs, calendars, costs, and operational value.</div>
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-17">
+  <div class="lit-idx">17</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Passerby%20helps%20prosecute%20fly-tipper" target="_blank">Passerby helps prosecute fly-tipper</a></div>
+  <div class="lit-authors">Alison Falconer</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-18">
+  <div class="lit-idx">18</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Fly%20tipper%20prosecuted" target="_blank">Fly tipper prosecuted</a></div>
+  <div class="lit-authors">Ceri Davis</div>
+  
+  
+  <div class="lit-meta"></div>
+</div>
+<div class="lit-card" id="lit-19">
+  <div class="lit-idx">19</div>
+  <div class="lit-title"><a href="https://doi.org/10.1016/0025-326x(71" target="_blank">Dumpers foiled</a></div>
+  
+  <div class="lit-journal"><b>Marine Pollution Bulletin, 1971, vol. 2 (8), p. 115</b></div>
+  
+  <div class="lit-meta"><a class="lit-doi" href="https://doi.org/10.1016/0025-326x(71" target="_blank" rel="noopener noreferrer">DOI: 10.1016/0025-326x(71)90249-9</a></div>
+</div>
+<div class="lit-card" id="lit-20">
+  <div class="lit-idx">20</div>
+  <div class="lit-title"><a href="https://scholar.google.com/scholar?q=Research%20on%20the%20character%20of%20tipper%20data" target="_blank">Research on the character of tipper data</a></div>
+  <div class="lit-authors">Pan We</div>
+  
+  <div class="lit-abstract">Two-dimensional magnetotelluric forward simulations were used to examine tipper components for models with horizontal electrical interfaces. The work summarizes response anomalies and provides a basis for interpreting measured magnetotelluric tipper data.</div>
+  <div class="lit-meta"></div>
+</div></div>
+  </div>
+</div>
+<div class="footer">Technology intelligence report · 2026-04-16 15:26</div>
+</div>
+<script>
+function toggleAbs(idx) {
+  const el = document.getElementById('abs-' + idx);
+  const btn = el.nextElementSibling;
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    btn.textContent = 'Show more';
+  } else {
+    el.classList.add('open');
+    btn.textContent = 'Show less';
+  }
+}
+const links = document.querySelectorAll('#sidebar a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a = document.querySelector('#sidebar a[href="#'+e.target.id+'"]');
+      if(a) a.classList.add('active');
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll('[id]').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

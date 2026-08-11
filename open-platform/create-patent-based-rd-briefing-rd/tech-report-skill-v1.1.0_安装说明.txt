@@ -1,0 +1,66 @@
+Patent-Based R&D Briefing Skill v1.1.0 — Installation Notes
+============================================================
+
+Method 1: Install from a tar archive
+------------------------------------
+
+tar -xzf create-patent-based-rd-briefing-rd-v1.1.0.tar.gz
+cd create-patent-based-rd-briefing-rd-v1.1.0
+bash install.sh
+
+Method 2: Install from a ZIP archive
+------------------------------------
+
+unzip create-patent-based-rd-briefing-rd-v1.1.0.zip
+cd create-patent-based-rd-briefing-rd-v1.1.0
+bash install.sh
+
+Method 3: Manual placement
+--------------------------
+
+1. Extract the package to a directory you control.
+2. Review install.sh before executing it.
+3. Run: bash install.sh
+4. The installer asks before replacing an existing installation.
+5. Existing installations are moved to a timestamped backup.
+
+Run after installation
+----------------------
+
+From an agent that supports local skills, request a patent-based R&D briefing
+and supply an authorized Excel workbook, a topic key, and an ISO date range.
+
+Command-line use:
+
+cd <installed-skill-directory>
+bash scripts/run.sh <Excel-path> <topic-key> <start-date> <end-date>
+
+Dates must use YYYY-MM-DD. The topic key must match one of the source-provided
+configuration basenames or an approved configuration added by the operator.
+
+Documentation in this frozen package
+------------------------------------
+
+- SKILL.md: complete workflow and review boundaries
+- IMPROVEMENTS.md: implementation decisions and limitations
+- DISTRIBUTION.md: distribution and release checklist
+- CHANGELOG.md: version history
+- examples/SAMPLE_DATA.md: workbook schema and test guidance
+
+The source package refers to README.md and config/README.md, but neither file
+exists in the frozen source. They are therefore not fabricated in this
+localized package.
+
+Patent connectors
+-----------------
+
+When installed and authorized, the verified global PatSnap mappings are:
+- advanced_patent_search: https://open.patsnap.com/marketplace/mcp-servers/patent-search
+- patent_briefing: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing
+
+The local workbook workflow remains usable without either connector. Missing
+connectors must be reported as not searched, never replaced with invented data.
+
+Version: v1.1.0-localized
+Localization date: 2026-08-08
+Release status: ready for review, not automatically approved

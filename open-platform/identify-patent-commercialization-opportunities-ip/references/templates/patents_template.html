@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TOPIC}} — Representative Patents</title>
+  <style>
+    :root {
+      --paper: #ffffff;
+      --canvas: #eef2f6;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --navy: #173b67;
+      --teal: #18756f;
+      --amber: #8a6419;
+      --red: #9b3f3a;
+      --line: #d7dee8;
+      --panel: #f7f9fc;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--canvas); font: 15px/1.55 var(--sans); }
+    a { color: var(--navy); }
+    .shell { max-width: 1180px; min-height: 100vh; margin: 0 auto; background: var(--paper); }
+    nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px 36px; border-bottom: 1px solid var(--line); }
+    .brand { color: var(--navy); font-weight: 750; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .nav-links a { font-size: 13px; text-decoration: none; }
+    header { padding: 34px 36px 22px; }
+    .eyebrow { color: var(--teal); font-size: 12px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 6px 0; color: var(--navy); font-size: clamp(28px, 4vw, 40px); }
+    .meta { color: var(--muted); font-size: 13px; }
+    main { padding: 0 36px 54px; }
+    .notice { padding: 14px 16px; border-left: 4px solid var(--amber); background: #fffaf0; }
+    .controls { display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 12px; margin: 20px 0; }
+    input, select { width: 100%; padding: 9px 11px; color: var(--ink); background: white; border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+    input:focus-visible, select:focus-visible { outline: 2px solid #88aeca; outline-offset: 1px; }
+    .count { margin-bottom: 10px; color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .card { padding: 18px; border: 1px solid var(--line); border-radius: 8px; }
+    .card-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+    .pn { font: 13px var(--mono); }
+    .state { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    h2 { margin: 10px 0 8px; font-size: 17px; line-height: 1.35; }
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 10px 0; font-size: 13px; }
+    .label { color: var(--muted); }
+    .abstract { color: #344155; font-size: 13px; }
+    .source { color: var(--muted); font-size: 12px; }
+    .pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 22px; }
+    .pagination button { padding: 6px 10px; color: var(--navy); background: white; border: 1px solid var(--line); border-radius: 5px; cursor: pointer; }
+    .pagination button[aria-current="page"] { color: white; background: var(--navy); }
+    [hidden] { display: none !important; }
+    footer { padding: 22px 36px; color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; }
+    @media (max-width: 760px) {
+      nav, header, main, footer { padding-left: 18px; padding-right: 18px; }
+      .grid { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body, .shell { background: white; }
+      nav, .controls, .pagination { display: none; }
+      .card { break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <nav aria-label="Report pages">
+    <span class="brand">{{TOPIC}} · Patent Opportunity Assessment</span>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="patents.html" aria-current="page">Patents</a>
+      <a href="subfields.html">Subfields</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="methodology.html">Methodology</a>
+    </div>
+  </nav>
+  <header>
+    <div class="eyebrow">Representative patent sample</div>
+    <h1>Representative patent records</h1>
+    <p class="meta">{{PATENT_COUNT}} reviewed records · Search version {{SEARCH_VERSION}} · Cutoff {{CUTOFF_DATE}}</p>
+  </header>
+  <main>
+    <section class="notice">
+      <strong>Sample boundary:</strong> {{SAMPLE_BOUNDARY_NOTE}} This sample does not establish population trends, applicant shares, geographic distributions, status distributions, grant rates, or market activity.
+    </section>
+    <div class="controls">
+      <label>Search representative patents
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Publication number, title, applicant, subfield">
+      </label>
+      <label>Status filter
+        <select id="statusFilter">
+          <option value="all">All source statuses</option>
+          {{STATUS_FILTER_OPTIONS}}
+        </select>
+      </label>
+    </div>
+    <p class="count" id="resultCount" aria-live="polite"></p>
+    <section class="grid" id="patentGrid">
+      {{PATENT_CARDS_HTML}}
+    </section>
+    <nav class="pagination" id="pagination" aria-label="Representative patent pages"></nav>
+  </main>
+  <footer>Patent bibliography, family, status, claims, descriptions, and translations should be verified through Patent Briefing or another documented source. Status is time-sensitive.</footer>
+</div>
+<script>
+  "use strict";
+  const pageSize = 20;
+  let page = 1;
+  const search = document.getElementById("searchInput");
+  const status = document.getElementById("statusFilter");
+  const count = document.getElementById("resultCount");
+  const pager = document.getElementById("pagination");
+  const cards = Array.from(document.querySelectorAll(".patent-card[data-status]"));
+
+  function matchingCards() {
+    const query = search.value.trim().toLocaleLowerCase();
+    const state = status.value;
+    return cards.filter(card => {
+      const textMatch = !query || card.textContent.toLocaleLowerCase().includes(query);
+      const stateMatch = state === "all" || card.dataset.status === state;
+      return textMatch && stateMatch;
+    });
+  }
+
+  function render() {
+    const matches = matchingCards();
+    const pages = Math.max(1, Math.ceil(matches.length / pageSize));
+    page = Math.min(page, pages);
+    for (const card of cards) card.hidden = true;
+    for (const card of matches.slice((page - 1) * pageSize, page * pageSize)) card.hidden = false;
+    count.textContent = `${matches.length} representative records match the current filters.`;
+    pager.replaceChildren();
+    for (let index = 1; index <= pages; index += 1) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = String(index);
+      if (index === page) button.setAttribute("aria-current", "page");
+      button.addEventListener("click", () => { page = index; render(); window.scrollTo({top: 0, behavior: "smooth"}); });
+      pager.append(button);
+    }
+  }
+
+  search.addEventListener("input", () => { page = 1; render(); });
+  status.addEventListener("change", () => { page = 1; render(); });
+  render();
+</script>
+</body>
+</html>

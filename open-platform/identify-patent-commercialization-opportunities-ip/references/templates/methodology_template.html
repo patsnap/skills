@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TOPIC}} — Methodology and Limitations</title>
+  <style>
+    :root {
+      --paper: #ffffff;
+      --canvas: #eef2f6;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --navy: #173b67;
+      --teal: #18756f;
+      --amber: #8a6419;
+      --red: #9b3f3a;
+      --line: #d7dee8;
+      --panel: #f7f9fc;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--canvas); font: 15px/1.6 var(--sans); }
+    a { color: var(--navy); }
+    .shell { max-width: 1080px; min-height: 100vh; margin: 0 auto; background: var(--paper); }
+    nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px 34px; border-bottom: 1px solid var(--line); }
+    .brand { color: var(--navy); font-weight: 750; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 15px; }
+    .nav-links a { font-size: 13px; text-decoration: none; }
+    header { padding: 34px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--teal); font-size: 12px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 6px 0; color: var(--navy); font-size: clamp(28px, 4vw, 40px); line-height: 1.15; }
+    .meta { color: var(--muted); font-size: 13px; }
+    main { display: grid; gap: 18px; padding: 26px 34px 54px; }
+    section { padding: 20px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 12px; color: var(--navy); font-size: 20px; }
+    h3 { margin: 17px 0 7px; font-size: 15px; }
+    p, ul { margin-top: 7px; }
+    .code { overflow-x: auto; padding: 14px; color: #14334f; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; white-space: pre-wrap; word-break: break-word; font: 12px/1.6 var(--mono); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    caption { padding: 9px 11px; color: var(--muted); text-align: left; font-weight: 700; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--navy); background: var(--panel); }
+    tr:last-child td { border-bottom: 0; }
+    .state { font-weight: 700; }
+    .pass { color: var(--teal); }
+    .warn { color: var(--amber); }
+    .fail { color: var(--red); }
+    .notice { padding: 13px 15px; border-left: 4px solid var(--amber); background: #fffaf0; }
+    footer { padding: 22px 34px; color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; }
+    @media (max-width: 650px) { nav, header, main, footer { padding-left: 18px; padding-right: 18px; } }
+    @media print {
+      body, .shell { background: white; }
+      nav { display: none; }
+      section { break-inside: avoid; }
+      thead { display: table-header-group; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <nav aria-label="Report pages">
+    <span class="brand">{{TOPIC}} · Patent Opportunity Assessment</span>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="patents.html">Patents</a>
+      <a href="subfields.html">Subfields</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="methodology.html" aria-current="page">Methodology</a>
+    </div>
+  </nav>
+  <header>
+    <div class="eyebrow">Methodology</div>
+    <h1>Search, metrics, scoring, and limitations</h1>
+    <p class="meta">Search version {{SEARCH_VERSION}} · Executed {{SEARCH_DATE}} · Cutoff {{CUTOFF_DATE}} · Count unit {{COUNT_UNIT}}</p>
+  </header>
+  <main>
+    <section>
+      <h2>Scope and decision question</h2>
+      <p>{{SCOPE_AND_DECISION_HTML}}</p>
+    </section>
+    <section>
+      <h2>Search strategy</h2>
+      <p>{{SEARCH_STRATEGY_DESC}}</p>
+      <h3>Frozen query</h3>
+      <div class="code">{{SEARCH_QUERY}}</div>
+      <h3>Version history</h3>
+      <div class="table-wrap"><table><caption>Search revisions</caption><thead><tr><th>Version</th><th>Date</th><th>Change</th><th>Reason</th></tr></thead><tbody>{{SEARCH_VERSION_ROWS}}</tbody></table></div>
+    </section>
+    <section>
+      <h2>Metric definitions</h2>
+      <div class="table-wrap"><table><caption>Population and bucket definitions</caption><thead><tr><th>Metric</th><th>Scope</th><th>Collection mode</th><th>State</th><th>Source</th></tr></thead><tbody>{{METRIC_DEFINITION_ROWS}}</tbody></table></div>
+      <p class="notice">Representative patents are used only for technical illustration and evidence mapping. They are never used as a population denominator or trend/distribution proxy.</p>
+    </section>
+    <section>
+      <h2>Publication lag and incomplete data</h2>
+      <p>{{PUBLICATION_LAG_HTML}}</p>
+      <p>{{MISSING_DATA_HTML}}</p>
+    </section>
+    <section>
+      <h2>Unavailable or partial aggregations</h2>
+      <div class="table-wrap"><table><caption>Omitted or qualified outputs</caption><thead><tr><th>Metric/chart</th><th>State</th><th>Reason</th><th>Impact</th><th>Next step</th></tr></thead><tbody>{{UNAVAILABLE_METRIC_ROWS}}</tbody></table></div>
+    </section>
+    <section>
+      <h2>Scoring rubric</h2>
+      <p>{{SCORING_METHOD_HTML}}</p>
+      <div class="table-wrap"><table><caption>Dimensions, evidence, and missing weight</caption><thead><tr><th>Dimension</th><th>Weight</th><th>State</th><th>Score</th><th>Evidence/limitations</th></tr></thead><tbody>{{SCORING_ROWS}}</tbody></table></div>
+    </section>
+    <section>
+      <h2>Quality check</h2>
+      <div class="table-wrap"><table><caption>Release gates</caption><thead><tr><th>Gate</th><th>State</th><th>Evidence</th></tr></thead><tbody>{{QUALITY_CHECK_ROWS}}</tbody></table></div>
+    </section>
+    <section>
+      <h2>Known limitations</h2>
+      <ul>{{LIMITATIONS_LIST}}</ul>
+    </section>
+    <section>
+      <h2>Disclaimer</h2>
+      <p>This assessment uses public patent information and identified supplemental evidence. It is not legal advice, an FTO opinion, an investment recommendation, a market study, a regulatory assessment, or a substitute for technical and commercial diligence.</p>
+    </section>
+  </main>
+  <footer>PatSnap connector use, live tool names, requests, count semantics, and limitations are preserved in intermediate_data.json.</footer>
+</div>
+</body>
+</html>

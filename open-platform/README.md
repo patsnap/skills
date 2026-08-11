@@ -1,6 +1,6 @@
 # PatSnap Open Platform Skills
 
-`open-platform/` contains the Skill Hub / Open Platform workflows imported from the 2026-06-30, 2026-07-03 and 2026-07-09 batches. These skills are mostly Chinese-first, scenario-oriented workflows built around PatSnap/Zhihuiya data, patent intelligence, R&D analysis, FTO support, technology transfer, biomedical intelligence, and vertical industry reports.
+`open-platform/` contains the Skill Hub / Open Platform workflows imported from the 2026-06-30, 2026-07-03, 2026-07-09 and 2026-08-11 batches. These skills are mostly Chinese-first, scenario-oriented workflows built around PatSnap/Zhihuiya data, patent intelligence, R&D analysis, FTO support, technology transfer, biomedical intelligence, and vertical industry reports.
 
 Install all Open Platform skills:
 
@@ -18,10 +18,11 @@ npx skills add patsnap/skills/tree/main/open-platform/patent-quality-review-pro
 
 | Type | Count | Notes |
 |---|---:|---|
-| Total skill directories | 119 | Skill Hub / Open Platform workflow skills normalized into this directory. |
-| Engineering / R&D source category | 33 | Technical reports, market assessment, TRIZ workflows, industry intelligence, due diligence, forecasting, research proposals, labeling, alliance scouting and carbon-credit rating. |
-| IP source category | 61 | Patent search, FTO, claims review, patent quality, portfolio, panorama, risk, transfer, lifecycle, high-value package and asset workflows. |
-| Life Sciences source category | 7 | ADC patent monitoring, generic-drug scouting, antibody FTO, target discovery, pharma conference insights, project initiation and small-RNA patent landscapes. |
+| Total skill directories | 178 | Skill Hub / Open Platform workflow skills normalized into this directory. |
+| Imports before 2026-08-11 | 119 | Earlier Skill Hub / Open Platform workflow batches. |
+| 2026-08-11 Engineering / R&D source category | 15 | Technical intelligence, invention disclosure, TRIZ, R&D direction, hardware diagnosis and innovation workflows. |
+| 2026-08-11 IP source category | 38 | Patent search, landscape, FTO, claims review, portfolio, commercialization and litigation-risk workflows. |
+| 2026-08-11 Life Sciences source category | 6 | Target-drug BD, life-sciences patent reporting, small-RNA landscapes, ADC monitoring and antibody FTO workflows. |
 
 ## 2026-07-03 Additions
 
@@ -46,6 +47,10 @@ The 2026-07-09 batch refreshed 11 Chinese-localized Open Platform skills and add
 ## Additional skill-20 Batch
 
 The `skill-20` batch adds 20 biomedical, biopharma, drug-development, patent-drafting, and experiment-costing workflows under this directory.
+
+## 2026-08-11 Additions
+
+The 2026-08-11 batch adds 59 complete skill packages under this directory: 15 Engineering / R&D, 38 IP, and 6 Life Sciences packages. Each package retains its `SKILL.md` and any bundled scripts, references, assets, schemas, prompts, or agent metadata required by its workflow.
 
 ## Skill Groups
 

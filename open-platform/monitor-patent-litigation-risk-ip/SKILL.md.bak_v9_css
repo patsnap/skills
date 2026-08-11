@@ -1,0 +1,557 @@
+---
+name: monitor-patent-litigation-risk-ip-v9-historical
+description: Localized historical v9 report and CSS specification retained solely because it exists in the frozen source package. Do not load or use this file as an active skill; follow SKILL.md for the authoritative v10 workflow.
+---
+
+# Historical v9 Patent-Litigation Monitoring Specification
+
+> Status: retained source artifact. This file preserves and localizes the source package's prior v9 workflow and visual contract. It is not a second executable skill. The active `SKILL.md` controls tool mappings, evidence standards, schema, security, and report production.
+
+## Historical trigger and exclusions
+
+The v9 artifact was designed for one to five named applicants or assignees and requested:
+
+- litigation-linked patent screening;
+- INPADOC family expansion;
+- proceeding analysis;
+- inventor activity over the prior three years; and
+- a single HTML report with structured evidence attachments.
+
+It excluded standalone novelty, inventive-step, invalidity, FTO, and open-ended technology research. Those boundaries remain conceptually useful, but active routing must follow `SKILL.md`.
+
+## Historical input contract
+
+| Field | Source v9 meaning | Localized interpretation |
+|---|---|---|
+| `assignees` | One to five applicant names | First named party is the target; normalize aliases and legal entities |
+| `inventor_lookback_years` | Default 3 | Descriptive filing lookback, not a predictive window |
+| `family_scope` | Default INPADOC | State definition and de-duplication method |
+| `max_litigated_per_assignee` | Default 30 | Disclose truncation and distinguish matches from reviewed records |
+
+## Historical workflow preserved
+
+### Step 1 — Initial litigation-patent screening
+
+The source v9 required two routes:
+
+1. patent-database search by named assignee with litigation-related legal events; and
+2. public reporting or web discovery by party name and litigation terms.
+
+The localized interpretation requires current verified PatSnap connector names and primary-source case verification. A database event or news mention is a lead only.
+
+Extract patent identifiers using rules appropriate to the relevant jurisdiction. The source's ZL/CN-only examples are not universal. Preserve source identifiers, normalize separately, and verify every publication or application through patent records.
+
+Merge results without losing provenance. A result may be `patent data`, `public source`, `both`, or `user supplied`. Do not call it an asserted patent until a proceeding source supports the link.
+
+### Step 2 — Family expansion and patent analysis
+
+For each verified or material candidate patent, retrieve:
+
+- bibliography;
+- family members;
+- legal status and material events;
+- claims and translations;
+- technology problem, means, and effect;
+- attached image when safely available; and
+- a stable public patent locator.
+
+The source required one CN, US, and EP representative claim. Localized v9 instead selects representative family members by case forum, material markets, claim availability, and business context. Never transfer assertion status from one family member to another.
+
+Image handling must validate media, reject unsafe URLs, avoid expiring signed links, and tolerate missing images. Store a safe base64 payload only when policy and size permit.
+
+### Step 3 — Litigation timeline
+
+For every event preserve:
+
+- date;
+- title and description;
+- event type;
+- related patent numbers and titles;
+- case identifier and tribunal;
+- target role;
+- disposition type when applicable; and
+- source locator and evidence state.
+
+Sort chronologically. Do not attach unrelated patents to a procedural event.
+
+### Step 4 — Proceeding deep dive
+
+The source required plaintiff, defendant, case number, court, filing date, current status, disputed issue, defense, outcome, and key events. Localized v9 additionally distinguishes allegations, procedural rulings, settlements, judgments, appeals, and inference.
+
+Every material fact requires a stable source ID. Primary tribunal records control when available.
+
+### Step 5 — Core inventor extension
+
+Aggregate inventors from the reviewed families, select up to ten using a transparent method, and review the configured recent period. Preserve annual counts, classifications, representative patents, and three to five technology themes.
+
+Do not infer employee movement, intent, litigation likelihood, or product strategy from filing activity alone.
+
+### Step 6 — Three-dimensional synthesis
+
+The historical dimensions were:
+
+1. geographic risk;
+2. litigation alert; and
+3. technology trend forecast.
+
+Localized v9 uses evidence-qualified geographic exposure, a procedurally accurate litigation alert, and descriptive technology trends with explicitly labeled scenarios. Family size and inventor counts are not risk scores.
+
+## Historical report contract
+
+The v9 artifact specified a single continuous report. Preserve these content modules:
+
+0. executive summary;
+1. overview and party-to-patent mapping;
+2. family and patent basics;
+3. litigation timeline;
+4. asserted-patent detail cards;
+5. proceeding analysis;
+6. core inventor activity;
+7. three-dimensional conclusions; and
+8. summary list and sources.
+
+The active v10 groups these modules into seven target-centric navigation tabs. Use the v10 order and naming in new outputs.
+
+## Localized historical visual system
+
+The source v9 used green accents, emoji, remote Chart.js, two-column cards, modals, color-coded risks, and China-platform patent links. These implementation choices are retired.
+
+For any historical reproduction:
+
+- use a neutral paper surface and navy/slate hierarchy;
+- use system fonts;
+- identify states in text, not color alone;
+- use semantic headings, tables, and captions;
+- make wide tables horizontally scrollable;
+- include print CSS and repeated table headers;
+- avoid modal-only access to claims;
+- avoid remote scripts, fonts, analytics, and CDNs;
+- replace China-platform URLs with verified global PatSnap marketplace or stable public patent links;
+- escape all external content and reject unsafe URLs; and
+- do not include secrets, local paths, internal IDs, or expiring signed URLs.
+
+## Historical executive summary
+
+Place the executive summary immediately after the title. It must state:
+
+- target and comparison parties;
+- cutoff and scope;
+- verified proceeding and asserted-patent counts;
+- highest-priority verified developments;
+- evidence gaps;
+- immediate monitoring actions; and
+- a legal-advice limitation.
+
+Do not place invented statistics in a visual panel. Every statistic must reconcile with the structured record.
+
+## Historical overview and mapping
+
+Preserve:
+
+- named-party count;
+- candidate patent count;
+- verified asserted patent count;
+- family-member count;
+- verified case count; and
+- target role by case and patent.
+
+Use separate labels for each count. Do not combine search matches, reviewed records, publications, families, and proceedings.
+
+## Historical family section
+
+For each reviewed family show:
+
+- asserted member;
+- relationship among members;
+- jurisdiction;
+- application and publication dates;
+- status and as-of date;
+- representative claim comparison;
+- technical problem, means, and effect;
+- source-language and translation provenance; and
+- evidence gaps.
+
+## Historical timeline section
+
+Each timeline node must show date, case, verified event, relevant patents or claims, source, and evidence state. Avoid icons as the only event classification.
+
+## Historical patent detail cards
+
+Each card must show:
+
+- publication number and stable link;
+- title;
+- target role;
+- evidence-qualified state;
+- legal status and status date;
+- case links;
+- asserted claims when public;
+- technology summary;
+- safe image or `Image not available`;
+- family table; and
+- patent and proceeding sources.
+
+Do not mark an item `high risk` merely because the target is a defendant or a case is pending. Use the active v10 risk vocabulary and explain the factual basis.
+
+## Historical case section
+
+For each proceeding show parties, target role, tribunal, case number, filed date, verified-as-of date, asserted patents and claims, allegations, defenses, procedural posture, disposition, appeal, timeline, operational triggers, and primary sources.
+
+## Historical inventor section
+
+Show identity confidence, annual filing counts, classifications, technology themes, representative publications, evidence sources, and limitations. Replace interactive charts with accessible tables or static SVG only when useful.
+
+## Historical conclusion section
+
+For each conclusion state:
+
+- evidence relied on;
+- inference made;
+- uncertainty;
+- monitoring trigger;
+- recommended owner and action; and
+- condition that would change the assessment.
+
+## Historical summary list
+
+End with a machine-reconcilable table of cases, asserted patents, family members, target roles, evidence state, status date, and source IDs.
+
+## Counting rules
+
+The historical source required clear counting semantics. Retain that requirement and distinguish:
+
+- source-reported matches;
+- returned records;
+- reviewed records;
+- unique publications;
+- candidate litigation-linked patents;
+- verified asserted patents;
+- patent families;
+- family members;
+- proceedings; and
+- timeline events.
+
+State filters, date range, jurisdictions, family definition, pagination, cap, and de-duplication method.
+
+## Source rules
+
+Use stable source IDs and precise locators. Record connector, tool, query, filters, access date, coverage, and limitation. Court and tribunal facts require primary sources when available. Secondary sources may explain context but must not silently replace the official record.
+
+## Retained script relationships
+
+- `scripts/config.py` contains current English/global defaults and semantics.
+- `scripts/orchestrator.py` creates and validates the current structured record.
+- `scripts/render_report.py` is an optional current safe renderer, not the original v9 renderer.
+- `scripts/tests/smoke.py` verifies the current renderer and schema.
+- Active operational instructions reside only in `SKILL.md`.
+
+## Historical failure behavior
+
+- Missing primary records: retain the lead and lower the evidence state.
+- Conflicting case facts: show both and identify the unresolved conflict.
+- Missing patent image: omit it without blocking analysis.
+- Missing claims: do not infer claim scope.
+- Unavailable connector: document the missing coverage; never simulate results.
+- Ambiguous party: exclude or isolate until resolved.
+- Truncated result set: disclose the cap and avoid total-count claims.
+- No verified proceedings: report the negative result and search limits.
+
+## Historical acceptance checklist
+
+- All content is target-centric.
+- All material facts have source IDs.
+- Case roles and patent links are verified.
+- Allegations and holdings are distinct.
+- Family and status dates are explicit.
+- Counts reconcile and use one stated family rule.
+- Inventor activity is not treated as a litigation predictor.
+- Report states cutoff, coverage, limitations, and counsel boundary.
+- HTML is offline, safe, accessible, responsive, and printable.
+- No Zhihuiya link, China-only assumption, remote CDN, secret, placeholder, or fabricated identifier remains.
+- Active use is routed to `SKILL.md`.
+
+## Historical v9 field inventory
+
+This inventory preserves the content topology embedded in the original v9 HTML examples while applying the active evidence and localization rules.
+
+### Overview fields
+
+- `assignees`: historical named-party list; localized output uses target plus comparison parties.
+- `assignee_count`: count of named parties.
+- `litigated_count`: historical combined count; localized output splits candidate and verified asserted patents.
+- `family_count`: family-member count under the stated family rule.
+- `case_count`: verified proceeding count.
+- `family_scope`: family definition.
+- `inventor_lookback_years`: descriptive lookback.
+- `assignee_patent_map`: party, role, patent, case, and source edges.
+
+### Historical patent-card fields
+
+- `pn`: verified publication number.
+- `url`: stable global PatSnap or public patent HTTP(S) link.
+- `title`: verified source title.
+- `apply_date`: filing date, labeled as such.
+- `pub_date`: publication date.
+- `legal_status`: named-source status label.
+- `risk_type`: retired categorical color field; use evidence-qualified text state.
+- `abstract_image_b64`: validated raw image payload.
+- `abstract_image_url`: safe fallback only.
+- `tech_problem`: technical problem from patent evidence.
+- `tech_means`: disclosed technical means.
+- `tech_effect`: disclosed technical effect.
+- `confirm_points`: open evidence questions.
+- `claims`: exact or provenance-labeled claim text.
+- `family_members`: member-specific family records.
+- `target_role`: localized required field.
+- `evidence_state`: localized required field.
+- `case_ids`: localized stable case references.
+- `sources`: localized evidence locators.
+
+### Historical family-member fields
+
+- `pn`: publication number.
+- `url`: safe stable patent link.
+- `jurisdiction`: patent authority.
+- `legal_status`: member-specific status.
+- `apply_date`: filing date.
+- `legal_status_as_of`: localized status date.
+- `relationship_type`: localized family relationship.
+- `source`: localized evidence locator.
+
+### Historical family-basic fields
+
+- `geo`: jurisdiction distributions.
+- `ipc`: classification distributions.
+- `legal_detail`: dated legal events.
+- `geo_analysis`: qualified geographic narrative.
+- `claim_comparison`: representative claim review.
+- `counting_rule`: localized family and de-duplication rule.
+
+### Historical claim-comparison fields
+
+- `pn`: representative publication.
+- `authority`: jurisdiction.
+- `protection_scope`: qualified scope summary.
+- `protection_focus`: principal limitations and emphasis.
+- `tech_coverage_notes`: overlap and divergence.
+- `claim_number`: localized exact claim number.
+- `source_language`: localized authoritative language.
+- `translation_provenance`: localized translation source.
+- `source`: localized exact claim locator.
+
+### Historical geography fields
+
+- `authority`: jurisdiction.
+- `family_count`: members under the family rule.
+- `active_count`: source-labeled active members.
+- `pending_count`: source-labeled pending members.
+- `risk_level`: retired color field; localized evidence-qualified state.
+- `reason`: evidence and uncertainty.
+- `status_as_of`: localized verification date.
+- `business_context`: localized user-supplied market context.
+
+### Historical legal-detail fields
+
+- `pn`: publication number.
+- `authority`: jurisdiction.
+- `legal_status`: named-source status.
+- `grant_date`: verified grant date.
+- `expiry_date`: source-reported or calculated date with method.
+- `key_events`: dated status or examination events.
+- `status_as_of`: localized verification date.
+- `source`: localized patent-register locator.
+
+### Historical timeline fields
+
+- `date`: event date.
+- `title`: neutral event label.
+- `description`: evidence-backed description.
+- `event_type`: filing, order, judgment, appeal, settlement, or other.
+- `patents`: event-specific patents.
+- `amount`: verified monetary amount and currency context when material.
+- `court`: tribunal.
+- `case_no`: official case number.
+- `result`: accurate event result.
+- `result_type`: procedural or merits classification.
+- `case_id`: localized stable case identifier.
+- `target_role`: localized target role.
+- `source`: localized primary locator.
+- `evidence_state`: localized verification state.
+
+### Historical case fields
+
+- `title`: proceeding name.
+- `plaintiff`: verified plaintiff or complainant.
+- `defendant`: verified defendant or respondent.
+- `docket`: official proceeding number.
+- `patents`: verified asserted patents.
+- `issue`: allegations or disputed issues, labeled accurately.
+- `defense`: pleaded or reported defenses.
+- `status`: current procedural posture.
+- `timeline`: case-specific events.
+- `sources`: evidence locators.
+- `target_role`: localized role.
+- `asserted_claims`: localized public claim-level evidence.
+- `verified_as_of`: localized currentness field.
+- `disposition`: localized outcome field.
+- `appeal`: localized appeal field.
+- `evidence_state`: localized verification state.
+
+### Historical inventor fields
+
+- `name`: normalized inventor name.
+- `recent_count`: recent filings under the stated rule.
+- `top_ipc`: top source classifications.
+- `assignee_change`: retired unsupported inference unless verified independently.
+- `note`: descriptive evidence note.
+- `yearly_stats`: year and count records.
+- `tech_focus_list`: technology theme, count, representative patent, and link.
+- `identity_confidence`: localized disambiguation confidence.
+- `counting_rule`: localized publication/application/family basis.
+- `source`: localized search and patent evidence.
+- `cutoff_date`: localized currentness field.
+
+### Historical conclusion fields
+
+- `geographic_risk`: retired universal prose field; use jurisdiction records.
+- `geo_litigation_risk`: jurisdiction, state, reason, source, trigger, and action.
+- `litigation_alert`: concise current monitoring alert.
+- `litigation_alert_summary`: evidence-backed detailed alert.
+- `trend_forecast`: observation plus qualified scenarios.
+- `actions`: localized action register.
+- `assumptions`: localized explicit assumptions.
+- `limitations`: localized evidence and coverage limits.
+
+### Historical source fields
+
+- `id`: stable source identifier.
+- `label`: human-readable source name.
+- `ref`: stable locator.
+- `type`: localized primary, patent, or secondary classification.
+- `issued_by`: localized issuing body.
+- `published_at`: localized publication or filing date.
+- `accessed_at`: localized access date.
+- `language`: localized source language.
+- `translation_provenance`: localized translation method.
+- `coverage`: localized supported proposition.
+- `limitation`: localized unsupported proposition or access limit.
+
+## Historical v9 chapter acceptance details
+
+### Chapter 0 — Executive summary
+
+- Identify the target first.
+- State cutoff and scope.
+- Reconcile headline counts.
+- Identify verified developments.
+- Identify unresolved leads.
+- State immediate actions.
+- State the legal boundary.
+
+### Chapter 1 — Overview
+
+- Show target and comparison parties.
+- Show alias coverage.
+- Show target roles.
+- Separate candidate and verified patents.
+- Separate family members and families.
+- Separate proceedings and events.
+- Explain review caps.
+
+### Chapter 2 — Family basics
+
+- State family definition.
+- Show asserted member.
+- Show related members.
+- Show member-specific status.
+- Show as-of dates.
+- Show representative claims.
+- Show translation provenance.
+- Show geographic limits.
+
+### Chapter 3 — Timeline
+
+- Use chronological order.
+- Include case ID.
+- Include relevant patent number.
+- Include event type.
+- Include target role.
+- Include primary source.
+- Include evidence state.
+- Preserve uncertain dates.
+
+### Chapter 4 — Patent details
+
+- Use publication number as visible identifier.
+- Link only to a safe stable destination.
+- Show title and status date.
+- Show target role and linked cases.
+- Show asserted claims only when verified.
+- Show technical problem, means, and effect.
+- Show image only when safe.
+- Show family table.
+- Show sources and open questions.
+
+### Chapter 5 — Case deep dives
+
+- Use official caption and number.
+- Identify tribunal and jurisdiction.
+- Identify all material parties.
+- Label allegations.
+- Label defenses.
+- Describe procedural posture.
+- Distinguish orders and holdings.
+- Describe disposition accurately.
+- Describe appeal status.
+- Provide monitoring triggers.
+
+### Chapter 6 — Inventors
+
+- State identity method.
+- State lookback.
+- State counting rule.
+- Show yearly counts.
+- Show classifications.
+- Show technology themes.
+- Show representative patents.
+- State descriptive limitation.
+
+### Chapter 7 — Conclusions
+
+- Cite geographic evidence.
+- Cite case posture.
+- Cite patent and claim evidence.
+- Cite inventor evidence.
+- Separate fact and inference.
+- State uncertainty.
+- Provide trigger and action.
+- Avoid outcome prediction.
+
+### Chapter 8 — Summary list
+
+- Reconcile every case.
+- Reconcile every asserted patent.
+- Reconcile every family member.
+- Reconcile every target role.
+- Reconcile every evidence state.
+- Reconcile every source ID.
+- State cutoff and family rule.
+
+## Historical v9 presentation tokens
+
+Use these semantic roles rather than copying the source's decorative values:
+
+- `paper`: white report surface.
+- `canvas`: cool neutral page background.
+- `ink`: high-contrast charcoal text.
+- `muted`: secondary slate text.
+- `navy`: primary heading and navigation accent.
+- `blue`: link and evidence accent.
+- `line`: neutral table and card border.
+- `panel`: subtle metadata background.
+- `elevated`: muted red text plus explicit label.
+- `moderate`: muted amber text plus explicit label.
+- `lower_on_reviewed_evidence`: muted green text plus explicit label.
+- `not_assessable`: neutral gray text plus explicit label.
+
+Use responsive one-column cards on narrow screens, scroll wrappers for wide tables, visible keyboard focus, semantic buttons only when interaction is necessary, and complete print rendering without hidden substantive content.

@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InventorMobilitySignalReport",
+  "description": "Reviewed public-patent signals. This schema must not be used to assert employment, resignation, misconduct, confidentiality breach, or legal risk.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["company", "report_date", "monitor_start", "monitor_end", "methodology", "summary", "inventors"],
+  "properties": {
+    "company": { "type": "string", "minLength": 1, "description": "Normalized focal organization" },
+    "report_date": { "type": "string", "format": "date" },
+    "monitor_start": { "type": "string", "format": "date" },
+    "monitor_end": { "type": "string", "format": "date" },
+    "tech_domain": { "type": "string", "description": "Scoped technology definition" },
+    "jurisdictions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cutoff_date", "counting_unit", "coverage", "identity_policy", "rating_policy"],
+      "properties": {
+        "cutoff_date": { "type": "string", "format": "date" },
+        "counting_unit": { "type": "string" },
+        "coverage": { "type": "string" },
+        "identity_policy": { "type": "string" },
+        "rating_policy": { "type": "string" },
+        "limitations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["priority_review", "review", "watch", "insufficient_evidence"],
+      "properties": {
+        "priority_review": { "type": "integer", "minimum": 0 },
+        "review": { "type": "integer", "minimum": 0 },
+        "watch": { "type": "integer", "minimum": 0 },
+        "insufficient_evidence": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "inventors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["display_name", "identity_status", "signal_level", "rationale", "source_org_patents", "later_patents"],
+        "properties": {
+          "display_name": { "type": "string", "minLength": 1 },
+          "identity_status": { "type": "string", "enum": ["resolved", "probable", "ambiguous", "unresolved"] },
+          "signal_level": { "type": "string", "enum": ["priority_review", "review", "watch", "insufficient_evidence"] },
+          "observed_organizations": { "type": "array", "items": { "type": "string" } },
+          "rationale": { "type": "string" },
+          "counterevidence": { "type": "string" },
+          "recommended_review": { "type": "string" },
+          "source_org_patents": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/patentSignal" }
+          },
+          "later_patents": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/patentSignal" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "patentSignal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publication_number", "title", "applicant", "relevant_date", "url", "technical_relevance"],
+      "properties": {
+        "publication_number": { "type": "string" },
+        "title": { "type": "string" },
+        "applicant": { "type": "string" },
+        "relevant_date": { "type": "string" },
+        "family_id": { "type": "string" },
+        "inventor_name_as_published": { "type": "string" },
+        "url": { "type": "string" },
+        "technical_relevance": { "type": "string" },
+        "evidence_notes": { "type": "string" }
+      }
+    }
+  }
+}

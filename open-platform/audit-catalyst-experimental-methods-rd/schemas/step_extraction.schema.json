@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalyst Preparation Step Extraction",
+  "type": "object",
+  "required": ["step_id", "operation", "raw_text", "conditions", "missing_fields"],
+  "properties": {
+    "step_id": {"type": "string"},
+    "operation": {"type": "string"},
+    "raw_text": {"type": "string"},
+    "conditions": {"type": "object"},
+    "missing_fields": {"type": "array", "items": {"type": "string"}}
+  }
+}

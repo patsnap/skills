@@ -1,0 +1,20 @@
+version: 0.5.0
+dimensions:
+  preparation_executability:
+    label: Preparation executability
+    purpose: Determine whether a trained researcher can execute and reproduce the stated catalyst preparation method.
+  variable_attribution:
+    label: Variable design and attribution
+    purpose: Determine whether sample differences are controlled and outcomes can be attributed to the intended variable.
+  controls_and_baselines:
+    label: Controls and baselines
+    purpose: Determine whether blank, support-only, unmodified, literature, commercial, or other relevant comparators are specified.
+  evaluation_reliability:
+    label: Evaluation conditions and data reliability
+    purpose: Determine whether testing, calibration, replication, uncertainty, and balance controls are sufficiently specified.
+  claim_validation_linkage:
+    label: Claim-to-evidence linkage
+    purpose: Determine whether every performance, structural, or mechanistic claim has an appropriate validation plan.
+  safety_and_operability:
+    label: Safety and operability
+    purpose: Identify missing hazard, containment, pressure, gas, thermal, waste, and stop-work controls for specialist review.

@@ -43,19 +43,19 @@ skills/
 | IP / Patent Intelligence | `ip/` | 2 | Free patent-search skills in English and Chinese. |
 | Life Sciences | `life-sciences/` | 12 | Original pharma intelligence skills and Chinese variants. |
 | Materials | `materials/` | 10 | Includes materials explanation, technology scouting, problem solving, product translation and alloy composition search skills. |
-| Open Platform | `open-platform/` | 119 | Skill Hub imported workflows for IP, R&D, engineering, life sciences, reports, FTO, patent operations, technology transfer and vertical intelligence. |
+| Open Platform | `open-platform/` | 178 | Skill Hub imported workflows for IP, R&D, engineering, life sciences, reports, FTO, patent operations, technology transfer and vertical intelligence. |
 
 ## Open Platform Imports
 
-The 2026-06-30, 2026-07-03 and 2026-07-09 Skill Hub batches have been normalized into the top-level `open-platform/` directory instead of being mixed into the core domain directories.
+The 2026-06-30, 2026-07-03, 2026-07-09 and 2026-08-11 Skill Hub batches have been normalized into the top-level `open-platform/` directory instead of being mixed into the core domain directories.
 
 | Domain | Imported skills |
 |---|---:|
-| Engineering / R&D source category | 33 |
-| IP source category | 61 |
-| Life Sciences source category | 7 |
-| Additional skill-20 batch | 20 |
-| Total imported skill directories | 119 |
+| Imports before 2026-08-11 | 119 |
+| 2026-08-11 Engineering / R&D source category | 15 |
+| 2026-08-11 IP source category | 38 |
+| 2026-08-11 Life Sciences source category | 6 |
+| Total imported skill directories | 178 |
 
 ## Core Skills
 

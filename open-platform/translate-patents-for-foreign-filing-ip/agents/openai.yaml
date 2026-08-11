@@ -1,0 +1,7 @@
+interface:
+  display_name: "Patent Filing Translation"
+  short_description: "Translate Chinese patent texts for EP, US, JP, or KR filing support"
+  default_prompt: "Use $translate-patents-for-foreign-filing-ip to translate my Chinese patent application for an EP, US, JP, or KR filing, preserve source support, and provide a terminology and translation-risk review."
+
+policy:
+  allow_implicit_invocation: true
