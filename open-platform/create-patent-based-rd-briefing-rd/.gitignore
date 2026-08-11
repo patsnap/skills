@@ -1,0 +1,43 @@
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Generated reports, workbooks, and temporary data
+*.xlsx
+*.html
+*_tagged.xlsx
+*_report_*.html
+test_data/
+output/
+
+# Keep the source-provided example configuration topology
+!config/BIPV_*.py
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# Logs and local secrets
+*.log
+.env
+*.key
+*.pem
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/

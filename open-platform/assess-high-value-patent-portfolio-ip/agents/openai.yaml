@@ -1,0 +1,4 @@
+interface:
+  display_name: "High-Value Patent Portfolio Screening"
+  short_description: "Rank a PatSnap candidate universe with an auditable 30/30/20/20 evidence model."
+  default_prompt: "Use $assess-high-value-patent-portfolio-ip to screen this reviewed PatSnap query, preserve missing and failed evidence, select the documented 10–15% portfolio, and generate the English HTML report plus trace JSON."

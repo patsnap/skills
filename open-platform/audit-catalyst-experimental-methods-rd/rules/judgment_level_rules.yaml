@@ -1,0 +1,16 @@
+version: 0.5.0
+issue_levels:
+  HIGH:
+    label: Critical issue
+    definition: Without correction, the method may be unsafe, non-executable, non-reproducible, non-comparable, or unable to support a core conclusion.
+  MEDIUM:
+    label: Material issue
+    definition: The omission materially weakens credibility, reproducibility, attribution, or reviewability but may not invalidate the entire method.
+  LOW:
+    label: Documentation issue
+    definition: The omission mainly affects operational detail, traceability, reporting consistency, or future record quality.
+judgments:
+  SUFFICIENT: Sufficient
+  PARTIAL: Partially specified—additional detail required
+  INSUFFICIENT: Insufficient to support the requirement
+  NOT_APPLICABLE: Not applicable

@@ -1,0 +1,9 @@
+interface:
+  display_name: "Underused Patent Portfolio Activation"
+  short_description: "Assess underused patent assets and build evidence-backed activation options"
+  brand_color: "#17365D"
+  default_prompt: "Use $reactivate-underused-patents-ip to review my underused patent portfolio and create a decision-ready HTML report with evidence states, portfolio segments, candidate counterparties, diligence gates, and a 90-day action plan."
+
+policy:
+  allow_implicit_invocation: true
+

@@ -1,0 +1,29 @@
+{
+  "name": "assess-target-drug-bd-opportunities-ls",
+  "version": "1.0.0",
+  "description": "Integrate target biology, pipeline, clinical, patent, scientific, and transaction evidence for target or asset R&D and business-development decisions.",
+  "author": "",
+  "alias": "",
+  "salt": "",
+  "exclude_paths": [],
+  "runtime": {
+    "python_version": "3.12",
+    "dependencies": [],
+    "isolated_env": false
+  },
+  "credentials": [],
+  "mcp_dependencies": [],
+  "tests": [
+    "target_normalization",
+    "pipeline_pagination",
+    "patent_coverage_boundary",
+    "go_no_go_evidence"
+  ],
+  "outputs": [
+    {
+      "name": "target_initiation_report",
+      "format": "html",
+      "description": "Evidence-backed target and drug BD assessment report"
+    }
+  ]
+}

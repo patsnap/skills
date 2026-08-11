@@ -1,0 +1,122 @@
+version: 0.5.0
+issues:
+  PREP_MISSING_REAGENT_AMOUNT:
+    dimension: preparation_executability
+    level: HIGH
+    title: Critical reagent amount is not specified
+    trigger: A preparation reagent lacks mass, volume, concentration, or molar amount.
+    recommendation: Specify amount, concentration, purity or grade, and relevant uncertainty.
+  PREP_MISSING_SOLVENT_VOLUME:
+    dimension: preparation_executability
+    level: MEDIUM
+    title: Solvent volume or ratio is not specified
+    trigger: A dissolution, dispersion, or wash operation lacks solvent volume or ratio.
+    recommendation: Specify solvent identity, grade, volume or ratio, wash count, and acceptance endpoint.
+  PREP_MISSING_STIRRING_CONDITION:
+    dimension: preparation_executability
+    level: LOW
+    title: Mixing condition is incomplete
+    trigger: Mixing lacks duration or, where outcome-sensitive, speed, power, geometry, or mode.
+    recommendation: Add duration and the outcome-relevant mixing conditions.
+  PREP_MISSING_HYDROTHERMAL_FILLING:
+    dimension: preparation_executability
+    level: LOW
+    title: Autoclave volume or fill fraction is not specified
+    trigger: A hydrothermal step has temperature and duration but lacks vessel volume or fill fraction.
+    recommendation: Specify vessel and liner material, rated volume, charge volume, fill fraction, and applicable pressure controls.
+  PREP_MISSING_CALCINATION_RAMP:
+    dimension: preparation_executability
+    level: LOW
+    title: Calcination ramp is not specified
+    trigger: Calcination has temperature and duration but lacks ramp or cooling program.
+    recommendation: Specify heating rate, dwell, atmosphere and flow, and cooling method.
+  PREP_MISSING_REDUCTION_FLOW:
+    dimension: preparation_executability
+    level: MEDIUM
+    title: Reduction flow or space velocity is not specified
+    trigger: Reduction conditions lack gas flow, space velocity, bed dimensions, or sample charge.
+    recommendation: Specify composition, flow basis, space velocity or charge, temperature program, purge, and gas-safety controls.
+  PREP_MISSING_SEPARATION_DETAIL:
+    dimension: preparation_executability
+    level: LOW
+    title: Separation condition is not specified
+    trigger: Centrifugation or filtration lacks speed/RCF, duration, temperature, or filter specification.
+    recommendation: Specify RCF or rotor/rpm, duration, temperature, filter medium, and endpoint as applicable.
+  SAMPLE_NO_BLANK_SUPPORT:
+    dimension: controls_and_baselines
+    level: MEDIUM
+    title: Support-only or no-active-component control is absent
+    trigger: An active-component catalyst is proposed without a support-only or composition-matched blank.
+    recommendation: Add the relevant blank and keep preparation and evaluation conditions comparable.
+  SAMPLE_NO_BASELINE:
+    dimension: controls_and_baselines
+    level: HIGH
+    title: Comparable baseline or control is absent
+    trigger: A target catalyst has no justified unmodified, conventional, commercial, literature, or other baseline.
+    recommendation: Add justified comparator samples and keep non-target variables controlled.
+  SAMPLE_MULTI_VARIABLE_CHANGE:
+    dimension: variable_attribution
+    level: HIGH
+    title: Multiple major variables change simultaneously
+    trigger: Target and comparator differ in more than one major composition, synthesis, thermal, or activation variable.
+    recommendation: Use a factorial or single-variable matrix, or explicitly qualify the attribution limit.
+  SAMPLE_NAMING_NOT_TRACEABLE:
+    dimension: variable_attribution
+    level: LOW
+    title: Sample naming is not traceable to design variables
+    trigger: Labels are present without a mapping to composition, preparation, batch, and control role.
+    recommendation: Add a sample register linking every identifier to controlled variables and batch lineage.
+  EVAL_MISSING_REACTION_CONDITIONS:
+    dimension: evaluation_reliability
+    level: HIGH
+    title: Catalytic evaluation conditions are absent
+    trigger: No sufficient reaction, reactor, charge, feed, temperature, pressure, flow, pretreatment, or analysis plan is found.
+    recommendation: Specify the complete evaluation method and the basis for comparability.
+  EVAL_MISSING_ANALYTICAL_METHOD:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: Quantitative analytical method is not specified
+    trigger: Evaluation is planned without detector, calibration, standards, internal standard, response factor, or integration method.
+    recommendation: Specify the validated quantitation workflow, calibration range, quality controls, and detection limits.
+  EVAL_MISSING_REPEAT_ERROR:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: Replication and uncertainty are not specified
+    trigger: No independent replication, error representation, uncertainty, or outlier rule is stated.
+    recommendation: Define biological/technical independence as applicable, replicate count, uncertainty statistic, and exclusion rule.
+  EVAL_MISSING_BALANCE:
+    dimension: evaluation_reliability
+    level: MEDIUM
+    title: Material or elemental balance is not specified
+    trigger: Conversion, selectivity, or yield is evaluated without a relevant balance definition and acceptance criterion.
+    recommendation: Define the applicable carbon, mass, halogen, hydrogen, oxygen, or other balance and acceptance rule.
+  CLAIM_NO_METRIC:
+    dimension: claim_validation_linkage
+    level: HIGH
+    title: Performance claim lacks a measurable endpoint
+    trigger: Improved activity, selectivity, stability, or resistance is claimed without a defined metric.
+    recommendation: Map the claim to conversion, selectivity, yield, TOF, STY, TOS, retention, or another justified metric with units and basis.
+  CLAIM_STABILITY_NO_TOS:
+    dimension: claim_validation_linkage
+    level: HIGH
+    title: Stability claim lacks duration or cycling design
+    trigger: Stability or deactivation resistance is claimed without time-on-stream, cycling, regeneration, or before/after evidence.
+    recommendation: Add a justified duration/cycle protocol, deactivation model, regeneration assessment, and post-test characterization.
+  CLAIM_MECHANISM_NO_CHARACTERIZATION:
+    dimension: claim_validation_linkage
+    level: MEDIUM
+    title: Mechanistic claim lacks discriminating evidence
+    trigger: Active-site, phase, oxidation-state, defect, facet, or adsorption claims lack appropriate characterization or perturbation tests.
+    recommendation: Add orthogonal, preferably operando or quasi-in-situ evidence and tests that distinguish alternative explanations.
+  CHAR_MISSING_PREPARATION_VERIFICATION:
+    dimension: claim_validation_linkage
+    level: MEDIUM
+    title: Catalyst formation and structure are not verified
+    trigger: A doped, loaded, supported, or structured catalyst lacks a plan to verify composition, phase, loading, state, morphology, or surface area.
+    recommendation: Select claim-relevant methods such as XRD, ICP/XRF, XPS, microscopy, BET, chemisorption, or TPR and define acceptance criteria.
+  SAFETY_MISSING_HAZARD_REVIEW:
+    dimension: safety_and_operability
+    level: HIGH
+    title: Hazard and operability review is not documented
+    trigger: The method uses pressure, flammable/toxic gases, reactive precursors, high temperature, or hazardous waste without stated controls.
+    recommendation: Require qualified EHS review, equipment ratings, ventilation/containment, purge and leak checks, PPE, waste controls, and stop-work criteria.

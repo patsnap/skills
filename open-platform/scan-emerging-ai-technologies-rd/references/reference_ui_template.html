@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{REPORT_TITLE}} — Technology Intelligence Report</title>
+  <style>
+    :root {
+      --ink: #101828;
+      --muted: #475467;
+      --subtle: #667085;
+      --line: #d0d5dd;
+      --line-strong: #98a2b3;
+      --paper: #ffffff;
+      --wash: #f8fafc;
+      --blue: #175cd3;
+      --blue-dark: #1849a9;
+      --blue-wash: #eff8ff;
+      --green: #067647;
+      --green-wash: #ecfdf3;
+      --amber: #b54708;
+      --amber-wash: #fffaeb;
+      --red: #b42318;
+      --red-wash: #fef3f2;
+      --violet: #6941c6;
+      --gray-wash: #f2f4f7;
+      --radius: 6px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--wash);
+      color: var(--ink);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue-dark);
+      text-underline-offset: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #84adff;
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: white;
+      padding: 8px 12px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .report-header {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 46px 0 34px;
+    }
+
+    .eyebrow {
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin: 0;
+      max-width: 920px;
+    }
+
+    .dek {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 18px 0 0;
+      max-width: 900px;
+    }
+
+    .meta-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 30px;
+    }
+
+    .meta-item {
+      border-left: 2px solid var(--line-strong);
+      padding-left: 12px;
+    }
+
+    .meta-label {
+      color: var(--subtle);
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      display: block;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .status-banner {
+      background: var(--amber-wash);
+      border: 1px solid #fec84b;
+      border-radius: var(--radius);
+      margin-top: 24px;
+      padding: 14px 16px;
+    }
+
+    .report-nav {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .report-nav ul {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .report-nav a {
+      border-radius: 4px;
+      color: var(--muted);
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .report-nav a:hover {
+      background: var(--gray-wash);
+      color: var(--ink);
+    }
+
+    main {
+      padding: 30px 0 70px;
+    }
+
+    .section {
+      margin: 34px 0 0;
+      scroll-margin-top: 76px;
+    }
+
+    .section-heading {
+      align-items: baseline;
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      gap: 14px;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 9px;
+    }
+
+    .section-heading h2 {
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+
+    .section-number {
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .panel,
+    .metric,
+    .route,
+    .evidence-card,
+    .opportunity,
+    .intel-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    .panel h3 {
+      font-size: 17px;
+      margin: 0 0 6px;
+    }
+
+    .panel-note {
+      color: var(--subtle);
+      font-size: 13px;
+      margin: 0 0 14px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric-value {
+      display: block;
+      font-size: 27px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .empty-state {
+      background: var(--gray-wash);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      padding: 18px;
+    }
+
+    .empty-state strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--blue);
+      margin: 16px 0;
+      padding: 12px 16px;
+    }
+
+    .callout.warning {
+      background: var(--amber-wash);
+      border-color: var(--amber);
+    }
+
+    .callout.risk {
+      background: var(--red-wash);
+      border-color: var(--red);
+    }
+
+    .callout.evidence {
+      background: var(--blue-wash);
+      border-color: var(--blue);
+    }
+
+    .tag {
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      margin: 2px 4px 2px 0;
+      padding: 2px 8px;
+    }
+
+    .tag.a {
+      background: var(--green-wash);
+      border-color: #75e0a7;
+      color: var(--green);
+    }
+
+    .tag.b,
+    .tag.p1 {
+      background: var(--amber-wash);
+      border-color: #fec84b;
+      color: var(--amber);
+    }
+
+    .tag.c,
+    .tag.p2 {
+      background: var(--blue-wash);
+      border-color: #84adff;
+      color: var(--blue-dark);
+    }
+
+    .tag.d,
+    .tag.p0 {
+      background: var(--red-wash);
+      border-color: #fda29b;
+      color: var(--red);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      font-size: 13px;
+      width: 100%;
+    }
+
+    caption {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 0 8px;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--gray-wash);
+      font-weight: 700;
+    }
+
+    .chart {
+      align-items: center;
+      background: var(--wash);
+      border: 1px solid var(--line);
+      display: flex;
+      justify-content: center;
+      min-height: 300px;
+      padding: 16px;
+    }
+
+    .chart p {
+      color: var(--muted);
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .tech-tree {
+      background: var(--wash);
+      border: 1px solid var(--line);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      padding: 18px;
+      white-space: pre;
+    }
+
+    .route {
+      border-top: 4px solid var(--blue);
+      padding: 18px;
+    }
+
+    .route h3 {
+      margin: 0 0 8px;
+    }
+
+    .route dl,
+    .opportunity dl {
+      display: grid;
+      gap: 6px 12px;
+      grid-template-columns: 130px 1fr;
+      margin: 12px 0 0;
+    }
+
+    dt {
+      font-weight: 700;
+    }
+
+    dd {
+      margin: 0;
+    }
+
+    .timeline {
+      border-left: 2px solid var(--line-strong);
+      margin-left: 8px;
+      padding-left: 24px;
+    }
+
+    .timeline-item {
+      margin: 0 0 22px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      background: var(--paper);
+      border: 3px solid var(--blue);
+      border-radius: 50%;
+      content: "";
+      height: 12px;
+      left: -31px;
+      position: absolute;
+      top: 5px;
+      width: 12px;
+    }
+
+    .timeline-date {
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .evidence-card {
+      padding: 16px;
+    }
+
+    .evidence-card h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+    }
+
+    .opportunity {
+      padding: 18px;
+    }
+
+    .opportunity h3 {
+      margin: 0 0 8px;
+    }
+
+    .matrix {
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 25% 25%;
+      min-height: 330px;
+      position: relative;
+    }
+
+    .matrix::before {
+      color: var(--subtle);
+      content: "No reviewed matrix data supplied";
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .intel-item {
+      margin-bottom: 12px;
+      padding: 16px;
+    }
+
+    .intel-item h3 {
+      font-size: 15px;
+      margin: 0 0 6px;
+    }
+
+    .intel-meta {
+      color: var(--subtle);
+      font-size: 12px;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .report-footer {
+      background: var(--ink);
+      color: #eaecf0;
+      padding: 30px 0;
+    }
+
+    .report-footer a {
+      color: #b2ddff;
+    }
+
+    @media (max-width: 900px) {
+      .meta-grid,
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        padding: 0 16px;
+      }
+
+      .meta-grid,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .route dl,
+      .opportunity dl {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+        font-size: 10pt;
+      }
+
+      .report-nav,
+      .skip-link {
+        display: none;
+      }
+
+      .shell {
+        max-width: none;
+        padding: 0;
+      }
+
+      .panel,
+      .metric,
+      .route,
+      .evidence-card,
+      .opportunity,
+      .intel-item {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body data-report-module="{{MODULE_ID}}" data-evidence-cutoff="{{EVIDENCE_CUTOFF}}">
+  <a class="skip-link" href="#main">Skip to report content</a>
+
+  <header class="report-header">
+    <div class="shell">
+      <p class="eyebrow">PatSnap technology intelligence · {{MODULE_LABEL}}</p>
+      <h1>{{REPORT_TITLE}}</h1>
+      <p class="dek">{{REPORT_SUBTITLE}}</p>
+
+      <div class="meta-grid" aria-label="Report metadata">
+        <div class="meta-item">
+          <span class="meta-label">Decision</span>
+          <span class="meta-value">{{DECISION}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Scope</span>
+          <span class="meta-value">{{SCOPE}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Evidence cutoff</span>
+          <span class="meta-value">{{EVIDENCE_CUTOFF}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Counting unit</span>
+          <span class="meta-value">{{COUNTING_UNIT}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date field</span>
+          <span class="meta-value">{{DATE_FIELD}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Coverage</span>
+          <span class="meta-value">{{COVERAGE_STATUS}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Prepared</span>
+          <span class="meta-value">{{PREPARED_DATE}}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Review status</span>
+          <span class="meta-value">{{REVIEW_STATUS}}</span>
+        </div>
+      </div>
+
+      <div class="status-banner" role="status">
+        <strong>Template status:</strong>
+        This reference contains no factual findings.
+        Replace placeholders only with reviewed, source-linked data.
+      </div>
+    </div>
+  </header>
+
+  <nav class="report-nav" aria-label="Report sections">
+    <div class="shell">
+      <ul>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#technology-tree">Technology tree</a></li>
+        <li><a href="#situation">Situation</a></li>
+        <li><a href="#routes">Routes</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#competitors">Competitors</a></li>
+        <li><a href="#opportunities">Opportunities</a></li>
+        <li><a href="#mining">Invention mining</a></li>
+        <li><a href="#briefing">Current intelligence</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main" class="shell">
+    <section id="summary" class="section">
+      <div class="section-heading">
+        <h2>Executive summary</h2>
+        <span class="section-number">01</span>
+      </div>
+
+      <div class="grid-4" aria-label="Key metrics">
+        <div class="metric">
+          <span class="metric-value">{{MATCHED_TOTAL}}</span>
+          <span class="metric-label">Provider-reported matched total for the exact query</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">{{RETURNED_COUNT}}</span>
+          <span class="metric-label">Records retrieved and reviewed</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">{{TECHNOLOGY_NODE_COUNT}}</span>
+          <span class="metric-label">Validated technology-tree nodes</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">{{EVIDENCE_SOURCE_COUNT}}</span>
+          <span class="metric-label">Registered evidence sources</span>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Decision-relevant findings</h3>
+        <div class="empty-state" data-template="finding">
+          <strong>No reviewed finding supplied</strong>
+          Add factual finding, evidence IDs, confidence, counterevidence and decision implication.
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <strong>Interpretation limit.</strong>
+        Patent volume, citations, legal status and provider scores do not independently establish technical leadership, commercial success, validity or freedom to operate.
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <div class="section-heading">
+        <h2>Method, queries and coverage</h2>
+        <span class="section-number">02</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Boundary and inclusion rules</h3>
+          <p>{{BOUNDARY_DEFINITION}}</p>
+          <p class="panel-note">Excluded meanings: {{EXCLUSIONS}}</p>
+        </div>
+        <div class="panel">
+          <h3>Counting and normalization</h3>
+          <p>{{COUNTING_RULES}}</p>
+          <p class="panel-note">Entity/family normalization: {{NORMALIZATION_RULES}}</p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Search log</h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Every query includes fields, filters, run time, totals, returned count and pagination.</caption>
+            <thead>
+              <tr>
+                <th>Query ID</th>
+                <th>Purpose</th>
+                <th>Exact query / fields</th>
+                <th>Filters and date field</th>
+                <th>Matched / returned</th>
+                <th>Coverage and limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="search-query">
+                <td>{{QUERY_ID}}</td>
+                <td>{{QUERY_PURPOSE}}</td>
+                <td>{{QUERY_TEXT}}</td>
+                <td>{{QUERY_FILTERS}}</td>
+                <td>{{QUERY_COUNTS}}</td>
+                <td>{{QUERY_COVERAGE}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <details>
+        <summary>Evidence-quality and confidence rubric</summary>
+        <p>{{CONFIDENCE_RUBRIC}}</p>
+      </details>
+      <details>
+        <summary>Known gaps and publication-lag treatment</summary>
+        <p>{{KNOWN_GAPS}}</p>
+      </details>
+    </section>
+
+    <section id="technology-tree" class="section">
+      <div class="section-heading">
+        <h2>Technology tree</h2>
+        <span class="section-number">03</span>
+      </div>
+
+      <div class="panel">
+        <h3>Validated coordinate system</h3>
+        <p class="panel-note">Nodes show engineering scope, not unsupported density or opportunity labels.</p>
+        <pre class="tech-tree" aria-label="Text technology tree">{{TECHNOLOGY_TREE_TEXT}}
+
+[No validated technology tree supplied]
+
+Required node fields:
+ID | Parent | Definition | Included concepts | Exclusions | Query IDs | Evidence IDs | Coverage | Confidence</pre>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Node register</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Node</th>
+                <th>Definition</th>
+                <th>Search evidence</th>
+                <th>Corpus count</th>
+                <th>Overlap / limitation</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="technology-node">
+                <td>{{NODE_ID}} — {{NODE_NAME}}</td>
+                <td>{{NODE_DEFINITION}}</td>
+                <td>{{NODE_QUERY_IDS}} · {{NODE_EVIDENCE_IDS}}</td>
+                <td>{{NODE_COUNT_AND_UNIT}}</td>
+                <td>{{NODE_LIMITATIONS}}</td>
+                <td>{{NODE_CONFIDENCE}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="situation" class="section">
+      <div class="section-heading">
+        <h2>Technology and patent situation</h2>
+        <span class="section-number">04</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Activity over time</h3>
+          <p class="panel-note">State date field, partial-year handling, counting unit and source IDs.</p>
+          <div class="chart" id="trend-chart" role="img" aria-label="No reviewed trend chart data supplied">
+            <p>No reviewed trend series supplied. Populate from the reconciled evidence table; do not use fixed arrays.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Status context</h3>
+          <p class="panel-note">Status is provider- and observation-date-specific; verify material records officially.</p>
+          <div class="chart" id="status-chart" role="img" aria-label="No reviewed status chart data supplied">
+            <p>No reviewed status series supplied.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Jurisdiction or priority-origin distribution</h3>
+          <div class="chart" id="jurisdiction-chart" role="img" aria-label="No reviewed jurisdiction data supplied">
+            <p>No reviewed jurisdiction series supplied.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Normalized actor distribution</h3>
+          <div class="chart" id="actor-chart" role="img" aria-label="No reviewed actor data supplied">
+            <p>No reviewed actor series supplied.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Accessible chart data</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Series</th>
+                <th>Category/date</th>
+                <th>Value</th>
+                <th>Unit</th>
+                <th>Complete/sample</th>
+                <th>Source IDs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="chart-row">
+                <td>{{SERIES}}</td>
+                <td>{{CATEGORY}}</td>
+                <td>{{VALUE}}</td>
+                <td>{{UNIT}}</td>
+                <td>{{COVERAGE_FLAG}}</td>
+                <td>{{SOURCE_IDS}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="routes" class="section">
+      <div class="section-heading">
+        <h2>Technical routes and evolution</h2>
+        <span class="section-number">05</span>
+      </div>
+
+      <div class="timeline" aria-label="Technology-route timeline">
+        <article class="timeline-item" data-template="timeline-event">
+          <div class="timeline-date">{{EVENT_DATE}} · {{DATE_TYPE}}</div>
+          <h3>{{EVENT_TITLE}}</h3>
+          <p>{{EVENT_DESCRIPTION}}</p>
+          <p class="panel-note">Evidence: {{EVENT_EVIDENCE_IDS}} · Confidence: {{EVENT_CONFIDENCE}}</p>
+        </article>
+      </div>
+
+      <div class="grid-2">
+        <article class="route" data-template="technical-route">
+          <h3>{{ROUTE_ID}} — {{ROUTE_NAME}}</h3>
+          <p>{{ROUTE_MECHANISM}}</p>
+          <dl>
+            <dt>Problem</dt><dd>{{ROUTE_PROBLEM}}</dd>
+            <dt>Performance</dt><dd>{{ROUTE_PERFORMANCE_EVIDENCE}}</dd>
+            <dt>Maturity</dt><dd>{{ROUTE_MATURITY}}</dd>
+            <dt>Constraints</dt><dd>{{ROUTE_CONSTRAINTS}}</dd>
+            <dt>Actors</dt><dd>{{ROUTE_ACTORS}}</dd>
+            <dt>Evidence</dt><dd>{{ROUTE_EVIDENCE_IDS}}</dd>
+            <dt>Counterevidence</dt><dd>{{ROUTE_COUNTEREVIDENCE}}</dd>
+          </dl>
+        </article>
+        <div class="empty-state">
+          <strong>Repeat route cards only for evidence-supported routes</strong>
+          Never copy the source template's six tandem-OLED routes, star ratings, patent counts or company conclusions into another report.
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" class="section">
+      <div class="section-heading">
+        <h2>Representative patent and scientific evidence</h2>
+        <span class="section-number">06</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="evidence-card" data-template="patent-evidence">
+          <h3>{{PUBLICATION_NUMBER}} — {{PATENT_TITLE}}</h3>
+          <p class="intel-meta">{{APPLICANT}} · priority {{PRIORITY_DATE}} · status observed {{STATUS_DATE}}</p>
+          <p><strong>Claim relevance:</strong> {{CLAIM_RELEVANCE}}</p>
+          <p><strong>Route significance:</strong> {{ROUTE_SIGNIFICANCE}}</p>
+          <p><strong>Limitations:</strong> {{PATENT_LIMITATIONS}}</p>
+          <p><a href="{{EXACT_GLOBAL_PATSNAP_URL}}" rel="noopener noreferrer">Open reviewed record</a> · {{PATENT_EVIDENCE_IDS}}</p>
+        </article>
+        <article class="evidence-card" data-template="scientific-evidence">
+          <h3>{{PAPER_TITLE}}</h3>
+          <p class="intel-meta">{{AUTHORS_OR_INSTITUTION}} · {{PUBLICATION_DATE}} · {{DOI_OR_IDENTIFIER}}</p>
+          <p><strong>Method:</strong> {{PAPER_METHOD}}</p>
+          <p><strong>Result:</strong> {{PAPER_RESULT}}</p>
+          <p><strong>Translation relevance:</strong> {{TRANSLATION_RELEVANCE}}</p>
+          <p><strong>Limitations:</strong> {{PAPER_LIMITATIONS}}</p>
+        </article>
+      </div>
+
+      <div class="callout evidence">
+        Citation count and grant status may help select records for review, but neither proves technical importance, validity or commercial use.
+      </div>
+    </section>
+
+    <section id="competitors" class="section">
+      <div class="section-heading">
+        <h2>Actor and competitor comparison</h2>
+        <span class="section-number">07</span>
+      </div>
+
+      <div class="panel">
+        <h3>Evidence-defined comparison matrix</h3>
+        <div class="matrix" role="img" aria-label="No reviewed competitor matrix supplied"></div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Matrix data and rubric</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Actor</th>
+                <th>Technology node</th>
+                <th>Metric/rubric</th>
+                <th>Result</th>
+                <th>Evidence IDs</th>
+                <th>Uncertainty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="competitor-cell">
+                <td>{{ACTOR}}</td>
+                <td>{{TECHNOLOGY_NODE}}</td>
+                <td>{{RUBRIC}}</td>
+                <td>{{RESULT_OR_NOT_ASSESSED}}</td>
+                <td>{{EVIDENCE_IDS}}</td>
+                <td>{{UNCERTAINTY}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="opportunities" class="section">
+      <div class="section-heading">
+        <h2>Opportunity hypotheses</h2>
+        <span class="section-number">08</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="opportunity" data-template="opportunity">
+          <h3>{{OPPORTUNITY_ID}} — {{OPPORTUNITY_TITLE}}</h3>
+          <p>{{OPPORTUNITY_PROBLEM_AND_ROUTE}}</p>
+          <dl>
+            <dt>Evidence gap</dt><dd>{{EVIDENCE_GAP}}</dd>
+            <dt>Coverage</dt><dd>{{GAP_SEARCH_COVERAGE}}</dd>
+            <dt>Nearby art</dt><dd>{{NEARBY_ART}}</dd>
+            <dt>Counterevidence</dt><dd>{{OPPORTUNITY_COUNTEREVIDENCE}}</dd>
+            <dt>Capability fit</dt><dd>{{CAPABILITY_FIT}}</dd>
+            <dt>Feasibility</dt><dd>{{FEASIBILITY}}</dd>
+            <dt>Validation</dt><dd>{{VALIDATION_EXPERIMENT}}</dd>
+            <dt>IP question</dt><dd>{{IP_REVIEW_QUESTION}}</dd>
+            <dt>Confidence</dt><dd>{{OPPORTUNITY_CONFIDENCE}}</dd>
+          </dl>
+        </article>
+        <div class="empty-state">
+          <strong>White space is not inferred from low counts alone</strong>
+          Check query recall, terminology, feasibility, value and blocking records before presenting an opportunity.
+        </div>
+      </div>
+    </section>
+
+    <section id="mining" class="section">
+      <div class="section-heading">
+        <h2>Invention-mining module</h2>
+        <span class="section-number">09</span>
+      </div>
+
+      <div class="grid-4">
+        <div class="panel">
+          <h3>Block 1</h3>
+          <p>Evidence scan and technical decomposition.</p>
+          <span class="tag">CP-1</span>
+        </div>
+        <div class="panel">
+          <h3>Block 2</h3>
+          <p>Problem definition and solution hypotheses.</p>
+          <span class="tag">CP-2</span>
+        </div>
+        <div class="panel">
+          <h3>Block 3</h3>
+          <p>Prior art, technical alternatives and concept evaluation.</p>
+          <span class="tag">CP-3</span>
+        </div>
+        <div class="panel">
+          <h3>Block 4</h3>
+          <p>Disposition, owners, evidence milestones and next decision.</p>
+          <span class="tag">CP-4</span>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Problem and concept register</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Problem / baseline</th>
+                <th>Changed feature and mechanism</th>
+                <th>Expected effect</th>
+                <th>Prior-art evidence</th>
+                <th>Validation</th>
+                <th>Disposition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="invention-concept">
+                <td>{{CONCEPT_ID}}</td>
+                <td>{{PROBLEM_AND_BASELINE}}</td>
+                <td>{{FEATURE_AND_MECHANISM}}</td>
+                <td>{{EXPECTED_EFFECT}}</td>
+                <td>{{PRIOR_ART_IDS}}</td>
+                <td>{{VALIDATION_PLAN}}</td>
+                <td>{{DISPOSITION}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:16px">
+        <h3>Action roadmap</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Owner</th>
+                <th>Milestone</th>
+                <th>Due date</th>
+                <th>Success/failure criterion</th>
+                <th>Dependency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="roadmap-item">
+                <td>{{ROADMAP_CONCEPT}}</td>
+                <td>{{OWNER}}</td>
+                <td>{{MILESTONE}}</td>
+                <td>{{DUE_DATE}}</td>
+                <td>{{DECISION_CRITERION}}</td>
+                <td>{{DEPENDENCY}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout risk">
+        This report does not determine patentability, validity, infringement, freedom to operate or claim scope. Route material questions to qualified patent professionals.
+      </div>
+    </section>
+
+    <section id="briefing" class="section">
+      <div class="section-heading">
+        <h2>Current technology-intelligence module</h2>
+        <span class="section-number">10</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3>News and company disclosures</h3>
+          <article class="intel-item" data-template="news-item">
+            <h3>{{INTEL_HEADLINE}}</h3>
+            <p>{{INTEL_FACTS}}</p>
+            <p class="intel-meta">{{EVENT_DATE}} · {{SOURCE_IDS}} · Confidence {{CONFIDENCE}} · Priority {{PRIORITY}}</p>
+          </article>
+        </div>
+        <div class="panel">
+          <h3>Patent activity</h3>
+          <article class="intel-item" data-template="patent-intel-item">
+            <h3>{{INTEL_HEADLINE}}</h3>
+            <p>{{INTEL_FACTS}}</p>
+            <p class="intel-meta">{{EVENT_DATE}} · {{SOURCE_IDS}} · Confidence {{CONFIDENCE}} · Priority {{PRIORITY}}</p>
+          </article>
+        </div>
+        <div class="panel">
+          <h3>Scientific literature</h3>
+          <article class="intel-item" data-template="science-item">
+            <h3>{{INTEL_HEADLINE}}</h3>
+            <p>{{INTEL_FACTS}}</p>
+            <p class="intel-meta">{{EVENT_DATE}} · {{SOURCE_IDS}} · Confidence {{CONFIDENCE}} · Priority {{PRIORITY}}</p>
+          </article>
+        </div>
+        <div class="panel">
+          <h3>Regulation, policy and standards</h3>
+          <article class="intel-item" data-template="policy-item">
+            <h3>{{INTEL_HEADLINE}}</h3>
+            <p>{{INTEL_FACTS}}</p>
+            <p class="intel-meta">{{EVENT_DATE}} · {{SOURCE_IDS}} · Confidence {{CONFIDENCE}} · Priority {{PRIORITY}}</p>
+          </article>
+        </div>
+        <div class="panel">
+          <h3>Industry events and collaborations</h3>
+          <article class="intel-item" data-template="event-item">
+            <h3>{{INTEL_HEADLINE}}</h3>
+            <p>{{INTEL_FACTS}}</p>
+            <p class="intel-meta">{{EVENT_DATE}} · {{SOURCE_IDS}} · Confidence {{CONFIDENCE}} · Priority {{PRIORITY}}</p>
+          </article>
+        </div>
+        <div class="panel">
+          <h3>Cross-signals and verification actions</h3>
+          <article class="intel-item" data-template="cross-signal">
+            <h3>{{SIGNAL_PROPOSITION}}</h3>
+            <p><strong>Support:</strong> {{SIGNAL_SUPPORT}}</p>
+            <p><strong>Counterevidence:</strong> {{SIGNAL_COUNTEREVIDENCE}}</p>
+            <p><strong>Next indicator:</strong> {{NEXT_INDICATOR}}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="section">
+      <div class="section-heading">
+        <h2>Source register, limitations and review</h2>
+        <span class="section-number">11</span>
+      </div>
+
+      <div class="panel">
+        <h3>Evidence register</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title / record</th>
+                <th>Publisher / authority</th>
+                <th>Date</th>
+                <th>URL / identifier</th>
+                <th>Use and limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-template="source-record">
+                <td>{{SOURCE_ID}}</td>
+                <td>{{SOURCE_TITLE}}</td>
+                <td>{{SOURCE_PUBLISHER}}</td>
+                <td>{{SOURCE_DATE}} · accessed {{ACCESS_DATE}}</td>
+                <td><a href="{{SOURCE_URL}}" rel="noopener noreferrer">{{SOURCE_IDENTIFIER}}</a></td>
+                <td>{{SOURCE_USE_AND_LIMITS}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="panel">
+          <h3>Limitations</h3>
+          <ul>
+            <li>{{LIMITATION_1}}</li>
+            <li>{{LIMITATION_2}}</li>
+            <li>{{LIMITATION_3}}</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Review record</h3>
+          <p><strong>Technical reviewer:</strong> {{TECHNICAL_REVIEWER}}</p>
+          <p><strong>IP reviewer:</strong> {{IP_REVIEWER}}</p>
+          <p><strong>Review date:</strong> {{REVIEW_DATE}}</p>
+          <p><strong>Release decision:</strong> {{RELEASE_DECISION}}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="report-footer">
+    <div class="shell">
+      <strong>{{REPORT_TITLE}}</strong>
+      <p>Prepared from reviewed evidence through {{EVIDENCE_CUTOFF}}. This report is not legal, engineering-certification or investment advice.</p>
+      <p>PatSnap links must be exact returned global URLs. Material patent status should be checked in the relevant official register.</p>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    /**
+     * The source package embedded fixed tandem-OLED chart arrays and conclusions.
+     * This localized reference intentionally ships without factual chart data.
+     * A report generator may set window.reportData to a reviewed object before
+     * this script executes, or replace placeholders during controlled rendering.
+     */
+    const reportData = window.reportData || null;
+
+    function text(value) {
+      if (value === null || value === undefined || value === "") {
+        return "Not reported";
+      }
+      return String(value);
+    }
+
+    function assertArray(value, label) {
+      if (!Array.isArray(value)) {
+        throw new TypeError(label + " must be an array");
+      }
+      return value;
+    }
+
+    function validateSeries(series, label) {
+      assertArray(series, label);
+      series.forEach((row, index) => {
+        if (!row || typeof row !== "object") {
+          throw new TypeError(label + "[" + index + "] must be an object");
+        }
+        if (typeof row.value !== "number" || !Number.isFinite(row.value)) {
+          throw new TypeError(label + "[" + index + "].value must be finite");
+        }
+        if (typeof row.label !== "string" || !row.label.trim()) {
+          throw new TypeError(label + "[" + index + "].label is required");
+        }
+      });
+      return series;
+    }
+
+    function renderAccessibleSeries(containerId, series, unit, sourceIds) {
+      const container = document.getElementById(containerId);
+      if (!container) {
+        return;
+      }
+      const reviewed = validateSeries(series, containerId);
+      container.replaceChildren();
+      const heading = document.createElement("p");
+      heading.textContent = "Reviewed data series (" + text(unit) + ")";
+      const list = document.createElement("ol");
+      reviewed.forEach((row) => {
+        const item = document.createElement("li");
+        item.textContent = row.label + ": " + row.value + " " + text(unit);
+        list.appendChild(item);
+      });
+      const source = document.createElement("p");
+      source.textContent = "Sources: " + text(sourceIds);
+      container.append(heading, list, source);
+      container.setAttribute("aria-label", "Reviewed data series rendered as text");
+    }
+
+    function activateData() {
+      if (!reportData) {
+        return;
+      }
+      if (reportData.trendSeries) {
+        renderAccessibleSeries(
+          "trend-chart",
+          reportData.trendSeries,
+          reportData.trendUnit,
+          reportData.trendSourceIds
+        );
+      }
+      if (reportData.statusSeries) {
+        renderAccessibleSeries(
+          "status-chart",
+          reportData.statusSeries,
+          reportData.statusUnit,
+          reportData.statusSourceIds
+        );
+      }
+      if (reportData.jurisdictionSeries) {
+        renderAccessibleSeries(
+          "jurisdiction-chart",
+          reportData.jurisdictionSeries,
+          reportData.jurisdictionUnit,
+          reportData.jurisdictionSourceIds
+        );
+      }
+      if (reportData.actorSeries) {
+        renderAccessibleSeries(
+          "actor-chart",
+          reportData.actorSeries,
+          reportData.actorUnit,
+          reportData.actorSourceIds
+        );
+      }
+    }
+
+    try {
+      activateData();
+    } catch (error) {
+      const banner = document.querySelector(".status-banner");
+      if (banner) {
+        banner.textContent = "Report data validation error: " + error.message;
+        banner.setAttribute("role", "alert");
+      }
+      throw error;
+    }
+  </script>
+</body>
+</html>

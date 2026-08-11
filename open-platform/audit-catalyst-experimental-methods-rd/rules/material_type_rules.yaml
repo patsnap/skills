@@ -1,0 +1,34 @@
+version: 0.5.0
+material_types:
+  preparation_steps:
+    label: Preparation-step method
+    indicators:
+      - sequential operations such as weighing, dissolving, mixing, hydrothermal treatment, separation, drying, calcination, reduction, and sample labeling
+      - reagent amounts, temperatures, durations, atmospheres, or sample identifiers
+    audit_mode: full_method_audit
+  preparation_and_evaluation_scheme:
+    label: Complete preparation and evaluation plan
+    indicators:
+      - preparation operations plus catalytic test conditions
+      - reaction, feed, reactor, temperature, pressure, catalyst amount, flow or space velocity, and analytical method
+    audit_mode: full_method_audit
+  draft_idea:
+    label: R&D concept or early draft
+    indicators:
+      - objectives and design concepts with few executable operations
+    audit_mode: draft_audit
+  paper_methods:
+    label: Scientific-paper method
+    indicators:
+      - Methods, Catalyst preparation, Catalytic testing, or Characterization sections
+    audit_mode: method_reproducibility_audit
+  patent_example:
+    label: Patent example or embodiment
+    indicators:
+      - example, embodiment, comparative example, or patent context
+    audit_mode: embodiment_method_audit
+  insufficient:
+    label: Insufficient material
+    indicators:
+      - fewer than three actionable operations and no identifiable catalyst system
+    audit_mode: insufficient_material

@@ -1,0 +1,80 @@
+{
+  "schema_version": "2.0",
+  "review_status": "reviewed-example",
+  "title": "PLC System Decomposition",
+  "subtitle": "Illustrative five-level decomposition for renderer validation; not current market evidence",
+  "product": {
+    "name": "PLC",
+    "description": "Programmable logic controller"
+  },
+  "systems": [
+    {"id": "S1", "name": "Control", "tag": "Logic and deterministic control"},
+    {"id": "S2", "name": "Execution", "tag": "Physical input and output"},
+    {"id": "S3", "name": "Power", "tag": "Power conversion and distribution"},
+    {"id": "S4", "name": "Communication", "tag": "Industrial data exchange"},
+    {"id": "S5", "name": "Cross-cutting capabilities", "tag": "Security, safety, AI, and virtualization", "accent": "secondary"}
+  ],
+  "subsystems": [
+    "Compute",
+    "Memory",
+    "Engineering toolchain",
+    "Runtime",
+    "Digital I/O",
+    "Analog I/O",
+    "Special-function I/O",
+    "Power",
+    "Fieldbus",
+    "Industrial Ethernet",
+    "Industrial wireless",
+    "Information model",
+    "Cybersecurity",
+    "Functional safety",
+    "AI and edge computing",
+    "Virtualization"
+  ],
+  "components": [
+    {"id": "C1.1", "name": "Processor unit"},
+    {"id": "C1.2", "name": "Program and data memory", "merged_with_critical_part": true, "tag": "Component is also the review unit"},
+    {"id": "C1.3", "name": "Engineering environment"},
+    {"id": "C1.4", "name": "Runtime engine"},
+    {"id": "C2.1", "name": "Digital I/O module"},
+    {"id": "C2.2", "name": "Analog I/O module"},
+    {"id": "C2.3", "name": "Special-function I/O"},
+    {"id": "C3.1", "name": "Power module"},
+    {"id": "C4.1", "name": "Fieldbus", "merged_with_critical_part": true, "tag": "Component is also the review unit"},
+    {"id": "C4.2", "name": "Industrial Ethernet"},
+    {"id": "C4.3", "name": "Industrial wireless", "merged_with_critical_part": true, "tag": "Component is also the review unit"},
+    {"id": "C4.4", "name": "Information modeling", "merged_with_critical_part": true, "tag": "Component is also the review unit"},
+    {"id": "C5.1", "name": "Cybersecurity"},
+    {"id": "C5.2", "name": "Functional safety"},
+    {"id": "C5.3", "name": "AI inference and edge computing"},
+    {"id": "C5.4", "name": "Virtualization"}
+  ],
+  "critical_parts": [
+    {"id": "P1.1", "name": "Main processor", "tag": "Compute architecture and ecosystem", "priority": true},
+    {"id": "P1.2", "name": "Reconfigurable accelerator", "tag": "Reconfigurability and ecosystem", "priority": true},
+    {"id": "C1.2", "name": "Nonvolatile memory", "reference_only": true},
+    {"id": "P3.1", "name": "Control-language compiler", "tag": "Standards interface and ecosystem", "priority": true},
+    {"id": "P4.1", "name": "Real-time scheduling kernel", "tag": "Determinism and flexibility", "priority": true},
+    {"id": "P5.1", "name": "Digital I/O isolation and driver", "tag": "Isolation and power electronics", "priority": true},
+    {"id": "P6.1", "name": "Analog front end", "tag": "Conversion accuracy and latency", "priority": true},
+    {"id": "P7.1", "name": "Motion-control processor", "tag": "Servo-loop determinism", "priority": true},
+    {"id": "P8.1", "name": "Power converter", "tag": "Efficiency and electromagnetic compatibility", "priority": true},
+    {"id": "C4.1", "name": "Bus transceiver and protocol stack", "reference_only": true},
+    {"id": "P10.1", "name": "Time-sensitive networking switch", "tag": "Networking hardware and IEEE interfaces", "priority": true},
+    {"id": "P10.2", "name": "Real-time Ethernet protocol stack", "tag": "Protocol interface and ecosystem", "priority": true},
+    {"id": "C4.3", "name": "Industrial wireless module", "reference_only": true},
+    {"id": "C4.4", "name": "Information model and publish-subscribe layer", "reference_only": true},
+    {"id": "P13.2", "name": "Hardware root of trust", "tag": "Hardware security and standards interfaces", "priority": true},
+    {"id": "P14.1", "name": "Redundant safety processor", "tag": "Safety and performance tradeoff", "priority": true},
+    {"id": "P15.1", "name": "AI accelerator", "tag": "Neural-compute hardware", "priority": true},
+    {"id": "P15.2", "name": "AI deployment framework", "tag": "Model interoperability and lifecycle", "priority": true},
+    {"id": "P16.1", "name": "Real-time hypervisor or container runtime", "tag": "Isolation and determinism", "priority": true}
+  ],
+  "notes": [
+    "Illustrative decomposition only. Confirm system boundaries and terminology for the actual product.",
+    "A critical-part decision considers distinct constraints, tradeoffs, interfaces, and ecosystems; it is not a mechanical score.",
+    "The renderer escapes all text. Rich HTML is not accepted in this data file.",
+    "Example localized and reviewed on 2026-08-08."
+  ]
+}

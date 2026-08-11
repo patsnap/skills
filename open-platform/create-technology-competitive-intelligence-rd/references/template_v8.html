@@ -1,0 +1,2356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{REPORT_TITLE}}</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #59657a;
+      --line: #d8dee8;
+      --paper: #ffffff;
+      --wash: #f5f7fa;
+      --accent: #145da0;
+      --accent-soft: #eaf2f9;
+      --positive: #287a55;
+      --warning: #a66412;
+      --critical: #a43b3b;
+      --radius: 8px;
+      --measure: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--wash);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    button { font: inherit; }
+    .masthead {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .masthead-inner {
+      max-width: var(--measure);
+      margin: 0 auto;
+      padding: 34px 28px 28px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 880px;
+      margin: 8px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.08;
+      font-weight: 600;
+    }
+    .subtitle { max-width: 850px; color: var(--muted); font-size: 17px; }
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 1px;
+      margin-top: 26px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .meta-cell { min-height: 78px; padding: 13px 15px; background: var(--paper); }
+    .meta-label { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .meta-value { margin-top: 5px; font-weight: 650; }
+    .notice {
+      max-width: var(--measure);
+      margin: 18px auto 0;
+      padding: 0 28px;
+    }
+    .notice-inner { border-left: 4px solid var(--warning); padding: 12px 15px; background: #fff9ef; color: #6f4815; }
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 28px;
+      max-width: var(--measure);
+      margin: 22px auto 60px;
+      padding: 0 28px;
+    }
+    nav { position: sticky; top: 18px; align-self: start; }
+    nav ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    nav a { display: block; padding: 9px 6px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; text-decoration: none; }
+    nav a:hover, nav a:focus { color: var(--accent); background: var(--accent-soft); outline: none; }
+    main { min-width: 0; }
+    section { margin-bottom: 22px; padding: 25px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    h2 { margin: 0 0 6px; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 600; }
+    h3 { margin: 22px 0 8px; font-size: 16px; }
+    .section-deck { margin: 0 0 20px; color: var(--muted); }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .kpi { border: 1px solid var(--line); border-top: 3px solid var(--accent); padding: 15px; }
+    .kpi-label { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .kpi-value { margin: 5px 0; font-family: Georgia, "Times New Roman", serif; font-size: 25px; }
+    .kpi-detail { color: var(--muted); font-size: 12px; }
+    .status { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+    .status.fact { color: var(--positive); background: #f0f8f4; }
+    .status.estimate { color: var(--warning); background: #fff9ef; }
+    .status.gap { color: var(--critical); background: #fff3f3; }
+    .prose { white-space: pre-wrap; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .panel { border: 1px solid var(--line); padding: 16px; }
+    .panel h3 { margin-top: 0; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    th, td { padding: 10px 9px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--wash); color: var(--muted); font-size: 11px; letter-spacing: .03em; text-transform: uppercase; }
+    .matrix td { height: 68px; }
+    .scale { display: grid; grid-template-columns: 110px minmax(0, 1fr) 45px; gap: 9px; align-items: center; margin: 7px 0; font-size: 12px; }
+    .track { height: 7px; background: #e7ebf0; }
+    .fill { height: 7px; background: var(--accent); }
+    .citation { color: var(--muted); font-size: 11px; }
+    .action { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .action-index { color: var(--accent); font-family: Georgia, serif; font-size: 25px; }
+    details { border: 1px solid var(--line); margin-top: 10px; padding: 10px 12px; }
+    summary { cursor: pointer; font-weight: 650; }
+    footer { border-top: 1px solid var(--line); padding: 25px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 900px) {
+      .metadata, .kpi-grid, .two-col { grid-template-columns: 1fr 1fr; }
+      .layout { grid-template-columns: 1fr; }
+      nav { position: static; }
+    }
+    @media (max-width: 580px) {
+      .metadata, .kpi-grid, .two-col { grid-template-columns: 1fr; }
+      .masthead-inner, .layout, .notice { padding-left: 16px; padding-right: 16px; }
+      section { padding: 18px; }
+    }
+    @media print {
+      body { background: white; font-size: 10pt; }
+      nav, .no-print { display: none; }
+      .layout { display: block; max-width: none; margin: 0; padding: 0; }
+      section { break-inside: avoid; box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="eyebrow">Technology competitive intelligence · V8 research worksheet</div>
+      <h1>{{REPORT_TITLE}}</h1>
+      <p class="subtitle">{{DECISION_CONTEXT}}</p>
+      <div class="metadata" aria-label="Report metadata">
+        <div class="meta-cell"><div class="meta-label">Focal organization</div><div class="meta-value">{{FOCAL_ORGANIZATION}}</div></div>
+        <div class="meta-cell"><div class="meta-label">Technology scope</div><div class="meta-value">{{TECHNOLOGY_SCOPE}}</div></div>
+        <div class="meta-cell"><div class="meta-label">Geography</div><div class="meta-value">{{GEOGRAPHY}}</div></div>
+        <div class="meta-cell"><div class="meta-label">Period / cutoff</div><div class="meta-value">{{REPORT_PERIOD}} · {{EVIDENCE_CUTOFF}}</div></div>
+      </div>
+    </div>
+  </header>
+  <aside class="notice"><div class="notice-inner"><strong>Interpretation boundary.</strong> Patent records and portfolio indicators do not establish infringement, validity, freedom to operate, product use, or technical superiority. Seek qualified counsel for claim-level legal analysis.</div></aside>
+  <div class="layout">
+    <nav aria-label="Report sections">
+      <ol aria-label="Thirteen-part compact worksheet">
+        <li><a href="#executive">01 Executive summary</a></li>
+        <li><a href="#scope">02 Scope and method</a></li>
+        <li><a href="#landscape">03 Market and technology</a></li>
+        <li><a href="#focal">04 Focal position</a></li>
+        <li><a href="#tier-a">05 Tier A competitors</a></li>
+        <li><a href="#tier-b">06 Tier B watchlist</a></li>
+        <li><a href="#customers">07 Customer matrix</a></li>
+        <li><a href="#events">08 Events and triggers</a></li>
+        <li><a href="#assessment">09 Threats and opportunities</a></li>
+        <li><a href="#actions">10 Recommended responses</a></li>
+        <li><a href="#sources">11 Evidence register</a></li>
+        <li><a href="#sources">12 Assumptions and gaps</a></li>
+        <li><a href="#sources">13 Review and refresh</a></li>
+      </ol>
+    </nav>
+    <main>
+      <section id="executive">
+        <h2>Executive summary</h2>
+        <p class="section-deck">The compact V8 worksheet preserves the earlier thirteen-part research sequence while applying the same evidence and legal-language controls as the current report.</p>
+        <div class="kpi-grid">
+          <article class="kpi"><div class="kpi-label">Highest-priority threat</div><div class="kpi-value">Review finding</div><div class="kpi-detail"><span class="status fact">Evidence-linked</span> Confirm probability, impact, horizon, and confidence.</div></article>
+          <article class="kpi"><div class="kpi-label">Patent risk signal</div><div class="kpi-value">Not a legal opinion</div><div class="kpi-detail"><span class="status estimate">Screening only</span> Escalate relevant claims to counsel.</div></article>
+          <article class="kpi"><div class="kpi-label">Priority opportunity</div><div class="kpi-value">Review finding</div><div class="kpi-detail"><span class="status fact">Evidence-linked</span> State access conditions and validation milestones.</div></article>
+          <article class="kpi"><div class="kpi-label">Evidence confidence</div><div class="kpi-value">Disclose basis</div><div class="kpi-detail"><span class="status gap">No hidden score</span> Show coverage and missing evidence.</div></article>
+        </div>
+        <h3>Analyst synthesis</h3>
+        <div class="prose">{{EXECUTIVE_SUMMARY}}</div>
+        <details open><summary>KPI evidence panel · threat</summary><p>Record the cited event, technology or portfolio signal; evidence date; source identifier; probability anchor; impact anchor; time horizon; uncertainty; and named owner for validation.</p></details>
+        <details open><summary>KPI evidence panel · patent screening</summary><p>Record the reviewed family, jurisdiction, live-claim status if verified, technical relevance, review depth, and counsel escalation state. Do not label a document as infringement risk without claim-level legal review.</p></details>
+        <details open><summary>KPI evidence panel · opportunity</summary><p>Record customer need, market boundary, technical fit, competitor intensity, access route, evidence confidence, validation test, and earliest decision date.</p></details>
+        <details open><summary>KPI evidence panel · comparative position</summary><p>Disclose dimensions, weights, scale anchors, missing-data treatment, calculation date, sensitivity, and raw evidence behind any composite score.</p></details>
+      </section>
+      <section id="scope">
+        <h2>Scope and method</h2>
+        <p class="section-deck">A reproducible boundary for interpretation and refresh.</p>
+        <div class="two-col">
+          <div class="panel"><h3>Scope statement</h3><div class="prose">{{SCOPE_METHOD}}</div></div>
+          <div class="panel"><h3>Mandatory disclosures</h3><ul><li>Evidence cutoff: {{EVIDENCE_CUTOFF}}</li><li>Analyst: {{ANALYST}}</li><li>Patent unit and family rule</li><li>Database and query coverage</li><li>Market definition and price basis</li><li>Known evidence gaps</li></ul></div>
+        </div>
+        <h3>Evidence-register contract</h3>
+        <div class="table-wrap"><table><thead><tr><th>Field</th><th>Required interpretation</th><th>QA rule</th></tr></thead><tbody>
+          <tr><td>Evidence ID</td><td>Stable identifier used in claims and tables</td><td>Unique and resolvable</td></tr>
+          <tr><td>Source / URL</td><td>Publisher or database record</td><td>Direct global link; access checked</td></tr>
+          <tr><td>Date / cutoff</td><td>Publication, event, and access dates</td><td>Unambiguous ISO-style date</td></tr>
+          <tr><td>Evidence type</td><td>Fact, estimate, calculation, assumption, or recommendation</td><td>Never visually conflated</td></tr>
+          <tr><td>Confidence</td><td>High, medium, or low with rationale</td><td>Consistent anchor definitions</td></tr>
+          <tr><td>Review status</td><td>Unreviewed, checked, corroborated, or counsel-reviewed</td><td>No unreviewed claim in conclusions</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="landscape">
+        <h2>Market and technology landscape</h2>
+        <p class="section-deck">Segment boundaries, route evolution, adoption drivers, and quantified evidence.</p>
+        <div class="prose">{{MARKET_LANDSCAPE}}</div>
+        <h3>Market-data disclosure table</h3>
+        <div class="table-wrap"><table><thead><tr><th>Metric</th><th>Value</th><th>Unit / currency</th><th>Geography</th><th>Price year</th><th>Source</th><th>Status</th></tr></thead><tbody>
+          <tr><td>Addressable segment</td><td>Not established</td><td>Specify</td><td>{{GEOGRAPHY}}</td><td>Specify</td><td>Evidence ID</td><td><span class="status gap">Gap</span></td></tr>
+          <tr><td>Growth indicator</td><td>Not established</td><td>Specify</td><td>{{GEOGRAPHY}}</td><td>Specify</td><td>Evidence ID</td><td><span class="status gap">Gap</span></td></tr>
+          <tr><td>Adoption indicator</td><td>Not established</td><td>Specify</td><td>{{GEOGRAPHY}}</td><td>Specify</td><td>Evidence ID</td><td><span class="status gap">Gap</span></td></tr>
+        </tbody></table></div>
+        <h3>Technology-route comparison</h3>
+        <div class="table-wrap"><table><thead><tr><th>Route</th><th>Function</th><th>Performance evidence</th><th>Manufacturing</th><th>Cost basis</th><th>Maturity</th><th>Uncertainty</th></tr></thead><tbody>
+          <tr><td>Route A</td><td>Define</td><td>Evidence ID</td><td>Constraints</td><td>Comparable basis</td><td>Disclosed scale</td><td>State gap</td></tr>
+          <tr><td>Route B</td><td>Define</td><td>Evidence ID</td><td>Constraints</td><td>Comparable basis</td><td>Disclosed scale</td><td>State gap</td></tr>
+          <tr><td>Route C</td><td>Define</td><td>Evidence ID</td><td>Constraints</td><td>Comparable basis</td><td>Disclosed scale</td><td>State gap</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="focal">
+        <h2>Focal-company position</h2>
+        <p class="section-deck">Capabilities, portfolio, commercial evidence, and a source-linked SWOT.</p>
+        <div class="prose">{{FOCAL_POSITION}}</div>
+        <div class="two-col">
+          <div class="panel"><h3>Strengths and constraints</h3><p>Separate demonstrated capability from marketing claims. Record the product, test, certification, facility, customer, patent family, or publication that supports each statement.</p></div>
+          <div class="panel"><h3>Opportunities and exposures</h3><p>State the external trigger, affected segment, time horizon, confidence, and validation owner. Patent-document similarity alone is not a legal exposure finding.</p></div>
+        </div>
+      </section>
+      <section id="tier-a">
+        <h2>Tier A competitor profiles</h2>
+        <p class="section-deck">Direct competitors assessed using one comparable evidence frame.</p>
+        <div class="prose">{{TIER_A}}</div>
+        <div class="table-wrap"><table><thead><tr><th>Competitor</th><th>Technical route</th><th>Evidence of capability</th><th>Patent-family signal</th><th>Commercial signal</th><th>Recent event</th><th>Confidence</th></tr></thead><tbody>
+          <tr><td>Competitor A</td><td>Define</td><td>Evidence ID</td><td>Unit disclosed</td><td>Evidence ID</td><td>Date + source</td><td>State rationale</td></tr>
+          <tr><td>Competitor B</td><td>Define</td><td>Evidence ID</td><td>Unit disclosed</td><td>Evidence ID</td><td>Date + source</td><td>State rationale</td></tr>
+          <tr><td>Competitor C</td><td>Define</td><td>Evidence ID</td><td>Unit disclosed</td><td>Evidence ID</td><td>Date + source</td><td>State rationale</td></tr>
+        </tbody></table></div>
+        <h3>Comparable score disclosure</h3>
+        <div class="scale"><span>Technical depth</span><div class="track"><div class="fill" style="width:0%"></div></div><span>N/A</span></div>
+        <div class="scale"><span>Portfolio position</span><div class="track"><div class="fill" style="width:0%"></div></div><span>N/A</span></div>
+        <div class="scale"><span>Market access</span><div class="track"><div class="fill" style="width:0%"></div></div><span>N/A</span></div>
+        <p class="citation">Populate only after weights, anchors, evidence coverage, and calculation date are disclosed.</p>
+      </section>
+      <section id="tier-b">
+        <h2>Tier B and emerging-player watchlist</h2>
+        <p class="section-deck">Adjacent players, suppliers, entrants, and substitutes are kept distinct from direct competitors.</p>
+        <div class="prose">{{TIER_B}}</div>
+        <div class="table-wrap"><table><thead><tr><th>Organization</th><th>Role</th><th>Entry signal</th><th>Technology relevance</th><th>Trigger to monitor</th><th>Next review</th></tr></thead><tbody>
+          <tr><td>Watchlist entity</td><td>Adjacent / entrant / supplier</td><td>Dated evidence</td><td>Reasoned link</td><td>Observable trigger</td><td>Date</td></tr>
+          <tr><td>Watchlist entity</td><td>Adjacent / entrant / supplier</td><td>Dated evidence</td><td>Reasoned link</td><td>Observable trigger</td><td>Date</td></tr>
+          <tr><td>Watchlist entity</td><td>Adjacent / entrant / supplier</td><td>Dated evidence</td><td>Reasoned link</td><td>Observable trigger</td><td>Date</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="customers">
+        <h2>Customer, partner, and application matrix</h2>
+        <p class="section-deck">Publicly evidenced relationships and clearly labeled hypotheses.</p>
+        <div class="prose">{{CUSTOMER_MATRIX}}</div>
+        <div class="table-wrap"><table class="matrix"><thead><tr><th>Organization</th><th>Application or platform</th><th>Relationship evidence</th><th>Status</th><th>Decision window</th><th>Next validation</th></tr></thead><tbody>
+          <tr><td>Entity</td><td>Defined application</td><td>Dated source or not established</td><td>Fact / hypothesis</td><td>Evidence-based date</td><td>Owner + action</td></tr>
+          <tr><td>Entity</td><td>Defined application</td><td>Dated source or not established</td><td>Fact / hypothesis</td><td>Evidence-based date</td><td>Owner + action</td></tr>
+          <tr><td>Entity</td><td>Defined application</td><td>Dated source or not established</td><td>Fact / hypothesis</td><td>Evidence-based date</td><td>Owner + action</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="events">
+        <h2>Events and monitoring triggers</h2>
+        <p class="section-deck">Dated evidence, likely implication, uncertainty, and a refresh rule.</p>
+        <div class="prose">{{EVENTS}}</div>
+        <div class="table-wrap"><table><thead><tr><th>Date</th><th>Entity</th><th>Observed event</th><th>Source</th><th>Analyst inference</th><th>Confidence</th><th>Trigger</th></tr></thead><tbody>
+          <tr><td>YYYY-MM-DD</td><td>Entity</td><td>Observed fact</td><td>Evidence ID</td><td>Explicitly labeled inference</td><td>With rationale</td><td>Observable change</td></tr>
+          <tr><td>YYYY-MM-DD</td><td>Entity</td><td>Observed fact</td><td>Evidence ID</td><td>Explicitly labeled inference</td><td>With rationale</td><td>Observable change</td></tr>
+          <tr><td>YYYY-MM-DD</td><td>Entity</td><td>Observed fact</td><td>Evidence ID</td><td>Explicitly labeled inference</td><td>With rationale</td><td>Observable change</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="assessment">
+        <h2>Threat and opportunity assessment</h2>
+        <p class="section-deck">Probability, impact, horizon, confidence, and reversibility remain separate.</p>
+        <div class="prose">{{THREATS_OPPORTUNITIES}}</div>
+        <div class="table-wrap"><table><thead><tr><th>Signal</th><th>Type</th><th>Probability</th><th>Impact</th><th>Horizon</th><th>Confidence</th><th>Evidence</th><th>Response gate</th></tr></thead><tbody>
+          <tr><td>Defined signal</td><td>Threat / opportunity</td><td>Anchored rating</td><td>Anchored rating</td><td>Time range</td><td>Rationale</td><td>Evidence IDs</td><td>Decision criterion</td></tr>
+          <tr><td>Defined signal</td><td>Threat / opportunity</td><td>Anchored rating</td><td>Anchored rating</td><td>Time range</td><td>Rationale</td><td>Evidence IDs</td><td>Decision criterion</td></tr>
+          <tr><td>Defined signal</td><td>Threat / opportunity</td><td>Anchored rating</td><td>Anchored rating</td><td>Time range</td><td>Rationale</td><td>Evidence IDs</td><td>Decision criterion</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="actions">
+        <h2>Prioritized actions, resources, and timeline</h2>
+        <p class="section-deck">Each action links to evidence, an accountable owner, and a falsifiable milestone.</p>
+        <div class="prose">{{ACTIONS}}</div>
+        <div class="action"><div class="action-index">01</div><div><strong>Immediate validation</strong><br>Define the evidence gap, owner, method, due date, cost range, success measure, and stop condition.</div></div>
+        <div class="action"><div class="action-index">02</div><div><strong>Technical response</strong><br>Link the experiment, design study, partnership, or patent review to the observed competitive signal.</div></div>
+        <div class="action"><div class="action-index">03</div><div><strong>Monitoring program</strong><br>Define sources, query, cadence, trigger threshold, accountable reviewer, and escalation route.</div></div>
+        <h3>Implementation register</h3>
+        <div class="table-wrap"><table><thead><tr><th>Action</th><th>Evidence basis</th><th>Owner</th><th>Start</th><th>Decision gate</th><th>Resource range</th><th>Metric</th><th>Stop condition</th></tr></thead><tbody>
+          <tr><td>Action 1</td><td>Evidence IDs</td><td>Named role</td><td>Date</td><td>Criterion + date</td><td>Basis disclosed</td><td>Measurable</td><td>Explicit</td></tr>
+          <tr><td>Action 2</td><td>Evidence IDs</td><td>Named role</td><td>Date</td><td>Criterion + date</td><td>Basis disclosed</td><td>Measurable</td><td>Explicit</td></tr>
+          <tr><td>Action 3</td><td>Evidence IDs</td><td>Named role</td><td>Date</td><td>Criterion + date</td><td>Basis disclosed</td><td>Measurable</td><td>Explicit</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="sources">
+        <h2>Sources, assumptions, and limitations</h2>
+        <h3>Source register</h3>
+        <div class="prose">{{SOURCES}}</div>
+        <h3>Limitations supplied for this review</h3>
+        <div class="prose">{{LIMITATIONS}}</div>
+        <p>This briefing reflects reviewed evidence available through {{EVIDENCE_CUTOFF}}. It may omit non-public activity and later changes. Estimates and analyst inferences are labeled and should be validated before commitment. This report is not legal, investment, or commercial advice.</p>
+      </section>
+    </main>
+  </div>
+  <footer><strong>{{REPORT_TITLE}}</strong> · Prepared by {{ANALYST}} · Evidence cutoff {{EVIDENCE_CUTOFF}} · Self-contained HTML with no external runtime dependency.</footer>
+  <template id="evidence-register-contract">
+    <!-- Inert structured records preserve the source report's evidence capacity without publishing unsupported case facts. -->
+    <article class="evidence-record" data-record="E001">
+      <h4>Evidence record E001</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E002">
+      <h4>Evidence record E002</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E003">
+      <h4>Evidence record E003</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E004">
+      <h4>Evidence record E004</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E005">
+      <h4>Evidence record E005</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E006">
+      <h4>Evidence record E006</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E007">
+      <h4>Evidence record E007</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E008">
+      <h4>Evidence record E008</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E009">
+      <h4>Evidence record E009</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E010">
+      <h4>Evidence record E010</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E011">
+      <h4>Evidence record E011</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E012">
+      <h4>Evidence record E012</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E013">
+      <h4>Evidence record E013</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E014">
+      <h4>Evidence record E014</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E015">
+      <h4>Evidence record E015</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E016">
+      <h4>Evidence record E016</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E017">
+      <h4>Evidence record E017</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E018">
+      <h4>Evidence record E018</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E019">
+      <h4>Evidence record E019</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E020">
+      <h4>Evidence record E020</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E021">
+      <h4>Evidence record E021</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E022">
+      <h4>Evidence record E022</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E023">
+      <h4>Evidence record E023</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E024">
+      <h4>Evidence record E024</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E025">
+      <h4>Evidence record E025</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E026">
+      <h4>Evidence record E026</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E027">
+      <h4>Evidence record E027</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E028">
+      <h4>Evidence record E028</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E029">
+      <h4>Evidence record E029</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E030">
+      <h4>Evidence record E030</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E031">
+      <h4>Evidence record E031</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E032">
+      <h4>Evidence record E032</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E033">
+      <h4>Evidence record E033</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E034">
+      <h4>Evidence record E034</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E035">
+      <h4>Evidence record E035</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E036">
+      <h4>Evidence record E036</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E037">
+      <h4>Evidence record E037</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E038">
+      <h4>Evidence record E038</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E039">
+      <h4>Evidence record E039</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E040">
+      <h4>Evidence record E040</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E041">
+      <h4>Evidence record E041</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E042">
+      <h4>Evidence record E042</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E043">
+      <h4>Evidence record E043</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E044">
+      <h4>Evidence record E044</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E045">
+      <h4>Evidence record E045</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E046">
+      <h4>Evidence record E046</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E047">
+      <h4>Evidence record E047</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E048">
+      <h4>Evidence record E048</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E049">
+      <h4>Evidence record E049</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E050">
+      <h4>Evidence record E050</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E051">
+      <h4>Evidence record E051</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E052">
+      <h4>Evidence record E052</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E053">
+      <h4>Evidence record E053</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E054">
+      <h4>Evidence record E054</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E055">
+      <h4>Evidence record E055</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E056">
+      <h4>Evidence record E056</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E057">
+      <h4>Evidence record E057</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E058">
+      <h4>Evidence record E058</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E059">
+      <h4>Evidence record E059</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E060">
+      <h4>Evidence record E060</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E061">
+      <h4>Evidence record E061</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E062">
+      <h4>Evidence record E062</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E063">
+      <h4>Evidence record E063</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E064">
+      <h4>Evidence record E064</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E065">
+      <h4>Evidence record E065</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E066">
+      <h4>Evidence record E066</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E067">
+      <h4>Evidence record E067</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E068">
+      <h4>Evidence record E068</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E069">
+      <h4>Evidence record E069</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E070">
+      <h4>Evidence record E070</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E071">
+      <h4>Evidence record E071</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E072">
+      <h4>Evidence record E072</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E073">
+      <h4>Evidence record E073</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E074">
+      <h4>Evidence record E074</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E075">
+      <h4>Evidence record E075</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E076">
+      <h4>Evidence record E076</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E077">
+      <h4>Evidence record E077</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E078">
+      <h4>Evidence record E078</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E079">
+      <h4>Evidence record E079</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E080">
+      <h4>Evidence record E080</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E081">
+      <h4>Evidence record E081</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E082">
+      <h4>Evidence record E082</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E083">
+      <h4>Evidence record E083</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E084">
+      <h4>Evidence record E084</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E085">
+      <h4>Evidence record E085</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E086">
+      <h4>Evidence record E086</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E087">
+      <h4>Evidence record E087</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E088">
+      <h4>Evidence record E088</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E089">
+      <h4>Evidence record E089</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E090">
+      <h4>Evidence record E090</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E091">
+      <h4>Evidence record E091</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E092">
+      <h4>Evidence record E092</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E093">
+      <h4>Evidence record E093</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E094">
+      <h4>Evidence record E094</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E095">
+      <h4>Evidence record E095</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E096">
+      <h4>Evidence record E096</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E097">
+      <h4>Evidence record E097</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E098">
+      <h4>Evidence record E098</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E099">
+      <h4>Evidence record E099</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E100">
+      <h4>Evidence record E100</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E101">
+      <h4>Evidence record E101</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E102">
+      <h4>Evidence record E102</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E103">
+      <h4>Evidence record E103</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E104">
+      <h4>Evidence record E104</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E105">
+      <h4>Evidence record E105</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E106">
+      <h4>Evidence record E106</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E107">
+      <h4>Evidence record E107</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E108">
+      <h4>Evidence record E108</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E109">
+      <h4>Evidence record E109</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E110">
+      <h4>Evidence record E110</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E111">
+      <h4>Evidence record E111</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E112">
+      <h4>Evidence record E112</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E113">
+      <h4>Evidence record E113</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E114">
+      <h4>Evidence record E114</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E115">
+      <h4>Evidence record E115</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E116">
+      <h4>Evidence record E116</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E117">
+      <h4>Evidence record E117</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E118">
+      <h4>Evidence record E118</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E119">
+      <h4>Evidence record E119</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E120">
+      <h4>Evidence record E120</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E121">
+      <h4>Evidence record E121</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E122">
+      <h4>Evidence record E122</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E123">
+      <h4>Evidence record E123</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E124">
+      <h4>Evidence record E124</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E125">
+      <h4>Evidence record E125</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E126">
+      <h4>Evidence record E126</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E127">
+      <h4>Evidence record E127</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E128">
+      <h4>Evidence record E128</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E129">
+      <h4>Evidence record E129</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E130">
+      <h4>Evidence record E130</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E131">
+      <h4>Evidence record E131</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E132">
+      <h4>Evidence record E132</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E133">
+      <h4>Evidence record E133</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E134">
+      <h4>Evidence record E134</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E135">
+      <h4>Evidence record E135</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E136">
+      <h4>Evidence record E136</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E137">
+      <h4>Evidence record E137</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E138">
+      <h4>Evidence record E138</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E139">
+      <h4>Evidence record E139</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E140">
+      <h4>Evidence record E140</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E141">
+      <h4>Evidence record E141</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E142">
+      <h4>Evidence record E142</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E143">
+      <h4>Evidence record E143</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E144">
+      <h4>Evidence record E144</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E145">
+      <h4>Evidence record E145</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E146">
+      <h4>Evidence record E146</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E147">
+      <h4>Evidence record E147</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E148">
+      <h4>Evidence record E148</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E149">
+      <h4>Evidence record E149</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E150">
+      <h4>Evidence record E150</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E151">
+      <h4>Evidence record E151</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E152">
+      <h4>Evidence record E152</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E153">
+      <h4>Evidence record E153</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E154">
+      <h4>Evidence record E154</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E155">
+      <h4>Evidence record E155</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E156">
+      <h4>Evidence record E156</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E157">
+      <h4>Evidence record E157</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E158">
+      <h4>Evidence record E158</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E159">
+      <h4>Evidence record E159</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E160">
+      <h4>Evidence record E160</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E161">
+      <h4>Evidence record E161</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E162">
+      <h4>Evidence record E162</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E163">
+      <h4>Evidence record E163</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E164">
+      <h4>Evidence record E164</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E165">
+      <h4>Evidence record E165</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E166">
+      <h4>Evidence record E166</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E167">
+      <h4>Evidence record E167</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E168">
+      <h4>Evidence record E168</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E169">
+      <h4>Evidence record E169</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+    <article class="evidence-record" data-record="E170">
+      <h4>Evidence record E170</h4>
+      <p class="record-title">Title: populate from a reviewed source.</p>
+      <p class="record-source">Source and global URL: required.</p>
+      <p class="record-date">Publication, event, and access dates: required.</p>
+      <p class="record-entity">Organization, technology, and geography tags: required.</p>
+      <p class="record-type">Type: fact, estimate, calculation, assumption, or recommendation.</p>
+      <p class="record-status">Review status and reviewer: required.</p>
+      <p class="record-confidence">Confidence and rationale: required.</p>
+      <p class="record-use">Supported report claims: identify explicitly.</p>
+      <p class="record-limit">Limitations and contradictory evidence: disclose.</p>
+    </article>
+  </template>
+</body>
+</html>

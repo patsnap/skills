@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="report-version" content="V1.0.0">
+  <meta name="report-date" content="2026-01-01">
+  <meta name="evidence-cutoff" content="2025-12-31">
+  <meta name="review-status" content="Draft — requires evidence and domain review">
+  <title>Technology Insight Report — V1.0.0</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #566277;
+      --navy: #163a63;
+      --blue: #2768a5;
+      --blue-soft: #eaf2f9;
+      --line: #cbd5e1;
+      --line-dark: #9baabd;
+      --paper: #ffffff;
+      --canvas: #f3f6f9;
+      --warning: #8a4b08;
+      --warning-bg: #fff7e8;
+      --success: #1f6b4f;
+      --success-bg: #edf8f3;
+      --danger: #983b3b;
+      --danger-bg: #fff1f1;
+      --radius: 6px;
+      --shadow: 0 2px 10px rgba(22, 58, 99, 0.08);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    a { color: var(--blue); text-underline-offset: 2px; }
+    a:hover { color: var(--navy); }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 24px auto 48px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .masthead {
+      padding: 34px 44px 26px;
+      border-top: 6px solid var(--navy);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { margin-bottom: 10px; font-size: clamp(28px, 4vw, 44px); }
+    h2 { margin-bottom: 16px; font-size: 25px; }
+    h3 { margin: 28px 0 10px; font-size: 18px; }
+    h4 { margin: 20px 0 8px; font-size: 15px; }
+
+    .subtitle { max-width: 820px; margin: 0; color: var(--muted); font-size: 17px; }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .meta-card {
+      padding: 12px 14px;
+      background: var(--blue-soft);
+      border: 1px solid #c8dcec;
+      border-radius: var(--radius);
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .meta-value { display: block; margin-top: 3px; font-weight: 650; }
+
+    nav {
+      padding: 20px 44px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav ol {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 5px 28px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    main { padding: 0 44px; }
+
+    section {
+      padding: 38px 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 18px;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lead { max-width: 900px; color: #334155; font-size: 16px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 18px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    .card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .card h3, .card h4 { margin-top: 0; }
+
+    .callout {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .callout.warning { border-left-color: var(--warning); background: var(--warning-bg); }
+    .callout.success { border-left-color: var(--success); background: var(--success-bg); }
+    .callout.danger { border-left-color: var(--danger); background: var(--danger-bg); }
+
+    .table-wrap { margin: 16px 0 24px; overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line-dark);
+      font-size: 13px;
+    }
+
+    caption {
+      padding: 0 0 8px;
+      color: var(--muted);
+      text-align: left;
+      font-size: 12px;
+    }
+
+    th, td {
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { color: var(--navy); background: #edf3f8; font-weight: 700; }
+    tbody tr:nth-child(even) { background: #fafcfe; }
+
+    .metric { font-variant-numeric: tabular-nums; }
+    .evidence { color: var(--blue); font-size: 12px; font-weight: 650; white-space: nowrap; }
+    .note { color: var(--muted); font-size: 12px; }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(130px, 1fr) 3fr minmax(70px, auto);
+      gap: 12px;
+      align-items: center;
+      margin: 9px 0;
+    }
+
+    .bar-track { height: 12px; background: #e4eaf0; border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--blue); }
+
+    dl { display: grid; grid-template-columns: 180px 1fr; gap: 7px 16px; }
+    dt { color: var(--navy); font-weight: 700; }
+    dd { margin: 0; }
+
+    .status {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    footer { padding: 28px 44px; color: var(--muted); background: #f8fafc; }
+
+    @media (max-width: 820px) {
+      .page { width: 100%; margin: 0; border: 0; }
+      .masthead, nav, main, footer { padding-left: 22px; padding-right: 22px; }
+      .metadata, .grid-2, .grid-3, nav ol { grid-template-columns: 1fr; }
+      dl { grid-template-columns: 1fr; gap: 2px; }
+      dd { margin-bottom: 10px; }
+    }
+
+    @media print {
+      @page { margin: 14mm; }
+      body { background: #fff; font-size: 10pt; }
+      .page { width: 100%; margin: 0; border: 0; box-shadow: none; }
+      nav { display: none; }
+      section { break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+      .card, .callout, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header class="masthead">
+      <p class="eyebrow">Scientific and technology intelligence</p>
+      <h1>Technology Insight Report</h1>
+      <p class="subtitle">Editorial instruction: replace this sentence with the decision question, scope, and principal evidence boundary.</p>
+      <div class="metadata" aria-label="Report metadata">
+        <div class="meta-card"><span class="meta-label">Version</span><span class="meta-value">V1.0.0</span></div>
+        <div class="meta-card"><span class="meta-label">Report date</span><span class="meta-value">2026-01-01</span></div>
+        <div class="meta-card"><span class="meta-label">Evidence cutoff</span><span class="meta-value">2025-12-31</span></div>
+        <div class="meta-card"><span class="meta-label">Review status</span><span class="meta-value">Draft — requires evidence and domain review</span></div>
+      </div>
+    </header>
+
+    <nav aria-label="Report sections">
+      <ol>
+        <li><a href="#s0">Executive decision brief</a></li>
+        <li><a href="#s1">Scope and evidence</a></li>
+        <li><a href="#s2">Technology foundations</a></li>
+        <li><a href="#s3">Routes and maturity</a></li>
+        <li><a href="#s4">Patent evidence</a></li>
+        <li><a href="#s5">Organizations and ecosystem</a></li>
+        <li><a href="#s6">Risks and uncertainties</a></li>
+        <li><a href="#s7">Cross-domain opportunities</a></li>
+        <li><a href="#s8">Options and specialist review</a></li>
+        <li><a href="#s9">Vertical scenario</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <section id="s0">
+        <span class="section-kicker">Section s0</span>
+        <h2>Executive decision brief</h2>
+        <p class="lead">Editorial instruction: state the decision, the bounded conclusion, and why the evidence supports it.</p>
+        <div class="grid-3">
+          <div class="card"><h3>Decision</h3><p>Editorial instruction: decision to be made and owner.</p></div>
+          <div class="card"><h3>Recommended posture</h3><p>Editorial instruction: proceed, pause, test, monitor, partner, or seek specialist review.</p></div>
+          <div class="card"><h3>Confidence</h3><p>Editorial instruction: confidence, evidence basis, and the largest unresolved uncertainty.</p></div>
+        </div>
+        <h3>Material findings</h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Every finding must resolve to evidence IDs in the source register.</caption>
+            <thead><tr><th>Finding</th><th>Decision effect</th><th>Evidence</th><th>Confidence</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: bounded finding.</td><td>Editorial instruction: effect.</td><td class="evidence">[E1]</td><td>Editorial instruction: level and basis.</td></tr></tbody>
+          </table>
+        </div>
+        <div class="callout warning"><strong>Boundary:</strong> Editorial instruction: summarize material coverage, legal, regulatory, safety, and timing boundaries.</div>
+      </section>
+
+      <section id="s1">
+        <span class="section-kicker">Section s1</span>
+        <h2>Scope, definitions, and evidence base</h2>
+        <p class="lead">Editorial instruction: make the reviewed universe reproducible and distinguish it from the wider world.</p>
+        <dl>
+          <dt>Decision question</dt><dd>Editorial instruction: exact question.</dd>
+          <dt>Included</dt><dd>Editorial instruction: mechanisms, applications, regions, languages, and dates.</dd>
+          <dt>Excluded</dt><dd>Editorial instruction: explicit exclusions and reasons.</dd>
+          <dt>Count unit</dt><dd>Editorial instruction: publications, families, organizations, products, events, or another defined unit.</dd>
+          <dt>Evidence cutoff</dt><dd>2025-12-31</dd>
+        </dl>
+        <h3>Search and review accounting</h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Matched totals, returned records, reviewed records, and accepted records are not interchangeable.</caption>
+            <thead><tr><th>Query ID</th><th>Source</th><th>Scope</th><th>Matched</th><th>Returned</th><th>Reviewed</th><th>Accepted</th><th>Limitations</th></tr></thead>
+            <tbody><tr><td>Q1</td><td>Editorial instruction: source.</td><td>Editorial instruction: exact filters.</td><td class="metric">—</td><td class="metric">—</td><td class="metric">—</td><td class="metric">—</td><td>Editorial instruction: limitations.</td></tr></tbody>
+          </table>
+        </div>
+        <div class="callout"><strong>Coverage statement:</strong> Editorial instruction: state saturation tests, stop rule, access constraints, and residual gaps. Do not claim exhaustive global coverage.</div>
+      </section>
+
+      <section id="s2">
+        <span class="section-kicker">Section s2</span>
+        <h2>Technology foundations and system model</h2>
+        <p class="lead">Editorial instruction: explain the mechanism, system boundary, inputs, transformations, outputs, and governing constraints.</p>
+        <div class="grid-2">
+          <div class="card"><h3>Mechanism</h3><p>Editorial instruction: mechanism with evidence and boundary conditions. <span class="evidence">[E2]</span></p></div>
+          <div class="card"><h3>System boundary</h3><p>Editorial instruction: components, interfaces, dependencies, and excluded layers. <span class="evidence">[E3]</span></p></div>
+        </div>
+        <h3>Performance definitions</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Metric</th><th>Definition</th><th>Unit</th><th>Conditions</th><th>Observed range</th><th>Evidence</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: metric.</td><td>Editorial instruction: definition.</td><td>Editorial instruction: unit.</td><td>Editorial instruction: conditions.</td><td>Editorial instruction: range and distribution.</td><td class="evidence">[E4]</td></tr></tbody>
+          </table>
+        </div>
+        <p class="note">Editorial instruction: explain comparability limits, test-method differences, and missing data.</p>
+      </section>
+
+      <section id="s3">
+        <span class="section-kicker">Section s3</span>
+        <h2>Technology routes, maturity, and trade-offs</h2>
+        <p class="lead">Editorial instruction: compare credible routes using decision-relevant dimensions and explicit maturity evidence.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Route</th><th>Mechanism</th><th>Strengths</th><th>Constraints</th><th>Maturity evidence</th><th>Validation need</th><th>Evidence</th></tr></thead>
+            <tbody><tr><td>Route A</td><td>Editorial instruction: mechanism.</td><td>Editorial instruction: supported strengths.</td><td>Editorial instruction: constraints.</td><td>Editorial instruction: demonstrated scale and context.</td><td>Editorial instruction: next test.</td><td class="evidence">[E5]</td></tr></tbody>
+          </table>
+        </div>
+        <h3>Comparable quantitative view</h3>
+        <div class="bar-row"><span>Editorial instruction: metric</span><span class="bar-track"><span class="bar-fill" style="width: 60%"></span></span><span class="metric">60 unit</span></div>
+        <p class="note">Editorial instruction: replace demonstration value; define denominator, scale, date, conditions, and source. Include the underlying table.</p>
+      </section>
+
+      <section id="s4">
+        <span class="section-kicker">Section s4</span>
+        <h2>Patent evidence and claim-relevance screening</h2>
+        <p class="lead">Editorial instruction: describe the reviewed patent universe, family rules, claim review, status checks, and limitations.</p>
+        <div class="callout danger"><strong>Legal boundary:</strong> This report is not legal advice and does not establish freedom to operate, validity, enforceability, infringement, or non-infringement. Material questions require review by a patent professional.</div>
+        <h3>Patent search accounting</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Query</th><th>Jurisdiction/language</th><th>Date range</th><th>Family rule</th><th>Reviewed</th><th>Accepted</th><th>Gap check</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: exact query or query ID.</td><td>Editorial instruction: scope.</td><td>Editorial instruction: dates.</td><td>Editorial instruction: family treatment.</td><td class="metric">—</td><td class="metric">—</td><td>Editorial instruction: synonym/classification/citation checks.</td></tr></tbody>
+          </table>
+        </div>
+        <h3>Claim-relevance screen</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Screen ID</th><th>Publication/family</th><th>Relevant independent claim</th><th>Observed product/route evidence</th><th>Unknowns</th><th>Status checked</th><th>Professional action</th></tr></thead>
+            <tbody><tr><td>CR-1</td><td>Editorial instruction: publication and family ID.</td><td>Editorial instruction: claim number and technically relevant limitation.</td><td>Editorial instruction: evidence, not assumption.</td><td>Editorial instruction: unknown facts or construction.</td><td>Editorial instruction: source and date.</td><td>Editorial instruction: qualified review question.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="s5">
+        <span class="section-kicker">Section s5</span>
+        <h2>Organizations, products, and ecosystem</h2>
+        <p class="lead">Editorial instruction: separate research, patenting, products, manufacturing, partnerships, and demonstrated capability.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Organization</th><th>Role</th><th>Technical evidence</th><th>Product/status evidence</th><th>Manufacturing/ecosystem evidence</th><th>Geography</th><th>Evidence</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: normalized name.</td><td>Editorial instruction: role.</td><td>Editorial instruction: verified activity.</td><td>Editorial instruction: product and status.</td><td>Editorial instruction: capacity or partnership evidence.</td><td>Editorial instruction: neutral global region.</td><td class="evidence">[E6]</td></tr></tbody>
+          </table>
+        </div>
+        <div class="callout"><strong>Interpretation:</strong> Editorial instruction: explain why activity volume is or is not decision-relevant. Do not equate patent count with leadership.</div>
+      </section>
+
+      <section id="s6">
+        <span class="section-kicker">Section s6</span>
+        <h2>Risks, uncertainties, and validation priorities</h2>
+        <p class="lead">Editorial instruction: distinguish observed constraints from inferred risks and unresolved questions.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risk ID</th><th>Category</th><th>Evidence/trigger</th><th>Decision effect</th><th>Uncertainty</th><th>Mitigation/test</th><th>Owner/date</th></tr></thead>
+            <tbody><tr><td>R1</td><td>Editorial instruction: technical, commercial, safety, regulatory, supply, IP, or evidence.</td><td>Editorial instruction: trigger and evidence ID.</td><td>Editorial instruction: affected decision.</td><td>Editorial instruction: unknowns.</td><td>Editorial instruction: action and pass/fail criterion.</td><td>Editorial instruction: owner and date.</td></tr></tbody>
+          </table>
+        </div>
+        <h3>Uncertainty sensitivity</h3>
+        <p>Editorial instruction: explain which assumptions could reverse the recommendation and what evidence would resolve them.</p>
+      </section>
+
+      <section id="s7">
+        <span class="section-kicker">Section s7</span>
+        <h2>Cross-domain transfer and opportunity assessment</h2>
+        <p class="lead">Editorial instruction: assess transfer through shared mechanisms and matching operating conditions, not analogy alone.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Candidate application</th><th>Shared mechanism</th><th>Matching conditions</th><th>Different conditions</th><th>Evidence</th><th>Barriers</th><th>Validation</th><th>Confidence</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: application.</td><td>Editorial instruction: mechanism.</td><td>Editorial instruction: comparable conditions.</td><td>Editorial instruction: scale, environment, regulation, cost, or workflow differences.</td><td class="evidence">[E7]</td><td>Editorial instruction: barriers.</td><td>Editorial instruction: experiment or research.</td><td>Editorial instruction: bounded confidence.</td></tr></tbody>
+          </table>
+        </div>
+        <p class="note">If no responsive evidence was observed, state that this applies only to the reviewed search universe as of the cutoff.</p>
+      </section>
+
+      <section id="s8">
+        <span class="section-kicker">Section s8</span>
+        <h2>Technical options and specialist review</h2>
+        <p class="lead">Editorial instruction: convert evidence into testable options without promising legal or regulatory clearance.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Option</th><th>Technical change</th><th>Expected effect</th><th>Trade-offs</th><th>Validation</th><th>Evidence</th><th>Specialist action</th><th>Status</th></tr></thead>
+            <tbody><tr><td>O1</td><td>Editorial instruction: architecture, feature, sequence, interface, parameter, or mechanism.</td><td>Editorial instruction: supported effect.</td><td>Editorial instruction: performance, cost, manufacturing, safety, and integration.</td><td>Editorial instruction: test and acceptance criterion.</td><td class="evidence">[E8]</td><td>Editorial instruction: patent, regulatory, safety, or other review.</td><td><span class="status">Candidate</span></td></tr></tbody>
+          </table>
+        </div>
+        <div class="callout success"><strong>Next gate:</strong> Editorial instruction: owner, decision date, required evidence, and go/no-go criterion.</div>
+      </section>
+
+      <section id="s9">
+        <span class="section-kicker">Section s9</span>
+        <h2>Vertical scenario and decision implications</h2>
+        <p class="lead">Editorial instruction: explain why this segment is selected and how its conditions change the core assessment.</p>
+        <div class="grid-2">
+          <div class="card"><h3>Scenario boundary</h3><p>Editorial instruction: user need, operating conditions, geography, time horizon, and exclusions.</p></div>
+          <div class="card"><h3>Decision trigger</h3><p>Editorial instruction: event or evidence that would change the recommended posture.</p></div>
+        </div>
+        <h3>Scenario comparison</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Dimension</th><th>Base case</th><th>Alternative case</th><th>Trigger</th><th>Decision effect</th><th>Evidence/assumption</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: demand, performance, cost, regulation, supply, IP, or timing.</td><td>Editorial instruction: value and unit.</td><td>Editorial instruction: value and unit.</td><td>Editorial instruction: observable trigger.</td><td>Editorial instruction: effect.</td><td>Editorial instruction: evidence ID or labeled assumption.</td></tr></tbody>
+          </table>
+        </div>
+        <h3>Source register</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Evidence ID</th><th>Title/record</th><th>Publisher/owner</th><th>Date</th><th>Identifier/link</th><th>Retrieved</th><th>Class</th><th>Scope and limitation</th></tr></thead>
+            <tbody><tr><td>E1</td><td>Editorial instruction: title.</td><td>Editorial instruction: publisher.</td><td>Editorial instruction: source date.</td><td><a href="https://example.org/replace-with-reviewed-source">Editorial instruction: stable identifier</a></td><td>2026-01-01</td><td>E1</td><td>Editorial instruction: use and limitation.</td></tr></tbody>
+          </table>
+        </div>
+        <h3>Open actions</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Action</th><th>Owner</th><th>Due date</th><th>Dependency</th><th>Completion evidence</th></tr></thead>
+            <tbody><tr><td>Editorial instruction: action.</td><td>Editorial instruction: owner.</td><td>Editorial instruction: ISO date.</td><td>Editorial instruction: dependency.</td><td>Editorial instruction: acceptance evidence.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Technology Insight Report — V1.0.0</strong></p>
+      <p>Report date: 2026-01-01 · Evidence cutoff: 2025-12-31 · Review status: Draft — requires evidence and domain review</p>
+      <p>This report is not legal advice. Patent, freedom-to-operate, validity, enforceability, and infringement questions require a qualified patent professional. Findings are limited to the documented reviewed evidence universe and cutoff.</p>
+    </footer>
+  </article>
+</body>
+</html>
