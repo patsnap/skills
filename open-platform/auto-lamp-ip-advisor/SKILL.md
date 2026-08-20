@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: auto-lamp-ip-advisor
 description: |
   汽车车灯零部件供应链决策与专利侵权风险分析专家。根据用户提供的车灯设计图描述或零件清单，完成四阶段分析：零件模块拆解、外购vs自制决策、专利侵权风险评估（含发明专利、实用新型、外观设计三类比对，疑似侵权专利对照表与绕行建议）、综合采购与设计策略汇总，最终输出网页版Tab导航HTML格式报告并打包为zip提供下载。检索范围覆盖中国及US/EP/JP/KR等主要海外专利局。覆盖前照灯、尾灯、雾灯、氛围灯，熟悉法雷奥、海拉、马瑞利、斯坦雷、小糸等主要供应商专利布局，以及奥迪"雷神之锤"等经典海外车灯专利。
@@ -100,7 +101,7 @@ description: |
 - 英文检索：(light guide OR thick-wall light guide OR optical waveguide) AND (vehicle lamp OR automotive lighting) AND (uniformity OR taper)
 - 外观检索：(车灯 OR tail lamp OR headlamp) AND (外观 OR design) — 在CN/US(D类)/EP(LoCarno分类)中检索
 
-使用 PatSnap 专利检索工具进行实际检索，指定 `jurisdiction` 参数覆盖 CN/US/EP/JP/KR，`sources=["patent"]`。
+使用 Patsnap 专利检索工具进行实际检索，指定 `jurisdiction` 参数覆盖 CN/US/EP/JP/KR，`sources=["patent"]`。
 
 #### 3.4 判定风险等级
 
@@ -138,7 +139,7 @@ description: |
 
 #### 3.6 专利查询指令建议
 
-告知用户实际查询步骤，推荐使用本工具的 PatSnap 检索能力，或前往中国专利公布公告网 / SooPAT / Espacenet（欧洲）/ USPTO（美国）/ J-PlatPat（日本）搜索。
+告知用户实际查询步骤，推荐使用本工具的 Patsnap 检索能力，或前往中国专利公布公告网 / SooPAT / Espacenet（欧洲）/ USPTO（美国）/ J-PlatPat（日本）搜索。
 
 ### 第四步：综合采购与设计策略
 
@@ -475,7 +476,7 @@ description: |
 
 <!-- ===== 页脚 ===== -->
 <footer>
-  <p>⚠️ 本报告由 Eureka AI（基于智慧芽 PatSnap）自动生成，仅供参考，不构成法律意见。</p>
+  <p>⚠️ 本报告由 Eureka AI（基于智慧芽 Patsnap）自动生成，仅供参考，不构成法律意见。</p>
   <p>正式生产前请委托专利代理机构进行 FTO（自由销售权）检索与法律评估。</p>
   <p>报告生成时间：[生成日期]</p>
 </footer>
@@ -552,7 +553,7 @@ print(f"📁 文件大小：{os.path.getsize(zip_filename):,} 字节")
 
 ```html
 <footer>
-  <p>⚠️ 本报告由 Eureka AI（基于智慧芽PatSnap）自动生成，仅供参考，不构成法律意见。</p>
+  <p>⚠️ 本报告由 Eureka AI（基于智慧芽Patsnap）自动生成，仅供参考，不构成法律意见。</p>
   <p>正式生产前请委托专利代理机构进行 FTO（自由销售权）检索与法律评估。</p>
   <p>报告生成时间：{生成日期}</p>
 </footer>
@@ -569,7 +570,7 @@ print(f"📁 文件大小：{os.path.getsize(zip_filename):,} 字节")
 - **海外专利检索为必选项**：每次专利风险评估必须包含 US/EP/JP 三局，KR/DE 酌情纳入，不得仅做中国本土检索。
 - **外观设计专利必须调用 `patent.fetch` 并传入 `include_images=true` 获取附图**，将返回的 `image_url` 嵌入 `.design-compare-card` 卡片；若图片获取失败，使用 `onerror` fallback 显示跳转链接，不得省略图片对比卡片结构。
 - 本分析基于模拟检索，正式生产前必须委托专利代理机构进行 FTO（自由销售权）检索。
-- 当涉及具体专利号时，优先通过 PatSnap 工具检索验证，避免捏造专利信息；如无法检索到具体专利，应明确标注"示例性参考，需人工核实"。
+- 当涉及具体专利号时，优先通过 Patsnap 工具检索验证，避免捏造专利信息；如无法检索到具体专利，应明确标注"示例性参考，需人工核实"。
 - 所有专利风险结论均为初步判断，不构成法律意见。
 - **最终输出必须是完整的、可直接在浏览器打开的网页版 Tab 导航 HTML 文件，不得仅输出 Markdown 或纯文本。**
 - **HTML 生成后必须调用 Python 打包为 zip，并在对话中告知用户文件路径与大小。**

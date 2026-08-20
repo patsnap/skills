@@ -15,7 +15,7 @@ Distribute one self-contained skill package that:
 - tags discovery signals without automatic relevance conclusions;
 - renders only reviewer-confirmed records;
 - produces static scientific HTML without network runtime;
-- accurately documents optional global PatSnap MCP mappings;
+- accurately documents optional global Patsnap MCP mappings;
 - contains no patent data, secrets, cache, or generated reports.
 
 ## Authoritative topology

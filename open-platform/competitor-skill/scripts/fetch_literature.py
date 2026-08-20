@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""从 PatSnap 检索式提取关键词和时间，检索期刊文献，返回结构化结果列表。"""
+"""从 Patsnap 检索式提取关键词和时间，检索期刊文献，返回结构化结果列表。"""
 import re
 import sys
 from datetime import datetime, timezone
@@ -11,7 +11,7 @@ import requests
 
 
 def _patsnap_date_to_ts(date_str):
-    """将 PatSnap 日期字符串（如 20251201）转为毫秒时间戳。"""
+    """将 Patsnap 日期字符串（如 20251201）转为毫秒时间戳。"""
     try:
         dt = datetime.strptime(date_str.strip(), "%Y%m%d").replace(tzinfo=timezone.utc)
         return int(dt.timestamp() * 1000)
@@ -20,7 +20,7 @@ def _patsnap_date_to_ts(date_str):
 
 
 def extract_keywords_from_query(query):
-    """从 PatSnap 检索式中提取关键词，用于文献检索的 query_text。
+    """从 Patsnap 检索式中提取关键词，用于文献检索的 query_text。
 
     策略：
     1. 提取 TAC_all:(...)、TAC:(...)、MAINF:(...)、TTL:(...)、ABST:(...) 括号内的词
@@ -71,7 +71,7 @@ def extract_keywords_from_query(query):
 
 
 def extract_date_range_from_query(query):
-    """从 PatSnap 检索式中提取 PBD 或 APD 日期范围，返回 (start_ts_ms, end_ts_ms) 或 (None, None)。"""
+    """从 Patsnap 检索式中提取 PBD 或 APD 日期范围，返回 (start_ts_ms, end_ts_ms) 或 (None, None)。"""
     if not query:
         return None, None
 

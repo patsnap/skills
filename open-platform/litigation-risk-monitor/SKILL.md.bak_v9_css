@@ -28,7 +28,7 @@ description: 涉诉专利风险监测与同族扩展分析技能。触发场景�
 
 ### Step 1 — 涉诉专利初筛
 
-#### 1a — PatSnap MCP + web.search 双路初筛
+#### 1a — Patsnap MCP + web.search 双路初筛
 - 对每个 `assignee` 调用 `patent.search`：`search_strategy=["filter"]`，`filters.assignees=[assignee]`，在返回结果中按法律事件含 litigation/诉讼/lawsuit/infringement 字段做候选筛选。
 - 同时用 `web.search` 查询 `"<assignee>" patent litigation lawsuit 诉讼 专利` 做交叉确认。
 - 合并两路结果，按 `pn` 去重，保存到内存变量 `litigated_patents[]`。
@@ -277,7 +277,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 
 ```html
 <h1>⚖️ 涉诉专利风险监测报告 — [申请人真实名称]</h1>
-<div style="color:#666;font-size:13px;margin-bottom:16px;">生成时间：[真实时间] | 数据来源：智慧芽 PatSnap + 公开网络信息</div>
+<div style="color:#666;font-size:13px;margin-bottom:16px;">生成时间：[真实时间] | 数据来源：智慧芽 Patsnap + 公开网络信息</div>
 
 <!-- 执行总结放在此处（见第0章规范） -->
 

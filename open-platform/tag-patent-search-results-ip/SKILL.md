@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: tag-patent-search-results-ip
 description: Design and calibrate the Stage 3/4 tagging system for a patent-landscape program. Use after search-patents-ip and analyze-patent-search-results-ip to create a versioned four-column technology taxonomy, decision-relevant technical questions, evidence-backed patent groups, a reviewed tagging demonstration, and a complete empty-tag CSV for genuine human tagging at Stage 3.5; validate the returned tagged_pool.csv before routing to create-patent-search-report-ip.
 ---

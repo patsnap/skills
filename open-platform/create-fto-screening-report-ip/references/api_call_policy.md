@@ -1,16 +1,16 @@
-# PatSnap Data-Access Policy
+# Patsnap Data-Access Policy
 
 This skill supports two mutually exclusive evidence-acquisition modes. Select
 one mode for a run and preserve its provenance from request through report.
 
 ## Mode A — Bundled REST workflow
 
-- Only the scripts under this skill's `scripts/` directory may call PatSnap
+- Only the scripts under this skill's `scripts/` directory may call Patsnap
   REST endpoints for the bundled workflow.
 - Read the API key from `references/zhihuiya_config.json` unless the user
   explicitly selects another configuration file within the same skill.
 - The legacy filename is retained solely for source-topology fidelity; its
-  contents use the global PatSnap service and English configuration keys.
+  contents use the global Patsnap service and English configuration keys.
 - Use `https://connect.patsnap.com` and a valid API key in the
   `Authorization: Bearer <key>` request header.
 - Never send the key in a query string, write it to logs, embed it in an output
@@ -25,7 +25,7 @@ one mode for a run and preserve its provenance from request through report.
 
 ## Mode B — MCP-assisted workflow
 
-- Use an installed global PatSnap connector from the user's agent environment.
+- Use an installed global Patsnap connector from the user's agent environment.
 - Recommended connectors are Patsnap Patent Research, Advanced Patent Search,
   Patent Briefing, and, when needed, Global Core Patents.
 - Record connector name, tool name, normalized request, filters, execution

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: review-korean-patent-claims-ip
 description: Review claims in a Korean patent application or a foreign or PCT application intended for Korea. Use when users need an evidence-backed assessment of Korean claim compliance, claim architecture, scope strategy, drafting and translation quality, examination risk, novelty or inventive-step risk, amendment options, or filing readiness, with a structured English or HTML report.
 ---
@@ -211,9 +212,9 @@ For each risk, record:
 
 Run real prior-art research before assigning a novelty, inventive-step, or invalidation-risk rating. A text-only claim review may identify search hypotheses but cannot support a substantive risk conclusion.
 
-**Verified PatSnap MCP connectors**
+**Verified Patsnap MCP connectors**
 
-Use these current global PatSnap marketplace mappings:
+Use these current global Patsnap marketplace mappings:
 
 1. Advanced Patent Search — required for novelty and inventive-step retrieval
    - Connector key: `advanced_patent_search`

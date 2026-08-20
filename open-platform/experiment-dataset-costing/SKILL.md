@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: experiment-dataset-costing
 description: "估算实验和科研数据集所需资源、周期与成本。适用于：估算实验或训练数据集构建所需的人力、样本、试剂、设备、算力、采购和交付成本，用于预算规划与报价复核。"
 ---

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: multi-patent-avoidance
 description: |
   多专利规避方法论（8步法）——同时规避N件风险专利（N≥2）的应用驱动型FTO分析流程。

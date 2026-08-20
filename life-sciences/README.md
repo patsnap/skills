@@ -1,4 +1,4 @@
-# PatSnap Life Sciences Skills
+# Patsnap Life Sciences Skills
 
 Life Sciences skills in this directory support the core pharmaceutical and biomedical intelligence workflows, including disease, target, biomarker, company, drug, and oncology analysis. Imported antibody FTO, generic-drug opportunity, ADC patent monitoring, target-discovery, pharma conference insight, project initiation, and small-RNA patent landscape workflows now live in `../open-platform/`.
 
@@ -24,7 +24,7 @@ npx skills add patsnap/skills/tree/main/life-sciences/target-intelligence
 
 ## Core Skills
 
-The original life-sciences skills integrate with PatSnap LifeScience MCP services and are available in English and Chinese (`-zhcn` suffix).
+The original life-sciences skills integrate with Patsnap LifeScience MCP services and are available in English and Chinese (`-zhcn` suffix).
 
 | Skill | Chinese Variant | Description |
 |---|---|---|
@@ -41,7 +41,7 @@ Additional biomedical workflows imported from Skill Hub are available in `../ope
 
 ## MCP Setup Guide
 
-The life-sciences skills can use the following PatSnap MCP services in Claude Code or compatible agent runtimes.
+The life-sciences skills can use the following Patsnap MCP services in Claude Code or compatible agent runtimes.
 
 ### Services Overview
 
@@ -53,7 +53,7 @@ The life-sciences skills can use the following PatSnap MCP services in Claude Co
 
 ### Get Connection URLs
 
-Each service has a unique connection URL tied to your API key. Visit the PatSnap Marketplace to get them:
+Each service has a unique connection URL tied to your API key. Visit the Patsnap Marketplace to get them:
 
 - [Pharma Intelligence](https://open.patsnap.com/marketplace/mcp-servers/245f3ce8-79e4-4c2a-927c-e155c293f097)
 - [Chemical Molecular](https://open.patsnap.com/marketplace/mcp-servers/96b4a650-d563-4fc5-860d-c99ee8cb5b1e)
@@ -156,6 +156,6 @@ Sequence search is asynchronous: submit -> check_status -> get_results.
 
 **Tools not appearing after configuration?** Restart Claude Code or reload MCP via the `/mcp` command.
 
-**Getting 401 / 403 errors?** Verify the API key or contact PatSnap to obtain valid credentials.
+**Getting 401 / 403 errors?** Verify the API key or contact Patsnap to obtain valid credentials.
 
 **Sequence search stuck in pending?** Poll `ls_sequence_search_check_status` until the status becomes `success`, then call `ls_sequence_search_get_results`.

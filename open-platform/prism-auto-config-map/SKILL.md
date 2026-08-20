@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: prism-auto-config-map
 description: >
   棱镜车智-专利论文数据穿透 Skill。用于车企下一代车型规划、竞品配置对标、

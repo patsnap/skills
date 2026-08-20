@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: opportunities
 description: |
   技术方向专利机会评估与报告生成 Skill。输入细分技术方向或具体技术方案，自动调用智慧芽专利检索、趋势分析、子技术方向统计等 MCP 工具，生成含交互式 ECharts 图表的多页面 HTML 报告、JSON 中间数据和 CSV 证据链，最终给出研发/投资机会评分与明确建议。本 Skill 不使用 Python，所有文件通过 MCP 和文件写入能力生成。

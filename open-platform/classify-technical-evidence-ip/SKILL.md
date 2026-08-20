@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: classify-technical-evidence-ip
-description: Build, refine, govern, and apply an evidence-based taxonomy to patents, scientific literature, product records, technical intelligence, customer requirements, and other structured text. Use for open label discovery, semi-open or closed-set classification, label definitions and decision rules, pilot labeling, full CSV/XLSX labeling, adjudication queues, taxonomy backlogs, quality assurance, and selective PatSnap MCP evidence enrichment.
+description: Build, refine, govern, and apply an evidence-based taxonomy to patents, scientific literature, product records, technical intelligence, customer requirements, and other structured text. Use for open label discovery, semi-open or closed-set classification, label definitions and decision rules, pilot labeling, full CSV/XLSX labeling, adjudication queues, taxonomy backlogs, quality assurance, and selective Patsnap MCP evidence enrichment.
 ---
 
 # Evidence-based technical labeling
@@ -24,7 +25,7 @@ Never promote a candidate label silently. Never force a weakly supported label t
 - Before inspecting inputs or creating deliverables, read `references/input-output-contract.md`.
 - Before pilot or full labeling, read `references/default-decision-rules.md`.
 - When creating, defining, merging, splitting, retiring, or versioning labels, read `references/taxonomy-design.md`.
-- Before using a PatSnap MCP service, read `references/zhihuiya-mcp-orchestration.md`.
+- Before using a Patsnap MCP service, read `references/zhihuiya-mcp-orchestration.md`.
 - Before pilot acceptance, full validation, or review-queue creation, read `references/quality-and-review.md`.
 - When a selected domain has a manifest, read the manifest first and then only the files it names.
 - For the milk-protein processing fixture, read `references/domain-milk-protein.yaml`, then its taxonomy, rules, and examples.

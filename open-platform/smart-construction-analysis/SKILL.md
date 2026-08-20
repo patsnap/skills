@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: smart-construction-analysis
 description: |
   智能建造技术深度分析技能：面向桥梁、隧道、高速公路等基础设施领域，融合专利、学术文献、商业报道、展会及成果转化案例等多维数据源，自动完成核心技术主体识别、专利布局分析、竞争格局评估，并生成HTML/Word双格式专业分析报告。
@@ -18,8 +19,8 @@ description: |
 
 | 数据源类型 | 工具 | 覆盖内容 |
 |-----------|------|---------|
-| **专利数据** | PatSnap patent.search / patent.fetch | 技术布局、核心申请人、引用关系、法律状态 |
-| **学术文献** | PatSnap paper.search / paper.fetch | 前沿研究方向、引用热度、关键机构 |
+| **专利数据** | Patsnap patent.search / patent.fetch | 技术布局、核心申请人、引用关系、法律状态 |
+| **学术文献** | Patsnap paper.search / paper.fetch | 前沿研究方向、引用热度、关键机构 |
 | **商业报道** | web.search + web_fetch | 企业动态、产品发布、市场格局 |
 | **展会信息** | web.search | 技术展示、行业趋势、竞品对比 |
 | **成果转化案例** | web.search + patent.search | 典型工程应用、效率提升数据 |

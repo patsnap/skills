@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: map-small-rna-patent-landscape-ls
 description: Build a company or portfolio-level patent landscape for small-RNA therapeutics from a supplied patent list or defined search scope. Use when a user wants full patent records, an ASO/siRNA/mRNA or oligonucleotide portfolio analysis, a structured XLSX evidence workbook, a small-RNA technology taxonomy, or an interactive multidimensional patent timeline.
 ---

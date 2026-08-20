@@ -1,18 +1,19 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: competitor-skill
 description: |
-  "给定 PatSnap 专业检索式，检索专利数据库，生成竞争对手专利分析报告。当用户输入包含 PatSnap 字段操作符（如 ANCS:、TAC_all:、DESC_B:、MAINF:、ALL_AN:、PN:、APD:、PBD:、APNO:、PRNO: 等）的检索式时触发。"
+  "给定 Patsnap 专业检索式，检索专利数据库，生成竞争对手专利分析报告。当用户输入包含 Patsnap 字段操作符（如 ANCS:、TAC_all:、DESC_B:、MAINF:、ALL_AN:、PN:、APD:、PBD:、APNO:、PRNO: 等）的检索式时触发。"
 ---
 
 # Competitor Patent Report Skill
 
 ## 用途
 
-给定一条 PatSnap 专业检索式和报告标题，自动检索专利数据库，生成竞争对手专利分析报告 Markdown 文件，包含新公开专利概况、专利技术总结和专利详情三个部分。
+给定一条 Patsnap 专业检索式和报告标题，自动检索专利数据库，生成竞争对手专利分析报告 Markdown 文件，包含新公开专利概况、专利技术总结和专利详情三个部分。
 
 ## 首次安装配置
 
-**首次使用前，使用者必须配置自己的智慧芽（PatSnap）API Key，否则无法检索专利数据。**
+**首次使用前，使用者必须配置自己的智慧芽（Patsnap）API Key，否则无法检索专利数据。**
 
 本 Skill 包不应内置任何 API Key。分享给他人前，请确认 `scripts/config.py` 中没有真实 key，且包内不包含 `scripts/.env`。
 
@@ -44,7 +45,7 @@ PATSNAP_API_KEY=sk-你的智慧芽APIKey
 
 ## 触发条件
 
-- 用户输入包含 PatSnap 字段操作符的检索式，例如：
+- 用户输入包含 Patsnap 字段操作符的检索式，例如：
   - `ANCS:`、`TAC_all:`、`DESC_B:`、`MAINF:`、`ALL_AN:`、`PN:`、`APD:[`、`PBD:[`、`APNO:`、`PRNO:`
 - 用户明确要求"运行检索式"、"执行检索"、"根据检索式生成报告"等
 
@@ -57,7 +58,7 @@ bash scripts/run.sh "<检索式>" "<报告标题>" [数量]
 
 **参数说明：**
 
-- `<检索式>`：PatSnap 专业检索式（必填）
+- `<检索式>`：Patsnap 专业检索式（必填）
 - `<报告标题>`：报告标题，用于文件命名和报告头部（可选，默认"专利检索报告"）
 - `[数量]`：最大检索条数，默认 200
 

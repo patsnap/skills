@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: complete-invention-disclosures-rd
 description: Guide inventors and R&D teams through a seven-step English invention-disclosure workflow, organize rough technical notes, identify missing technical support, and generate a structured draft for inventor and qualified patent-professional review. Use when a user has an idea, product note, paper abstract, experiment record, design discussion, or incomplete disclosure that must be made technically complete without drafting claims or providing legal conclusions.
 ---
@@ -140,11 +141,11 @@ Never invent architecture, parameters, results, inventors, references or public-
 
 Mark missing information as `Needs input` and give a precise follow-up question.
 
-## Optional PatSnap research
+## Optional Patsnap research
 
 The disclosure can be completed from supplied material without MCP.
 
-If the user explicitly requests prior-art research, verified global PatSnap support is:
+If the user explicitly requests prior-art research, verified global Patsnap support is:
 
 - `advanced_patent_search`: https://open.patsnap.com/marketplace/mcp-servers/patent-search
 - `patent_briefing`: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing

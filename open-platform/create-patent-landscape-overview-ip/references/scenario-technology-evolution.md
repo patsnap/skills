@@ -21,7 +21,7 @@ Use this scenario to convert patent evidence into a technology taxonomy, route-e
 | `depth` | Branch-level landscape or route-level deep dive |
 | `unit_of_analysis` | Define publication, application, or family counting |
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 Use `advanced_patent_search` for branch discovery and reproducible result sets. Use `patent_briefing` for selected-record context and `deep_patent_mining` for claims, descriptions, or deeper family evidence when supported. Use `global_core_patent_database` where its installed contract supplies needed structured intelligence. Retrieve full text selectively; do not request every claim and description for a large population without a justified batching plan.
 

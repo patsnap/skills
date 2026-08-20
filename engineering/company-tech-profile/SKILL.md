@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: company-tech-profile
 description:
   Single-company technology profile and R&D assessment for a defined technology

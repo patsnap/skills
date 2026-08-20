@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-technology-intelligence-briefing-ip
 description: Create an auditable technology-intelligence briefing for named companies and/or a technical topic using patent, scientific-literature, and current-news evidence. Use when the user requests a technology briefing, company technology comparison, patent-and-literature scan, subtechnology map, or evidence-backed technical trend report in HTML.
 ---
@@ -75,7 +76,7 @@ Enrichment is evidence, not permission to fill missing fields. Preserve the conn
 
 ### Literature and news
 
-Use a separately verified current literature connector or an authoritative literature database. Do not configure a guessed PatSnap literature MCP.
+Use a separately verified current literature connector or an authoritative literature database. Do not configure a guessed Patsnap literature MCP.
 
 Use authorized current web research for news. Prefer company filings, regulator releases, standards bodies, conference notices, and original press releases; supplement with credible reporting when appropriate. Record publication and event dates separately.
 

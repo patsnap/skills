@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: rd-initiation-review
 description:
   R&D project initiation pre-screen and proposal audit for go/no-go decisions,

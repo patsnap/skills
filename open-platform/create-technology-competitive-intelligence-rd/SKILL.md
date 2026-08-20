@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-technology-competitive-intelligence-rd
 description: Create an evidence-led technology competitive-intelligence report for a defined company, technology, market, and review period. Use when a user needs competitor tiering, patent and technology comparisons, customer or partner mapping, event monitoring, threat assessment, and actionable R&D recommendations in a self-contained HTML briefing.
 ---
@@ -63,12 +64,12 @@ Normalize patent results by simple or extended family as appropriate. Record whe
 
 Market values must carry currency, price year, geography, segment definition, source date, and whether the number is reported, calculated, or estimated. Company, product, customer, certification, partnership, and event claims require a dated source. Label analyst inference explicitly.
 
-## Recommended PatSnap MCP mapping
+## Recommended Patsnap MCP mapping
 
 When available in the user's environment, use the verified global connectors below and retain their returned record links or identifiers:
 
-- `advanced_patent_search` — [PatSnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search) for patent discovery, family-aware review, applicants, inventors, classifications, dates, and legal-status fields.
-- `patent_briefing` — [PatSnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for evidence-backed summaries of selected patent records.
+- `advanced_patent_search` — [Patsnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search) for patent discovery, family-aware review, applicants, inventors, classifications, dates, and legal-status fields.
+- `patent_briefing` — [Patsnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for evidence-backed summaries of selected patent records.
 
 Connector output still requires analyst review. Do not invent tool names, connector URLs, result fields, or record links. If a connector is unavailable, document the limitation and use user-supplied or independently verified public evidence.
 

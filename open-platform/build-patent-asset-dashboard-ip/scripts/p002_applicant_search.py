@@ -32,7 +32,7 @@ def p002_search(applicant_name: str, api_key: str, page: int = 1, page_size: int
     data = resp.json()
     if not data.get("status"):
         raise RuntimeError(
-            f"PatSnap API error: error_code={data.get('error_code')}, "
+            f"Patsnap API error: error_code={data.get('error_code')}, "
             f"message={data.get('error_msg') or data.get('msg')}"
         )
     result = data.get("data", {})
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--api-key",
         default=os.environ.get("PATSNAP_API_KEY"),
-        help="PatSnap Open Platform API key; defaults to PATSNAP_API_KEY",
+        help="Patsnap Open Platform API key; defaults to PATSNAP_API_KEY",
     )
     parser.add_argument("--page", type=int, default=1)
     parser.add_argument("--page-size", type=int, default=10)

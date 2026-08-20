@@ -23,7 +23,7 @@ Use this scenario to examine a defined technical problem, technology branch, pro
 
 Do not impose a fixed number of patents per route. Select enough evidence to represent meaningful variation, and report sparse routes honestly.
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 Use `advanced_patent_search` for focused retrieval. Use `patent_briefing`, `deep_patent_mining`, and, where suitable, `global_core_patent_database` to inspect selected records, family context, claims, descriptions, citations, status, or images that the installed contracts expose. Confirm the live schema and treat unavailable fields as unavailable; do not translate legacy source operation labels into nonexistent calls.
 

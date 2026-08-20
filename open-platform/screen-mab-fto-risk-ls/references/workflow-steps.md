@@ -281,7 +281,7 @@ Read `output-contract.md`.
 - family/member counts reconcile;
 - granted/pending and original/translated claims are distinct;
 - every priority statement has claim/status/technical evidence;
-- all patent links use global PatSnap or official-register URLs;
+- all patent links use global Patsnap or official-register URLs;
 - no API keys or confidential raw data are embedded;
 - HTML is self-contained, semantic, accessible, responsive, and printable;
 - assumptions, exclusions, blind spots, and monitoring are visible;

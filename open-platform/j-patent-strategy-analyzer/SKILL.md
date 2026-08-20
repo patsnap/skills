@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: j-patent-strategy-analyzer
 description: |
   Jary66原创，企业战略专利布局分析（模板驱动版）。通过了解企业产品及经营动态与企业全球专利，做对比映射分析。从知产管理视角了解企业的专利布局情况、优势、不足、风险、下一步行动计划等。输出为独立HTML文件（所有CSS和图表内联，零外部依赖）。

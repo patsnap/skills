@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: scan-emerging-ai-technologies-rd
 description: Route a technology-intelligence request to a technology landscape, invention-mining workflow, or current-intelligence briefing, and produce an evidence-backed English HTML report. Use for emerging AI, semiconductor, display, electronics, or other fast-moving technology domains when the user needs route evolution, competitor positioning, invention opportunities, patent mining, or multi-source monitoring.
 ---
@@ -87,7 +88,7 @@ User-supplied evidence requires no MCP.
 
 When live research is requested and authorized, use only services actually exposed in the execution environment.
 
-| Need | Verified global PatSnap MCP | Marketplace page |
+| Need | Verified global Patsnap MCP | Marketplace page |
 |---|---|---|
 | Patent discovery by concept, fields, applicant and dates | `advanced_patent_search` | https://open.patsnap.com/marketplace/mcp-servers/patent-search |
 | Patent bibliography, family, claims, description, drawings and status context | `patent_briefing` | https://open.patsnap.com/marketplace/mcp-servers/patent-briefing |
@@ -105,7 +106,7 @@ Use official patent registers for material legal-status or term decisions.
 
 Use primary company, government, regulator, standards-body, conference and scholarly sources for material non-patent facts.
 
-Preserve exact returned global PatSnap record URLs.
+Preserve exact returned global Patsnap record URLs.
 
 Never construct a Zhihuiya or Eureka URL.
 
@@ -698,7 +699,7 @@ Use an explicit empty state instead.
 
 ### Patent links
 
-Use exact returned global PatSnap record links when available.
+Use exact returned global Patsnap record links when available.
 
 Otherwise link to an appropriate official public record or show the identifier without a fabricated URL.
 
@@ -771,7 +772,7 @@ Do not treat any general handbook as evidence for a specific technical or legal 
 - [ ] Rumor is excluded from factual conclusions.
 - [ ] HTML contains no source-case facts or invented placeholders.
 - [ ] Charts reconcile with tables and provide accessible alternatives.
-- [ ] Global PatSnap links are exact and current.
+- [ ] Global Patsnap links are exact and current.
 - [ ] Report is responsive, printable and review-labeled.
 
 ## Appendix A — Landscape field contract

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: find-cross-industry-functional-solutions-rd
 description: Find transferable technical solutions from other industries by reframing a concrete R&D problem as functions, effects, constraints, and contradictions. Use when an engineering or research team needs a cross-industry solution search, functional patent search strategy, solution shortlist, transferability assessment, or experiment plan.
 ---
@@ -41,7 +42,7 @@ For “improve phone heat dissipation,” ask for heat load, device volume, allo
 
 ## Evidence and MCP routing
 
-Use user-supplied evidence first. For global PatSnap patent discovery, verified `advanced_patent_search` supports nested/fielded, semantic, patent-number, applicant, count and keyword-assist routes:
+Use user-supplied evidence first. For global Patsnap patent discovery, verified `advanced_patent_search` supports nested/fielded, semantic, patent-number, applicant, count and keyword-assist routes:
 
 https://open.patsnap.com/marketplace/mcp-servers/patent-search
 

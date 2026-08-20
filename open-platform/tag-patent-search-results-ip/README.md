@@ -5,7 +5,7 @@ technology taxonomy, key technical questions, reviewed patent groups, a demonstr
 sample, and a safe full-pool handoff for genuine human tagging at Stage 3.5.
 
 - English marketplace: https://open.patsnap.com/marketplace/skill-hub
-- PatSnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
+- Patsnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
 - Chinese source page: recorded only in the parent `LOCALIZATION_INDEX.md`
 
 Suite: `create-patent-landscape-overview-ip` → `search-patents-ip` →

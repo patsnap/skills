@@ -46,7 +46,7 @@ Legal event:
 
 Define core inventors from the returned candidate universe:
 
-1. Split inventor strings on the inventor delimiters `|`, `;`, `；`, and line breaks only. Do NOT split on `,` / `，`: PatSnap/Zhihuiya formats the inventor field as `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`, so the comma separates surname from given name *within* one inventor and `|` separates inventors. Splitting on the comma fragments names (e.g. `TANNER, CHRISTOPHER RICHARD` would wrongly become `TANNER` and `CHRISTOPHER RICHARD`).
+1. Split inventor strings on the inventor delimiters `|`, `;`, `；`, and line breaks only. Do NOT split on `,` / `，`: Patsnap/Zhihuiya formats the inventor field as `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`, so the comma separates surname from given name *within* one inventor and `|` separates inventors. Splitting on the comma fragments names (e.g. `TANNER, CHRISTOPHER RICHARD` would wrongly become `TANNER` and `CHRISTOPHER RICHARD`).
 2. Trim whitespace and remove empty names.
 3. Count each inventor once per patent.
 4. Rank inventors by candidate-set patent count descending.
@@ -105,7 +105,7 @@ Use these columns in the high-value patent list:
 | 排名 | Rank after scoring and tie-breaks |
 | 高价值评分 | 0-100 score |
 | 被选定为高价值的原因 | Evidence-based rationale |
-| 专利公开公告号 | Publication number / `pn`, rendered as a clickable hyperlink to the Zhihuiya/PatSnap patent page: `https://analytics.zhihuiya.com/patent-view/abst?patentId=<patent_id>&q=<pn>` (minimal non-expiring form; reader must be logged in) |
+| 专利公开公告号 | Publication number / `pn`, rendered as a clickable hyperlink to the Zhihuiya/Patsnap patent page: `https://analytics.zhihuiya.com/patent-view/abst?patentId=<patent_id>&q=<pn>` (minimal non-expiring form; reader must be logged in) |
 | 标题 | Original title from P002 |
 | 摘要附图 | P021 drawing URL/path or `无可用摘要附图` |
 | [标]当前申请(专利权)人 | Current applicant/patentee from P002 |

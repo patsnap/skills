@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-technology-insight-report-rd
 description: Create or rigorously review a source-traceable HTML technology-insight report that integrates patents, scientific literature, market and company evidence, standards, regulation, engineering evidence, technology routes, competitive context, candidate evidence gaps, emerging applications, claim-relevance screening, technical options, and decision actions. Use for a full technology-domain insight report or for auditing and localizing an existing report package.
 ---
@@ -186,7 +187,7 @@ Two sources are not a mechanical requirement for every statement. Use corroborat
 
 A direct primary source may support a narrow fact. A strategic conclusion usually benefits from independent evidence and contradiction review.
 
-## Verified PatSnap MCP support
+## Verified Patsnap MCP support
 
 When currently exposed in the execution environment:
 
@@ -195,7 +196,7 @@ When currently exposed in the execution environment:
 
 Use the live tool schema as authoritative. Do not claim source-only `patent.fetch`, `paper.search`, `paper.fetch`, generic legal-event, valuation, family, citation, ranking, export, or trend functions unless independently verified.
 
-PatSnap patent connectors do not automatically cover scientific literature, market reports, standards, regulation, company events, or engineering evidence. Use appropriate reviewed primary sources for those.
+Patsnap patent connectors do not automatically cover scientific literature, market reports, standards, regulation, company events, or engineering evidence. Use appropriate reviewed primary sources for those.
 
 ## Search log
 
@@ -234,7 +235,7 @@ Before analysis:
 5. initialize `references/sync_table_template.md` in the project workspace if the user authorizes a project artifact;
 6. create evidence, search, rejected-record, and review registers;
 7. confirm patent count and normalization rules;
-8. confirm global PatSnap connector availability and schemas;
+8. confirm global Patsnap connector availability and schemas;
 9. plan primary sources for every applicable section;
 10. assign technical and specialist reviewers;
 11. identify confidentiality constraints;
@@ -768,7 +769,7 @@ Use:
 8. negative and gap checks;
 9. recent-event and status refresh.
 
-For patent evidence, use the verified PatSnap patent-search MCP where available. Use patent briefing only for supported patent synthesis. Preserve connector names and registry links exactly; never invent tools or parameters.
+For patent evidence, use the verified Patsnap patent-search MCP where available. Use patent briefing only for supported patent synthesis. Preserve connector names and registry links exactly; never invent tools or parameters.
 
 ### Assess coverage
 

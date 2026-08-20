@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: competitive-landscape
 description:
   Technology-sector competitive landscape analysis with player tiering, route

@@ -24,7 +24,7 @@ PHASES = (
             "The ten-section s0–s9 report topology is created from the localized skeleton.",
             "The cross-section synchronization register is initialized.",
             "Patent count unit, family normalization, entity normalization, and evidence IDs are defined.",
-            "Verified PatSnap connector availability and current callable schemas are checked.",
+            "Verified Patsnap connector availability and current callable schemas are checked.",
             "Primary-source plans exist for literature, markets, companies, standards, regulation, and engineering evidence.",
             "Required patent, domain, technical, safety, regulatory, and market reviewers are assigned.",
         ),

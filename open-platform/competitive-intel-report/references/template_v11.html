@@ -385,7 +385,7 @@
         <span class="icon">🎯</span>
         <div>
           <h2>竞争态势速览 · 风险-机会-行动三维总结</h2>
-          <p>基于PatSnap专利数据库 + 公开市场信息综合研判，供研发决策参考</p>
+          <p>基于Patsnap专利数据库 + 公开市场信息综合研判，供研发决策参考</p>
         </div>
       </div>
       <div class="exec-body">
@@ -1905,7 +1905,7 @@
     </div>
     <!-- 数据来源 -->
     <div style="background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:16px 20px;margin-top:16px;font-size:11.5px;color:var(--text-muted)">
-      📌 <strong>数据来源声明：</strong>专利数据来源于PatSnap智慧芽专利数据库（检索覆盖上述主要申请人Baffle/SNS相关专利样本）；市场规模数据来源于公开市场研究报告（综合整理，仅供参考）；竞争对手动向部分属行业综合推断，建议结合第一手渠道交叉核实。所有专利标号可点击跳转智慧芽PatSnap查阅全文。
+      📌 <strong>数据来源声明：</strong>专利数据来源于Patsnap智慧芽专利数据库（检索覆盖上述主要申请人Baffle/SNS相关专利样本）；市场规模数据来源于公开市场研究报告（综合整理，仅供参考）；竞争对手动向部分属行业综合推断，建议结合第一手渠道交叉核实。所有专利标号可点击跳转智慧芽Patsnap查阅全文。
     </div>
   </div>
 
@@ -2037,7 +2037,7 @@ const CHART_DEFAULTS = { responsive:true, maintainAspectRatio:false, plugins:{le
 
 
 // 专利总量对比
-new Chart(document.getElementById('patentCountChart'), {type:'bar', data:{labels:['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'],datasets:[{label:'专利总量(估算)',data:[600,425,380,320,280,23],backgroundColor:['rgba(239,68,68,0.8)','rgba(59,130,246,0.8)','rgba(245,158,11,0.8)','rgba(139,92,246,0.8)','rgba(6,182,212,0.8)','rgba(34,197,94,0.8)'],borderRadius:4}]}, options:{...CHART_DEFAULTS, scales:{y:{beginAtZero:true,grid:{color:'#f0f1f3'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}, onClick:(e,els)=>{ if(els.length>0){const i=els[0].index;const pMap=[zephyrosPatents,sikaPatents,henkelPatents,basfPatents,dowPatents,hcPatents];const nMap=['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'];showModal(nMap[i]+' 代表专利','点击专利号查看PatSnap全文',pMap[i]);}}}}); 
+new Chart(document.getElementById('patentCountChart'), {type:'bar', data:{labels:['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'],datasets:[{label:'专利总量(估算)',data:[600,425,380,320,280,23],backgroundColor:['rgba(239,68,68,0.8)','rgba(59,130,246,0.8)','rgba(245,158,11,0.8)','rgba(139,92,246,0.8)','rgba(6,182,212,0.8)','rgba(34,197,94,0.8)'],borderRadius:4}]}, options:{...CHART_DEFAULTS, scales:{y:{beginAtZero:true,grid:{color:'#f0f1f3'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}, onClick:(e,els)=>{ if(els.length>0){const i=els[0].index;const pMap=[zephyrosPatents,sikaPatents,henkelPatents,basfPatents,dowPatents,hcPatents];const nMap=['Zephyros/L&L','Sika AG','Henkel AG','BASF','Dow Global','海程'];showModal(nMap[i]+' 代表专利','点击专利号查看Patsnap全文',pMap[i]);}}}}); 
 
 // 技术雷达
 

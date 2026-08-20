@@ -6,7 +6,7 @@ branch-organized reviewed core index, transparent value proxies, chart data, and
 self-contained statistical snapshot.
 
 - English marketplace: https://open.patsnap.com/marketplace/skill-hub
-- PatSnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
+- Patsnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
 - Chinese source page: recorded only in the parent `LOCALIZATION_INDEX.md`
 
 Suite: `create-patent-landscape-overview-ip` → `search-patents-ip` →

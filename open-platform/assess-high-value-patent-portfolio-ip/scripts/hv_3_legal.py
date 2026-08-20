@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 from typing import Any
 
-from hv_common import PatSnapRequestError, api_get_with_evidence, checkpoint_meta, chunks, file_sha256, jdump, jload, require_checkpoint
+from hv_common import PatsnapRequestError, api_get_with_evidence, checkpoint_meta, chunks, file_sha256, jdump, jload, require_checkpoint
 
 
 ENDPOINTS = {
@@ -83,7 +83,7 @@ def run(input_path: str, output_path: str, batch_size: int) -> None:
             try:
                 data, evidence = api_get_with_evidence(path, batch_params(batch))
                 apply_response(category, field, data, evidence, records, batch)
-            except (PatSnapRequestError, ValueError) as exc:
+            except (PatsnapRequestError, ValueError) as exc:
                 errors.append({"category": category, "batch": batch_number, "message": str(exc)})
                 for candidate in batch:
                     patent_id = str(candidate.get("patent_id") or "")

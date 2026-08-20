@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: develop-patent-design-arounds-ip
 description: Develop and screen single-patent design-around concepts using an application-requirements baseline, claim-feature and functional reconstruction, TRIZ trimming, evidence-backed function-oriented search, differentiated concept engineering, and jurisdiction-specific claim risk review. Use when a user asks for patent design-around options, non-equivalent alternatives, or a preliminary infringement-risk comparison against a specific patent.
 ---
@@ -58,7 +59,7 @@ This skill remains self-contained and can still analyze one patent at a time.
 
 If implementation facts are incomplete, use explicit assumptions and mark the legal comparison provisional.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Confirm the live tool schema before calling a connector.

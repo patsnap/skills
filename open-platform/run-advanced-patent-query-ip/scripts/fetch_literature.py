@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Derive a literature query from a PatSnap query and return structured results."""
+"""Derive a literature query from a Patsnap query and return structured results."""
 import re
 import sys
 from datetime import datetime, timezone
@@ -11,7 +11,7 @@ import requests
 
 
 def _patsnap_date_to_ts(date_str):
-    """Convert a YYYYMMDD PatSnap date to a UTC millisecond timestamp."""
+    """Convert a YYYYMMDD Patsnap date to a UTC millisecond timestamp."""
     try:
         dt = datetime.strptime(date_str.strip(), "%Y%m%d").replace(tzinfo=timezone.utc)
         return int(dt.timestamp() * 1000)
@@ -20,7 +20,7 @@ def _patsnap_date_to_ts(date_str):
 
 
 def extract_keywords_from_query(query):
-    """Extract terms from selected PatSnap text fields for literature search.
+    """Extract terms from selected Patsnap text fields for literature search.
 
     Strategy:
     1. Extract terms inside TAC_ALL, TAC, MAINF, TTL, ABST, and related fields.

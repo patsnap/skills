@@ -37,7 +37,7 @@ The source v9 required two routes:
 1. patent-database search by named assignee with litigation-related legal events; and
 2. public reporting or web discovery by party name and litigation terms.
 
-The localized interpretation requires current verified PatSnap connector names and primary-source case verification. A database event or news mention is a lead only.
+The localized interpretation requires current verified Patsnap connector names and primary-source case verification. A database event or news mention is a lead only.
 
 Extract patent identifiers using rules appropriate to the relevant jurisdiction. The source's ZL/CN-only examples are not universal. Preserve source identifiers, normalize separately, and verify every publication or application through patent records.
 
@@ -126,7 +126,7 @@ For any historical reproduction:
 - include print CSS and repeated table headers;
 - avoid modal-only access to claims;
 - avoid remote scripts, fonts, analytics, and CDNs;
-- replace China-platform URLs with verified global PatSnap marketplace or stable public patent links;
+- replace China-platform URLs with verified global Patsnap marketplace or stable public patent links;
 - escape all external content and reject unsafe URLs; and
 - do not include secrets, local paths, internal IDs, or expiring signed URLs.
 
@@ -288,7 +288,7 @@ This inventory preserves the content topology embedded in the original v9 HTML e
 ### Historical patent-card fields
 
 - `pn`: verified publication number.
-- `url`: stable global PatSnap or public patent HTTP(S) link.
+- `url`: stable global Patsnap or public patent HTTP(S) link.
 - `title`: verified source title.
 - `apply_date`: filing date, labeled as such.
 - `pub_date`: publication date.

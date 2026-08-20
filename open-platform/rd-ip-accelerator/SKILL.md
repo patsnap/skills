@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: rd-ip-accelerator
 description: |
   研发IP全栈加速器——面向全行业研发创新型企业，输入企业名称自动驱动六大IP模块（全部内置，用户只需安装本技能）：

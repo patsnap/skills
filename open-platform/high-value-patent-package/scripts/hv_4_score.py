@@ -3,7 +3,7 @@
 import re, math
 from hv_common import jload, jdump
 
-# NOTE: PatSnap inventor format is "LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME".
+# NOTE: Patsnap inventor format is "LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME".
 # The comma is the surname/given-name separator *inside* one inventor name, and
 # "|" is the delimiter *between* inventors. The skill's generic rule also lists
 # comma as a separator, but applying it here fragments names (e.g. splits

@@ -1,11 +1,11 @@
-# PatSnap MCP Search Guide
+# Patsnap MCP Search Guide
 
 Use an external patent search only when the user asks for research or when the requested innovation screen expressly includes patent evidence. Do not search merely because a document was supplied.
 
 ## Verified global mapping
 
-- `advanced_patent_search` — [PatSnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search)
-- `patent_briefing` — [PatSnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing)
+- `advanced_patent_search` — [Patsnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search)
+- `patent_briefing` — [Patsnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing)
 
 Use the exact callable schema exposed in the current environment. Do not invent legacy domestic tool names, parameters, response fields, or record URLs. Use English interface parameters and English queries unless the technical vocabulary or source evidence requires multilingual searching.
 
@@ -73,7 +73,7 @@ For each reviewed record capture:
 - differences and unresolved interpretation;
 - relevance rationale;
 - review depth: bibliographic, abstract, specification, or claim-level;
-- global PatSnap record link when returned;
+- global Patsnap record link when returned;
 - reviewer and review date.
 
 Normalize families before reporting portfolio or evidence counts. State whether a number represents publications, applications, grants, simple families, extended families, or reviewed samples.

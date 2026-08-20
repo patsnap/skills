@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: apply-altshuller-triz-thinking-rd
 description: Apply an Altshuller/TRIZ-informed thinking framework to engineering and invention problems. Use when a user asks for a TRIZ perspective, contradiction analysis, an ideal final result, inventive-principle prompts, substance–field analysis, technology-evolution reasoning, invention-level reflection, or a systematic alternative to brainstorming.
 ---

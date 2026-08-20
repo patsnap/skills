@@ -356,5 +356,5 @@ switchTab('tab-overview');
 | `{{company_en}}` | 英文公司名 | SHANGHAI KINETIC MEDICAL CO., LTD. |
 | `{{company_cn}}` | 中文公司名 | 上海凯利泰医疗科技股份有限公司 |
 | `{{report_date}}` | 报告日期 | 2025年05月26日 |
-| `{{data_source}}` | 数据来源 | 用户提供专利清单 / PatSnap智慧芽 |
-| `{{data_source_hint}}` | 数据来源提示 | PatSnap样本数据 / 用户提供清单 |
+| `{{data_source}}` | 数据来源 | 用户提供专利清单 / Patsnap智慧芽 |
+| `{{data_source_hint}}` | 数据来源提示 | Patsnap样本数据 / 用户提供清单 |

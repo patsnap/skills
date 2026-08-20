@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: free-patent-search-zhcn
 version: "1.2"
 description: |

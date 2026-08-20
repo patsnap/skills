@@ -39,7 +39,7 @@ def section_head(m, sel, now):
 <html lang="zh-CN"><head><meta charset="utf-8">
 <title>高价值专利包筛选报告</title><style>{CSS}</style></head><body><div class="wrap">
 <h1>高价值专利包筛选报告</h1>
-<p class="small">生成时间：{now}　|　数据来源：PatSnap / 智慧芽 Connect API（实时检索，未人工编造）</p>
+<p class="small">生成时间：{now}　|　数据来源：Patsnap / 智慧芽 Connect API（实时检索，未人工编造）</p>
 <h2>一、检索与筛选概览</h2>
 <div class="cards">
  <div class="card"><div class="n">{m['candidate_count']}</div><div class="l">检索返回候选专利</div></div>
@@ -120,7 +120,7 @@ def section_table(sel):
     body = ''.join(row_html(r) for r in sel)
     return f"""
 <h2>三、高价值专利清单（{len(sel)} 件）</h2>
-<p class="small">提示：点击「公开公告号」可在智慧芽 PatSnap 数据库中打开该专利详情页（需登录智慧芽账号）。</p>
+<p class="small">提示：点击「公开公告号」可在智慧芽 Patsnap 数据库中打开该专利详情页（需登录智慧芽账号）。</p>
 <div style="overflow-x:auto"><table>{THEAD}{body}</table></div>
 """
 

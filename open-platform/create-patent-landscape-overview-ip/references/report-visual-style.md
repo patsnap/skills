@@ -25,7 +25,7 @@ Favor the clarity of a peer-reviewed technical report, the density of a professi
 - Make charts, matrices, tables, and patent evidence the main visual language.
 - Keep the first viewport decision-oriented: title, scope, cutoff, unit, key metrics, and executive findings.
 - Avoid gradients, floating decoration, oversized hero areas, stock imagery, glass effects, heavy shadows, and ornamental animation.
-- Do not reproduce the visual identity, icons, or interface of Microsoft, PatSnap, or another vendor.
+- Do not reproduce the visual identity, icons, or interface of Microsoft, Patsnap, or another vendor.
 - Use cards only for repeated comparable objects such as KPIs, patents, or dated signals.
 
 ## Color and typography

@@ -58,7 +58,7 @@ FIELD_NOTES = {
     "matched_total": "Total matches reported by the named source for the recorded query and cutoff.",
     "returned_count": "Records actually returned and reviewed in the current page or sample.",
     "family_scope": "Patent-family definition used for counts; default is INPADOC.",
-    "litigation_signal": "Discovery lead from PatSnap legal data or a public source; requires primary-source verification.",
+    "litigation_signal": "Discovery lead from Patsnap legal data or a public source; requires primary-source verification.",
     "case_status": "Procedural posture as of the stated verification date, not a prediction.",
     "target_role": "The monitored target's verified role in the specific proceeding.",
     "risk_state": "Evidence-qualified screening state, not legal advice or an outcome forecast.",

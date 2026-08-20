@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: adc-landscape-monitoring
 description: "持续监控ADC研发、临床、专利、交易与竞争事件。适用于：持续监控ADC或抗体药物的研发进展、临床证据、专利变化、许可交易和竞争事件，用于赛道预警和BD机会跟踪。"
 ---

@@ -1,7 +1,8 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-mining-agent
 description: |
-  专利挖掘 Agent——面向企业研发工程师，输入技术领域与挖掘目的，自动执行四块十步专利挖掘全流程，生成结构化专利挖掘报告。支持快速模式与深度模式，融合 PatSnap 专利数据与 Web 检索，覆盖九类挖掘场景。
+  专利挖掘 Agent——面向企业研发工程师，输入技术领域与挖掘目的，自动执行四块十步专利挖掘全流程，生成结构化专利挖掘报告。支持快速模式与深度模式，融合 Patsnap 专利数据与 Web 检索，覆盖九类挖掘场景。
 ---
 
 # 专利挖掘 Agent
@@ -351,7 +352,7 @@ description: |
 
 **数据标注规范**：
 - `[网页检索]`：通过 `web.search` 获取的公开信息
-- `[PatSnap检索]`：通过 `patent.search` 获取的专利数据
+- `[Patsnap检索]`：通过 `patent.search` 获取的专利数据
 - `[用户提供]`：用户直接提供的信息
 - `[行业公知]`：行业通用知识，无需检索即可确认
 - `[待补充]`：信息缺失，需用户补充

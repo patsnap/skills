@@ -6,7 +6,7 @@
 **Decision cutoff:** {{CUTOFF_DATE}}  
 **Search version:** {{SEARCH_VERSION}}  
 **Count unit:** {{COUNT_UNIT}}  
-**Patent data:** PatSnap global patent data through verified connectors  
+**Patent data:** Patsnap global patent data through verified connectors  
 **Workflow:** `identify-patent-commercialization-opportunities-ip`
 
 ## Purpose

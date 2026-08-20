@@ -2,7 +2,7 @@
 """Shared secure helpers for the high-value patent screening pipeline.
 
 The source filename and stage topology are retained. This localized module uses
-the global PatSnap Connect host and Bearer authentication. It never persists a
+the global Patsnap Connect host and Bearer authentication. It never persists a
 credential, follows a redirect, or treats a failed request as factual zero.
 """
 
@@ -34,13 +34,13 @@ DEFAULT_READ_TIMEOUT = 90.0
 _CREDENTIAL: str | None = None
 
 
-class PatSnapRequestError(RuntimeError):
+class PatsnapRequestError(RuntimeError):
     """A safe request failure containing no credential or response body."""
 
     def __init__(self, path: str, message: str, *, status: int | None = None):
         self.path = path
         self.status = status
-        super().__init__(f"PatSnap request failed at {path}: {message}" + (f" (HTTP {status})" if status else ""))
+        super().__init__(f"Patsnap request failed at {path}: {message}" + (f" (HTTP {status})" if status else ""))
 
 
 @dataclass(frozen=True)
@@ -84,7 +84,7 @@ def key() -> str:
 
 
 def load_query() -> str:
-    """Load one reviewed PatSnap query from an environment variable or explicit file."""
+    """Load one reviewed Patsnap query from an environment variable or explicit file."""
     query = (os.environ.get("HVP_QUERY") or "").strip()
     query_file = (os.environ.get("HVP_QUERY_FILE") or "").strip()
     if not query and query_file:
@@ -93,7 +93,7 @@ def load_query() -> str:
             raise RuntimeError("HVP_QUERY_FILE does not identify a readable file.")
         query = path.read_text(encoding="utf-8-sig").strip()
     if not query:
-        raise RuntimeError("Set HVP_QUERY or HVP_QUERY_FILE to a human-reviewed PatSnap query.")
+        raise RuntimeError("Set HVP_QUERY or HVP_QUERY_FILE to a human-reviewed Patsnap query.")
     return query
 
 
@@ -121,7 +121,7 @@ def hget() -> dict[str, str]:
 def _validate_base(base_url: str) -> str:
     parsed = urlparse(base_url)
     if parsed.scheme.lower() != "https" or not parsed.netloc:
-        raise ValueError("PatSnap base URL must be an absolute HTTPS URL.")
+        raise ValueError("Patsnap base URL must be an absolute HTTPS URL.")
     return f"{parsed.scheme}://{parsed.netloc}".rstrip("/")
 
 
@@ -134,14 +134,14 @@ def _validate_path(path: str) -> str:
 
 def _extract_data(envelope: Any, path: str) -> Any:
     if not isinstance(envelope, dict):
-        raise PatSnapRequestError(path, "response is not a JSON object")
+        raise PatsnapRequestError(path, "response is not a JSON object")
     success = envelope.get("status")
     if success is False or success in (0, "0", "false", "False"):
         code = envelope.get("error_code") or envelope.get("code") or "unknown"
         message = envelope.get("error_message") or envelope.get("message") or "service returned failure"
-        raise PatSnapRequestError(path, f"service error {code}: {message}")
+        raise PatsnapRequestError(path, f"service error {code}: {message}")
     if "data" not in envelope:
-        raise PatSnapRequestError(path, "response has no data field")
+        raise PatsnapRequestError(path, "response has no data field")
     return envelope["data"]
 
 
@@ -186,26 +186,26 @@ def api_request(
             )
             last_status = int(response.status_code)
             if 300 <= response.status_code < 400:
-                raise PatSnapRequestError(safe_path, "redirect rejected to protect Authorization", status=last_status)
+                raise PatsnapRequestError(safe_path, "redirect rejected to protect Authorization", status=last_status)
             if response.status_code in RETRYABLE_STATUS and attempt < maximum:
                 time.sleep(_retry_delay(attempt, response))
                 continue
             if response.status_code < 200 or response.status_code >= 300:
-                raise PatSnapRequestError(safe_path, "non-success response", status=last_status)
+                raise PatsnapRequestError(safe_path, "non-success response", status=last_status)
             try:
                 envelope = response.json()
             except ValueError as exc:
-                raise PatSnapRequestError(safe_path, "response is not valid JSON", status=last_status) from exc
+                raise PatsnapRequestError(safe_path, "response is not valid JSON", status=last_status) from exc
             evidence = RequestEvidence(safe_path, method.upper(), utc_now(), last_status, attempt)
             return _extract_data(envelope, safe_path), evidence.as_dict()
-        except PatSnapRequestError:
+        except PatsnapRequestError:
             raise
         except requests.RequestException as exc:
             last_message = exc.__class__.__name__
             if attempt < maximum:
                 time.sleep(_retry_delay(attempt, response))
                 continue
-    raise PatSnapRequestError(safe_path, last_message, status=last_status)
+    raise PatsnapRequestError(safe_path, last_message, status=last_status)
 
 
 def api_get(path: str, params: dict[str, Any], tries: int = 4) -> Any:

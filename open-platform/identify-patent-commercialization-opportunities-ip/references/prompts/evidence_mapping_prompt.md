@@ -125,7 +125,7 @@ IDs must be stable across HTML, JSON, and CSV. They need not be globally consecu
 - Populate `evidence_mapping.csv` with one row per claim and serialized stable-ID lists.
 - Show the full mapping in `evidence.html`.
 - Place the claim ID and concise source note next to every material statement in `index.html` and `subfields.html`.
-- Link representative patents to stable global PatSnap or public patent URLs when available.
+- Link representative patents to stable global Patsnap or public patent URLs when available.
 
 ## Quality checks
 

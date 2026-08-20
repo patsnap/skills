@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-patent-based-rd-briefing-rd
 description: Create an evidence-bounded English patent-based R&D briefing from an authorized Excel workbook. Use when a user supplies patent records and asks to screen relevance, organize reviewed records by technology route and organization, preserve approved workbook links or figures, and generate a self-contained scientific HTML briefing with reproducible scope, review provenance, and patent-professional boundaries.
 ---
@@ -102,7 +103,7 @@ Required:
 The scripts do not install dependencies automatically and do not download
 images, fonts, scripts, or other runtime assets.
 
-# Verified PatSnap MCP mappings
+# Verified Patsnap MCP mappings
 
 The optional verified global patent connectors are:
 

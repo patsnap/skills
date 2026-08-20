@@ -1,7 +1,8 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: ai-amazing-tech
 description: |
-  技术创新突破情报官 — 根据用户需求自动路由至三个独立模块：技术全景分析、专利挖掘、技术情报简报，每个模块均输出对应风格统一的 HTML 报告。支持用户输入技术领域关键词或直接输入专利检索式，基于智慧芽 PatSnap 全球专利数据库进行检索，报告中呈现检索到的专利总量（matched_total），不仅呈现样本数量。
+  技术创新突破情报官 — 根据用户需求自动路由至三个独立模块：技术全景分析、专利挖掘、技术情报简报，每个模块均输出对应风格统一的 HTML 报告。支持用户输入技术领域关键词或直接输入专利检索式，基于智慧芽 Patsnap 全球专利数据库进行检索，报告中呈现检索到的专利总量（matched_total），不仅呈现样本数量。
 ---
 
 # ai tech amazing
@@ -119,7 +120,7 @@ description: |
 
 ###### Step 2 - 检索策略设计
 
-- **数据库**：智慧芽（PatSnap）全球专利数据库 + 学术文献数据库
+- **数据库**：智慧芽（Patsnap）全球专利数据库 + 学术文献数据库
 - **时间窗口**：近10年
 - **申请人分层**：头部玩家（Top10）/ 新兴挑战者 / 学术机构 / 用户指定关注对象
 
@@ -196,7 +197,7 @@ description: |
 
 - 专利数量必须展示实际检索到的总量（`matched_total`），**不得**仅展示样本数量（`returned_count`）
 - 报告 Hero 区的关键指标卡片中，专利总量须来自 `matched_total`
-- 所有图表数据须标注来源为"PatSnap全球专利数据库"
+- 所有图表数据须标注来源为"Patsnap全球专利数据库"
 
 ## 报告 UI 风格规范
 
@@ -676,7 +677,7 @@ IPC 技术分类编号**仅允许出现在检索策略说明区域**，且必须
 - 交叉许可协议
 
 **主要检索来源**（调用 `mcp_patent-search__patsnap_search`，使用 `matched_total` 呈现总量）：
-- PatSnap全球专利数据库
+- Patsnap全球专利数据库
 - USPTO、EPO、CNIPA官方公报
 - 法律新闻网站（如IAM、Managing IP）
 
@@ -874,7 +875,7 @@ Hero 区          → hero-gradient（深海蓝全渐变，与模块一完全相
 
 ## 一、数据来源规范
 
-1. **专利数据**：全部来自 PatSnap MCP 检索，不捏造专利号、申请人或技术分类数据。专利数量必须展示实际检索到的总量（`matched_total`），不得展示样本数量（`returned_count`）或进行样本估算。
+1. **专利数据**：全部来自 Patsnap MCP 检索，不捏造专利号、申请人或技术分类数据。专利数量必须展示实际检索到的总量（`matched_total`），不得展示样本数量（`returned_count`）或进行样本估算。
     
 2. **学术文献**：全部来自 `mcp_patent-search__patsnap_search`（paper）/ `mcp_patent-search__patsnap_fetch`，每篇必须附 DOI 链接。
     
@@ -932,7 +933,7 @@ Hero 区          → hero-gradient（深海蓝全渐变，与模块一完全相
 - 《从发明到专利》史蒂文·沃尔德曼著
 - 《专利的真正价值》拉里·戈德斯坦著（知识产权出版社，2020）
 - IEEE / JEDEC 标准文献
-- 智慧芽（PatSnap）全球专利数据库
+- 智慧芽（Patsnap）全球专利数据库
 
 ## 使用前配置
 本 Skill 依赖智慧芽开放平台 MCP 服务：

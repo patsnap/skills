@@ -19,7 +19,7 @@ Record the decision, lawful/legitimate purpose, users, retention/access controls
 
 ### Step 1: build the focal-organization corpus
 
-Use `advanced_patent_search` only when live PatSnap search is requested and authorized:
+Use `advanced_patent_search` only when live Patsnap search is requested and authorized:
 
 https://open.patsnap.com/marketplace/mcp-servers/patent-search
 
@@ -100,7 +100,7 @@ The generator validates key fields, recomputes summary counts, escapes all untru
 - [ ] Technical adjacency uses claim/function/mechanism evidence, not IPC/keywords alone.
 - [ ] Triage labels are review priorities, not legal risk.
 - [ ] Counterevidence and unresolved identities remain visible.
-- [ ] PatSnap links are exact returned global URLs.
+- [ ] Patsnap links are exact returned global URLs.
 - [ ] HTML contains escaped content and a prominent limitations notice.
 
 ## Cadence

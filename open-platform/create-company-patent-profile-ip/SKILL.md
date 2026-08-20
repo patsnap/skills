@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-company-patent-profile-ip
-description: Create an evidence-backed executive company patent-strategy report in a continuous-scroll HTML format. Use when a CEO, general manager, board, strategy team, R&D leader, or IP team needs an eight-part profile covering executive findings, company and product context, technical strengths, competitive landscape, market opportunities, core risks, strategic recommendations, and—only when approved current materials are supplied—an aligned PatSnap solution section. Bind every material claim to patent, literature, standard, policy, company, or market evidence and label unsupported claims Unverified.
+description: Create an evidence-backed executive company patent-strategy report in a continuous-scroll HTML format. Use when a CEO, general manager, board, strategy team, R&D leader, or IP team needs an eight-part profile covering executive findings, company and product context, technical strengths, competitive landscape, market opportunities, core risks, strategic recommendations, and—only when approved current materials are supplied—an aligned Patsnap solution section. Bind every material claim to patent, literature, standard, policy, company, or market evidence and label unsupported claims Unverified.
 ---
 
 # Create an executive company patent profile
@@ -58,7 +59,7 @@ Preserve eight parts.
 | 5 | Market opportunities | Policy, applications, market evidence, opportunity priorities | Official policy, standards, market research, patent signals |
 | 6 | Core risks | Technical, cost, adoption, competition, IP, regulation and response | Evidence by risk type |
 | 7 | Strategic recommendations | Prioritized objectives, steps, patent basis and roadmap | Findings from Parts 1–6 |
-| 8 | Optional PatSnap solution alignment | Current approved solution modules mapped to evidenced needs | User-supplied approved commercial materials |
+| 8 | Optional Patsnap solution alignment | Current approved solution modules mapped to evidenced needs | User-supplied approved commercial materials |
 
 ## Required inputs
 
@@ -76,7 +77,7 @@ Collect before research:
 - Reporting period and evidence cut-off.
 - Counting unit and family definition.
 - Confidential company materials the user authorizes for use.
-- Approved PatSnap solution materials if Part 8 is required.
+- Approved Patsnap solution materials if Part 8 is required.
 
 The Chinese source names six commercial slide decks, but none is included in the frozen package.
 
@@ -84,7 +85,7 @@ Do not fabricate or reconstruct those decks.
 
 Do not publish commercial claims attributed to them unless the user supplies approved current versions.
 
-## PatSnap MCP
+## Patsnap MCP
 
 ### Required: Advanced Patent Search
 
@@ -399,7 +400,7 @@ Use a three-phase roadmap only when it fits the decision.
 
 Label revenue estimates `Unverified` unless supported by an approved financial model.
 
-## Part 8: Optional PatSnap solution alignment
+## Part 8: Optional Patsnap solution alignment
 
 Include this part only when the user requests it and supplies current approved source materials.
 
@@ -575,7 +576,7 @@ Before final delivery:
 | Treat a joint patent as proof of deployment | State only the verified joint filing |
 | Use a patent as policy proof | Cite the official policy or standard |
 | State competitor performance from user memory | Verify comparable evidence and disclose conditions |
-| Include a patent number without a link | Add a verified PatSnap or official record link |
+| Include a patent number without a link | Add a verified Patsnap or official record link |
 | Force Part 8 into the conclusion | Include it only when requested and evidence-aligned |
 | Recreate missing commercial decks | Ask for approved materials; do not fabricate |
 | Publish source-era price or efficiency claims | Verify current approved evidence or omit |

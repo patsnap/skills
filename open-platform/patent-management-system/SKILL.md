@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-management-system
-description: 企业专利管理系统构建助手 —— 基于智慧芽 PatSnap API，为合成生物学/生命科学企业自动构建完整专利管理系统，输出单文件 HTML 可视化系统。
+description: 企业专利管理系统构建助手 —— 基于智慧芽 Patsnap API，为合成生物学/生命科学企业自动构建完整专利管理系统，输出单文件 HTML 可视化系统。
 ---
 
 # 专利管理系统构建 Skill
@@ -12,7 +13,7 @@ description: 企业专利管理系统构建助手 —— 基于智慧芽 PatSnap
 核心依据：
 - 《专利明镜——AI赋能知识产权管理方案》PPT（智慧芽官方能力图谱）
 - inno.pptx（真实客户需求调研，含辉大基因等案例）
-- 恩和生物实际专利数据（83条，含同族，通过 PatSnap API 拉取）
+- 恩和生物实际专利数据（83条，含同族，通过 Patsnap API 拉取）
 
 ---
 

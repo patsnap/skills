@@ -1,6 +1,6 @@
 # Setup guide
 
-This skill can classify records entirely from user-provided files. PatSnap MCP services are optional evidence sources for terminology discovery, representative patents, technical concepts, claims, descriptions, and boundary cases. They are not substitutes for taxonomy governance or human confirmation.
+This skill can classify records entirely from user-provided files. Patsnap MCP services are optional evidence sources for terminology discovery, representative patents, technical concepts, claims, descriptions, and boundary cases. They are not substitutes for taxonomy governance or human confirmation.
 
 ## 1. Decide whether external enrichment is permitted
 
@@ -12,9 +12,9 @@ Before connecting a service, determine whether the records contain confidential,
 - Never place an API key, bearer token, authorization header, or credential-bearing URL in a workbook, provenance table, chat message, or skill file.
 - When enrichment is not authorized, use the local workflow and record `mcp_enrichment_status: not_authorized`.
 
-## 2. Get a PatSnap Open Platform API key
+## 2. Get a Patsnap Open Platform API key
 
-Sign in at [PatSnap Open Platform](https://open.patsnap.com/) and follow the current [authentication guide](https://open.patsnap.com/devportal/guides/authentication). Store the key only in the MCP client's credential mechanism.
+Sign in at [Patsnap Open Platform](https://open.patsnap.com/) and follow the current [authentication guide](https://open.patsnap.com/devportal/guides/authentication). Store the key only in the MCP client's credential mechanism.
 
 ## 3. Choose only the MCP services needed
 
@@ -82,4 +82,4 @@ The milk-protein package is a translated historical patent-labeling fixture buil
 
 When live enrichment is requested but no suitable service is connected, report:
 
-> PatSnap MCP enrichment is not currently available. The local evidence-based labeling workflow can continue, but live terminology, patent, literature, or boundary enrichment will be marked incomplete. Connect only the needed service from the PatSnap global MCP marketplace and authorize any external transmission before retrying.
+> Patsnap MCP enrichment is not currently available. The local evidence-based labeling workflow can continue, but live terminology, patent, literature, or boundary enrichment will be marked incomplete. Connect only the needed service from the Patsnap global MCP marketplace and authorize any external transmission before retrying.

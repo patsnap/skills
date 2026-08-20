@@ -1,4 +1,4 @@
-# 智慧芽 PatSnap OpenAPI 浓缩参考（FTO skill 专用）
+# 智慧芽 Patsnap OpenAPI 浓缩参考（FTO skill 专用）
 
 排错速查清单。当 `scripts/zhihuiya_api.py` 报错或返回异常时，先来这里对照官方契约。
 
@@ -39,7 +39,7 @@ Body: grant_type=client_credentials
 ```
 
 业务接口请求格式（**全部接口都按此格式**）：
-- 请求头：`Authorization: Bearer <token>`、`Content-Type: application/json`、`X-PatSnap-Version: 1.0`
+- 请求头：`Authorization: Bearer <token>`、`Content-Type: application/json`、`X-Patsnap-Version: 1.0`
 - query 参数：`apikey=<client_id>`（**必填，否则返回 67200008**）
 
 > **关键澄清**：早期 FTO skill 草案里的 "AI66 用 sk- 格式 API Key"是错的。所有接口共用同一套 OAuth + apikey query 参数。

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: manage-patent-portfolio-ip
 description: Design and generate a configurable single-file enterprise patent-portfolio operations workspace with a dashboard, asset register, fee/deadline view, outside-counsel analytics, competitor monitoring, FTO workflow intake, patent-value screening, and novelty-search intake. Use when a technology or life-sciences company wants a portfolio-management prototype, refreshed portfolio view, phased IP-operations roadmap, or HTML workspace based on authorized patent data.
 ---
@@ -79,7 +80,7 @@ Use when the user asks to:
 Do not transmit confidential unpublished inventions, product features, attorney work product,
 API keys, billing data, or personal information to an unapproved connector or external service.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Inspect the live tool schema before use.
@@ -358,7 +359,7 @@ review_state
 source
 ```
 
-Use only an allowlisted source URL returned by the connector or an approved global PatSnap link.
+Use only an allowlisted source URL returned by the connector or an approved global Patsnap link.
 Do not construct a legacy deep-link pattern from a private UUID.
 
 ### Module 3 — Fee and deadline operations
@@ -707,7 +708,7 @@ Control: reconcile stable IDs and counts against the prior complete snapshot.
 ### 2. Broken patent links
 
 Cause: constructing a legacy vendor URL from a UUID.
-Control: use a verified source URL returned by the connector or an approved global PatSnap product link.
+Control: use a verified source URL returned by the connector or an approved global Patsnap product link.
 
 ### 3. Encoding corruption
 

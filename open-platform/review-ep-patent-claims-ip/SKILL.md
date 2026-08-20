@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: review-ep-patent-claims-ip
 description: Review European patent application claims and supporting application materials for EPO/EPC examination readiness. Use when a user uploads or cites a European patent application, claim set, specification draft, Euro-PCT text, PCT application intended for the European phase, or foreign-language filing intended for Europe, or asks for EPC Articles 84, 83, 123(2), 82, 54 or 56 analysis, Rule 43 practice, unity review, claim interpretation, claim-amendment options, fallback positions, or European patent attorney-style drafting quality control.
 ---
@@ -77,7 +78,7 @@ Commonly useful missing items include:
 - Desired enforcement target.
 - Applicant’s priority strategy.
 
-## Optional PatSnap MCP use
+## Optional Patsnap MCP use
 
 Document-only review does not require MCP.
 

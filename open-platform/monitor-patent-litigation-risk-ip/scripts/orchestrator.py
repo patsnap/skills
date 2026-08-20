@@ -244,7 +244,7 @@ def main(argv=None) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[orchestrator] Empty evidence record written: {output}")
-    print("[orchestrator] Populate it only with cited PatSnap and primary-source evidence.")
+    print("[orchestrator] Populate it only with cited Patsnap and primary-source evidence.")
     return 0
 
 

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: reactivate-underused-patents-ip
 description: Assess underused patents and related intangible assets, cluster them into decision-ready packages, evaluate internal reuse and transaction options, research candidate counterparties, and create evidence-backed portfolio activation deliverables. Use for patent portfolio activation, maintenance review, outbound licensing or assignment screening, transaction-readiness review, internal R&D reuse, candidate buyer/licensee research, management reporting, or a 30/60/90-day activation plan.
 ---

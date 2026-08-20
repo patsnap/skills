@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: base-station-antenna-monitor
 description: |
   基站天线专利技术监控工具，面向普罗斯通信技术使用。自动检索近一个月内华为、康普、京信、爱立信等17家核心企业的基站天线相关专利，按振子、天线罩、反射板三大技术分支分类，生成包含专利清单与技术概要的专业HTML报告。

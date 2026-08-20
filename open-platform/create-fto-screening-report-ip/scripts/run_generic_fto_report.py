@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Run a source-faithful, evidence-preserving PatSnap FTO screening workflow.
+"""Run a source-faithful, evidence-preserving Patsnap FTO screening workflow.
 
 This command creates research artifacts for human review. It does not issue a
 legal opinion, determine infringement, or represent that a search is complete.
-REST mode uses the global PatSnap Connect API through ``PatSnapClient``. MCP
+REST mode uses the global Patsnap Connect API through ``PatsnapClient``. MCP
 mode is intentionally orchestration-only: an MCP-capable host must supply its
 results as JSON because this local script cannot honestly claim an MCP call.
 """
@@ -30,7 +30,7 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
 from render_report import render_from_structured_data
-from zhihuiya_api import PatSnapApiError, PatSnapClient
+from zhihuiya_api import PatsnapApiError, PatsnapClient
 
 
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
@@ -230,7 +230,7 @@ def draft_queries(features: list[dict[str, Any]], *, max_terms: int = 8) -> list
             "query": " AND ".join(quote_query_term(token) for token in unique),
             "origin": "generated_draft",
             "human_approved": False,
-            "review_note": "Validate PatSnap field syntax, synonyms, classifications, translations, exclusions, and jurisdiction scope before approval.",
+            "review_note": "Validate Patsnap field syntax, synonyms, classifications, translations, exclusions, and jurisdiction scope before approval.",
         })
     return output
 
@@ -394,7 +394,7 @@ def deduplicate_candidates(records: Iterable[dict[str, Any]]) -> list[dict[str, 
     return list(merged.values())
 
 
-def collect_rest_candidates(client: PatSnapClient, queries: list[dict[str, Any]], *, limit: int) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def collect_rest_candidates(client: PatsnapClient, queries: list[dict[str, Any]], *, limit: int) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     candidates: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
     for query in queries:
@@ -405,12 +405,12 @@ def collect_rest_candidates(client: PatSnapClient, queries: list[dict[str, Any]]
             payload = client.search_all_patents(query["query"], max_total=limit)
             for row in _extract_search_rows(payload):
                 candidates.append(normalize_patent(row, query_ids=[query["query_id"]]))
-        except (PatSnapApiError, OSError, ValueError) as exc:
+        except (PatsnapApiError, OSError, ValueError) as exc:
             errors.append({"stage": "search", "query_id": query["query_id"], "state": "error", "message": clean_text(exc)})
     return deduplicate_candidates(candidates), errors
 
 
-def attach_claim_evidence(client: PatSnapClient, candidates: list[dict[str, Any]], *, max_candidates: int) -> list[dict[str, Any]]:
+def attach_claim_evidence(client: PatsnapClient, candidates: list[dict[str, Any]], *, max_candidates: int) -> list[dict[str, Any]]:
     errors = []
     for candidate in candidates[:max_candidates]:
         number = candidate.get("publication_number") or candidate.get("application_number")
@@ -425,7 +425,7 @@ def attach_claim_evidence(client: PatSnapClient, candidates: list[dict[str, Any]
                 "retrieved_count": len(claim_rows),
                 "screening_shortcut": "Claim 1 may be triaged first, but every material independent and dependent claim requires counsel review.",
             }
-        except (PatSnapApiError, OSError, ValueError) as exc:
+        except (PatsnapApiError, OSError, ValueError) as exc:
             candidate["claims"] = []
             candidate["evidence_gaps"].append("Claim retrieval failed; no mapping conclusion may be inferred.")
             errors.append({"stage": "claims", "candidate_id": candidate["candidate_id"], "state": "error", "message": clean_text(exc)})
@@ -470,7 +470,7 @@ def build_structured_data(normalized: dict[str, Any], candidates: list[dict[str,
             "mode": mode,
             "status": status,
             "source": normalized["source"],
-            "rest_service": "PatSnap Connect" if mode == "rest" else "Not called",
+            "rest_service": "Patsnap Connect" if mode == "rest" else "Not called",
             "mcp_note": "MCP evidence was imported from an MCP-capable host; this script did not call MCP." if mode == "mcp-import" else "Not applicable",
         },
         "features": features,
@@ -549,7 +549,7 @@ def configure_document(document: Document) -> None:
     header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     footer = section.footer.paragraphs[0]
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    footer.add_run("PatSnap-assisted research screening  •  ")
+    footer.add_run("Patsnap-assisted research screening  •  ")
     field = OxmlElement("w:fldSimple")
     field.set(qn("w:instr"), "PAGE")
     footer._p.append(field)
@@ -603,7 +603,7 @@ def render_docx(data: dict[str, Any], path: pathlib.Path) -> None:
     project = data.get("project", {})
     document.core_properties.title = clean_text(data.get("report_title"))
     document.core_properties.subject = "Evidence-preserving freedom-to-operate screening"
-    document.core_properties.author = "PatSnap-assisted research workflow"
+    document.core_properties.author = "Patsnap-assisted research workflow"
     document.core_properties.keywords = "FTO, patents, claim mapping, screening"
     document.add_paragraph("FREEDOM-TO-OPERATE SCREENING", style="Title")
     document.add_paragraph(clean_text(project.get("product_name")) or "Product / technology under review", style="Subtitle")
@@ -658,12 +658,12 @@ def resolve_input(path: pathlib.Path) -> dict[str, Any]:
     return normalize_input(raw, path)
 
 
-def build_client(config_path: pathlib.Path, api_key: str | None) -> PatSnapClient:
+def build_client(config_path: pathlib.Path, api_key: str | None) -> PatsnapClient:
     config = load_json(config_path, expected=dict) if config_path.exists() else {}
     key = api_key or os.getenv("PATSNAP_API_KEY") or clean_text(config.get("api_key"))
     if not key:
-        raise ValueError("PatSnap API key missing. Set PATSNAP_API_KEY or pass --api-key; never place secrets in reports.")
-    return PatSnapClient(
+        raise ValueError("Patsnap API key missing. Set PATSNAP_API_KEY or pass --api-key; never place secrets in reports.")
+    return PatsnapClient(
         api_key=key,
         base_url=clean_text(config.get("base_url")) or "https://connect.patsnap.com",
         connect_timeout=float(config.get("connect_timeout_seconds", 10)),
@@ -719,9 +719,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Create an evidence-preserving English FTO screening package from JSON or DOCX input.")
     parser.add_argument("input", type=pathlib.Path, help="Structured JSON input or source DOCX")
     parser.add_argument("output_dir", type=pathlib.Path, help="Directory for JSON, HTML, and DOCX artifacts")
-    parser.add_argument("--mode", choices=("rest", "offline"), default="offline", help="REST calls PatSnap Connect; offline uses supplied candidates only")
-    parser.add_argument("--mcp-results", type=pathlib.Path, help="JSON exported by a verified PatSnap MCP host; switches provenance to mcp-import")
-    parser.add_argument("--api-key", help="PatSnap API key; prefer PATSNAP_API_KEY to avoid shell-history exposure")
+    parser.add_argument("--mode", choices=("rest", "offline"), default="offline", help="REST calls Patsnap Connect; offline uses supplied candidates only")
+    parser.add_argument("--mcp-results", type=pathlib.Path, help="JSON exported by a verified Patsnap MCP host; switches provenance to mcp-import")
+    parser.add_argument("--api-key", help="Patsnap API key; prefer PATSNAP_API_KEY to avoid shell-history exposure")
     parser.add_argument("--api-config", type=pathlib.Path, default=DEFAULT_API_CONFIG_PATH)
     parser.add_argument("--business-config", type=pathlib.Path, default=DEFAULT_BUSINESS_CONFIG_PATH, help="Reserved source-compatible path; report facts still come from input")
     parser.add_argument("--max-records", type=int, default=100)
@@ -741,7 +741,7 @@ def main() -> int:
         for label, path in paths.items():
             print(f"{label}: {path}")
         return 0
-    except (OSError, UnicodeError, json.JSONDecodeError, ValueError, PatSnapApiError) as exc:
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError, PatsnapApiError) as exc:
         print(f"FTO screening failed: {clean_text(exc)}", file=sys.stderr)
         return 2
 

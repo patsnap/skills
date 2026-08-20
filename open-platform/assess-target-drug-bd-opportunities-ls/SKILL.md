@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: assess-target-drug-bd-opportunities-ls
 description: Integrate target biology, disease rationale, drug pipeline, clinical, patent, scientific, regulatory, company, and transaction evidence for target or targeted-asset R&D and business-development decisions. Use for target initiation reviews, asset or modality opportunity screens, partnering theses, target landscape updates, and evidence-based go/no-go conditions.
 ---
@@ -30,7 +31,7 @@ Normalize the target/entity first and show ambiguities before collecting downstr
 
 ## MCP and evidence routing
 
-Use supplied authoritative records when complete. For current retrieval, use only available/authorized global PatSnap MCPs:
+Use supplied authoritative records when complete. For current retrieval, use only available/authorized global Patsnap MCPs:
 
 | Evidence | MCP | Marketplace |
 |---|---|---|
@@ -50,7 +51,7 @@ Use company/deal intelligence only when the current marketplace service and its 
 Prefer:
 
 1. official registries, regulator documents/labels, patents/registers, peer-reviewed primary research, trial publications, company filings and executed agreement text where available;
-2. structured PatSnap records with exact source/identifier/date;
+2. structured Patsnap records with exact source/identifier/date;
 3. reputable secondary synthesis;
 4. news/web summaries as discovery leads or clearly labeled context.
 

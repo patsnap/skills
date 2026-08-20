@@ -87,7 +87,7 @@ def build_front(doc, m, sel):
     title = doc.add_paragraph(); title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     r = title.add_run('高价值专利包筛选报告'); r.font.size = Pt(22); r.font.bold = True; r.font.color.rgb = BLUE
     sub = doc.add_paragraph(); sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    rs = sub.add_run(f'生成时间：{now}　|　数据来源：PatSnap / 智慧芽 Connect API（实时检索，未人工编造）')
+    rs = sub.add_run(f'生成时间：{now}　|　数据来源：Patsnap / 智慧芽 Connect API（实时检索，未人工编造）')
     rs.font.size = Pt(9); rs.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
 
     add_heading(doc, '一、检索与筛选概览', 14, BLUE)
@@ -145,7 +145,7 @@ def core_text(r):
 def build_table(doc, sel, embed_img=True):
     add_heading(doc, f'三、高价值专利清单（{len(sel)} 件）', 14, BLUE)
     hint = doc.add_paragraph()
-    hr = hint.add_run('提示：点击「公开公告号」可在智慧芽 PatSnap 数据库中打开该专利详情页（需登录智慧芽账号）。')
+    hr = hint.add_run('提示：点击「公开公告号」可在智慧芽 Patsnap 数据库中打开该专利详情页（需登录智慧芽账号）。')
     hr.font.size = Pt(8.5); hr.font.color.rgb = RGBColor(0x66, 0x66, 0x66)
     t = doc.add_table(rows=1, cols=len(COLS)); t.style = 'Table Grid'
     t.alignment = WD_TABLE_ALIGNMENT.CENTER

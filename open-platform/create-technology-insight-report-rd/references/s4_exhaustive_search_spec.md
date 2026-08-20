@@ -36,7 +36,7 @@ Never call `matched_total` an exhaustively reviewed set.
 - patent-professional review boundary;
 - connector/tool and callable schema.
 
-## Verified global PatSnap services
+## Verified global Patsnap services
 
 - `advanced_patent_search`: https://open.patsnap.com/marketplace/mcp-servers/patent-search
 - `patent_briefing`: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: auto-industry-report
 description: 汽车行业五大域+零部件企业100强深度技术全景报告生成器（V11版）
 ---
@@ -29,6 +30,6 @@ description: 汽车行业五大域+零部件企业100强深度技术全景报告
 ## 使用注意事项
 
 - 不要编造不存在的专利、市场或技术证据。
-- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 优先使用用户提供材料和 Patsnap/Zhihuiya MCP 数据。
 - 明确标注数据来源、检索范围、时间范围和不确定性。
 - 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。

@@ -2,7 +2,7 @@
 
 ## Authentication
 
-All endpoints use a PatSnap Open Platform API key as a Bearer token:
+All endpoints use a Patsnap Open Platform API key as a Bearer token:
 ```
 Authorization: Bearer <token>
 ```
@@ -23,4 +23,4 @@ Authorization: Bearer <token>
 - **Query syntax**: `ANCS:(Applicant name)`
 - **Response records**: `data.results`
 - **Source validation date**: 2026-05-27 on the Chinese endpoint; treat the source counts as historical fixtures, not current global results.
-- **Global documentation verification**: The current PatSnap MCP/API pages document this `connect.patsnap.com` query-search path and a `data.results` response convention; recheck the OpenAPI schema before release.
+- **Global documentation verification**: The current Patsnap MCP/API pages document this `connect.patsnap.com` query-search path and a `data.results` response convention; recheck the OpenAPI schema before release.

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: adc-patent-weekly-report
 description: |
   ADC专利情报周报生成器：检索指定自然周内WO受理局公开的ADC专利，两轮过滤去噪，P025三要素+AI洞察改写，生成复刻Eureka Desktop固定版式的HTML周报（Codex适配版，v6.4-codex）
@@ -30,6 +31,6 @@ ADC专利情报周报生成器：检索指定自然周内WO受理局公开的ADC
 ## 使用注意事项
 
 - 不要编造不存在的专利、市场或技术证据。
-- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 优先使用用户提供材料和 Patsnap/Zhihuiya MCP 数据。
 - 明确标注数据来源、检索范围、时间范围和不确定性。
 - 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: monitor-patent-litigation-risk-ip
 description: Monitor patent-litigation exposure for a primary company and up to four named comparison parties. Use when users need target-centric identification of potentially litigated patents, patent-family and claim analysis, verified proceeding timelines, case deep dives, inventor activity, geographic exposure, litigation alerts, technology trends, and an evidence-backed HTML report with structured JSON or CSV attachments.
 ---
@@ -19,7 +20,7 @@ Act as an intelligence analyst, not as counsel, a court, a tribunal, or a predic
 - descriptive inventor activity from causal predictions; and
 - source facts from analyst inference.
 
-Treat PatSnap legal-event data as a patent-data and discovery source. Verify material case facts using primary tribunal, court, agency, or official-register records current to the report cutoff.
+Treat Patsnap legal-event data as a patent-data and discovery source. Verify material case facts using primary tribunal, court, agency, or official-register records current to the report cutoff.
 
 ## Suitable requests
 
@@ -90,7 +91,7 @@ For each material fact, preserve:
 
 Use reporting, press releases, law-firm notes, and database signals as secondary leads. Never cite a search-results page as proof of a court fact when a primary source is available.
 
-## Verified PatSnap MCP mappings
+## Verified Patsnap MCP mappings
 
 Confirm each connector's live tool schema at runtime. Do not invent source tool names or parameters.
 
@@ -120,7 +121,7 @@ Use for broader assignee, inventor, classification, keyword, and technology retr
 
 Never expose or reproduce a real API key. Obtain the current connection URL through the official marketplace Connect action.
 
-PatSnap MCPs do not replace jurisdiction-specific court and tribunal sources. Use available public-source research for discovery and primary-source verification, and log every query, filter, date, and limitation.
+Patsnap MCPs do not replace jurisdiction-specific court and tribunal sources. Use available public-source research for discovery and primary-source verification, and log every query, filter, date, and limitation.
 
 ## Execution workflow
 
@@ -205,7 +206,7 @@ Build a case record compatible with `scripts/orchestrator.py`.
 For each verified or materially unresolved asserted patent:
 
 1. Retrieve bibliography, family, legal status, full text, claims, translations, images, and material legal details.
-2. Extract the canonical PatSnap or public patent locator from returned data; never fabricate an internal ID or UUID.
+2. Extract the canonical Patsnap or public patent locator from returned data; never fabricate an internal ID or UUID.
 3. State the family definition and de-duplicate consistently.
 4. Preserve continuation, divisional, continuation-in-part, national-stage, grant, reissue, and related relationships where material.
 5. Verify legal status separately for each family member and state the as-of date.

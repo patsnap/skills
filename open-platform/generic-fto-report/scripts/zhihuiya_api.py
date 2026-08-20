@@ -1,7 +1,7 @@
 """
 zhihuiya_api.py
 ===============
-智慧芽 PatSnap OpenAPI 标准调用库 —— 服务器滑轨 FTO 分析专用，可独立复用。
+智慧芽 Patsnap OpenAPI 标准调用库 —— 服务器滑轨 FTO 分析专用，可独立复用。
 
 涵盖接口（优先使用 skill 内部 query_api_key 配置；也兼容 OAuth）：
   - P070 关键词助手：POST /search/patent/keyword-suggest
@@ -130,7 +130,7 @@ class ZhihuiyaClient:
         return {
             "Authorization":   f"Bearer {self._get_token()}",
             "Content-Type":    "application/json",
-            "X-PatSnap-Version": "1.0",
+            "X-Patsnap-Version": "1.0",
         }
 
     def _post(self, path: str, payload: dict) -> dict:
@@ -139,7 +139,7 @@ class ZhihuiyaClient:
         params = {"apikey": self.api_key}
         resp = requests.post(
             url,
-            headers=self._headers() if self.client_id and self.client_secret else {"Content-Type": "application/json", "X-PatSnap-Version": "1.0"},
+            headers=self._headers() if self.client_id and self.client_secret else {"Content-Type": "application/json", "X-Patsnap-Version": "1.0"},
             params=params,
             json=payload,
             timeout=self.timeout,
@@ -161,7 +161,7 @@ class ZhihuiyaClient:
             all_params.update(params)
         resp = requests.get(
             url,
-            headers=self._headers() if self.client_id and self.client_secret else {"Content-Type": "application/json", "X-PatSnap-Version": "1.0"},
+            headers=self._headers() if self.client_id and self.client_secret else {"Content-Type": "application/json", "X-Patsnap-Version": "1.0"},
             params=all_params,
             timeout=self.timeout,
         )

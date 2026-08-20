@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: drug-potential-assessment
 description: "评估候选药物的成药性、差异化和研发商业潜力。适用于：比较候选药物的成药性、差异化、临床可行性、竞争强度和商业潜力，用于早期候选筛选或同靶点药物比较。"
 ---
@@ -83,7 +84,7 @@ description: "评估候选药物的成药性、差异化和研发商业潜力。
 - `mcp_virtual-mcp-pharma-intelligence__ls_patent_search`：语义检索目标靶点/适应症最新专利（近3年优先）
   - **【必须加 IPC 分类约束】**：优先使用 `A61K`、`A61P`、`C07D`、`C07K` 等药学/化学 IPC 作为过滤条件
   - **【相关性校验】**：返回结果须通过靶点名称/适应症关键词匹配，过滤与主题无关的专利
-- `mcp_patsnap-aggregation-data__search_patents_v3`：PatSnap 高级检索式精准检索（补充语义检索）
+- `mcp_patsnap-aggregation-data__search_patents_v3`：Patsnap 高级检索式精准检索（补充语义检索）
 - `mcp_patsnap-aggregation-data__search_patents_with_detail`：检索同时返回首条专利全文，减少二次调用
 - `mcp_patsnap-aggregation-data__detail`：单条核心专利完整详情（含法律状态、同族、引用）
 - `mcp_patsnap-aggregation-data__detail_text`：核心专利全文详情（背景技术、权利要求、技术要素）

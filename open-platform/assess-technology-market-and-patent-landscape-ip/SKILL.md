@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: assess-technology-market-and-patent-landscape-ip
 description: Assess a defined product or technology field for project initiation by combining current market evidence, a reproducible global patent landscape, individually validated key players, technical themes and gap hypotheses, jurisdictional filing footprint, competitive tiers, risks, and differentiated project options in a self-contained scientific HTML report. Use for technology-market landscape, patent landscape, opportunity mapping, or R&D project-entry decisions.
 ---
@@ -61,7 +62,7 @@ Keep six evidence classes separate:
 Every material conclusion must cite one or more source IDs and state its evidence class.
 Patent evidence cannot prove market size, customer demand, product deployment, company intent, or profitability.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Inspect the live tool schema before use.

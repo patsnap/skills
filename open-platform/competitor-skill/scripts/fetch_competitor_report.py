@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""竞争对手专利报告：给定 PatSnap 检索式，检索并输出 Markdown 报告。"""
+"""竞争对手专利报告：给定 Patsnap 检索式，检索并输出 Markdown 报告。"""
 import sys
 import re
 from datetime import datetime

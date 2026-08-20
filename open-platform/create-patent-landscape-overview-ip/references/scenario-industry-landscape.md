@@ -24,7 +24,7 @@ Use this scenario for the first analytical layer: activity trends, leading organ
 
 Do not preserve the source’s China-oriented or fixed “since 2023” defaults. Select scope from the decision question and document it before retrieval.
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 | Task | Preferred service and operation |
 |---|---|

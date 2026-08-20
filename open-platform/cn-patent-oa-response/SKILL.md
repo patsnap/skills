@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: cn-patent-oa-response
 description: "分析CNIPA审查意见并形成修改依据与答复草案。适用于：分析CNIPA审查意见、对比文件和权利要求差异，形成问题拆解、修改依据和答复草案；应由专利代理师复核。"
 ---
@@ -181,7 +182,7 @@ AI60 云端 OCR 是**本地 API 封装器**，并非 MCP 工具。
 4. **每次技术摘要操作只用一个工具。** 同一专利不得同时调用 `958a46.tech_summary` 和 `7cc6ae.tech_problem_benefit_summary`；二选一。
 5. **`ls_patent_search`（pharma_intelligence）不能替代 `patsnap_search`。** 前者仅检索生物医药专属索引；始终先运行 `patsnap_search` 以获得全面覆盖。
 6. **药物情报工具补充但绝不替代专利检索工具。** 先运行专利检索，再将药物情报作为背景增强。
-7. **AI60 云端 OCR（本地封装器）与 MCP 工具的区别**：AI60 是 PatSnap 面向扫描版/图像版文件的云端 OCR 服务，通过 Bash 调用，且需要 API 密钥。不存在 MCP OCR 工具。不得在 ToolSearch 中检索“OCR”。仅当文件为扫描版/图像版时使用 AI60；对于原生 PDF，直接提取文本。
+7. **AI60 云端 OCR（本地封装器）与 MCP 工具的区别**：AI60 是 Patsnap 面向扫描版/图像版文件的云端 OCR 服务，通过 Bash 调用，且需要 API 密钥。不存在 MCP OCR 工具。不得在 ToolSearch 中检索“OCR”。仅当文件为扫描版/图像版时使用 AI60；对于原生 PDF，直接提取文本。
 
 ### 化学结构 OA 论证
 

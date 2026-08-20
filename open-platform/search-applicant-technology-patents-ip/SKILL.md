@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: search-applicant-technology-patents-ip
-description: Search patents owned or filed by one or more specified applicants within a defined technology topic. Use when an IP searcher or analyst needs an applicant-first, topic-constrained PatSnap strategy; evidence-backed assignee expansion; auditable PatSnap formulas; executed retrieval and deduplicated datasets; or a Markdown and Word retrieval report. Do not use for an unconstrained applicant portfolio dump, an applicant-free technology landscape, or downstream technical tagging after retrieval.
+description: Search patents owned or filed by one or more specified applicants within a defined technology topic. Use when an IP searcher or analyst needs an applicant-first, topic-constrained Patsnap strategy; evidence-backed assignee expansion; auditable Patsnap formulas; executed retrieval and deduplicated datasets; or a Markdown and Word retrieval report. Do not use for an unconstrained applicant portfolio dump, an applicant-free technology landscape, or downstream technical tagging after retrieval.
 ---
 
 # Search applicant technology patents
@@ -12,7 +13,7 @@ Read both references before drafting formulas or executing retrieval:
 - [Applicant-topic patent retrieval workflow](references/applicant-retrieval-workflow.md)
 - [Topic limitation workflow](references/topic-limitation-workflow.md)
 
-Read [README.md](README.md) before using live PatSnap data.
+Read [README.md](README.md) before using live Patsnap data.
 
 ## Execution modes
 
@@ -20,7 +21,7 @@ Choose one mode and state it in Step 0:
 
 | Mode | Use when | Completion requirement |
 |---|---|---|
-| `formula_only_mode` | The user needs methodology and executable formulas, or live retrieval is unavailable. | Expanded formulas, assumptions, pending confirmations, and a PatSnap execution checklist. Set `dataset_status: not_executed`. |
+| `formula_only_mode` | The user needs methodology and executable formulas, or live retrieval is unavailable. | Expanded formulas, assumptions, pending confirmations, and a Patsnap execution checklist. Set `dataset_status: not_executed`. |
 | `retrieval_dataset_mode` | The user asks the agent to retrieve/export records, deduplicate results, or prepare downstream datasets. | Retrieval provenance, full source dataset, available application/family datasets, representative dataset, editable Markdown report, and Word report unless opted out. |
 
 Default to `formula_only_mode` until the user asks for executed retrieval or datasets.
@@ -134,7 +135,7 @@ For each candidate entity, record:
 | Canonical legal name | Current registered or otherwise authoritative name. |
 | Local-language and English names | Preserve names used in filings and authoritative records. |
 | Relationship basis | Parent, subsidiary, R&D entity, manufacturing entity, historical name, acquisition, branch, joint venture, alias, or user-provided entity. |
-| Evidence source and note | Official website, annual report, business registry, PatSnap applicant profile, patent evidence, or user evidence. |
+| Evidence source and note | Official website, annual report, business registry, Patsnap applicant profile, patent evidence, or user evidence. |
 | Confidence | `High`, `Medium`, or `Low`. |
 | Include in search | `Yes`, `No`, or `Pending`. |
 

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: screen-mab-fto-risk-ls
 description: Conduct an evidence-backed freedom-to-operate risk screen for monoclonal antibodies, bispecific antibodies, and antibody-drug conjugates across user-selected markets. Use when a user provides antibody sequences or a defined biologic candidate and asks for patent clearance, claim coverage screening, jurisdiction-specific risk triage, or design-around questions.
 ---
@@ -93,7 +94,7 @@ Do not exclude a record solely because an aggregated database says “inactive.�
 
 No MCP is required when the user supplies complete, authoritative records and official-register evidence.
 
-For live work, use only available, authorized, verified global PatSnap MCPs:
+For live work, use only available, authorized, verified global Patsnap MCPs:
 
 | Need | MCP | Use |
 |---|---|---|
@@ -101,9 +102,9 @@ For live work, use only available, authorized, verified global PatSnap MCPs:
 | Claims, description, bibliography, family, legal status, translations, drawings | `patent_briefing` | Primary-document enrichment and family verification; marketplace: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing |
 | Drug identity and milestones | `drug_asset` | Optional candidate/competitor context only; marketplace: https://open.patsnap.com/marketplace/mcp-servers/drug-asset |
 
-The global marketplace page named `chemistry-small-molecule` currently advertises no callable tools, so it is not mapped as an operational structure-search dependency. Sequence alignment and chemical structure search remain required when relevant, but do not invent connector names. Use an authorized service only if it is actually exposed in the environment; otherwise request a PatSnap or other authoritative export and document the gap.
+The global marketplace page named `chemistry-small-molecule` currently advertises no callable tools, so it is not mapped as an operational structure-search dependency. Sequence alignment and chemical structure search remain required when relevant, but do not invent connector names. Use an authorized service only if it is actually exposed in the environment; otherwise request a Patsnap or other authoritative export and document the gap.
 
-Always verify material legal status and prosecution events against the relevant official register. A PatSnap status field is a discovery aid, not the final legal-status authority.
+Always verify material legal status and prosecution events against the relevant official register. A Patsnap status field is a discovery aid, not the final legal-status authority.
 
 ## Evidence hierarchy
 
@@ -334,7 +335,7 @@ Do not recommend arbitrary residue substitutions, isotype switching, framework c
 - [ ] Equivalents analysis is framed as a jurisdiction-specific counsel question.
 - [ ] Terms, extensions, disclaimers, post-grant events, ownership, and licenses are evidence-backed.
 - [ ] PCT and EP territorial effects are described correctly.
-- [ ] Patent links use exact global PatSnap or official-register destinations, never a legacy domestic product domain.
+- [ ] Patent links use exact global Patsnap or official-register destinations, never a legacy domestic product domain.
 - [ ] HTML is self-contained, accessible, responsive, printable, and visually restrained.
 - [ ] No credentials, sensitive sequences beyond authorized scope, fabricated patents, claims, cases, or legal citations appear.
 - [ ] Conclusions state assumptions, uncertainty, next action, owner, and timing.

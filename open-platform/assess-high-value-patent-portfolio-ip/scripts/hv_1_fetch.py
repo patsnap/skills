@@ -113,7 +113,7 @@ def deduplicate(records: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], li
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Retrieve and deduplicate the PatSnap P002 candidate universe.")
+    parser = argparse.ArgumentParser(description="Retrieve and deduplicate the Patsnap P002 candidate universe.")
     parser.add_argument("--page-size", type=int, default=int(os.getenv("HVP_PAGE_SIZE", DEFAULT_PAGE_SIZE)))
     parser.add_argument("--max-records", type=int, default=int(os.getenv("HVP_MAX_RECORDS", DEFAULT_MAX_RECORDS)))
     parser.add_argument("--output", default="cand_raw.json")

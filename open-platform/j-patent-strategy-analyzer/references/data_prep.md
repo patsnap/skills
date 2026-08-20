@@ -308,7 +308,7 @@ def build_data_dict(df, df_active, panorama, tier_a, tier_b, tier_c, tier_meta,
         'company_cn': company_info.get('cn_name', ''),
         'report_date': company_info.get('report_date', ''),
         'data_source': '用户提供专利清单 / 企业官网 / 公开新闻',
-        'data_source_hint': 'PatSnap样本数据',
+        'data_source_hint': 'Patsnap样本数据',
         
         # 各节数据（后续各节分析函数填充）
         'sec1': {}, 'sec2': {}, 'sec3': {}, 'sec4': {}, 'sec5': {},

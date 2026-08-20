@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: pharma-company-intelligence
 description: "整合医药企业管线、专利、交易和战略竞争情报。适用于：分析一家医药企业的研发管线、专利、交易、合作、组织和战略动向，用于竞争对手研究、客户洞察和账户规划。"
 ---
@@ -139,7 +140,7 @@ description: "整合医药企业管线、专利、交易和战略竞争情报。
 **关键动作：**
 - 检索字段：申请人名称（所有关联实体）、公开日、申请日、法律状态、受理局
 - 按管线分组，每条专利含：
-  - 专利号（可点击 PatSnap 链接，格式：`https://eureka.zhihuiya.com/view/#/fullText?patentId=...`）
+  - 专利号（可点击 Patsnap 链接，格式：`https://eureka.zhihuiya.com/view/#/fullText?patentId=...`）
   - 公开日、申请日、法律状态、受理局、标题
 - 覆盖：有效（active）/ 审中（pending）/ 失效（inactive）三类
 - 输出三组分类表，每组按公开日倒序排列
@@ -160,13 +161,13 @@ description: "整合医药企业管线、专利、交易和战略竞争情报。
   - **战略维度**：发明人数、转让次数、授权许可记录、质押记录
   - **经济维度**：专利族稳定性指数、IPC 技术领域近5年增长率
 - **识别"时间惩罚"现象**：新专利市场分低不代表价值低，需结合专利年龄解读
-- 综合估值：PatSnap 估算专利价值（USD）
+- 综合估值：Patsnap 估算专利价值（USD）
 
 **输出：** 每件专利五维雷达评分卡 + 综合估值 + 战略洞察
 
 ### Step 8 — Lead 化合物 ADMET 分析
 
-**工具：** PatSnap 生命科学 MCP
+**工具：** Patsnap 生命科学 MCP
 - 调用子工具：`ls_patent_structure_fetch` + `ls_admet_predict` + `ls_chemical_mcs_analyze`
 - **⚠️ 若生命科学 MCP 未启用，跳过本步骤并在报告中提示用户开启后重试**
 
@@ -282,7 +283,7 @@ background: linear-gradient(135deg, #1e3a5f, #2d6a9f, #1a8c6e);
 | 3. 临床进展 | 关键数据表 + 核心里程碑时间轴 | 横向时间轴 |
 | 4. 竞品格局 | 竞品对比表 + 格局洞察段落 | 响应式表格 |
 | 5. 融资与资本 | 融资时间线 + 股东结构 | 垂直时间线 |
-| 6. 专利全表 | 三组分类表 + PatSnap 可点击链接 | 三Tab分组表格 |
+| 6. 专利全表 | 三组分类表 + Patsnap 可点击链接 | 三Tab分组表格 |
 | 7. LCA 专利价值 | 每件专利五维评分卡 + 估值区间 | 评分卡组件 |
 | 8. 专利策略解读 | 梯次围栏分析 + 保护期预测 | 围栏示意 |
 | 9. Lead 化合物 | SMILES 结构 + ADMET 全表 + MCS 结论 + BD 评分矩阵 | 彩色指标表 |
@@ -298,7 +299,7 @@ background: linear-gradient(135deg, #1e3a5f, #2d6a9f, #1a8c6e);
 | 检查项 | 要求 | 失败处理 |
 |---|---|---|
 | 财务数字来源 | IPO金额、融资规模必须有 SEC filing 或官方 PR 来源 | 标注 ⚠️ 待核实，不得使用估算值 |
-| 专利号可溯源 | 每条专利必须有 PatSnap 链接 | 无链接的专利不得列入表格 |
+| 专利号可溯源 | 每条专利必须有 Patsnap 链接 | 无链接的专利不得列入表格 |
 | 临床数据来源 | 疗效数字必须注明来源 | 标注来源（公司官网/ClinicalTrials/医疗媒体）|
 | 子公司覆盖 | 专利检索必须覆盖所有已识别的关联申请人实体 | Step 1 若未识别子公司架构，Step 6 前必须补充检索 |
 | ADMET 数据来源 | 必须来自 `ls_admet_predict` 工具 | 若 MCP 未启用，整节标注"需开启生命科学MCP" |
@@ -326,12 +327,12 @@ background: linear-gradient(135deg, #1e3a5f, #2d6a9f, #1a8c6e);
 
 ### ⚠️ 注意事项
 
-- **大模型 vs Eureka 增量明确区分**：仅靠 web_search 能获得的信息标注"基础信息"，需要 PatSnap 专利/LCA/ADMET 工具才能获得的信息标注"Eureka 增量"
+- **大模型 vs Eureka 增量明确区分**：仅靠 web_search 能获得的信息标注"基础信息"，需要 Patsnap 专利/LCA/ADMET 工具才能获得的信息标注"Eureka 增量"
 - **时间敏感性**：临床数据需注明获取日期，超过6个月的数据需提示"建议重新核实"
 - **美国 vs 中国 Biotech 的数据源差异**：
   - 美国/欧洲上市 Biotech：融资数据从 SEC filing + web_search 获取
   - 中国 Biotech（如百济神州、信达生物）：可额外调用工商+融资结构化数据
-- **ADMET MCP 依赖声明**：若 PatSnap 生命科学 MCP 未启用，Step 8 整节跳过并在报告中提示
+- **ADMET MCP 依赖声明**：若 Patsnap 生命科学 MCP 未启用，Step 8 整节跳过并在报告中提示
 - **时间惩罚解读**：新专利（<2年）市场维度评分天然偏低，不代表价值低，需结合专利年龄解读
 
 ---
@@ -362,7 +363,7 @@ background: linear-gradient(135deg, #1e3a5f, #2d6a9f, #1a8c6e);
 | ACCESS II 减重（44周）| 未知 | **120mg: −13.6%；180mg: −15.3%** | web_search |
 | 2025年末现金 | 未知 | **约 $14亿** | web_search |
 | 资金跑道 | 未知 | **2028年以后** | web_search |
-| 核心专利市场分 | 未知 | **96分（PatSnap，行业顶5%）** | LCA MCP |
+| 核心专利市场分 | 未知 | **96分（Patsnap，行业顶5%）** | LCA MCP |
 | 核心专利估值 | 未知 | **$4,630,000（US11492365B2）** | LCA MCP |
 | MCS跨管线分析 | 无法获取 | **三条管线无共同MCS，化学空间完全独立** | ls_chemical_mcs_analyze |
 | 竞品格局 | 未涵盖 | **礼来orforglipron III期完成，NDA递交中** | web_search |

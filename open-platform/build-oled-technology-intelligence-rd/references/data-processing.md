@@ -152,7 +152,7 @@ Legal status is time-sensitive and jurisdiction-specific. Do not translate provi
 ```json
 {
   "id": "S001",
-  "source_or_tool": "PatSnap advanced_patent_search",
+  "source_or_tool": "Patsnap advanced_patent_search",
   "searched_at": "2026-06-30T10:30:00Z",
   "query": "Exact query text",
   "filters": {"jurisdictions": ["US", "EP", "WO"]},

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: build-oled-technology-intelligence-rd
 description: Build a source-traceable, multi-page technology-intelligence HTML portal for OLED or another defined technology domain. Use when a user asks for a technology watch portal, company and technical-route monitoring brief, news/event tracker, patent evidence page, or refreshable R&D intelligence site.
 ---
@@ -76,10 +77,10 @@ Avoid ambiguous substring classification. For example, `display` alone is too br
 
 Only search when the user requests research or the portal scope explicitly requires current evidence.
 
-Verified global PatSnap mappings, when exposed in the environment:
+Verified global Patsnap mappings, when exposed in the environment:
 
-- `advanced_patent_search` — [PatSnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search) for patent discovery and structured fields.
-- `patent_briefing` — [PatSnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected patent-record review.
+- `advanced_patent_search` — [Patsnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search) for patent discovery and structured fields.
+- `patent_briefing` — [Patsnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected patent-record review.
 - `current_awareness` — optional when actually exposed, for dated news/current-awareness evidence.
 - `scientific_translational_evidence` — optional when actually exposed, for scientific literature evidence.
 

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: competitive-landscape-zhcn
 description: |
   技术领域竞争格局分析，包含玩家分层、技术路线差异化与空白机会识别。当用户请求玩家图谱绘制、行业竞争对手分析、技术路线玩家对比、国内外玩家对比，或在特定技术领域内开展多玩家竞争评估时使用。

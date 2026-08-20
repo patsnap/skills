@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: tech-route-comparison
 description:
   Evidence-backed comparison of two or more technical routes, architectures, or

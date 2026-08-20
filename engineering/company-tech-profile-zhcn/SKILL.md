@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: company-tech-profile-zhcn
 description: |
   针对特定技术主题的单一公司技术画像与研发评估。当用户请求公司技术画像、公司技术分析、研发方向评估、技术尽职调查简报，或任何按公司加技术主题开展的单一公司技术评估时使用——即使用户仅提及公司名称与技术领域，未明确要求「画像」也适用。

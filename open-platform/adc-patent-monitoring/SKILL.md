@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: adc-patent-monitoring
 description: "监控ADC新申请、专利族、法律状态和竞争风险。适用于：按周或按月监控ADC相关新申请、专利族扩展、法律状态、申请人变化和潜在风险，用于专利组合维护与竞争预警。"
 ---
@@ -36,7 +37,7 @@ description: "监控ADC新申请、专利族、法律状态和竞争风险。适
 - 检索字段必须使用 `F_PBD`，不再使用旧版 `PBD`，不再执行旧检索式二次兜底。
 - 专利详情链接固定为 `https://analytics.zhihuiya.com/patent-view/abst?patentId={patent_id}`。
 - "专利关联管线"和"研发阶段"本轮只预留字段；没有确定管线关联时填 `—`，不得臆测。
-- AI 解读必须基于 PatSnap/Eureka 工具返回的结构化字段、本周最终专利集、P025/tech_summary、claims、bibliography、family/legal_status、必要图像证据改写，不得凭空补外部事实。
+- AI 解读必须基于 Patsnap/Eureka 工具返回的结构化字段、本周最终专利集、P025/tech_summary、claims、bibliography、family/legal_status、必要图像证据改写，不得凭空补外部事实。
 - 禁止使用 web search、新闻搜索或开放网页结果生成 `核心保护点`、`创新/新颖性`、`竞争意义`。
 
 ## 执行流程

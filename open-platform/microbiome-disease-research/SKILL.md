@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: microbiome-disease-research
 description: "研究微生物组与疾病机制证据链并形成研究假设。适用于：梳理菌群、代谢物、宿主通路与疾病表型之间的证据链，区分相关性与因果性并形成可验证研究假设。"
 ---
@@ -8,7 +9,7 @@ description: "研究微生物组与疾病机制证据链并形成研究假设。
 ## Overview
 
 本 Skill 专为**食品领域大模型微调数据收集**与**肠道微生物菌群研究全景分析**设计。
-输入目标领域关键词，自动执行三轮 PatSnap 检索，汇总 50+ 篇代表性文献，
+输入目标领域关键词，自动执行三轮 Patsnap 检索，汇总 50+ 篇代表性文献，
 生成覆盖 11 个模块的专业 HTML 全景报告，左侧导航栏固定，支持章节快速跳转。
 
 ---
@@ -38,7 +39,7 @@ description: "研究微生物组与疾病机制证据链并形成研究假设。
 - 确认文献数量下限（默认：≥50篇）
 - 确认输出语言（默认：中文，可选：英文/双语）
 
-### Step 2 — 三轮 PatSnap 语义检索
+### Step 2 — 三轮 Patsnap 语义检索
 
 **轮次 A：核心菌群-食品干预**
 ```
@@ -123,7 +124,7 @@ limit: 20
 ## Guardrails（安全护栏）
 
 - 本 Skill 仅用于**文献调研与报告生成**，不提供医疗建议
-- 所有结论均来自 PatSnap 检索结果，不凭空编造文献
+- 所有结论均来自 Patsnap 检索结果，不凭空编造文献
 - 专利文献与学术论文来源区分标注
 - 不处理个人健康数据或患者信息
 
@@ -131,8 +132,8 @@ limit: 20
 
 ## Dependencies（依赖）
 
-- `patent.search` → `mcp_patent-search__patsnap_search`（PatSnap专利检索）
-- `paper.search` → `mcp_patent-search__patsnap_search`（PatSnap论文检索）
+- `patent.search` → `mcp_patent-search__patsnap_search`（Patsnap专利检索）
+- `paper.search` → `mcp_patent-search__patsnap_search`（Patsnap论文检索）
 - `files` （HTML报告写入）
 - Python 3.12（数据整理，可选）
 

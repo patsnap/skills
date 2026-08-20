@@ -2,11 +2,11 @@
 
 This skill reviews user-supplied European patent application materials without requiring a live patent database.
 
-PatSnap MCP access is optional unless the user asks for external patent retrieval, family/status verification, or prior-art searching.
+Patsnap MCP access is optional unless the user asks for external patent retrieval, family/status verification, or prior-art searching.
 
-### 1. Obtain a PatSnap Open Platform API key
+### 1. Obtain a Patsnap Open Platform API key
 
-Register and manage access through the [PatSnap Open Platform](https://open.patsnap.com/).
+Register and manage access through the [Patsnap Open Platform](https://open.patsnap.com/).
 
 Use the official [authentication guide](https://open.patsnap.com/devportal/guides/authentication).
 
@@ -14,7 +14,7 @@ Do not paste a real API key into prompts, reports, screenshots, or source files.
 
 ### 2. Connect verified MCP services
 
-Open the official [PatSnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers).
+Open the official [Patsnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers).
 
 Copy the current connection URL from each service’s Connect panel.
 

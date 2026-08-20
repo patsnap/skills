@@ -1,5 +1,5 @@
 {
-  "_comment": "公司名称映射表。key 为识别用的简称/常用名，aliases 为 PatSnap 申请人字段中实际使用的全称列表。",
+  "_comment": "公司名称映射表。key 为识别用的简称/常用名，aliases 为 Patsnap 申请人字段中实际使用的全称列表。",
   "中国 · 新能源": {
     "比亚迪": {
       "aliases": [

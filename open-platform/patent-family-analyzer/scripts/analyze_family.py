@@ -268,7 +268,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
   </section>
 
   <div style="text-align:center;color:var(--muted);font-size:12px;padding:40px 0 20px">
-    本报告由 Eureka × PatSnap 智慧芽 同族专利分析技能生成 · {gen_time}
+    本报告由 Eureka × Patsnap 智慧芽 同族专利分析技能生成 · {gen_time}
   </div>
 </main>
 

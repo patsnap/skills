@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: industry-chain-intelligence
 description: |
   企业决策者产业链战略报告系统。面向企业CEO/CTO/战略总监，输入公司名称或产业链，
@@ -374,7 +375,7 @@ description: |
 **免责声明（固定末尾）：**
 ```
 本报告基于智慧芽专利数据库生成，相关数据截至[当前年月]。专利到期时间为估算值，实际以国家知识产权局公告为准。供应商匹配、市场增速、利润率区间为综合分析与估算，标注"Unverified"项目需企业自行核实。本报告不构成任何投资建议，企业决策需结合实际情况综合判断。
-数据来源：智慧芽（PatSnap），截至[当前年月] · 报告编号：ZSC-YYYY-MMDD
+数据来源：智慧芽（Patsnap），截至[当前年月] · 报告编号：ZSC-YYYY-MMDD
 ```
 
 ---

@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: generic-drug-scout
-description: 运行仿药速探 V1，创建用于仿制药机会发现的静态交互式 HTML 报告或预置结果筛查页面。适用于用户要求筛选中国小分子晶型专利到期机会、生成带结果的仿药速探 V1，或创建由已配置智慧芽/PatSnap MCP 支撑的本地报告的场景。
+description: 运行仿药速探 V1，创建用于仿制药机会发现的静态交互式 HTML 报告或预置结果筛查页面。适用于用户要求筛选中国小分子晶型专利到期机会、生成带结果的仿药速探 V1，或创建由已配置智慧芽/Patsnap MCP 支撑的本地报告的场景。
 ---
 
 # 仿药速探 V1
@@ -8,7 +9,7 @@ description: 运行仿药速探 V1，创建用于仿制药机会发现的静态�
 使用本 Skill 运行 V1 首轮筛查，并创建已预载结果的本地交互式 HTML 报告。目标用户体验为：
 
 1. 用户要求进行仿药速探 V1 筛查。
-2. Skill 通过已配置的智慧芽/PatSnap MCP 执行首轮筛查。
+2. Skill 通过已配置的智慧芽/Patsnap MCP 执行首轮筛查。
 3. Skill 生成已填入首轮结果的本地 `.html` 报告页面。
 4. 用户可直接打开文件，无需启动本地服务。
 
@@ -39,7 +40,7 @@ V1 保持聚焦；除非用户明确要求，否则不要扩展筛选条件范�
 后端期望 `~/.codex/config.toml` 中存在以下 MCP 服务名：
 
 - `zhihuiya_logic_096456`：用于医药情报。
-- `zhihuiya_logic_2b0355`：用于 PatSnap 专利检索/获取。
+- `zhihuiya_logic_2b0355`：用于 Patsnap 专利检索/获取。
 
 ## 默认工作流：静态交互式 HTML 报告
 

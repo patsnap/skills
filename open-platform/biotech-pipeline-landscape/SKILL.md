@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: biotech-pipeline-landscape
 description: "研究治疗领域或技术模态的临床管线和竞争格局。适用于：围绕治疗领域或技术模态梳理临床前至上市管线、开发阶段、试验状态和主要参与者，形成竞争管线全景。"
 ---

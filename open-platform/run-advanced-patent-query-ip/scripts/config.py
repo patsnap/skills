@@ -18,8 +18,8 @@ def require_setting(name: str, value: str) -> str:
     if value:
         return value
     raise RuntimeError(
-        f"{name} is not configured. Use the verified PatSnap MCP workflow, "
-        "or set an endpoint documented for your PatSnap Open account."
+        f"{name} is not configured. Use the verified Patsnap MCP workflow, "
+        "or set an endpoint documented for your Patsnap Open account."
     )
 
 

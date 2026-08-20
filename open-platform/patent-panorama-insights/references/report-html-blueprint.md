@@ -102,7 +102,7 @@ Include these near the top:
 | Geography | `[jurisdiction_set]` |
 | Time range | `[date_range]` |
 | Counting method | `[publication_or_family_or_application]` |
-| Data source | `PatSnap / 智慧芽 patent MCP/API` |
+| Data source | `Patsnap / 智慧芽 patent MCP/API` |
 | Data cutoff | `[YYYY-MM-DD]` |
 | Legal boundary | `Signals only, not legal opinions` |
 

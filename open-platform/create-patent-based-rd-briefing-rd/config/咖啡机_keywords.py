@@ -21,7 +21,7 @@ SEARCH_FIELDS = [
 COLUMN_ALIASES = {
     "publication_number": ["Publication number", "Publication Number", "PN"],
     "title": ["Title", "Patent title", "Original title"],
-    "normalized_title": ["PatSnap patent title", "Normalized title"],
+    "normalized_title": ["Patsnap patent title", "Normalized title"],
     "applicant": ["Current applicant", "Applicant", "Assignee"],
     "legal_status": ["Legal status", "Simple legal status", "Status"],
     "application_date": ["Application date", "Filing date"],

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: analyze-patent-search-results-ip
 description: Analyze validated patent-search artifacts at Stage 2/4 of a patent-landscape program. Use after search-patents-ip to produce population-bounded trends, organization and technology distributions, competitor profiles, a branch-organized reviewed core patent index, transparent candidate-level value proxies, chart-ready data, and a self-contained statistical snapshot for tag-patent-search-results-ip and create-patent-search-report-ip.
 ---
@@ -51,7 +52,7 @@ Store organization-normalization decisions inside `panorama_stats.json`. Do not 
 or extend `report_manifest.json`; Stage 4 owns that filename. Preserve source, operation,
 request, query version, cutoff, and limitations in every Stage 2 artifact.
 
-## Verified global PatSnap MCPs
+## Verified global Patsnap MCPs
 
 Inspect the active schema before any call and record the exact operation used.
 

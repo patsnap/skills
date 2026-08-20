@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-inventor-profile-report
 description: |
   高质量技术人才科创能力画像HTML报告生成器（v7.5.1正式版）。输入发明人姓名+所属机构，自动执行多维专利数据检索与分析，生成深蓝色现代科技风格的完整HTML画像报告。每次输出强制以zhang_xian_profile_20260528为黄金标准模版执行格式规范，不可降级、不可跳过任何格式要素。综合评级体系采用S/A/B/C四级（最高为S级·卓越科创领军人才，严禁使用0级）。Step1/Step2专利超过100件时强制分页返回全量数据（循环分页，≤1000件上限，不可抽样替代）。
@@ -257,7 +258,7 @@ KPI卡片组：gap: 16px
 
 ```html
 <div class="report-footer">
-  EUREKA · PatSnap · 高质量技术人才科创能力画像报告 · v7.5.1 · {{report_date}}
+  EUREKA · Patsnap · 高质量技术人才科创能力画像报告 · v7.5.1 · {{report_date}}
 </div>
 <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 ```
@@ -366,7 +367,7 @@ authors:(inventor)  sources=["paper"]
 【3】技术影响力（kpi-grid + two-col进度条）
 【4】科创资产风险评估（risk-grid三项）
 【A】代表性科创成果清单（data-table ≥15件，含链接）
-【页脚】EUREKA · PatSnap · v7.5.1
+【页脚】EUREKA · Patsnap · v7.5.1
 【返回顶部按钮】右下角蓝青渐变圆形
 ```
 

@@ -22,7 +22,7 @@ def parse_args():
     parser.add_argument("--industry",  required=True,  help="行业关键词（空格分隔）")
     parser.add_argument("--output",    default="portal.html", help="输出HTML路径")
     parser.add_argument("--title",     default="",     help="平台标题（留空自动生成）")
-    parser.add_argument("--use-patsnap",  action="store_true", help="调用PatSnap检索真实专利数据")
+    parser.add_argument("--use-patsnap",  action="store_true", help="调用Patsnap检索真实专利数据")
     parser.add_argument("--use-websearch",action="store_true", help="调用Web Search获取真实新闻/政策")
     parser.add_argument("--modules",   default="intel,policy,tech,sci",
                         help="启用模块，逗号分隔: intel,policy,tech,sci")
@@ -590,7 +590,7 @@ def generate_portal_html(args, data):
         "</table>"
         "</div>"  # sci-proj
 
-        # 知识产权管理（嵌入PatSnap数据）
+        # 知识产权管理（嵌入Patsnap数据）
         "<div class='sci-panel' id='sci-ip'>"
         "<div class='kpi-grid'>"
         "<div class='kpi-card'><div class='kpi-val'>1,284</div><div class='kpi-lbl'>有效专利</div></div>"
@@ -724,7 +724,7 @@ def generate_portal_html(args, data):
         "}"
         "function openModal(id,type){"
         "  document.getElementById('modal-title').textContent=type+'情报 #'+id+' 详情';"
-        "  document.getElementById('modal-body').innerHTML='<p style=\"color:#666;line-height:1.8\">情报编号：'+id+'<br>类型：'+type+'<br>数据来源：PatSnap智慧芽 / Web Search<br><br>点击查看完整内容，可从此情报启动政策孵化工作台分析。</p>"
+        "  document.getElementById('modal-body').innerHTML='<p style=\"color:#666;line-height:1.8\">情报编号：'+id+'<br>类型：'+type+'<br>数据来源：Patsnap智慧芽 / Web Search<br><br>点击查看完整内容，可从此情报启动政策孵化工作台分析。</p>"
         "<div style=\"margin-top:12px\"><span class=\"action-btn\" onclick=\"switchView('workbench');closeModal()\">→ 启动政策孵化</span></div>';"
         "  document.getElementById('modal').classList.add('active');"
         "}"

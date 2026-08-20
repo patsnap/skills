@@ -14,7 +14,7 @@ Run after initial sequence searching and before final convergence of the text se
 | M1.5-D ADC/conjugate | fielded/claims/semantic search | exact/substructure/similarity structure search |
 | M1.5-E Other chemical modification | structure plus text search | chemical identifier normalization |
 
-Use PatSnap `advanced_patent_search` for patent discovery and `patent_briefing` for claims, description, family, status, and translations when available. Use a chemistry or sequence service only if it is actually authorized and exposed. Do not invent the source's generic tool names.
+Use Patsnap `advanced_patent_search` for patent discovery and `patent_briefing` for claims, description, family, status, and translations when available. Use a chemistry or sequence service only if it is actually authorized and exposed. Do not invent the source's generic tool names.
 
 ## Global language strategy
 

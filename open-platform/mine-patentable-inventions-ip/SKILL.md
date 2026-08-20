@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: mine-patentable-inventions-ip
 description: Identify, structure, screen, and route potentially patentable inventions from R&D projects, technical improvements, standards work, existing innovations or portfolios, competitor patents, design-around needs, cross-domain technology transfer, or emerging opportunity hypotheses. Use when engineers or IP teams need a quick or deep four-block, ten-step invention-mining workflow with patent/prior-art evidence, checkpoints, innovation cards, a six-month roadmap, and Markdown or HTML reporting.
 ---
@@ -62,7 +63,7 @@ This skill:
 
 Do not request a patent number in ordinary R&D-project mining when it is not needed.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Inspect the live tool schema before calling a connector.

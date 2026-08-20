@@ -24,7 +24,7 @@ For non-patent datasets, substitute the closest patent/literature, terminology, 
 - **Boundary and examples**: similar patents, related literature, positive examples, adjacent labels, and high-similarity negatives.
 - **Optional downstream validation**: legal status, core patent data, applicant data, family data, and landscape analytics.
 
-Select tools by capability rather than hard-coding endpoint names. Use available Zhihuiya/PatSnap MCP tools that provide the required capability.
+Select tools by capability rather than hard-coding endpoint names. Use available Zhihuiya/Patsnap MCP tools that provide the required capability.
 
 ## Retrieval and judgment rules
 

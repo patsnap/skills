@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: map-product-features-to-patents-ip
 description: Research a product feature from current public sources, decompose it into stable technical dimensions, retrieve and review related patents, map each patent’s disclosed technical evidence to those dimensions, rank relevance under a transparent rubric, and generate a self-contained interactive HTML report. Use when a user asks which patents relate to a product feature, wants a product-feature-to-patent map, or needs patent results filtered by technical dimension.
 ---
@@ -45,7 +46,7 @@ Do not apply a filter merely because the source default used one. Confirm what t
 user means by assignee, jurisdiction, and date. If the product/model or technical
 feature is materially ambiguous, clarify before live research.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Inspect the installed live schema before calling an operation. Record connector key,
 operation, material request parameters, date, record IDs, and limitations.

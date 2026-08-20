@@ -1,6 +1,6 @@
 # Topic Limitation Workflow
 
-Use this reference to add a PatSnap technology-topic limitation to applicant-first retrieval. The final formulas must remain applicant-constrained.
+Use this reference to add a Patsnap technology-topic limitation to applicant-first retrieval. The final formulas must remain applicant-constrained.
 
 ## 1. Clarify Topic Scope
 
@@ -217,9 +217,9 @@ Rules:
 
 ## 6. Execute or Simulate Retrieval
 
-In `formula_only_mode`, do not execute retrieval unless the user explicitly asks. Provide expanded formulas, assumptions, pending confirmations, and a PatSnap Expert Search execution checklist.
+In `formula_only_mode`, do not execute retrieval unless the user explicitly asks. Provide expanded formulas, assumptions, pending confirmations, and a Patsnap Expert Search execution checklist.
 
-In `retrieval_dataset_mode`, when the PatSnap Advanced Patent Search MCP server is available, execute or validate count checkpoints in this order:
+In `retrieval_dataset_mode`, when the Patsnap Advanced Patent Search MCP server is available, execute or validate count checkpoints in this order:
 
 1. Confirm pre-retrieval artifacts exist: applicant expansion table, topic definition/boundary table, decomposition table, search-element matrix.
 2. Applicant formula count.
@@ -228,7 +228,7 @@ In `retrieval_dataset_mode`, when the PatSnap Advanced Patent Search MCP server 
 5. Precision/noise-filtered count.
 6. Sample review if records are available.
 
-If retrieval cannot be executed, downgrade to `formula_only_mode` and provide an execution checklist for PatSnap Expert Search.
+If retrieval cannot be executed, downgrade to `formula_only_mode` and provide an execution checklist for Patsnap Expert Search.
 
 Retrieval checkpoint table:
 

@@ -5,7 +5,7 @@ statistics, taxonomy, human-tagging, value-signal, and patent-package artifacts 
 `report_manifest.json` and one self-contained scientific HTML insight report.
 
 - English marketplace: https://open.patsnap.com/marketplace/skill-hub
-- PatSnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
+- Patsnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
 - Chinese source page: recorded only in the parent `LOCALIZATION_INDEX.md`
 
 Suite: `create-patent-landscape-overview-ip` → `search-patents-ip` →

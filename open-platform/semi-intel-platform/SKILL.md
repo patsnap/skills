@@ -1,14 +1,15 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: semi-intel-platform
 description: |
-  半导体设备智能情报平台（SemiWatch Pro）— 融合智慧芽 PatSnap MCP 真实专利数据，覆盖专利竞争、供应链风险、技术代差、政策管制、竞争对手等12个功能模块的单文件 HTML 情报看板
+  半导体设备智能情报平台（SemiWatch Pro）— 融合智慧芽 Patsnap MCP 真实专利数据，覆盖专利竞争、供应链风险、技术代差、政策管制、竞争对手等12个功能模块的单文件 HTML 情报看板
 ---
 
 # 半导体设备智能情报平台
 
 ## 概述
 
-半导体设备智能情报平台（SemiWatch Pro）— 融合智慧芽 PatSnap MCP 真实专利数据，覆盖专利竞争、供应链风险、技术代差、政策管制、竞争对手等12个功能模块的单文件 HTML 情报看板
+半导体设备智能情报平台（SemiWatch Pro）— 融合智慧芽 Patsnap MCP 真实专利数据，覆盖专利竞争、供应链风险、技术代差、政策管制、竞争对手等12个功能模块的单文件 HTML 情报看板
 
 ## 触发场景
 
@@ -30,6 +31,6 @@ description: |
 ## 使用注意事项
 
 - 不要编造不存在的专利、市场或技术证据。
-- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 优先使用用户提供材料和 Patsnap/Zhihuiya MCP 数据。
 - 明确标注数据来源、检索范围、时间范围和不确定性。
 - 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。

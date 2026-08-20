@@ -116,7 +116,7 @@
 ## 阶段 6：专利与权属准备度判断
 
 ### 6.1 专利初筛
-`ls_patent_search`（Pharma Intelligence 侧）或 `mcp_patent-search__patsnap_search`（PatSnap 侧）
+`ls_patent_search`（Pharma Intelligence 侧）或 `mcp_patent-search__patsnap_search`（Patsnap 侧）
 - 以当前 MCP tools/list 实际可用工具为准
 - 输入：target + disease + organization
 - 获取：相关专利数量、权利人分布、主要 IPC、地域覆盖、最早优先权日

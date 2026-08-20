@@ -1,9 +1,9 @@
-# PatSnap Open Platform API Reference for FTO Screening
+# Patsnap Open Platform API Reference for FTO Screening
 
 Version: 2.0 localized international edition  
-Verified against the global PatSnap Developer Center on 2026-08-07.
+Verified against the global Patsnap Developer Center on 2026-08-07.
 
-Use this reference to troubleshoot the bundled REST workflow. The live PatSnap
+Use this reference to troubleshoot the bundled REST workflow. The live Patsnap
 developer documentation remains authoritative because endpoints, entitlements,
 limits, and response fields can change.
 
@@ -36,7 +36,7 @@ https://open.patsnap.com/devportal/guides/rest-api-overview
 
 ## 3. Authentication
 
-Global PatSnap Open Platform API reference pages specify a valid API key in the
+Global Patsnap Open Platform API reference pages specify a valid API key in the
 Authorization header as a Bearer token:
 
 ```http
@@ -80,7 +80,7 @@ The localized configuration fields are:
 The Chinese source retained an OAuth + query-key compatibility path. This
 international edition does not enable that path by default because the current
 global endpoint documentation used for this migration specifies Bearer API-key
-authentication. Add or enable another mode only when the user's PatSnap account
+authentication. Add or enable another mode only when the user's Patsnap account
 documentation explicitly supports it and the complete flow is tested.
 
 ## 4. Common response envelope
@@ -163,7 +163,7 @@ rationale. Never execute a materially broadened query without review.
 
 ## 6. P002 — Analytics Query Patent Search
 
-Endpoint preserved from the source and current PatSnap FTO connector
+Endpoint preserved from the source and current Patsnap FTO connector
 capabilities:
 
 ```http
@@ -191,7 +191,7 @@ Example request:
 ### 6.1 Required controls
 
 - Preserve the exact user-approved `query_text`.
-- Use English field names/queries as supported by PatSnap syntax.
+- Use English field names/queries as supported by Patsnap syntax.
 - Keep `offset`, `limit`, sort, stemming, collapse, and authority order.
 - Record every page request and raw/retained count.
 - Enforce the current endpoint's offset/limit limits.
@@ -206,7 +206,7 @@ The runner normalizes fields when available:
 
 | Normalized field | Possible source field | Purpose |
 |---|---|---|
-| `patent_id` | `patent_id` | PatSnap record identifier |
+| `patent_id` | `patent_id` | Patsnap record identifier |
 | `publication_number` | `pn`, `publication_number` | Display and deduplication |
 | `application_number` | `apno`, `application_number` | Identifier reconciliation |
 | `title` | `title` | Candidate context only |
@@ -220,7 +220,7 @@ for audit, but do not expose secrets or unnecessary personal data.
 
 ### 6.3 Deduplication
 
-Deduplicate by normalized publication number, then PatSnap patent ID, then
+Deduplicate by normalized publication number, then Patsnap patent ID, then
 application number, and only then by a documented stable fallback. Merge
 matching query IDs and retrieval provenance. Never deduplicate on title alone.
 
@@ -376,7 +376,7 @@ Before enabling an AI66 stage:
 5. record the verified contract date.
 
 If any step cannot be verified, leave the stage disabled and use P002/P018 or
-an approved PatSnap MCP workflow.
+an approved Patsnap MCP workflow.
 
 ### 9.2 Removal of the source `cc_pids` assumption
 
@@ -524,7 +524,7 @@ For every REST operation record:
 
 ```json
 {
-  "provider": "PatSnap Open Platform",
+  "provider": "Patsnap Open Platform",
   "mode": "rest",
   "endpoint": "/basic-patent-data/claim-data",
   "method": "GET",

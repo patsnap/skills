@@ -20,7 +20,7 @@ Use this scenario to surface dated patent-asset indicators, legal-status or lega
 | `legal_opinion_allowed` | Always `false` for this skill |
 | `signal_rubric` | Optional; define dimensions, missing-data treatment, and thresholds |
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 Use `patent_briefing`, `deep_patent_mining`, or `global_core_patent_database` for selected-record family, citation, legal-status, and event evidence only where the installed contracts expose those data. `advanced_patent_search` may support candidate retrieval and filters. Verify operation names and returned fields at runtime. A missing field or event is “not available in the retrieved data,” not proof that no event exists.
 

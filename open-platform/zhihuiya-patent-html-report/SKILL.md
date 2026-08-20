@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: zhihuiya-patent-html-report
 description: 使用智慧芽/Patsnap MCP 数据创建或更新 V6 风格 HTML 专利情报报告。适用于用户要求调研专利、重新执行专利 landscape 项目、分析抗体/ADC/药物专利、生成 CCS/CSS 风格 HTML 报告、添加智慧芽 UUID 来源链接，或为后续类似专利报告添加可悬浮的专利附图引用的场景。
 ---
@@ -7,7 +8,7 @@ description: 使用智慧芽/Patsnap MCP 数据创建或更新 V6 风格 HTML �
 
 ## 概述
 
-使用此 skill 将专利号、专利 URL、药物资产、靶点或既有 PatSnap 报告转化为可追溯的中文情报报告。优先使用智慧芽 MCP 工具获取主要数据，保留来源 UUID，并输出自包含或相对仓库路径的 V6 风格 HTML 报告。
+使用此 skill 将专利号、专利 URL、药物资产、靶点或既有 Patsnap 报告转化为可追溯的中文情报报告。优先使用智慧芽 MCP 工具获取主要数据，保留来源 UUID，并输出自包含或相对仓库路径的 V6 风格 HTML 报告。
 
 创建或编辑报告时，阅读 `references/report-spec.md` 了解详细格式和链接规则。链接路由较为脆弱：除非 MCP 响应明确给出前端列表 query ID，否则不要将 MCP 实体 UUID 放入 Synapse `*-list?query_id=...` 路由。
 
@@ -78,4 +79,4 @@ description: 使用智慧芽/Patsnap MCP 数据创建或更新 V6 风格 HTML �
 - 区分事实和判断：用 callout 表达结论、风险和 FTO 含义。
 - 保持用户旧文件完好。
 - 不暴露 API key，也不硬编码 MCP 凭据。
-- 在 `/Users/nihil/Documents/PatSnap` 内工作时，优先使用现有仓库样式文件，例如 `reports/CSS.md` 和既有 `*_v6_*.html` 模板。
+- 在 `/Users/nihil/Documents/Patsnap` 内工作时，优先使用现有仓库样式文件，例如 `reports/CSS.md` 和既有 `*_v6_*.html` 模板。

@@ -1,15 +1,16 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: run-advanced-patent-query-ip
-description: Execute a user-supplied PatSnap advanced patent query containing field operators such as ANCS:, TAC_ALL:, DESC_B:, MAINF:, ALL_AN:, PN:, APD:, PBD:, APNO:, or PRNO:, then generate an evidence-backed competitor patent report with portfolio counts, company-level technical summaries, hierarchical patent details, optional literature context, Markdown output, and an accessible HTML rendering. Use when the user explicitly asks to run a PatSnap query or create a report from one; require verified PatSnap MCP or documented global API access and never collect credentials in chat.
+description: Execute a user-supplied Patsnap advanced patent query containing field operators such as ANCS:, TAC_ALL:, DESC_B:, MAINF:, ALL_AN:, PN:, APD:, PBD:, APNO:, or PRNO:, then generate an evidence-backed competitor patent report with portfolio counts, company-level technical summaries, hierarchical patent details, optional literature context, Markdown output, and an accessible HTML rendering. Use when the user explicitly asks to run a Patsnap query or create a report from one; require verified Patsnap MCP or documented global API access and never collect credentials in chat.
 ---
 
-# Run an advanced PatSnap query and create a competitor report
+# Run an advanced Patsnap query and create a competitor report
 
 ## Purpose
 
-Accept a PatSnap professional query and a report title.
+Accept a Patsnap professional query and a report title.
 
-Retrieve matching patent records through verified PatSnap global capabilities.
+Retrieve matching patent records through verified Patsnap global capabilities.
 
 Generate a Markdown report with three sections:
 
@@ -25,8 +26,8 @@ Optionally incorporate literature context when a verified literature service is 
 
 Use this skill when the user:
 
-- Supplies a PatSnap query containing field operators.
-- Asks to execute or run a PatSnap query.
+- Supplies a Patsnap query containing field operators.
+- Asks to execute or run a Patsnap query.
 - Asks to generate a report from an advanced patent query.
 
 Relevant operators include:
@@ -52,7 +53,7 @@ If correction is necessary, show the proposed query and explain the change.
 
 Require:
 
-- PatSnap query.
+- Patsnap query.
 
 Accept:
 
@@ -83,7 +84,7 @@ Use the MCP client’s credential mechanism whenever possible.
 
 For an explicitly configured REST workflow, read credentials from the execution environment.
 
-Use `PATSNAP_API_KEY` only for a documented PatSnap global REST endpoint.
+Use `PATSNAP_API_KEY` only for a documented Patsnap global REST endpoint.
 
 Use `PATSNAP_BASE_URL` only when the user or environment supplies a verified endpoint.
 
@@ -93,7 +94,7 @@ Do not silently install Python packages.
 
 Tell the user which dependencies are missing and let the surrounding environment manage installation approval.
 
-## PatSnap MCP mapping
+## Patsnap MCP mapping
 
 ### Required: Advanced Patent Search
 
@@ -122,7 +123,7 @@ Use documented capabilities such as:
 - Assignee-specific search for entity checks.
 - Semantic, keyword-suggestion, similarity, and image tools only when required by the task.
 
-Translate the PatSnap field query into exact tool arguments only when the connected schema supports it.
+Translate the Patsnap field query into exact tool arguments only when the connected schema supports it.
 
 Do not invent an MCP argument.
 
@@ -160,7 +161,7 @@ If AI synthesis is unavailable, preserve retrieved facts and omit synthetic summ
 
 ### Step 1: Validate the request
 
-Confirm the query contains meaningful PatSnap syntax or a clearly stated execution request.
+Confirm the query contains meaningful Patsnap syntax or a clearly stated execution request.
 
 Confirm title and result limit.
 
@@ -237,7 +238,7 @@ Group records by:
 For each patent show:
 
 - Title.
-- Publication number with a verified PatSnap or official link.
+- Publication number with a verified Patsnap or official link.
 - Legal status and status date when available.
 - Applicant and current assignee when available.
 - Application date.
@@ -362,7 +363,7 @@ If HTML rendering fails, retain and link the Markdown report.
 - No legacy Zhihuiya domain remains.
 - No fixed personal directory remains.
 - No silent dependency installation remains.
-- PatSnap MCP names and URLs match official global pages.
+- Patsnap MCP names and URLs match official global pages.
 - REST execution fails closed without verified settings.
 - Every count has a counting unit and cap context.
 - Patent identifiers and links are verified.

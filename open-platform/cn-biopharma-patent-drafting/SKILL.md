@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: cn-biopharma-patent-drafting
 description: "辅助生物医药发明查新、权利要求设计和申请草拟。适用于：基于发明交底、结构或序列材料开展查新、权利要求设计和CNIPA申请文本初稿撰写；用于代理师复核前的草稿准备。"
 ---
@@ -24,7 +25,7 @@ AI60 云端 OCR、AI32（技术交底书）和 AI37（CNIPA 说明书）均为**
 - 不得通过 ToolSearch 检索它们，它们不会出现在 MCP 工具列表中。
 - 不得通过 DeferExecuteTool 调用它们，它们不是 MCP 工具。
 - 调用前始终确认封装器文件存在于 `$USERPROFILE/.workbuddy/api-wrappers/{ai60,ai32,ai37}/`。
-- **AI60 云端 OCR**：PatSnap 的云端 OCR 服务（`https://connect.zhihuiya.com`）。需要 API 密钥（`--api-key` 或 `AI_API_KEY` 环境变量）。文件模式（`--file PATH`）需要具有上传权限的 API 密钥；URL 模式（`--document URL`）可使用标准 AI60 权限。
+- **AI60 云端 OCR**：Patsnap 的云端 OCR 服务（`https://connect.zhihuiya.com`）。需要 API 密钥（`--api-key` 或 `AI_API_KEY` 环境变量）。文件模式（`--file PATH`）需要具有上传权限的 API 密钥；URL 模式（`--document URL`）可使用标准 AI60 权限。
 - **AI32/AI37**：可通过 `--api-key` CLI 参数或 `AI_API_KEY` 环境变量传入凭据。如两者均不可用，跳过该步骤，并将输出明确标记为**“编排层草稿，不是 API 生成结果”**。
 
 ## CNIPA 可专利性预检查
@@ -53,7 +54,7 @@ AI60 云端 OCR、AI32（技术交底书）和 AI37（CNIPA 说明书）均为**
      # 或使用 URL 模式（无需上传权限）：
      python "$USERPROFILE/.workbuddy/api-wrappers/ai60/cli.py" smart_doc --document "https://..." [-o output.md]
      ```
-     **说明**：AI60 是 PatSnap 的云端 OCR 服务（通过 `--api-key` 或 `AI_API_KEY` 环境变量提供 API 密钥）。文件模式需要具有上传权限的 API 密钥；URL 模式可使用标准 AI60 权限。如服务不可用，对于原生 PDF 回退使用 Read 工具。
+     **说明**：AI60 是 Patsnap 的云端 OCR 服务（通过 `--api-key` 或 `AI_API_KEY` 环境变量提供 API 密钥）。文件模式需要具有上传权限的 API 密钥；URL 模式可使用标准 AI60 权限。如服务不可用，对于原生 PDF 回退使用 Read 工具。
    - 简短交底：直接解析文本。
    - 既有草稿：除非需要撰写改进，否则保留用户原有表述。
 

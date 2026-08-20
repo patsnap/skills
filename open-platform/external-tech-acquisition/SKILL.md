@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: external-tech-acquisition
 description: |
   央企外部科技成果吸纳工作流。覆盖从战略需求→情报扫描→成果评估→尽职调查→转化路径→决策证据链的完整闭环，通过五大工作模式调用智慧芽MCP能力，系统性解决央企科技管理部门在吸纳外部科技成果时面临的六大难点。

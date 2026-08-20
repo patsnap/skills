@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: search-patents-ip
 description: Build and validate expert patent-search branches for Stage 1/4 of a patent-landscape program. Use when starting create-patent-landscape-overview-ip or when a user needs a reusable, field-scoped, anchored, classification-assisted, de-noised patent search configuration with precision/recall validation, a traceable family-aware candidate pool, a lightweight core-recall set, and a preliminary taxonomy export for later human review.
 ---

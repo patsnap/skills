@@ -12,7 +12,7 @@
 - Representative positive example:
 - High-similarity hard negative:
 - Boundary case:
-- PatSnap MCP evidence source:
+- Patsnap MCP evidence source:
 - Source identifiers and access date:
 - Model recommendation:
 - Evidence limitations:

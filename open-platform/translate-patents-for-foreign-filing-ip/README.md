@@ -22,7 +22,7 @@ Provide the authoritative Chinese source in a stable, reviewable format and iden
 
 Do not place confidential unpublished text into an unapproved connector or external service.
 
-## Optional PatSnap MCP services
+## Optional Patsnap MCP services
 
 MCP connectivity is not required when the authoritative source text is supplied.
 

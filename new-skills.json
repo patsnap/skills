@@ -1,0 +1,9 @@
+[
+  {
+    "name": "smart-document-parser",
+    "category": "Open Platform",
+    "github_url": "https://github.com/patsnap/skills/tree/main/open-platform/smart-document-parser",
+    "install_url": "npx skills add https://github.com/patsnap/skills/tree/main/open-platform/smart-document-parser",
+    "open_url": "https://open.zhihuiya.com/marketplace/skill-hub/smart-document-parser"
+  }
+]

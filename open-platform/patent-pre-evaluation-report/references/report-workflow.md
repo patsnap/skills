@@ -57,7 +57,7 @@
 - 4条固定内容（以卡片/表格形式展示）：
   1. **内部使用与权限控制**：本报告仅供中国矿业大学科研院知识产权管理办公室、项目发明人及经授权代理机构使用，未经授权不得外传。
   2. **脱敏检索与最小披露**：外部检索仅使用关键词、IPC分类号和抽象技术特征，不上传技术交底书原文、核心参数完整表或未公开实验数据。
-  3. **平台安全说明**：智慧芽（PatSnap）安全与合规能力可参见官方网站：https://www.zhihuiya.com/security-center。
+  3. **平台安全说明**：智慧芽（Patsnap）安全与合规能力可参见官方网站：https://www.zhihuiya.com/security-center。
   4. **留痕与复核**：提交、检索、修改、导出、盖章等环节应在知产办流程中留痕；AI辅助结论须经知识产权管理人员复核后使用。
 
 ### 政策背景（固定文字，共5条，每份报告必须包含）
@@ -215,7 +215,7 @@
       </tr>
       <tr>
         <td><strong>平台安全说明</strong></td>
-        <td>智慧芽（PatSnap）安全与合规能力可参见官方网站：<a href="https://www.zhihuiya.com/security-center" target="_blank">https://www.zhihuiya.com/security-center</a></td>
+        <td>智慧芽（Patsnap）安全与合规能力可参见官方网站：<a href="https://www.zhihuiya.com/security-center" target="_blank">https://www.zhihuiya.com/security-center</a></td>
       </tr>
       <tr>
         <td><strong>留痕与复核</strong></td>

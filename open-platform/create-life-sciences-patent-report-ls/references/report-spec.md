@@ -27,7 +27,7 @@ Maintain one record for every cited item:
 
 ### 1.2 Link priority
 
-1. exact URL returned by the global PatSnap MCP/source;
+1. exact URL returned by the global Patsnap MCP/source;
 2. verified official patent office, trial registry, regulator, journal/publisher, company filing, or other primary source;
 3. verified stable secondary source when the primary source is unavailable;
 4. identifier and source name without a hyperlink when no stable URL is available.
@@ -47,7 +47,7 @@ If a returned URL is temporary or authenticated, cite the stable identifier and 
 
 ### 1.4 Patent links
 
-For patents, preserve publication/application/grant identities. Link to the exact returned global PatSnap record URL or the corresponding official patent-office record. Do not synthesize a patent-detail path. Record kind code and verify that the URL resolves to the intended publication/member.
+For patents, preserve publication/application/grant identities. Link to the exact returned global Patsnap record URL or the corresponding official patent-office record. Do not synthesize a patent-detail path. Record kind code and verify that the URL resolves to the intended publication/member.
 
 ### 1.5 Link audit table
 

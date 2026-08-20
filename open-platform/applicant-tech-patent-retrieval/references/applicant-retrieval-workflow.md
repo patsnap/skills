@@ -152,7 +152,7 @@ Confirmation evidence: <user message or selection>
 
 Read `topic-limitation-workflow.md` before writing topic formulas. Build the applicant and topic formulas separately before combining them.
 
-In `formula_only_mode`, stop after producing expanded formulas, assumptions, and a PatSnap execution checklist. Do not require counts, datasets, deduplication, or Word report unless the user asks for them.
+In `formula_only_mode`, stop after producing expanded formulas, assumptions, and a Patsnap execution checklist. Do not require counts, datasets, deduplication, or Word report unless the user asks for them.
 
 In `retrieval_dataset_mode`, retrieve each included applicant expression or applicant batch combined with the topic formula.
 

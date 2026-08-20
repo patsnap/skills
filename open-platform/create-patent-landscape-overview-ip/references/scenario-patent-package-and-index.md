@@ -22,7 +22,7 @@ Use this scenario to create a prioritized patent package, comparable patent evid
 
 Do not use a fixed package quota as a success target. Include only records supported by evidence and disclose underrepresented branches.
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 Use `advanced_patent_search` for the candidate population. Use `patent_briefing`, `deep_patent_mining`, and, if applicable, `global_core_patent_database` for selected-record bibliography, family, claims, descriptions, citations, status, and events exposed by the installed connectors. Never assume that a legacy source field or operation exists in the active MCP contract.
 
