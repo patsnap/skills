@@ -2,7 +2,7 @@
 
 
 
-> **PatSnap 智慧芽开放平台 MCP 服务** 让各类Agent平台直接访问超 2 亿条专利、药物研发及生物数据。
+> **Patsnap 智慧芽开放平台 MCP 服务** 让各类Agent平台直接访问超 2 亿条专利、药物研发及生物数据。
 
 ### 1. 获取 API Key
 
@@ -38,7 +38,7 @@
 
 在客户端中输入 `/mcp`，确认已添加的服务显示名称。
 
-💡 **需要帮助？** 访问查阅 [PatSnap 开发者文档](https://open.patsnap.com/devportal)
+💡 **需要帮助？** 访问查阅 [Patsnap 开发者文档](https://open.patsnap.com/devportal)
 
 ------
 
@@ -50,9 +50,9 @@
 2. 如果调用失败（工具不存在、连接超时、认证错误等）：
    - 向用户回复以下引导信息：
 
-> ⚠️ **PatSnap MCP 服务未连接**
+> ⚠️ **Patsnap MCP 服务未连接**
 >
-> 本技能依赖 PatSnap 智慧芽开放平台 MCP 服务。请先完成以下步骤：
+> 本技能依赖 Patsnap 智慧芽开放平台 MCP 服务。请先完成以下步骤：
 >
 > 1. 前往 [open.zhihuiya.com](https://open.zhihuiya.com/) 创建 API Key
 > 2. 访问[https://open.zhihuiya.com/marketplace/mcp-servers](https://open.zhihuiya.com/marketplace/mcp-servers)获取必需的 MCP 服务

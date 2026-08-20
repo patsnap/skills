@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: audit-catalyst-experimental-methods-rd
 description: Audit catalyst preparation and evaluation methods for executability, reproducibility, controlled comparison, attribution, measurement reliability, safety-review readiness, and claim-to-evidence linkage. Use for experimental procedures, screenshots, paper methods, patent examples, draft plans, and machine-generated catalyst routes.
 ---
@@ -217,9 +218,9 @@ The HTML output uses a restrained light scientific/editorial design: strong typo
 
 ## MCP use
 
-No PatSnap MCP service is required for auditing material supplied by the user. The source workflow is local and deterministic.
+No Patsnap MCP service is required for auditing material supplied by the user. The source workflow is local and deterministic.
 
-If the user separately asks for patent or scientific evidence, use only an actually available, authorized service and keep retrieved evidence separate from submitted method facts. Relevant verified global PatSnap options may include:
+If the user separately asks for patent or scientific evidence, use only an actually available, authorized service and keep retrieved evidence separate from submitted method facts. Relevant verified global Patsnap options may include:
 
 - `advanced_patent_search`: https://open.patsnap.com/marketplace/mcp-servers/patent-search
 - `patent_briefing`: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing

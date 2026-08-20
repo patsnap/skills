@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: us-patent-claims-review
 description: 审核用户上传或引用的 DOCX、PDF、TXT、Markdown 或粘贴文本中的美国专利申请文件和权利要求组。适用于用户要求美国专利申请文件权利要求书审核、U.S. patent claims review、权利要求撰写质检、35 U.S.C. 101/102/103/112 风险分析、BRI 审查、means-plus-function/112(f) 审查、权利要求修改建议、侵权可读性审查、restriction/election 风险，或资深美国专利代理人/律师风格的权利要求审核场景。
 ---

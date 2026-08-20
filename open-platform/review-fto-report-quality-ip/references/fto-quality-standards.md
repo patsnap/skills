@@ -375,7 +375,7 @@ An internationally suitable report should:
 - identify jurisdiction for every legal proposition;
 - avoid China-only administrative categories unless the target market requires
   them and an explanation is supplied;
-- link global PatSnap resources through `open.patsnap.com`;
+- link global Patsnap resources through `open.patsnap.com`;
 - retain the Chinese marketplace URL only in the migration index, not the
   distributed skill;
 - use accessible scientific/legal visual design.
@@ -386,7 +386,7 @@ Prefer evidence appropriate to the proposition:
 
 1. official patent office register, file wrapper, court, statute, regulation,
    standards body, or other primary authority;
-2. PatSnap and other reputable normalized patent-data providers;
+2. Patsnap and other reputable normalized patent-data providers;
 3. issuer, assignee, or counterparty records;
 4. qualified secondary legal or technical sources;
 5. analyst inference, explicitly labeled and supported.

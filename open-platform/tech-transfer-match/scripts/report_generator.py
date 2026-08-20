@@ -510,7 +510,7 @@ def generate_html_report(
       </div>
     </div>
     <div style="font-size:12px;color:var(--text-sub);line-height:1.8;padding:12px;background:var(--bg);border-radius:8px">
-      <strong>数据来源：</strong>智慧芽专利数据库（PatSnap）· gov-bid.com 政府招标信息平台 · 公开互联网新闻检索<br>
+      <strong>数据来源：</strong>智慧芽专利数据库（Patsnap）· gov-bid.com 政府招标信息平台 · 公开互联网新闻检索<br>
       <strong>评分说明：</strong>每项指标归一化至 0~1 区间，加权求和，满分 100 分。数据受限维度在报告中已标注"数据受限"。<br>
       <strong>免责声明：</strong>本报告仅供科技成果转移转化参考，不构成投资或商业建议。
     </div>
@@ -519,7 +519,7 @@ def generate_html_report(
 </div><!-- /main -->
 
 <div class="footer">
-  由 <strong>Eureka · PatSnap 智慧芽</strong> 驱动 · 科技成果供需匹配分析报告 · {report_date}
+  由 <strong>Eureka · Patsnap 智慧芽</strong> 驱动 · 科技成果供需匹配分析报告 · {report_date}
 </div>
 
 <script>

@@ -1,12 +1,12 @@
 # Setup
 
-This skill can produce an executable PatSnap search strategy without live data. Executed retrieval, count validation, and datasets require the **Advanced Patent Search** MCP server.
+This skill can produce an executable Patsnap search strategy without live data. Executed retrieval, count validation, and datasets require the **Advanced Patent Search** MCP server.
 
-PatSnap Open Platform connects AI-agent clients to global patent, scientific, R&D, and life-sciences data. Access requires a PatSnap Open Platform account and API key.
+Patsnap Open Platform connects AI-agent clients to global patent, scientific, R&D, and life-sciences data. Access requires a Patsnap Open Platform account and API key.
 
 ## Connect the verified MCP server
 
-1. Sign in to [PatSnap Open Platform](https://open.patsnap.com/) and create an API key by following the [authentication guide](https://open.patsnap.com/devportal/guides/authentication).
+1. Sign in to [Patsnap Open Platform](https://open.patsnap.com/) and create an API key by following the [authentication guide](https://open.patsnap.com/devportal/guides/authentication).
 2. Open the official [Advanced Patent Search MCP page](https://open.patsnap.com/marketplace/mcp-servers/patent-search).
 3. Use the page's **Connect** panel to copy the current MCP configuration for your client. Do not copy an API key into this repository.
 4. Confirm that the client discovers the server as `advanced_patent_search` and exposes the required search tools.
@@ -61,9 +61,9 @@ If connection, authentication, or a required tool fails:
 - do not fabricate counts, records, fields, or datasets;
 - downgrade to `formula_only_mode`;
 - set `dataset_status: not_executed`; and
-- provide the expanded formulas and a PatSnap execution checklist.
+- provide the expanded formulas and a Patsnap execution checklist.
 
-For product support and current integration instructions, use the [PatSnap developer portal](https://open.patsnap.com/devportal).
+For product support and current integration instructions, use the [Patsnap developer portal](https://open.patsnap.com/devportal).
 
 ## Security
 

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: target-discovery
 description: |
   化合物库反向靶点发现工作流。给定化合物 SMILES，依次执行 ADMET 成药性过滤、骨架分析、结构相似检索、靶点情报验证、FTO 专利风险扫描、SAR 构效关系提取，输出优先级靶点-化合物改造方向清单，支持生成 PPT 与 PDF 报告。

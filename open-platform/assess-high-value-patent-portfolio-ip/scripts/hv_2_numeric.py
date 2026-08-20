@@ -7,7 +7,7 @@ import argparse
 from typing import Any
 
 from hv_common import (
-    PatSnapRequestError,
+    PatsnapRequestError,
     api_get_with_evidence,
     checkpoint_meta,
     chunks,
@@ -126,13 +126,13 @@ def run(input_path: str, output_path: str, batch_size: int) -> None:
         try:
             data, evidence = request_batch(P014_PATH, batch)
             apply_family(data, records, evidence)
-        except (PatSnapRequestError, ValueError) as exc:
+        except (PatsnapRequestError, ValueError) as exc:
             mark_batch_error(records, batch, "simple_family_state", str(exc))
             global_errors.append({"batch": batch_number, "endpoint": "P014", "message": str(exc)})
         try:
             data, evidence = request_batch(P015_PATH, batch)
             apply_citations(data, records, evidence)
-        except (PatSnapRequestError, ValueError) as exc:
+        except (PatsnapRequestError, ValueError) as exc:
             mark_batch_error(records, batch, "citation_state", str(exc))
             global_errors.append({"batch": batch_number, "endpoint": "P015", "message": str(exc)})
         print(f"Numeric enrichment batch {batch_number} completed ({min(batch_number * batch_size, len(candidates))}/{len(candidates)}).")

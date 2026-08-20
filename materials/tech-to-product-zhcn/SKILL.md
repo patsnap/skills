@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: tech-to-product-zhcn
 description: |
   仅用于将材料或材料科学技术转化为真实产品的相关查询。生成面向应用的回应，将材料与工程技术转化为现实产品，重点关注材料选型、加工方法、性能要求，以及在现实制造与运行约束下融入功能系统的方式。

@@ -112,7 +112,7 @@ Show this metadata near the beginning:
 | Jurisdictions | `[jurisdiction_set]` |
 | Time period | `[date_range]` |
 | Unit of analysis | `[publication_application_or_family]` |
-| Data sources | `PatSnap global patent services and documented supplementary sources` |
+| Data sources | `Patsnap global patent services and documented supplementary sources` |
 | Data cutoff | `[YYYY-MM-DD]` |
 | Legal boundary | `Research signals only; not a legal opinion` |
 
@@ -120,7 +120,7 @@ Use ISO dates. Explain whether “priority year,” “filing year,” or “pub
 
 ## V0 boundary
 
-V0 may build a credible landscape from installed global PatSnap MCP outputs and reproducible local aggregation. Do not claim that any of the following are verified unless a suitable source and method are available:
+V0 may build a credible landscape from installed global Patsnap MCP outputs and reproducible local aggregation. Do not claim that any of the following are verified unless a suitable source and method are available:
 
 - a complete non-patent-literature landscape;
 - standards-essential-patent essentiality;

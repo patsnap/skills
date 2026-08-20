@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-fto-screening-report-ip
-description: Create a traceable, screening-level freedom-to-operate report from a supplied risk-point Word document and user-approved PatSnap search expressions. Use when a patent analyst, IP team, product counsel, or R&D owner needs structured feature extraction, PatSnap patent retrieval, claim-data collection, claim-limitation comparison, candidate risk triage, HTML/DOCX reporting, and evidence JSON. Supports a bundled global PatSnap REST workflow or normalized evidence from verified PatSnap MCP connectors. The output is an FTO screening, not a legal clearance opinion.
+description: Create a traceable, screening-level freedom-to-operate report from a supplied risk-point Word document and user-approved Patsnap search expressions. Use when a patent analyst, IP team, product counsel, or R&D owner needs structured feature extraction, Patsnap patent retrieval, claim-data collection, claim-limitation comparison, candidate risk triage, HTML/DOCX reporting, and evidence JSON. Supports a bundled global Patsnap REST workflow or normalized evidence from verified Patsnap MCP connectors. The output is an FTO screening, not a legal clearance opinion.
 ---
 
 # Create an FTO Screening Report
@@ -13,7 +14,7 @@ Convert:
 
 1. a supplied risk-point `.docx` describing a target product, process, or
    technical implementation; and
-2. one or more user-approved PatSnap search expressions
+2. one or more user-approved Patsnap search expressions
 
 into a reproducible FTO screening package containing search provenance,
 normalized candidate patents, retrieved claims, structured claim-limitation
@@ -22,7 +23,7 @@ and DOCX reports.
 
 The source workflow uses P070, P002, P018, and optional AI07/AI66 capabilities.
 The international edition preserves those functions while using the global
-PatSnap base URL, current Bearer authentication, evidence-safe terminology,
+Patsnap base URL, current Bearer authentication, evidence-safe terminology,
 and verified MCP alternatives.
 
 ## Legal and analytical boundary
@@ -50,7 +51,7 @@ Use this skill when the user provides or identifies:
 - an FTO risk-point or technical-feature Word document;
 - a specific product/process/implementation and version;
 - target jurisdiction(s) and commercial acts; and
-- one or more PatSnap search expressions or authorization to prepare expressions
+- one or more Patsnap search expressions or authorization to prepare expressions
   for review before execution.
 
 Appropriate use cases include:
@@ -114,7 +115,7 @@ If any required field is unavailable:
 Select one primary mode per run. Read
 `references/api_call_policy.md` before accessing external data.
 
-### Mode A — Bundled PatSnap REST workflow
+### Mode A — Bundled Patsnap REST workflow
 
 Use the scripts in this package with:
 
@@ -125,7 +126,7 @@ Authorization: Bearer <private API key>
 
 The source filenames `scripts/zhihuiya_api.py` and
 `references/zhihuiya_config.json` are retained solely for exact source
-topology. Their localized content uses PatSnap global naming and services.
+topology. Their localized content uses Patsnap global naming and services.
 
 Supported endpoint roles:
 
@@ -135,12 +136,12 @@ Supported endpoint roles:
 | P002 | `/search/patent/query-search-patent/v2` | User-expression patent retrieval |
 | P018 | `/basic-patent-data/claim-data` | Claim retrieval; required path |
 | AI07 | `/chat/cc-gpt-stream` | Optional supporting feature comparison |
-| AI66 | Current verified `/ai/fto/...` endpoints only | Optional PatSnap FTO task/report workflow |
+| AI66 | Current verified `/ai/fto/...` endpoints only | Optional Patsnap FTO task/report workflow |
 
 Never use `/basic-patent-data/claims`. Never send the API key in a URL, log,
 report, exception, or output JSON.
 
-### Mode B — PatSnap MCP-assisted evidence
+### Mode B — Patsnap MCP-assisted evidence
 
 Use only installed/configured connectors and their current schemas.
 
@@ -152,7 +153,7 @@ Use only installed/configured connectors and their current schemas.
 | Global Core Patents | [Marketplace page](https://open.patsnap.com/marketplace/mcp-servers/core-patents) | Optional detailed legal events, status, family, PDF, reexamination, licensing, and citations |
 
 Catalogue:
-[PatSnap MCP Servers](https://open.patsnap.com/marketplace/mcp-servers).
+[Patsnap MCP Servers](https://open.patsnap.com/marketplace/mcp-servers).
 
 For each call, retain connector, tool, request, filters, execution date, task
 ID, returned identifiers, and limitations. Normalize results into the package's
@@ -172,7 +173,7 @@ Do not repeat quota-consuming work unnecessarily. If switching modes:
 
 1. Use each user-approved expression directly.
 2. Keep expression ID, source, reviewer, fields, filters, and date run.
-3. Keep PatSnap syntax intact; do not “simplify” parentheses or field scoping.
+3. Keep Patsnap syntax intact; do not “simplify” parentheses or field scoping.
 4. Do not hard-code China, `CN`, a fixed company, fixed IPC, or
    `SIMPLE_LEGAL_STATUS:1`.
 5. Use P070 suggestions only after technical review.
@@ -230,7 +231,7 @@ Create `queries.json` containing:
 - date run and result counts;
 - error/partial state.
 
-Dry-run mode may write the approved query register but must not call PatSnap.
+Dry-run mode may write the approved query register but must not call Patsnap.
 
 ### Step 4 — Execute P002 or equivalent connector search
 
@@ -245,7 +246,7 @@ For each approved expression:
 7. stop safely on repeated pages or malformed data;
 8. write `patent_list.json` with complete provenance.
 
-Deduplicate by publication number, PatSnap ID, application number, or a
+Deduplicate by publication number, Patsnap ID, application number, or a
 documented fallback. Never deduplicate by title alone.
 
 ### Step 5 — Retrieve claims through P018 or Patent Briefing
@@ -513,12 +514,12 @@ Before delivery confirm:
 
 - `README.md` — global setup and connectivity;
 - `references/api_call_policy.md` — REST/MCP mode and security controls;
-- `references/api_reference.md` — global PatSnap REST contracts;
+- `references/api_reference.md` — global Patsnap REST contracts;
 - `references/claim_chart_schema.md` — evidence and comparison JSON schema;
 - `references/report_requirements.md` — input/output and legal requirements;
 - `references/config.json` — jurisdiction-neutral business defaults;
 - `references/zhihuiya_config.json` — source-preserved private global API config;
-- `scripts/zhihuiya_api.py` — source-preserved global PatSnap REST client;
+- `scripts/zhihuiya_api.py` — source-preserved global Patsnap REST client;
 - `scripts/run_generic_fto_report.py` — complete workflow orchestrator;
 - `scripts/render_report.py` — safe English HTML renderer;
 - the sole DOCX under `assets/` — localized generic English report template; source filename retained.

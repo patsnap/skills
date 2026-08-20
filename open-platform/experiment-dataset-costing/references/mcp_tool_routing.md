@@ -129,7 +129,7 @@ DATA_SOURCE_COMPLIANCE = {
     "PubChem":      {"academic": "✅", "commercial": "✅",  "risk": "极低"},
     "PDB":          {"academic": "✅", "commercial": "✅",  "risk": "极低"},
     "Patent-SAR":   {"academic": "✅", "commercial": "⚠️", "risk": "中-高"},
-    "PatSnap-MCP":  {"academic": "✅", "commercial": "✅",  "risk": "低"},
+    "Patsnap-MCP":  {"academic": "✅", "commercial": "✅",  "risk": "低"},
     "Literature":   {"academic": "✅", "commercial": "✅",  "risk": "极低"},
     "ZINC":         {"academic": "✅", "commercial": "⚠️", "risk": "中"},
 }

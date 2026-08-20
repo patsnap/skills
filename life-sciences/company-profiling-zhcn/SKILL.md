@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: company-profiling-zhcn
 description: |
   基于海量制药数据，精准高效地提取和分析情报，为用户提供专业的公司画像及投资/合作建议。
@@ -18,14 +19,14 @@ description: |
   - 告诉我 Moderna 的融资历史
 license: MIT
 metadata:
-  author: PatSnap
+  author: Patsnap
   category: "Life Science"
   version: 1.0.5
 ---
   
 ## Setup Guide
 
-> **PatSnap 生命科学 MCP 服务**让 Claude Code 直接访问超 2 亿条专利、药物研发及生物数据。
+> **Patsnap 生命科学 MCP 服务**让 Claude Code 直接访问超 2 亿条专利、药物研发及生物数据。
 
 ### 1. 获取 API Key
 登录 https://open.patsnap.com ，进入 **API Keys**，创建一个新 Key。
@@ -50,7 +51,7 @@ claude mcp add --transport http pharma_intelligence \
 在 Claude Code 中输入 `/mcp`，确认已添加的服务均显示 **Connected**。
 
 💡 **需要帮助？** 
-访问 [PatSnap 生命科学](https://eureka.patsnap.com/ls-landing)， 或者查阅 [PatSnap 开发者文档](https://open.patsnap.com/devportal) 
+访问 [Patsnap 生命科学](https://eureka.patsnap.com/ls-landing)， 或者查阅 [Patsnap 开发者文档](https://open.patsnap.com/devportal) 
 
 ---
 
@@ -66,9 +67,9 @@ claude mcp add --transport http pharma_intelligence \
    - 不要报错后继续执行——这会反复触发失败
    - 向用户回复以下引导信息：
 
-> ⚠️ **PatSnap MCP 服务未连接**
+> ⚠️ **Patsnap MCP 服务未连接**
 >
-> 本技能依赖 PatSnap 生命科学 MCP 服务。请先完成以下步骤：
+> 本技能依赖 Patsnap 生命科学 MCP 服务。请先完成以下步骤：
 >
 > 1. 前往 [open.patsnap.com](https://open.patsnap.com) 创建 API Key
 > 2. 运行以下命令连接必需的 MCP 服务：

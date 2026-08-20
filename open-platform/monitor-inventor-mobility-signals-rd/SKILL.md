@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: monitor-inventor-mobility-signals-rd
 description: Monitor public patent records for inventor identity, organizational-association and technical-adjacency signals that merit qualified review. Use when an authorized IP or R&D team asks to screen a company or named inventors over a defined period and produce an evidence-backed HTML briefing; never infer resignation, employment, misconduct or legal risk from patent records alone.
 ---
@@ -36,14 +37,14 @@ If these safeguards cannot be met, stop person-level monitoring and provide only
 
 ## MCP and evidence plan
 
-User-supplied reviewed exports require no MCP. For a requested live search, verified global PatSnap support is:
+User-supplied reviewed exports require no MCP. For a requested live search, verified global Patsnap support is:
 
 | Task | MCP | Marketplace page |
 |---|---|---|
 | Applicant/inventor/field/date patent discovery | `advanced_patent_search` | https://open.patsnap.com/marketplace/mcp-servers/patent-search |
 | Bibliography, family, claims, description and status context | `patent_briefing` | https://open.patsnap.com/marketplace/mcp-servers/patent-briefing |
 
-Use only tools actually exposed and authorized. Preserve exact returned global PatSnap URLs; do not construct record URLs. Record the query, filters, date fields, tool response counts, pagination and known coverage limits.
+Use only tools actually exposed and authorized. Preserve exact returned global Patsnap URLs; do not construct record URLs. Record the query, filters, date fields, tool response counts, pagination and known coverage limits.
 
 ## Method
 
@@ -137,7 +138,7 @@ Read `references/workflow.md` before execution. It is the operational authority 
 - [ ] Claims/functions/mechanisms, counterevidence and chronology are reviewed.
 - [ ] Recent-publication blind spot is visible.
 - [ ] No-result cases use `insufficient_evidence`, not low risk.
-- [ ] Exact returned PatSnap URLs are preserved.
+- [ ] Exact returned Patsnap URLs are preserved.
 - [ ] HTML input is schema-checked and escaped.
 - [ ] Qualified reviewers own material decisions.
 

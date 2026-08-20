@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: tech-transfer-match
 description: |
   科技成果转移转化供需匹配分析技能 v4.0。触发词：供需匹配、技术转移、成果转化、转移转化分析、成果匹配、技术对接。执行6步工作流：技术内容分析→先进性评估→专利价值评估→三维度二层潜在接受方挖掘→HTML可视化报告生成（自动保存桌面）→文件服务。

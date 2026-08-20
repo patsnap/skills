@@ -47,7 +47,7 @@ Use `patent_briefing` for family/bibliography/status/claims discovery where avai
 {
   "family_group_id": "provider-or-controlled-id",
   "family_definition": "INPADOC extended family",
-  "family_provider": "PatSnap",
+  "family_provider": "Patsnap",
   "earliest_priority": {
     "date": "YYYY-MM-DD",
     "application_number": "...",

@@ -72,7 +72,7 @@ Build one search packet per direction:
 7. confidentiality-minimized query wording;
 8. decision-linked review criteria.
 
-## 5. PatSnap MCP mapping
+## 5. Patsnap MCP mapping
 
 When actually exposed in the user's environment:
 

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: review-japanese-patent-claims-ip
 description: Review claims in a Japanese patent application or a PCT/Paris-route application intended for Japan across six dimensions: Japanese Patent Act/JPO compliance, evidence-backed novelty and inventive-step pre-screening, claim architecture and drafting quality, JPO examination risk, foreign-origin and translation risk, and strategic protection. Use when the user provides Japanese or foreign-language application materials and asks for a JPO-oriented claim review, amendment options, prosecution-readiness assessment, prior-art comparison, or a complete English HTML claims report.
 ---
@@ -246,11 +247,11 @@ This dimension requires real prior-art research when the user authorizes it and
 search access exists. Use the verified evidence workflow below; do not invoke or
 simulate an unavailable helper.
 
-Use the verified PatSnap workflow below. If search cannot be performed, label
+Use the verified Patsnap workflow below. If search cannot be performed, label
 the dimension `Search not performed`; provide only a search plan and drafting
 observations, never a novelty/inventive-step conclusion.
 
-##### Required PatSnap MCP services
+##### Required Patsnap MCP services
 
 Advanced Patent Search — Required:
 
@@ -729,7 +730,7 @@ Continue useful work but display the limitations prominently.
 
 - [ ] No Chinese interface text or China marketplace link remains.
 - [ ] No unavailable named skill dependency remains.
-- [ ] Only verified global PatSnap MCP services appear.
+- [ ] Only verified global Patsnap MCP services appear.
 - [ ] Current official JPO sources support legal/procedural statements.
 - [ ] Japanese legal terms are not replaced by foreign analogues.
 - [ ] Fees/deadlines are verified at execution time.

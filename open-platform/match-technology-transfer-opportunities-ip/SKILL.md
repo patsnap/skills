@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: match-technology-transfer-opportunities-ip
 description: Evaluate a supplied technology or scoped technology portfolio, identify and rank evidence-backed potential licensees, acquirers, commercialization partners, or joint-development partners, assess transfer readiness and risks, and generate an auditable HTML decision-support report. Use for technology transfer, research commercialization, licensing partner discovery, technology-to-company matching, or recipient prioritization.
 ---
@@ -107,7 +108,7 @@ Separate:
 
 Search snippets, generated summaries, citation counts, family size and company press releases are not self-validating.
 
-## PatSnap connector map
+## Patsnap connector map
 
 ### Advanced Patent Search — required for executed patent discovery
 
@@ -141,7 +142,7 @@ Use evidence-backed technical topics, problems, effects, classifications, materi
 
 Treat any result as one bounded input. Record method, assumptions, date, currency, data coverage and uncertainty. Never present a connector score as a transaction price.
 
-No verified global PatSnap procurement connector is claimed. Procurement, company, finance, market, news, standards and legal evidence require separately authorized current sources.
+No verified global Patsnap procurement connector is claimed. Procurement, company, finance, market, news, standards and legal evidence require separately authorized current sources.
 
 ## Stage 1 — technology content analysis
 

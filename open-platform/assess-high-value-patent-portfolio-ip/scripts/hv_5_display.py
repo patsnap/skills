@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 from typing import Any, Callable
 
-from hv_common import PatSnapRequestError, api_get_with_evidence, checkpoint_meta, chunks, file_sha256, jdump, jload, require_checkpoint
+from hv_common import PatsnapRequestError, api_get_with_evidence, checkpoint_meta, chunks, file_sha256, jdump, jload, require_checkpoint
 
 
 ENDPOINTS = {
@@ -120,7 +120,7 @@ def retrieve(
                 if patent_id in records and patent_id not in returned:
                     records[patent_id][state_field] = "empty"
                     records[patent_id]["request_evidence"].append({"endpoint": label, **evidence})
-        except (PatSnapRequestError, ValueError) as exc:
+        except (PatsnapRequestError, ValueError) as exc:
             errors.append({"endpoint": label, "batch": batch_number, "message": str(exc)})
             for row in batch:
                 patent_id = str(row.get("patent_id") or "")

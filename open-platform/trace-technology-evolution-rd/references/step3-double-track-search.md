@@ -38,7 +38,7 @@ Additional evidence tracks may include:
 
 Keep each evidence type separate. Do not score a press release as a patent or a paper.
 
-## Verified PatSnap patent support
+## Verified Patsnap patent support
 
 When available, use:
 
@@ -47,7 +47,7 @@ When available, use:
 
 Use the currently exposed schemas. The source names generic `patsnap_search`, `patsnap_fetch`, paper search, family modules, valuation fields, citation modules, and legal modules. Do not claim any of those interfaces unless the execution environment actually exposes and verifies them.
 
-PatSnap MCP is not automatically a scientific-literature, standards, market-news, funding, or regulatory connector. Use appropriate primary sources for those tracks.
+Patsnap MCP is not automatically a scientific-literature, standards, market-news, funding, or regulatory connector. Use appropriate primary sources for those tracks.
 
 ## Research preparation
 

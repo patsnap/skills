@@ -56,7 +56,7 @@ Every material claim should map to:
 ## Report quality checklist
 
 - [ ] Every material conclusion has an evidence ID.
-- [ ] Patent citations use the exact returned global PatSnap URL when available.
+- [ ] Patent citations use the exact returned global Patsnap URL when available.
 - [ ] Counts are copied from recorded tool/export output, not typed from memory.
 - [ ] Family and publication counts are clearly distinguished.
 - [ ] Negative conclusions are bounded by complete documented retrieval.

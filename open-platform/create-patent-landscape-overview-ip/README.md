@@ -5,7 +5,7 @@ It supports product planning, R&D strategy, competitor intelligence, technology-
 recommended patent packages, portfolio planning, and a self-contained scientific HTML report.
 
 - Global Skill page: https://open.patsnap.com/marketplace/skill-hub
-- PatSnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
+- Patsnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
 
 ## Package contents
 

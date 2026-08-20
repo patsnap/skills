@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: target-intelligence
 description: 
   Provides target intelligence report covering target details, drugs, pipelines, druggability, and indications.
@@ -16,14 +17,14 @@ description:
     - Cancers treated by targeting BRCA1 and BRCA2 Proteins
 license: MIT
 metadata:
-  author: PatSnap
+  author: Patsnap
   category: "Life Science"
   version: 1.0.5
 ---
   
 ## Setup Guide
 
-> **PatSnap LifeScience MCP Services** give Claude Code direct access to 200M+ patents, drug R&D records, and biological data.
+> **Patsnap LifeScience MCP Services** give Claude Code direct access to 200M+ patents, drug R&D records, and biological data.
 
 ### 1. Get an API Key
 Log in to https://open.patsnap.com, go to **API Keys**, and create a new key.
@@ -48,8 +49,8 @@ claude mcp add --transport http pharma_intelligence \
 In Claude Code, type `/mcp` and confirm the added servers show **Connected**.
 
 💡 **Need help?**
-Visit: [PatSnap Life Science](https://eureka.patsnap.com/ls-landing) 
-or  [PatSnap Dev Portal](https://open.patsnap.com/devportal)
+Visit: [Patsnap Life Science](https://eureka.patsnap.com/ls-landing) 
+or  [Patsnap Dev Portal](https://open.patsnap.com/devportal)
 
 ---
 
@@ -65,9 +66,9 @@ or  [PatSnap Dev Portal](https://open.patsnap.com/devportal)
    - Do not continue after reporting errors — this will trigger repeated failures
    - Reply to the user with the following guidance:
 
-> ⚠️ **PatSnap MCP Services Not Connected**
+> ⚠️ **Patsnap MCP Services Not Connected**
 >
-> This skill requires PatSnap LifeScience MCP services. Please complete the following steps:
+> This skill requires Patsnap LifeScience MCP services. Please complete the following steps:
 >
 > 1. Go to [open.patsnap.com](https://open.patsnap.com) and create an API Key
 > 2. Run the following command to connect the required MCP services:

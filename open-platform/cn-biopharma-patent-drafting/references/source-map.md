@@ -29,7 +29,7 @@ API wrappers are in `$USERPROFILE/.workbuddy/api-wrappers/`. Invoke via Bash usi
   python "$USERPROFILE/.workbuddy/api-wrappers/ai60/cli.py" smart_doc --file /path/to/document.pdf -o output.md [--api-key KEY] [--no-fallback]
   ```
 - **Credentials**: Pass via `--api-key` CLI arg, or set `AI_API_KEY` env var (shared by AI60/AI32/AI37).
-- **AI60** is PatSnap's cloud-based document OCR service (https://connect.zhihuiya.com).
+- **AI60** is Patsnap's cloud-based document OCR service (https://connect.zhihuiya.com).
 - Supports: PDF, images (PNG/JPG/TIFF/BMP), Office docs (doc/docx/ppt/pptx/xls/xlsx).
 - **Fallback**: AI60 云端 OCR 失败时（网络错误、权限不足、超时），**自动降级到 RapidOCR**（本地 CPU OCR 引擎，基于 ONNX Runtime，无需 GPU）。降级行为默认开启，可通过 `--no-fallback` 禁用。对于有 MCP PDF URL 的专利文献，仍建议优先使用 AI60 URL 模式。
 

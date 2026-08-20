@@ -1,9 +1,10 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: smart-intel
 description: |
   智慧情报与政策孵化技能。面向企业/研究机构，一键生成集情报中心、政策孵化工作台、
   技术路线研判、科技创新管理四大模块于一体的可交互HTML情报门户。
-  支持按目标企业/行业定制数据、调用PatSnap专利数据与网络情报，输出本地可用的单文件HTML。
+  支持按目标企业/行业定制数据、调用Patsnap专利数据与网络情报，输出本地可用的单文件HTML。
 ---
 
 # 智慧情报（smart-intel）Skill
@@ -19,7 +20,7 @@ description: |
 ## 四大核心模块
 
 ### 1. 情报中心（Intel Center）
-- 专利情报：调用 PatSnap MCP 检索近一年专利，50条/页签，纵向列表展示
+- 专利情报：调用 Patsnap MCP 检索近一年专利，50条/页签，纵向列表展示
 - 行业新闻：调用 Web Search 获取近一年行业动态，50条
 - 政策法规：调用 Web Search 检索行业政策，标注发布机构/级别/状态
 - 行业研究报告：权威机构报告聚合，含 BNEF/IEA/行业协会
@@ -58,7 +59,7 @@ description: |
 | 科技平台管理 | 国家/省部/博后/院士工作站 |
 | 科技奖励管理 | 获奖记录 + 申报进度追踪 |
 | 科研评审管理 | 评审日历 + 专家库 + 结果分布 |
-| 知识产权管理 | PatSnap真实IPC数据 + 申请趋势 |
+| 知识产权管理 | Patsnap真实IPC数据 + 申请趋势 |
 | 高企申计管理 | 研发费用归集 + 申报评分仪表盘 |
 | 科技成果管理 | TRL成熟度追踪 + 转化收益统计 |
 | 标准管理 | 国标/行标/团标 + 生命周期状态 |
@@ -75,7 +76,7 @@ python scripts/gen_smart_intel.py \
   --industry "储能/电力/半导体/..." \
   --output portal.html
 
-# 高级用法：接入PatSnap真实数据
+# 高级用法：接入Patsnap真实数据
 python scripts/gen_smart_intel.py \
   --company "华能集团" \
   --industry "核能 风电 储能" \
@@ -91,7 +92,7 @@ python scripts/gen_smart_intel.py \
 | `--company` | 目标企业/机构名称 | 必填 |
 | `--industry` | 行业关键词（空格分隔） | 必填 |
 | `--output` | 输出HTML文件路径 | `portal.html` |
-| `--use-patsnap` | 是否调用PatSnap检索真实专利数据 | False |
+| `--use-patsnap` | 是否调用Patsnap检索真实专利数据 | False |
 | `--use-websearch` | 是否调用Web Search获取真实新闻/政策 | False |
 | `--title` | 平台标题 | `{company} 智慧情报与政策孵化平台` |
 | `--modules` | 启用模块（逗号分隔） | `intel,policy,tech,sci` |
@@ -103,11 +104,11 @@ python scripts/gen_smart_intel.py \
 
 | 数据类型 | 来源 | MCP工具 |
 |---------|------|---------|
-| 专利情报 | PatSnap智慧芽 | `patsnap_search` + `patsnap_fetch` |
-| 企业画像 | PatSnap企业分析 | `intellectual_property` + `technology_label` |
+| 专利情报 | Patsnap智慧芽 | `patsnap_search` + `patsnap_fetch` |
+| 企业画像 | Patsnap企业分析 | `intellectual_property` + `technology_label` |
 | 行业新闻/政策 | Web Search | `web_search` |
-| 产学研合作 | PatSnap创新分析 | `industry_university_research` |
-| 核心专利 | PatSnap创新分析 | `company_core_patent` |
+| 产学研合作 | Patsnap创新分析 | `industry_university_research` |
+| 核心专利 | Patsnap创新分析 | `company_core_patent` |
 | 行业报告 | Web Search | `web_search` |
 
 ---

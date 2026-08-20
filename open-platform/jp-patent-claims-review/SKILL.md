@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: jp-patent-claims-review
 description: |
   日本专利申请文件权利要求书审核工具。用户上传PDF或Word版专利申请文件后，自动按日本特許法（§29、§36等）及JPO审查实务标准，从法律合规性、新颖性/进步性预判、撰写结构、审查实务风险、涉外申请及战略保护六大维度逐项审核权利要求书；维度二强制调用 novelty-check 和 non-obviousness-check skill 执行全球检索，将 MCP 检索结果作为权利稳定性评审依据；最终输出完整 HTML 格式审核报告。

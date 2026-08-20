@@ -1,6 +1,6 @@
-# PatSnap Open Platform Skills
+# Patsnap Open Platform Skills
 
-`open-platform/` contains the Skill Hub / Open Platform workflows imported from the 2026-06-30, 2026-07-03, 2026-07-09 and 2026-08-11 batches. These skills are mostly Chinese-first, scenario-oriented workflows built around PatSnap/Zhihuiya data, patent intelligence, R&D analysis, FTO support, technology transfer, biomedical intelligence, and vertical industry reports.
+`open-platform/` contains the Skill Hub / Open Platform workflows imported from the 2026-06-30, 2026-07-03, 2026-07-09 and 2026-08-11 batches. These skills are mostly Chinese-first, scenario-oriented workflows built around Patsnap/Zhihuiya data, patent intelligence, R&D analysis, FTO support, technology transfer, biomedical intelligence, and vertical industry reports.
 
 Install all Open Platform skills:
 
@@ -18,11 +18,12 @@ npx skills add patsnap/skills/tree/main/open-platform/patent-quality-review-pro
 
 | Type | Count | Notes |
 |---|---:|---|
-| Total skill directories | 178 | Skill Hub / Open Platform workflow skills normalized into this directory. |
+| Total skill directories | 179 | Skill Hub / Open Platform workflow skills normalized into this directory. |
 | Imports before 2026-08-11 | 119 | Earlier Skill Hub / Open Platform workflow batches. |
 | 2026-08-11 Engineering / R&D source category | 15 | Technical intelligence, invention disclosure, TRIZ, R&D direction, hardware diagnosis and innovation workflows. |
 | 2026-08-11 IP source category | 38 | Patent search, landscape, FTO, claims review, portfolio, commercialization and litigation-risk workflows. |
 | 2026-08-11 Life Sciences source category | 6 | Target-drug BD, life-sciences patent reporting, small-RNA landscapes, ADC monitoring and antibody FTO workflows. |
+| Smart Document API | 1 | Production REST API workflow for OCR, layout detection, and structured parsing of images, PDFs, and Office documents. |
 
 ## 2026-07-03 Additions
 
@@ -52,6 +53,10 @@ The `skill-20` batch adds 20 biomedical, biopharma, drug-development, patent-dra
 
 The 2026-08-11 batch adds 59 complete skill packages under this directory: 15 Engineering / R&D, 38 IP, and 6 Life Sciences packages. Each package retains its `SKILL.md` and any bundled scripts, references, assets, schemas, prompts, or agent metadata required by its workflow.
 
+## Smart Document Parser
+
+[`smart-document-parser`](https://open.zhihuiya.com/marketplace/skill-hub/smart-document-parser) parses images, PDFs, and Office documents through the production Smart Document REST API, returning Markdown and/or structured page regions.
+
 ## Skill Groups
 
 | Group | Skills |
@@ -71,6 +76,6 @@ The 2026-08-11 batch adds 59 complete skill packages under this directory: 15 En
 ## Usage Notes
 
 - Keep each skill directory intact when installing or publishing, because `SKILL.md` may reference local files in `references/`, `scripts/`, `assets/`, `agents/`, or other bundled resource folders.
-- Many Open Platform skills assume access to PatSnap/Zhihuiya MCP tools or equivalent structured retrieval. If specialized tools are unavailable, agents should clearly state coverage limitations.
+- Many Open Platform skills assume access to Patsnap/Zhihuiya MCP tools or equivalent structured retrieval. If specialized tools are unavailable, agents should clearly state coverage limitations.
 - Do not present patent, FTO, infringement, validity, or legal-risk outputs as legal advice unless the skill explicitly routes to an attorney-led or legally qualified workflow.
 - Skill directory names use lowercase hyphen-case and should match the `name` field in `SKILL.md`.

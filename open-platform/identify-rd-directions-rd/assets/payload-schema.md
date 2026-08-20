@@ -249,7 +249,7 @@ Organization totals count unique normalized IDs across all accepted evidence. Th
     "id": "S1",
     "direction_id": "D1",
     "evidence_type": "patent",
-    "source_or_tool": "PatSnap advanced_patent_search",
+    "source_or_tool": "Patsnap advanced_patent_search",
     "searched_at": "2026-06-30T10:30:00Z",
     "query": "Exact query",
     "filters": {},

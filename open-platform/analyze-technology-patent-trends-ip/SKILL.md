@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: analyze-technology-patent-trends-ip
 description: Convert an already retrieved, screened, and tagged patent dataset into an evidence-bounded competitive technology insight report. Use when the user requests patent-based technology-route analysis, competitor positioning, taxonomy-by-function matrices, process-route analysis, opportunity windows, trend signals, R&D/IP actions, or a management-grade Markdown or self-contained HTML white paper from prepared patent data.
 ---

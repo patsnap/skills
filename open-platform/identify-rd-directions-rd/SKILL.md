@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: identify-rd-directions-rd
 description: Convert a concrete engineering, scientific, manufacturing, or technical project requirement into evidence-backed R&D directions, including requirement analysis, bounded technical issues, research questions, tasks, targets, deliverables, patent and literature evidence, standards and engineering cases, relevant organizations, search logs, and synchronized Markdown and HTML reports. Use when a user asks what R&D directions to pursue, how to decompose a project into research routes, or needs an evidence-led R&D direction report.
 ---
@@ -231,14 +232,14 @@ Each packet records:
 
 Do not combine unrelated directions into one query.
 
-## Stage 5 — Search patents with verified PatSnap MCP
+## Stage 5 — Search patents with verified Patsnap MCP
 
 Only search when the user requests research or the report scope includes evidence retrieval.
 
 Use, when exposed:
 
-- `advanced_patent_search` — [PatSnap Advanced Patent Search](https://open.patsnap.com/marketplace/mcp-servers/patent-search);
-- `patent_briefing` — [PatSnap Patent Briefing](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected record/family details.
+- `advanced_patent_search` — [Patsnap Advanced Patent Search](https://open.patsnap.com/marketplace/mcp-servers/patent-search);
+- `patent_briefing` — [Patsnap Patent Briefing](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected record/family details.
 
 Use the current callable schema and English interface. Do not copy legacy domestic tool names from the source package.
 
@@ -262,7 +263,7 @@ Use Patent Briefing only when record details materially affect the technical int
 
 For engineering and general science, use user-accessible primary publisher/repository records, DOI/Crossref metadata, recognized bibliographic databases, standards databases, or user-supplied literature.
 
-Do not map general engineering paper search to PatSnap `scientific_translational_evidence`; its verified public tools concern translational medicine. Use it only for a biomedical/translational request that matches its current tool scope.
+Do not map general engineering paper search to Patsnap `scientific_translational_evidence`; its verified public tools concern translational medicine. Use it only for a biomedical/translational request that matches its current tool scope.
 
 For each search record exact query, database, coverage, filters, limit, returned results, reviewed records, access restrictions, and cutoff.
 

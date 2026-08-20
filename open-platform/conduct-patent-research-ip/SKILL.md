@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: conduct-patent-research-ip
 description: Conduct an evidence-backed patent research program from a technical problem and preliminary solution through iterative patent searching, technology-route analysis, project novelty pre-screening, FTO-oriented risk screening, competitor monitoring, recent-publication surveillance, and self-contained HTML plus DOCX reporting. Use when a user asks for patent research, project-initiation novelty review, technical-route analysis, patent risk screening, competitor patent tracking, or a comprehensive patent-search report.
 ---
@@ -30,7 +31,7 @@ validity conclusion, or commercial recommendation.
 9. Never fabricate a record, identifier, count, claim, status, URL, or quotation.
 10. Preserve confidential inputs only within the user-authorized environment.
 
-## Required global PatSnap services
+## Required global Patsnap services
 
 Inspect the installed connector schema before calling any operation. Record the
 connector key, operation, material request parameters, retrieval date, and result
@@ -495,7 +496,7 @@ without a defined register mapping.
 Every displayed patent identifier must be traceable. Apply these rules:
 
 1. Preserve the publication/application/grant identifier exactly.
-2. Use a global PatSnap record URL only when the active connector returns it or
+2. Use a global Patsnap record URL only when the active connector returns it or
    current official documentation defines a stable construction method.
 3. Otherwise show the identifier, source connector/operation, and evidence-register
    ID without inventing a URL.
@@ -535,7 +536,7 @@ Every displayed patent identifier must be traceable. Apply these rules:
 ## Patent-search field guidance
 
 The source names fields such as `TACD_ALL`, `TAC_ALL`, `PA`, `IPC`, `CPC`, `APD`,
-and `PBD`. Treat these as PatSnap product syntax candidates, not universal MCP
+and `PBD`. Treat these as Patsnap product syntax candidates, not universal MCP
 parameters.
 
 | Intent | Candidate field concept |
@@ -642,13 +643,13 @@ specific next action. Do not fill the gap with plausible text.
 - Do not split competitors into domestic and overseas groups unless the decision
   specifically requires a defined geography comparison.
 - Do not use any Zhihuiya/Eureka URL in the localized package.
-- Do not create a PatSnap deep link from an unverified identifier or UUID.
+- Do not create a Patsnap deep link from an unverified identifier or UUID.
 - Do not expose secrets, API keys, confidential invention details, or personal data.
 - Do not load remote report dependencies or execute retrieved content.
 
 ## Configuration boundary
 
-This skill requires the relevant global PatSnap MCP connectors and authorized access
+This skill requires the relevant global Patsnap MCP connectors and authorized access
 for live patent evidence. If they are unavailable, provide only a clearly labeled
 research plan, query design, data schema, and report framework. Do not claim that a
 search, status check, claim retrieval, or evidence-backed analysis was completed.

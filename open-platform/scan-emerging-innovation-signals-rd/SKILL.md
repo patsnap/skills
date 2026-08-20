@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: scan-emerging-innovation-signals-rd
 description: Identify potentially protectable technical contributions in R&D updates, meeting notes, design documents, architecture descriptions, experiment records, and technical-improvement narratives. Use when a user asks what may be innovative, patent-review worthy, suitable for trade-secret review, or in need of invention-disclosure follow-up.
 ---
@@ -98,10 +99,10 @@ Report:
 
 ## 6. Run an optional patent screen
 
-Use the verified global PatSnap mapping in `references/mcp_usage_guide.md` when available:
+Use the verified global Patsnap mapping in `references/mcp_usage_guide.md` when available:
 
-- `advanced_patent_search` — [PatSnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search);
-- `patent_briefing` — [PatSnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected records that require deeper evidence review.
+- `advanced_patent_search` — [Patsnap Patent Search MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-search);
+- `patent_briefing` — [Patsnap Patent Briefing MCP](https://open.patsnap.com/marketplace/mcp-servers/patent-briefing) for selected records that require deeper evidence review.
 
 Construct queries from the problem context and differentiating implementation features. Use semantic and/or structured keyword/classification strategies according to the technology and returned evidence. Do not fix `topk`, similarity thresholds, or hit counts as universal novelty rules.
 

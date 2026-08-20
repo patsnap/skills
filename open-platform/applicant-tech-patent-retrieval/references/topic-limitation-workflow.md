@@ -217,7 +217,7 @@ Rules:
 
 ## 6. Execute or Simulate Retrieval
 
-In `formula_only_mode`, do not execute retrieval unless the user explicitly asks. Provide expanded formulas, assumptions, pending confirmations, and a PatSnap Expert Search execution checklist.
+In `formula_only_mode`, do not execute retrieval unless the user explicitly asks. Provide expanded formulas, assumptions, pending confirmations, and a Patsnap Expert Search execution checklist.
 
 In `retrieval_dataset_mode`, when a Patsnap/Open Platform connector is available, execute or validate count checkpoints in this order:
 
@@ -228,7 +228,7 @@ In `retrieval_dataset_mode`, when a Patsnap/Open Platform connector is available
 5. Precision/noise-filtered count.
 6. Sample review if records are available.
 
-If retrieval cannot be executed, downgrade to `formula_only_mode` and provide an execution checklist for PatSnap Expert Search.
+If retrieval cannot be executed, downgrade to `formula_only_mode` and provide an execution checklist for Patsnap Expert Search.
 
 Retrieval checkpoint table:
 

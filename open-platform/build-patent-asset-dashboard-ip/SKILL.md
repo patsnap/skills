@@ -1,21 +1,22 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: build-patent-asset-dashboard-ip
-description: Build the patent-data layer for an applicant asset dashboard using PatSnap search and analytics APIs. Use when an IP analyst or developer needs applicant patent retrieval, patent-type subsets, filing trends, industry distribution, filing-office coverage, top inventors, or an innovation word cloud with documented collapse and counting rules.
+description: Build the patent-data layer for an applicant asset dashboard using Patsnap search and analytics APIs. Use when an IP analyst or developer needs applicant patent retrieval, patent-type subsets, filing trends, industry distribution, filing-office coverage, top inventors, or an innovation word cloud with documented collapse and counting rules.
 ---
 
 # Build a patent asset dashboard
 
 ## Overview
 
-Use PatSnap Open Platform patent-search and analytics APIs to populate an applicant patent asset dashboard. Preserve the source capability identifiers `P00X`, `A00X`, `S00X`, and `D00X` because they identify API contracts rather than Chinese UI labels.
+Use Patsnap Open Platform patent-search and analytics APIs to populate an applicant patent asset dashboard. Preserve the source capability identifiers `P00X`, `A00X`, `S00X`, and `D00X` because they identify API contracts rather than Chinese UI labels.
 
 ## Authentication
 
-Pass a PatSnap Open Platform API key in the HTTP Authorization header:
+Pass a Patsnap Open Platform API key in the HTTP Authorization header:
 ```
 Authorization: Bearer <token>
 ```
-Read the key from `PATSNAP_API_KEY` or accept it through a secure runtime argument. Never embed or log a real key. See the current [PatSnap authentication guide](https://open.patsnap.com/devportal/guides/authentication).
+Read the key from `PATSNAP_API_KEY` or accept it through a secure runtime argument. Never embed or log a real key. See the current [Patsnap authentication guide](https://open.patsnap.com/devportal/guides/authentication).
 
 ---
 
@@ -38,7 +39,7 @@ Read the key from `PATSNAP_API_KEY` or accept it through a secure runtime argume
 
 - **Method**: POST
 - **URL**: `https://connect.patsnap.com/search/patent/query-search-patent/v2`
-- **Current official capability evidence**: the PatSnap Developer Center and current patent-search MCP pages document the global query-search path and `data.results` response convention. Recheck the OpenAPI schema before production release.
+- **Current official capability evidence**: the Patsnap Developer Center and current patent-search MCP pages document the global query-search path and `data.results` response convention. Recheck the OpenAPI schema before production release.
 
 ### Request body
 ```json
@@ -116,7 +117,7 @@ These counts were recorded against the Chinese source environment. Preserve them
 
 - **Method**: POST
 - **Source endpoint**: `/insights-openapi/patent-trends-query`
-- **Global endpoint status**: not verified in the current public PatSnap Developer Center on 2026-08-07. Do not construct or publish a `connect.patsnap.com` URL by substitution. Obtain the current endpoint from the authenticated API catalog before execution.
+- **Global endpoint status**: not verified in the current public Patsnap Developer Center on 2026-08-07. Do not construct or publish a `connect.patsnap.com` URL by substitution. Obtain the current endpoint from the authenticated API catalog before execution.
 
 ### Request body
 ```json
@@ -221,7 +222,7 @@ Do not compare classification shares as mutually exclusive when one patent may c
 
 - **Method**: POST
 - **Source endpoint**: `/shhgy/reportdata/rec-office`
-- **Global endpoint status**: not verified in the current public PatSnap Developer Center on 2026-08-07. Obtain the exact current endpoint from the authenticated API catalog; do not publish a guessed host/path combination.
+- **Global endpoint status**: not verified in the current public Patsnap Developer Center on 2026-08-07. Obtain the exact current endpoint from the authenticated API catalog; do not publish a guessed host/path combination.
 
 ### Request body
 ```json
@@ -354,10 +355,10 @@ words = result["data"]  # Direct array, up to 100 terms ordered by descending co
 
 ## MCP and API configuration
 
-This source package is primarily a PatSnap REST API workflow. It does not contain a README and no new setup file may be added without approval.
+This source package is primarily a Patsnap REST API workflow. It does not contain a README and no new setup file may be added without approval.
 
-- Authenticate REST calls with a PatSnap Open Platform API key.
-- Verify each endpoint in the current [PatSnap Developer Center](https://open.patsnap.com/devportal) before execution.
+- Authenticate REST calls with a Patsnap Open Platform API key.
+- Verify each endpoint in the current [Patsnap Developer Center](https://open.patsnap.com/devportal) before execution.
 - The [Global Core Patent Database](https://open.patsnap.com/marketplace/mcp-servers/core-patents) MCP may optionally provide its documented `search_patents` capability for P002-style retrieval.
 - Do not claim that this MCP implements A001, D109, A006, or A002 unless those exact tools are discovered and documented.
 - When an endpoint or entitlement is unavailable, provide the dashboard schema and mark the affected panel `Data unavailable`; never fabricate values.

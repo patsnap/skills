@@ -1,4 +1,4 @@
-# PatSnap Engineering Skills
+# Patsnap Engineering Skills
 
 Engineering skills support the core R&D, technology analysis, competitive assessment, project review, and structured innovation workflows. Imported Skill Hub / Open Platform engineering workflows now live in `../open-platform/`. Each skill is packaged as a self-contained directory with a `SKILL.md` file and, where needed, supporting `references/`, `templates/`, and `examples/` folders.
 

@@ -1,6 +1,7 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: evidence-based-labeling
-description: 构建、优化并应用证据化标签体系，适用于专利、科研文献、产品资料、技术情报、客户需求和其他结构化文本。可用于开放式标签发现、半开放标引、闭集标引、标签定义、默认或自定义判定规则、试标、Excel/CSV 全量标引、人工复核队列，以及借助智慧芽/PatSnap MCP 进行术语、样本、专利、文献和证据增强。
+description: 构建、优化并应用证据化标签体系，适用于专利、科研文献、产品资料、技术情报、客户需求和其他结构化文本。可用于开放式标签发现、半开放标引、闭集标引、标签定义、默认或自定义判定规则、试标、Excel/CSV 全量标引、人工复核队列，以及借助智慧芽/Patsnap MCP 进行术语、样本、专利、文献和证据增强。
 ---
 
 # 证据化标引体系构建
@@ -13,7 +14,7 @@ description: 构建、优化并应用证据化标签体系，适用于专利、�
 
 - 由用户确认业务含义、标签定义、冻结版本和全量执行授权。
 - 由模型诊断资料、抽取事实和证据、提出标签、比较边界并解释判断。
-- 针对标签发现、标签定义、样例和边界判断，执行对应阶段的智慧芽/PatSnap MCP 基线流程。当连接器可用时，MCP 是必需的工作流输入，而不是可有可无的补充。
+- 针对标签发现、标签定义、样例和边界判断，执行对应阶段的智慧芽/Patsnap MCP 基线流程。当连接器可用时，MCP 是必需的工作流输入，而不是可有可无的补充。
 - 使用脚本校验文件结构、标签体系完整性、输出有效性、覆盖率和复核要求。
 
 不得把候选标签静默转成正式标签。不得为了避免空白而强行给出弱证据标签。
@@ -26,7 +27,7 @@ description: 构建、优化并应用证据化标签体系，适用于专利、�
 - 检查输入或生成交付物前，读取 `references/input-output-contract.md`。
 - 试标或全量标引前，读取 `references/default-decision-rules.md`。
 - 发现、定义、合并、拆分或版本化标签时，读取 `references/taxonomy-design.md`。
-- 使用智慧芽/PatSnap MCP 工具前，读取 `references/zhihuiya-mcp-orchestration.md`。
+- 使用智慧芽/Patsnap MCP 工具前，读取 `references/zhihuiya-mcp-orchestration.md`。
 - 试标验收、全量校验或创建复核队列前，读取 `references/quality-and-review.md`。
 - 如果存在已选领域的 manifest，先读取该 manifest，再加载其中指向的文件。
 - 对乳蛋白深加工专利进行领域标引时，读取 `references/domain-milk-protein.yaml`，再加载其中的标签体系、规则和样例。

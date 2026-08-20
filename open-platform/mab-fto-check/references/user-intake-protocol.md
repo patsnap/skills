@@ -140,7 +140,7 @@ M9 竞品信息（必填）
 
 ### 地域注入
 ```
-所有PatSnap检索式末尾追加：
+所有Patsnap检索式末尾追加：
 AND AUTHORITY:(<用户选定国家代码，OR连接>)
 
 示例（CN+US+EP）：
@@ -154,11 +154,11 @@ filters.jurisdiction = ["CN", "US", "EP"]
 ```
 选项A（仅有效）：
   filters.legal_status = ["active"]
-  PatSnap检索式追加：AND LS:(有效)
+  Patsnap检索式追加：AND LS:(有效)
 
 选项B（有效+审中，默认）：
   filters.legal_status = ["active", "pending"]
-  PatSnap检索式追加：AND LS:(有效 OR 审中)
+  Patsnap检索式追加：AND LS:(有效 OR 审中)
 ```
 
 ### 矩阵注入示例
@@ -169,4 +169,4 @@ filters.jurisdiction = ["CN", "US", "EP"]
 | CN+US+EP | active+pending | `AND AUTHORITY:(CN OR US OR EP) AND LS:(有效 OR 审中)` |
 | CN only | active+pending | `AND AUTHORITY:(CN) AND LS:(有效 OR 审中)` |
 
-> ⚠️ **重要**：法律状态过滤仅适用于M2–M9的PatSnap检索式。M1序列检索（`ls_sequence_alignment`）使用工具自身的法律状态参数，需单独设置。
+> ⚠️ **重要**：法律状态过滤仅适用于M2–M9的Patsnap检索式。M1序列检索（`ls_sequence_alignment`）使用工具自身的法律状态参数，需单独设置。

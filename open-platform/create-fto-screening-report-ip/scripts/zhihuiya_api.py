@@ -1,8 +1,8 @@
-"""Global PatSnap Open Platform REST client for the FTO screening package.
+"""Global Patsnap Open Platform REST client for the FTO screening package.
 
 The source filename is retained for exact topology. All runtime names,
 endpoints, authentication, messages, and documentation in this localized file
-refer to the global PatSnap service.
+refer to the global Patsnap service.
 
 Supported source capabilities:
 
@@ -105,17 +105,17 @@ def _as_bool(value: Any) -> bool | None:
 
 
 def _extract_data(envelope: Any, endpoint: str) -> Any:
-    """Validate a PatSnap response envelope and return its data member."""
+    """Validate a Patsnap response envelope and return its data member."""
 
     if not isinstance(envelope, dict):
-        raise PatSnapApiError(endpoint, "invalid_response", "Response JSON is not an object.")
+        raise PatsnapApiError(endpoint, "invalid_response", "Response JSON is not an object.")
     status = _as_bool(envelope.get("status"))
     error_code = envelope.get("error_code", envelope.get("code", 0))
     error_message = str(envelope.get("error_msg") or envelope.get("message") or "")
     if status is False or error_code not in {None, 0, "0", ""}:
-        raise PatSnapApiError(endpoint, error_code, error_message or "PatSnap returned an error.")
+        raise PatsnapApiError(endpoint, error_code, error_message or "Patsnap returned an error.")
     if "data" not in envelope:
-        raise PatSnapApiError(endpoint, "invalid_response", "Response is missing the data field.")
+        raise PatsnapApiError(endpoint, "invalid_response", "Response is missing the data field.")
     return envelope.get("data")
 
 
@@ -131,7 +131,7 @@ class RequestEvidence:
 
     def as_dict(self) -> dict[str, Any]:
         return {
-            "provider": "PatSnap Open Platform",
+            "provider": "Patsnap Open Platform",
             "mode": "rest",
             "method": self.method,
             "endpoint": self.endpoint,
@@ -141,18 +141,18 @@ class RequestEvidence:
         }
 
 
-class PatSnapApiError(RuntimeError):
-    """Sanitized PatSnap business, protocol, or transport error."""
+class PatsnapApiError(RuntimeError):
+    """Sanitized Patsnap business, protocol, or transport error."""
 
     def __init__(self, endpoint: str, error_code: Any, error_message: str):
         self.endpoint = endpoint
         self.error_code = error_code
         self.error_message = str(error_message or "Unknown API error")
-        super().__init__(f"PatSnap request failed at {endpoint}: {self.error_message} (code={error_code})")
+        super().__init__(f"Patsnap request failed at {endpoint}: {self.error_message} (code={error_code})")
 
 
-class PatSnapClient:
-    """Bounded global PatSnap REST client using Bearer API-key authentication."""
+class PatsnapClient:
+    """Bounded global Patsnap REST client using Bearer API-key authentication."""
 
     def __init__(
         self,
@@ -168,10 +168,10 @@ class PatSnapClient:
             raise RuntimeError("REST mode requires the 'requests' package; offline and dry-run modes do not.")
         key = str(api_key or "").strip()
         if not key or key == "PUT_YOUR_PATSNAP_API_KEY_HERE":
-            raise ValueError("A private PatSnap API key is required; replace the placeholder locally.")
+            raise ValueError("A private Patsnap API key is required; replace the placeholder locally.")
         parsed = urlparse(str(base_url or ""))
         if parsed.scheme.lower() != "https" or not parsed.netloc:
-            raise ValueError("PatSnap base URL must be an absolute HTTPS URL.")
+            raise ValueError("Patsnap base URL must be an absolute HTTPS URL.")
         self._api_key = key
         self.base_url = f"{parsed.scheme}://{parsed.netloc}".rstrip("/")
         self.connect_timeout = max(0.1, float(connect_timeout))
@@ -193,7 +193,7 @@ class PatSnapClient:
             "Authorization": f"Bearer {self._api_key}",
             "Accept": accept,
             "Content-Type": "application/json",
-            "User-Agent": "PatSnap-FTO-Screening-Skill/2.0",
+            "User-Agent": "Patsnap-FTO-Screening-Skill/2.0",
         }
 
     def _url(self, path: str) -> str:
@@ -203,7 +203,7 @@ class PatSnapClient:
         parsed = urlparse(url)
         base = urlparse(self.base_url)
         if parsed.scheme != "https" or parsed.netloc != base.netloc:
-            raise ValueError("API path resolved outside the approved PatSnap host.")
+            raise ValueError("API path resolved outside the approved Patsnap host.")
         return url
 
     def _sleep_before_retry(self, attempt: int, response: requests.Response | None) -> None:
@@ -245,7 +245,7 @@ class PatSnapClient:
                     allow_redirects=False,
                 )
                 if 300 <= response.status_code < 400:
-                    raise PatSnapApiError(path, response.status_code, "Redirect rejected to protect credentials.")
+                    raise PatsnapApiError(path, response.status_code, "Redirect rejected to protect credentials.")
                 if response.status_code in TRANSIENT_HTTP_STATUS and attempt <= self.max_retries:
                     self._sleep_before_retry(attempt, response)
                     continue
@@ -258,7 +258,7 @@ class PatSnapClient:
                     elapsed_seconds=time.monotonic() - started,
                 )
                 return response
-            except PatSnapApiError:
+            except PatsnapApiError:
                 raise
             except requests.RequestException as exc:
                 last_error = exc
@@ -269,19 +269,19 @@ class PatSnapClient:
                 message = type(exc).__name__
                 if response is not None:
                     message = f"HTTP {response.status_code}"
-                raise PatSnapApiError(path, status, message) from exc
-        raise PatSnapApiError(path, "transport_error", type(last_error).__name__ if last_error else "Unknown error")
+                raise PatsnapApiError(path, status, message) from exc
+        raise PatsnapApiError(path, "transport_error", type(last_error).__name__ if last_error else "Unknown error")
 
     def _json(self, response: requests.Response, path: str) -> dict[str, Any]:
         content_type = response.headers.get("Content-Type", "").lower()
         if "json" not in content_type and response.content:
-            raise PatSnapApiError(path, "invalid_content_type", f"Expected JSON; received {content_type or 'unknown'}.")
+            raise PatsnapApiError(path, "invalid_content_type", f"Expected JSON; received {content_type or 'unknown'}.")
         try:
             value = response.json()
         except (ValueError, json.JSONDecodeError) as exc:
-            raise PatSnapApiError(path, "invalid_json", "Response body is not valid JSON.") from exc
+            raise PatsnapApiError(path, "invalid_json", "Response body is not valid JSON.") from exc
         if not isinstance(value, dict):
-            raise PatSnapApiError(path, "invalid_response", "Response JSON is not an object.")
+            raise PatsnapApiError(path, "invalid_response", "Response JSON is not an object.")
         return value
 
     def _post(self, path: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -370,10 +370,10 @@ class PatSnapClient:
         envelope = self._post(P002_PATH, payload)
         data = _extract_data(envelope, P002_PATH)
         if not isinstance(data, dict):
-            raise PatSnapApiError(P002_PATH, "invalid_response", "P002 data is not an object.")
+            raise PatsnapApiError(P002_PATH, "invalid_response", "P002 data is not an object.")
         results = data.get("results") or []
         if not isinstance(results, list):
-            raise PatSnapApiError(P002_PATH, "invalid_response", "P002 data.results is not an array.")
+            raise PatsnapApiError(P002_PATH, "invalid_response", "P002 data.results is not an array.")
         return {
             "results": results,
             "total": data.get("total", data.get("total_count")),
@@ -413,7 +413,7 @@ class PatSnapClient:
                 if isinstance(item, dict)
             )
             if signature in seen_page_signatures and signature:
-                raise PatSnapApiError(P002_PATH, "repeated_page", f"P002 repeated a prior page at offset {offset}.")
+                raise PatsnapApiError(P002_PATH, "repeated_page", f"P002 repeated a prior page at offset {offset}.")
             seen_page_signatures.add(signature)
             collected.extend(item for item in records if isinstance(item, dict))
             if len(records) < page["limit"]:
@@ -445,7 +445,7 @@ class PatSnapClient:
         envelope = self._get(P018_PATH, params)
         data = _extract_data(envelope, P018_PATH)
         if not isinstance(data, list):
-            raise PatSnapApiError(P018_PATH, "invalid_response", "P018 data is not an array.")
+            raise PatsnapApiError(P018_PATH, "invalid_response", "P018 data is not an array.")
         return [item for item in data if isinstance(item, dict)]
 
     def get_claims(
@@ -579,8 +579,8 @@ class PatSnapClient:
 
 
 # Backward-compatible source names so the source runner/import pattern remains valid.
-ZhihuiyaApiError = PatSnapApiError
-ZhihuiyaClient = PatSnapClient
+ZhihuiyaApiError = PatsnapApiError
+ZhihuiyaClient = PatsnapClient
 
 
 __all__ = [
@@ -590,8 +590,8 @@ __all__ = [
     "P018_PATH",
     "P025_PATH",
     "P070_PATH",
-    "PatSnapApiError",
-    "PatSnapClient",
+    "PatsnapApiError",
+    "PatsnapClient",
     "RequestEvidence",
     "ZhihuiyaApiError",
     "ZhihuiyaClient",

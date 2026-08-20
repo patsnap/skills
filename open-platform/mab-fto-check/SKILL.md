@@ -1,7 +1,8 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: mab-fto-check
 description: |
-  单克隆抗体（mAb）药物专利自由实施（FTO）分析。基于智慧芽专利数据库（PatSnap）+ 序列比对（ls_sequence_alignment）+ 化学结构检索（ls_structure_search），执行9模块并行检索+M1.5修饰检索（含中文专项检索），遵循全面覆盖原则+等同原则，输出HTML格式FTO报告（七章标准结构）。
+  单克隆抗体（mAb）药物专利自由实施（FTO）分析。基于智慧芽专利数据库（Patsnap）+ 序列比对（ls_sequence_alignment）+ 化学结构检索（ls_structure_search），执行9模块并行检索+M1.5修饰检索（含中文专项检索），遵循全面覆盖原则+等同原则，输出HTML格式FTO报告（七章标准结构）。
 ---
 
 # mab-fto-check — 单抗药物FTO分析 Skill
@@ -104,7 +105,7 @@ Payload 结构（路由至 chemical 数据库）
 ---
 
 ### 步骤 2：关键词检索（M2–M8）
-**工具**：PatSnap 关键词 + 语义检索
+**工具**：Patsnap 关键词 + 语义检索
 **详细规范**：见 references/search-modules.md
 
 | 模块 | 内容 | 主要IPC |
@@ -185,13 +186,13 @@ Payload 结构（路由至 chemical 数据库）
 
 **禁止在未获取权利要求原文的情况下出具侵权比对结论。** 获取顺序：
 
-1. **优先**：通过 `mcp_patent-search__patsnap_fetch`（PatSnap MCP）实时获取专利原文
+1. **优先**：通过 `mcp_patent-search__patsnap_fetch`（Patsnap MCP）实时获取专利原文
 2. **次选**：使用已缓存的本地文档（session downloads 中已获取的 .md 文件）
 3. **禁止**：直接凭模型推断或记忆填写权利要求内容；凡未获取原文者**必须标注[待获取原文]并暂缓出具该专利比对结论**
 
 权利要求原文获取后须：
 - 展示独立权利要求**完整原文**（英文原文 + 中文译文）
-- 明确标注来源（PatSnap MCP / 本地缓存 / 未获取）
+- 明确标注来源（Patsnap MCP / 本地缓存 / 未获取）
 
 #### 全面覆盖原则（字面侵权）
 候选分子必须覆盖权利要求的**每一个**技术特征；缺少任一特征 → 不侵权（字面）

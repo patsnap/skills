@@ -1,0 +1,4 @@
+interface:
+  display_name: "Smart Document Parser"
+  short_description: "Upload and parse documents through Smart Document API"
+  default_prompt: "Use $smart-document-parser to parse this document into Markdown through the production REST API."

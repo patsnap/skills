@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: analyze-patent-family-ip
-description: Analyze a patent family from a patent identifier or PatSnap patent URL by defining the family scope, reconstructing priority and procedural relationships, comparing technical disclosures and claim focus, mapping themes, and generating a source-traceable offline HTML report. Use when a patent analyst asks for family structure, member comparison, jurisdictional filing footprint, claim evolution, or technical chronology.
+description: Analyze a patent family from a patent identifier or Patsnap patent URL by defining the family scope, reconstructing priority and procedural relationships, comparing technical disclosures and claim focus, mapping themes, and generating a source-traceable offline HTML report. Use when a patent analyst asks for family structure, member comparison, jurisdictional filing footprint, claim evolution, or technical chronology.
 ---
 
 # Analyze a Patent Family
 
 ## Objective
 
-Given one patent identifier or PatSnap patent URL, identify the relevant patent family,
+Given one patent identifier or Patsnap patent URL, identify the relevant patent family,
 normalize its members and relationships, compare technical disclosure and claim focus,
 and produce a self-contained scientific HTML report.
 
@@ -35,7 +36,7 @@ Do not infer market strategy, product coverage, validity, enforceability, or com
 Use when the user provides:
 
 - a publication, application, or grant number;
-- a PatSnap patent URL;
+- a Patsnap patent URL;
 - one known family member and asks for the complete family;
 - a request for priority-chain, continuation, divisional, or national-stage analysis;
 - a request for technical or claim evolution within a family.
@@ -58,7 +59,7 @@ Before retrieval, record:
 If the user does not specify the family definition, use a simple family as the primary analytical unit
 and show extended or domestic relationships separately when available.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Inspect the live schema before calling a tool.

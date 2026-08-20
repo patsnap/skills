@@ -82,7 +82,7 @@ Place a stable claim tag such as `T001` beside every material statement and a co
 
 ## Patent links
 
-Use a verified stable global PatSnap or official public patent URL. Show publication number, title, applicant, date, jurisdiction, family/status-as-of information, source language, translation provenance, and sample disclaimer as available.
+Use a verified stable global Patsnap or official public patent URL. Show publication number, title, applicant, date, jurisdiction, family/status-as-of information, source language, translation provenance, and sample disclaimer as available.
 
 ## Unavailable-state component
 

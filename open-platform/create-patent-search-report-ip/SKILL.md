@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-patent-search-report-ip
 description: Create the final evidence-backed patent-landscape insight report from validated search, statistics, taxonomy, patent-package, and human-tagging artifacts. Use at Stage 4/4 of the create-patent-landscape-overview-ip suite to aggregate a large tagged patent pool safely, synthesize technology evolution and branch-level value signals, translate patent-package evidence into bounded user actions, and write report_manifest.json plus one self-contained scientific HTML report.
 ---

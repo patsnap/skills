@@ -15,9 +15,9 @@ Equivalent data is acceptable when it includes query scope, screening rules, tag
 
 Without a validated tagged dataset, the skill can provide a framework and data-readiness assessment, but it must not present an executed competitive analysis.
 
-## 2. PatSnap global MCP services
+## 2. Patsnap global MCP services
 
-Open the [PatSnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers), sign in, open the required service page, and copy the current connection URL from its Connect panel. Keep the actual API key secret and outside report files.
+Open the [Patsnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers), sign in, open the required service page, and copy the current connection URL from its Connect panel. Keep the actual API key secret and outside report files.
 
 ### Advanced Patent Search
 
@@ -88,4 +88,4 @@ HTML output must follow `references/html-report-template-spec.md`. It must remai
 
 ## 5. Help
 
-Use the [PatSnap Developer Center](https://open.patsnap.com/devportal) for current global authentication and platform documentation. Connector pages and schemas can change; re-check the official pages before publishing setup instructions.
+Use the [Patsnap Developer Center](https://open.patsnap.com/devportal) for current global authentication and platform documentation. Connector pages and schemas can change; re-check the official pages before publishing setup instructions.

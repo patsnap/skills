@@ -11,7 +11,7 @@ Use this file only when a deep HTML presentation is requested.
 
 ---
 name: target-drug-bd-assessment
-description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完整工作流，使用 PatSnap 智慧芽全套 MCP 工具（靶点、药物管线、临床试验、专利、BD交易、学术文献）对任意肿瘤靶点进行系统性调研，生成包含21章节的标准化 HTML 立项报告，含 KPI 看板、SWOT、优先级矩阵、风险提示、数据覆盖摘要等完整内容。
+description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完整工作流，使用 Patsnap 智慧芽全套 MCP 工具（靶点、药物管线、临床试验、专利、BD交易、学术文献）对任意肿瘤靶点进行系统性调研，生成包含21章节的标准化 HTML 立项报告，含 KPI 看板、SWOT、优先级矩阵、风险提示、数据覆盖摘要等完整内容。
 ---
 
 # target-initiation-report · 靶点研发立项报告生成器
@@ -20,7 +20,7 @@ description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完
 
 当用户输入一个**肿瘤治疗靶点**（如 B7-H3、HER3、TROP2、CLDN18.2 等），本 Skill 将：
 
-1. 系统调用 PatSnap 智慧芽 MCP 工具完成全量数据采集
+1. 系统调用 Patsnap 智慧芽 MCP 工具完成全量数据采集
 2. 按 21 章节标准结构蒸馏分析结果
 3. 生成一份完整的 HTML 格式研发立项报告
 
@@ -71,7 +71,7 @@ description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完
 - `ls_paper_vector_search(query="[靶点] mechanism tumor expression")` → 代表性高影响力文献
 
 ### 阶段 7 · Web 补查（必要时）
-- 对 PatSnap 未覆盖的临床数据（ORR/PFS 等）调用 `ls_web_search` 补充
+- 对 Patsnap 未覆盖的临床数据（ORR/PFS 等）调用 `ls_web_search` 补充
 - 所有 Web 补查结果均需标注 `[Web补查]`，数值标注「待核实」
 
 ---
@@ -180,7 +180,7 @@ description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完
 - **文件名**：`{靶点名}_initiation_report_v{版本}.html`
 - **版本号**：从 v1.0.0 开始，每次重新生成递增
 - **标题格式**：`[靶点名] ([别名]) 靶点研发立项报告`
-- **页脚**：报告类型/版本/生成日期/PatSnap智慧芽/内部参考声明
+- **页脚**：报告类型/版本/生成日期/Patsnap智慧芽/内部参考声明
 
 ---
 
@@ -202,5 +202,5 @@ description: 靶点研发立项报告生成器：基于 B7-H3 报告蒸馏的完
 - 报告生成过程中需实时说明进度（「已完成第X阶段，共7阶段」）
 - 每个章节生成后应有简短的质量自检（数据来源是否标注、是否有未核实数据）
 - 报告末尾必须有完整的「第19章·数据覆盖摘要」，如实反映检索结果
-- 如果某个靶点在 PatSnap 数据库中的数据有限（如极早期靶点），应在摘要中说明并降低置信度
+- 如果某个靶点在 Patsnap 数据库中的数据有限（如极早期靶点），应在摘要中说明并降低置信度
 - 生成完成后，将 HTML 文件保存至 `@session/outputs/` 下并提供预览链接

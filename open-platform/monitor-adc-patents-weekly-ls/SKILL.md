@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: monitor-adc-patents-weekly-ls
 description: Create an evidence-backed weekly monitor of newly published antibody-drug conjugate (ADC) patent applications. Use when a user asks for an ADC patent weekly, new WO/PCT publications, emerging ADC targets or technologies, priority claim comparisons, or a shortlist of records that warrant claim review.
 ---
@@ -60,7 +61,7 @@ Use user-supplied, authoritative exports when they cover the requested interval 
 
 For live retrieval, use only connectors that are actually available and authorized:
 
-| Need | PatSnap MCP | Role | Marketplace |
+| Need | Patsnap MCP | Role | Marketplace |
 |---|---|---|---|
 | Reproducible publication-date and technical-field search | `advanced_patent_search` | Primary; use `search_patents_nested`, `search_patent_count`, field filtering, and keyword assistance as available | https://open.patsnap.com/marketplace/mcp-servers/patent-search |
 | Bibliography, family, status, claims, description, drawings, translation, and technical problem/solution/benefit | `patent_briefing` | Verification and enrichment of shortlisted records | https://open.patsnap.com/marketplace/mcp-servers/patent-briefing |
@@ -239,7 +240,7 @@ Before delivery, verify:
 - [ ] missing data is labeled, not silently treated as zero;
 - [ ] all counts reconcile from retrieval to final families;
 - [ ] legal, clinical, and commercial conclusions are appropriately bounded;
-- [ ] links resolve to the intended global PatSnap or primary source page;
+- [ ] links resolve to the intended global Patsnap or primary source page;
 - [ ] the report contains no credentials, hidden personal data, invented patents, or unsupported claims.
 
 ## Failure and escalation paths

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: alloy-composition-search-zhcn
 description: |
   通过理解用户查询、检索并分析相关合金数据（可选通过 MCP 工具），生成专业的合金成分检索回应，并以清晰的筛选、分类与洞察呈现结构化成分表。

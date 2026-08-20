@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: applicant-tech-patent-retrieval
 description: 面向指定申请人并限定技术主题开展专利检索。适用于用户需要检索某公司/申请人在特定技术领域的专利、构建“申请人优先 + 技术主题约束”的智慧芽检索式、扩展申请人法律主体和名称变体、拆解技术主题为可检索要素、组合申请人表达式与主题公式、按申请和简单同族去重，并生成检索数据集及 Markdown/Word 报告的场景。不适用于没有技术主题限制的纯申请人全量检索、没有目标申请人的纯技术全景分析，或检索完成后的下游技术筛选任务。
 ---
@@ -19,7 +20,7 @@ description: 面向指定申请人并限定技术主题开展专利检索。适�
 ### 0. 公式生成防火墙
 
 - 默认流程必须分阶段推进。Skill 触发后的第一轮回答，只输出 Step 0 至 Step 7，并请用户确认门禁状态；除非用户明确要求“包含公式的完整草稿”，否则不得在同一轮输出 Step 8 的公式。
-- 绝对规则：在检索前校验包完整写出之前，不得输出任何正式检索策略、申请人表达式、主题表达式、组合公式、`ANCS`、`TA_ALL`、`APPLICANT_TOPIC_FINAL` 或可执行的 PatSnap/智慧芽查询。
+- 绝对规则：在检索前校验包完整写出之前，不得输出任何正式检索策略、申请人表达式、主题表达式、组合公式、`ANCS`、`TA_ALL`、`APPLICANT_TOPIC_FINAL` 或可执行的 Patsnap/智慧芽查询。
 - 检索前校验包必须真实出现在回答中，不能只存在于内部推理。
 - 如果回答中出现 `Step 3: Formal Search Strategy`、`正式检索策略`、`Applicant expression`、`Topic expression` 或 `Combined query` 等章节，但其前文没有完整检索前校验包，则该回答无效。
 - 即使用户要求“直接跑”“给公式”“正式检索”或“继续”，也必须先补齐缺失的检索前校验包。
@@ -116,7 +117,7 @@ Step 4：正式检索式（推荐两版）
 - `ANCS` 只是推荐项，不能作为静默默认值。
 - 字段确认前，不得进行有证据支撑的申请人扩展、数量校验、检索、合并、去重、最终主题组合或最终报告撰写。
 - 可选字段包括：`ALL_AN`、`AN`、`ANC`、`ANS`、`ANS_EXACT`、`ANCS`、`ANCS_EXACT`。
-- 每个 PatSnap/智慧芽表达式中，字段和值之间必须使用 `:`，例如 `ANCS:("示例公司")`，不得使用 `=`。
+- 每个 Patsnap/智慧芽表达式中，字段和值之间必须使用 `:`，例如 `ANCS:("示例公司")`，不得使用 `=`。
 
 当字段尚未确认时，第一轮回答必须使用以下内容：
 
@@ -205,7 +206,7 @@ Step 4：正式检索式（推荐两版）
 - 先确定执行模式：
   - `formula_only_mode`：用户只需要检索策略、可执行公式、方法论，或无法/不要求 Codex 执行检索时使用。
   - `retrieval_dataset_mode`：用户要求 Codex 检索/导出数据、生成数据集、去重结果或准备下游分析输入时使用。
-- 在 `formula_only_mode` 中，完成标准是：提供展开后的可执行公式、假设、待确认事项和 PatSnap 执行清单；不强制要求数据集或 Word 报告。
+- 在 `formula_only_mode` 中，完成标准是：提供展开后的可执行公式、假设、待确认事项和 Patsnap 执行清单；不强制要求数据集或 Word 报告。
 - 在 `retrieval_dataset_mode` 中，只有生成代表性数据集，并在报告中写明 `downstream_dataset_type`、`downstream_dataset_file` 和 `downstream_dataset_count` 后，才能标记为完成。
 - 在 `retrieval_dataset_mode` 中，原始公开/公告数量和全量命中数只是来源/审计指标，不是下游代表性数量。
 - 在 `retrieval_dataset_mode` 中，如有同族字段，优先使用简单同族代表；如无同族字段，必须明确降级为申请级代表。

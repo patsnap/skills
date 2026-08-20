@@ -697,7 +697,7 @@ def classify_patent_type(pn: str) -> str:
 → 更新 pending_pns.json
 ```
 
-#### 5.2 md 文件日期提取（关键：PatSnap md 中日期为8位纯数字）
+#### 5.2 md 文件日期提取（关键：Patsnap md 中日期为8位纯数字）
 
 ```python
 import re
@@ -1023,7 +1023,7 @@ ws.cell(row=1, column=col_k, value="法律状态")
 | EP同族翻译文件（FI/ES/DK/PL/HU等T系列） | ~600条 | ✅ 可补（同族反查） | 提取基础EP号搜索 |
 | HK/SG/AU/CA等地区登记号 | ~200条 | ⚠️ 部分可补 | 收录有限 |
 | 极新申请（2025-2026，WO/EP新申请） | ~150条 | ✅ 可补（pn精确搜索） | 用pn过滤可获取 |
-| ZA/AL/HRP/VN/UA/EA小国别 | ~200条 | ❌ 不可补 | PatSnap未收录 |
+| ZA/AL/HRP/VN/UA/EA小国别 | ~200条 | ❌ 不可补 | Patsnap未收录 |
 | 外观设计专利（USD/JP/CN外观） | ~44条 | ❌ 正常空白 | 外观设计天然无IPC |
 
 **最终覆盖率：J列 1,687/2035 = 82.9%，K列 1,723/2035 = 84.7%**
@@ -1093,11 +1093,11 @@ ws.cell(row=1, column=col_k, value="法律状态")
 | E21 | 服务端500持续失败导致大量空白 | 部分专利 fetch 接口不稳定 | 改用 search 接口兜底，建立 pending 机制 |
 | E22 | 每批仅写入新增条目，历史批次未累积 | parse 脚本每次重建而非追加 | 改为全量扫描 dates_cache 写入 |
 | E23 | ~$ 临时文件被误判为已缓存 md | 未过滤 Windows 临时文件 | 判断前过滤 `~$` 前缀文件 |
-| E24 | AR 阿根廷专利 md 中日期字段为空 | PatSnap 对 AR 专利数据覆盖不完整 | 改用 search 接口，search 结果有日期字段 |
+| E24 | AR 阿根廷专利 md 中日期字段为空 | Patsnap 对 AR 专利数据覆盖不完整 | 改用 search 接口，search 结果有日期字段 |
 | E25 | UA130591C2 fetch 持续500 | 乌克兰专利服务端不稳定 | 用 search 接口按专利号查询，成功获取 |
 | E26 | J/K列表头为空 | 写入逻辑未处理第1行表头 | 写入前先检查并补写 J1/K1 |
 | E27 | 大量空白误判为数据库故障 | 未区分"未收录"与"翻译文件" | 先做同族反查，再做覆盖率分析 |
-| E28 | 翻译文件直接搜索返回0条 | FI/ES/DK等翻译文件号PatSnap不收录 | 提取基础EP号后搜索 |
+| E28 | 翻译文件直接搜索返回0条 | FI/ES/DK等翻译文件号Patsnap不收录 | 提取基础EP号后搜索 |
 | E29 | Python脚本需审批导致流程阻塞 | Eureka Python审批机制 | 改用纯搜索API方案（无需审批）直接处理 |
 | E30 | WO2026极新申请legal_status为空 | 数据库延迟填充 | 用 filters.pn 精确过滤（非关键词搜索）可获取 |
 | E31 | 补全时用关键词泛搜而非pn精确过滤 | 误用keyword策略 | 始终用 filters.pn 精确过滤专利号，不用关键词搜索 |
@@ -1144,7 +1144,7 @@ ws.cell(row=1, column=col_k, value="法律状态")
 
 | 类型 | 代表专利号 | 原因 |
 |---|---|---|
-| ZA/AL/HRP/VN/UA/EA | ZA202300536B, AL13448B | PatSnap未收录 |
+| ZA/AL/HRP/VN/UA/EA | ZA202300536B, AL13448B | Patsnap未收录 |
 | 外观设计专利 | USD1118367S, KRDM系列 | 天然无IPC |
 | DE602系列 | DE602016095006T2 | 德国特殊翻译文件格式 |
 

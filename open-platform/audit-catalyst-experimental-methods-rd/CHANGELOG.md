@@ -6,7 +6,7 @@
 
 - Localized the complete skill package, deterministic rule set, schemas, prompts, HTML, Word output, and validation messages into international scientific English.
 - Renamed the package to `audit-catalyst-experimental-methods-rd` while preserving the source file topology.
-- Replaced domestic configuration text with a local-first execution contract and optional verified global PatSnap MCP references.
+- Replaced domestic configuration text with a local-first execution contract and optional verified global Patsnap MCP references.
 - Reworked report terminology for global research, R&D, and technical-review practice.
 - Updated the report to a restrained, accessible scientific/editorial visual system.
 - Distinguished `not specified` from evidence that a method or control was not performed.

@@ -27,7 +27,7 @@ The China- and Korea-heavy patent examples are translated historical fixtures. T
 5. Technical problem
 6. Title
 
-PatSnap Deep Patent Mining may provide technical problem, approach, and benefit summaries. These derived fields must remain consistent with the claimed or described object and use.
+Patsnap Deep Patent Mining may provide technical problem, approach, and benefit summaries. These derived fields must remain consistent with the claimed or described object and use.
 
 Translated patent excerpts are working translations. Retain publication number, source language, and translation provenance; consult the source-language text when a translation ambiguity could change a label.
 
@@ -100,7 +100,7 @@ Route a record to manual review when:
 - a root-only path, historical dirty label, or out-of-taxonomy path appears;
 - translation ambiguity could change the decision.
 
-## PatSnap MCP use
+## Patsnap MCP use
 
 - Use keyword assistance to expand milk-protein, peptide, function, and process terminology, then filter noise.
 - Separate keyword results into synonyms, related context terms, and noise. Product contexts, diseases, broad nutrition terms, and unrelated abbreviations must not enter the synonym list automatically.

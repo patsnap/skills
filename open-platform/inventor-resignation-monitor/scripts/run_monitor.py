@@ -204,7 +204,7 @@ def generate_html_report(data: dict, output_path: str):
   <div class="disclaimer">
     ⚠️ <strong>重要说明：</strong>专利有约18个月公开时滞，监控窗口末尾18个月内申请的专利可能尚未公开，实际风险可能被低估。建议每季度执行滚动监控。同名发明人存在误报可能，建议结合IPC分类和技术词二次确认。
   </div>
-  <div class="footer">Powered by Eureka · PatSnap &nbsp;|&nbsp; {report_date}</div>
+  <div class="footer">Powered by Eureka · Patsnap &nbsp;|&nbsp; {report_date}</div>
 </div>
 </body>
 </html>"""

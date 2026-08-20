@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: identify-patent-commercialization-opportunities-ip
 description: Assess a narrowly defined technology opportunity through reproducible patent searches, full-scope metrics, representative patent evidence, transparent scoring, and an offline multi-page decision report. Use when a user asks whether a specific technical route merits further R&D, licensing, partnering, or commercialization diligence.
 ---
@@ -101,7 +102,7 @@ Use calibrated language such as “supports further diligence” or “does not 
 - state the reporting cutoff date;
 - disclose every assumed boundary in the methodology.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Do not invent tool names, parameters, aggregations, or response fields.

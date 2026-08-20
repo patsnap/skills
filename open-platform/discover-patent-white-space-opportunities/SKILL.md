@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: discover-patent-white-space-opportunities
 description: |
   从专利地图中发现候选空白点，评估其问题价值，诊断空白背后的关键矛盾，并提出矛盾化解思路。适用于分析专利地图、技术-功效矩阵、技术-应用矩阵、专利聚类图、技术路线图或专利稀疏区域。候选空白点选择后及问题价值评估后，必须分别取得用户确认；不开展后续技术验证、商业验证或专利布局论证。

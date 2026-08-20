@@ -1,6 +1,6 @@
-# PatSnap MCP orchestration
+# Patsnap MCP orchestration
 
-The filename is retained to preserve the source package topology. Its content describes the global PatSnap Open Platform.
+The filename is retained to preserve the source package topology. Its content describes the global Patsnap Open Platform.
 
 ## Authorization precedes connectivity
 

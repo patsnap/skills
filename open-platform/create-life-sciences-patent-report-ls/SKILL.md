@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-life-sciences-patent-report-ls
 description: Create or update a traceable, self-contained HTML patent intelligence report for a life-sciences technology, target, drug, antibody, ADC, company, or patent set. Use when a user requests a life-sciences patent landscape or deep-dive report that integrates claims, sequences or conjugate technology, experiments, pipeline and clinical context, scientific evidence, deals or news, and inline patent-figure evidence.
 ---
@@ -55,7 +56,7 @@ Clarify or state assumptions for:
 
 Use supplied authoritative material first. No MCP is required when it is complete.
 
-For live retrieval, use only available and authorized global PatSnap MCPs:
+For live retrieval, use only available and authorized global Patsnap MCPs:
 
 | Evidence | MCP | Verified role | Marketplace |
 |---|---|---|---|

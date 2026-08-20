@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: litigation-risk-monitor
 description: |
   涉诉专利风险监测与同族扩展分析技能。触发场景：用户提供目标申请人名单（1～N 个，中英文均可），希望自动检索这些申请人名下的涉诉专利，做 INPADOC 同族扩展，结合 Patsnap legal 模块与 web.search 公开诉讼信息双向交叉，输出同族基础分析（地域/技术点/法律状态/审查历史）、诉讼时间线（含涉案专利号）、涉诉案件深度分析（原被告/案号/进程/争议焦点/抗辩/结果）、核心发明人近 3 年延伸分析，并生成单一 HTML 报告 + 结构化 JSON/CSV 附件，给出地域风险、应诉预警、趋势预测三维结论。不适用于：单件专利新颖性/创造性分析（路由 novelty-check / non-obviousness-check）、纯 FTO 法律意见、无申请人名单的开放式情报、与"涉诉专利同族 + 诉讼案件 + 发明人趋势"无关的一般性问答。
@@ -31,7 +32,7 @@ description: |
 
 ### Step 1 — 涉诉专利初筛
 
-#### 1a — PatSnap MCP + web.search 双路初筛
+#### 1a — Patsnap MCP + web.search 双路初筛
 - 对每个 `assignee` 调用 `patent.search`：`search_strategy=["filter"]`，`filters.assignees=[assignee]`，在返回结果中按法律事件含 litigation/诉讼/lawsuit/infringement 字段做候选筛选。
 - 同时用 `web.search` 查询 `"<assignee>" patent litigation lawsuit 诉讼 专利` 做交叉确认。
 - 合并两路结果，按 `pn` 去重，保存到内存变量 `litigated_patents[]`。
@@ -388,7 +389,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 
 ```html
 <h1>⚖️ 涉诉专利风险监测报告 — [target真实名称]</h1>
-<div style="color:#666;font-size:13px;margin-bottom:16px;">生成时间：[真实时间] | 数据来源：智慧芽 PatSnap + 公开网络信息</div>
+<div style="color:#666;font-size:13px;margin-bottom:16px;">生成时间：[真实时间] | 数据来源：智慧芽 Patsnap + 公开网络信息</div>
 
 <!-- 执行总结放在此处（见第0章规范） -->
 

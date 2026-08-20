@@ -306,12 +306,12 @@ function toggleCard(id) {
   ├── 权利要求2："The antibody of claim 1..." → 从属（引用#1），跳过
   └── 权利要求8：不引用任何其他权利要求 → ✅ 独立权利要求
 
-独立权利要求原文（PatSnap MCP获取）：
+独立权利要求原文（Patsnap MCP获取）：
   [英文原文]
   译文：[中文译文]
 
 权利要求来源标注：
-  ✅ PatSnap MCP实时获取 | 📁 本地缓存 | ⚠️ 未获取（暂缓比对）
+  ✅ Patsnap MCP实时获取 | 📁 本地缓存 | ⚠️ 未获取（暂缓比对）
 ```
 
 ---
@@ -461,7 +461,7 @@ claim_diff_matrix 表格格式：
   "representative_pn": "（B文本优先的专利号）",
   "representative_claim_text": "（B文本独立权利要求原文）",
   "representative_claim_cn": "（中文译文）",
-  "claim_source": "B文本|A文本（审中）|PatSnap MCP获取",
+  "claim_source": "B文本|A文本（审中）|Patsnap MCP获取",
   "independent_claims": ["1", "8"],
   "members": [
     {

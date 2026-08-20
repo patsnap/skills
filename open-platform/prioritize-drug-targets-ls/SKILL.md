@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: prioritize-drug-targets-ls
 description: Generate and prioritize experimentally testable target hypotheses from one or more small-molecule structures. Use when a user supplies SMILES or a compound library and asks which targets the molecules may modulate, how structural neighbors and SAR support the hypotheses, which biological and competitive evidence should be checked, or which compounds and targets should advance to orthogonal validation.
 ---
@@ -51,7 +52,7 @@ If the compound identity or stereochemistry is ambiguous, create separate struct
 
 Use supplied authoritative chemistry/assay exports where available.
 
-Verified global PatSnap MCPs that can support parts of the workflow:
+Verified global Patsnap MCPs that can support parts of the workflow:
 
 | Need | MCP | Role | Marketplace |
 |---|---|---|---|
@@ -62,7 +63,7 @@ Verified global PatSnap MCPs that can support parts of the workflow:
 | Trials/results | `clinical_trials` | Optional clinical trial and result context | https://open.patsnap.com/marketplace/mcp-servers/clinical-trials |
 | Scientific/translational context | `scientific_translational_evidence` | Optional translational record retrieval | https://open.patsnap.com/marketplace/mcp-servers/scientific-translational-evidence |
 
-The global marketplace page currently named `chemistry-small-molecule` reports zero callable tools. Therefore this skill does not claim an operational PatSnap MCP for ADMET prediction, MCS/scaffold analysis, structure/similarity search, patent-structure retrieval, or automated SAR extraction. Use those capabilities only when an authorized service is actually exposed, and record provider/tool/version/parameters. Otherwise request user exports or produce a protocol with an explicit coverage gap.
+The global marketplace page currently named `chemistry-small-molecule` reports zero callable tools. Therefore this skill does not claim an operational Patsnap MCP for ADMET prediction, MCS/scaffold analysis, structure/similarity search, patent-structure retrieval, or automated SAR extraction. Use those capabilities only when an authorized service is actually exposed, and record provider/tool/version/parameters. Otherwise request user exports or produce a protocol with an explicit coverage gap.
 
 ## Evidence hierarchy
 

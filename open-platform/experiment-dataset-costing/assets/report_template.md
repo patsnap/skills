@@ -4,7 +4,7 @@
 > 靶点：{{TARGETS}}  
 > 任务类型：{{TASK_TYPE}}  
 > 用途：{{USE_CASE}}  
-> 工具：Eureka · 智慧芽 PatSnap MCP
+> 工具：Eureka · 智慧芽 Patsnap MCP
 
 ---
 

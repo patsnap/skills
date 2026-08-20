@@ -353,7 +353,7 @@ def render_html_report(
     <section class="section disclaimer">
       <h2 class="section-title">📌 免责声明</h2>
       <p>本报告由自动化工具辅助生成，仅供参考，不构成法律意见。专利侵权判断应由具备资质的专利律师或专利代理机构出具正式法律意见。请在做出商业决策前咨询专业法律顾问。</p>
-      <p style="margin-top:8px;color:#94a3b8;font-size:12px;">数据来源：智慧芽 PatSnap OpenAPI（P070 / P002 / P018 / AI07）| AI07 侵权比对通过 zhihuiya-local MCP ai_chat 接口真实调用</p>
+      <p style="margin-top:8px;color:#94a3b8;font-size:12px;">数据来源：智慧芽 Patsnap OpenAPI（P070 / P002 / P018 / AI07）| AI07 侵权比对通过 zhihuiya-local MCP ai_chat 接口真实调用</p>
     </section>
     """)
 
@@ -475,7 +475,7 @@ def render_html_report(
 <body>
   <header class="page-header">
     <h1>{_esc(title)}</h1>
-    <div class="meta">生成时间：{now} &nbsp;|&nbsp; 数据来源：智慧芽 PatSnap OpenAPI（P070 / P002 / P018 / AI07）</div>
+    <div class="meta">生成时间：{now} &nbsp;|&nbsp; 数据来源：智慧芽 Patsnap OpenAPI（P070 / P002 / P018 / AI07）</div>
   </header>
   <div class="container">
     {"".join(sections)}

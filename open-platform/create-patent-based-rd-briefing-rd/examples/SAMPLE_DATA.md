@@ -158,7 +158,7 @@ images are omitted.
 
 ## Data-source preparation
 
-When using PatSnap or another database:
+When using Patsnap or another database:
 
 1. confirm export and reproduction rights;
 2. save the exact search query and filters;
@@ -171,7 +171,7 @@ When using PatSnap or another database:
 9. retain status source and as-of date;
 10. document exclusions and deduplication.
 
-## Verified optional PatSnap connectors
+## Verified optional Patsnap connectors
 
 - Patent search: https://open.patsnap.com/marketplace/mcp-servers/patent-search
 - Patent briefing: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing

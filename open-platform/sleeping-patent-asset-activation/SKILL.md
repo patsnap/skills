@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: sleeping-patent-asset-activation
 description: |
   将沉睡的专利和无形资产组合转化为可执行的许可、转让、联合开发、融资、续费或放弃决策。适用于用户要求盘活沉睡专利资产、筛选可许可/可转让专利、做年费续缴决策、生成资产包/买方线索/招商页面/管理层报告，或结合 Patsnap/Zhihuiya MCP 专利证据与公开市场信号开展企业知识产权商业化的场景。

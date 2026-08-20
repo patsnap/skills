@@ -53,7 +53,7 @@ Or run stage by stage (each writes a JSON checkpoint, so stages are restartable)
 
 ## Notes
 
-- **Inventor parsing.** PatSnap formats inventors as `LASTNAME, FIRSTNAME|...`.
+- **Inventor parsing.** Patsnap formats inventors as `LASTNAME, FIRSTNAME|...`.
   Split on `|`, `;`, `；`, and line breaks only — never on commas, or names get
   fragmented. See the core-inventor rule in `../references/screening-standard.md`.
 - **Numeric scores** use percentile rank within the candidate set (>=10 candidates).
@@ -69,7 +69,7 @@ Or run stage by stage (each writes a JSON checkpoint, so stages are restartable)
   `https://analytics.zhihuiya.com/patent-view/abst?patentId=<patent_id>&q=<pn>`
   (template `VIEW_TMPL` in `hv_6_assemble.py`). This minimal form has no share
   signature, so it never expires; the reader must be logged into Zhihuiya. To
-  target a different Zhihuiya/PatSnap product line, edit `VIEW_TMPL`.
+  target a different Zhihuiya/Patsnap product line, edit `VIEW_TMPL`.
 
 ## Tuning
 

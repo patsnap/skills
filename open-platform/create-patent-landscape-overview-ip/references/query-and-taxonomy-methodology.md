@@ -5,7 +5,7 @@ It preserves the source’s expert query and classification logic while making e
 languages, authorities, dates, counting rules, and thresholds project-specific and verifiable.
 
 The examples are structural, not live query strings.
-Verify every operator against the current PatSnap product or connector schema before execution.
+Verify every operator against the current Patsnap product or connector schema before execution.
 
 ## Part A — Expert query construction
 
@@ -21,7 +21,7 @@ The main difference between a keyword bag and an analyst-grade query is controll
 
 ## A1 — Field scope is the primary precision control
 
-PatSnap products may expose title, abstract, claim, description, assignee, authority,
+Patsnap products may expose title, abstract, claim, description, assignee, authority,
 classification, priority-date, and other field operators.
 The source uses operators such as `TTL`, `TA`, `TAC`, `TACD`, `DESC_*`, `IPC`, `CPC`,
 `all_an`, `AUTHORITY`, and `E_PRIORITY_DATE`.

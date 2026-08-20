@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Retrieve a PatSnap query and render a competitor patent report."""
+"""Retrieve a Patsnap query and render a competitor patent report."""
 import sys
 import re
 from datetime import datetime
@@ -18,7 +18,7 @@ def _auth_headers():
 
 
 def _base_url():
-    """Return the explicitly configured, verified PatSnap REST base URL."""
+    """Return the explicitly configured, verified Patsnap REST base URL."""
     base_url, _ = _cfg.patent_api_settings()
     return base_url.rstrip("/")
 

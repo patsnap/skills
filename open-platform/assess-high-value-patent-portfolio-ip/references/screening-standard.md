@@ -10,7 +10,7 @@ compared across unrelated searches.
 
 Record the following before retrieval:
 
-- reviewed PatSnap query and query owner;
+- reviewed Patsnap query and query owner;
 - legal entities, technologies, jurisdictions, and date scope;
 - family definition and representative-publication rule;
 - database and legal-status cutoff dates;
@@ -76,7 +76,7 @@ supplies a reviewed override.
 
 1. Treat `|`, semicolon, full-width semicolon, and line breaks as inventor-record
    separators.
-2. Do not split on comma or full-width comma. In common PatSnap output,
+2. Do not split on comma or full-width comma. In common Patsnap output,
    `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME` uses the comma inside one name and
    the vertical bar between names.
 3. Trim whitespace and count each normalized exact-returned name once per
@@ -181,7 +181,7 @@ errors. A consumer must reject an incompatible schema version.
 | Abstract drawing | P021 image or “No usable abstract drawing returned” |
 | Current assignee or owner | Source label, entity string, and cutoff if available |
 | Simple legal status | Raw P041 status plus checked-as-of date; not enforceability proof |
-| PatSnap title | P025 English title when returned |
+| Patsnap title | P025 English title when returned |
 | Technical problem | P025 English summary with provenance |
 | Technical approach | P025 English summary with provenance |
 | Technical benefit or effect | P025 English summary with provenance |

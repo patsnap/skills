@@ -12,7 +12,7 @@ experiment-dataset-costing 主执行脚本
 
 依赖:
     python-docx, pandas, requests
-    智慧芽 PatSnap MCP 服务（需在 Eureka 中配置）
+    智慧芽 Patsnap MCP 服务（需在 Eureka 中配置）
 """
 
 import argparse
@@ -127,7 +127,7 @@ def build_compliance_matrix(data_sources: list, use_case: str) -> list:
         "PubChem":     {"license": "公有领域",             "academic": "✅", "commercial": "✅",  "risk": "极低"},
         "PDB":         {"license": "CC0",                "academic": "✅", "commercial": "✅",  "risk": "极低"},
         "Patent-SAR":  {"license": "公开披露",             "academic": "✅", "commercial": "⚠️", "risk": "中-高"},
-        "PatSnap-MCP": {"license": "服务条款",             "academic": "✅", "commercial": "✅",  "risk": "低"},
+        "Patsnap-MCP": {"license": "服务条款",             "academic": "✅", "commercial": "✅",  "risk": "低"},
         "Literature":  {"license": "数值不受版权保护",      "academic": "✅", "commercial": "✅",  "risk": "极低"},
         "ZINC":        {"license": "开放获取",             "academic": "✅", "commercial": "⚠️", "risk": "中"},
     }
@@ -218,7 +218,7 @@ def main():
 
     print("[Step 3/4] 生成合规评级矩阵...")
     sources = ["ChEMBL", "BindingDB", "PubChem", "PDB",
-               "Patent-SAR", "PatSnap-MCP", "Literature", "ZINC"]
+               "Patent-SAR", "Patsnap-MCP", "Literature", "ZINC"]
     compliance = build_compliance_matrix(sources, args.use_case)
 
     print("[Step 4/4] 写出结构化报告文件...")

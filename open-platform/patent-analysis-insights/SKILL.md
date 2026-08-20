@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-analysis-insights
 description: 由 MCP 数据驱动的专利检索、标引与分析工作流。让专利数据不再躺在表格里，而是变成战略判断
 ---
@@ -29,6 +30,6 @@ description: 由 MCP 数据驱动的专利检索、标引与分析工作流。�
 ## 使用注意事项
 
 - 不要编造不存在的专利、市场或技术证据。
-- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 优先使用用户提供材料和 Patsnap/Zhihuiya MCP 数据。
 - 明确标注数据来源、检索范围、时间范围和不确定性。
 - 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。

@@ -78,7 +78,7 @@ def keep_row(row: Any) -> None:
 
 
 def add_page_number(paragraph: Any) -> None:
-    paragraph.add_run("PatSnap-assisted research screening  ·  ")
+    paragraph.add_run("Patsnap-assisted research screening  ·  ")
     field = OxmlElement("w:fldSimple")
     field.set(qn("w:instr"), "PAGE")
     paragraph._p.append(field)
@@ -252,10 +252,10 @@ def render(data: dict[str, Any], output: pathlib.Path, *, include_images: bool) 
     configure(document)
     document.core_properties.title = "High-Value Patent Portfolio Screening"
     document.core_properties.subject = "Evidence-traceable candidate-universe ranking"
-    document.core_properties.author = "PatSnap-assisted research workflow"
+    document.core_properties.author = "Patsnap-assisted research workflow"
     document.core_properties.keywords = "patent portfolio, screening, citations, families, legal events"
     document.add_paragraph("HIGH-VALUE PATENT PORTFOLIO SCREENING", style="Title")
-    document.add_paragraph("Evidence-traceable ranking within one documented PatSnap candidate universe", style="Subtitle")
+    document.add_paragraph("Evidence-traceable ranking within one documented Patsnap candidate universe", style="Subtitle")
     notice = document.add_paragraph()
     notice.add_run("SCREENING BOUNDARY  ").bold = True
     notice.add_run("Scores are not monetary valuations, legal opinions, or conclusions on validity or enforceability.")
@@ -284,7 +284,7 @@ def render(data: dict[str, Any], output: pathlib.Path, *, include_images: bool) 
     for record in selected:
         document.add_paragraph(f"{record.get('rank')}. {text(record.get('pn') or record.get('patent_id'))} — {text(record.get('title'))}", style="Heading 2")
         document.add_paragraph(text(record.get("rationale")))
-        table(document, ["PatSnap title", "Technical problem", "Technical approach", "Benefit / effect"], [[record.get("patsnap_title"), record.get("tech_problem"), record.get("tech_approach"), record.get("benefit")]], [2.0, 2.45, 2.7, 2.45])
+        table(document, ["Patsnap title", "Technical problem", "Technical approach", "Benefit / effect"], [[record.get("patsnap_title"), record.get("tech_problem"), record.get("tech_approach"), record.get("benefit")]], [2.0, 2.45, 2.7, 2.45])
         if include_images:
             image = fetch_image(record.get("drawing"))
             paragraph = document.add_paragraph()

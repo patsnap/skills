@@ -1,7 +1,7 @@
 # Reference implementation — high-value patent portfolio screening
 
 These ten source-provided scripts implement the complete workflow in
-`../SKILL.md`. They use the global PatSnap Connect REST service, write
+`../SKILL.md`. They use the global Patsnap Connect REST service, write
 restartable JSON checkpoints, always generate the required static HTML report,
 and optionally generate the same evidence as a Word report.
 
@@ -21,7 +21,7 @@ python -m pip install requests python-docx
 the optional Word report. Set `PYTHONDONTWRITEBYTECODE=1` in controlled or
 read-only environments if desired.
 
-## Global PatSnap credentials
+## Global Patsnap credentials
 
 Use one of these private local methods:
 
@@ -43,7 +43,7 @@ query file, command argument, repository, screenshot, example, or report.
 
 ## Reviewed query
 
-Supply a human-reviewed PatSnap query:
+Supply a human-reviewed Patsnap query:
 
 ```bash
 export HVP_QUERY='TAC_ALL:("virtual reality") AND ALL_AN:("Example Corporation")'
@@ -114,7 +114,7 @@ IDs.
   enforceability.
 - Legal-event presence is activity, not positive value. Review the underlying
   litigation, reexamination/invalidation, license and transfer records.
-- PatSnap commonly returns inventors as
+- Patsnap commonly returns inventors as
   `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`; commas stay inside one name and
   `|`, semicolon, full-width semicolon, or a line break separates records.
 - Transliteration variants and homonyms are not merged automatically.
@@ -124,7 +124,7 @@ IDs.
 ## MCP-assisted operation
 
 The local scripts are a REST reference implementation. In an MCP-capable host,
-use these verified PatSnap services and export normalized evidence into the same
+use these verified Patsnap services and export normalized evidence into the same
 checkpoint contract:
 
 - Advanced Patent Search — Recommended for candidate retrieval:

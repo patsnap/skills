@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: identify-patent-white-space-ip
 description: Identify candidate patent white-space signals from a patent map, technology-effect matrix, technology-application matrix, cluster map, roadmap, or sparse portfolio region; test whether the signal is a search or classification artifact; assess the value of the underlying problem; diagnose route breaks and primary contradictions; and propose two to four principle-level resolution directions. Use for structured innovation-opportunity exploration from patent-map evidence. Require explicit user confirmation after candidate selection and after problem-value assessment; do not perform downstream technical validation, commercial validation, FTO, patentability, or filing-strategy justification.
 ---
@@ -106,7 +107,7 @@ If only an image is supplied, state which interpretations are provisional.
 
 Do not infer raw values that are unreadable from the image.
 
-## PatSnap MCP plan
+## Patsnap MCP plan
 
 This skill can operate from a user-provided map without live MCP access.
 

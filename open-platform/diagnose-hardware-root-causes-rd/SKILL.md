@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: diagnose-hardware-root-causes-rd
 description: Diagnose hardware performance shortfalls with measurable problem definition, first-principles models, equation-led decomposition, 5M1E coverage, multidisciplinary review and evidence-ranked causal trees. Use for root-cause analysis, causal diagrams, out-of-spec parameters, 5 Whys, engineering contradictions or hardware troubleshooting.
 ---
@@ -272,7 +273,7 @@ The exporter validates the tree, unique IDs, permitted node types, root type, fi
 
 ## MCP use
 
-No MCP is required for the diagnostic method or local PNG export. Use external evidence tools only when the user requests research and the service is actually available. Do not imply that PatSnap authorization is necessary for analyzing supplied engineering data.
+No MCP is required for the diagnostic method or local PNG export. Use external evidence tools only when the user requests research and the service is actually available. Do not imply that Patsnap authorization is necessary for analyzing supplied engineering data.
 
 ## Quality gates
 

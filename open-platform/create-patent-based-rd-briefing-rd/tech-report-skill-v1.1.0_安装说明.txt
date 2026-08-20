@@ -54,7 +54,7 @@ localized package.
 Patent connectors
 -----------------
 
-When installed and authorized, the verified global PatSnap mappings are:
+When installed and authorized, the verified global Patsnap mappings are:
 - advanced_patent_search: https://open.patsnap.com/marketplace/mcp-servers/patent-search
 - patent_briefing: https://open.patsnap.com/marketplace/mcp-servers/patent-briefing
 

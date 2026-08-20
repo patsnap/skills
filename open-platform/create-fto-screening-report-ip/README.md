@@ -1,8 +1,8 @@
 # Setup Guide — FTO Screening Report
 
-This package converts a risk-point Word document and user-approved PatSnap
+This package converts a risk-point Word document and user-approved Patsnap
 search expressions into a traceable, screening-level FTO report. It supports a
-self-contained PatSnap REST workflow and an MCP-assisted evidence workflow.
+self-contained Patsnap REST workflow and an MCP-assisted evidence workflow.
 Choose one mode per run and retain complete provenance.
 
 ## 1. Prerequisites
@@ -12,25 +12,25 @@ Choose one mode per run and retain complete provenance.
 - a readable risk-point `.docx` file;
 - target product/process and version;
 - target jurisdiction(s) and relevant commercial acts;
-- one or more reviewed PatSnap search expressions;
-- either PatSnap REST API access or the relevant PatSnap MCP connector(s).
+- one or more reviewed Patsnap search expressions;
+- either Patsnap REST API access or the relevant Patsnap MCP connector(s).
 
 This package generates an FTO screening, not a legal clearance opinion.
 
 ## 2. Choose a data-access mode
 
-### Mode A — PatSnap REST API
+### Mode A — Patsnap REST API
 
 1. Register or sign in at the
-   [PatSnap Open Platform](https://open.patsnap.com/).
+   [Patsnap Open Platform](https://open.patsnap.com/).
 2. Obtain an API key with access to the required endpoints.
 3. Open `references/zhihuiya_config.json`.
 4. Replace `PUT_YOUR_PATSNAP_API_KEY_HERE` in your private local copy.
-5. Keep `patsnap_base_url` set to `https://connect.patsnap.com` unless PatSnap
+5. Keep `patsnap_base_url` set to `https://connect.patsnap.com` unless Patsnap
    provides a different approved endpoint for your account.
 
 The source filename `zhihuiya_config.json` is retained to preserve the original
-package topology. Its content and authentication behavior are global PatSnap.
+package topology. Its content and authentication behavior are global Patsnap.
 
 The REST client sends the key as:
 
@@ -43,15 +43,15 @@ key to a URL.
 
 Official resources:
 
-- [PatSnap Developer Center](https://open.patsnap.com/devportal)
+- [Patsnap Developer Center](https://open.patsnap.com/devportal)
 - [REST API overview](https://open.patsnap.com/devportal/guides/rest-api-overview)
 - [P070 Keyword Assistant](https://open.patsnap.com/devportal/api-reference/search/patent/keyword-suggest)
 - [P018 Claim](https://open.patsnap.com/devportal/api-reference/basic-patent-data/claim-data)
 
-### Mode B — PatSnap MCP connectors
+### Mode B — Patsnap MCP connectors
 
 Browse the current
-[PatSnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers)
+[Patsnap MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers)
 and install only the connectors required for the run.
 
 | Connector | Use | Requirement |
@@ -81,7 +81,7 @@ URL through the client UI or its secure local configuration.
 
 ### REST mode
 
-Run a dry run first; it must not call PatSnap:
+Run a dry run first; it must not call Patsnap:
 
 ```bash
 python scripts/run_generic_fto_report.py \

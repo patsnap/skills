@@ -168,7 +168,7 @@ Use the family model in `patent-family-merge.md`:
 {
   "family_group_id": "...",
   "family_definition": "INPADOC extended family",
-  "family_provider": "PatSnap",
+  "family_provider": "Patsnap",
   "earliest_priority": {},
   "family_review_priority": "critical_review|high_review|monitor|low_current_relevance|resolved",
   "priority_rationale": "...",
@@ -394,17 +394,17 @@ Every displayed publication/patent number in the risk table, claim analysis, fam
 
 Link priority:
 
-1. exact source-record URL returned by the global PatSnap MCP/API;
+1. exact source-record URL returned by the global Patsnap MCP/API;
 2. official patent-office/register record;
 3. another verified stable public patent record.
 
-Do not synthesize an undocumented PatSnap patent-detail URL. Do not use a legacy domestic product domain or a search URL that could resolve to the wrong record. Store:
+Do not synthesize an undocumented Patsnap patent-detail URL. Do not use a legacy domestic product domain or a search URL that could resolve to the wrong record. Store:
 
 ```json
 {
   "publication_number": "...",
   "record_url": "...",
-  "url_source": "PatSnap MCP returned URL|official register",
+  "url_source": "Patsnap MCP returned URL|official register",
   "verified_at": "YYYY-MM-DD"
 }
 ```

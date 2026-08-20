@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-panorama-analysis
 description: |
   专利技术全景分析报告自动生成。用户上传专利数据Excel表格（含标题、申请人、申请日、法律状态、受理局、被引次数等字段）和技术拆解Excel表格后，自动分析专利数据并生成可编辑的HTML全景分析报告。

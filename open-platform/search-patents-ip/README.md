@@ -5,7 +5,7 @@ into versioned expert search branches, validates precision and recall boundaries
 exports a traceable candidate pool for downstream analysis.
 
 - English marketplace: https://open.patsnap.com/marketplace/skill-hub
-- PatSnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
+- Patsnap MCP marketplace: https://open.patsnap.com/marketplace/mcp-servers
 - Chinese source page: recorded only in the parent `LOCALIZATION_INDEX.md`
 
 Suite: `create-patent-landscape-overview-ip` → `search-patents-ip` →

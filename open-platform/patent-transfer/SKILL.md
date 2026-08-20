@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-transfer
 description: 智慧芽专利资产运营转化专家 — 基于输入的专利号，调用专利检索、语义检索、企业情报、新闻资讯 MCP，识别潜在转化企业并生成可直接推送的专利成果转化简报 HTML。
 ---
@@ -203,7 +204,7 @@ description: 智慧芽专利资产运营转化专家 — 基于输入的专利�
     </div>
   </div>
 
-  <div class="data-source">数据更新：{{report_date}} 09:00 | 来源：PatSnap专利数据库/企查查/招投标网站</div>
+  <div class="data-source">数据更新：{{report_date}} 09:00 | 来源：Patsnap专利数据库/企查查/招投标网站</div>
   <div class="footer">本简报由智慧芽AI平台自动生成，仅供内部决策参考</div>
 </div>
 </body>

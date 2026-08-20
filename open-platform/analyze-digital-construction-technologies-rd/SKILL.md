@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: analyze-digital-construction-technologies-rd
 description: Analyze digital and intelligent construction technologies for bridges, tunnels, highways and adjacent infrastructure using patent, scientific, commercial and project evidence. Use for technology intelligence, competitive landscapes, patent landscapes, market-entry research, R&D planning or technical due diligence.
 ---
@@ -38,7 +39,7 @@ If scope is broad, use bridges, tunnels and highways as the source-preserved sta
 
 User-supplied records require no MCP. For live research, use only services actually available and authorized:
 
-| Need | Verified global PatSnap mapping | Marketplace page |
+| Need | Verified global Patsnap mapping | Marketplace page |
 |---|---|---|
 | Patent discovery, field/applicant/date searching | `advanced_patent_search` | https://open.patsnap.com/marketplace/mcp-servers/patent-search |
 | Patent bibliography, family, claims, description and status context | `patent_briefing` | https://open.patsnap.com/marketplace/mcp-servers/patent-briefing |
@@ -84,7 +85,7 @@ Each representative record must include:
 - current source/status date;
 - mapped function, subsystem and infrastructure type;
 - claim-level relevance note;
-- exact global PatSnap returned URL when available;
+- exact global Patsnap returned URL when available;
 - evidence reference.
 
 Negative conclusions require documented full retrieval within the defined corpus, query log and date boundary. Otherwise say “not identified in the reviewed evidence.”
@@ -193,7 +194,7 @@ Use a restrained scientific/editorial visual system: white background, dark navy
 
 - [ ] Scope, cutoff, geography and counting unit are visible.
 - [ ] Core claims link to exact sources using stable evidence IDs.
-- [ ] PatSnap links use returned global URLs, never reconstructed domestic URLs.
+- [ ] Patsnap links use returned global URLs, never reconstructed domestic URLs.
 - [ ] Matched and returned counts come from recorded tool responses.
 - [ ] Search coverage and pagination are documented.
 - [ ] Patent families, publications and legal/status questions are separated.

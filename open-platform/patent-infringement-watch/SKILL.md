@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-infringement-watch
 description: |
   竞争对手产品专利侵权监测工具。用户输入己方公司名称，配合上传竞对产品文件（路径A）或输入竞对公司名称（路径B），自动检索己方专利组合、提取竞对产品技术特征、完成权利要求要素比对，输出带风险等级的侵权分析报告。

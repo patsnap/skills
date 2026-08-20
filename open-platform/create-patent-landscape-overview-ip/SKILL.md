@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: create-patent-landscape-overview-ip
 description: Orchestrate an evidence-backed patent-landscape program for product planning, R&D strategy, competitor intelligence, technology-route analysis, recommended patent packages, and portfolio planning. Use when a user needs search and de-noising, complete-population landscape statistics, taxonomy design, a genuine human tagging handoff, representative patent analysis, and a self-contained scientific HTML report.
 ---
@@ -85,7 +86,7 @@ Use these only when they fit the request and disclose them:
 
 Do not hard-code CN/US/EP, 2023, or publication-level counting.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Use the English interface and English output.
 Inspect the live connector schema before calling a tool.

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: biopharma-patent-landscape
 description: "开展生物医药专利检索、专利族和组合布局研究。适用于：围绕企业、靶点、药物或技术主题开展专利检索、专利族归并、法律状态核验、申请人归属和组合布局研究。"
 ---

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: client-demo-portal
 description: 为企业客户快速搭建智慧芽情报门户演示原型，涵盖需求分析、本地搭建、数据对接、演示话术全流程
 ---

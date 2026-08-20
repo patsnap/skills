@@ -1,6 +1,6 @@
 # MCP and Evidence Boundaries
 
-Use this reference to select verified global PatSnap connectors and prevent a score,
+Use this reference to select verified global Patsnap connectors and prevent a score,
 search result, or missing tool from becoming an unsupported commercialization claim.
 
 ## Verified published connectors

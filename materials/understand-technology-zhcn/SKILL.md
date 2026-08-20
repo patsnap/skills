@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: understand-technology-zhcn
 description: |
   用于解释材料科学与工程概念，涵盖材料性能、结构-性能关系、加工工艺与性能机理。通过阐述基本科学原理、结构-性能关系、加工工艺与性能特征，并在材料组成、微观结构与实际应用中的功能行为之间建立清晰关联，生成对材料与工程技术的结构化说明。

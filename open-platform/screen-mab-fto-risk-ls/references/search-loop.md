@@ -94,7 +94,7 @@ Maintain a machine-readable or tabular log:
       "round": 1,
       "route": "keyword",
       "module": "M2",
-      "database": "PatSnap Advanced Patent Search",
+      "database": "Patsnap Advanced Patent Search",
       "query": "stored query or controlled reference",
       "jurisdictions": ["US", "EP"],
       "languages": ["en", "de"],

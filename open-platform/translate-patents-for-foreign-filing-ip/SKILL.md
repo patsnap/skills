@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: translate-patents-for-foreign-filing-ip
 description: Translate Chinese patent applications, priority texts, claims, descriptions, abstracts, drawing text, sequence-listing references, or invention disclosures into filing-support drafts for Europe, the United States, Japan, or Korea while preserving source support, claim scope, terminology, and destination-specific patent style. Use for EP, US, JP, or KR patent translation, jurisdiction formatting, terminology reconciliation, or translation QA.
 ---
@@ -65,7 +66,7 @@ Load only the reference files required for the requested destinations:
 The common source-faithfulness rules in this file control every destination.
 Jurisdiction references refine patent style and QA; they do not authorize new technical matter.
 
-## Optional PatSnap MCP support
+## Optional Patsnap MCP support
 
 No MCP is required when the user supplies the authoritative source text.
 

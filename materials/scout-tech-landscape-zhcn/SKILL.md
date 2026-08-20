@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: scout-tech-landscape-zhcn
 description: |
   仅用于需要技术版图分析的材料相关查询。聚焦金属合金、聚合物、陶瓷、复合材料及相关加工工艺等材料主题。基于专利、文献与产业数据，生成关于材料类别、供应链、关键机构与研发趋势的结构化洞察。

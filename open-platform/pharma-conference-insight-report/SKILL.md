@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: pharma-conference-insight-report
 description: 医药行业顶级会议洞察与战略分析报告生成器：面向药企战略决策层，输入目标企业信息，自动检索AACR/ASCO/CSCO等顶会最新数据，生成覆盖大会洞察、技术趋势、瘤种格局、靶点竞争、竞争对手深度分析、战略白点、BD信号、战略建议、风险监测的完整HTML战略报告，内嵌Chart.js交互图表与15+酷炫动效。
 ---
@@ -78,7 +79,7 @@ description: 医药行业顶级会议洞察与战略分析报告生成器：面�
 - **技术方案**：顶会数据验证的解决路径
 - **技术效果**：关键临床终点（ORR/PFS/OS数据）
 
-### Step 6 — 专利竞争格局（可选，PatSnap MCP）
+### Step 6 — 专利竞争格局（可选，Patsnap MCP）
 当需要深度技术壁垒分析时：
 - 申请人排名分析
 - 专利趋势

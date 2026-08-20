@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: review-us-patent-claims-ip
 description: Review supplied US patent application claims and relevant specification, drawings, Office-action, and prosecution context for claim quality, prosecution readiness, 35 U.S.C. 101/102/103/112 risk, BRI, 112(f), dependency/form, restriction/election, continuation/divisional strategy, infringement observability, and amendment options. Use for US claim review, drafting quality control, amendment strategy, or a structured claim issue list.
 ---
@@ -63,7 +64,7 @@ Before analysis, state:
 
 If only claims are supplied, label written description, enablement, corresponding structure/algorithm, and amendment basis as preliminary.
 
-## Optional PatSnap connectors
+## Optional Patsnap connectors
 
 No connector is required for supplied authoritative materials.
 

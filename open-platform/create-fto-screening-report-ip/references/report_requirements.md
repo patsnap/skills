@@ -32,7 +32,7 @@ missing and must be shown in the report.
 | `target_jurisdictions` | Yes | Patent authorities/countries relevant to the commercial acts |
 | `relevant_acts` | Yes | Make, use, sell, offer, import, export, supply, or another defined act |
 | `technical_features` | Yes | Feature groups and product/process evidence |
-| `search_queries` | Yes | User-approved PatSnap expressions and provenance |
+| `search_queries` | Yes | User-approved Patsnap expressions and provenance |
 | `search_cutoff` | Yes | Publication-search cutoff in ISO 8601 format |
 | `status_cutoff` | Yes | Legal-status evidence date in ISO 8601 format |
 | `family_counting_convention` | Yes | Publication/application/grant/family unit |
@@ -56,7 +56,7 @@ missing and must be shown in the report.
 
 For each candidate retain, where available:
 
-- PatSnap patent ID;
+- Patsnap patent ID;
 - publication, application, and grant identifiers;
 - authority and kind code;
 - title and abstract;
@@ -67,7 +67,7 @@ For each candidate retain, where available:
 - matching query IDs;
 - retrieval mode, provider/tool/endpoint, request ID, and retrieval date.
 
-Deduplicate by normalized publication number, PatSnap ID, application number,
+Deduplicate by normalized publication number, Patsnap ID, application number,
 or a documented fallback. Never merge records only because their titles match.
 
 ## 5. Claim retrieval and selection

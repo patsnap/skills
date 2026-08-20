@@ -1,7 +1,8 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: competitive-intel-report
 description: |
-  汽车NVH声学密封与结构增强件竞争情报HTML报告生成器。输入我方公司名称、竞争对手列表及专利检索结果，自动生成与V12版本风格完全一致的浅色交互式HTML情报简报，内嵌纯CSS图文图表（无外部依赖）、执行摘要KPI直展详情、SWOT分析、专利全景对比、威胁矩阵、应对建议等10大模块，所有专利链接可直接跳转智慧芽PatSnap。
+  汽车NVH声学密封与结构增强件竞争情报HTML报告生成器。输入我方公司名称、竞争对手列表及专利检索结果，自动生成与V12版本风格完全一致的浅色交互式HTML情报简报，内嵌纯CSS图文图表（无外部依赖）、执行摘要KPI直展详情、SWOT分析、专利全景对比、威胁矩阵、应对建议等10大模块，所有专利链接可直接跳转智慧芽Patsnap。
 ---
 
 # competitive-intel-report
@@ -43,7 +44,7 @@ Skill 自动将模板中的公司名替换为指定内容，风格/布局/图表
 
 - 完整 HTML 报告文件（单文件，可离线使用）
 - 支持一键下载 HTML + 打印存为 PDF
-- 所有专利号可跳转智慧芽PatSnap全文
+- 所有专利号可跳转智慧芽Patsnap全文
 
 ## 模板版本
 

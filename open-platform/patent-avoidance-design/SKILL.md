@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-avoidance-design
 description: |
   基于TRIZ方法论的完整专利规避设计流程。

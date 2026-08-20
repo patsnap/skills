@@ -4,7 +4,7 @@
 
 本 Skill 分两个阶段运行：
 
-1. **AI检索阶段**（由 Eureka AI 执行）：调用 PatSnap 专利检索 API，收集发明人数据
+1. **AI检索阶段**（由 Eureka AI 执行）：调用 Patsnap 专利检索 API，收集发明人数据
 2. **报告生成阶段**（由 Python 脚本执行）：将检索结果渲染为 HTML 简报
 
 ---

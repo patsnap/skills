@@ -13,7 +13,7 @@ The single biggest gap between a naive keyword query and an expert query is **fi
 
 ### A1. Field-scoped operators are the primary precision lever
 
-PatSnap query syntax exposes field operators that scope a term to a part of the document. Choosing the right field per clause is the #1 driver of precision/recall.
+Patsnap query syntax exposes field operators that scope a term to a part of the document. Choosing the right field per clause is the #1 driver of precision/recall.
 
 | Operator | Scope | When to use |
 |---|---|---|

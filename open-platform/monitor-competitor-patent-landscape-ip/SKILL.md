@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: monitor-competitor-patent-landscape-ip
 description: Analyze one competitor’s patent portfolio architecture in a defined technology, including public technical context, entity-resolved patent retrieval, representative-family selection, claim and specification review, core-versus-peripheral protection hypotheses, technical-density mapping, product-feature visualization, geographic filing behavior, and evidence-backed R&D actions. Use for competitor patent monitoring and strategy reports in HTML or PDF; do not use as a substitute for infringement or freedom-to-operate analysis.
 ---
@@ -35,7 +36,7 @@ Do not create or depend on that missing file.
 |---|---|---|
 | Competitor | Yes | Brand plus verified legal applicants and assignees |
 | Technology | Yes | Defined technical scope, inclusions, exclusions, and synonyms |
-| PatSnap query | No | Preserve and review if supplied; otherwise construct transparently |
+| Patsnap query | No | Preserve and review if supplied; otherwise construct transparently |
 | Target jurisdictions | No | User-selected offices or territories; do not force a global default |
 | Product example | No | Used only for an evidence-based, properly sourced product map |
 | Top N | No | Default 10; record the selected value |
@@ -44,7 +45,7 @@ Do not create or depend on that missing file.
 
 Also collect the business question, intended audience, date basis, evidence cut-off, and confidentiality constraints.
 
-## PatSnap MCP
+## Patsnap MCP
 
 ### Required: Advanced Patent Search
 
@@ -253,7 +254,7 @@ Add print CSS for PDF conversion.
 
 ## Quality gate
 
-- Verify every patent number and PatSnap link.
+- Verify every patent number and Patsnap link.
 - Retrieve family membership; do not estimate it.
 - State the family definition, counting unit, and date basis.
 - State the result cap and sample limitation.

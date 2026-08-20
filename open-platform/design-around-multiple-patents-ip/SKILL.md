@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: design-around-multiple-patents-ip
 description: Develop and screen engineering design-around concepts against two or more potentially relevant patent rights using an application-driven eight-step FTO workflow. Use when users request multi-patent design-around work, freedom-to-operate screening, patent risk mapping, candidate design-space analysis, claim-by-concept cross-screening, iterative risk repair, or an attorney-review package with technical validation plans.
 ---
@@ -87,7 +88,7 @@ Freeze the following for every run:
 
 Never fabricate a claim, status, family relationship, prosecution statement, product value, test result, or source locator.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Confirm the live tool schema at runtime; do not invent tool names or parameters.
 

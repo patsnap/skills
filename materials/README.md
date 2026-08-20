@@ -1,4 +1,4 @@
-# PatSnap Materials Skills
+# Patsnap Materials Skills
 
 Materials skills support materials science research, engineering analysis, technology scouting, product translation, technical problem solving, and alloy composition retrieval.
 

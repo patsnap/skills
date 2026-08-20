@@ -874,7 +874,7 @@ def build_html(data: Mapping[str, Any]) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="PatSnap localized patent-family renderer {SCHEMA_VERSION}">
+  <meta name="generator" content="Patsnap localized patent-family renderer {SCHEMA_VERSION}">
   <title>{esc(report_title)} · {esc(seed_number)}</title>
   <style>{CSS}</style>
 </head>
@@ -899,7 +899,7 @@ def build_html(data: Mapping[str, Any]) -> str:
     <div class="header-meta"><span>Seed {esc(seed_number)}</span><span>Generated {esc(generated_at)}</span><span>Schema {esc(data.get('schema_version', SCHEMA_VERSION))}</span></div>
   </section>
   <main>{sections}</main>
-  <footer class="report-footer">Generated from normalized evidence JSON. PatSnap connector output and legal-status data remain subject to the stated sources and cutoffs. This report is not legal advice, an FTO opinion, or proof of market strategy.</footer>
+  <footer class="report-footer">Generated from normalized evidence JSON. Patsnap connector output and legal-status data remain subject to the stated sources and cutoffs. This report is not legal advice, an FTO opinion, or proof of market strategy.</footer>
 </div>
 <script>{GRAPH_SCRIPT}</script>
 </body>

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: map-competitive-patent-landscape-ip
 description: Build an evidence-backed competitive patent landscape for a defined industry, technology, competitor set, geography, and time window. Use when executives, strategy teams, product leaders, competitive-intelligence analysts, or IP teams need to understand competitor technology bets, patent clusters, geographic filing behavior, cross-market differences, representative patents, potential white-space hypotheses, entry timing, and prioritized actions in an accessible HTML report; do not use this skill as an infringement or FTO opinion.
 ---

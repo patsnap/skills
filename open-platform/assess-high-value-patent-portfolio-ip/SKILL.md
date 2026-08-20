@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: assess-high-value-patent-portfolio-ip
-description: Rank a user-defined PatSnap patent candidate universe with an auditable 30/30/20/20 model based on simple-family forward citations, simple-family size, core-inventor concentration, and verified legal-event activity; select a documented 10–15% screening portfolio and generate traceable English HTML, JSON, and optional Word outputs. Use for evidence-based patent portfolio triage, high-value patent screening, candidate prioritization, or portfolio-review preparation—not monetary valuation, validity, enforceability, or investment conclusions.
+description: Rank a user-defined Patsnap patent candidate universe with an auditable 30/30/20/20 model based on simple-family forward citations, simple-family size, core-inventor concentration, and verified legal-event activity; select a documented 10–15% screening portfolio and generate traceable English HTML, JSON, and optional Word outputs. Use for evidence-based patent portfolio triage, high-value patent screening, candidate prioritization, or portfolio-review preparation—not monetary valuation, validity, enforceability, or investment conclusions.
 ---
 
 # Assess a High-Value Patent Portfolio
 
 ## Overview
 
-Use this skill to turn one reviewed PatSnap patent query into a transparent,
+Use this skill to turn one reviewed Patsnap patent query into a transparent,
 reproducible portfolio-screening package. Retrieve the full agreed candidate
 universe, enrich every candidate for scoring, apply the source 30/30/20/20
 model, select a documented 10–15%, and preserve all evidence and failures.
@@ -44,7 +45,7 @@ Do not use it as the sole method for:
 
 Obtain or explicitly mark missing:
 
-1. The exact, human-reviewed PatSnap query.
+1. The exact, human-reviewed Patsnap query.
 2. The legal entities, technologies, products, and exclusions represented by
    the query.
 3. Target jurisdictions or authorities.
@@ -171,7 +172,7 @@ endpoint is different from no returned evidence.
 
 1. Split inventor records on `|`, semicolon, full-width semicolon, and line
    breaks.
-2. Never split on comma or full-width comma. PatSnap commonly returns
+2. Never split on comma or full-width comma. Patsnap commonly returns
    `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`; the comma is inside one name.
 3. Normalize whitespace only and count a name once per patent.
 4. Rank exact-returned names by candidate patent count descending, then name
@@ -378,7 +379,7 @@ exceptions.
 The source filenames and P-number labels are retained for topology and workflow
 fidelity. Verify current global endpoint contracts before a live run.
 
-## Verified PatSnap MCP mapping
+## Verified Patsnap MCP mapping
 
 MCP is optional and available only in an MCP-capable host. The reference Python
 pipeline executes REST; it must never claim it directly called MCP.

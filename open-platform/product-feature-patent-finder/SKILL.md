@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: product-feature-patent-finder
 description: 通过产品特性描述调研关键技术、检索相关专利并生成含产品资料与专利相关性评分的 HTML 报告。
 ---

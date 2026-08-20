@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: altshuller-perspective
 description: |
   根里奇·阿奇舒勒（Genrich Altshuller）思维视角 Skill。

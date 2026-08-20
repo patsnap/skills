@@ -17,7 +17,7 @@
 | 转化医学 | `ls_translational_medicine_search` | `mcp_tool-collection-pharma-intelligence__ls_translational_medicine_search` | 人群验证、biomarker 关联、机制支持文献 | 必须 |
 | 临床指南 | `ls_clinical_guideline_vector_search` | `mcp_tool-collection-pharma-intelligence__ls_clinical_guideline_vector_search` | 当前治疗指南、未满足患者需求 | 可选 |
 | 专利检索 | `ls_patent_search` | `mcp_tool-collection-pharma-intelligence__ls_patent_search` | 相关专利数量、权利人、IPC、地域覆盖 | 推荐 |
-| 专利详情 | `ls_patent_fetch` | `mcp_patent-search__patsnap_fetch`（PatSnap 侧）或 `mcp_tool-collection-pharma-intelligence__ls_patent_fetch` | 权利要求范围、法律状态、到期日、同族布局 | 可选（有专利号时必须）|
+| 专利详情 | `ls_patent_fetch` | `mcp_patent-search__patsnap_fetch`（Patsnap 侧）或 `mcp_tool-collection-pharma-intelligence__ls_patent_fetch` | 权利要求范围、法律状态、到期日、同族布局 | 可选（有专利号时必须）|
 | 合作方管线 | `ls_organization_pipeline_fetch` | `mcp_tool-collection-pharma-intelligence__ls_organization_pipeline_fetch` | 目标企业研发管线、方向匹配度判断 | 可选 |
 | 文献支撑 | `ls_paper_search` / `ls_paper_vector_search` | `mcp_tool-collection-pharma-intelligence__ls_paper_search` / `__ls_paper_vector_search` | 机制论文、人群研究、动物模型结果 | 可选 |
 
@@ -82,7 +82,7 @@ organization: ["机构名称"]  # 可选
 limit: 20
 ```
 
-### mcp_patent-search__patsnap_search（PatSnap 侧）
+### mcp_patent-search__patsnap_search（Patsnap 侧）
 ```
 search_strategy: ["keyword", "filter"]
 keywords: ["靶点", "疾病", "技术关键词"]

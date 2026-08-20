@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: assess-automotive-lighting-ip
 description: Assess automotive-lighting component architecture, sourcing strategy, and preliminary patent and design-right risk. Use when a user provides a lamp drawing, product image, bill of materials, technical concept, or make-versus-buy question for headlamps, rear lamps, fog lamps, signal lamps, or ambient lighting and needs an evidence-backed component breakdown, sourcing decision, multi-jurisdiction FTO screening, design-risk review, design-around options, and an accessible tabbed HTML report packaged as a ZIP file.
 ---
@@ -203,7 +204,7 @@ Never convert a well-known design motif into a patent fact without verified reco
 
 Treat named lighting signatures as search hypotheses, not evidence.
 
-## PatSnap MCP plan
+## Patsnap MCP plan
 
 ### Required: Patsnap Patent Research
 
@@ -299,7 +300,7 @@ Use field analytics and keyword suggestions to improve the search strategy.
 
 ### Tool fallback
 
-The source names `patent.fetch` and `patsnap_fetch` are not verified current PatSnap Open tools.
+The source names `patent.fetch` and `patsnap_fetch` are not verified current Patsnap Open tools.
 
 Do not call or document them as available tools.
 

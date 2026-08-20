@@ -175,7 +175,7 @@ def normalize_patent(raw: dict) -> dict:
         p["title"], p["abstract"], p["claims"], p["ai_elements"]
     )
 
-    # PatSnap 链接（如有）
+    # Patsnap 链接（如有）
     p["url"] = raw.get("url") or raw.get("patent_url") or ""
 
     return p
@@ -780,7 +780,7 @@ def generate_html(
   </div>
 
   <div class="report-footer">
-    <p>本报告由 Eureka 专利监控系统自动生成 · 数据来源：智慧芽 PatSnap · 仅供普罗斯通信技术内部参考</p>
+    <p>本报告由 Eureka 专利监控系统自动生成 · 数据来源：智慧芽 Patsnap · 仅供普罗斯通信技术内部参考</p>
     <p style="margin-top:4px">生成时间：{report_date}</p>
   </div>
 </div>

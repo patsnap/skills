@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: cross-border-patent-risk-screen
 description: |
   跨境电商全类型专利侵权风险初筛工具（外观+发明+实用新型三合一）。支持产品图片URL或产品链接输入，AI自动提取外观设计特征与技术特征，与智慧芽全球专利数据库比对，10分钟内输出美国/欧洲/日本等目标市场的侵权风险等级与规避建议，覆盖174个国家和地区。

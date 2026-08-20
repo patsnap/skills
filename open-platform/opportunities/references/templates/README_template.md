@@ -3,8 +3,8 @@
 # {{TOPIC}} — 专利机会评估报告
 
 **生成时间：** {{REPORT_DATE}}  
-**数据来源：** 智慧芽（PatSnap）专利数据库  
-**生成工具：** Eureka × PatSnap `opportunities` Skill  
+**数据来源：** 智慧芽（Patsnap）专利数据库  
+**生成工具：** Eureka × Patsnap `opportunities` Skill  
 
 ---
 
@@ -41,7 +41,7 @@
 
 ### 全量统计（full_scope_metrics）
 用于报告中所有图表、趋势判断、排名、占比分析：
-- 来源：PatSnap 专利分析 MCP 全量统计接口
+- 来源：Patsnap 专利分析 MCP 全量统计接口
 - 年度趋势：2015年至{{REPORT_DATE}}年
 - 申请人排名：全量 Top 20
 - 地域分布：全量优先权国家统计
@@ -49,7 +49,7 @@
 
 ### 代表性专利样本（evidence_sample）
 仅用于技术说明和证据链：
-- 来源：PatSnap 专利检索，相关性排序 TopK
+- 来源：Patsnap 专利检索，相关性排序 TopK
 - 用途：Top 10 代表专利、patents.html、证据链、申请人案例
 - **严禁将此样本用于趋势推断**
 

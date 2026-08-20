@@ -106,13 +106,13 @@ entire universe of possible rights holders.
 Pending applications are not currently enforceable patent claims. Keep them
 outside the enforceable-risk list unless a granted member independently applies.
 
-## 4. PatSnap MCP-assisted research
+## 4. Patsnap MCP-assisted research
 
-When configured, use the global PatSnap connectors that match the task:
+When configured, use the global Patsnap connectors that match the task:
 
 | Connector | Endpoint | Use |
 |---|---|---|
-| PatSnap Patent Research (`patsnap_patent_research`) | `https://open.patsnap.com/marketplace/mcp-servers/patsnap-ip-searching` | Structured FTO review through `fto_review`; retrieve asynchronous output through `get_task` |
+| Patsnap Patent Research (`patsnap_patent_research`) | `https://open.patsnap.com/marketplace/mcp-servers/patsnap-ip-searching` | Structured FTO review through `fto_review`; retrieve asynchronous output through `get_task` |
 | Advanced Patent Search (`advanced_patent_search`) | `https://open.patsnap.com/marketplace/mcp-servers/patent-search` | Semantic, keyword, classification, entity, and filtered searches |
 | Patent Briefing (`patent_briefing`) | `https://open.patsnap.com/marketplace/mcp-servers/patent-briefing` | Claims, translated claims, description, bibliography, family, status, images, and technical summary |
 

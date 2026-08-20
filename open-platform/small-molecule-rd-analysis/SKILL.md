@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: small-molecule-rd-analysis
 description: "分析小分子结构、性质、合成路线和研发风险。适用于：分析小分子结构、理化性质、作用机制、合成路线和研发风险，用于化合物档案、项目评审和药化团队信息准备。"
 ---

@@ -1,20 +1,21 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: high-value-patent-package
-description: 根据用户提供的 PatSnap/智慧芽专利检索式筛选高价值专利包，并生成 HTML 报告（Word 可选）。适用于专利分析师希望按加权指标筛选高价值专利清单的场景：简单同族被引专利数量 30%、简单同族专利数量 30%、核心发明人专利 20%、法律事件历史 20%；输出字段包括公开公告号（链接到智慧芽专利页面）、标题、摘要附图、当前申请(专利权)人、简单法律状态、Patsnap 专利标题、AI 技术三要素和入选理由。
+description: 根据用户提供的 Patsnap/智慧芽专利检索式筛选高价值专利包，并生成 HTML 报告（Word 可选）。适用于专利分析师希望按加权指标筛选高价值专利清单的场景：简单同族被引专利数量 30%、简单同族专利数量 30%、核心发明人专利 20%、法律事件历史 20%；输出字段包括公开公告号（链接到智慧芽专利页面）、标题、摘要附图、当前申请(专利权)人、简单法律状态、Patsnap 专利标题、AI 技术三要素和入选理由。
 ---
 
 # 高价值专利包筛选
 
 ## 概述
 
-使用此 skill 将一个专利检索表达式转化为可追溯的高价值专利包筛选报告。工作流必须检索真实专利记录，使用 PatSnap/智慧芽高价值指标进行富集，选择返回结果中排名前 10%-15% 的专利，并生成 HTML 报告。Word 报告为可选项，仅在用户要求时生成。
+使用此 skill 将一个专利检索表达式转化为可追溯的高价值专利包筛选报告。工作流必须检索真实专利记录，使用 Patsnap/智慧芽高价值指标进行富集，选择返回结果中排名前 10%-15% 的专利，并生成 HTML 报告。Word 报告为可选项，仅在用户要求时生成。
 
 不要编造专利数据、法律事件、附图、技术总结或评分。如果 API 字段缺失，或调用重试后仍失败，应将该专利保留在追踪文件中，并将字段标记为 `未获取`。
 
 ## 输入
 
 - 用户原样提供的一个专利检索式。
-- PatSnap/智慧芽 API 访问权限。
+- Patsnap/智慧芽 API 访问权限。
 - 可选的用户约束，例如司法辖区、申请人范围、最大检索数量或报告语言。如果未提供，则按原检索式执行，并在实际 API 限制内筛选完整返回结果集。
 
 ## 必需交付物
@@ -40,7 +41,7 @@ description: 根据用户提供的 PatSnap/智慧芽专利检索式筛选高价�
 
 每件入选高价值专利必须展示：
 
-- `专利公开公告号`：公开公告号，优先使用 `[P002].pn`。将其渲染为指向智慧芽/PatSnap 数据库中该专利页面的可点击超链接（见下文“公开公告号超链接”）。HTML 报告中使用 `<a target="_blank">` 链接；可选 Word 报告中使用外部超链接。
+- `专利公开公告号`：公开公告号，优先使用 `[P002].pn`。将其渲染为指向智慧芽/Patsnap 数据库中该专利页面的可点击超链接（见下文“公开公告号超链接”）。HTML 报告中使用 `<a target="_blank">` 链接；可选 Word 报告中使用外部超链接。
 - `标题`：来自 `[P002]` 的原始专利标题。
 - `摘要附图`：`[P021].abstract_drawing.path`；缺失时使用 `无可用摘要附图`。
 - `[标]当前申请(专利权)人`：来自 `[P002]` 的当前申请人/专利权人；使用返回的任意当前权利人/申请人等价字段。
@@ -102,7 +103,7 @@ selected_count = ceil(candidate_count * 0.10)
 
 3. 计算核心发明人。
    - 仅按发明人分隔符 `|`、`;`、`；` 和换行拆分 `[P002].inventor`。
-   - 不要按 `,` / `，` 拆分。在 PatSnap/智慧芽中，发明人字段格式为 `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`，逗号是单个发明人姓名内部的姓/名分隔符；按逗号拆分会把姓名打碎（例如 `TANNER, CHRISTOPHER RICHARD` 会变成两个错误发明人）。
+   - 不要按 `,` / `，` 拆分。在 Patsnap/智慧芽中，发明人字段格式为 `LASTNAME, FIRSTNAME|LASTNAME, FIRSTNAME`，逗号是单个发明人姓名内部的姓/名分隔符；按逗号拆分会把姓名打碎（例如 `TANNER, CHRISTOPHER RICHARD` 会变成两个错误发明人）。
    - 每件专利中每位发明人只计一次。
    - 按候选集专利数量降序排列发明人。
    - 将前五名发明人视为核心发明人。
@@ -132,13 +133,13 @@ selected_count = ceil(candidate_count * 0.10)
 
 7. 生成报告。
    - 始终生成包含可读表格和嵌入/链接摘要附图的 HTML 报告。
-   - 将每个公开公告号做成指向智慧芽/PatSnap 专利页面的可点击超链接（见“公开公告号超链接”）。
+   - 将每个公开公告号做成指向智慧芽/Patsnap 专利页面的可点击超链接（见“公开公告号超链接”）。
    - 仅当用户明确要求时生成 Word 报告；生成时，Word 报告应与 HTML 报告保持相同实质内容，包括公开公告号超链接。
    - 包含必需专利清单字段、评分细节、检索摘要、方法论和数据缺口。
 
 ## 公开公告号超链接
 
-为每个 `专利公开公告号` 链接到智慧芽/PatSnap 数据库中的专利页面，使读者可以直接跳转到源记录。
+为每个 `专利公开公告号` 链接到智慧芽/Patsnap 数据库中的专利页面，使读者可以直接跳转到源记录。
 
 使用专利内部 `patent_id`（即 `[P002].patent_id` 返回的同一 id，也是所有富集接口使用的 id）加公开公告号构建 URL：
 
@@ -150,14 +151,14 @@ https://analytics.zhihuiya.com/patent-view/abst?patentId=<patent_id>&q=<pn>
 
 - 使用这个最小形式。不要复制带有 `signature`、`expire` 或 `shareId` 查询参数的分享链接 — 这些是每个链接独有的限时 token，会过期，也不能跨专利复用。最小形式不会过期。
 - 在 `q` 参数中对 `pn` 做 URL 编码。
-- 访问该链接要求读者登录智慧芽/PatSnap；未登录读者会被重定向到登录页。在报告中说明一次即可。
-- 如果用户使用不同的智慧芽/PatSnap 产品线或域名，相应调整 host/path，并保持 `patentId` 作为定位符。
+- 访问该链接要求读者登录智慧芽/Patsnap；未登录读者会被重定向到登录页。在报告中说明一次即可。
+- 如果用户使用不同的智慧芽/Patsnap 产品线或域名，相应调整 host/path，并保持 `patentId` 作为定位符。
 - HTML：`<a href="…" target="_blank" rel="noopener">PN</a>`。Word：公开公告号单元格上的外部超链接关系。
 - 在追踪文件中持久化 `patent_id` 和构建出的 `view_url` 以便审计。
 
 ## API 参考
 
-在可用时使用以下 PatSnap/智慧芽 API。所有调用均使用：
+在可用时使用以下 Patsnap/智慧芽 API。所有调用均使用：
 
 ```text
 Authorization: Bearer <ZHIHUIYA_API_KEY>
@@ -187,7 +188,7 @@ POST https://connect.zhihuiya.com/search/patent/query-search-patent/v2
 GET https://connect.zhihuiya.com/basic-patent-data/patent-family?patent_id=<patent_id>&patent_number=<pn>
 ```
 
-使用 `len(data[].patent_family.simple_family)` 作为 `简单同族专利数量`。在追踪文件中保留 `simple_family_id` 和同族成员。除非用户改变标准，否则不要替代为 INPADOC 或 PatSnap 同族规模。
+使用 `len(data[].patent_family.simple_family)` 作为 `简单同族专利数量`。在追踪文件中保留 `simple_family_id` 和同族成员。除非用户改变标准，否则不要替代为 INPADOC 或 Patsnap 同族规模。
 
 ### P015 前向引用
 
@@ -264,7 +265,7 @@ GET https://connect.zhihuiya.com/basic-patent-data/simple-legal-status?patent_id
 - 在追踪文件中保留原始 API 证据，以便报告可审计。
 - 使每件入选专利的理由具体化，例如 `简单同族被引专利数量位于候选集P92；简单同族专利数量18件；命中核心发明人：张三；存在许可、权利转移事件`。
 - 区分高价值筛选信号和法律意见。法律事件是价值信号，不是权利稳定性或可执行性的结论。
-- 始终将公开公告号做成指向智慧芽/PatSnap 专利页面的有效超链接；使用不会过期的最小 URL 形式，不使用分享链接。
+- 始终将公开公告号做成指向智慧芽/Patsnap 专利页面的有效超链接；使用不会过期的最小 URL 形式，不使用分享链接。
 - 生成 Word 报告时，其入选专利、评分、理由、数据缺口和公开公告号超链接必须与 HTML 报告一致。
 
 ## 参考

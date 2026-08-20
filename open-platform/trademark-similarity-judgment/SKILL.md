@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: trademark-similarity-judgment
 description: 面向中国商标工作的专业商标近似与混淆风险评估。适用于用户上传或描述商标、Logo、包装、截图、检索结果、商标清单、图片、Word/PDF/Excel 文件，或要求进行商标近似判断、图文双模态比对、驳回风险、引证商标分析、商品/服务类似判断、混淆可能性评估，以及申请、复审、异议、无效、共存或品牌检索前处理建议的场景。
 ---

@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: triz-functional-search
 description: 功能导向检索skill：利用此技能帮助研发人员寻找跨领域技术方案
 ---
@@ -29,6 +30,6 @@ description: 功能导向检索skill：利用此技能帮助研发人员寻找�
 ## 使用注意事项
 
 - 不要编造不存在的专利、市场或技术证据。
-- 优先使用用户提供材料和 PatSnap/Zhihuiya MCP 数据。
+- 优先使用用户提供材料和 Patsnap/Zhihuiya MCP 数据。
 - 明确标注数据来源、检索范围、时间范围和不确定性。
 - 涉及 FTO、侵权、有效性等法律判断时，不替代律师意见。

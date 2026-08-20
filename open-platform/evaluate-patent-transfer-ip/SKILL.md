@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: evaluate-patent-transfer-ip
 description: Evaluate a patent package for licensing, assignment, or collaboration opportunities; identify evidence-backed candidate counterparties; rank them with a transparent and sensitivity-tested rubric; propose diligence and outreach hypotheses; and generate a self-contained HTML transfer-intelligence brief. Use when a user provides patent identifiers and asks for patent commercialization, technology transfer, licensing candidates, acquisition candidates, partner identification, or an outreach-ready patent asset brief.
 ---
@@ -36,7 +37,7 @@ Collect or derive:
 If patent identity, authority, transaction objective, or confidential-data boundary is
 materially ambiguous, stop and request the missing input before live research.
 
-## Verified PatSnap MCP services
+## Verified Patsnap MCP services
 
 Inspect the installed connector schema before use. Record connector key, operation,
 material request parameters, retrieval date, record IDs, and limitations.
@@ -73,7 +74,7 @@ material request parameters, retrieval date, record IDs, and limitations.
 - Use for deeper family, citation, legal-event, challenge, litigation, license,
   assignment, and full-text/PDF evidence when exposed.
 
-No verified global PatSnap MCP in this package supplies complete company profiles,
+No verified global Patsnap MCP in this package supplies complete company profiles,
 procurement, recruitment, financing, M&A, or news intelligence. For those signals:
 
 1. use authorized user-supplied material; or
@@ -316,7 +317,7 @@ implementation guidance; no `{{...}}` token may remain in the delivered report.
 - Escape all retrieved/user content and allow only `https` links from verified hosts.
 - Use `rel="noopener noreferrer"` for links opened in a new tab.
 - Do not load scripts, styles, images, trackers, fonts, or frames from a CDN.
-- Do not claim that PatSnap or another platform endorses the analysis.
+- Do not claim that Patsnap or another platform endorses the analysis.
 
 ### Localized HTML blueprint
 
@@ -466,7 +467,7 @@ specific next diligence step. Do not fill the gap with a plausible candidate pro
 
 ## Configuration boundary
 
-Live, evidence-backed output requires authorized access to the relevant global PatSnap
+Live, evidence-backed output requires authorized access to the relevant global Patsnap
 MCP connectors. Corporate, procurement, recruitment, financing, and news signals also
 require authorized user material or current credible public-source research. If these
 are unavailable, deliver only a clearly labeled analysis plan, candidate-discovery

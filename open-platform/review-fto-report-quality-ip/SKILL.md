@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: review-fto-report-quality-ip
 description: Review the quality, reproducibility, legal reasoning, and decision usefulness of an existing freedom-to-operate (FTO), patent-infringement-risk, or event IP risk report. Use for three-layer evidence review, four-dimension scoring, independent multi-route search comparison, omission analysis, fatal-defect screening, remediation planning, or HTML assessment generation. The skill audits a supplied report; it does not replace a jurisdiction-specific legal opinion.
 ---
@@ -305,20 +306,20 @@ assessed from its record alone.
 Use only connectors that are available and configured. The tool call, request,
 filters, date, and returned identifiers must be captured in the evidence log.
 
-Preferred global PatSnap connectors:
+Preferred global Patsnap connectors:
 
 | Connector | Identifier and endpoint | Appropriate use |
 |---|---|---|
-| PatSnap Patent Research | `patsnap_patent_research` · `https://open.patsnap.com/marketplace/mcp-servers/patsnap-ip-searching` | Submit and retrieve structured FTO-review tasks with `fto_review` and `get_task` |
+| Patsnap Patent Research | `patsnap_patent_research` · `https://open.patsnap.com/marketplace/mcp-servers/patsnap-ip-searching` | Submit and retrieve structured FTO-review tasks with `fto_review` and `get_task` |
 | Advanced Patent Search | `advanced_patent_search` · `https://open.patsnap.com/marketplace/mcp-servers/patent-search` | Reproducible semantic, keyword, classification, assignee, and filtered searches |
 | Patent Briefing | `patent_briefing` · `https://open.patsnap.com/marketplace/mcp-servers/patent-briefing` | Claims, translated claims, description, bibliography, family, legal status, images, and technical summary |
 
 For deeper jurisdictional status, reexamination, litigation, or related legal
-events, the optional PatSnap Global Core connector may be used when available:
+events, the optional Patsnap Global Core connector may be used when available:
 [Global Core Patents](https://open.patsnap.com/marketplace/mcp-servers/core-patents).
 
 Connector catalogue:
-[PatSnap MCP Servers](https://open.patsnap.com/marketplace/mcp-servers).
+[Patsnap MCP Servers](https://open.patsnap.com/marketplace/mcp-servers).
 
 Never embed a real API key in a report, script, example, or skill file. A
 connector result is evidence from a named source at a stated time; it is not a
@@ -657,6 +658,6 @@ qualified counsel before a material legal or commercial decision.
 Marketplace reference:
 [FTO Report Quality Review](https://open.patsnap.com/marketplace/skill-hub/fto-report-quality).
 
-Global PatSnap links and connectors are listed in the MCP-assisted execution
+Global Patsnap links and connectors are listed in the MCP-assisted execution
 section. The Chinese-source mapping remains in the localization index rather
 than in the internationally distributed package.

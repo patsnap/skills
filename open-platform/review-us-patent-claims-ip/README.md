@@ -14,7 +14,7 @@ Provide the exact claim version and, where available:
 
 Claims-only review is supported, but 112(a), antecedent support, 112(f) corresponding structure/algorithm, and amendment basis remain preliminary.
 
-## 2. Optional PatSnap global MCP services
+## 2. Optional Patsnap global MCP services
 
 ### Patent Briefing
 
@@ -34,7 +34,7 @@ Recommended only when prior-art retrieval is authorized or an incomplete identif
 - Transport: `streamableHttp`
 - Official marketplace page: `https://open.patsnap.com/marketplace/mcp-servers/patent-search`
 
-Open the [PatSnap global MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers), sign in, and copy the current connection URL from the official Connect panel. Keep the real API key secret.
+Open the [Patsnap global MCP marketplace](https://open.patsnap.com/marketplace/mcp-servers), sign in, and copy the current connection URL from the official Connect panel. Keep the real API key secret.
 
 Do not make a mandatory connectivity call when supplied materials are sufficient.
 
@@ -65,4 +65,4 @@ If a requested connector is unavailable:
 
 This skill provides drafting and review assistance. Filing decisions, deadlines, inventorship, new matter, legal conclusions, prosecution responses, restriction strategy, terminal disclaimers, enforceability, and infringement should be reviewed by qualified US patent counsel.
 
-Use the [PatSnap Developer Center](https://open.patsnap.com/devportal) for current global platform documentation.
+Use the [Patsnap Developer Center](https://open.patsnap.com/devportal) for current global platform documentation.

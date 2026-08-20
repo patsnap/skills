@@ -19,7 +19,7 @@ operate.
 The file may be produced from:
 
 1. the bundled REST runner using P002/P018 and optional AI07 results; or
-2. normalized evidence retrieved through approved PatSnap MCP connectors.
+2. normalized evidence retrieved through approved Patsnap MCP connectors.
 
 Every run must state one primary acquisition mode. Imported MCP results retain
 connector, tool, request, task ID, and retrieval date. The Python scripts do not
@@ -75,7 +75,7 @@ and must generate a missing-evidence issue in the report.
 | Field | Type | Required | Description |
 |---|---|---:|---|
 | `mode` | string | Yes | `rest`, `mcp_import`, or `dry_run` |
-| `provider` | string | Yes | `PatSnap Open Platform` or connector name |
+| `provider` | string | Yes | `Patsnap Open Platform` or connector name |
 | `tools_or_endpoints` | array | Yes | Endpoint paths or MCP tool names actually used |
 | `started_at` | string | Yes | ISO 8601 timestamp |
 | `completed_at` | string/null | Yes | ISO 8601 timestamp or null for incomplete run |
@@ -111,7 +111,7 @@ user profile paths, or confidential input text not required for traceability.
 
 | Field | Type | Required | Description |
 |---|---|---:|---|
-| `patent_id` | string | No | PatSnap UUID when returned |
+| `patent_id` | string | No | Patsnap UUID when returned |
 | `publication_number` | string | Yes | Normalized publication identifier with authority/kind code where available |
 | `application_number` | string | No | Application identifier, never substituted for publication number silently |
 | `grant_number` | string | No | Granted-right identifier where applicable |
@@ -133,7 +133,7 @@ user profile paths, or confidential input text not required for traceability.
 {
   "normalized_status": "Active — verify in official register",
   "raw_status": "1",
-  "source": "PatSnap P002",
+  "source": "Patsnap P002",
   "status_as_of": "2026-07-31",
   "official_register_checked": false,
   "notes": ["SIMPLE_LEGAL_STATUS is a screening filter, not proof of enforceability."]
@@ -243,7 +243,7 @@ enforceable higher-risk claim solely because its pending claim text maps.
 {
   "matching_query_ids": ["Q-001", "Q-004"],
   "retrieval_mode": "rest",
-  "provider": "PatSnap Open Platform",
+  "provider": "Patsnap Open Platform",
   "tools_or_endpoints": [
     "/search/patent/query-search-patent/v2",
     "/basic-patent-data/claim-data"
@@ -320,7 +320,7 @@ headers, full confidential input text, or local absolute paths.
   },
   "run_provenance": {
     "mode": "rest",
-    "provider": "PatSnap Open Platform",
+    "provider": "Patsnap Open Platform",
     "tools_or_endpoints": ["P002", "P018"],
     "started_at": "2026-08-07T09:00:00Z",
     "completed_at": "2026-08-07T09:40:00Z",

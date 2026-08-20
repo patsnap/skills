@@ -390,7 +390,7 @@ def render_html(result: dict) -> str:
 <body>
 <main>
 <header>
-<p class="eyebrow">PatSnap · report quality control</p>
+<p class="eyebrow">Patsnap · report quality control</p>
 <h1>FTO assessment validation harness</h1>
 <p class="lede">Static checks for structure, evidence transparency, legal qualification, visual integrity, and cross-field consistency.</p>
 </header>

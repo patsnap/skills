@@ -2,7 +2,7 @@
 Independent-search comparison helper for an FTO report-quality review.
 
 The module does not call a network service. An authorized agent performs live
-search through current PatSnap MCP tools and passes normalized results to
+search through current Patsnap MCP tools and passes normalized results to
 build_verification_result.
 
 Routes one through four form the independent comparison pool: semantic,

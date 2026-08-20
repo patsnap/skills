@@ -4,7 +4,7 @@
 Prerequisites:
   pip install requests python-docx
   export ZHIHUIYA_API_KEY="<your key>"   (or put it in api_key.txt)
-  export HVP_QUERY="<your PatSnap query>" (or put it in query.txt)
+  export HVP_QUERY="<your Patsnap query>" (or put it in query.txt)
 
 Run from a working directory where intermediate JSON and the final
 reports should be written:

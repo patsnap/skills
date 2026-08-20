@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: innovation-radar
 description: |
   研发创新点雷达：从研发周报、会议纪要、技术方案、实验记录等材料中，

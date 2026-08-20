@@ -526,7 +526,7 @@ def render_html_report(
 <body>
 <header class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">PatSnap evidence workflow · invention-patent screening</p>
+    <p class="eyebrow">Patsnap evidence workflow · invention-patent screening</p>
     <h1>{_esc(report_title)}</h1>
     <p class="subtitle">Traceable search, claim-data review, limitation mapping, uncertainty, and action planning. Screening output only.</p>
     <div class="meta-grid">
@@ -585,7 +585,7 @@ def render_html_report(
     <h2 id="section-5"><span class="chapter">5.</span>Data-access mode and search methodology</h2>
     <p><strong>Mode:</strong> {_esc(mode)} · <strong>Provider:</strong> {_esc(_first(provenance, 'provider', default='Not supplied'))}</p>
     <p>{_esc(_first(provenance, 'notes', default='No additional provenance note supplied.'))}</p>
-    <div class="table-wrap"><table><caption>Reviewed PatSnap search expressions</caption>
+    <div class="table-wrap"><table><caption>Reviewed Patsnap search expressions</caption>
       <thead><tr><th>Query ID</th><th>Expression</th><th>Origin</th><th>Approval/run status</th><th>Results</th></tr></thead>
       <tbody>{_query_rows(queries)}</tbody>
     </table></div>
@@ -636,7 +636,7 @@ def render_html_report(
   <section class="card" aria-labelledby="section-11">
     <h2 id="section-11"><span class="chapter">11.</span>Status, family, claim-version, and translation controls</h2>
     <ul>{_list_html(_as_list(data.get('evidence_controls')), 'No consolidated evidence-control note supplied; inspect each comparison record.')}</ul>
-    <p>A PatSnap status/filter value is screening evidence and may require confirmation in the authoritative register. Family members may have different claims and status.</p>
+    <p>A Patsnap status/filter value is screening evidence and may require confirmation in the authoritative register. Family members may have different claims and status.</p>
   </section>
 
   <section class="card" aria-labelledby="section-12">

@@ -22,7 +22,7 @@ Use this scenario to compare named organizations or build a focused patent profi
 | `comparison_mode` | Organization versus organization, organization versus industry, or one-organization deep dive |
 | `unit_of_analysis` | Define publication, application, or family counting |
 
-## Global PatSnap capabilities
+## Global Patsnap capabilities
 
 Use `advanced_patent_search` to construct comparable organization-specific result sets. Use `patent_briefing`, `deep_patent_mining`, or `global_core_patent_database` for selected-record bibliography, family, citation, claims, description, status, and event evidence when those fields are exposed by the installed connector. Confirm the live operation schema before execution; do not copy legacy source operation names into calls.
 

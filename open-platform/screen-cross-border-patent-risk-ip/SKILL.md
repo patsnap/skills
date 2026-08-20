@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: screen-cross-border-patent-risk-ip
 description: Perform a preliminary cross-border patent and design-right risk screen for an e-commerce or consumer product using product images, a product page, or a technical description. Use when a seller, importer, manufacturer, product team, or IP analyst asks about patent risk, FTO screening, product-launch risk, market-entry risk, design patents, registered designs, utility models, or possible design-around options in one or more target markets. Analyze technical patents, utility models where available, and jurisdiction-appropriate design rights; provide evidence-backed market-specific risk triage, not legal clearance.
 ---
@@ -84,7 +85,7 @@ If the product page is access-restricted or its terms prohibit extraction, ask t
 
 Do not upload confidential images without authorization.
 
-## PatSnap MCP mapping
+## Patsnap MCP mapping
 
 ### Required: Patsnap Patent Research
 

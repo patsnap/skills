@@ -263,7 +263,7 @@ Do not claim a PDF exists when the fallback produced HTML.
   ],
   "sources": [
     {
-      "label": "PatSnap patent data",
+      "label": "Patsnap patent data",
       "url": "https://open.patsnap.com/",
       "accessed": "YYYY-MM-DD"
     }

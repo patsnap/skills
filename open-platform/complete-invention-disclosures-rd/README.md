@@ -12,11 +12,11 @@ Confirm browser, extension, endpoint-security and organizational policies before
 
 Do not host the file on a public website or paste unpublished inventions into an unapproved service.
 
-## Optional PatSnap research support
+## Optional Patsnap research support
 
-The disclosure workflow works without PatSnap MCP.
+The disclosure workflow works without Patsnap MCP.
 
-If the user separately requests prior-art research and the environment is authorized, the verified global PatSnap services are:
+If the user separately requests prior-art research and the environment is authorized, the verified global Patsnap services are:
 
 | Service | Use | Marketplace page |
 |---|---|---|

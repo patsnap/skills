@@ -68,7 +68,7 @@ SCHEMA_EXAMPLE = {
             "family_id": "Provider family identifier",
             "status_as_of": "Status and observation date",
             "claim_relevance": "Why a claim is relevant",
-            "url": "Exact returned global PatSnap URL",
+            "url": "Exact returned global Patsnap URL",
             "evidence_ids": ["S1"],
         }
     ],

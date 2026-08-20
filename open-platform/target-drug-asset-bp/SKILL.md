@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: target-drug-asset-bp
 description: "支持靶点药物科研成果转化评估和资产BP编制。适用于：将高校、医院或科研机构的靶点/药物成果整理为转化成熟度、知识产权、竞争格局、合作方匹配和资产BP。"
 ---
@@ -15,7 +16,7 @@ description: "支持靶点药物科研成果转化评估和资产BP编制。适�
 
 ---
 
-## 命名说明（PatSnap Skill Namer）
+## 命名说明（Patsnap Skill Namer）
 
 | 维度 | 值 | 说明 |
 |---|---|---|

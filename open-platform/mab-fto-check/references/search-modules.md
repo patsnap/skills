@@ -41,7 +41,7 @@
 
 ## 模块 2：结合靶点检索
 
-**工具**：PatSnap 关键词 + 语义检索（`patsnap_search`）
+**工具**：Patsnap 关键词 + 语义检索（`patsnap_search`）
 
 ### 关键词检索式模板
 
@@ -75,7 +75,7 @@ antibody targeting [靶点] binding epitope blocking neutralization
 
 ## 模块 3：所用平台技术检索
 
-**工具**：PatSnap 关键词检索
+**工具**：Patsnap 关键词检索
 
 ### 人源化平台
 
@@ -115,7 +115,7 @@ AND MAINF:(C07K16)
 
 ## 模块 4：基因编辑技术检索
 
-**工具**：PatSnap 关键词检索
+**工具**：Patsnap 关键词检索
 
 ### 细胞工程改造
 
@@ -149,7 +149,7 @@ AND MAINF:(C07K16 OR C12N)
 
 ## 模块 5：药物配方/制剂检索
 
-**工具**：PatSnap 关键词检索
+**工具**：Patsnap 关键词检索
 
 ### 基础制剂配方
 
@@ -185,7 +185,7 @@ AND MAINF:(A61K)
 
 ## 模块 6：联合用药检索
 
-**工具**：PatSnap 关键词检索
+**工具**：Patsnap 关键词检索
 
 ### 通用联合用药模板
 
@@ -213,7 +213,7 @@ AND MAINF:(A61K39 OR A61P35)
 
 ## 模块 7：用途检索
 
-**工具**：PatSnap 关键词 + 语义检索
+**工具**：Patsnap 关键词 + 语义检索
 
 ### 适应症检索
 
@@ -252,7 +252,7 @@ treatment of [疾病] using antibody targeting [靶点] in patients
 
 ## 模块 8：表达载体检索
 
-**工具**：PatSnap 关键词检索
+**工具**：Patsnap 关键词检索
 
 ### 表达系统基础检索
 
@@ -287,7 +287,7 @@ AND MAINF:(C12N5 OR C12N15)
 
 ## 模块 9：竞品专利 + IPC 分类号补充检索
 
-**工具**：PatSnap 关键词 + IPC 分类过滤
+**工具**：Patsnap 关键词 + IPC 分类过滤
 
 ### 竞品企业全量检索
 

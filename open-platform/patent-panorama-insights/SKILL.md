@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-panorama-insights
-description: 当用户需要基于 PatSnap 或智慧芽专利 MCP/API 数据开展专利全景、专利版图、竞争专利情报、技术路线图、组合规划、产品/R&D 策略项目时使用本技能——无论用户显式调用 /patent-panorama-insights（或 @patent-panorama-insights），还是用自然语言描述这类专利分析任务。本技能编排五层流水线：环节1检索与降噪（patent-panorama-insights-search）、环节2全景统计与价值挖掘（patent-panorama-insights-stats）、环节3标引体系推荐（patent-panorama-insights-tag）、客户 SaaS 工具中的人工标引交接，以及环节4有证据支撑的单文件 HTML 报告（patent-panorama-insights-report），并管理各层之间的检查点、人工标引交接、回滚和进度汇报。
+description: 当用户需要基于 Patsnap 或智慧芽专利 MCP/API 数据开展专利全景、专利版图、竞争专利情报、技术路线图、组合规划、产品/R&D 策略项目时使用本技能——无论用户显式调用 /patent-panorama-insights（或 @patent-panorama-insights），还是用自然语言描述这类专利分析任务。本技能编排五层流水线：环节1检索与降噪（patent-panorama-insights-search）、环节2全景统计与价值挖掘（patent-panorama-insights-stats）、环节3标引体系推荐（patent-panorama-insights-tag）、客户 SaaS 工具中的人工标引交接，以及环节4有证据支撑的单文件 HTML 报告（patent-panorama-insights-report），并管理各层之间的检查点、人工标引交接、回滚和进度汇报。
 ---
 
 # Patent Panorama Insights
 
 ## 第 0 步 · 预检：智慧芽专利 MCP（环节1前执行）
 
-没有智慧芽（PatSnap）专利 MCP，本技能无法运行。工作流会把端点 ID（`/59100a`、`/1458a4` 等）硬编码为工具命名空间；如果这些工具没有连接，所有 MCP 调用都会因 “tool not found” 失败——这是配置缺口，不是技能缺陷。
+没有智慧芽（Patsnap）专利 MCP，本技能无法运行。工作流会把端点 ID（`/59100a`、`/1458a4` 等）硬编码为工具命名空间；如果这些工具没有连接，所有 MCP 调用都会因 “tool not found” 失败——这是配置缺口，不是技能缺陷。
 
 **在做其他事情之前，先自检，然后分支处理：**
 
@@ -70,7 +71,7 @@ description: 当用户需要基于 PatSnap 或智慧芽专利 MCP/API 数据开�
 - 多家公司、竞品、重点申请人的专利布局对比.
 - 重点技术路线、关键问题、解决方案、代表专利分析.
 - 专利推荐包、专利标引清单、专利卡片.
-- 基于 PatSnap / 智慧芽 MCP/API 的专利数据分析和 HTML 洞察报告.
+- 基于 Patsnap / 智慧芽 MCP/API 的专利数据分析和 HTML 洞察报告.
 
 不适用于：
 
@@ -117,7 +118,7 @@ description: 当用户需要基于 PatSnap 或智慧芽专利 MCP/API 数据开�
 - 尽量减少用户确认。标准全景范围使用默认设置；保留正式检查点（Checkpoint 1–3），但保持轻量，并在人工 SaaS 交接前确认标引体系。
 - 开始时告诉用户默认设置，并只询问缺失的必需输入。
 - 如果技术领域较宽，先围绕子技术、产品、部件和应用场景做一次拆解，再进入检索。
-- 可用时使用已安装的 PatSnap / 智慧芽 MCP 工具；不要假设未安装的 REST、SEP、NPL、导出或高级全景 API 可用。
+- 可用时使用已安装的 Patsnap / 智慧芽 MCP 工具；不要假设未安装的 REST、SEP、NPL、导出或高级全景 API 可用。
 - 保持分析可复现：记录检索逻辑、日期范围、地域、申请人归一、计数方法和数据截止日。
 - 每个重要结论都必须能追溯到数据、代表专利或明确陈述的假设。
 - 将法律状态、诉讼、无效、转让、许可、质押、海关和获奖数据视为信号，而不是法律结论。
@@ -214,7 +215,7 @@ V0 默认不应承诺：
 
 不要把机密原始材料作为参考文件加载。它们只能用于提取经过脱敏的模式和验证。
 
-## PatSnap MCP 工具映射
+## Patsnap MCP 工具映射
 
 可用时，将这些 MCP 工具作为专利数据层。统计优先使用较新的官方全景工具栈，同时保留 `/1458a4/mcp` 作为事实核查来源。
 

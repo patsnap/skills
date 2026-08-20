@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: solve-tech-problems-zhcn
 description: |
   仅用于解决材料工程问题。通过分析材料组成、微观结构、加工条件与性能表现，生成面向解决方案的回应。提供合金设计、热处理调整、缺陷缓解、材料替代等实用方案，并清晰评估性能、可制造性、成本与工况之间的权衡。

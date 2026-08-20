@@ -105,7 +105,7 @@ Required evidence fields:
 | Field | Purpose |
 |---|---|
 | `relationship_basis` | Subsidiary, historical name, acquisition, R&D center, manufacturing entity, branch, applicant alias, or user-provided entity. |
-| `evidence_source` | Business registry, official website, annual report, PatSnap applicant profile, patent applicant co-occurrence, or user-provided evidence. |
+| `evidence_source` | Business registry, official website, annual report, Patsnap applicant profile, patent applicant co-occurrence, or user-provided evidence. |
 | `evidence_excerpt` | Short evidence note. |
 | `confidence` | High / Medium / Low. |
 | `include_in_search` | Yes / No / Pending. |
@@ -152,7 +152,7 @@ Confirmation evidence: <user message or selection>
 
 Read `topic-limitation-workflow.md` before writing topic formulas. Build the applicant and topic formulas separately before combining them.
 
-In `formula_only_mode`, stop after producing expanded formulas, assumptions, and a PatSnap execution checklist. Do not require counts, datasets, deduplication, or Word report unless the user asks for them.
+In `formula_only_mode`, stop after producing expanded formulas, assumptions, and a Patsnap execution checklist. Do not require counts, datasets, deduplication, or Word report unless the user asks for them.
 
 In `retrieval_dataset_mode`, retrieve each included applicant expression or applicant batch combined with the topic formula.
 
@@ -175,7 +175,7 @@ Keep the retrieval reproducible:
 | `applicant_expression_used` | Exact applicant expression or applicant total formula. |
 | `topic_formula_version` | `S0`, `S1`, `S2`, `S3`, `S4`, `APPLICANT_TOPIC_FINAL`, or precision variant. |
 | `retrieval_batch_id` | Unique batch identifier. |
-| `source_database` | PatSnap or another named source. |
+| `source_database` | Patsnap or another named source. |
 | `retrieval_date` | Date of retrieval. |
 | `filters` | Jurisdiction/date/legal/status filters if any. |
 | `topic_limitation_flag` | Confirmed topic name or `pending-confirmation draft`. |

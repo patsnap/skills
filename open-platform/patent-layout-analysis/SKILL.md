@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patent-layout-analysis
 description: 针对指定技术/产品领域，完成包含市场规模、竞争格局（国内+海外龙头）、技术热点与空白点、申请人全球受理局布局、差异化机会的完整立项分析报告，并输出专业 HTML 报告
 ---

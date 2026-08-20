@@ -215,7 +215,7 @@ def render_html(data: dict) -> str:
 <ul>{src_items}</ul>
 
 <footer>
-  本报告由 Eureka · PatSnap 智慧芽自动生成，专利数据来源于智慧芽专利数据库。
+  本报告由 Eureka · Patsnap 智慧芽自动生成，专利数据来源于智慧芽专利数据库。
   结论仅供参考，关键决策请结合专业 IP 顾问意见。
 </footer>
 

@@ -64,7 +64,7 @@ Conceptual request:
 }
 ```
 
-Translate this conceptual schema into the exact arguments documented by the connected PatSnap tool.
+Translate this conceptual schema into the exact arguments documented by the connected Patsnap tool.
 
 Do not send invented parameter names to an MCP server.
 

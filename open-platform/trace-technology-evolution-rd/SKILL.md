@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: trace-technology-evolution-rd
 description: Build an evidence-backed technology-evolution map for a product or technical system using system decomposition, SVOP functional abstraction, parallel patent and literature research, reviewed scoring, a versioned TRIZ-inspired route taxonomy, evolution-forest visualization, and scenario-based forecasts. Use for technology evolution, next-generation product forms, route maps, cross-domain analogies, candidate white spaces, horizon scenarios, gray-rhino pathways, or low-probability disruption signals.
 ---
@@ -74,7 +75,7 @@ Maintain one evidence register with stable IDs and these minimum fields:
 
 Keep patent publications, patent families, papers, standards, engineering cases, funding events, product announcements, and web pages as distinct evidence types. Do not add their counts together without labels.
 
-## Verified PatSnap MCP support
+## Verified Patsnap MCP support
 
 Patent research may use these verified global services when they are available in the execution environment:
 
