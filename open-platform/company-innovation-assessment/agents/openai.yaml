@@ -1,0 +1,10 @@
+interface:
+  display_name: "企业科创力评估 HTML"
+  short_description: "从智慧芽 MCP 生成并下载可审计科创评估 HTML"
+  default_prompt: "使用 $company-innovation-assessment 确认企业主体，调用四个分析 Tool，并通过 generate_innovation_report 获取链接后自动下载中文科创力评估 HTML。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "company-intelligence"
+      description: "解析企业身份、获取企业科创力数据，并通过报告 Tool 返回 HTML 链接。"
