@@ -36,7 +36,7 @@ Add the required servers to Claude Code. Here's an example for the first require
 
 ```bash
 claude mcp add --transport http pharma_intelligence \
-  "https://connect.patsnap.com/096456/Logic-mcp?apiKey=sk-xxxxxxxxxxxx"
+  "https://connect.patsnap.com/096456/logic-mcp?apikey=sk-xxxxxxxxxxxx"
 ```
 
 **All life‑science MCP servers** (✅ = required for this skill):
@@ -76,7 +76,7 @@ or  [Patsnap Dev Portal](https://open.patsnap.com/devportal)
 > 2. Run the following command to connect the required MCP services:
 > ```bash
 > claude mcp add --transport http pharma_intelligence \
->   "https://connect.patsnap.com/096456/Logic-mcp?apiKey=YOUR_API_KEY"
+>   "https://connect.patsnap.com/096456/logic-mcp?apikey=YOUR_API_KEY"
 > ```
 > 3. Type `/mcp` and confirm the services show **Connected**
 >

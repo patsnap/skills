@@ -33,7 +33,7 @@ metadata:
 
 ```bash
 claude mcp add --transport http pharma_intelligence \
-  "https://connect.patsnap.com/096456/Logic-mcp?apiKey=sk-xxxxxxxxxxxx"
+  "https://connect.patsnap.com/096456/logic-mcp?apikey=sk-xxxxxxxxxxxx"
 ```
 
 **全部生命科学 MCP 服务**（✅ = 本Skill必需）：
@@ -72,7 +72,7 @@ claude mcp add --transport http pharma_intelligence \
 > 2. 运行以下命令连接必需的 MCP 服务：
 > ```bash
 > claude mcp add --transport http pharma_intelligence \
->   "https://connect.patsnap.com/096456/Logic-mcp?apiKey=你的API_KEY"
+>   "https://connect.patsnap.com/096456/logic-mcp?apikey=你的API_KEY"
 > ```
 > 3. 输入 `/mcp` 确认服务状态为 **Connected**
 >
