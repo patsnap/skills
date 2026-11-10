@@ -76,14 +76,14 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_drug_deal_search` | 按药物、公司或适应症查找具有代表性或影响决策的交易记录 |
-| 2b | `ls_drug_deal_fetch` | 获取交易详情、条款和财务数据 |
-| 3 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_organization_fetch` | 合作方公司画像 |
+| 1 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` | 按药物、公司或适应症查找具有代表性或影响决策的交易记录 |
+| 2b | `ls_evidence_fetch(evidence_type="drug_deal")` | 获取交易详情、条款和财务数据 |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_entity_fetch(entity_type="organization")` | 合作方公司画像 |
 | 5 | `ls_patent_search` → `ls_patent_fetch` | 被许可的知识产权组合 |
-| 6 | `ls_financial_report_vector_search` | 交易对手的财务状况 (语义检索) |
-| 7 | `ls_news_vector_search` → `ls_news_fetch` | 近期交易公告 |
+| 6 | `ls_evidence_by_semantic_search(source="financial_report")` | 交易对手的财务状况 (语义检索) |
+| 7 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 近期交易公告 |
 | 8 | `web_search` | SEC 申报文件 (8-K)，分析师评论，可比交易对标 (最后手段) |
 
 只执行与问题相关的步骤；数据足够后即可停止。
@@ -140,7 +140,7 @@ metadata:
 | 步骤 | 操作 |
 |------|--------|
 | 1. 靶点识别 | 明确识别靶点（例如PD-L1，GLP-1，BTK）及具有该作用机制的候选资产 |
-| 2. 产品组合冲突检查 | 使用 `ls_drug_search` 将该靶点与各潜在合作方的管线和商业产品组合交叉核对 |
+| 2. 产品组合冲突检查 | 使用 `ls_entity_search(entity_type="drug")` 将该靶点与各潜在合作方的管线和商业产品组合交叉核对 |
 | 3. 排除或降低优先级 | 若某公司在该靶点已有领先或中期资产，则归为**低可能性**（存在战略冗余和内部蚕食风险） |
 | 4. 识别空白 | 优先考虑对该治疗领域有明确兴趣、但在该靶点或通路上没有竞争资产的公司 |
 | 5. 透明说明 | 若重要参与者因资产重叠而未进入最高优先级名单，应在输出中明确说明 |

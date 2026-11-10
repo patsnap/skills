@@ -72,13 +72,13 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 3 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_organization_fetch` | Company pipeline and event calendar context |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | Recent catalyst announcements, conference abstracts, PDUFA updates |
-| 7 | `ls_financial_report_vector_search` | Guidance on expected milestones from earnings calls (semantic search) |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 5 | `ls_entity_fetch(entity_type="organization")` | Company pipeline and event calendar context |
+| 6 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent catalyst announcements, conference abstracts, PDUFA updates |
+| 7 | `ls_evidence_by_semantic_search(source="financial_report")` | Guidance on expected milestones from earnings calls (semantic search) |
 | 8 | `web_search` | Real-time PDUFA calendar, AdCom schedules, conference abstract releases (last resort) |
 
 Execute only the steps relevant to the query. Stop when data is sufficient.

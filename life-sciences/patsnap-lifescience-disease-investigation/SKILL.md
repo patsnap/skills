@@ -82,15 +82,15 @@ Use the following retrieval paths:
 
 | Step | Tool                                                                   | Purpose                                                                                                     |
 | ---- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 1    | `ls_disease_fetch`                                                     | Confirm disease identity (fetch directly by name)                                                           |
+| 1    | `ls_entity_fetch(entity_type="disease")`                                                     | Confirm disease identity (fetch directly by name)                                                           |
 | 2    | `ls_paper_search` → `ls_paper_fetch`                                   | Pathophysiology, mechanisms                                                                                 |
 | 2b   | `hybrid_search(sources=["paper"])`                                     | High-citation seminal papers on disease biology: `filters={cited_min:100}` + `search_strategy=["semantic"]` |
-| 3    | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 4    | `ls_epidemiology_vector_search`                                        | Incidence, prevalence data                                                                                  |
-| 5    | `ls_clinical_guideline_vector_search`                                  | Standard of care guidelines                                                                                 |
-| 6    | `ls_clinical_trial_search` → `ls_clinical_trial_fetch`                 | Search relevant records and fetch details when needed |
-| 7    | `ls_drug_search` → `ls_drug_fetch`                                     | Search relevant records and fetch details when needed |
-| 8    | `ls_drug_deal_search` → `ls_drug_deal_fetch`                           | Search relevant records and fetch details when needed |
+| 3    | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 4    | `ls_evidence_by_semantic_search(source="epidemiology")`                                        | Incidence, prevalence data                                                                                  |
+| 5    | `ls_evidence_by_semantic_search(source="clinical_guideline")`                                  | Standard of care guidelines                                                                                 |
+| 6    | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")`                 | Search relevant records and fetch details when needed |
+| 7    | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")`                                     | Search relevant records and fetch details when needed |
+| 8    | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")`                           | Search relevant records and fetch details when needed |
 
 ### Evidence Coverage Policy
 

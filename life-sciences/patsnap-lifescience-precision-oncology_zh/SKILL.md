@@ -76,13 +76,13 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_disease_fetch` | 确认疾病身份（按名称直接获取） |
-| 2 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | 检索相关记录，并在需要时获取详情 |
-| 3 | `ls_epidemiology_vector_search` | 发病率，患病率数据 |
-| 4 | `ls_clinical_guideline_vector_search` | 标准治疗指南 |
-| 5 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_fetch(entity_type="disease")` | 确认疾病身份（按名称直接获取） |
+| 2 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | 检索相关记录，并在需要时获取详情 |
+| 3 | `ls_evidence_by_semantic_search(source="epidemiology")` | 发病率，患病率数据 |
+| 4 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | 标准治疗指南 |
+| 5 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
 | 8 | `ls_fda_label_search` → `ls_fda_label_fetch` | FDA 已获批生物标志物-药物配对 |
 | 9 | `ls_paper_search` → `ls_paper_fetch` | 已发表的变异-药物证据 |
 | 9b | `hybrid_search(sources=["paper"])` | 检索疾病生物学领域的高被引奠基论文：`filters={cited_min:100}` + `search_strategy=["semantic"]` |

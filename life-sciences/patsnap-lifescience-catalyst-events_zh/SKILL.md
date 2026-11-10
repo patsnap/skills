@@ -76,13 +76,13 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 3 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_organization_fetch` | 公司管线和事件日历背景 |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | 近期催化剂事件公告，会议摘要，PDUFA 更新 |
-| 7 | `ls_financial_report_vector_search` | 财报电话会对预期里程碑的指引 (语义检索) |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_entity_fetch(entity_type="organization")` | 公司管线和事件日历背景 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 近期催化剂事件公告，会议摘要，PDUFA 更新 |
+| 7 | `ls_evidence_by_semantic_search(source="financial_report")` | 财报电话会对预期里程碑的指引 (语义检索) |
 | 8 | `web_search` | 实时 PDUFA 日历，咨询委员会会议安排，会议摘要发布 (最后手段) |
 
 只执行与问题相关的步骤；数据足够后即可停止。

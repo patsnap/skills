@@ -74,12 +74,12 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_disease_fetch` | Confirm disease identity (fetch directly by name) |
-| 2 | `ls_epidemiology_vector_search` | Incidence, prevalence, mortality data (semantic search) |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
+| 1 | `ls_entity_fetch(entity_type="disease")` | Confirm disease identity (fetch directly by name) |
+| 2 | `ls_evidence_by_semantic_search(source="epidemiology")` | Incidence, prevalence, mortality data (semantic search) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | Epidemiological studies, burden of disease |
-| 5 | `ls_clinical_trial_search` | Search relevant records and fetch details when needed |
-| 6 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 6 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
 
 ### Evidence Coverage Policy
 

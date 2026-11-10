@@ -88,22 +88,22 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 3 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | 已发表分析，网络荟萃分析（NMA）研究，综述文献 |
 | 5 | `ls_paper_vector_search` | 语义文献检索 (兜底) |
-| 6 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_fda_label_vector_search` | 标注信息，已获批终点 |
-| 8 | `ls_clinical_guideline_vector_search` | 指南认可的终点，标准治疗对照 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_semantic_search(source="fda_label")` | 标注信息，已获批终点 |
+| 8 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | 指南认可的终点，标准治疗对照 |
 | 9 | `web_search` | 最后手段在所有 MCP 检索完成后 |
 
 **竞争威胁问题必须进行配套检索:**
 
 当问题询问一种药物能否挑战、威胁、替代、取代、捍卫或削弱另一资产的地位时，不得只依赖终点数据。即使主要任务是临床分析，也要增加以下检查：
-- 对两项资产调用 `ls_drug_fetch`，识别原研方和当前相关机构。
-- 使用 `ls_clinical_trial_search` 按药物和适应症判断资产是作为单药、联合方案、维持治疗还是产品组合延伸进行开发。
-- 当结构化记录未覆盖合作方战略、全球试验执行或产品组合定位时，使用 `ls_news_vector_search` 或 `ls_financial_report_vector_search`。
+- 对两项资产调用 `ls_entity_fetch(entity_type="drug")`，识别原研方和当前相关机构。
+- 使用 `ls_evidence_by_entity_search(evidence_type="clinical_trial")` 按药物和适应症判断资产是作为单药、联合方案、维持治疗还是产品组合延伸进行开发。
+- 当结构化记录未覆盖合作方战略、全球试验执行或产品组合定位时，使用 `ls_evidence_by_entity_search(evidence_type="news")` 或 `ls_evidence_by_semantic_search(source="financial_report")`。
 
 **数据完整性——始终设置明确的数量限制并处理分页：**
 
@@ -209,7 +209,7 @@ metadata:
 ### 临床指南背景
 
 当指南认可的终点或标准治疗对照是需要:
-- 使用 `ls_clinical_guideline_vector_search` 检索 NCCN，ESMO，ASCO，AHA/ACC 指南建议
+- 使用 `ls_evidence_by_semantic_search(source="clinical_guideline")` 检索 NCCN，ESMO，ASCO，AHA/ACC 指南建议
 - 通过 openFDA 获批历史交叉核验标签认可的终点
 - 注明试验终点与指南建议终点存在差异的情况 (监管风险信号)
 

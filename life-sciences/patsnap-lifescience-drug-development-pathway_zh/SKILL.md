@@ -77,14 +77,14 @@ metadata:
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
 | 1 | `ls_ner_nor_normalize` | 从原始问题中标准化药物、公司、疾病和试验标识符 |
-| 2 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
 | 3 | `ls_drug_milestone_fetch` | 核心研发时间线：IND、阶段推进、获批、国家/地区、适应症和申办方 |
-| 4 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 6 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_news_vector_search` → `ls_news_fetch` | 近期里程碑公告，中期结果，延迟，申报，资格认定，会议更新 |
-| 8 | `ls_financial_report_vector_search` | 公司对预期时间的指引，战略重点，里程碑窗口，以及开发支出 |
-| 9 | `ls_fda_label_vector_search` | 已获批标签范围、适应症顺序及获批后的安全性限制 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 近期里程碑公告，中期结果，延迟，申报，资格认定，会议更新 |
+| 8 | `ls_evidence_by_semantic_search(source="financial_report")` | 公司对预期时间的指引，战略重点，里程碑窗口，以及开发支出 |
+| 9 | `ls_evidence_by_semantic_search(source="fda_label")` | 已获批标签范围、适应症顺序及获批后的安全性限制 |
 | 10 | `web_search` | 最后手段获取最新公开信息、实时监管日历或公司页面 |
 
 只执行与问题相关的步骤；如果数据可用，完整开发路径报告应始终包含步骤 2–6。

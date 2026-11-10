@@ -79,14 +79,14 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_drug_deal_search` | Find representative or decision-critical deal records by drug, company, or indication |
-| 2b | `ls_drug_deal_fetch` | Get deal details, terms, financials |
-| 3 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_organization_fetch` | Partner company profiles |
+| 1 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` | Find representative or decision-critical deal records by drug, company, or indication |
+| 2b | `ls_evidence_fetch(evidence_type="drug_deal")` | Get deal details, terms, financials |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 4 | `ls_entity_fetch(entity_type="organization")` | Partner company profiles |
 | 5 | `ls_patent_search` → `ls_patent_fetch` | IP portfolio being licensed |
-| 6 | `ls_financial_report_vector_search` | Counterparty financial health (semantic search) |
-| 7 | `ls_news_vector_search` → `ls_news_fetch` | Recent deal announcements |
+| 6 | `ls_evidence_by_semantic_search(source="financial_report")` | Counterparty financial health (semantic search) |
+| 7 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent deal announcements |
 | 8 | `web_search` | SEC filings (8-K), analyst commentary, comparable benchmarks (last resort) |
 
 Execute only the steps relevant to the query. Stop when data is sufficient.
@@ -143,7 +143,7 @@ Apply this filter whenever the query asks about potential BD partners, out-licen
 | Step | Action |
 |------|--------|
 | 1. Target Identification | Clearly identify the target (e.g., PD-L1, GLP-1, BTK) and MoA of the candidate asset |
-| 2. Portfolio Conflict Check | Use `ls_drug_search` to cross-reference the target against each potential partner's pipeline and commercial portfolio |
+| 2. Portfolio Conflict Check | Use `ls_entity_search(entity_type="drug")` to cross-reference the target against each potential partner's pipeline and commercial portfolio |
 | 3. Exclude / Deprioritize | If a company already has a leading or mid-stage asset for that target → classify as **Low Probability** (strategic redundancy, internal cannibalization risk) |
 | 4. Identify Gaps | Prioritize companies with clear TA interest but no competitive asset for that specific target or pathway |
 | 5. Transparency | Explicitly state in output if a major player was excluded from the Top Tier list due to an overlapping asset |

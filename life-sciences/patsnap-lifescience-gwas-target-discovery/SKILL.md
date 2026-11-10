@@ -77,10 +77,10 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 3 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
+| 1 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 2 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
 | 5 | `ls_patent_search` → `ls_patent_fetch` | IP landscape for GWAS-implicated targets |
 
 ### Evidence Coverage Policy
@@ -110,7 +110,7 @@ Strictly do not infer, guess, or fill missing factual gaps from model knowledge,
    ↓
 6. Protein function & druggability (Tier S: UniProt, STRING, DGIdb)
    ↓
-7. Existing drugs on target (Tier P: Patsnap ls_drug_search)
+7. Existing drugs on target (Tier P: Patsnap ls_entity_search(entity_type="drug"))
    ↓
 8. Clinical trials & BD activity (Tier P: Patsnap)
 ```

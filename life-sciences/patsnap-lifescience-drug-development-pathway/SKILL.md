@@ -86,14 +86,14 @@ Use the following retrieval paths:
 | Step | Tool | Purpose |
 |------|------|---------|
 | 1 | `ls_ner_nor_normalize` | Normalize drug, company, disease, and trial identifiers from the raw query |
-| 2 | `ls_drug_search` -> `ls_drug_fetch` | Search relevant records and fetch details when needed |
+| 2 | `ls_entity_search(entity_type="drug")` -> `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
 | 3 | `ls_drug_milestone_fetch` | Core R&D timeline: IND, phase transition, approvals, country/region, indication, sponsor |
-| 4 | `ls_clinical_trial_search` -> `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_clinical_trial_result_search` -> `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 6 | `ls_drug_deal_search` -> `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_news_vector_search` -> `ls_news_fetch` | Recent milestone announcements, interim results, delays, filings, designations, conference updates |
-| 8 | `ls_financial_report_vector_search` | Company guidance on expected timing, strategic priorities, milestone windows, and development spend |
-| 9 | `ls_fda_label_vector_search` | Approved label scope, indication sequence, safety limitations after approval |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` -> `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` -> `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 6 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` -> `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_entity_search(evidence_type="news")` -> `ls_evidence_fetch(evidence_type="news")` | Recent milestone announcements, interim results, delays, filings, designations, conference updates |
+| 8 | `ls_evidence_by_semantic_search(source="financial_report")` | Company guidance on expected timing, strategic priorities, milestone windows, and development spend |
+| 9 | `ls_evidence_by_semantic_search(source="fda_label")` | Approved label scope, indication sequence, safety limitations after approval |
 | 10 | `web_search` | Last resort for newest public updates, real-time regulatory calendars, or company pages |
 
 Execute only the steps relevant to the query, but for a full development pathway report always include steps 2-6 if data are available.

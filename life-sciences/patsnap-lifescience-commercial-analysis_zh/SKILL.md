@@ -76,14 +76,14 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_epidemiology_vector_search` | 用于 TAM 计算的患者人群基数 |
-| 3 | `ls_fda_label_vector_search` | 已获批标签范围 — 适应症，限制条件，REMS (语义检索) |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_financial_report_vector_search` | 收入数据，分析师共识，研发支出 (语义检索) |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 8 | `ls_news_vector_search` → `ls_news_fetch` | 定价公告，支付报销决策，上市新闻 |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_semantic_search(source="epidemiology")` | 用于 TAM 计算的患者人群基数 |
+| 3 | `ls_evidence_by_semantic_search(source="fda_label")` | 已获批标签范围 — 适应症，限制条件，REMS (语义检索) |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_semantic_search(source="financial_report")` | 收入数据，分析师共识，研发支出 (语义检索) |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 8 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 定价公告，支付报销决策，上市新闻 |
 | 9 | `web_search` | 分析师收入模型，ICER 评估，定价数据库 (最后手段) |
 
 只执行与问题相关的步骤；数据足够后即可停止。

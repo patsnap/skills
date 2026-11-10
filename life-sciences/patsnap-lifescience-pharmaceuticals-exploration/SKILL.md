@@ -89,15 +89,15 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
 | 2 | `ls_paper_search` → `ls_paper_fetch` | Pharmacodynamics, MoA literature |
 | 2b | `hybrid_search(sources=["paper"])` | Seminal MoA / SAR papers by citation: `filters={cited_min:50}` |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 6 | `ls_fda_label_vector_search` | Regulatory label, dosage, warnings (semantic search) |
-| 7 | `ls_clinical_guideline_vector_search` | Drug's position in treatment guidelines |
-| 8 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 6 | `ls_evidence_by_semantic_search(source="fda_label")` | Regulatory label, dosage, warnings (semantic search) |
+| 7 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | Drug's position in treatment guidelines |
+| 8 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
 | 9 | `web_search` | Commercial pricing, real-world safety signals (last resort) |
 
 ### Evidence Coverage Policy
@@ -169,8 +169,8 @@ Multi-target drug analysis using network proximity:
 **Compound-Based Repurposing Strategy:**
 1. Get full target/mechanism profile (Steps 1–2)
 2. Find diseases associated with those targets via web search (Open Targets, GWAS data)
-3. Check clinical evidence in new indications: `ls_clinical_trial_search(drug=[drug_name])`
-4. Check deal precedents: `ls_drug_deal_search(drug=[drug_name])`
+3. Check clinical evidence in new indications: `ls_evidence_by_entity_search(evidence_type="clinical_trial", drug=[drug_name])`
+4. Check deal precedents: `ls_evidence_by_entity_search(evidence_type="drug_deal", drug=[drug_name])`
 
 **Repurposing Score (0–100):**
 

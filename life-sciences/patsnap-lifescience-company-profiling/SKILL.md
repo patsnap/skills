@@ -79,14 +79,14 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_organization_fetch` | Company identity, background, technology platforms |
-| 2 | `ls_financial_report_vector_search` | Financial reports, revenue data, R&D spending (semantic search) |
-| 3 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
+| 1 | `ls_entity_fetch(entity_type="organization")` | Company identity, background, technology platforms |
+| 2 | `ls_evidence_by_semantic_search(source="financial_report")` | Financial reports, revenue data, R&D spending (semantic search) |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
 | 5 | `ls_patent_search` → `ls_patent_fetch` | Patent portfolio |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 8 | `ls_news_vector_search` → `ls_news_fetch` | Recent news and announcements |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 8 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent news and announcements |
 | 9 | `web_search` | Analyst commentary, peer comparisons (last resort) |
 
 Execute only the steps relevant to the query.

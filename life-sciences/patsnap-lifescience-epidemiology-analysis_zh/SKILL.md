@@ -77,12 +77,12 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_disease_fetch` | 确认疾病身份（按名称直接获取） |
-| 2 | `ls_epidemiology_vector_search` | 发病率，患病率，死亡率数据 (语义检索) |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_fetch(entity_type="disease")` | 确认疾病身份（按名称直接获取） |
+| 2 | `ls_evidence_by_semantic_search(source="epidemiology")` | 发病率，患病率，死亡率数据 (语义检索) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | 检索相关记录，并在需要时获取详情 |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | 流行病学研究，疾病负担 |
-| 5 | `ls_clinical_trial_search` | 检索相关记录，并在需要时获取详情 |
-| 6 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 6 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
 
 ### 证据覆盖策略
 

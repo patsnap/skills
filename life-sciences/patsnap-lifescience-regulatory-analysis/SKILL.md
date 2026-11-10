@@ -73,12 +73,12 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_fda_label_vector_search` | Current label content — approved indications, warnings, REMS (semantic search) |
-| 3 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_clinical_guideline_vector_search` | Guideline recommendations, unmet need context |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | FDA AdCom results, CRL letters, PDUFA updates, NMPA news |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_semantic_search(source="fda_label")` | Current label content — approved indications, warnings, REMS (semantic search) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | Guideline recommendations, unmet need context |
+| 6 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | FDA AdCom results, CRL letters, PDUFA updates, NMPA news |
 | 7 | `web_search` | Real-time regulatory decisions, designation grants, label updates (last resort) |
 
 ### Evidence Coverage Policy

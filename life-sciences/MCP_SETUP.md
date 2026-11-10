@@ -88,7 +88,7 @@ You can also test with a quick query:
 Search for PD-1 related drugs
 ```
 
-If `ls_drug_search` returns results, `pharma-intelligence` is working correctly.
+If `ls_entity_search(entity_type="drug")` returns results, `pharma-intelligence` is working correctly.
 
 ---
 
@@ -98,21 +98,21 @@ If `ls_drug_search` returns results, `pharma-intelligence` is working correctly.
 
 | Tool                                                                   | Description                        |
 |------------------------------------------------------------------------|------------------------------------|
-| `ls_drug_search` / `ls_drug_fetch`                                     | Search and retrieve drug details   |
-| `ls_target_fetch`                                                      | Retrieve target details            |
-| `ls_disease_fetch`                                                     | Retrieve disease details           |
-| `ls_patent_search` / `ls_patent_vector_search` / `ls_patent_fetch`     | Patent search                      |
+| `ls_entity_search(entity_type="drug")` / `ls_entity_fetch(entity_type="drug")`                                     | Search and retrieve drug details   |
+| `ls_entity_fetch(entity_type="target")`                                                      | Retrieve target details            |
+| `ls_entity_fetch(entity_type="disease")`                                                     | Retrieve disease details           |
+| `ls_patent_search` / `ls_patent_fetch`                          | Structured, keyword, and semantic patent search |
 | `ls_paper_search` / `ls_paper_vector_search` / `ls_paper_fetch`        | Literature search                  |
-| `ls_clinical_trial_search` / `ls_clinical_trial_fetch`                 | Clinical trial search              |
-| `ls_clinical_trial_result_search` / `ls_clinical_trial_result_fetch`   | Clinical trial results             |
-| `ls_drug_deal_search` / `ls_drug_deal_fetch`                           | Drug licensing and deal search     |
-| `ls_organization_fetch`                                                | Organization / company details     |
-| `ls_news_vector_search` / `ls_news_fetch`                              | Industry news                      |
-| `ls_translational_medicine_search` / `ls_translational_medicine_fetch` | Translational medicine             |
-| `ls_fda_label_vector_search`                                           | FDA drug labels                    |
-| `ls_clinical_guideline_vector_search`                                  | Clinical guidelines                |
-| `ls_epidemiology_vector_search`                                        | Epidemiology data                  |
-| `ls_financial_report_vector_search`                                    | Financial reports and prospectuses |
+| `ls_evidence_by_entity_search(evidence_type="clinical_trial")` / `ls_evidence_fetch(evidence_type="clinical_trial")`                 | Clinical trial search              |
+| `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` / `ls_evidence_fetch(evidence_type="clinical_trial_result")`   | Clinical trial results             |
+| `ls_evidence_by_entity_search(evidence_type="drug_deal")` / `ls_evidence_fetch(evidence_type="drug_deal")`                           | Drug licensing and deal search     |
+| `ls_entity_fetch(entity_type="organization")`                                                | Organization / company details     |
+| `ls_evidence_by_entity_search(evidence_type="news")` / `ls_evidence_fetch(evidence_type="news")`                              | Industry news                      |
+| `ls_evidence_by_entity_search(evidence_type="translational_medicine")` / `ls_evidence_fetch(evidence_type="translational_medicine")` | Translational medicine             |
+| `ls_evidence_by_semantic_search(source="fda_label")`                                           | FDA drug labels                    |
+| `ls_evidence_by_semantic_search(source="clinical_guideline")`                                  | Clinical guidelines                |
+| `ls_evidence_by_semantic_search(source="epidemiology")`                                        | Epidemiology data                  |
+| `ls_evidence_by_semantic_search(source="financial_report")`                                    | Financial reports and prospectuses |
 | `ls_web_search`                                                        | Web search supplement              |
 
 ### chemical-molecular

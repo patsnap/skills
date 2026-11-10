@@ -76,14 +76,13 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_patent_search` → `ls_patent_fetch` | 按药物、靶点、疾病、机构或类型检索核心专利记录 |
+| 1 | `ls_patent_search` → `ls_patent_fetch` | 统一进行结构化、关键词和语义专利检索，再获取证据详情 |
 | 2 | `hybrid_search(sources=["patent"])` | 补充技术维度检索：按 IPC 分类、申请人、发明人、被引次数或日期范围筛选；也用于跨专利和论文的概念或语义查询 |
-| 3 | `ls_patent_vector_search` | 当结构化检索返回少于 5 条结果时，使用语义检索兜底 |
-| 4 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_organization_fetch` | 专利持有人，受让人背景 |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | 专利诉讼新闻，ANDA 申报，第 IV 段认证，PTE 申报，LOE 公告 |
-| 7 | `ls_sequence_search_submit` → 轮询 → `ls_sequence_search_get_results` | 基于序列的专利检索用于生物制剂，ADCs，基因疗法 (异步任务流程) |
-| 8 | `web_search` | 橙皮书条目，USPTO 记录，近期诉讼 (最后手段) |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_entity_fetch(entity_type="organization")` | 专利持有人，受让人背景 |
+| 5 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 专利诉讼新闻，ANDA 申报，第 IV 段认证，PTE 申报，LOE 公告 |
+| 6 | `ls_sequence_search_submit` → 轮询 → `ls_sequence_search_get_results` | 基于序列的专利检索用于生物制剂，ADCs，基因疗法 (异步任务流程) |
+| 7 | `web_search` | 橙皮书条目，USPTO 记录，近期诉讼 (最后手段) |
 
 **专利场景下的 `hybrid_search` 用法：**
 - 基于 IPC 的格局: `search_strategy=["keyword","filter"]，keywords=[tech terms]，filters={ipc:["A61K"]，jurisdiction:["US","CN"]}`
@@ -93,24 +92,24 @@ metadata:
 
 检索是默认取证方式。不要仅因调用过 `*_search` 就继续调用 `*_fetch`；如果检索结果已经包含回答所需字段，应直接停止。
 
-| 参数 | 类型 | 说明 |
-|-----------|------|-------|
-| `drug` | List[str] | 药物名称列表 |
-| `drug_type` | List[str] | 药物治疗模态筛选 |
-| `patent_core_type` | List[str] | `"product_compound"`，`"sequence"`，`"drug_combination"`，`"formulation"`，`"product_derivative"`，`"crystal_form"`，`"process"`，`"new_use"`，`"dosage_form"`，`"device"`，`"diagnostic_analysis_assay"` |
-| `target` | List[str] | 靶点名称列表 |
-| `disease` | List[str] | 疾病名称列表 |
-| `organization` | List[str] | 受让人／申请人名称列表 |
-| `patent_technology` | List[str] | `"Antibody drug conjugate (ADC)"`，`"Monoclonal antibody (mAb)"`，`"Antibody"`，`"Enzyme"`，`"Adeno-associated virus (AAV)"`，`"CRISPR/Cas"`等。|
-| `legal_status` | List[str] | `"inactive"`，`"active"`，`"pending"` |
-| `country` | List[str] | 国家代码 (例如`"US"`，`"CN"`，`"EP"`) |
-| `application_date_from/to` | str | YYYY-MM-DD |
-| `expiry_date_from/to` | str | YYYY-MM-DD |
-| `patent_number` | str | 单个专利号 |
-| `key_word` | List[str] | 仅作为自由文本兜底 |
-| `offset`，`limit` | int | 分页 |
+### 专利检索参数
 
-**禁止使用的参数** (会导致返回 0 条结果): `query`，`sort_by`，`sort_order`，任何未列出的字段。
+| 参数 | 约定 |
+|------|------|
+| `semantic_query` | 完整技术意图；保留限定词，不添加用户未要求的机制或应用 |
+| `keywords` | 完整概念短语；支持中、英、日文，不自动翻译 |
+| `domain_filters` | 字段：`drug`、`target`、`disease`、`drug_type`、`patent_core_type`、`patent_technology`、`applicant_type`、`inchi_all`、`inchi_claims`、`sequence_all`、`sequence_claims` |
+| 领域条件 | `eq`/`ne` 接收标量；`in`/`not_in` 接收 1–100 个不重复值。不同字段和操作符按 AND 组合；分类值以工具 schema 为准 |
+| 化合物／序列条件 | 使用内部整数 ID，不接收 InChI 字符串、名称或序列文本。`claims` 限定权利要求，`all` 表示一般关联 |
+| `applicant_type` 条件 | `COMPANY`、`ACADEMY` 等大写类别，不是机构名称 |
+| `filters` | `assignees`、`assignee_ids`、`jurisdiction`、`legal_status`、`ipc`、`inventors`、`cited_min`、`pn`、`apno`、`date_type`、`date_from`、`date_to` |
+| 日期筛选 | 一个 `date_type`：`publication`、`application`、`granted`、`priority`或 `expired`；日期为包含两端的 YYYYMMDD 整数 |
+| 号码筛选 | `pn`、`apno` 为非空字符串数组，按前缀匹配；已知公开号取详情使用 `ls_patent_fetch(pn=[...])` |
+| `sort` | `relevance` 或 `publication`、`application`、`granted`、`expired`、`priority`、`cited_count`；日期／计数排序前加 `-` 表示降序 |
+| `offset`、`limit` | offset 非负，limit 为 1–100，offset + limit ≤1000 |
+| `collapse_family` | 默认 false；按分析目标选择并说明计数口径 |
+
+结构化检索不足时，在同一 `ls_patent_search` 中使用 `semantic_query`。只使用工具声明的参数。旧的顶层实体筛选、`country`、`key_word`、`patent_number`、`application_date_from/to`、`expiry_date_from/to` 以及 `query`/`top_k`/`lang` 都不是有效入参。排序使用 `sort`，不用 `sort_by`/`sort_order`。参数错误或上游失败不能描述为零结果。
 
 ### 证据覆盖策略
 

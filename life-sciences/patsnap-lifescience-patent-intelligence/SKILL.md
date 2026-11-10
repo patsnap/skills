@@ -71,14 +71,13 @@ Use for standalone IP, FTO, expiration, moat, and technology evolution questions
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_patent_search` → `ls_patent_fetch` | Core patent records by drug/target/disease/org/type |
+| 1 | `ls_patent_search` → `ls_patent_fetch` | Unified structured, keyword, and semantic patent retrieval, then evidence details |
 | 2 | `hybrid_search(sources=["patent"])` | Supplement: technology-dimension search by IPC class, assignee name, inventor, citation count, or date range; also for conceptual/semantic queries across patents + papers |
-| 3 | `ls_patent_vector_search` | Semantic fallback when structured search returns <5 results |
-| 4 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_organization_fetch` | Patent holders, assignee background |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | Patent litigation news, ANDA filings, Paragraph IV, PTE filings, LOE announcements |
-| 7 | `ls_sequence_search_submit` → poll → `ls_sequence_search_get_results` | Sequence-based patent search for biologics, ADCs, gene therapies (async job flow) |
-| 8 | `web_search` | Orange Book entries, USPTO records, recent litigation (last resort) |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 4 | `ls_entity_fetch(entity_type="organization")` | Patent holders, assignee background |
+| 5 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Patent litigation news, ANDA filings, Paragraph IV, PTE filings, LOE announcements |
+| 6 | `ls_sequence_search_submit` → poll → `ls_sequence_search_get_results` | Sequence-based patent search for biologics, ADCs, gene therapies (async job flow) |
+| 7 | `web_search` | Orange Book entries, USPTO records, recent litigation (last resort) |
 
 **`hybrid_search` usage in patent context:**
 - IPC-based landscape: `search_strategy=["keyword","filter"], keywords=[tech terms], filters={ipc:["A61K"], jurisdiction:["US","CN"]}`
@@ -88,26 +87,24 @@ Use for standalone IP, FTO, expiration, moat, and technology evolution questions
 
 Search is the default evidence surface. Do not call `*_fetch` merely because `*_search` was used; stop at Search whenever it already provides the fields needed for the answer.
 
-Use the following retrieval paths:
+### Patent search parameters
 
-| Parameter | Type | Notes |
-|-----------|------|-------|
-| `drug` | List[str] | Drug name list |
-| `drug_type` | List[str] | Drug modality filter |
-| `patent_core_type` | List[str] | `"product_compound"`, `"sequence"`, `"drug_combination"`, `"formulation"`, `"product_derivative"`, `"crystal_form"`, `"process"`, `"new_use"`, `"dosage_form"`, `"device"`, `"diagnostic_analysis_assay"` |
-| `target` | List[str] | Target name list |
-| `disease` | List[str] | Disease name list |
-| `organization` | List[str] | Assignee/applicant name list |
-| `patent_technology` | List[str] | `"Antibody drug conjugate (ADC)"`, `"Monoclonal antibody (mAb)"`, `"Antibody"`, `"Enzyme"`, `"Adeno-associated virus (AAV)"`, `"CRISPR/Cas"`, etc. |
-| `legal_status` | List[str] | `"inactive"`, `"active"`, `"pending"` |
-| `country` | List[str] | Country codes (e.g. `"US"`, `"CN"`, `"EP"`) |
-| `application_date_from/to` | str | YYYY-MM-DD |
-| `expiry_date_from/to` | str | YYYY-MM-DD |
-| `patent_number` | str | Single patent number |
-| `key_word` | List[str] | Free-text fallback only |
-| `offset`, `limit` | int | Pagination |
+| Parameter | Contract |
+|-----------|----------|
+| `semantic_query` | Full technical intent; preserve qualifiers without inventing mechanisms or applications |
+| `keywords` | Complete concept phrases; supports Chinese, English, and Japanese without automatic translation |
+| `domain_filters` | Fields: `drug`, `target`, `disease`, `drug_type`, `patent_core_type`, `patent_technology`, `applicant_type`, `inchi_all`, `inchi_claims`, `sequence_all`, `sequence_claims` |
+| Domain conditions | `eq`/`ne` take a scalar; `in`/`not_in` take 1–100 unique values. Different fields and operators combine with AND. Use category values declared in the tool schema |
+| Compound/sequence conditions | Internal integer IDs, not InChI strings, names, or sequence text. `claims` restricts to claims; `all` covers general associations |
+| `applicant_type` condition | Uppercase category such as `COMPANY` or `ACADEMY`, not an organization name |
+| `filters` | `assignees`, `assignee_ids`, `jurisdiction`, `legal_status`, `ipc`, `inventors`, `cited_min`, `pn`, `apno`, `date_type`, `date_from`, `date_to` |
+| Date filters | One `date_type`: `publication`, `application`, `granted`, `priority`, or `expired`; inclusive YYYYMMDD integers |
+| Number filters | `pn` and `apno` are non-empty string arrays with prefix matching. For known publication numbers, use `ls_patent_fetch(pn=[...])` |
+| `sort` | `relevance` or `publication`, `application`, `granted`, `expired`, `priority`, `cited_count`; prefix date/count sorts with `-` for descending |
+| `offset`, `limit` | Nonnegative offset, limit 1–100, and offset + limit ≤1000 |
+| `collapse_family` | Defaults to false; choose and disclose the counting basis |
 
-**FORBIDDEN parameters** (cause 0 results): `query`, `sort_by`, `sort_order`, any unlisted field.
+Use `semantic_query` on the same `ls_patent_search` tool when structured retrieval is insufficient. Use only declared parameters. Legacy top-level entity filters, `country`, `key_word`, `patent_number`, `application_date_from/to`, `expiry_date_from/to`, and `query`/`top_k`/`lang` are not valid inputs. Use `sort`, not `sort_by`/`sort_order`. Do not describe parameter or upstream errors as zero results.
 
 ### Evidence Coverage Policy
 

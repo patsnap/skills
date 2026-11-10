@@ -84,9 +84,9 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_fda_label_vector_search` | 标签内警告，禁忌证，已知不良事件 (语义检索) |
-| 3 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_semantic_search(source="fda_label")` | 标签内警告，禁忌证，已知不良事件 (语义检索) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | 已发表的药物警戒研究 |
 
 检索是默认取证方式。不要仅因调用过 `*_search` 就继续调用 `*_fetch`；如果检索结果已经包含回答所需字段，应直接停止。

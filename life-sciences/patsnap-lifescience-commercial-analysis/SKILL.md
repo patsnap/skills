@@ -80,14 +80,14 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_epidemiology_vector_search` | Patient population base for TAM calculation |
-| 3 | `ls_fda_label_vector_search` | Approved label scope — indications, restrictions, REMS (semantic search) |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_financial_report_vector_search` | Revenue data, analyst consensus, R&D spend (semantic search) |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 8 | `ls_news_vector_search` → `ls_news_fetch` | Pricing announcements, reimbursement decisions, launch news |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_semantic_search(source="epidemiology")` | Patient population base for TAM calculation |
+| 3 | `ls_evidence_by_semantic_search(source="fda_label")` | Approved label scope — indications, restrictions, REMS (semantic search) |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_semantic_search(source="financial_report")` | Revenue data, analyst consensus, R&D spend (semantic search) |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 8 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Pricing announcements, reimbursement decisions, launch news |
 | 9 | `web_search` | Analyst revenue models, ICER assessments, pricing databases (last resort) |
 
 Execute only the steps relevant to the query. Stop when data is sufficient.

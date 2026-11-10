@@ -84,22 +84,22 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 2 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 3 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | Published analyses, NMA studies, review literature |
 | 5 | `ls_paper_vector_search` | Semantic literature search (fallback) |
-| 6 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_fda_label_vector_search` | Label information, approved endpoints |
-| 8 | `ls_clinical_guideline_vector_search` | Guideline-endorsed endpoints, SoC comparators |
+| 6 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_semantic_search(source="fda_label")` | Label information, approved endpoints |
+| 8 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | Guideline-endorsed endpoints, SoC comparators |
 | 9 | `web_search` | Last resort after all MCP retrievals complete |
 
 **Mandatory companion retrieval for competitive-threat questions:**
 
 When the prompt asks whether one drug can "challenge", "threaten", "replace", "displace", "defend", or "undermine" another asset's position, do not rely on endpoint data alone. Add the following checks even when the primary task is clinical:
-- `ls_drug_fetch` for both assets to identify originator and active organizations.
-- `ls_clinical_trial_search` by drug plus indication to identify whether the asset is being developed as monotherapy, combination regimen, maintenance therapy, or franchise extension.
-- `ls_news_vector_search` or `ls_financial_report_vector_search` when partner strategy, global trial execution, or franchise positioning is not captured in structured records.
+- `ls_entity_fetch(entity_type="drug")` for both assets to identify originator and active organizations.
+- `ls_evidence_by_entity_search(evidence_type="clinical_trial")` by drug plus indication to identify whether the asset is being developed as monotherapy, combination regimen, maintenance therapy, or franchise extension.
+- `ls_evidence_by_entity_search(evidence_type="news")` or `ls_evidence_by_semantic_search(source="financial_report")` when partner strategy, global trial execution, or franchise positioning is not captured in structured records.
 
 **Data completeness — always set explicit limits and paginate:**
 
@@ -205,7 +205,7 @@ When the user asks about trial design or enrollment feasibility:
 ### Clinical Guideline Context
 
 When guideline-endorsed endpoints or SoC comparators are needed:
-- Use `ls_clinical_guideline_vector_search` for NCCN, ESMO, ASCO, AHA/ACC guideline recommendations
+- Use `ls_evidence_by_semantic_search(source="clinical_guideline")` for NCCN, ESMO, ASCO, AHA/ACC guideline recommendations
 - Cross-reference with openFDA approval history to confirm label-endorsed endpoints
 - Note when trial endpoints differ from guideline-recommended endpoints (regulatory risk signal)
 

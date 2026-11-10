@@ -76,12 +76,12 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 2 | `ls_fda_label_vector_search` | 当前标签内容 — 已获批适应症，警告，REMS (语义检索) |
-| 3 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_clinical_guideline_vector_search` | 指南建议，未满足需求背景 |
-| 6 | `ls_news_vector_search` → `ls_news_fetch` | FDA AdCom 结果，完整回复函（CRL），PDUFA 更新，NMPA 新闻 |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 2 | `ls_evidence_by_semantic_search(source="fda_label")` | 当前标签内容 — 已获批适应症，警告，REMS (语义检索) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | 指南建议，未满足需求背景 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | FDA AdCom 结果，完整回复函（CRL），PDUFA 更新，NMPA 新闻 |
 | 7 | `web_search` | 实时监管决策，资格认定，标签更新 (最后手段) |
 
 ### 证据覆盖策略

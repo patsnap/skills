@@ -85,15 +85,15 @@ ls_structure_search(smiles="[SMILES]",type="EXT")         # exact match
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
 | 2 | `ls_paper_search` → `ls_paper_fetch` | 药效学，MoA 文献 |
 | 2b | `hybrid_search(sources=["paper"])` | 通过被引次数查找奠基性的 MoA／SAR 论文： `filters={cited_min:50}` |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 6 | `ls_fda_label_vector_search` | 监管标注，剂量，警告 (语义检索) |
-| 7 | `ls_clinical_guideline_vector_search` | 药物在治疗指南中的定位 |
-| 8 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 6 | `ls_evidence_by_semantic_search(source="fda_label")` | 监管标注，剂量，警告 (语义检索) |
+| 7 | `ls_evidence_by_semantic_search(source="clinical_guideline")` | 药物在治疗指南中的定位 |
+| 8 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
 | 9 | `web_search` | 商业定价，真实世界安全性信号 (最后手段) |
 
 ### 证据覆盖策略
@@ -169,8 +169,8 @@ ls_structure_search(smiles="[SMILES]",type="EXT")         # exact match
 **基于化合物的药物再利用策略:**
 1. 获取完整的靶点和机制画像（步骤 1–2）
 2. 通过网页检索寻找与这些靶点相关的疾病（Open Targets、GWAS 数据）
-3. 检查新适应症中的临床证据：`ls_clinical_trial_search(drug=[drug_name])`
-4. 检查交易先例: `ls_drug_deal_search(drug=[drug_name])`
+3. 检查新适应症中的临床证据：`ls_evidence_by_entity_search(evidence_type="clinical_trial", drug=[drug_name])`
+4. 检查交易先例: `ls_evidence_by_entity_search(evidence_type="drug_deal", drug=[drug_name])`
 
 **药物再利用评分 (0–100):**
 

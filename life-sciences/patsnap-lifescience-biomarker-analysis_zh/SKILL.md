@@ -90,18 +90,17 @@ metadata:
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
 | 1 | `ls_paper_search` → `ls_paper_fetch` | 生物标志物临床证据，诊断与预后研究 |
-| 2 | `ls_target_fetch` | 与生物标志物相关的靶点生物学背景 |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 5 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 6 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
-| 8 | `ls_fda_label_vector_search` | CDx 标签信息及已获批的生物标志物阈值 (语义检索) |
-| 9 | `ls_patent_search(patent_core_type=["diagnostic_analysis_assay"])` → `ls_patent_fetch` | 生物标志物和 CDx 专利; 专利侵权风险评估 |
-| 10 | `ls_patent_vector_search` | 语义专利检索（结构化检索不足时兜底） |
-| 11 | `ls_antibody_antigen_search` | 检索针对该生物标志物靶点的抗体（生物治疗模态 MCP），用于评估抗体型伴随诊断检测 |
-| 12 | `ls_news_vector_search` → `ls_news_fetch` | 近期 CDx 获批，生物标志物指南更新 |
-| 13 | `web_search` | 检测率、支付报销状态和准入障碍（最后手段） |
+| 2 | `ls_entity_fetch(entity_type="target")` | 与生物标志物相关的靶点生物学背景 |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 6 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
+| 8 | `ls_evidence_by_semantic_search(source="fda_label")` | CDx 标签信息及已获批的生物标志物阈值 (语义检索) |
+| 9 | `ls_patent_search(domain_filters={"patent_core_type":{"eq":"diagnostic_analysis_assay"}})` → `ls_patent_fetch` | 生物标志物和 CDx 专利；评估专利侵权风险。结构化检索不足时，在保留适用领域筛选的同时使用同一工具的 `semantic_query` |
+| 10 | `ls_antibody_antigen_search` | 检索针对该生物标志物靶点的抗体（生物治疗模态 MCP），用于评估抗体型伴随诊断检测 |
+| 11 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 近期 CDx 获批，生物标志物指南更新 |
+| 12 | `web_search` | 检测率、支付报销状态和准入障碍（最后手段） |
 
 ### 证据覆盖策略
 

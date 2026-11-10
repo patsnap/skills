@@ -89,18 +89,17 @@ Use the following retrieval paths:
 | Step | Tool | Purpose |
 |------|------|---------|
 | 1 | `ls_paper_search` → `ls_paper_fetch` | Biomarker clinical evidence, diagnostic/prognostic studies |
-| 2 | `ls_target_fetch` | Target biology context for the biomarker |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 6 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 8 | `ls_fda_label_vector_search` | CDx label info, approved biomarker cutoffs (semantic search) |
-| 9 | `ls_patent_search(patent_core_type=["diagnostic_analysis_assay"])` → `ls_patent_fetch` | Biomarker and CDx patents; patent infringement risk assessment |
-| 10 | `ls_patent_vector_search` | Semantic patent search (fallback when structured search insufficient) |
-| 11 | `ls_antibody_antigen_search` | Antibodies against this biomarker target (biology-modality MCP); useful for antibody-based CDx assays |
-| 12 | `ls_news_vector_search` → `ls_news_fetch` | Recent CDx approvals, biomarker guideline updates |
-| 13 | `web_search` | Testing rates, reimbursement status, access barriers (last resort) |
+| 2 | `ls_entity_fetch(entity_type="target")` | Target biology context for the biomarker |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 6 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 8 | `ls_evidence_by_semantic_search(source="fda_label")` | CDx label info, approved biomarker cutoffs (semantic search) |
+| 9 | `ls_patent_search(domain_filters={"patent_core_type":{"eq":"diagnostic_analysis_assay"}})` → `ls_patent_fetch` | Biomarker and CDx patents; patent infringement risk assessment. If structured retrieval is insufficient, use the same search tool with `semantic_query` while retaining applicable domain filters |
+| 10 | `ls_antibody_antigen_search` | Antibodies against this biomarker target (biology-modality MCP); useful for antibody-based CDx assays |
+| 11 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent CDx approvals, biomarker guideline updates |
+| 12 | `web_search` | Testing rates, reimbursement status, access barriers (last resort) |
 
 ### Evidence Coverage Policy
 

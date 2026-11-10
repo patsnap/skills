@@ -76,14 +76,14 @@ metadata:
 
 | 步骤 | 工具 | 用途 |
 |------|------|---------|
-| 1 | `ls_organization_fetch` | 公司身份，背景，技术平台 |
-| 2 | `ls_financial_report_vector_search` | 财务报告，收入数据，研发支出 (语义检索) |
-| 3 | `ls_drug_search` → `ls_drug_fetch` | 检索相关记录，并在需要时获取详情 |
-| 4 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | 检索相关记录，并在需要时获取详情 |
+| 1 | `ls_entity_fetch(entity_type="organization")` | 公司身份，背景，技术平台 |
+| 2 | `ls_evidence_by_semantic_search(source="financial_report")` | 财务报告，收入数据，研发支出 (语义检索) |
+| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | 检索相关记录，并在需要时获取详情 |
+| 4 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | 检索相关记录，并在需要时获取详情 |
 | 5 | `ls_patent_search` → `ls_patent_fetch` | 专利组合 |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | 检索相关记录，并在需要时获取详情 |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | 检索相关记录，并在需要时获取详情 |
-| 8 | `ls_news_vector_search` → `ls_news_fetch` | 近期新闻和公告 |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | 检索相关记录，并在需要时获取详情 |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | 检索相关记录，并在需要时获取详情 |
+| 8 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | 近期新闻和公告 |
 | 9 | `web_search` | 分析师评论，同业比较 (最后手段) |
 
 只执行与问题相关的步骤。

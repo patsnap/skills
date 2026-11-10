@@ -64,14 +64,14 @@ Use the following retrieval paths:
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_target_fetch` | Target biological details, database IDs (KEGG, UniProt, NCBI Gene, RefSeq, UMLS CUI) |
+| 1 | `ls_entity_fetch(entity_type="target")` | Target biological details, database IDs (KEGG, UniProt, NCBI Gene, RefSeq, UMLS CUI) |
 | 2 | `ls_paper_search` → `ls_paper_fetch` | Drug development history, review literature |
-| 3 | `ls_translational_medicine_search` → `ls_translational_medicine_fetch` | Search relevant records and fetch details when needed |
-| 4 | `ls_drug_search` → `ls_drug_fetch` | Search relevant records and fetch details when needed |
-| 5 | `ls_drug_deal_search` → `ls_drug_deal_fetch` | Search relevant records and fetch details when needed |
-| 6 | `ls_clinical_trial_search` → `ls_clinical_trial_fetch` | Search relevant records and fetch details when needed |
-| 7 | `ls_clinical_trial_result_search` → `ls_clinical_trial_result_fetch` | Search relevant records and fetch details when needed |
-| 8 | `ls_news_vector_search` → `ls_news_fetch` | Recent target news |
+| 3 | `ls_evidence_by_entity_search(evidence_type="translational_medicine")` → `ls_evidence_fetch(evidence_type="translational_medicine")` | Search relevant records and fetch details when needed |
+| 4 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
+| 6 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
+| 7 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 8 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent target news |
 | 9 | `ls_antibody_antigen_search` | Antibody-antigen relations (if antibody query) |
 | 10 | `web_search` | Last resort after all MCP retrievals complete |
 
