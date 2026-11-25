@@ -111,9 +111,11 @@ Execute only steps relevant to the question; stop when the available data are su
 
 | Layer | Definition | Calculation |
 |-------|-----------|-------------|
-| TAM (Total Addressable Market) | All patients with the indication × annual treatment cost | Incidence × prevalence × price |
+| TAM (Total Addressable Market) | Total theoretical treatment value for the indication in a defined geography and period | Patient count for that treatment scenario × matching cost per patient per treatment course or year |
 | SAM (Serviceable Addressable Market) | TAM × biomarker-positive fraction × diagnosed fraction × treated fraction | TAM × eligibility filters |
 | SOM (Serviceable Obtainable Market) | SAM × realistic market share at peak | SAM × share assumption |
+
+Choose new cases or prevalent cases based on the treatment scenario. Use a reported case count when available. Otherwise convert the epidemiologic measure to a count using its matching at-risk population, person-time or prevalence denominator. Model one-time treatment by course and ongoing treatment by expected duration within the period. For a one-time treatment at launch, account for any eligible previously diagnosed patients awaiting treatment as a separate, deduplicated cohort. State the geography, period, patient-count basis and cost unit. [CDC epidemiology reference](https://archive.cdc.gov/www_cdc_gov/csels/dsepd/ss1978/lesson3/section2.html)
 
 ### Revenue Forecast Framework
 

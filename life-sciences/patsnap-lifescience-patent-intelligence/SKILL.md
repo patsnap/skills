@@ -40,7 +40,9 @@ Trigger when the query involves a drug, compound, technology platform, or compan
 
 Typical prompts include: "when does X patent expire", "is X at risk of generic entry", "FTO for X", "who holds the key patents for X", "Orange Book listing for X", "patent cliff for X", "biosimilar competition timeline for X", "IP protection strategy for X", "what has X company filed patents on recently", "X company patent portfolio in Y area", "patent landscape for X technology", "which companies have patents on X mechanism", "blocking patents in X space", "analyze the patent moat behind X", "trace the technology evolution of X drug class", "who holds the foundational patents in X space", "PTE history of X", and "when does X's exclusivity expire".
 
-Use for standalone IP, FTO, expiration, moat, and technology evolution questions. For patent landscape as part of broader target competitive analysis, use `patsnap-lifescience-target-intelligence`. For general company pipeline overview, use `patsnap-lifescience-company-profiling`. For sequence-based patent analysis, use `lifescience-sequence-report`. For structure-based patent analysis, use `lifescience-structure-report`.
+Use for standalone IP, FTO, expiration, moat, and technology evolution questions. For patent landscape as part of broader target competitive analysis, use `patsnap-lifescience-target-intelligence`. For general company pipeline overview, use `patsnap-lifescience-company-profiling`.
+
+When a request starts with a sequence or structure, proceed with patent retrieval and claim review for supplied patent numbers or verified drug and compound identities. If the available evidence cannot establish a match between the input and a patent, report the match as unverified and limit the FTO conclusions to the claims reviewed.
 
 ---
 

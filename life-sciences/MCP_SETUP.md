@@ -80,7 +80,7 @@ You can also test with a quick query:
 Search for PD-1 related drugs
 ```
 
-If `ls_entity_search(entity_type="drug")` returns results, `pharma-intelligence` is working correctly.
+If `ls_entity_search(entity_type="drug")` returns results, drug search is available. For the Drug Development Pathway skill, open the connected `pharma_intelligence` server in `/mcp` and check for `ls_drug_milestone_fetch` if the client shows tool names. If it shows only a tool count, use the ID returned by drug search to test `ls_drug_milestone_fetch(drug_id=<drug_id>, offset=0, limit=10)` and check the actual tool response. If the tool is unavailable, check the configured server URL and whether the current connection exposes it before treating the timeline as empty. [Claude Code MCP tool availability](https://code.claude.com/docs/en/mcp#tool-availability)
 
 ---
 
@@ -91,6 +91,7 @@ If `ls_entity_search(entity_type="drug")` returns results, `pharma-intelligence`
 | Tool                                                                   | Description                        |
 |------------------------------------------------------------------------|------------------------------------|
 | `ls_entity_search(entity_type="drug")` / `ls_entity_fetch(entity_type="drug")`                                     | Search and retrieve drug details   |
+| `ls_drug_milestone_fetch` | Retrieve development milestones such as IND filings, phase transitions, and approvals. Use `offset` and `limit` to page through results. |
 | `ls_entity_fetch(entity_type="target")`                                                      | Retrieve target details            |
 | `ls_entity_fetch(entity_type="disease")`                                                     | Retrieve disease details           |
 | `ls_patent_search` / `ls_patent_fetch`                          | Structured, keyword, and semantic patent search |

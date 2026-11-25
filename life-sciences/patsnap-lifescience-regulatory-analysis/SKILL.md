@@ -107,8 +107,10 @@ Search is the default evidence-gathering method. Do not call `*_fetch` merely be
 | Breakthrough Therapy | Substantial improvement, serious condition | Rolling review + intensive FDA guidance |
 | Fast Track | Serious condition + unmet need | Rolling review |
 | RMAT (cell/gene therapy) | Regenerative medicine | Priority review + accelerated approval eligible |
-| Orphan Drug | <200K patients in US | 7 years market exclusivity + tax credits |
+| U.S. orphan-drug designation | Rare disease or condition, generally affecting fewer than 200,000 people in the U.S. | Designation can qualify the sponsor for incentives such as tax credits. Seven years of orphan-drug exclusivity may apply after qualifying FDA approval or licensure. |
 | 505(b)(2) | Known active ingredient, new use/formulation | Reduced data package |
+
+Record orphan designation, marketing approval or licensure, and exclusivity as distinct milestones. Under [21 U.S.C. § 360cc](https://uscode.house.gov/us/usc/t21/s360cc/), the seven-year term runs from the qualifying approval or license issuance date for the approved use or indication. Check the exclusivity status and any published end date for that indication in the [FDA Orphan Drug Designations and Approvals database](https://www.accessdata.fda.gov/scripts/opdlisting/oopd/index.cfm). If only a designation is documented, report it and leave the exclusivity end date undetermined.
 
 ### Key Regulatory Risks
 
