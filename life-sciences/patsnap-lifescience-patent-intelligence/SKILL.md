@@ -1,40 +1,25 @@
 ---
 name: patsnap-lifescience-patent-intelligence
-description: |
-  Use when the user asks about biopharma patent landscapes, IP risk, FTO, expiration, patent cliffs, exclusivity, generic or biosimilar entry risk, litigation, patent strategy, technical moat, or technology evolution.
+description: Use when the user asks about biopharma patent landscapes, IP risk, FTO,
+  expiration, patent cliffs, exclusivity, generic or biosimilar entry risk, litigation,
+  patent strategy, technical moat, or technology evolution.
 license: MIT
 metadata:
   author: patsnap
-  version: '3.0.0'
+  version: 1.0.0
   domain: lifescience
 ---
 
 # Patent Intelligence
-## SaaS Context and MCP Enrichment Policy
+**Zone 1 — Tier P only.** Prioritize Patsnap MCP evidence; when key fields are missing or conflicting, verify official primary sources under the rules below.
 
-This skill supports two peer workflows: global database search and SaaS-anchored analysis.
+## Writing and Output Style
 
-When no SaaS context is provided, use the normal global workflow for this skill: normalize entities, search the relevant full database sources, fetch details when needed, and synthesize the answer from the best available evidence.
+Write as an analytical memo for business, BD, R&D or medical colleagues: lead with the conclusion, then evidence and reasoning. Retain necessary technical terms, drug names, endpoints and database names, while avoiding awkward word-for-word translation.
 
-When SaaS context is provided, treat the SaaS search result, filters, selected records, and visible fields as the primary analysis anchor. The SaaS context defines the main entities and user-visible scope, but it is not a hard ban on additional evidence. Use MCP tools to enrich missing fields, fetch details for records inside the SaaS result set, and retrieve supporting evidence that is required to answer the user's question.
-
-Use global MCP search in SaaS context when the question requires comparison, market-wide context, missing clinical/regulatory/patent/deal/literature evidence, or explicit expansion beyond the current result set. Do not silently merge out-of-scope records into the SaaS result set. Clearly label evidence as one of:
-
-- Current SaaS results
-- MCP enrichment for current SaaS records
-- Broader or out-of-scope MCP supplement
-
-If SaaS-provided data is incomplete, state what is missing and explain which MCP tools or sources were used to supplement it. If the answer relies on out-of-scope evidence, make that boundary explicit.
-
-### SaaS Tool-Use Priority
-
-1. First inspect SaaS-provided records, filters, selected IDs, available fields, missing fields, and result counts.
-2. If the question can be answered from SaaS data, answer from SaaS data and state the active scope.
-3. If required fields are missing, use MCP fetch/search tools to enrich the entities already present in the SaaS result set.
-4. If the question requires broader context, use MCP search as supplemental evidence and label it as broader/global context.
-5. Keep SaaS-filtered records separate from MCP-discovered records in the final answer.
-
-**Zone 1 — Tier P only.** All data from Patsnap MCP tools exclusively.
+- Use concise sentences and clear judgments; avoid empty stock phrases.
+- Anchor each key judgment in data, sources, applicable populations, comparators or time windows.
+- Do not narrate internal work or tool status, such as "retrieval is complete" or "now analyzing."
 
 ## Role
 
@@ -71,48 +56,61 @@ Use for standalone IP, FTO, expiration, moat, and technology evolution questions
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_patent_search` → `ls_patent_fetch` | Unified structured, keyword, and semantic patent retrieval, then evidence details |
-| 2 | `hybrid_search(sources=["patent"])` | Supplement: technology-dimension search by IPC class, assignee name, inventor, citation count, or date range; also for conceptual/semantic queries across patents + papers |
-| 3 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
-| 4 | `ls_entity_fetch(entity_type="organization")` | Patent holders, assignee background |
-| 5 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Patent litigation news, ANDA filings, Paragraph IV, PTE filings, LOE announcements |
-| 6 | `ls_sequence_search_submit` → poll → `ls_sequence_search_get_results` | Sequence-based patent search for biologics, ADCs, gene therapies (async job flow) |
-| 7 | `web_search` | Orange Book entries, USPTO records, recent litigation (last resort) |
+| 1 | `ls_patent_search` → `ls_patent_fetch` | Unified structured, keyword and semantic patent search, followed by evidence detail retrieval |
+| 2 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Retrieve relevant records and fetch details when needed |
+| 3 | `ls_entity_fetch(entity_type="organization")` | Patent owner and assignee background |
+| 4 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Patent litigation, ANDA filings, Paragraph IV certifications, PTE applications and LOE announcements |
+| 5 | `ls_web_search` | Orange Book entries, USPTO records and recent litigation (fact verification) |
 
-**`hybrid_search` usage in patent context:**
-- IPC-based landscape: `search_strategy=["keyword","filter"], keywords=[tech terms], filters={ipc:["A61K"], jurisdiction:["US","CN"]}`
-- Company portfolio: `search_strategy=["keyword","filter"], keywords=[tech terms], filters={assignees:["[company]"]}`
-- High-impact prior art: `search_strategy=["semantic","filter"], semantic_query="[concept]", filters={cited_min:50, legal_status:["active"]}`
-- FTO semantic search: `search_strategy=["semantic"], semantic_query="[claim description]", sources=["patent"]`
+Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 
-Search is the default evidence surface. Do not call `*_fetch` merely because `*_search` was used; stop at Search whenever it already provides the fields needed for the answer.
+### Patent Search Parameters
 
-### Patent search parameters
-
-| Parameter | Contract |
-|-----------|----------|
-| `semantic_query` | Full technical intent; preserve qualifiers without inventing mechanisms or applications |
-| `keywords` | Complete concept phrases; supports Chinese, English, and Japanese without automatic translation |
+| Parameter | Convention |
+|------|------|
+| `semantic_query` | Complete technical intent; preserve qualifiers without adding unrequested mechanisms or applications |
+| `keywords` | Complete concept phrases; Chinese, English and Japanese are supported without automatic translation |
 | `domain_filters` | Fields: `drug`, `target`, `disease`, `drug_type`, `patent_core_type`, `patent_technology`, `applicant_type`, `inchi_all`, `inchi_claims`, `sequence_all`, `sequence_claims` |
-| Domain conditions | `eq`/`ne` take a scalar; `in`/`not_in` take 1–100 unique values. Different fields and operators combine with AND. Use category values declared in the tool schema |
-| Compound/sequence conditions | Internal integer IDs, not InChI strings, names, or sequence text. `claims` restricts to claims; `all` covers general associations |
-| `applicant_type` condition | Uppercase category such as `COMPANY` or `ACADEMY`, not an organization name |
-| `filters` | `assignees`, `assignee_ids`, `jurisdiction`, `legal_status`, `ipc`, `inventors`, `cited_min`, `pn`, `apno`, `date_type`, `date_from`, `date_to` |
-| Date filters | One `date_type`: `publication`, `application`, `granted`, `priority`, or `expired`; inclusive YYYYMMDD integers |
-| Number filters | `pn` and `apno` are non-empty string arrays with prefix matching. For known publication numbers, use `ls_patent_fetch(pn=[...])` |
-| `sort` | `relevance` or `publication`, `application`, `granted`, `expired`, `priority`, `cited_count`; prefix date/count sorts with `-` for descending |
-| `offset`, `limit` | Nonnegative offset, limit 1–100, and offset + limit ≤1000 |
-| `collapse_family` | Defaults to false; choose and disclose the counting basis |
+| Domain conditions | `eq`/`ne` take scalars; `in`/`not_in` take 1–100 distinct values. Different fields and operators are combined with AND; use category values from the tool schema |
+| Compound / sequence conditions | Use internal integer IDs, not InChI strings, names or sequence text. `claims` restricts to claims; `all` denotes general association |
+| `applicant_type` conditions | Uppercase categories such as `COMPANY` and `ACADEMY`, not organization names |
+| `filters` | `assignees`、`assignee_ids`、`jurisdiction`、`legal_status`、`ipc`、`inventors`、`cited_min`、`pn`、`apno`、`date_type`、`date_from`、`date_to` |
+| Date filters | One `date_type`: `publication`, `application`, `granted`, `priority` or `expired`; inclusive YYYYMMDD integer dates |
+| Number filters | Nonempty string arrays `pn` and `apno`, matched by prefix; fetch known publication numbers with `ls_patent_fetch(pn=[...])` |
+| `sort` | `relevance`, `publication`, `application`, `granted`, `expired`, `priority` or `cited_count`; prefix date/count sorts with `-` for descending order |
+| `offset`, `limit` | Nonnegative offset, limit 1–100, offset + limit ≤1000 |
+| `collapse_family` | Default false; choose and explain the counting basis for the analytical objective |
 
-Use `semantic_query` on the same `ls_patent_search` tool when structured retrieval is insufficient. Use only declared parameters. Legacy top-level entity filters, `country`, `key_word`, `patent_number`, `application_date_from/to`, `expiry_date_from/to`, and `query`/`top_k`/`lang` are not valid inputs. Use `sort`, not `sort_by`/`sort_order`. Do not describe parameter or upstream errors as zero results.
+If structured search is insufficient, use `semantic_query` within the same `ls_patent_search`. Use only declared parameters. Legacy top-level entity filters, `country`, `key_word`, `patent_number`, `application_date_from/to`, `expiry_date_from/to`, and `query`/`top_k`/`lang` are not valid inputs. Sort with `sort`, not `sort_by`/`sort_order`. Parameter errors or upstream failures are not zero-result searches.
 
-### Evidence Coverage Policy
+### Evidence Coverage and Conclusion Verification
 
-Use internal MCP returned fields as the only source for MCP-supported facts. Before making any concrete claim, verify that the required analysis dimension is directly supported by the fields returned from the MCP tools used.
+- Support specific facts with retrieved record fields, retaining source identifiers, applicable regions and record dates. For approval status, clinical endpoints and contractual terms that affect the conclusion, prioritize the relevant official decision, registry or original results, contract or original announcement. When structured results have missing key fields, conflicts, zero hits or unresolved entity identity, use `ls_web_search` from the MCP contract to verify official primary sources without waiting for all structured searches to finish. Build queries from the entity name, reliable identifiers, fact to verify, region and period. Prioritize regulators, trial registries, company announcements, exchange filings and patent authorities. Check whether the returned content directly supports the fact and retain its link, date and scope. Do not infer missing fields from merely relevant titles or abstracts. Mark evidence insufficient only after verification still fails, and limit the affected conclusions accordingly. If `ls_web_search` is unavailable or fails, state that verification is blocked; do not substitute tools outside the contract and present them as completion of this verification step.
+- Inspect both call status and error, warnings and items in the response. Distinguish parameter, authentication and service errors from explicit no-match messages by their meaning, not merely the presence of an error field. If unclear, retain the original message and mark it unresolved. A total=0 attached to an error is not a valid zero-hit result; even a valid zero-hit result does not prove that the fact does not exist. Record rejected parameters, service failures, valid zero-hit queries and unexecuted queries separately. Retain status codes as returned unless a code table confirms their meaning.
+- If one identifier blocks a batch query, retain successful records and isolate the failed items using the current schema. If a plausibly formatted identifier is rejected, check the official registry through `ls_web_search`; do not infer nonexistence. Do not repeatedly retry the same failure. After one correction or split still fails, verify primary sources through `ls_web_search` or mark the task blocked.
+- Semantic search produces candidates only. Before accepting evidence, verify the name or alias mapping, registry/protocol number, relevant entity and relevance of the original text. Nonempty results, similar titles and ranking do not prove a match. Do not replace an unresolved entity with a similar one or attribute candidate records to the original name. Track coverage separately for pipeline, results, transactions and other evidence branches; an unqueried branch cannot be described as having no records.
+- Retain each conflicting record with its own date, version and scope, and determine whether the records concern different populations, regions or events. Leave unexplained differences unresolved rather than inventing causes. Explicitly label model-based inferences and scenario assumptions and give their basis.
+- Before reporting totals or rankings, check query scope, pagination, the deduplication unit and exclusion criteria. If only part of the records was retrieved, describe the sample scope instead of treating it as the full population. Respect the requested item limit, cutoff date and comparison scope.
+- Map requested conclusions to retrieved evidence. When missing fields affect a conclusion, first retrieve the relevant details; if gaps or conflicts remain, verify primary sources using `ls_web_search`. If still unavailable, state the gap and affected judgment. A maximum number of items is a ceiling, not a quota to fill with irrelevant records. A few reliable examples neither establish complete coverage nor replace a requested comprehensive review.
+- Before delivery, check the summary, tables, body and revised text against the evidence mapping. Status, monetary units, region, population and certainty must agree for the same fact. Place material qualifications beside the relevant value or judgment, not only in a closing disclaimer. After correcting a fact, recheck dependent comparisons, totals and recommendations; do not overwrite verified content without a source. Normalize monetary amounts to one currency and base unit before display conversion, checking million, billion, ten-thousand, hundred-million and ratio conversions. Do not add incompatible denominators, periods or analysis versions to force a total. Keep complete, locatable citation identifiers without truncation.
 
-If an analysis dimension is not covered by internal MCP returned fields, you MUST call `web_search` to retrieve public evidence for that dimension. If `web_search` is unavailable, returns no evidence, or does not support the claim, state that the dimension is not supported by available evidence.
+- Maintain a concise evidence mapping for decision-relevant facts: conclusion, entity, scope, value and unit, document date, complete source identifier and original-text location. Record what the task needs without exposing internal verification narration. A search-generated answer is not the original source. Verification requires locatable original content that directly supports the conclusion. A working link, successful call or a returned claim of verification is insufficient. If the original cannot be obtained, retain an unresolved status; do not invent page numbers, quotations or record identifiers.
+- When updating an analysis, revisit previously located primary sources and check revisions, subsequent announcements and report notes available by the question cutoff. The old answer itself is not evidence. Do not discard still-applicable primary evidence merely because the current search missed it; explicitly replace outdated evidence. Do not upgrade an unresolved conclusion to certainty unless new evidence directly supports it.
+- Distinguish "not obtained in this search," "not stated in the documents reviewed" and "explicitly undisclosed." Before denying disclosure or claiming only, first or all, check the required sources and search coverage; otherwise restrict the claim to the material obtained. Multiple entry points may share a parser or underlying source. Their count is not independent corroboration, and identical errors do not rule out a system issue.
 
-Strictly do not infer, guess, or fill missing factual gaps from model knowledge, assumptions, or general reasoning. Unsupported claims are prohibited.
+### Business Judgment Rules
+
+- Compare numerical ranges using the actual proposed parameters and every necessary limitation. Distinguish changes within a range from crossing a required boundary, and separate literal scope from equivalents analysis. The size of a change alone cannot establish inevitable infringement or avoidance. Do not turn conditional body-text analysis into an absolute summary.
+- Preserve the measurement features, components and uses that limit granted scope; do not generalize a specific embodiment to protection of an entire technology class. Mark status not verified with official sources and estimated term with sources and limitations in the corresponding table cells. Do not give a definite expiry date when dates are questionable.
+- A proceeding not accepted or not decided on the merits does not independently establish current enforceability. Term compensation depends on jurisdiction, approved product, claimed subject matter and applicable conditions, not patent category alone. A related-patent alert does not replace assessment of the actual product against currently effective claims.
+- Patent relevance search is not a determination of claim coverage. Classify core compound, formulation and use patents by applicable claims, then group by verifiable family relationships. Termination of a PCT procedure does not establish lapse of national members. Verify each relevant national member and its changes; otherwise do not issue family-wide validity or complete FTO conclusions.
+- Read the applicable granted claims and subsequent changes for the jurisdiction and target product, mapping every necessary technical feature. A single ratio falling within a range or one changed feature cannot alone establish infringement or eliminate risk.
+- Distinguish whether a technology itself is claimed from whether a composition containing it falls within a claim. Absence of a specific form limitation does not automatically exclude products containing that form.
+- Preserve the full formulation when comparing ratios and components. Determine component meanings and denominators from claims, specification and prosecution history; do not first remove disputed ingredients to obtain a desired ratio.
+- Analyze equivalents and numerical ranges under applicable law, specific claims and prosecution history. Do not generalize one numerical rule into a claim that all values outside the range are low risk.
+- State the legal-status source, jurisdiction and query date. A database active flag does not prove official maintenance fees or registration were checked. Distinguish estimated term, term compensation, regulatory exclusivity and market-entry conditions; expiry of one patent does not establish the end of product exclusivity.
+- Family counts require family identifiers, member numbers and grouping evidence. FTO depends on the proposed product, target territories, effective claims and search coverage. If preliminary screening lacks these conditions, list the unresolved elements.
+- For pharmaceutical patent linkage or waiting periods, verify local rules, the specific listing and filing procedure. Do not infer applicability solely from patent type or database status.
 
 ---
 
@@ -145,8 +143,8 @@ Activate one or more modules based on the query. No fixed execution order.
 
 | Patent Type | Description | Strategic Importance |
 |-------------|-------------|----------------------|
-| Composition of Matter | Novel compound, molecule, or sequence | Strongest protection; hardest to design around |
-| Formulation | Drug delivery, solubility, stability | Extends exclusivity post-CoM expiry |
+| Composition of Matter | Novel compound, molecule, or sequence | Assess coverage against effective claims and the target product |
+| Formulation | Drug delivery, solubility, stability | May constrain specific formulations; verify coverage by effective claims |
 | Method of Use | New indication, dosing regimen, patient selection | Indication-specific protection |
 | Process | Manufacturing method, synthesis route | Protects production; less commercial impact |
 | Combination | Drug combination regimens | Protects combination therapy use |
@@ -158,10 +156,10 @@ Activate one or more modules based on the query. No fixed execution order.
 For each drug, map the exclusivity timeline:
 
 1. **Core CoM expiry**: When does the primary composition of matter patent expire?
-2. **Regulatory exclusivity**: NCE (5yr), Orphan (7yr), Pediatric (6mo), Biologic (12yr) — run independently of patents
-3. **Secondary patents**: Formulation, method of use, polymorph patents extending effective exclusivity
+2. **Regulatory exclusivity**: Verify type and duration by jurisdiction, eligibility and applicable rules; list separately from patent terms
+3. **Secondary patents**: Verify term and product coverage separately for formulation, method-of-use and polymorph patents
 4. **Orange Book / Purple Book**: Listed patents and expiry dates
-5. **Generic/biosimilar entry window**: First possible entry date after all exclusivities expire
+5. **Generic/biosimilar entry window**: Assess feasible entry windows using the target product, covering patents, regulatory exclusivity, licenses and launch conditions
 
 ### FTO Risk Assessment
 

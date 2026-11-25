@@ -1,42 +1,27 @@
 ---
 name: patsnap-lifescience-pharmacovigilance
-description: |
-  Use when the user asks about pharmacovigilance, post-market safety, FAERS, adverse event reports, disproportionality analysis, unlabeled adverse events, safety surveillance, signal strength, PRR, ROR, or IC statistics.
+description: Use when the user asks about pharmacovigilance, post-market safety, FAERS,
+  adverse event reports, disproportionality analysis, unlabeled adverse events, safety
+  surveillance, signal strength, PRR, ROR, or IC statistics.
 license: MIT
 metadata:
   author: patsnap
-  version: '1.0.0'
+  version: 1.0.0
   domain: lifescience
 ---
 
 # Pharmacovigilance
-## SaaS Context and MCP Enrichment Policy
-
-This skill supports two peer workflows: global database search and SaaS-anchored analysis.
-
-When no SaaS context is provided, use the normal global workflow for this skill: normalize entities, search the relevant full database sources, fetch details when needed, and synthesize the answer from the best available evidence.
-
-When SaaS context is provided, treat the SaaS search result, filters, selected records, and visible fields as the primary analysis anchor. The SaaS context defines the main entities and user-visible scope, but it is not a hard ban on additional evidence. Use MCP tools to enrich missing fields, fetch details for records inside the SaaS result set, and retrieve supporting evidence that is required to answer the user's question.
-
-Use global MCP search in SaaS context when the question requires comparison, market-wide context, missing clinical/regulatory/patent/deal/literature evidence, or explicit expansion beyond the current result set. Do not silently merge out-of-scope records into the SaaS result set. Clearly label evidence as one of:
-
-- Current SaaS results
-- MCP enrichment for current SaaS records
-- Broader or out-of-scope MCP supplement
-
-If SaaS-provided data is incomplete, state what is missing and explain which MCP tools or sources were used to supplement it. If the answer relies on out-of-scope evidence, make that boundary explicit.
-
-### SaaS Tool-Use Priority
-
-1. First inspect SaaS-provided records, filters, selected IDs, available fields, missing fields, and result counts.
-2. If the question can be answered from SaaS data, answer from SaaS data and state the active scope.
-3. If required fields are missing, use MCP fetch/search tools to enrich the entities already present in the SaaS result set.
-4. If the question requires broader context, use MCP search as supplemental evidence and label it as broader/global context.
-5. Keep SaaS-filtered records separate from MCP-discovered records in the final answer.
-
-**Zone 1 — Tier P only.** All data from Patsnap MCP tools exclusively. Apply FAERS/disproportionality frameworks only when corresponding evidence is available from MCP or clearly attributed public sources.
+**Zone 1 — Tier P only.** Prioritize Patsnap MCP evidence; when key fields are missing or conflicting, verify official primary sources under the rules below. Apply the FAERS/signal-detection framework only when supported by MCP evidence or clearly attributable public sources.
 
 All FAERS-derived signals must be labeled: **"disproportionality signal, not causation"**
+
+## Writing and Output Style
+
+Write as an analytical memo for business, BD, R&D or medical colleagues: lead with the conclusion, then evidence and reasoning. Retain necessary technical terms, drug names, endpoints and database names, while avoiding awkward word-for-word translation.
+
+- Use concise sentences and clear judgments; avoid empty stock phrases.
+- Anchor each key judgment in data, sources, applicable populations, comparators or time windows.
+- Do not narrate internal work or tool status, such as "retrieval is complete" or "now analyzing."
 
 ## Role
 
@@ -70,28 +55,45 @@ Do not use for clinical trial safety data; use `patsnap-lifescience-clinical-out
 
 ### Tier P (Patsnap MCP) + Signal Detection Framework
 
-**Evans Criteria for Signal Detection:**
+**Evans criteria for signal detection:**
 - PRR ≥ 2 AND χ² ≥ 4 AND n ≥ 3 → signal detected
-- All three criteria must be met simultaneously
+- All three conditions must be met simultaneously
 
-Search is the default evidence surface. Do not call `*_fetch` merely because `*_search` was used; stop at Search whenever it already provides the fields needed for the answer.
-
-Use the following retrieval paths:
+### Tier P (Background — Patsnap MCP)
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
-| 2 | `ls_evidence_by_semantic_search(source="fda_label")` | Labeled warnings, contraindications, known AEs (semantic search) |
-| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Retrieve relevant records and fetch details when needed |
+| 2 | `ls_evidence_by_semantic_search(source="fda_label")` | Label warnings, contraindications and known adverse events (semantic search) |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Retrieve relevant records and fetch details when needed |
 | 4 | `ls_paper_search` → `ls_paper_fetch` | Published pharmacovigilance studies |
 
-### Evidence Coverage Policy
+Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 
-Use internal MCP returned fields as the only source for MCP-supported facts. Before making any concrete claim, verify that the required analysis dimension is directly supported by the fields returned from the MCP tools used.
+### Evidence Coverage and Conclusion Verification
 
-If an analysis dimension is not covered by internal MCP returned fields, you MUST call `web_search` to retrieve public evidence for that dimension. If `web_search` is unavailable, returns no evidence, or does not support the claim, state that the dimension is not supported by available evidence.
+- Support specific facts with retrieved record fields, retaining source identifiers, applicable regions and record dates. For approval status, clinical endpoints and contractual terms that affect the conclusion, prioritize the relevant official decision, registry or original results, contract or original announcement. When structured results have missing key fields, conflicts, zero hits or unresolved entity identity, use `ls_web_search` from the MCP contract to verify official primary sources without waiting for all structured searches to finish. Build queries from the entity name, reliable identifiers, fact to verify, region and period. Prioritize regulators, trial registries, company announcements, exchange filings and patent authorities. Check whether the returned content directly supports the fact and retain its link, date and scope. Do not infer missing fields from merely relevant titles or abstracts. Mark evidence insufficient only after verification still fails, and limit the affected conclusions accordingly. If `ls_web_search` is unavailable or fails, state that verification is blocked; do not substitute tools outside the contract and present them as completion of this verification step.
+- Inspect both call status and error, warnings and items in the response. Distinguish parameter, authentication and service errors from explicit no-match messages by their meaning, not merely the presence of an error field. If unclear, retain the original message and mark it unresolved. A total=0 attached to an error is not a valid zero-hit result; even a valid zero-hit result does not prove that the fact does not exist. Record rejected parameters, service failures, valid zero-hit queries and unexecuted queries separately. Retain status codes as returned unless a code table confirms their meaning.
+- If one identifier blocks a batch query, retain successful records and isolate the failed items using the current schema. If a plausibly formatted identifier is rejected, check the official registry through `ls_web_search`; do not infer nonexistence. Do not repeatedly retry the same failure. After one correction or split still fails, verify primary sources through `ls_web_search` or mark the task blocked.
+- Semantic search produces candidates only. Before accepting evidence, verify the name or alias mapping, registry/protocol number, relevant entity and relevance of the original text. Nonempty results, similar titles and ranking do not prove a match. Do not replace an unresolved entity with a similar one or attribute candidate records to the original name. Track coverage separately for pipeline, results, transactions and other evidence branches; an unqueried branch cannot be described as having no records.
+- Retain each conflicting record with its own date, version and scope, and determine whether the records concern different populations, regions or events. Leave unexplained differences unresolved rather than inventing causes. Explicitly label model-based inferences and scenario assumptions and give their basis.
+- Before reporting totals or rankings, check query scope, pagination, the deduplication unit and exclusion criteria. If only part of the records was retrieved, describe the sample scope instead of treating it as the full population. Respect the requested item limit, cutoff date and comparison scope.
+- Map requested conclusions to retrieved evidence. When missing fields affect a conclusion, first retrieve the relevant details; if gaps or conflicts remain, verify primary sources using `ls_web_search`. If still unavailable, state the gap and affected judgment. A maximum number of items is a ceiling, not a quota to fill with irrelevant records. A few reliable examples neither establish complete coverage nor replace a requested comprehensive review.
+- Before delivery, check the summary, tables, body and revised text against the evidence mapping. Status, monetary units, region, population and certainty must agree for the same fact. Place material qualifications beside the relevant value or judgment, not only in a closing disclaimer. After correcting a fact, recheck dependent comparisons, totals and recommendations; do not overwrite verified content without a source. Normalize monetary amounts to one currency and base unit before display conversion, checking million, billion, ten-thousand, hundred-million and ratio conversions. Do not add incompatible denominators, periods or analysis versions to force a total. Keep complete, locatable citation identifiers without truncation.
 
-Strictly do not infer, guess, or fill missing factual gaps from model knowledge, assumptions, or general reasoning. Unsupported claims are prohibited.
+- Maintain a concise evidence mapping for decision-relevant facts: conclusion, entity, scope, value and unit, document date, complete source identifier and original-text location. Record what the task needs without exposing internal verification narration. A search-generated answer is not the original source. Verification requires locatable original content that directly supports the conclusion. A working link, successful call or a returned claim of verification is insufficient. If the original cannot be obtained, retain an unresolved status; do not invent page numbers, quotations or record identifiers.
+- When updating an analysis, revisit previously located primary sources and check revisions, subsequent announcements and report notes available by the question cutoff. The old answer itself is not evidence. Do not discard still-applicable primary evidence merely because the current search missed it; explicitly replace outdated evidence. Do not upgrade an unresolved conclusion to certainty unless new evidence directly supports it.
+- Distinguish "not obtained in this search," "not stated in the documents reviewed" and "explicitly undisclosed." Before denying disclosure or claiming only, first or all, check the required sources and search coverage; otherwise restrict the claim to the material obtained. Multiple entry points may share a parser or underlying source. Their count is not independent corroboration, and identical errors do not rule out a system issue.
+
+### Business Judgment Rules
+
+- Cite labels with issuing authority, region, available version or supplement identifier, revision/approval date and relevant sections. Name date fields as in the original; a publication date is not necessarily an effective date. Determine whether a version is outdated by checking subsequent applicable revisions before the cutoff, not merely because its date precedes the cutoff. After confirming an update, check affected safety sections and definitions individually. If only an older version is available, state its temporal scope and unverified areas; do not claim a newer version exists without confirmation.
+- Put broad and narrow event definitions and their component terms on separate rows. Numerators, denominators, severity, discontinuation, rechallenge and recurrence data must follow the original event definition. Do not sum overlapping categories to infer patient-level incidence.
+- Search postmarketing spontaneous reports and active surveillance/observational cohorts with exposure denominators separately. Postmarketing evidence is not synonymous with spontaneous reporting. State population, observation period and adjudication method for incidence estimates. Keep investigator and expert-adjudicated results separate; do not directly extrapolate them to another region.
+- Check label revisions and warnings, clinical-trial and postmarketing sections as of the question cutoff. Failure to list an event separately in one section does not prove that the risk was fully characterized before approval. For rechallenge, first distinguish clinical setting, initial event severity and re-exposure regimen, then search original studies in other relevant settings. State small-sample limitations and selection bias with the results; do not pool heterogeneous populations directly.
+- Trial exclusion of high-risk patients limits generalizability; it neither proves that every real-world population has higher risk nor makes trial incidence a statistical lower bound. Interpret differences using population structure, exposure duration, surveillance intensity and event definitions.
+- Report adverse-event type, severity, observation window, source and deduplication basis separately. Trial TEAE/TRAE, discontinuation events and postmarketing spontaneous reports retain their own definitions and cannot be mixed to rank safety.
+- Do not estimate incidence from spontaneous reports without a reliable exposure denominator. Check indication confounding, concomitant drugs and reporting bias when comparing signals; signal strength is not causal strength.
 
 ---
 

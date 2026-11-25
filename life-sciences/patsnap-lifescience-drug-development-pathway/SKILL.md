@@ -1,40 +1,26 @@
 ---
 name: patsnap-lifescience-drug-development-pathway
-description: |
-  Use when the user asks about a drug or therapeutic asset development pathway, R&D milestones, phase transitions, pivotal trials, regulatory events, partnerships, regional expansion, indication sequencing, delays, strategy shifts, lifecycle management, or future milestones.
+description: Use when the user asks about a drug or therapeutic asset development
+  pathway, R&D milestones, phase transitions, pivotal trials, regulatory events, partnerships,
+  regional expansion, indication sequencing, delays, strategy shifts, lifecycle management,
+  or future milestones.
 license: MIT
 metadata:
   author: patsnap
-  version: '1.0.0'
+  version: 1.0.0
   domain: lifescience
 ---
 
 # Drug Development Pathway
-## SaaS Context and MCP Enrichment Policy
+**Zone 1 — Tier P only.** Prioritize Patsnap MCP evidence; when key fields are missing or conflicting, verify official primary sources under the rules below.
 
-This skill supports two peer workflows: global database search and SaaS-anchored analysis.
+## Writing and Output Style
 
-When no SaaS context is provided, use the normal global workflow for this skill: normalize entities, search the relevant full database sources, fetch details when needed, and synthesize the answer from the best available evidence.
+Write as an analytical memo for business, BD, R&D or medical colleagues: lead with the conclusion, then evidence and reasoning. Retain necessary technical terms, drug names, endpoints and database names, while avoiding awkward word-for-word translation.
 
-When SaaS context is provided, treat the SaaS search result, filters, selected records, and visible fields as the primary analysis anchor. The SaaS context defines the main entities and user-visible scope, but it is not a hard ban on additional evidence. Use MCP tools to enrich missing fields, fetch details for records inside the SaaS result set, and retrieve supporting evidence that is required to answer the user's question.
-
-Use global MCP search in SaaS context when the question requires comparison, market-wide context, missing clinical/regulatory/patent/deal/literature evidence, or explicit expansion beyond the current result set. Do not silently merge out-of-scope records into the SaaS result set. Clearly label evidence as one of:
-
-- Current SaaS results
-- MCP enrichment for current SaaS records
-- Broader or out-of-scope MCP supplement
-
-If SaaS-provided data is incomplete, state what is missing and explain which MCP tools or sources were used to supplement it. If the answer relies on out-of-scope evidence, make that boundary explicit.
-
-### SaaS Tool-Use Priority
-
-1. First inspect SaaS-provided records, filters, selected IDs, available fields, missing fields, and result counts.
-2. If the question can be answered from SaaS data, answer from SaaS data and state the active scope.
-3. If required fields are missing, use MCP fetch/search tools to enrich the entities already present in the SaaS result set.
-4. If the question requires broader context, use MCP search as supplemental evidence and label it as broader/global context.
-5. Keep SaaS-filtered records separate from MCP-discovered records in the final answer.
-
-**Zone 1 — Tier P only.** All data from Patsnap MCP tools exclusively.
+- Use concise sentences and clear judgments; avoid empty stock phrases.
+- Anchor each key judgment in data, sources, applicable populations, comparators or time windows.
+- Do not narrate internal work or tool status, such as "retrieval is complete" or "now analyzing."
 
 ## Role
 
@@ -64,7 +50,7 @@ Decision-readiness standard:
 
 Trigger when the query asks about a drug's development path, historical progress, timeline, key milestones, current development status, next development nodes, development acceleration/delay, or strategic sequence.
 
-Typical prompts include: "development pathway of X", "how did X develop", "what are the key milestones for X", "X drug development timeline", "where is X in development", "X from IND to approval", "what is the next milestone for X", "why is X development delayed", "X China to global development path", "how did X expand indications", "X lifecycle management strategy", "analyze X's clinical development route", and "复盘X药物开发路径".
+Typical prompts include: "development pathway of X", "how did X develop", "what are the key milestones for X", "X drug development timeline", "where is X in development", "X from IND to approval", "what is the next milestone for X", "why is X development delayed", "X China to global development path", "how did X expand indications", "X lifecycle management strategy", "analyze X's clinical development route", and "review the development pathway of drug X".
 
 Use this skill when milestones are used to explain the asset's development logic: why the sponsor entered one indication first, how it expanded, where it accelerated or stalled, and what the next node means in the broader pathway. Use `patsnap-lifescience-catalyst-events` when the user only wants upcoming binary events or catalyst calendars. Use `patsnap-lifescience-pharmaceuticals-exploration` when the primary question is intrinsic drug properties such as MoA, PK, dosing, formulation, or safety profile rather than pathway reconstruction. Use `patsnap-lifescience-regulatory-analysis` for regulatory pathway, approval probability, labels, or region-specific filing strategy. Use `patsnap-lifescience-clinical-outcome-analysis` for endpoint interpretation and efficacy/safety comparison. Use `patsnap-lifescience-commercial-analysis` for revenue, pricing, launch, and market access. Use `patsnap-lifescience-deal-intelligence` when the primary question is deal terms, valuation, or partner identification.
 
@@ -79,43 +65,61 @@ Use this skill when milestones are used to explain the asset's development logic
 
 ## Data Collection
 
-Search is the default evidence surface. Do not call `*_fetch` merely because `*_search` was used; stop at Search whenever it already provides the fields needed for the answer.
-
-Use the following retrieval paths:
+Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 
 | Step | Tool | Purpose |
 |------|------|---------|
-| 1 | `ls_ner_nor_normalize` | Normalize drug, company, disease, and trial identifiers from the raw query |
-| 2 | `ls_entity_search(entity_type="drug")` -> `ls_entity_fetch(entity_type="drug")` | Search relevant records and fetch details when needed |
-| 3 | `ls_drug_milestone_fetch` | Core R&D timeline: IND, phase transition, approvals, country/region, indication, sponsor |
-| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` -> `ls_evidence_fetch(evidence_type="clinical_trial")` | Search relevant records and fetch details when needed |
-| 5 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` -> `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Search relevant records and fetch details when needed |
-| 6 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` -> `ls_evidence_fetch(evidence_type="drug_deal")` | Search relevant records and fetch details when needed |
-| 7 | `ls_evidence_by_entity_search(evidence_type="news")` -> `ls_evidence_fetch(evidence_type="news")` | Recent milestone announcements, interim results, delays, filings, designations, conference updates |
-| 8 | `ls_evidence_by_semantic_search(source="financial_report")` | Company guidance on expected timing, strategic priorities, milestone windows, and development spend |
-| 9 | `ls_evidence_by_semantic_search(source="fda_label")` | Approved label scope, indication sequence, safety limitations after approval |
-| 10 | `web_search` | Last resort for newest public updates, real-time regulatory calendars, or company pages |
+| 1 | `ls_entity_search(entity_type="drug")` → `ls_entity_fetch(entity_type="drug")` | Retrieve relevant records and fetch details when needed |
+| 2 | `ls_drug_milestone_fetch` | Core development timeline: IND, phase transitions, approvals, countries/regions, indications and sponsors |
+| 3 | `ls_evidence_by_entity_search(evidence_type="clinical_trial")` → `ls_evidence_fetch(evidence_type="clinical_trial")` | Retrieve relevant records and fetch details when needed |
+| 4 | `ls_evidence_by_entity_search(evidence_type="clinical_trial_result")` → `ls_evidence_fetch(evidence_type="clinical_trial_result")` | Retrieve relevant records and fetch details when needed |
+| 5 | `ls_evidence_by_entity_search(evidence_type="drug_deal")` → `ls_evidence_fetch(evidence_type="drug_deal")` | Retrieve relevant records and fetch details when needed |
+| 6 | `ls_evidence_by_entity_search(evidence_type="news")` → `ls_evidence_fetch(evidence_type="news")` | Recent milestone announcements, interim results, delays, submissions, designations and meeting updates |
+| 7 | `ls_evidence_by_semantic_search(source="financial_report")` | Company timing guidance, strategic priorities, milestone windows and development expenditure |
+| 8 | `ls_evidence_by_semantic_search(source="fda_label")` | Approved label scope, indication sequencing and post-approval safety restrictions |
+| 9 | `ls_web_search` | Verify the latest public information, current regulatory calendars or company pages |
 
-Execute only the steps relevant to the query, but for a full development pathway report always include steps 2-6 if data are available.
+Execute only relevant steps; when data are available, a complete development-pathway report should include steps 1–5.
 
-**Data completeness - recommended limits:**
+**Data completeness: suggested limits:**
 
-| Search Type | Recommended `limit` |
+| Search type | Suggested `limit` |
 |-------------|---------------------|
-| Trial inventory for one drug | 50-100 |
+| Trial inventory for one drug | 50–100 |
 | Trial results for one drug | 50 |
-| Drug deal history | 20-50 |
-| News / financial report semantic search | 10-20 |
+| Drug transaction history | 20–50 |
+| News / financial-report semantic search | 10–20 |
 
-For mature products with many milestones, page through `ls_drug_milestone_fetch` enough to capture the earliest approval/clinical records and the latest active programs. Do not assume the first returned page is the full historical timeline. Sort retrieved milestones chronologically by `event_date_ts`, deduplicate repeated regional or trial-status updates, and keep only milestones that change the development pathway.
+For mature products with many milestones, paginate `ls_drug_milestone_fetch` sufficiently to cover the earliest approval or clinical records and the latest active programs. Do not assume the first page contains the complete timeline. Sort milestones by `event_date_ts`, deduplicate regional or trial-status updates, and retain milestones that change the development pathway.
 
-### Evidence Coverage Policy
+### Evidence Coverage and Conclusion Verification
 
-Use internal MCP returned fields as the only source for MCP-supported facts. Before making any concrete claim, verify that the required analysis dimension is directly supported by the fields returned from the MCP tools used.
+- Support specific facts with retrieved record fields, retaining source identifiers, applicable regions and record dates. For approval status, clinical endpoints and contractual terms that affect the conclusion, prioritize the relevant official decision, registry or original results, contract or original announcement. When structured results have missing key fields, conflicts, zero hits or unresolved entity identity, use `ls_web_search` from the MCP contract to verify official primary sources without waiting for all structured searches to finish. Build queries from the entity name, reliable identifiers, fact to verify, region and period. Prioritize regulators, trial registries, company announcements, exchange filings and patent authorities. Check whether the returned content directly supports the fact and retain its link, date and scope. Do not infer missing fields from merely relevant titles or abstracts. Mark evidence insufficient only after verification still fails, and limit the affected conclusions accordingly. If `ls_web_search` is unavailable or fails, state that verification is blocked; do not substitute tools outside the contract and present them as completion of this verification step.
+- Inspect both call status and error, warnings and items in the response. Distinguish parameter, authentication and service errors from explicit no-match messages by their meaning, not merely the presence of an error field. If unclear, retain the original message and mark it unresolved. A total=0 attached to an error is not a valid zero-hit result; even a valid zero-hit result does not prove that the fact does not exist. Record rejected parameters, service failures, valid zero-hit queries and unexecuted queries separately. Retain status codes as returned unless a code table confirms their meaning.
+- If one identifier blocks a batch query, retain successful records and isolate the failed items using the current schema. If a plausibly formatted identifier is rejected, check the official registry through `ls_web_search`; do not infer nonexistence. Do not repeatedly retry the same failure. After one correction or split still fails, verify primary sources through `ls_web_search` or mark the task blocked.
+- Semantic search produces candidates only. Before accepting evidence, verify the name or alias mapping, registry/protocol number, relevant entity and relevance of the original text. Nonempty results, similar titles and ranking do not prove a match. Do not replace an unresolved entity with a similar one or attribute candidate records to the original name. Track coverage separately for pipeline, results, transactions and other evidence branches; an unqueried branch cannot be described as having no records.
+- Retain each conflicting record with its own date, version and scope, and determine whether the records concern different populations, regions or events. Leave unexplained differences unresolved rather than inventing causes. Explicitly label model-based inferences and scenario assumptions and give their basis.
+- Before reporting totals or rankings, check query scope, pagination, the deduplication unit and exclusion criteria. If only part of the records was retrieved, describe the sample scope instead of treating it as the full population. Respect the requested item limit, cutoff date and comparison scope.
+- Map requested conclusions to retrieved evidence. When missing fields affect a conclusion, first retrieve the relevant details; if gaps or conflicts remain, verify primary sources using `ls_web_search`. If still unavailable, state the gap and affected judgment. A maximum number of items is a ceiling, not a quota to fill with irrelevant records. A few reliable examples neither establish complete coverage nor replace a requested comprehensive review.
+- Before delivery, check the summary, tables, body and revised text against the evidence mapping. Status, monetary units, region, population and certainty must agree for the same fact. Place material qualifications beside the relevant value or judgment, not only in a closing disclaimer. After correcting a fact, recheck dependent comparisons, totals and recommendations; do not overwrite verified content without a source. Normalize monetary amounts to one currency and base unit before display conversion, checking million, billion, ten-thousand, hundred-million and ratio conversions. Do not add incompatible denominators, periods or analysis versions to force a total. Keep complete, locatable citation identifiers without truncation.
 
-If an analysis dimension is not covered by internal MCP returned fields, you MUST call `web_search` to retrieve public evidence for that dimension. If `web_search` is unavailable, returns no evidence, or does not support the claim, state that the dimension is not supported by available evidence.
+- Maintain a concise evidence mapping for decision-relevant facts: conclusion, entity, scope, value and unit, document date, complete source identifier and original-text location. Record what the task needs without exposing internal verification narration. A search-generated answer is not the original source. Verification requires locatable original content that directly supports the conclusion. A working link, successful call or a returned claim of verification is insufficient. If the original cannot be obtained, retain an unresolved status; do not invent page numbers, quotations or record identifiers.
+- When updating an analysis, revisit previously located primary sources and check revisions, subsequent announcements and report notes available by the question cutoff. The old answer itself is not evidence. Do not discard still-applicable primary evidence merely because the current search missed it; explicitly replace outdated evidence. Do not upgrade an unresolved conclusion to certainty unless new evidence directly supports it.
+- Distinguish "not obtained in this search," "not stated in the documents reviewed" and "explicitly undisclosed." Before denying disclosure or claiming only, first or all, check the required sources and search coverage; otherwise restrict the claim to the material obtained. Multiple entry points may share a parser or underlying source. Their count is not independent corroboration, and identical errors do not rule out a system issue.
 
-Strictly do not infer, guess, or fill missing factual gaps from model knowledge, assumptions, or general reasoning. Unsupported claims are prohibited.
+### Business Judgment Rules
+
+- Establish trial identity using registry number, official protocol number, sponsor and intervention. Do not assign a study-series name from a similar code. Preserve key inclusion subtypes and exclusions rather than substituting the drug's previously approved population. Render ACTIVE_NOT_RECRUITING as "ongoing, no longer recruiting," include the registry update date, and qualify stale records as "the registry reports."
+- Update decision-relevant results and milestones before ranking development directions. Do not treat results disclosed before the cutoff as future triggers. Success of a direction does not establish efficacy of a proposed asset; positive competing regimens do not prove that the direction has no opportunity. Give conditional priorities based on the company's existing assets, stage, technical/manufacturing capabilities, resources and regional pathways. If the starting point is unknown, give scenarios rather than promising a fixed development duration.
+- Record trial phase, study region, recruitment status, start date with actual/estimated designation, and registry update date separately. A global maximum phase does not establish the phase for a particular region and indication.
+- "Conducted" or "started" requires actual-start evidence within the requested scope. An elapsed estimated start date does not prove initiation; if the record is stale, state that initiation remains unconfirmed. Interpret Study Start by the registry definition. Global first enrollment does not automatically establish first enrollment or first dosing at a particular country's sites.
+- Verify phase, regional participation and actual initiation separately. Do not universally add requirements such as ethics approval documents; use procedural evidence as a selection criterion only when explicitly requested.
+- Merge drug aliases using reliable identity mappings, but retain trials by registry identifier. Merging registrations requires a shared protocol, cross-registration or official mapping; similar names, enrollment or dates are insufficient. Combination and multi-arm trials can involve multiple assets.
+- List approved scope by drug, formulation or regimen, indication, treatment line and region. Separate submission, acceptance, review, approval and launch. Count only items supported by approval evidence as approved, and distinguish announcement dates from decision dates.
+- To verify current status, check labels and approval changes applicable by the query cutoff. If no approval record is retrieved for a region, mark it unverified rather than declaring the indication unapproved.
+- Check regulatory requirements by region, indication and pathway. One project failure, withdrawal or immature endpoint does not establish a universal approval threshold for a drug class. Existing marketing approval does not exclude registration opportunities for new indications, combinations or formulations.
+- Keep event and disclosure dates separate, and distinguish expected milestones from completed ones. Explain progress changes with evidence and version context; absence of a new announcement does not establish termination.
+- Compare development durations using historical projects with comparable indications, modalities, designs and regions. Without benchmarks, report observed intervals and unresolved reasons rather than classifying speed using a fixed number of months.
 
 ---
 
@@ -176,14 +180,7 @@ If the exact date is unavailable, state the date granularity: year, quarter, mon
 
 ### Pace and Bottleneck Assessment
 
-Use qualitative labels when benchmark data are unavailable:
-
-| Segment | Fast | Normal | Slow / Concerning |
-|---------|------|--------|-------------------|
-| Phase 1 start -> Phase 2 start | <18 months | 18-30 months | >30 months without rationale |
-| Phase 2 signal -> Phase 3 start | <12 months | 12-24 months | >24 months or no pivotal plan |
-| Pivotal readout -> filing | <6 months | 6-12 months | >12 months without explanation |
-| Filing acceptance -> decision | priority/accelerated window | standard review window | delay, CRL, hold, or review extension |
+First report intervals between events, then compare them with sourced comparable projects or regulatory timing requirements. Without comparable data, list potential bottlenecks as factors to verify.
 
 Flag these bottlenecks:
 - Completed trial with no disclosed result.
