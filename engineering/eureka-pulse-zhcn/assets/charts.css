@@ -1,0 +1,67 @@
+.history-content { margin-left: 0; min-width: 0; }
+.history-note { color: var(--color-text-secondary); font-size: 14px; line-height: 24px; margin: 0 0 16px; }
+.visual-panel { margin: 28px 0; padding: 20px; border: 1px solid var(--color-border-default); border-radius: 8px; background: transparent; min-width: 0; }
+.visual-panel h3 { font-size: 18px; line-height: 28px; margin: 0 0 12px; color: var(--color-brand-dark); }
+.visual-trend-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 28px 0; }
+.visual-trend-row > .visual-panel { display: flex; flex-direction: column; margin: 0; }
+.visual-trend-row .visual-chart-scroll { margin-top: auto; }
+.visual-trend-row .visual-chart { min-width: 0; }
+.metric-overview { margin-bottom: 32px; }
+.metric-overview-grid { display: flex; flex-wrap: wrap; align-items: stretch; gap: 16px; }
+.visual-distribution-cards { display: flex; flex-wrap: wrap; gap: 16px; }
+.metric-group-open, .metric-group-back { border: 0; padding: 0; background: transparent; color: var(--color-brand-primary); font: inherit; text-align: left; cursor: pointer; }
+.metric-group-open { font-size: 16px; line-height: 24px; font-weight: 600; }
+.metric-group-open:hover, .metric-group-back:hover { color: var(--color-brand-hover); text-decoration: underline; }
+.metric-group-open:focus-visible, .metric-group-back:focus-visible { outline: 2px solid var(--color-brand-primary); outline-offset: 3px; }
+.metric-group-back { margin: 0 0 16px; font-size: 14px; line-height: 24px; }
+.visual-metric { display: flex; flex: 0 0 180px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; box-sizing: border-box; width: 180px; max-width: 100%; min-width: 0; height: 112px; padding: 16px; font: inherit; text-align: center; border: 1px solid var(--color-border-strong); border-top: 4px solid var(--color-brand-primary); border-radius: 8px; background: #FFFFFF; color: var(--color-text-primary); cursor: pointer; box-shadow: var(--shadow-raised); }
+.visual-metric:hover { border-color: var(--color-brand-primary); box-shadow: var(--shadow-floating); }
+.visual-metric:active { background: var(--color-brand-subtle); box-shadow: var(--shadow-raised); }
+.visual-metric:focus-visible { outline: 2px solid var(--color-brand-primary); outline-offset: 3px; }
+.visual-metric strong { display: block; font-size: 36px; line-height: 48px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--color-brand-dark); }
+.visual-metric-name { display: block; overflow: hidden; width: 100%; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--color-text-primary); white-space: nowrap; text-overflow: ellipsis; }
+.metric-source-dialog { width: min(720px, calc(100vw - 32px)); max-height: min(80vh, 800px); padding: 0; color: var(--color-text-primary); background: #FFFFFF; border: 1px solid var(--color-border-default); border-radius: 8px; }
+.metric-source-dialog::backdrop { background: rgba(2, 10, 26, .45); }
+.metric-source-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--color-border-default); }
+.metric-source-header h2 { font-size: 18px; line-height: 28px; }
+.metric-source-body { padding: 24px; overflow: auto; max-height: calc(80vh - 96px); font-size: 14px; line-height: 24px; }
+.metric-source-body ol { padding-left: 24px; margin: 16px 0 0; }
+.metric-source-body li { padding: 4px 0; overflow-wrap: anywhere; }
+.metric-source-body li.source-record { padding: 16px 0; border-bottom: 1px solid var(--color-border-default); }
+.source-record:last-child { border-bottom: 0; }
+.source-record-title { font-size: 16px; line-height: 24px; font-weight: 600; }
+.source-record-periods { margin: 4px 0 0; color: var(--color-text-secondary); font-size: 14px; line-height: 24px; }
+.source-record-summary { margin: 8px 0 0; color: var(--color-text-secondary); font-size: 14px; line-height: 24px; white-space: pre-line; }
+.metric-source-dialog.chart-source-drawer { position: fixed; inset: 0 0 0 auto; width: min(720px, 100%); max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0 0 0 auto; border: 0; border-left: 1px solid var(--color-border-default); border-radius: 8px 0 0 8px; box-shadow: var(--shadow-modal); overflow: hidden; }
+.chart-source-drawer[open] { display: flex; flex-direction: column; }
+.chart-source-drawer .metric-source-header { flex-shrink: 0; align-items: flex-start; background: var(--color-brand-subtle); max-height: 40dvh; overflow: auto; }
+.chart-source-drawer .metric-source-header h2 { min-width: 0; overflow-wrap: anywhere; }
+.chart-source-drawer .metric-source-header button { flex-shrink: 0; }
+.chart-source-drawer .metric-source-body { flex: 1; min-height: 0; max-height: none; overscroll-behavior: contain; }
+html:has(.metric-source-dialog[open]) { overflow: hidden; }
+.visual-chart-scroll { overflow: auto; max-height: 760px; border-radius: 4px; background: transparent; }
+.visual-chart { width: 100%; min-width: 560px; }
+.visual-chart:focus-visible { outline: 2px solid var(--color-brand-primary); outline-offset: 2px; }
+@media (max-width: 1023px) {
+  .visual-trend-row { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .visual-panel { padding: 16px; }
+  .metric-source-dialog.chart-source-drawer { border: 0; border-radius: 0; }
+  .chart-source-drawer .metric-source-header, .chart-source-drawer .metric-source-body { padding: 20px 16px; }
+  .metric-overview-grid { gap: 12px; }
+  .visual-metric { flex-basis: 160px; width: 160px; }
+}
+@media print {
+  .visual-trend-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; break-inside: avoid; }
+  .visual-panel { break-inside: avoid; }
+  .visual-chart-scroll { max-height: none; overflow: visible; }
+  .visual-chart { min-width: 0; }
+  .metric-overview-grid { gap: 12px; }
+  .visual-metric { flex-basis: 160px; width: 160px; height: 100px; padding: 12px; box-shadow: none; break-inside: avoid; }
+  .visual-metric:hover, .visual-metric:active { background: #FFFFFF; border-color: var(--color-border-strong); border-top-color: var(--color-brand-primary); box-shadow: none; }
+  .visual-metric:focus-visible { outline: none; }
+  .metric-source-dialog, .chart-source-drawer[open] { display: none; }
+  .metric-source-dialog::backdrop { display: none; }
+  html:has(.metric-source-dialog[open]) { overflow: visible; }
+}

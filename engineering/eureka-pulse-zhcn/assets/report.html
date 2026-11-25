@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>${title}</title>
+  <style>${css}</style>
+</head>
+<body class="intelligence-report">
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+  <a class="skip-link" href="#content">跳转至正文</a>
+  <header class="report-cover"><div class="cover-inner"><div class="cover-masthead"><div class="cover-identity"><a class="wordmark" href="#content" aria-label="Eureka 情报报告正文">Eureka</a><span class="cover-report-kind">${report_kind}</span><span class="issue">${year} · ${edition}</span></div><div class="toolbar"><button class="eureka-button" id="print-button" type="button">打印报告</button></div></div><div class="cover-main"><h1>${title}</h1><p class="period">${dates}</p>${scope_line}</div><div id="metric-overview" class="metric-overview" aria-label="统计概览" data-start-date="${start_date}" data-end-date="${end_date}"${metric_overview_hidden}><div class="metric-overview-grid">${metric_cards}</div></div></div></header>
+  <div class="chapter-bar"><nav class="contents" aria-label="报告目录">${navigation}</nav></div>
+  <div class="page-layout"><main id="content" tabindex="-1">${sections}</main></div>
+  <footer><span class="footer-brand">Eureka</span><p>资料内容来自监控周期结果；具体判断以对应来源及其适用条件为依据。</p></footer>
+  <dialog class="metric-source-dialog" id="metric-source-dialog" aria-labelledby="metric-source-title">
+    <header class="metric-source-header"><h2 id="metric-source-title">统计资料来源</h2><button class="eureka-button" id="metric-source-close" type="button" autofocus>关闭</button></header>
+    <div id="metric-source-body" class="metric-source-body"></div>
+  </dialog>
+  <dialog class="record-drawer" id="record-drawer" aria-labelledby="record-drawer-title">
+    <div class="drawer-header"><div><button class="drawer-back" id="drawer-back" type="button" hidden>返回专利列表</button><p class="drawer-label" id="record-drawer-label">详细资料</p><h2 id="record-drawer-title"></h2></div><button class="eureka-button drawer-close" id="drawer-close" type="button" aria-label="关闭资料面板" autofocus>关闭 <span aria-hidden="true">×</span></button></div>
+    <div class="drawer-body" id="record-drawer-body"><div id="record-citation-list" hidden></div></div>
+  </dialog>
+  <div class="image-preview" id="image-preview" aria-hidden="true" hidden></div>
+  <script>${javascript}</script>
+</body>
+</html>

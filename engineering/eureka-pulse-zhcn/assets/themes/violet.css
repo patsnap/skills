@@ -1,0 +1,9 @@
+:root {
+  --bg: #F5F3FA; --line: #E6E2F1;
+  --accent: #6242C9; --deep: #3A2478; --accent-lt: #A289EC;
+  --soft: #F2EEFC; --soft-bd: #DDD2F4;
+  --a45: rgba(98, 66, 201, .45); --a25: rgba(98, 66, 201, .25); --a16: rgba(98, 66, 201, .16);
+  --hero1: #0E0B18; --hero2: #1A1430; --hero3: #352073;
+  --glow: rgba(98, 66, 201, .55); --eb: #BDA9EF;
+  --link: #5233B4; --cell: #F6F4FD; --rule: #D8D0EE;
+}
