@@ -7,13 +7,13 @@ This directory contains 16 pharmaceutical and biomedical intelligence skills, ea
 Install all Life Sciences skills.
 
 ```bash
-npx skills add patsnap/skills/tree/main/life-sciences --all
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences --all
 ```
 
 To install one skill, use its directory name in the command below.
 
 ```bash
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
 ```
 
 ## Skills
@@ -53,18 +53,18 @@ Use the replacement name in prompts, configuration, and installation commands th
 Run the command for each replacement you want to install.
 
 ```bash
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis-zhcn
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling-zhcn
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation-zhcn
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration-zhcn
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology-zhcn
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
-npx skills add patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence-zhcn
 ```
 
 ## MCP setup

@@ -12,7 +12,7 @@ metadata:
 ---
 
 # GWAS Target Discovery
-**Zone 1 — Tier P only.** Prioritize Patsnap MCP evidence; when key fields are missing or conflicting, verify official primary sources under the rules below.
+Use Patsnap MCP (Tier P) for pharmaceutical evidence. For GWAS-specific questions, use primary genetic evidence (Tier E) and supporting biology (Tier S) when the host permits access or the user supplies attributable data.
 
 All GWAS-derived associations must be labeled: **"statistical genetic association, not proven causation"**
 
@@ -69,6 +69,19 @@ This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP 
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 
+### External genetic evidence and access
+
+These public records and aggregate datasets require no additional MCP connector or API key. Use them when the host allows outbound access to the source. In a Patsnap-only environment, use records retrieved through the configured MCP or traceable public-source files supplied by the user. Use controlled-access study data only when access has already been granted.
+
+| Evidence | Where and how to retrieve it |
+|---|---|
+| GWAS studies and associations | Search the [GWAS Catalog](https://www.ebi.ac.uk/gwas/) or query its [REST API](https://www.ebi.ac.uk/gwas/docs/programmatic-access/rest-api/) by trait, study accession or variant. Download [summary statistics](https://www.ebi.ac.uk/gwas/downloads/summary-statistics) when the study makes them available. |
+| Variant consequences and population frequency | Check the variant and genome build in [Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html) and verify available ancestry-specific frequencies in [gnomAD](https://gnomad.broadinstitute.org/). |
+| Locus-to-gene prediction and colocalization | Resolve the study and credible set in [Open Targets Platform](https://platform.opentargets.org/). Read its L2G scores and available colocalization results on the platform or through the [GraphQL credible-set query](https://platform-docs.opentargets.org/data-access/graphql-api). Use the [L2G download](https://platform.opentargets.org/downloads/data) for larger batches. |
+| Supporting expression and MR | Use public [GTEx](https://gtexportal.org/home/) summaries for tissue expression or eQTL context. For MR, use the original publication and its supplements to verify reported estimates and sensitivity analyses. |
+
+Record the study identifier, data release, genome build and ancestry where available. An L2G score is a model prediction for a specific credible set and gene. If it cannot be retrieved, omit the score and any ranking or causal-gene assignment that depends on it. If colocalization or MR evidence cannot be verified, omit the corresponding statistics and causal judgments. Keep supported GWAS associations and pharmaceutical findings, and identify the evidence gaps. A supported association alone is insufficient to describe a target as genetically validated.
+
 ### Evidence Coverage and Conclusion Verification
 
 - Support specific facts with retrieved record fields, retaining source identifiers, applicable regions and record dates. For approval status, clinical endpoints and contractual terms that affect the conclusion, prioritize the relevant official decision, registry or original results, contract or original announcement. When structured results have missing key fields, conflicts, zero hits or unresolved entity identity, use `ls_web_search` from the MCP contract to verify official primary sources without waiting for all structured searches to finish. Build queries from the entity name, reliable identifiers, fact to verify, region and period. Prioritize regulators, trial registries, company announcements, exchange filings and patent authorities. Check whether the returned content directly supports the fact and retain its link, date and scope. Do not infer missing fields from merely relevant titles or abstracts. Mark evidence insufficient only after verification still fails, and limit the affected conclusions accordingly. If `ls_web_search` is unavailable or fails, state that verification is blocked; do not substitute tools outside the contract and present them as completion of this verification step.
@@ -100,9 +113,9 @@ Search is the default evidence-gathering method. Do not call `*_fetch` merely be
    ↓
 2. Variant annotation (Tier E: EnsemblVEP — functional consequence, gnomAD — population freq)
    ↓
-3. Locus-to-gene mapping (Tier E: Open Targets Genetics L2G scores)
+3. Locus-to-gene mapping (Tier E: Open Targets Platform L2G scores, if available)
    ↓
-4. eQTL colocalization (Tier S: GTEx — which tissues? causal gene support)
+4. Colocalization results and tissue eQTL context (Tier S, if available)
    ↓
 5. Pathway enrichment (Tier S: Reactome — biological context for GWAS gene set)
    ↓
@@ -155,26 +168,26 @@ No mandatory template. Structure to best answer the specific question.
 
 Typical sections:
 
-**Tier E section (primary):**
+**Tier E section (when verified evidence is available):**
 1. GWAS landscape for disease (top hits, study quality, sample sizes)
    - *All GWAS data labeled: "statistical genetic association, not proven causation"*
 2. Locus-to-gene mapping (L2G scores, top implicated genes)
 3. Mendelian randomization evidence (causal inference quality)
 
-**Tier S section:**
+**Tier S section (when supported):**
 4. eQTL evidence (tissue-specific expression, GTEx)
 5. Protein-protein interaction network (STRING)
 6. Protein function and druggability (UniProt)
 
 **Tier P section:**
 7. Existing drugs on GWAS-implicated targets (Patsnap)
-8. Clinical trials for GWAS-validated targets
+8. Clinical trials for targets with documented GWAS evidence
 9. BD activity and deal precedents
 
 **Summary:**
-10. Target prioritization table (ranked by genetic evidence + druggability)
+10. Target prioritization table when genetic evidence and druggability can be compared
 11. Repurposing opportunities (existing drugs on GWAS targets)
-12. White space targets (genetically validated but undrugged)
+12. Potential gaps in drug development for targets with verified genetic evidence
 
 For simple factual queries (e.g., "what GWAS hits exist for type 2 diabetes"), return a concise direct answer with the genetic association disclaimer. A "simple factual query" is one that asks for a single specific data point — NOT a target discovery analysis or multi-locus query. When in doubt, produce the full structured output.
 

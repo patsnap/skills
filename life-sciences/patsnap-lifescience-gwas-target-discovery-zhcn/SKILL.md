@@ -11,7 +11,7 @@ metadata:
 ---
 
 # GWAS 靶点发现
-**区域 1——仅限 Tier P。** 优先使用 Patsnap MCP 获取证据；关键字段不足或存在冲突时，按下文规则核对官方原始来源。
+药物研发证据使用 Patsnap MCP（Tier P）。对于 GWAS 问题，当运行环境允许访问外部来源，或用户提供了来源可追溯的数据时，使用原始遗传学证据（Tier E）和补充生物学证据（Tier S）。
 
 ## 中文写作与输出口吻
 
@@ -65,6 +65,19 @@ metadata:
 
 检索是默认取证方式。不要仅因调用过 `*_search` 就继续调用 `*_fetch`；只有检索结果已通过实体和范围核验、包含回答所需字段且没有待解决的关键冲突时，才无需继续获取详情。
 
+### 外部遗传学证据与访问条件
+
+下列公开记录和汇总数据无需额外安装 MCP 连接器或申请 API Key。运行环境允许访问相应来源时可直接获取。仅能使用 Patsnap 的环境可使用已配置 MCP 查得的记录，或用户提供的、能追溯到公开来源的数据文件。受控研究数据须在已获得授权时使用。
+
+| 证据 | 来源与获取方式 |
+|------|----------------|
+| GWAS 研究和关联 | 在 [GWAS Catalog](https://www.ebi.ac.uk/gwas/) 或其 [REST API](https://www.ebi.ac.uk/gwas/docs/programmatic-access/rest-api/) 按性状、研究编号或变异检索。研究提供公开汇总统计时，从[汇总统计下载页](https://www.ebi.ac.uk/gwas/downloads/summary-statistics)获取数据。 |
+| 变异后果和人群频率 | 用 [Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html)核对变异及参考基因组版本，用 [gnomAD](https://gnomad.broadinstitute.org/)查证可获得的祖源特异性频率。 |
+| 位点到基因预测与共定位 | 在 [Open Targets Platform](https://platform.opentargets.org/)核对研究和可信集合，通过平台页面或 [GraphQL 可信集合查询](https://platform-docs.opentargets.org/data-access/graphql-api)读取 L2G 分数和可获得的共定位结果。批量查询可使用 [L2G 下载数据](https://platform.opentargets.org/downloads/data)。 |
+| 表达与 MR 补充证据 | 用公开的 [GTEx](https://gtexportal.org/home/)汇总结果补充组织表达或 eQTL 背景。通过原始论文和补充材料核对 MR 估计值及敏感性分析。 |
+
+数据可得时记录研究编号、数据发布版本、参考基因组版本及祖源。L2G 分数是针对特定可信集合和基因的模型预测。取不到时，省略分数及依赖该分数的排序和因果基因归因。共定位或 MR 证据无法核验时，省略对应统计量和因果判断。保留有证据的 GWAS 关联和药物研发信息，说明缺失证据。仅有统计关联不足以认定靶点已获遗传学验证。
+
 ### 证据覆盖与结论核验
 
 - 具体事实须由已取得的记录字段支撑，保留来源标识、适用地区和记录日期。影响判断的批准状态、临床终点和合同条款，优先核对相应官方决定、登记或结果原文、合同或原始公告。结构化检索的关键字段缺失、记录冲突、零命中或实体无法确认时，调用 MCP contract 中的 `ls_web_search` 核查官方原始来源，无需等待所有结构化工具检索完成。结合实体名称、可靠标识、待核事实、地区和时间组织查询，优先监管机构、临床登记平台、公司公告、交易所披露和专利主管机关来源。核对返回内容是否直接支持该事实，保留来源链接、日期和适用范围；仅有相关标题或摘要不足时，不推断缺失字段。经核查仍无法确认才标记证据不足，并限定受影响的结论。`ls_web_search` 不可用或失败时明确记录核验受阻，不改用 contract 外工具冒充该核验步骤。
@@ -96,9 +109,9 @@ metadata:
   ↓
 2. Variant annotation (Tier E: EnsemblVEP — functional consequence,gnomAD — population freq)
   ↓
-3. Locus-to-gene mapping (Tier E: Open Targets Genetics L2G 评分)
+3. 位点到基因映射（Tier E：有数据时使用 Open Targets Platform L2G 分数）
   ↓
-4. eQTL colocalization（Tier S： GTEx — which tissues? causal gene support)
+4. 共定位结果与组织 eQTL 背景（Tier S：有证据时报告）
   ↓
 5. 通路富集（Tier S：使用 Reactome 提供 GWAS 基因集的生物学背景）
   ↓
@@ -153,26 +166,26 @@ metadata:
 
 典型章节：
 
-**Tier E 章节（主要）:**
+**Tier E 章节（有可核验证据时）：**
 1. GWAS 格局用于疾病 (主要关联位点，研究质量，样本量)
   - *所有 GWAS 数据均标注：“统计遗传关联，尚不能证明因果关系”*
 2. 位点到基因映射 (L2G 评分，主要相关基因)
 3. 孟德尔随机化证据 (因果推断质量)
 
-**Tier S 章节：**
+**Tier S 章节（有证据时）：**
 4. eQTL 证据 (组织特异性表达，GTEx)
 5. 蛋白质相互作用网络 (STRING)
 6. 蛋白质功能与可成药性 (UniProt)
 
 **Tier P 章节：**
 7. 作用于 GWAS 相关靶点的现有药物（Patsnap）
-8. 临床试验用于 GWAS-已验证靶点
+8. 有 GWAS 证据的靶点及其相关临床试验
 9. 商务拓展活动和交易先例
 
 **摘要:**
-10。靶点优先级排序表格 (按遗传证据和可成药性排序)
+10. 遗传证据和可成药性具备可比性时，提供靶点优先级排序表
 11.药物再利用机会（作用于 GWAS 靶点的现有药物）
-12.空白机会靶点 (已有遗传学验证但尚无药物开发)
+12. 有可核验遗传证据的靶点及潜在药物开发空白
 
 对于简单事实型问题，直接给出简洁答案。“简单事实型问题”指只询问一个具体数据点，不包括靶点发现分析或多位点查询。拿不准时，输出完整结构化答案。
 

@@ -11,7 +11,7 @@ Install all skills from one domain:
 ```bash
 npx skills add patsnap/skills/tree/main/ip --all
 npx skills add patsnap/skills/tree/main/engineering --all
-npx skills add patsnap/skills/tree/main/life-sciences --all
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences --all
 npx skills add patsnap/skills/tree/main/materials --all
 npx skills add patsnap/skills/tree/main/open-platform --all
 ```

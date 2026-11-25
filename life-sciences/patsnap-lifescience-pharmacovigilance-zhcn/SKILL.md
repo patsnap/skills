@@ -101,13 +101,20 @@ metadata:
 
 ### 不成比例分析统计
 
-| 统计量 | 公式 | 信号阈值 | 解读 |
-|-----------|---------|-----------------|----------------|
-| PRR（比例报告比） | (a/b) / (c/d) | ≥ 2 | 该药物中该 AE 的报告比例高于其他所有药物 |
-| ROR（报告比值比） | (a/(b-a)) / (c/(d-c)) | ≥ 2 | 使用该药物与未使用该药物时 AE 报告比值的比较 |
-| IC（信息成分） | log₂(a×N / (b×c)) | > 0 | 衡量药物—AE 关联的贝叶斯指标 |
+用同一数据集和时间窗内的去重报告构建四格表，每份报告只计一次。凡列目标药为疑似用药的报告均归入目标药行，包括同时列有其他药物的报告。
 
-**符号说明：** a = 该药物与该 AE 的报告数，b = 该药物总报告数，c = 所有药物与该 AE 的报告数，d = 所有药物总报告数，N = 数据库总报告数
+| 报告 | 含目标事件 | 不含目标事件 |
+|------|------------|--------------|
+| 目标药 | a | b |
+| 其余药（排除目标药） | c | d |
+
+| 统计量 | 公式 | 解读 |
+|--------|------|------|
+| PRR（比例报告比） | [a/(a+b)] / [c/(c+d)] | 比较报告中目标事件的比例。按规定同时检查 PRR、χ² 和病例数筛查条件。 |
+| ROR（报告比值比） | (a×d) / (b×c) | 比较目标事件的报告比值。报告置信区间，并说明适用筛查方案规定的阈值。 |
+| 未调整的 log₂（观察数／预期数） | log₂[a×N / ((a+b)×(a+c))]，其中 N = a+b+c+d | 基于边际合计的描述性指标。仅在数据源已提供，或使用有明确记录的贝叶斯方法计算时，报告贝叶斯 IC 和 IC025。 |
+
+例如 a=20、b=80、c=81、d=819 时，PRR 为 2.22，ROR 为 2.53。数据无法填满四格表时，标明估计值不可得。分母为零时，标明估计值未定义。若筛查方案规定了校正方法，可按方案计算并记录所用方法。 [EMA PRR 指南](https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/guideline-use-statistical-signal-detection-methods-eudravigilance-data-analysis-system_en.pdf) · [EMA ROR 指南](https://www.ema.europa.eu/en/documents/other/screening-adverse-reactions-eudravigilance_en.pdf) · [UMC 不成比例报告指标](https://who-umc.org/media/164041/measures-of-disproportionate-reporting_2016.pdf)
 
 ### 安全性信号评分（0–100）
 

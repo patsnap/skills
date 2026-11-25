@@ -104,13 +104,20 @@ Search is the default evidence-gathering method. Do not call `*_fetch` merely be
 
 ### Disproportionality Statistics
 
-| Statistic | Formula | Signal Threshold | Interpretation |
-|-----------|---------|-----------------|----------------|
-| PRR (Proportional Reporting Ratio) | (a/b) / (c/d) | ≥ 2 | Drug reports AE proportionally more than all other drugs |
-| ROR (Reporting Odds Ratio) | (a/(b-a)) / (c/(d-c)) | ≥ 2 | Odds of AE with drug vs without drug |
-| IC (Information Component) | log₂(a×N / (b×c)) | > 0 | Bayesian measure of drug-AE association |
+Build the table from deduplicated reports in the same dataset and time window. Count each report once. Reports that list the target drug as suspected belong in the target-drug row, including reports that also list other drugs.
 
-**Notation:** a = drug+AE reports, b = drug total reports, c = all drugs+AE reports, d = all drugs total reports, N = total database reports
+| Reports | Target event present | Target event absent |
+|---------|----------------------|---------------------|
+| Target drug | a | b |
+| Other drugs (target drug excluded) | c | d |
+
+| Statistic | Formula | Interpretation |
+|-----------|---------|----------------|
+| PRR (Proportional Reporting Ratio) | [a/(a+b)] / [c/(c+d)] | Ratio of event-reporting proportions. Apply the stated PRR, χ² and case-count screening criteria together. |
+| ROR (Reporting Odds Ratio) | (a×d) / (b×c) | Ratio of event-reporting odds. Provide the confidence interval and any threshold from the applicable screening protocol. |
+| Unadjusted log₂(observed/expected) | log₂[a×N / ((a+b)×(a+c))], where N = a+b+c+d | Descriptive measure based on the marginal totals. Report Bayesian IC and IC025 only when supplied by the source or calculated with a documented Bayesian method. |
+
+For example, with a=20, b=80, c=81 and d=819, PRR is 2.22 and ROR is 2.53. If the data cannot populate the four cells, leave the estimates unavailable. If a denominator is zero, report the estimate as undefined unless the screening protocol specifies a correction, and document any correction used. [EMA PRR guidance](https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/guideline-use-statistical-signal-detection-methods-eudravigilance-data-analysis-system_en.pdf) · [EMA ROR guidance](https://www.ema.europa.eu/en/documents/other/screening-adverse-reactions-eudravigilance_en.pdf) · [UMC disproportionality measures](https://who-umc.org/media/164041/measures-of-disproportionate-reporting_2016.pdf)
 
 ### Safety Signal Score (0–100)
 

@@ -142,17 +142,17 @@ Based on the prompt requirement, please conduct parallel research along all/some
 
 ### ACMG Variant Classification Framework
 
-For germline variants, apply ACMG/AMP 5-tier classification:
+For germline variants in Mendelian disease, use the evidence combinations in [ACMG/AMP Table 5](https://www.nature.com/articles/gim201530). Apply relevant gene- or disease-specific specifications when available.
 
 | Class | Label | Criteria |
 |-------|-------|----------|
-| 5 | Pathogenic | PVS1 + ≥1 strong, or ≥2 strong, or 1 strong + ≥3 moderate |
-| 4 | Likely Pathogenic | 1 strong + 1–2 moderate, or ≥3 moderate, or 2 supporting |
-| 3 | Uncertain Significance | Does not meet criteria for 4/5 or 1/2 |
-| 2 | Likely Benign | 1 strong benign + 1 supporting benign |
+| 5 | Pathogenic | PVS1 + (≥1 strong, ≥2 moderate, 1 moderate + 1 supporting, or ≥2 supporting)<br>or ≥2 strong<br>or 1 strong + (≥3 moderate, 2 moderate + ≥2 supporting, or 1 moderate + ≥4 supporting) |
+| 4 | Likely Pathogenic | PVS1 + 1 moderate<br>or 1 strong + (1–2 moderate or ≥2 supporting)<br>or ≥3 moderate<br>or 2 moderate + ≥2 supporting<br>or 1 moderate + ≥4 supporting |
+| 3 | Uncertain Significance | No other classification criteria met, or the criteria support conflicting pathogenic and benign classifications |
+| 2 | Likely Benign | 1 strong benign + 1 supporting benign, or ≥2 supporting benign |
 | 1 | Benign | ≥2 strong benign, or 1 stand-alone benign |
 
-**Key evidence codes**: PVS1 (null variant in LoF gene), PS1-4 (strong pathogenic), PM1-6 (moderate), PP1-5 (supporting), BA1 (allele freq >5%), BS1-4 (strong benign)
+In rows 4–5, evidence strengths refer to pathogenic evidence. PS, PM and PP denote strong, moderate and supporting pathogenic evidence, respectively. BA1 is stand-alone benign evidence. BS and BP denote strong and supporting benign evidence. For example, PP1 and PP3 alone, both at supporting strength and with no other evidence, yield uncertain significance.
 
 **Variant notation normalization**: Always validate HGVS notation before querying databases. Use VariantValidator or EnsemblVEP to normalize.
 
@@ -162,7 +162,7 @@ When immunotherapy eligibility is the question:
 
 | Biomarker | Threshold | Implication |
 |-----------|-----------|-------------|
-| TMB | ≥10 mut/Mb | Pembrolizumab eligible (pan-tumor) |
+| TMB-H | ≥13 mut/Mb by an FDA-authorized test | U.S. pembrolizumab tumor-agnostic indication under the 2026-10-16 FDA update. Check all conditions below before determining whether the indication applies. |
 | MSI-H / dMMR | Positive | Pembrolizumab eligible (pan-tumor) |
 | PD-L1 TPS | ≥50% (NSCLC) | First-line pembrolizumab monotherapy |
 | PD-L1 CPS | ≥10 (gastric) | Pembrolizumab + chemo |
@@ -184,9 +184,8 @@ Multi-biomarker integration: assess co-occurring biomarkers for additive vs conf
 ### TMB and MSI Analysis
 
 **Tumor Mutational Burden (TMB):**
-- TMB-High threshold: ≥10 mutations/megabase (FDA-approved cutoff for pembrolizumab)
-- TMB-High → consider immune checkpoint inhibitors
-- TMB calculation: total somatic mutations / sequenced genome size
+- Under the U.S. FDA update dated 2026-10-16, the pembrolizumab TMB-H indication covers adult and pediatric patients with unresectable or metastatic solid tumors, TMB ≥13 mut/Mb by an FDA-authorized test, progression after prior treatment, and no satisfactory alternative treatment options. [FDA approval notice](https://www.fda.gov/drugs/cancer-approvals/fda-grants-traditional-approval-pembrolizumab-or-pembrolizumab-and-berahyaluronidase-alfa-pmph)
+- Check the product label and version applicable to the jurisdiction and date in the question. Report the assay and its measured TMB. If an indication criterion is unknown, state that eligibility cannot be determined. Treat the former U.S. accelerated-approval cutoff of ≥10 mut/Mb as historical.
 
 **Microsatellite Instability (MSI):**
 - MSI-H/dMMR → FDA-approved for pembrolizumab (pan-tumor)
