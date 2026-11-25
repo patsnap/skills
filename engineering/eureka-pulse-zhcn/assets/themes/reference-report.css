@@ -1,0 +1,51 @@
+:root {
+  --ink: #0F1419;
+  --ink2: #3A4552;
+  --ink3: #6D7987;
+  --card: #FFFFFF;
+  --color-brand-primary: var(--accent);
+  --color-brand-hover: var(--deep);
+  --color-brand-pressed: var(--deep);
+  --color-brand-dark: var(--deep);
+  --color-brand-light: var(--soft-bd);
+  --color-brand-subtle: var(--soft);
+  --color-bg-page: var(--bg);
+  --color-bg-card: var(--card);
+  --color-bg-hover: var(--cell);
+  --color-bg-overlay: rgba(15, 20, 25, .45);
+  --color-text-primary: var(--ink);
+  --color-text-secondary: var(--ink2);
+  --color-text-tertiary: var(--ink3);
+  --color-border-default: var(--line);
+  --color-border-strong: var(--rule);
+  --color-border-focus: var(--accent);
+  --color-report-hero-start: var(--hero1);
+  --color-report-hero-middle: var(--hero2);
+  --color-report-hero-end: var(--hero3);
+  --color-report-cover-secondary: #C7CED8;
+  --color-report-stat-surface: rgba(255, 255, 255, .075);
+  --color-report-stat-label: #C7CED8;
+  --color-chart-1: var(--accent);
+  --color-chart-2: var(--accent-lt);
+  --color-chart-3: var(--deep);
+  --color-chart-4: #43B74B;
+  --color-chart-5: #FABB27;
+  --color-chart-6: #FD865A;
+  --color-chart-7: #27B4D1;
+  --color-chart-8: #A2C716;
+  --color-chart-9: #E96A94;
+  --color-chart-10: #CA6B48;
+}
+.intelligence-report .record-configured > .field-enum,
+.intelligence-report .record-configured > .field:has(.record-tags) { background: var(--cell); }
+.intelligence-report .record-patent:hover { border-color: var(--a25); }
+.intelligence-report .record-details > summary { color: var(--link); }
+@media screen {
+  .intelligence-report .report-cover { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(140deg, var(--hero1) 0%, var(--hero2) 48%, var(--hero3) 100%); }
+  .intelligence-report .report-cover::after { content: ""; position: absolute; z-index: -1; pointer-events: none; right: -140px; top: -150px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, var(--glow), transparent 62%); }
+  .intelligence-report .report-cover .visual-metric { color: #FFFFFF; background: var(--color-report-stat-surface); border-color: rgba(255, 255, 255, .15); }
+  .intelligence-report .report-cover .visual-metric strong { color: #FFFFFF; }
+  .intelligence-report .report-cover .visual-metric:hover { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .3); }
+  .intelligence-report .report-cover .visual-metric:active { background: rgba(255, 255, 255, .18); }
+  .intelligence-report .cover-identity .issue { color: var(--eb); }
+}
