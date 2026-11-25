@@ -1,161 +1,72 @@
 # Patsnap Life Sciences Skills
 
-Life Sciences skills in this directory support the core pharmaceutical and biomedical intelligence workflows, including disease, target, biomarker, company, drug, and oncology analysis. Imported antibody FTO, generic-drug opportunity, ADC patent monitoring, target-discovery, pharma conference insight, project initiation, and small-RNA patent landscape workflows now live in `../open-platform/`.
+This directory contains 16 pharmaceutical and biomedical intelligence skills, each available in English and Chinese, for a total of 32 skill directories. Additional biomedical workflows are available in [Open Platform](../open-platform/).
 
-Install all life-sciences skills:
+## Installation
 
-```bash
-npx skills add patsnap/skills/tree/main/life-sciences --all
-```
-
-Install one life-sciences skill:
+Install all Life Sciences skills.
 
 ```bash
-npx skills add patsnap/skills/tree/main/life-sciences/target-intelligence
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences --all
 ```
 
-## Directory Snapshot
+To install one skill, use its directory name in the command below.
 
-| Type | Count | Notes |
-|---|---:|---|
-| Total skill directories | 12 | Six English skills plus six `-zhcn` variants. |
-| Core/original skill directories | 12 | Six English skills plus six `-zhcn` variants. |
-| Open Platform imported directories | 0 | Imported Skill Hub / Open Platform workflows live under `../open-platform/`. |
+```bash
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
+```
 
-## Core Skills
+## Skills
 
-The original life-sciences skills integrate with Patsnap LifeScience MCP services and are available in English and Chinese (`-zhcn` suffix).
-
-| Skill | Chinese Variant | Description |
+| English skill | Chinese skill | Scope |
 |---|---|---|
-| `biomarker-investigation` | `biomarker-investigation-zhcn` | Search academic and patent literature related to biomarkers. |
-| `company-profiling` | `company-profiling-zhcn` | Pharmaceutical company profiles and investment/collaboration recommendations. |
-| `disease-investigation` | `disease-investigation-zhcn` | Comprehensive disease investigation combining literature, epidemiology, clinical data, and pharma intelligence. |
-| `pharmaceuticals-exploration` | `pharmaceuticals-exploration-zhcn` | Drug-related Q&A covering patents, literature, clinical trials, and licensing transactions. |
-| `precision-oncology` | `precision-oncology-zhcn` | Cancer treatment reports combining literature, clinical guidance, and trial data. |
-| `target-intelligence` | `target-intelligence-zhcn` | Biomedical target analysis with related biological and pharmaceutical details. |
+| [`patsnap-lifescience-biomarker-analysis`](patsnap-lifescience-biomarker-analysis/SKILL.md) | [`patsnap-lifescience-biomarker-analysis-zhcn`](patsnap-lifescience-biomarker-analysis-zhcn/SKILL.md) | Biomarker evidence, testing, companion diagnostics and biomarker-defined populations. |
+| [`patsnap-lifescience-catalyst-events`](patsnap-lifescience-catalyst-events/SKILL.md) | [`patsnap-lifescience-catalyst-events-zhcn`](patsnap-lifescience-catalyst-events-zhcn/SKILL.md) | Upcoming pharmaceutical milestones and their timing. |
+| [`patsnap-lifescience-clinical-outcome-analysis`](patsnap-lifescience-clinical-outcome-analysis/SKILL.md) | [`patsnap-lifescience-clinical-outcome-analysis-zhcn`](patsnap-lifescience-clinical-outcome-analysis-zhcn/SKILL.md) | Clinical trial outcomes, endpoints, efficacy and safety evidence. |
+| [`patsnap-lifescience-commercial-analysis`](patsnap-lifescience-commercial-analysis/SKILL.md) | [`patsnap-lifescience-commercial-analysis-zhcn`](patsnap-lifescience-commercial-analysis-zhcn/SKILL.md) | Commercial performance, market size, pricing and access. |
+| [`patsnap-lifescience-company-profiling`](patsnap-lifescience-company-profiling/SKILL.md) | [`patsnap-lifescience-company-profiling-zhcn`](patsnap-lifescience-company-profiling-zhcn/SKILL.md) | Pharmaceutical company portfolios, pipelines and business activity. |
+| [`patsnap-lifescience-deal-intelligence`](patsnap-lifescience-deal-intelligence/SKILL.md) | [`patsnap-lifescience-deal-intelligence-zhcn`](patsnap-lifescience-deal-intelligence-zhcn/SKILL.md) | Biopharma licensing, partnerships and deal terms. |
+| [`patsnap-lifescience-disease-investigation`](patsnap-lifescience-disease-investigation/SKILL.md) | [`patsnap-lifescience-disease-investigation-zhcn`](patsnap-lifescience-disease-investigation-zhcn/SKILL.md) | Disease characteristics, treatment pathways and drug development. |
+| [`patsnap-lifescience-drug-development-pathway`](patsnap-lifescience-drug-development-pathway/SKILL.md) | [`patsnap-lifescience-drug-development-pathway-zhcn`](patsnap-lifescience-drug-development-pathway-zhcn/SKILL.md) | Drug development strategy, milestones and clinical programs. |
+| [`patsnap-lifescience-epidemiology-analysis`](patsnap-lifescience-epidemiology-analysis/SKILL.md) | [`patsnap-lifescience-epidemiology-analysis-zhcn`](patsnap-lifescience-epidemiology-analysis-zhcn/SKILL.md) | Disease incidence, prevalence and population estimates. |
+| [`patsnap-lifescience-gwas-target-discovery`](patsnap-lifescience-gwas-target-discovery/SKILL.md) | [`patsnap-lifescience-gwas-target-discovery-zhcn`](patsnap-lifescience-gwas-target-discovery-zhcn/SKILL.md) | Human genetic and GWAS evidence for drug target prioritization. |
+| [`patsnap-lifescience-patent-intelligence`](patsnap-lifescience-patent-intelligence/SKILL.md) | [`patsnap-lifescience-patent-intelligence-zhcn`](patsnap-lifescience-patent-intelligence-zhcn/SKILL.md) | Pharmaceutical patent search and patent landscape analysis. |
+| [`patsnap-lifescience-pharmaceuticals-exploration`](patsnap-lifescience-pharmaceuticals-exploration/SKILL.md) | [`patsnap-lifescience-pharmaceuticals-exploration-zhcn`](patsnap-lifescience-pharmaceuticals-exploration-zhcn/SKILL.md) | Drug profiles, mechanisms, indications and development status. |
+| [`patsnap-lifescience-pharmacovigilance`](patsnap-lifescience-pharmacovigilance/SKILL.md) | [`patsnap-lifescience-pharmacovigilance-zhcn`](patsnap-lifescience-pharmacovigilance-zhcn/SKILL.md) | Post-marketing safety signals and regulatory safety communications. |
+| [`patsnap-lifescience-precision-oncology`](patsnap-lifescience-precision-oncology/SKILL.md) | [`patsnap-lifescience-precision-oncology-zhcn`](patsnap-lifescience-precision-oncology-zhcn/SKILL.md) | Oncology variant interpretation and biomarker-guided treatment evidence. |
+| [`patsnap-lifescience-regulatory-analysis`](patsnap-lifescience-regulatory-analysis/SKILL.md) | [`patsnap-lifescience-regulatory-analysis-zhcn`](patsnap-lifescience-regulatory-analysis-zhcn/SKILL.md) | Drug approvals, labels and regulatory pathways. |
+| [`patsnap-lifescience-target-intelligence`](patsnap-lifescience-target-intelligence/SKILL.md) | [`patsnap-lifescience-target-intelligence-zhcn`](patsnap-lifescience-target-intelligence-zhcn/SKILL.md) | Biomedical target biology, druggability and competitive pipelines. |
 
-## Open Platform Skills
+## Migrating from the previous skill names
 
-Additional biomedical workflows imported from Skill Hub are available in `../open-platform/`, including `adc-patent-weekly-report`, `generic-drug-scout`, `mab-fto-check`, `target-discovery`, `pharma-conference-insight-report`, `pharma-project-initiation-report`, and `small-rna-patent-landscape`.
+Use the replacement name in prompts, configuration, and installation commands that reference a previous skill. Chinese variants use the `-zhcn` suffix.
 
-## MCP Setup Guide
+| Previous English and Chinese names | Replacement English and Chinese names |
+|---|---|
+| `biomarker-investigation`, `biomarker-investigation-zhcn` | `patsnap-lifescience-biomarker-analysis`, `patsnap-lifescience-biomarker-analysis-zhcn` |
+| `company-profiling`, `company-profiling-zhcn` | `patsnap-lifescience-company-profiling`, `patsnap-lifescience-company-profiling-zhcn` |
+| `disease-investigation`, `disease-investigation-zhcn` | `patsnap-lifescience-disease-investigation`, `patsnap-lifescience-disease-investigation-zhcn` |
+| `pharmaceuticals-exploration`, `pharmaceuticals-exploration-zhcn` | `patsnap-lifescience-pharmaceuticals-exploration`, `patsnap-lifescience-pharmaceuticals-exploration-zhcn` |
+| `precision-oncology`, `precision-oncology-zhcn` | `patsnap-lifescience-precision-oncology`, `patsnap-lifescience-precision-oncology-zhcn` |
+| `target-intelligence`, `target-intelligence-zhcn` | `patsnap-lifescience-target-intelligence`, `patsnap-lifescience-target-intelligence-zhcn` |
 
-The life-sciences skills can use the following Patsnap MCP services in Claude Code or compatible agent runtimes.
-
-### Services Overview
-
-| MCP Service | Purpose | Tool Prefix |
-|---|---|---|
-| `pharma-intelligence` | Drug, target, disease, patent, literature, clinical trial intelligence | `ls_` |
-| `chemical-molecular` | Chemical structure search, similarity search, exact search | `ls_chemical_` |
-| `biology-modality` | Antibody-antigen relations, biological sequence search, modification analysis | `ls_antibody_`, `ls_sequence_`, `ls_modification_` |
-
-### Get Connection URLs
-
-Each service has a unique connection URL tied to your API key. Visit the Patsnap Marketplace to get them:
-
-- [Pharma Intelligence](https://open.patsnap.com/marketplace/mcp-servers/245f3ce8-79e4-4c2a-927c-e155c293f097)
-- [Chemical Molecular](https://open.patsnap.com/marketplace/mcp-servers/96b4a650-d563-4fc5-860d-c99ee8cb5b1e)
-- [Biology Modality](https://open.patsnap.com/marketplace/mcp-servers/a96c9b0b-2831-4d18-a37d-286896979b8d)
-
-Each page shows a ready-to-copy connection URL. Sign in and replace `yourapikey` with your actual API key.
-
-### Configuration
-
-Edit `~/.claude/settings.json` and add the following under `mcpServers`:
-
-```json
-{
-  "mcpServers": {
-    "pharma_intelligence": {
-      "type": "streamableHttp",
-      "url": "https://connect.patsnap.com/096456/logic-mcp?apikey=<YOUR_API_KEY>"
-    },
-    "chemical_molecular": {
-      "type": "streamableHttp",
-      "url": "https://connect.patsnap.com/713886/logic-mcp?apikey=<YOUR_API_KEY>"
-    },
-    "biology_modality": {
-      "type": "streamableHttp",
-      "url": "https://connect.patsnap.com/06e741/logic-mcp?apikey=<YOUR_API_KEY>"
-    }
-  }
-}
-```
-
-Or add the services with Claude Code CLI:
+Run the command for each replacement you want to install.
 
 ```bash
-claude mcp add pharma_intelligence \
-  "https://connect.patsnap.com/096456/logic-mcp?apikey=<YOUR_API_KEY>"
-
-claude mcp add chemical_molecular \
-  "https://connect.patsnap.com/713886/logic-mcp?apikey=<YOUR_API_KEY>"
-
-claude mcp add biology_modality \
-  "https://connect.patsnap.com/06e741/logic-mcp?apikey=<YOUR_API_KEY>"
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-biomarker-analysis-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-company-profiling-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-disease-investigation-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-pharmaceuticals-exploration-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-precision-oncology-zhcn
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence
+npx skills add https://github.com/patsnap/skills/tree/main/life-sciences/patsnap-lifescience-target-intelligence-zhcn
 ```
 
-Project-level configuration can also be placed in `.claude/settings.json`.
+## MCP setup
 
-### Verify Setup
-
-After configuration, run `/mcp` in Claude Code and confirm all required services show `connected`.
-
-You can also test with a quick query:
-
-```text
-Search for PD-1 related drugs
-```
-
-If `ls_drug_search` returns results, `pharma-intelligence` is working correctly.
-
-## Tool Reference
-
-### pharma-intelligence
-
-| Tool | Description |
-|---|---|
-| `ls_drug_search` / `ls_drug_fetch` | Search and retrieve drug details. |
-| `ls_target_fetch` | Retrieve target details. |
-| `ls_disease_fetch` | Retrieve disease details. |
-| `ls_patent_search` / `ls_patent_vector_search` / `ls_patent_fetch` | Patent search. |
-| `ls_paper_search` / `ls_paper_vector_search` / `ls_paper_fetch` | Literature search. |
-| `ls_clinical_trial_search` / `ls_clinical_trial_fetch` | Clinical trial search. |
-| `ls_clinical_trial_result_search` / `ls_clinical_trial_result_fetch` | Clinical trial results. |
-| `ls_drug_deal_search` / `ls_drug_deal_fetch` | Drug licensing and deal search. |
-| `ls_organization_fetch` | Organization / company details. |
-| `ls_news_vector_search` / `ls_news_fetch` | Industry news. |
-| `ls_translational_medicine_search` / `ls_translational_medicine_fetch` | Translational medicine. |
-| `ls_fda_label_vector_search` | FDA drug labels. |
-| `ls_clinical_guideline_vector_search` | Clinical guidelines. |
-| `ls_epidemiology_vector_search` | Epidemiology data. |
-| `ls_financial_report_vector_search` | Financial reports and prospectuses. |
-| `ls_web_search` | Web search supplement. |
-
-### chemical-molecular
-
-| Tool | Description |
-|---|---|
-| `ls_chemical_search` | Structure search via SMILES. Supports `EXT` and `SIM` modes. |
-
-### biology-modality
-
-| Tool | Description |
-|---|---|
-| `ls_antibody_antigen_search` | Antibody-antigen relation search with facet filtering. |
-| `ls_sequence_search_submit` | Submit a biological sequence search job. |
-| `ls_sequence_search_check_status` | Poll the status of a submitted sequence search job. |
-| `ls_sequence_search_get_results` | Retrieve paginated results of a completed sequence search. |
-| `ls_modification_search_submit` | Submit a sequence modification site search job. |
-
-Sequence search is asynchronous: submit -> check_status -> get_results.
-
-## Troubleshooting
-
-**Tools not appearing after configuration?** Restart Claude Code or reload MCP via the `/mcp` command.
-
-**Getting 401 / 403 errors?** Verify the API key or contact Patsnap to obtain valid credentials.
-
-**Sequence search stuck in pending?** Poll `ls_sequence_search_check_status` until the status becomes `success`, then call `ls_sequence_search_get_results`.
+All 32 skills require the Patsnap `pharma-intelligence` MCP service. Follow the [MCP setup guide](MCP_SETUP.md) to connect and verify the service.
