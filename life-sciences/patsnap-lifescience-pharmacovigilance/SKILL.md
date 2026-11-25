@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-pharmacovigilance
 description: Use when the user asks about pharmacovigilance, post-market safety, FAERS,
   adverse event reports, disproportionality analysis, unlabeled adverse events, safety
   surveillance, signal strength, PRR, ROR, or IC statistics.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Pharmacovigilance
@@ -52,6 +53,8 @@ Do not use for clinical trial safety data; use `patsnap-lifescience-clinical-out
 - "Stratify adverse events for this drug by age, sex, and time to onset."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 ### Tier P (Patsnap MCP) + Signal Detection Framework
 

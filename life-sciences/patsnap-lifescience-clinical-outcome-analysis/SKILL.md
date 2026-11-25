@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-clinical-outcome-analysis
 description: Use when the user asks about clinical trial outcomes, efficacy endpoints,
   safety endpoints, subgroup results, comparative clinical evidence, treatment competition,
   or clinical evidence chains for drugs or therapies.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Clinical Outcome Analysis
@@ -62,6 +63,8 @@ Use `patsnap-lifescience-pharmaceuticals-exploration` for intrinsic drug propert
 - "Build the clinical evidence chain for Drug X in Indication Y from early studies through pivotal trials."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

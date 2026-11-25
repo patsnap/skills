@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-precision-oncology
 description: Use when the user asks about oncology variants, clinical actionability,
   matched therapies, OncoKB levels, pathogenicity, TMB, MSI, HRD, trial matching,
   resistance variants, or variant-drug matching.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Precision Oncology
@@ -53,6 +54,8 @@ Use this skill when the question asks what a cancer variant means for treatment 
 - "Identify this patient's resistance variants and separate approved, guideline-supported, and investigational options."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 ### Tier P (Background — Patsnap MCP)
 

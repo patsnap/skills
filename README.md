@@ -41,7 +41,7 @@ skills/
 |---|---:|---:|---|
 | Engineering / R&D | `engineering/` | 9 | Core R&D analysis skills, Chinese variants, and TRIZ innovation workflow. |
 | IP / Patent Intelligence | `ip/` | 2 | Free patent-search skills in English and Chinese. |
-| Life Sciences | `life-sciences/` | 12 | Original pharma intelligence skills and Chinese variants. |
+| Life Sciences | `life-sciences/` | 32 | 16 pharmaceutical and biomedical intelligence skills in English and Chinese. |
 | Materials | `materials/` | 10 | Includes materials explanation, technology scouting, problem solving, product translation and alloy composition search skills. |
 | Open Platform | `open-platform/` | 181 | Skill Hub imported workflows for IP, R&D, engineering, life sciences, reports, FTO, patent operations, technology transfer and vertical intelligence. |
 
@@ -83,16 +83,26 @@ Core patent-search skills powered by Patsnap data and related product workflows.
 
 ### Life Sciences
 
-Pharmaceutical and biomedical intelligence skills. The original six skills integrate with Patsnap LifeScience MCP services and are available in English and Chinese (`-zhcn` suffix).
+The 16 Life Sciences skills are available in English and Chinese. See the [Life Sciences README](life-sciences/README.md) for installation and migration from the previous skill names.
 
-| Skill | Description |
-|---|---|
-| `biomarker-investigation` | Search academic and patent literature related to biomarkers. |
-| `company-profiling` | Pharmaceutical company profiles and investment/collaboration recommendations. |
-| `disease-investigation` | Disease investigation combining literature, epidemiology, clinical data and pharma intelligence. |
-| `pharmaceuticals-exploration` | Drug-related Q&A covering patents, literature, clinical trials and licensing transactions. |
-| `precision-oncology` | Cancer treatment reports combining literature, clinical guidance and trial data. |
-| `target-intelligence` | Biomedical target analysis with biological and pharmaceutical details. |
+| English skill | Chinese skill | Scope |
+|---|---|---|
+| [`patsnap-lifescience-biomarker-analysis`](life-sciences/patsnap-lifescience-biomarker-analysis/SKILL.md) | [`patsnap-lifescience-biomarker-analysis-zhcn`](life-sciences/patsnap-lifescience-biomarker-analysis-zhcn/SKILL.md) | Biomarker evidence, testing, companion diagnostics and biomarker-defined populations. |
+| [`patsnap-lifescience-catalyst-events`](life-sciences/patsnap-lifescience-catalyst-events/SKILL.md) | [`patsnap-lifescience-catalyst-events-zhcn`](life-sciences/patsnap-lifescience-catalyst-events-zhcn/SKILL.md) | Upcoming pharmaceutical milestones and their timing. |
+| [`patsnap-lifescience-clinical-outcome-analysis`](life-sciences/patsnap-lifescience-clinical-outcome-analysis/SKILL.md) | [`patsnap-lifescience-clinical-outcome-analysis-zhcn`](life-sciences/patsnap-lifescience-clinical-outcome-analysis-zhcn/SKILL.md) | Clinical trial outcomes, endpoints, efficacy and safety evidence. |
+| [`patsnap-lifescience-commercial-analysis`](life-sciences/patsnap-lifescience-commercial-analysis/SKILL.md) | [`patsnap-lifescience-commercial-analysis-zhcn`](life-sciences/patsnap-lifescience-commercial-analysis-zhcn/SKILL.md) | Commercial performance, market size, pricing and access. |
+| [`patsnap-lifescience-company-profiling`](life-sciences/patsnap-lifescience-company-profiling/SKILL.md) | [`patsnap-lifescience-company-profiling-zhcn`](life-sciences/patsnap-lifescience-company-profiling-zhcn/SKILL.md) | Pharmaceutical company portfolios, pipelines and business activity. |
+| [`patsnap-lifescience-deal-intelligence`](life-sciences/patsnap-lifescience-deal-intelligence/SKILL.md) | [`patsnap-lifescience-deal-intelligence-zhcn`](life-sciences/patsnap-lifescience-deal-intelligence-zhcn/SKILL.md) | Biopharma licensing, partnerships and deal terms. |
+| [`patsnap-lifescience-disease-investigation`](life-sciences/patsnap-lifescience-disease-investigation/SKILL.md) | [`patsnap-lifescience-disease-investigation-zhcn`](life-sciences/patsnap-lifescience-disease-investigation-zhcn/SKILL.md) | Disease characteristics, treatment pathways and drug development. |
+| [`patsnap-lifescience-drug-development-pathway`](life-sciences/patsnap-lifescience-drug-development-pathway/SKILL.md) | [`patsnap-lifescience-drug-development-pathway-zhcn`](life-sciences/patsnap-lifescience-drug-development-pathway-zhcn/SKILL.md) | Drug development strategy, milestones and clinical programs. |
+| [`patsnap-lifescience-epidemiology-analysis`](life-sciences/patsnap-lifescience-epidemiology-analysis/SKILL.md) | [`patsnap-lifescience-epidemiology-analysis-zhcn`](life-sciences/patsnap-lifescience-epidemiology-analysis-zhcn/SKILL.md) | Disease incidence, prevalence and population estimates. |
+| [`patsnap-lifescience-gwas-target-discovery`](life-sciences/patsnap-lifescience-gwas-target-discovery/SKILL.md) | [`patsnap-lifescience-gwas-target-discovery-zhcn`](life-sciences/patsnap-lifescience-gwas-target-discovery-zhcn/SKILL.md) | Human genetic and GWAS evidence for drug target prioritization. |
+| [`patsnap-lifescience-patent-intelligence`](life-sciences/patsnap-lifescience-patent-intelligence/SKILL.md) | [`patsnap-lifescience-patent-intelligence-zhcn`](life-sciences/patsnap-lifescience-patent-intelligence-zhcn/SKILL.md) | Pharmaceutical patent search and patent landscape analysis. |
+| [`patsnap-lifescience-pharmaceuticals-exploration`](life-sciences/patsnap-lifescience-pharmaceuticals-exploration/SKILL.md) | [`patsnap-lifescience-pharmaceuticals-exploration-zhcn`](life-sciences/patsnap-lifescience-pharmaceuticals-exploration-zhcn/SKILL.md) | Drug profiles, mechanisms, indications and development status. |
+| [`patsnap-lifescience-pharmacovigilance`](life-sciences/patsnap-lifescience-pharmacovigilance/SKILL.md) | [`patsnap-lifescience-pharmacovigilance-zhcn`](life-sciences/patsnap-lifescience-pharmacovigilance-zhcn/SKILL.md) | Post-marketing safety signals and regulatory safety communications. |
+| [`patsnap-lifescience-precision-oncology`](life-sciences/patsnap-lifescience-precision-oncology/SKILL.md) | [`patsnap-lifescience-precision-oncology-zhcn`](life-sciences/patsnap-lifescience-precision-oncology-zhcn/SKILL.md) | Oncology variant interpretation and biomarker-guided treatment evidence. |
+| [`patsnap-lifescience-regulatory-analysis`](life-sciences/patsnap-lifescience-regulatory-analysis/SKILL.md) | [`patsnap-lifescience-regulatory-analysis-zhcn`](life-sciences/patsnap-lifescience-regulatory-analysis-zhcn/SKILL.md) | Drug approvals, labels and regulatory pathways. |
+| [`patsnap-lifescience-target-intelligence`](life-sciences/patsnap-lifescience-target-intelligence/SKILL.md) | [`patsnap-lifescience-target-intelligence-zhcn`](life-sciences/patsnap-lifescience-target-intelligence-zhcn/SKILL.md) | Biomedical target biology, druggability and competitive pipelines. |
 
 ### Materials
 
@@ -112,7 +122,7 @@ Some skills rely on external MCP servers for retrieval. Skills without MCP depen
 
 | MCP Server / Tooling | Domain | Used By | Capabilities |
 |---|---|---|---|
-| Patsnap LifeScience MCP | Life Sciences, Open Platform | Original life-sciences skills and imported biomedical Open Platform workflows | Drugs, targets, diseases, biomarkers, companies, patents, papers, clinical trials and related pharma intelligence. |
+| Patsnap LifeScience MCP | Life Sciences, Open Platform | Life Sciences skills and imported biomedical Open Platform workflows | Drugs, targets, diseases, biomarkers, companies, patents, papers, clinical trials and related pharma intelligence. |
 | Patsnap / Zhihuiya patent MCP | IP, Open Platform | Free patent search plus imported patent, FTO, portfolio, transfer and competitive-intelligence workflows | Patent retrieval, applicant/topic search, legal status, patent evidence collection and workflow-specific analysis. |
 | `mace-mcp` | Materials | `alloy-composition-search` | Alloy composition extraction: `query_to_alloy` -> `alloy_to_substance` -> `substance_to_document` -> `document_to_alloy`. |
 

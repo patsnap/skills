@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-commercial-analysis
 description: Use when the user asks about commercial potential, market opportunity,
   revenue market sizing, peak sales, pricing, reimbursement, market access, launch
   strategy, or competitive positioning for drugs, targets, or indications.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Commercial Analysis
@@ -58,6 +59,8 @@ Use `patsnap-lifescience-epidemiology-analysis` for patient numbers and incidenc
 - "Compare the commercial attractiveness of two oncology assets and identify the key sensitivities."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

@@ -18,7 +18,7 @@ description: |
 - "帮我分析一下这个 SMILES 的潜在靶点"
 
 **不适用场景**：
-- 已知靶点，正向设计化合物 → 使用 `patsnap-lifescience-target-intelligence_zh`
+- 已知靶点，正向设计化合物 → 使用 `patsnap-lifescience-target-intelligence-zhcn`
 - 单分子专利新颖性评估 → 使用 `novelty-check`
 - 竞争格局分析 → 使用 `competitive-landscape`
 
@@ -42,7 +42,7 @@ description: |
 
 | Skill 名称 | 用途 |
 |---|---|
-| `patsnap-lifescience-target-intelligence_zh` | Step 4：靶点情报验证（成药性/管线/竞争格局） |
+| `patsnap-lifescience-target-intelligence-zhcn` | Step 4：靶点情报验证（成药性/管线/竞争格局） |
 | `novelty-check` | Step 5：FTO 单参考文献新颖性分析 |
 | `competitive-landscape` | Step 4+：靶点赛道竞争格局深度报告 |
 | `ppt-generator` | 输出：生成演示PPT |
@@ -111,7 +111,7 @@ description: |
 ---
 
 ### Step 4 — 靶点情报验证
-**技能**：`patsnap-lifescience-target-intelligence_zh`
+**技能**：`patsnap-lifescience-target-intelligence-zhcn`
 **操作**：针对 Top 1-3 靶点假说，分别调用靶点情报技能
 **评估维度**：
 1. **生物学验证**：靶点与疾病的因果关系强度

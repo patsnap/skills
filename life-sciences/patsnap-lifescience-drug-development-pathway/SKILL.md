@@ -1,4 +1,5 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-drug-development-pathway
 description: Use when the user asks about a drug or therapeutic asset development
   pathway, R&D milestones, phase transitions, pivotal trials, regulatory events, partnerships,
@@ -6,9 +7,9 @@ description: Use when the user asks about a drug or therapeutic asset developmen
   or future milestones.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Drug Development Pathway
@@ -64,6 +65,8 @@ Use this skill when milestones are used to explain the asset's development logic
 - "Forecast Drug Y's next development milestones and assign confidence to each forecast."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

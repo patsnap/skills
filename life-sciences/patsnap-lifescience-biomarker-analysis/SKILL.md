@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-biomarker-analysis
 description: Use when the user asks about biomarkers, genetic alterations, companion
   diagnostics, testing methods, clinical significance, treatment-response prediction,
   biomarker-defined populations, or precision-medicine evidence.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Biomarker Analysis
@@ -53,6 +54,8 @@ Use this skill when the biomarker itself is the primary analytical object: preva
 - "Can ctDNA clearance be used for response monitoring or as a surrogate endpoint, and how strong is the evidence?"
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 ### OncoKB Actionability Reference
 

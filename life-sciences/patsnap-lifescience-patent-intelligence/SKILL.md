@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-patent-intelligence
 description: Use when the user asks about biopharma patent landscapes, IP risk, FTO,
   expiration, patent cliffs, exclusivity, generic or biosimilar entry risk, litigation,
   patent strategy, technical moat, or technology evolution.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Patent Intelligence
@@ -51,6 +52,8 @@ Use for standalone IP, FTO, expiration, moat, and technology evolution questions
 - "Compare two candidate assets on patent moat, geographic coverage, and freedom-to-operate risk."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 ### Execution Steps
 

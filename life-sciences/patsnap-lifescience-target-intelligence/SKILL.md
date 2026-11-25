@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-target-intelligence
 description: Use when the user asks about a biomedical target as the primary subject,
   including biology, druggability, indication fit, modality options, competitive pipeline,
   clinical progress, deals, or white-space opportunities.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Target Intelligence
@@ -42,6 +43,8 @@ Decision-readiness standard:
 - "Is there still a first-in-class or best-in-class opportunity for this target, and where is the white space?"
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

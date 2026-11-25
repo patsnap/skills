@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-disease-investigation
 description: Use when the user asks about a disease or indication, including pathophysiology,
   molecular mechanisms, standard of care, guidelines, unmet need, subtypes, diagnosis,
   or emerging therapies.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Disease Investigation
@@ -60,6 +61,8 @@ Use this skill when the disease or indication is the primary analytical object: 
 - "Why is clinical development failure high in this indication, and what are the key biological and trial risks?"
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

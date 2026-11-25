@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-pharmaceuticals-exploration
 description: Use when the user asks about one specific drug or therapeutic compound,
   including MoA, pharmacodynamics, PK, ADMET, safety, dosage, formulation, BBB penetration,
   interactions, special populations, or drug-specific clinical data.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Pharmaceuticals Exploration
@@ -57,6 +58,8 @@ Use this skill when one specific drug is the subject and the question is about i
 - "Score metformin's drug-repurposing potential for age-related macular degeneration."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 

@@ -34,8 +34,8 @@ description: >
 
 **不适用场景：**
 - 仅需单一维度查询（如"查某药的专利"→使用 all-in-one-ip-skills）
-- 管线/公司画像（→使用 patsnap-lifescience-company-profiling_zh）
-- 靶点情报（→使用 patsnap-lifescience-target-intelligence_zh）
+- 管线/公司画像（→使用 patsnap-lifescience-company-profiling-zhcn）
+- 靶点情报（→使用 patsnap-lifescience-target-intelligence-zhcn）
 
 ---
 

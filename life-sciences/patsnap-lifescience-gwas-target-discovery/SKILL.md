@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-gwas-target-discovery
 description: Use when the user asks about genetically validated targets, GWAS evidence,
   genetic association, Mendelian randomization, locus-to-gene mapping, eQTL, druggability,
   or GWAS-to-drug target prioritization.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # GWAS Target Discovery
@@ -53,6 +54,8 @@ Do not use for clinical drug development pipeline; use `patsnap-lifescience-targ
 - "Identify cardiovascular targets with strong genetic support but limited current development activity."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 ### Tier P (Background — Patsnap MCP)
 

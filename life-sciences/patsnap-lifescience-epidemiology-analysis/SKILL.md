@@ -1,13 +1,14 @@
 ---
+copyright: "Copyright © Patsnap. All rights reserved."
 name: patsnap-lifescience-epidemiology-analysis
 description: Use when the user asks about epidemiology, disease burden, incidence,
   prevalence, mortality, patient populations, regional distribution, demographics,
   trends, subtype frequency, or patient-count-based TAM.
 license: MIT
 metadata:
-  author: patsnap
+  author: Patsnap
   version: 1.0.0
-  domain: lifescience
+  category: "Life Science"
 ---
 
 # Epidemiology Analysis
@@ -52,6 +53,8 @@ Use this skill for patient numbers, incidence/prevalence statistics, mutation fr
 - "Segment the disease burden by age, sex, and geography, and explain differences in data definitions."
 
 ## Data Collection
+
+This skill requires the Patsnap `pharma-intelligence` MCP service. See the [MCP setup guide](https://github.com/patsnap/skills/blob/main/life-sciences/MCP_SETUP.md) for connection and verification steps.
 
 Search is the default evidence-gathering method. Do not call `*_fetch` merely because `*_search` was called. Further detail retrieval is unnecessary only when the results have passed entity and scope checks, contain the fields required to answer the question, and have no unresolved material conflicts.
 
